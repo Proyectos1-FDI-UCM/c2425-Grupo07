@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        transform.position = InputManager.Instance.MovementVector;
     }
     #endregion
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class PlayerMovement 
 // namespace
