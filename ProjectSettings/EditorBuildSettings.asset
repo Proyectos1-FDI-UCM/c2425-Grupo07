@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 20527f57389d748ee93839d6d77bce46
+  - enabled: 1
+    path: Assets/Scenes/Dash.unity
+    guid: ebfa12c49d8017547a635fcbfe6a3fe9
   m_configObjects: {}
