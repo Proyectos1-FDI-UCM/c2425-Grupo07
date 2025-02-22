@@ -9,6 +9,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -25,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] int Vel; // La velocidad máxima con la que se mueve el personaje en cada dirección.
+    [SerializeField] int Velocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
+    [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
 
 
     #endregion
@@ -38,6 +40,18 @@ public class PlayerMovement : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    /// <summary>
+    /// Instancia única de la clase (singleton).
+    /// </summary>
+    InputActionSettings MoveControls;
+    [SerializeField] Vector2 MovementVector;
+
+    /// <summary>
+    /// Controlador de las acciones del Input. Es una instancia del asset de 
+    /// InputAction que se puede configurar desde el editor y que está en
+    /// la carpeta Settings
+    /// </summary>
+    private InputActionSettings _theController;
 
     #endregion
 
@@ -48,6 +62,15 @@ public class PlayerMovement : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    void Awake()
+    {
+        MoveControls = new InputActionSettings();
+        MoveControls.Player.Enable();
+        InputAction movement = MoveControls.Player.Move;
+
+        movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
+        movement.canceled += ctx => MovementVector = new Vector2(0,0);
+    }
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -62,7 +85,10 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        transform.position = InputManager.Instance.MovementVector;
+        Vector2 m = MovementVector * Velocity * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0, 0, (MovementVector.x * -90) + (360 - MovementVector.y * 180)); //+ (MovementVector.y * MovementVector.y*360));
+        //transform.rotation = Quaternion.LookRotation(MovementVector);
+        transform.Translate(m, Space.World);
     }
     #endregion
 
@@ -82,6 +108,11 @@ public class PlayerMovement : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    private void OnMove()//InputAction.CallbackContext context)
+    {
+        Debug.Log("MeMuevoo");
+        //MovementVector = context.ReadValue<Vector2>();
+    }
 
     #endregion
 
