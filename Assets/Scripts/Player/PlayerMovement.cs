@@ -89,6 +89,10 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //OnMove();
+    }
+    private void FixedUpdate()
+    {
         OnMove();
     }
     #endregion
@@ -113,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _translateMovement = MovementVector * Velocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
         transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
+        
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
