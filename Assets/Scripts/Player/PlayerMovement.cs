@@ -125,10 +125,10 @@ public class PlayerMovement : MonoBehaviour
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
+            _targetRotation.Normalize();
             transform.rotation = _targetRotation; // El jugador gira a la dirección
         }
     }
-
     #endregion
 
 } // class PlayerMovement 
