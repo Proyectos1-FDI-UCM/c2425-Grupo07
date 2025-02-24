@@ -3255,6 +3255,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e48f446c3dbf5fe48a2bd4abaf9ac538, type: 2}
+    - target: {fileID: 4943864478356929494, guid: a9460e5ee1652534ebf93a8fa01a9f97, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7584395163546786512, guid: a9460e5ee1652534ebf93a8fa01a9f97, type: 3}
       propertyPath: m_Name
       value: Player Capsule
