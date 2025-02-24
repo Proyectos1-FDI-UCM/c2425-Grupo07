@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] int Velocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
     [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
+    [SerializeField] Vector2 MovementVector;
 
 
     #endregion
@@ -44,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     InputActionSettings MoveControls;
-    [SerializeField] Vector2 MovementVector;
+    Vector2 _translateMovement;
+    Quaternion _targetRotation;
 
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
@@ -64,10 +66,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        // Creamos el controlador del input y activamos los controles del jugador
         MoveControls = new InputActionSettings();
         MoveControls.Player.Enable();
+        // Cacheamos la acción de movimiento
         InputAction movement = MoveControls.Player.Move;
-
+        // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
         movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
         movement.canceled += ctx => MovementVector = new Vector2(0,0);
     }
@@ -85,10 +89,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector2 m = MovementVector * Velocity * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0, 0, (MovementVector.x * -90) + (360 - MovementVector.y * 180)); //+ (MovementVector.y * MovementVector.y*360));
-        //transform.rotation = Quaternion.LookRotation(MovementVector);
-        transform.Translate(m, Space.World);
+        OnMove();
     }
     #endregion
 
@@ -110,8 +111,13 @@ public class PlayerMovement : MonoBehaviour
     // mayúscula, incluida la primera letra)
     private void OnMove()//InputAction.CallbackContext context)
     {
-        Debug.Log("MeMuevoo");
-        //MovementVector = context.ReadValue<Vector2>();
+        _translateMovement = MovementVector * Velocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
+        transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
+        if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
+        {
+            _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
+            transform.rotation = _targetRotation; // El jugador gira a la dirección
+        }
     }
 
     #endregion
