@@ -107,7 +107,7 @@ public class PlayerDash : MonoBehaviour
     private IEnumerator StartDash()
     {
             _isDashing = true;
-            _rb.velocity = (Vector2)transform.up * DashSpeed;
+            _rb.velocity = (Vector2) _pM.LastMovementVector * DashSpeed;
             yield return new WaitForSeconds(DashDuration);
             _isDashing = false;
     }

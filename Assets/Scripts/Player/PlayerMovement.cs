@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int Velocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
     [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
     [SerializeField] Vector2 MovementVector;
+    [SerializeField] public Vector2 LastMovementVector;
 
 
     #endregion
@@ -120,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
+            LastMovementVector = _translateMovement;
             _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * Time.deltaTime); // El jugador gira a la dirección
         }
