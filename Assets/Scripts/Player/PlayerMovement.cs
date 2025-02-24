@@ -8,6 +8,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     InputActionSettings MoveControls;
     Vector2 _translateMovement;
     Quaternion _targetRotation;
+    private PlayerDash dash;
 
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
@@ -54,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     /// la carpeta Settings
     /// </summary>
     private InputActionSettings _theController;
+    
 
     #endregion
 
@@ -74,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
         movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
         movement.canceled += ctx => MovementVector = new Vector2(0,0);
+
     }
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
@@ -81,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
     }
 
     /// <summary>
@@ -104,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    
 
     #endregion
 
