@@ -7,6 +7,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -24,6 +25,7 @@ public class PlayerDash : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] float DashSpeed;
+    [SerializeField] float DashDuration;
 
     #endregion
 
@@ -44,7 +46,7 @@ public class PlayerDash : MonoBehaviour
     // ---- ATRIBUTOS PÚBLICOS ----
     #region
 
-    public bool _isDashing;
+    public bool _isDashing = false;
 
 
 
@@ -61,7 +63,15 @@ public class PlayerDash : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
+    private void Awake()
+    {
+            var playerInput = GetComponent<PlayerInput>();
+            if (playerInput != null)
+            {
+                playerInput.actions.Enable();
+                Debug.Log("Player Input habilitado");
+            }
+    }
     void Start()
     {
        _rb = GetComponent<Rigidbody2D>();
@@ -94,9 +104,21 @@ public class PlayerDash : MonoBehaviour
     //    yield return new WaitForSeconds(DashDuration);
     //    _isDashing = false;
     //}
-    public void StartDash()
+    private IEnumerator StartDash()
     {
-        _rb.AddForce(transform.up * DashSpeed);
+            _isDashing = true;
+            _rb.velocity = (Vector2)transform.up * DashSpeed;
+            yield return new WaitForSeconds(DashDuration);
+            _isDashing = false;
+    }
+    public void RequestDash(InputAction.CallbackContext context)
+    {
+        Debug.Log("Fase del input: " + context.phase);
+        if (!_isDashing && context.phase == InputActionPhase.Started)
+        {
+            Debug.Log("DASH ACTIVADO");
+            StartCoroutine(StartDash());
+        }
     }
     
 

@@ -8,6 +8,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 _translateMovement;
     Quaternion _targetRotation;
     private PlayerDash dash;
+    private Rigidbody2D _rb;
 
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
@@ -85,15 +87,12 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
-    {
-        //OnMove();
-    }
     private void FixedUpdate()
     {
         OnMove();
@@ -121,14 +120,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _translateMovement = MovementVector * Velocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
         transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
-        
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
-            _targetRotation.Normalize();
             transform.rotation = _targetRotation; // El jugador gira a la dirección
         }
     }
+
     #endregion
 
 } // class PlayerMovement 
