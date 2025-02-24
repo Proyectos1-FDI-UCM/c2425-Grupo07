@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5261708309782395241}
   - component: {fileID: 1662058436714557962}
   - component: {fileID: -7357599917820336469}
+  - component: {fileID: 2945631764532826110}
   m_Layer: 6
   m_Name: Player Capsule
   m_TagString: Untagged
@@ -102,10 +103,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e48f446c3dbf5fe48a2bd4abaf9ac538, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -114,7 +115,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &7047706930552799375
 MonoBehaviour:
@@ -129,8 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: 5
-  RotationSpeed: 2
+  RotationSpeed: 1000
   MovementVector: {x: 0, y: 0}
+  LastMovementVector: {x: 0, y: 0}
 --- !u!58 &5261708309782395241
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -199,8 +201,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -7357599917820336469}
         m_TargetAssemblyTypeName: PlayerDash, Assembly-CSharp
-        m_MethodName: StartDash
-        m_Mode: 1
+        m_MethodName: RequestDash
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -268,5 +270,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36b860f97e69074b9360509cdfa5e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashSpeed: 2
+  DashSpeed: 35.8
+  DashDuration: 0.5
   _isDashing: 0
+--- !u!114 &2945631764532826110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd8855be605cba4984c0096daaecdaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grabPoint: {fileID: 3213935928180906448}
+  _rayDistance: 2
+  _pickupLayer:
+    serializedVersion: 2
+    m_Bits: 256
