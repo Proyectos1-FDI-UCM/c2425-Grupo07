@@ -6040,6 +6040,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7047706930552799375, guid: a9460e5ee1652534ebf93a8fa01a9f97, type: 3}
+      propertyPath: RotationSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7584395163546786512, guid: a9460e5ee1652534ebf93a8fa01a9f97, type: 3}
       propertyPath: m_Name
       value: Player Capsule
