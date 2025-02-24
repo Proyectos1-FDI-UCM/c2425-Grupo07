@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// En este script se programa la habilidad de Albert, que consiste en que repara más rápido
-// Ferran
-// Clank&Clutch
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class AlbertAbility : MonoBehaviour
+public class Rack : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,11 +24,7 @@ public class AlbertAbility : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-    // RepairTimeDivider es el número por el que se divide el tiempo que tarda en reparar un objeto para que tarde menos
-    [SerializeField] float RepairTimeDivider;
-
-    // MovementSpeed es la velocidad con la que se mueve
-    [SerializeField] float MovementSpeed;
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -74,23 +70,7 @@ public class AlbertAbility : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    /// <summary>
-    /// GetRepairTimeDivider() devuelve RepairTimeDivider para que pueda ser usado por el script que controlará el tiempo que se tarda en reparar
-    /// </summary>
-    /// <returns></returns>
-    public float GetRepairTimeDividier()
-    {
-        return RepairTimeDivider;
-    }
-
-    /// <summary>
-    /// GetMovementSpeed() devuelve MovementSpeed para que pueda ser usado por el script que controla el movimiento del jugador
-    /// </summary>
-    /// <returns></returns>
-    public float GetMovementSpeed()
-    {
-        return MovementSpeed;
-    }
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -100,5 +80,5 @@ public class AlbertAbility : MonoBehaviour
 
     #endregion   
 
-} // class AlbertAbility 
+} // class Rack 
 // namespace
