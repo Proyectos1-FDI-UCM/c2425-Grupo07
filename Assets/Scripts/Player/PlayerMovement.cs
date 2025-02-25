@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] int Velocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
+    [SerializeField] float CurrentVelocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
+    [SerializeField] float MaxVelocity;
     [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
     [SerializeField] Vector2 MovementVector;
     [SerializeField] public Vector2 LastMovementVector;
@@ -82,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+        CurrentVelocity = MaxVelocity;
     }
 
     /// <summary>
@@ -116,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
     // mayúscula, incluida la primera letra)
     private void OnMove()//InputAction.CallbackContext context)
     {
-        _translateMovement = MovementVector * Velocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
+        _translateMovement = MovementVector * CurrentVelocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
         transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
         
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
