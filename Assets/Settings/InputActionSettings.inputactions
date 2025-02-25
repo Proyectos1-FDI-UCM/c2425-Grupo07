@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PickOrDrop",
+                    "type": "Button",
+                    "id": "48b9f442-99a7-4ec0-9eb1-b526e20e5f8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -191,7 +200,7 @@
                 {
                     "name": "",
                     "id": "d5bd8d39-57c0-4ec9-8230-ac4d44628f57",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -207,6 +216,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3a7a72b-9eaa-4168-a2cb-ef8c729955fe",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PickOrDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3716c12e-74af-441c-b153-066e2e63659b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PickOrDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
