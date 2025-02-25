@@ -31,17 +31,17 @@ public class PickDrop : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Tecla para recoger/soltar
-        {
-            if (_heldObject == null)
-            {
-                TryPickUp();
-            }
-            else
-            {
-                TryDrop();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space)) // Tecla para recoger/soltar
+        //{
+        //    if (_heldObject == null)
+        //    {
+        //        TryPickUp();
+        //    }
+        //    else
+        //    {
+        //        TryDrop();
+        //    }
+        //}
     }
 
     #endregion
@@ -86,5 +86,19 @@ public class PickDrop : MonoBehaviour
         }
     }
 
+    #endregion
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
+    public void Interact()
+    {
+        if (_heldObject == null)
+        {
+            TryPickUp();
+        }
+        else
+        {
+            TryDrop();
+        }
+    }
     #endregion
 }
