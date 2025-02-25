@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5a85c98d0ce445f9637c4fed9696c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 1
+  nextScene: 2
 --- !u!1 &289810500
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +706,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1312392711}
     m_Modifications:
+    - target: {fileID: 761147430978505889, guid: 1f2b5c3b9e3f047829e30da603853657, type: 3}
+      propertyPath: m_text
+      value: Selection
+      objectReference: {fileID: 0}
     - target: {fileID: 7001314624494379611, guid: 1f2b5c3b9e3f047829e30da603853657, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
