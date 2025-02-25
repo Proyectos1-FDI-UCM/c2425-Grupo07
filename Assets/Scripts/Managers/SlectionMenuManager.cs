@@ -78,6 +78,10 @@ public class SlectionMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Player2Selection");
     }
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("SelectionMenu");
+    }
 
     #endregion
 
