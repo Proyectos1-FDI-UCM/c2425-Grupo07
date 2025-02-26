@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Este script sirve para que el jugador pueda hacer click sobre la sierra y que por tanto esta funcione
+// Este script sirve para que el jugador pueda interactuar con la sierra pulsando la tecla de accionado
 // Ferran
 // Clank&Clutch
 // Proyectos 1 - Curso 2024-25
@@ -50,7 +50,7 @@ public class PlayerSierra : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    
+
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
@@ -103,21 +103,9 @@ public class PlayerSierra : MonoBehaviour
     // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        //Debug.Log("Click");
-
-        Vector2 _mousePosition = Mouse.current.position.ReadValue();
-
-        Vector2 _worldPoint = Camera.main.ScreenToWorldPoint(_mousePosition);
-
-        RaycastHit2D _hit = Physics2D.Raycast(_worldPoint, Vector2.zero);
-
-        if (_hit.collider != null)
+        if (SierraClick != null && SierraClick.IsOnRange && SierraClick.CarriesWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
         {
-            SierraClick = _hit.collider.gameObject.GetComponent<Sierra>();
-            if (SierraClick != null && SierraClick.IsOnRange && SierraClick.CarriesWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
-            {
-                SierraClick.Click();
-            }
+            SierraClick.Click();
         }
     }
 
