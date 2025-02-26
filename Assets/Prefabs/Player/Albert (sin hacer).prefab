@@ -243,6 +243,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 030fd073-8aa5-461f-9be2-2f68ff1f3475
     m_ActionName: Player/LeftClick[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 48b9f442-99a7-4ec0-9eb1-b526e20e5f8a
+    m_ActionName: Player/PickOrDrop[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
