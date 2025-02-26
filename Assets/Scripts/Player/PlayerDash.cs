@@ -109,11 +109,11 @@ public class PlayerDash : MonoBehaviour
             _isDashing = true;
             _rb.velocity = (Vector2)transform.up * DashSpeed;
             yield return new WaitForSeconds(DashDuration);
+            Debug.Log("DASH RECARGADO");
             _isDashing = false;
     }
     public void RequestDash(InputAction.CallbackContext context)
     {
-        Debug.Log("Fase del input: " + context.phase);
         if (!_isDashing && context.phase == InputActionPhase.Started)
         {
             Debug.Log("DASH ACTIVADO");

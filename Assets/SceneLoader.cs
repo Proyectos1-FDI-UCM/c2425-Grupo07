@@ -73,6 +73,10 @@ public class SceneLoader : MonoBehaviour
     {
         GameManager.Instance.ChangeScene(index);
     }
+    public void SelectRack(bool selection)
+    {
+        LevelManager.Instance.isRack = selection;
+    }
 
     #endregion
     

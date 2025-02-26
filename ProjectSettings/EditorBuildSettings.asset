@@ -15,6 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 20527f57389d748ee93839d6d77bce46
   - enabled: 1
+    path: Assets/Scenes/Escena COMUN GENERAL.unity
+    guid: 1efe92992ed1ca34fbbfa563c2cb0334
+  - enabled: 1
+    path: Assets/Scenes/FerranEscena.unity
+    guid: f358fa1dce3720d4da6cfd2307313901
+  - enabled: 1
+    path: Assets/Scenes/GuillermoEscena.unity
+    guid: e78cedf7806259443a4e3dcd4e7239cd
+  - enabled: 1
+    path: Assets/Scenes/LilingEscene.unity
+    guid: 432bf19693c30954fa39ab36b0485879
+  - enabled: 1
+    path: Assets/Scenes/Oliver.unity
+    guid: e5fdb6bde1280f84b89eb7ae779ec70d
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen Test.unity
+    guid: ce6c3796a24afcd4e892d5afa9ecc268
+  - enabled: 1
     path: Assets/Scenes/SelectionMenu.unity
     guid: 0ed35df62a1c94f4587e57d5f1b5f5db
   - enabled: 1

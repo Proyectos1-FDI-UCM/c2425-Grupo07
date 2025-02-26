@@ -30,6 +30,9 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] public bool isRack;
+    [SerializeField] GameObject Rack;
+    [SerializeField] GameObject Albert;
 
     #endregion
 
@@ -56,6 +59,9 @@ public class LevelManager : MonoBehaviour
             _instance = this;
             Init();
         }
+    }
+    private void Start()
+    {
     }
 
     #endregion
@@ -101,6 +107,8 @@ public class LevelManager : MonoBehaviour
     private void Init()
     {
         // De momento no hay nada que inicializar
+        if (isRack) Instantiate(Rack, new Vector2(0,0), Quaternion.identity);
+        else Instantiate(Albert, new Vector2(0, 0), Quaternion.identity);
     }
 
     #endregion
