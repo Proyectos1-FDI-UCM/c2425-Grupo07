@@ -57,11 +57,9 @@ public class Sierra : MonoBehaviour
 
     private int _pastClicks = 0;
 
-    // _maxDistance es la distancia máxima que puede haber entre el jugador y la sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
-    // private float _maxDistance = 2f;
-
-    // _maxDistanceSquared es el cuadrado de _maxDistance
-    private float _maxDistanceSquared = 4f;
+    // _maxDistanceSquared es el cuadrado de la distancia máxima que puede haber entre el jugador y la
+    // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
+    private float _maxDistanceSquared = 2.5f;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -106,11 +104,7 @@ public class Sierra : MonoBehaviour
             _pastClicks = 0;
             CurrentClicks = 0;
             UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
-            //Debug.Log("Fuera de rango o proceso completado");
         }
-        /*Debug.Log("Posicion jugador: " + PlayerPosition.position);
-        Debug.Log("Posicion sierra:" + gameObject.transform.position);
-        Debug.Log("Distancia: " + (PlayerPosition.position - gameObject.transform.position).sqrMagnitude);*/
     }
     #endregion
 
@@ -128,7 +122,6 @@ public class Sierra : MonoBehaviour
     {
         CurrentClicks++;
         UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
-        //Debug.Log("_currentClicks: " + CurrentClicks);
     }
 
     #endregion
