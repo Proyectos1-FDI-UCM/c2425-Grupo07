@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickDrop : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PickDrop : MonoBehaviour
     [SerializeField] private float _rayDistance = 2f; // Distancia del rayo para detectar objetos
     [SerializeField] private LayerMask _pickupLayer; // Capa de los objetos recogibles
 
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -23,25 +25,38 @@ public class PickDrop : MonoBehaviour
 
     private GameObject _heldObject; // Objeto actualmente recogido
     private Rigidbody2D _heldObjectRb; // Rigidbody2D del objeto recogido
+    private InputActionSettings _playerInputActions;
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    void Update()
+
+
+    void Awake()
     {
-        //if (Input.GetKeyDown(KeyCode.Space)) // Tecla para recoger/soltar
-        //{
-        //    if (_heldObject == null)
-        //    {
-        //        TryPickUp();
-        //    }
-        //    else
-        //    {
-        //        TryDrop();
-        //    }
-        //}
+        _playerInputActions = new InputActionSettings();
+        _playerInputActions.Player.PickOrDrop.performed += ctx => HandlePickDrop();
+        _playerInputActions.Enable();
+    }
+
+    void OnDestroy()
+    {
+        _playerInputActions.Player.PickOrDrop.performed -= ctx => HandlePickDrop();
+        _playerInputActions.Disable();
+    }
+
+    private void HandlePickDrop()
+    {
+        if (_heldObject == null)
+        {
+            TryPickUp();
+        }
+        else
+        {
+            TryDrop();
+        }
     }
 
     #endregion
@@ -86,19 +101,5 @@ public class PickDrop : MonoBehaviour
         }
     }
 
-    #endregion
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    public void Interact()
-    {
-        if (_heldObject == null)
-        {
-            TryPickUp();
-        }
-        else
-        {
-            TryDrop();
-        }
-    }
     #endregion
 }
