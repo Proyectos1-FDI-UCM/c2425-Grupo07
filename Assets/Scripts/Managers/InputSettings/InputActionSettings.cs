@@ -48,7 +48,11 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 },
                 {
+<<<<<<< Updated upstream
                     ""name"": ""Interact"",
+=======
+                    ""name"": ""LeftClick"",
+>>>>>>> Stashed changes
                     ""type"": ""Button"",
                     ""id"": ""030fd073-8aa5-461f-9be2-2f68ff1f3475"",
                     ""expectedControlType"": ""Button"",
@@ -57,9 +61,15 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 },
                 {
+<<<<<<< Updated upstream
                     ""name"": ""PickOrDrop"",
                     ""type"": ""Button"",
                     ""id"": ""48b9f442-99a7-4ec0-9eb1-b526e20e5f8a"",
+=======
+                    ""name"": ""Accionado"",
+                    ""type"": ""Button"",
+                    ""id"": ""f66cd795-b757-4fcb-8df9-480c992707f4"",
+>>>>>>> Stashed changes
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -262,6 +272,28 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PickOrDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5bd8d39-57c0-4ec9-8230-ac4d44628f57"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afbdb567-27d1-4e59-95d2-8710e2e3da30"",
+                    ""path"": ""<Keyboard>/#(J)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Accionado"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -850,9 +882,15 @@ namespace UnityEngine.InputSystem
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+<<<<<<< Updated upstream
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
+=======
+            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_LeftClick = m_Player.FindAction("LeftClick", throwIfNotFound: true);
+            m_Player_Accionado = m_Player.FindAction("Accionado", throwIfNotFound: true);
+>>>>>>> Stashed changes
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -927,17 +965,29 @@ namespace UnityEngine.InputSystem
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
+<<<<<<< Updated upstream
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_PickOrDrop;
+=======
+        private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_LeftClick;
+        private readonly InputAction m_Player_Accionado;
+>>>>>>> Stashed changes
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
             public PlayerActions(@InputActionSettings wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
+<<<<<<< Updated upstream
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
+=======
+            public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @LeftClick => m_Wrapper.m_Player_LeftClick;
+            public InputAction @Accionado => m_Wrapper.m_Player_Accionado;
+>>>>>>> Stashed changes
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -950,6 +1000,7 @@ namespace UnityEngine.InputSystem
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+<<<<<<< Updated upstream
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -959,6 +1010,17 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started += instance.OnPickOrDrop;
                 @PickOrDrop.performed += instance.OnPickOrDrop;
                 @PickOrDrop.canceled += instance.OnPickOrDrop;
+=======
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @Accionado.started += instance.OnAccionado;
+                @Accionado.performed += instance.OnAccionado;
+                @Accionado.canceled += instance.OnAccionado;
+>>>>>>> Stashed changes
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -966,6 +1028,7 @@ namespace UnityEngine.InputSystem
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+<<<<<<< Updated upstream
                 @Dash.started -= instance.OnDash;
                 @Dash.performed -= instance.OnDash;
                 @Dash.canceled -= instance.OnDash;
@@ -975,6 +1038,17 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started -= instance.OnPickOrDrop;
                 @PickOrDrop.performed -= instance.OnPickOrDrop;
                 @PickOrDrop.canceled -= instance.OnPickOrDrop;
+=======
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
+                @LeftClick.started -= instance.OnLeftClick;
+                @LeftClick.performed -= instance.OnLeftClick;
+                @LeftClick.canceled -= instance.OnLeftClick;
+                @Accionado.started -= instance.OnAccionado;
+                @Accionado.performed -= instance.OnAccionado;
+                @Accionado.canceled -= instance.OnAccionado;
+>>>>>>> Stashed changes
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1158,9 +1232,15 @@ namespace UnityEngine.InputSystem
         public interface IPlayerActions
         {
             void OnMove(InputAction.CallbackContext context);
+<<<<<<< Updated upstream
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnPickOrDrop(InputAction.CallbackContext context);
+=======
+            void OnFire(InputAction.CallbackContext context);
+            void OnLeftClick(InputAction.CallbackContext context);
+            void OnAccionado(InputAction.CallbackContext context);
+>>>>>>> Stashed changes
         }
         public interface IUIActions
         {

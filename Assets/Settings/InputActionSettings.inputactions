@@ -33,9 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+<<<<<<< Updated upstream
                     "name": "PickOrDrop",
                     "type": "Button",
                     "id": "48b9f442-99a7-4ec0-9eb1-b526e20e5f8a",
+=======
+                    "name": "Accionado",
+                    "type": "Button",
+                    "id": "f66cd795-b757-4fcb-8df9-480c992707f4",
+>>>>>>> Stashed changes
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -238,6 +244,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PickOrDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afbdb567-27d1-4e59-95d2-8710e2e3da30",
+                    "path": "<Keyboard>/#(J)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Accionado",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
