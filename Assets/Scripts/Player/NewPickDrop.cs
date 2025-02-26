@@ -30,7 +30,7 @@ public class NewPickDrop : MonoBehaviour
     // Depuración: colliders detectados en el último escaneo
     [SerializeField] private Collider2D[] hitColliders;
     // Intervalo de actualización de la detección (en segundos)
-    [SerializeField] private float detectionRate = 0.25f;
+    [SerializeField] private float detectionRate = 0.1f;
     // Activar/desactivar visualización de depuración en tiempo de ejecución
     [SerializeField] private bool showDebugInfo = true;
     #endregion
@@ -46,6 +46,7 @@ public class NewPickDrop : MonoBehaviour
     // Control del tiempo para la detección periódica
     private float _detectionTimer = 0f;
     // Indicador de si hay una tile en rango de interacción
+    private bool _tileInRange = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -54,7 +55,11 @@ public class NewPickDrop : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
+    void Start()
+    {
+        // Ejecutar la primera detección
+        UpdateNearestTileDetection();
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -92,7 +97,7 @@ public class NewPickDrop : MonoBehaviour
         // Si se ha detectado una tile, resaltarla
         if (_lastDetectedTilemap != null && Application.isPlaying && showDebugInfo)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = _tileInRange ? Color.green : Color.red;
             Vector3 tileCenter = _lastDetectedTilemap.GetCellCenterWorld(_lastDetectedTilePosition);
             Gizmos.DrawCube(tileCenter, Vector3.one * 0.5f);
         }
@@ -101,7 +106,14 @@ public class NewPickDrop : MonoBehaviour
     /// <summary>
     /// Dibuja información de depuración en la pantalla durante el juego
     /// </summary>
-
+    void OnGUI()
+    {
+        if (showDebugInfo && _lastDetectedTile != null)
+        {
+            GUI.Label(new Rect(10, 10, 300, 20), "Tile detectada: " + _lastDetectedTile.name);
+            GUI.Label(new Rect(10, 30, 300, 20), "En rango: " + (_tileInRange ? "Sí" : "No"));
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -116,7 +128,7 @@ public class NewPickDrop : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             // La detección ya está actualizada gracias al Update
-            if (_lastDetectedTile != null)
+            if (_tileInRange && _lastDetectedTile != null)
             {
                 Debug.Log("Interactuando con tile: " + _lastDetectedTile.name);
                 // Aquí iría la lógica de interacción con la tile
@@ -135,6 +147,8 @@ public class NewPickDrop : MonoBehaviour
     {
         public TileBase tile;
         public Vector3Int cellPosition;
+        public Tilemap tilemap;
+        public bool inRange;
     }
 
     /// <summary>
@@ -151,6 +165,7 @@ public class NewPickDrop : MonoBehaviour
         hitColliders = Physics2D.OverlapCircleAll(detectionPoint, detectionRadius, targetLayerMask);
 
         TileDetectionResult result = new TileDetectionResult();
+        result.inRange = false;
         float closestDistance = Mathf.Infinity;
 
         foreach (Collider2D collider in hitColliders)
@@ -162,49 +177,58 @@ public class NewPickDrop : MonoBehaviour
             {
                 // Obtener el Tilemap y el Grid
                 Tilemap tilemap = tilemapCollider.GetComponent<Tilemap>();
-                if (tilemap != null)
+                if (tilemap == null) continue;
+
+                Grid grid = tilemap.GetComponentInParent<Grid>();
+                if (grid == null) continue;
+
+                // Convertir la posición mundial a posición de celda
+                Vector3Int cellPosition = grid.WorldToCell(detectionPoint);
+
+                // Verificar si hay una tile en esa posición
+                TileBase tile = tilemap.GetTile(cellPosition);
+
+                if (tile != null)
                 {
-                    Grid grid = tilemap.GetComponentInParent<Grid>();
-                    if (grid != null)
+                    // Calcular el centro de la celda en coordenadas del mundo
+                    Vector3 cellCenterWorld = grid.GetCellCenterWorld(cellPosition);
+
+                    // Calcular la distancia al jugador
+                    float distance = Vector2.Distance(transform.position, cellCenterWorld);
+
+                    // Si esta tile está más cerca que la anterior, actualizamos
+                    if (distance < closestDistance)
                     {
-                        // Convertir la posición mundial a posición de celda
-                        Vector3Int cellPosition = grid.WorldToCell(detectionPoint);
-
-                        // Verificar si hay una tile en esa posición
-                        TileBase tile = tilemap.GetTile(cellPosition);
-
-                        if (tile != null)
-                        {
-                            // Calcular el centro de la celda en coordenadas del mundo
-                            Vector3 cellCenterWorld = grid.GetCellCenterWorld(cellPosition);
-
-                            // Calcular la distancia al jugador
-                            float distance = Vector2.Distance(transform.position, cellCenterWorld);
-
-                            // Si esta tile está más cerca que la anterior, actualizamos
-                            if (distance < closestDistance)
-                            {
-                                closestDistance = distance;
-                                result.tile = tile;
-                                result.cellPosition = cellPosition;
-
-                            }
-                        }
-
+                        closestDistance = distance;
+                        result.tile = tile;
+                        result.cellPosition = cellPosition;
+                        result.tilemap = tilemap;
+                        result.inRange = true;
                     }
-
-                    
                 }
-
-
-                
             }
         }
 
         return result;
     }
 
+    /// <summary>
+    /// Devuelve la última tile detectada
+    /// </summary>
+    /// <returns>El TileBase de la última tile detectada, o null si no hay ninguna</returns>
+    public TileBase GetCurrentDetectedTile()
+    {
+        return _lastDetectedTile;
+    }
 
+    /// <summary>
+    /// Indica si hay una tile en rango para interactuar
+    /// </summary>
+    /// <returns>True si hay una tile en rango, false en caso contrario</returns>
+    public bool HasTileInRange()
+    {
+        return _tileInRange;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -219,6 +243,8 @@ public class NewPickDrop : MonoBehaviour
         // Actualizar las variables con el resultado
         _lastDetectedTile = result.tile;
         _lastDetectedTilePosition = result.cellPosition;
+        _lastDetectedTilemap = result.tilemap;
+        _tileInRange = result.inRange;
 
         // Puedes añadir eventos o callbacks aquí si algo debe ocurrir
         // cuando cambia la tile detectada
