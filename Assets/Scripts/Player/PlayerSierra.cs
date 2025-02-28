@@ -29,6 +29,7 @@ public class PlayerSierra : MonoBehaviour
 
     // Referencia al script Sierra
     [SerializeField] private Sierra SierraClick;
+    [SerializeField] private Horno HornoClick;
 
     #endregion
 
@@ -58,7 +59,7 @@ public class PlayerSierra : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SierraClick = GameObject.FindWithTag("Sierra").GetComponent<Sierra>();
+        SierraClick = GameObject.FindWithTag("Herramienta").GetComponent<Sierra>();
     }
 
     /// <summary>
@@ -106,6 +107,10 @@ public class PlayerSierra : MonoBehaviour
         if (SierraClick != null && SierraClick.IsOnRange && SierraClick.CarriesWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
         {
             SierraClick.Click();
+        }
+        if (HornoClick != null && HornoClick.IsOnRange && SierraClick.CarriesWood)
+        {
+            HornoClick.Click();
         }
     }
 
