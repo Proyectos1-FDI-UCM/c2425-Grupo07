@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 1280534379
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2223b0a570b66ee42b3e0a79f0789b2a, type: 3}
+  m_Sprite: {fileID: -1003453276, guid: 0a8cb19650350ed459ecb850a7f56403, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.4775, y: 0.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -150,7 +150,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04009223}
+  m_Offset: {x: 0, y: -0.04}
   serializedVersion: 2
   m_Radius: 0.2411784
 --- !u!114 &1662058436714557962
@@ -244,8 +244,8 @@ MonoBehaviour:
     m_ActionName: Player/LeftClick[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f66cd795-b757-4fcb-8df9-480c992707f4
-    m_ActionName: Player/Accionado[/Keyboard/j]
+    m_ActionId: 48b9f442-99a7-4ec0-9eb1-b526e20e5f8a
+    m_ActionName: Player/PickOrDrop[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
