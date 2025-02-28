@@ -32,11 +32,7 @@ public class Horno : MonoBehaviour
     [SerializeField] private Image QueamadoImage;
     [SerializeField] private float VelComplecion;
     [SerializeField] private GameObject FlashImage;
-    // _nClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int MaxClicks = 6;
 
-    // _currentClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int CurrentClicks = 0;
 
     // _carriesWood determina si el jugador porta madera (true) o no (false)
     public bool CarriesWood = true;
@@ -55,7 +51,6 @@ public class Horno : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private int _pastClicks = 0;
 
     // _maxDistanceSquared es el cuadrado de la distancia máxima que puede haber entre el jugador y la
     // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
@@ -80,7 +75,6 @@ public class Horno : MonoBehaviour
     /// </summary>
     void Start()
     {
-        UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         PlayerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
         if (GetComponent<Collider2D>() == null)
         {
@@ -134,8 +128,6 @@ public class Horno : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void Click()
     {
-        CurrentClicks++;
-        UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
     }
 
     #endregion
