@@ -5,7 +5,11 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using JetBrains.Annotations;
+using System.Diagnostics.Contracts;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +17,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class AttachToGameObject : MonoBehaviour
+/// 
+public class PlayerVision : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,9 +27,12 @@ public class AttachToGameObject : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] Transform Objective;
-    [SerializeField] Vector2 Offset;
-    [SerializeField] bool canItRotate;
+    [SerializeField] GameObject actualMesa;
+    [SerializeField] GameObject lookedObject;
+    [SerializeField] GameObject heldObject;
+    [SerializeField] Transform PickingPos;
+    [SerializeField] Color mesaTint;
+    //las dejo serializadas de momento para hacer debug
 
     #endregion
 
@@ -50,10 +58,10 @@ public class AttachToGameObject : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    private void FixedUpdate()
+
+    void Start()
     {
-        transform.position = (Vector2)Objective.transform.position + Offset;
-        if (canItRotate) transform.rotation = Objective.transform.rotation;
+
     }
 
     /// <summary>
@@ -61,10 +69,63 @@ public class AttachToGameObject : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
-    }
-    #endregion
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+        actualMesa = collision.gameObject;
+        actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
+
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject != actualMesa) collision.GetComponent<SpriteRenderer>().color = Color.white;
+        else actualMesa = null;
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            ContentAnalizer();
+            if (heldObject != null && lookedObject == null && actualMesa != null ) Drop(); // hay objeto en la mano
+            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
+        }
+    }
+    public void Pick()
+    {
+        heldObject = lookedObject;
+        heldObject.transform.position = PickingPos.position;
+        heldObject.transform.SetParent(PickingPos);
+        heldObject.transform.rotation = transform.rotation;
+        lookedObject = null;
+    }
+    public void Drop()
+    {
+        heldObject.transform.position = actualMesa.transform.position;
+        heldObject.transform.rotation = Quaternion.identity;
+        heldObject.transform.SetParent(actualMesa.transform);
+        heldObject = null; 
+    }
+    public void ContentAnalizer()
+    {
+        if (actualMesa != null)
+        {
+            if (actualMesa.transform.childCount == 1)
+            {
+                lookedObject = actualMesa.GetComponentInChildren<Material>().gameObject;
+            }
+            else lookedObject = null;
+        }
+    }
+
+
+
+    #endregion
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
@@ -74,7 +135,7 @@ public class AttachToGameObject : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -82,7 +143,10 @@ public class AttachToGameObject : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
 
-} // class AttachToGameObject 
-// namespace
+
+    #endregion
+
+
+}// class PlayerVision 
+  // namespace

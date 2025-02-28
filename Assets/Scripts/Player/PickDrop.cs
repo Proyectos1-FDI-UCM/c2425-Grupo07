@@ -14,7 +14,7 @@ public class PickDrop : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField] private Transform _grabPoint; // Posición donde se sujetará el objeto
-    [SerializeField] private float _rayDistance = 2f; // Distancia del rayo para detectar objetos
+    [SerializeField] private float _rayDistance = 12f; // Distancia del rayo para detectar objetos
     [SerializeField] private LayerMask _pickupLayer; // Capa de los objetos recogibles
 
 
