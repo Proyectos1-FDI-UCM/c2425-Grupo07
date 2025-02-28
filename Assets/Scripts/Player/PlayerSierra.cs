@@ -58,7 +58,7 @@ public class PlayerSierra : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+        SierraClick = GameObject.FindWithTag("Sierra").GetComponent<Sierra>();
     }
 
     /// <summary>

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sierra
   layers:
   - Default
   - TransparentFX
@@ -47,11 +48,11 @@ TagManager:
   - name: Walls
     uniqueID: 1394175883
     locked: 0
-  - name: Objects/Materials
-    uniqueID: 3379730203
-    locked: 0
   - name: Tools
     uniqueID: 4035227905
+    locked: 0
+  - name: Objects/Materials
+    uniqueID: 3379730203
     locked: 0
   - name: Player
     uniqueID: 1280534379

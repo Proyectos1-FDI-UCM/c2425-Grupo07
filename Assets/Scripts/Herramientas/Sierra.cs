@@ -77,6 +77,7 @@ public class Sierra : MonoBehaviour
     {
         _pastClicks = CurrentClicks;
         UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+        PlayerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
         if (GetComponent<Collider2D>() == null)
         {
             gameObject.AddComponent<BoxCollider2D>();

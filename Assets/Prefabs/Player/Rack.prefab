@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2000919877978038094}
   m_Layer: 6
   m_Name: Rack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,5 +312,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fd66a7d1179ea4faaf1b17234f9df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClickActionReference: {fileID: -4583689966862745034, guid: 842a061437231409385e5d08046b3753, type: 3}
+  ClickActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
   SierraClick: {fileID: 0}

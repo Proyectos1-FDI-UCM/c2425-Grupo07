@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5351293794065515752}
   m_Layer: 0
   m_Name: Sierra
-  m_TagString: Untagged
+  m_TagString: Sierra
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,10 +146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 0}
   CompletionImage: {fileID: 8048797817967147116}
-  _maxClicks: 6
-  _currentClicks: 0
-  _carriesWood: 1
-  _isOnRange: 0
+  MaxClicks: 6
+  CurrentClicks: 0
+  CarriesWood: 1
+  IsOnRange: 0
 --- !u!1 &558191109938002010
 GameObject:
   m_ObjectHideFlags: 0
