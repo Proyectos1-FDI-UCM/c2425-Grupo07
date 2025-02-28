@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5465621805917360665}
   - component: {fileID: 3317164196597587}
-  - component: {fileID: -4057983104421604390}
+  - component: {fileID: 1883931610630439363}
   m_Layer: 8
-  m_Name: Madera
+  m_Name: Engranaje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -915237093
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ae4bae467a49fff4ab99717a788ad4df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 776752aacf36d874f93780fbcefe53b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4057983104421604390
+--- !u!114 &1883931610630439363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
