@@ -3759,7 +3759,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930274976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e33e01ec70e04582af05f46ca63b3b9, type: 3}
   m_Name: 
@@ -6015,17 +6015,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92bac3480d48e76419ff4515123fca78, type: 3}
---- !u!114 &1391075040 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2515882005929186146, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-  m_PrefabInstance: {fileID: 1531988400}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6575136e312cb6b4db6b3d9edd4e4c68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1531988400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6034,34 +6023,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1662058436714557962, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1391075040}
-    - target: {fileID: 1662058436714557962, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300766749322576627, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2515882005929186146, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: mesaTint.a
-      value: 0.74509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2515882005929186146, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: mesaTint.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2515882005929186146, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: mesaTint.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2515882005929186146, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: mesaTint.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3213935928180906448, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.25
@@ -6101,14 +6062,6 @@ PrefabInstance:
     - target: {fileID: 3213935928180906448, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3873528471207372110, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067139669997438140, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: m_Name

@@ -32,7 +32,9 @@ public class Horno : MonoBehaviour
     [SerializeField] private Image QueamadoImage;
     [SerializeField] private float VelComplecion;
     [SerializeField] private GameObject FlashImage;
-
+    [SerializeField] private float TimerComplecion = 0;
+    [SerializeField] private float timerQuemado = 0;
+    [SerializeField] private float timerFlash = 0;
 
     // _carriesWood determina si el jugador porta madera (true) o no (false)
     public bool CarriesWood = true;
@@ -56,10 +58,6 @@ public class Horno : MonoBehaviour
     // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
     private float _maxDistanceSquared = 2.5f;
 
-    //
-    public float timerComplecion = 0;
-    public float timerQuemado = 0;
-    public float timerFlash = 0;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -89,7 +87,7 @@ public class Horno : MonoBehaviour
     {
         if ((PlayerPosition.position - gameObject.transform.position).sqrMagnitude < _maxDistanceSquared)
         {
-            timerComplecion += Time.deltaTime;
+            TimerComplecion += Time.deltaTime;
             IsOnRange = true;
         }
 
@@ -97,7 +95,7 @@ public class Horno : MonoBehaviour
         {
             IsOnRange = false;
         }
-        CompletionImage.fillAmount = (timerComplecion / 100)*VelComplecion;
+        CompletionImage.fillAmount = (TimerComplecion / 100)*VelComplecion;
         if (CompletionImage.fillAmount >= 1)
         {
             timerQuemado += Time.deltaTime;
@@ -126,8 +124,9 @@ public class Horno : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void Click()
+    public void ProcesaMaterial()//Material material)
     {
+
     }
 
     #endregion
@@ -144,6 +143,14 @@ public class Horno : MonoBehaviour
         _pastCompletion = _pastCompletion / _maxCompletion;
     }
     #endregion
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Material>() != null)
+        {
+            Debug.Log("Hay un material puesto");
+        }
+    }
 
 } // class Horno 
 // namespace

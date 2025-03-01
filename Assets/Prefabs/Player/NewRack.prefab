@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2703805989159004855}
   - component: {fileID: 3873528471207372110}
   - component: {fileID: 2515882005929186146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RackVision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.34}
@@ -84,7 +84,7 @@ MonoBehaviour:
   lookedObject: {fileID: 0}
   heldObject: {fileID: 0}
   PickingPos: {fileID: 6278016846825631367}
-  mesaTint: {r: 0, g: 0, b: 0, a: 0}
+  mesaTint: {r: 1, g: 1, b: 1, a: 0.74509805}
 --- !u!1 &6067139669997438140
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_ActionName: Player/LeftClick[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2515882005929186146}
         m_TargetAssemblyTypeName: PlayerVision, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClickActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
   SierraClick: {fileID: 0}
+  HornoClick: {fileID: 0}
 --- !u!58 &5138623324550365096
 CircleCollider2D:
   m_ObjectHideFlags: 0
