@@ -24,23 +24,19 @@ public class Horno : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    // PlayerPosition es la posición del jugador
-    [SerializeField] private Transform PlayerPosition;
 
     // CompletionImage es la barra de compleción del proceso de refinamiento
     [SerializeField] private Image CompletionImage;
-    [SerializeField] private Image QueamadoImage;
-    [SerializeField] private float VelComplecion;
+    // BurningImage es la barra de quemado cuando se empieza a calentar de más un material
+    [SerializeField] private Image BurningImage;
+    // VelCompletion es la velocidad con la que avanza la barra de completion y de burning
+    [SerializeField] private float VelCompletion;
+    // FlashImage es la imagen que aparece para advertir al jugador que se va a quemar un objeto
     [SerializeField] private GameObject FlashImage;
-    [SerializeField] private float TimerComplecion = 0;
-    [SerializeField] private float timerQuemado = 0;
-    [SerializeField] private float timerFlash = 0;
-
-    // _carriesWood determina si el jugador porta madera (true) o no (false)
-    public bool CarriesWood = true;
-
-    // _isOnRange determina si el jugador está en el rango de interacción de la sierra (true) o no (false)
-    public bool IsOnRange;
+    // FireIco es la imagen temporal cuando se quema un objeto
+    [SerializeField] private GameObject FireIco;
+    // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
+    [SerializeField] private bool IsBurnt = false;
 
     #endregion
 
@@ -53,10 +49,16 @@ public class Horno : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-
-    // _maxDistanceSquared es el cuadrado de la distancia máxima que puede haber entre el jugador y la
-    // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
-    private float _maxDistanceSquared = 2.5f;
+    //_timerCompletion es el contador del Tiempo que dura en terminar el proceso
+    private float _timerCompletion = 0;
+    //_timerBurn Tiempo que le tomará al horno para incendiarse y quemar el material procesado
+    private float _timerBurn = 0;
+    //_timerFlash Intervalo de tiempo en que la imagen se activa/desactiva
+    private float _timerFlash = 0;
+    //_isProcessing booleano que comprueba si se está procesando el material
+    private bool _isProcessing = false;
+    //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
+    private bool _hasFinished = false;
 
     #endregion
 
@@ -68,52 +70,12 @@ public class Horno : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        PlayerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        if (GetComponent<Collider2D>() == null)
-        {
-            gameObject.AddComponent<BoxCollider2D>();
-        }
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Actualiza siempre las barras de compleción del horno
     /// </summary>
     void Update()
     {
-        if ((PlayerPosition.position - gameObject.transform.position).sqrMagnitude < _maxDistanceSquared)
-        {
-            TimerComplecion += Time.deltaTime;
-            IsOnRange = true;
-        }
-
-        else
-        {
-            IsOnRange = false;
-        }
-        CompletionImage.fillAmount = (TimerComplecion / 100)*VelComplecion;
-        if (CompletionImage.fillAmount >= 1)
-        {
-            timerQuemado += Time.deltaTime;
-            QueamadoImage.fillAmount = (timerQuemado / 100) * VelComplecion/2;
-            timerFlash += Time.deltaTime;
-            if (timerFlash < 0.5/timerQuemado)
-            {
-                FlashImage.SetActive(true);
-            }
-            else if (timerFlash < 1/timerQuemado)
-            {
-                FlashImage.SetActive(false);
-            }
-            else
-            {
-                timerFlash = 0;
-            }
-        }
+        CompletionBars();
     }
     #endregion
 
@@ -124,10 +86,6 @@ public class Horno : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void ProcesaMaterial()//Material material)
-    {
-
-    }
 
     #endregion
 
@@ -137,20 +95,93 @@ public class Horno : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void UpdateCompletionBar(float _maxCompletion, float _currentCompletion, float _pastCompletion)
-    {
-        float _targetCompletion = _currentCompletion / _maxCompletion;
-        _pastCompletion = _pastCompletion / _maxCompletion;
-    }
-    #endregion
 
+    /// <summary>
+    /// Maneja cada barra del proceso del horno
+    /// Si se completa la de procesamiento, ha terminado el procesamiento del material e inicia la de quemado si no se retira
+    /// Mientras no se retire el material activa y desactiva la imagen de flash hasta que se quema y activa el fuego. Quemando el material
+    /// </summary>
+    void CompletionBars()
+    {
+        if (_isProcessing && !IsBurnt && transform.childCount == 1)
+        {
+            _timerCompletion += Time.deltaTime;
+            CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
+            if (CompletionImage.fillAmount >= 1)
+            {
+                _hasFinished = true;
+                Debug.Log("Se ha procesado el material");
+                _timerBurn += Time.deltaTime;
+                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
+                _timerFlash += Time.deltaTime;
+                if (_timerFlash < 0.5 / _timerBurn)
+                {
+                    FlashImage.SetActive(false);
+                }
+                else if (_timerFlash < 1 / _timerBurn)
+                {
+                    FlashImage.SetActive(true);
+                }
+                else
+                {
+                    _timerFlash = 0;
+                }
+            }
+        }
+        if (BurningImage.fillAmount >= 1)
+        {
+            BurntMaterial();
+        }
+    }
+
+    /// <summary>
+    /// Cuando se saca al material del horno termina todos los procesos anteriores y se cambia al material procesado
+    /// </summary>
+    void ProcessedMaterial()
+    {
+        _timerCompletion = _timerBurn = _timerFlash = 0;
+        BurningImage.fillAmount = CompletionImage.fillAmount = 0;
+        FlashImage.SetActive(false);
+    }
+    /// <summary>
+    /// Si el objeto procesado se mantiene demasiado tiempo en el horno,
+    /// se incendia esta estación de trabajo y el material se convierte en “ceniza”,
+    /// el cual no tendrá ninguna utilidad y podrá ser descartado en la basura.
+    /// </summary>
+    void BurntMaterial()
+    {
+        IsBurnt = true;
+        FireIco.SetActive(true);
+        FlashImage.SetActive(false);
+        _timerCompletion = 0;
+    }
+
+    /// <summary>
+    /// Detecta si se ha colocado un material en el horno y puede iniciar o pausar el proceso
+    /// </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
+        //Se tiene que especificar en "Material" que es la arena
         if (other.gameObject.GetComponent<Material>() != null)
         {
             Debug.Log("Hay un material puesto");
+            _isProcessing = true;
+        }
+        if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
+        {
+            Debug.Log("Se ha procesado el material");
+            ProcessedMaterial();
         }
     }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Material>() != null)
+        {
+            Debug.Log("No hay un material puesto");
+            _isProcessing = false;
+        }
+    }
+    #endregion
 
 } // class Horno 
 // namespace
