@@ -1,8 +1,8 @@
 //---------------------------------------------------------
 // Este script se centra en el movimiento principal del jugador. El jugador puede moverse libremente sin dash y sin colisiones. Contiene:
-//Movimiento Continuo Libre
-//Rotación dependiendo de la dirección
-//El input correspondiente es el acordado
+// Movimiento Continuo Libre
+// Rotación dependiendo de la dirección
+// El input correspondiente es el acordado
 // Guillermo
 // Clank&Clutch
 // Proyectos 1 - Curso 2024-25
@@ -26,11 +26,11 @@ public class PlayerMovement : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] float CurrentVelocity; // La velocidad máxima con la que se mueve el personaje en cada dirección.
-    [SerializeField] float MaxVelocity;
+    [SerializeField] float CurrentVelocity; // La velocidad actual con la que se mueve el personaje en cada dirección.
+    [SerializeField] float MaxVelocity;// La velocidad máxima con la que se mueve el personaje en cada dirección.
     [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
-    [SerializeField] Vector2 MovementVector;
-    [SerializeField] public Vector2 LastMovementVector;
+    [SerializeField] Vector2 MovementVector;// El vector de movimiento que sigue el personaje
+    [SerializeField] public Vector2 LastMovementVector; // La última posición que siguió el personaje
 
 
     #endregion
@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Instancia única de la clase (singleton).
     /// </summary>
-    InputActionSettings MoveControls;
-    Vector2 _translateMovement;
-    Quaternion _targetRotation;
+    private InputActionSettings _moveControls; // El input en el que se rige el movimiento
+    private Vector2 _translateMovement; // El movimiento que realizará el personaje con su movimiento
+    private Quaternion _targetRotation; // La rotación que seguirá el personaje 
 
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
@@ -66,20 +66,19 @@ public class PlayerMovement : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    // Creamos el controlador del input y activamos los controles del jugador
     void Awake()
     {
-        // Creamos el controlador del input y activamos los controles del jugador
-        MoveControls = new InputActionSettings();
-        MoveControls.Player.Enable();
+        _moveControls = new InputActionSettings();
+        _moveControls.Player.Enable();
         // Cacheamos la acción de movimiento
-        InputAction movement = MoveControls.Player.Move;
+        InputAction movement = _moveControls.Player.Move;
         // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
         movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
         movement.canceled += ctx => MovementVector = new Vector2(0,0);
     }
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// Start asigna la velocidad actual con la máxima
     /// </summary>
     void Start()
     {
@@ -87,27 +86,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// FixedUpdate se encarga de mover siempre al personaje teniendo en cuenta antes las colisiones
     /// </summary>
-    void Update()
-    {
-        //OnMove();
-    }
     private void FixedUpdate()
     {
         OnMove();
     }
     #endregion
 
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
-    #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
@@ -115,7 +101,12 @@ public class PlayerMovement : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnMove()//InputAction.CallbackContext context)
+    ///<summary>
+    ///Movimiento libre con una velocidad máxima que sólo podrá ser 
+    ///superada momentáneamente con el dash.
+    ///La rotación del personaje y su vista irán determinados a la dirección en la que este se mueva
+    ///</summary>
+    private void OnMove()
     {
         _translateMovement = MovementVector * CurrentVelocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
         transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo

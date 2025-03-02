@@ -24,8 +24,8 @@ public class PlayerDash : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] float DashSpeed;
-    [SerializeField] float DashDuration;
+    [SerializeField] float DashSpeed; // Velocidad del dash
+    [SerializeField] float DashDuration; // Tiempo que durará el dash
 
     #endregion
 
@@ -37,7 +37,7 @@ public class PlayerDash : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
+    // componentes de físicas y movimiento del jugador
     private Rigidbody2D _rb;
     private PlayerMovement _pM;
 
@@ -46,9 +46,7 @@ public class PlayerDash : MonoBehaviour
     // ---- ATRIBUTOS PÚBLICOS ----
     #region
 
-    public bool _isDashing = false;
-
-
+    public bool _isDashing = false; // Bool que se activará para que el dash se pueda usar de nuevo
 
     #endregion
 
@@ -60,8 +58,7 @@ public class PlayerDash : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// Awake se llama para recoger el playerinput y detectar cuando está disponible.
     /// </summary>
     private void Awake()
     {
@@ -72,18 +69,13 @@ public class PlayerDash : MonoBehaviour
                 Debug.Log("Player Input habilitado");
             }
     }
+    /// <summary>
+    /// Awake se llama para los componentes de físicas y movimiento
+    /// </summary>
     void Start()
     {
        _rb = GetComponent<Rigidbody2D>();
        _pM = GetComponent<PlayerMovement>();
-
-    }
-    
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
     }
     #endregion
 
@@ -94,24 +86,7 @@ public class PlayerDash : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
-
-
-    //public IEnumerator Dash(Vector2 playerDirection) // 
-    //{
-    //    _isDashing = true;
-    //    _rb.velocity = playerDirection.normalized * DashSpeed;
-    //    yield return new WaitForSeconds(DashDuration);
-    //    _isDashing = false;
-    //}
-    private IEnumerator StartDash()
-    {
-            _isDashing = true;
-            _rb.velocity = (Vector2)transform.up * DashSpeed;
-            yield return new WaitForSeconds(DashDuration);
-            Debug.Log("DASH RECARGADO");
-            _isDashing = false;
-    }
+    //Cuando se pulsa el Input de dash pregunta si se puede usar y si es que sí, realiza el dash
     public void RequestDash(InputAction.CallbackContext context)
     {
         if (!_isDashing && context.phase == InputActionPhase.Started)
@@ -120,7 +95,7 @@ public class PlayerDash : MonoBehaviour
             StartCoroutine(StartDash());
         }
     }
-    
+
 
     #endregion
 
@@ -130,7 +105,15 @@ public class PlayerDash : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    // Realiza el dash empujando por física al jugador una dirección con una velocidad, esperando un tiempo para volverlo a realizar
+    private IEnumerator StartDash()
+    {
+        _isDashing = true;
+        _rb.velocity = (Vector2)transform.up * DashSpeed;
+        yield return new WaitForSeconds(DashDuration);
+        Debug.Log("DASH RECARGADO");
+        _isDashing = false;
+    }
     #endregion
 
 } // class Dash 
