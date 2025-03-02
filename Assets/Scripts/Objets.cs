@@ -39,6 +39,7 @@ public class Objets : MonoBehaviour
     [SerializeField] private GameObject[] _materials = new GameObject[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
     [SerializeField] private GameObject[] _ordenPedidos = new GameObject[3]; //Array de GameObjects que define el orden correcto de los materiales para completar el objeto.
     private bool _complete = false; //Indica si el objeto está completado correctamente.
+    [SerializeField] private Renderer[] _capacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
 
     #endregion
 
@@ -63,7 +64,7 @@ public class Objets : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        CapacityIndicator();
     }
     #endregion
 
@@ -154,8 +155,26 @@ public class Objets : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Verifica si el objeto está completado y muestra un mensaje de debug si es así.
+    /// Actualiza los indicadores de capacidad
     /// </summary>
+
+    private void CapacityIndicator ()
+    {
+        for (int i = 0; i < _materials.Length; i++)
+        {
+            if (_capacityAmount[i] != null)
+            {
+                if (_materials[i] != null)
+                {
+                    _capacityAmount[i].material.color = Color.green; // Cambia a color de ocupado.
+                }
+                else
+                {
+                    _capacityAmount[i].material.color = Color.white; // Cambia a color de vacío.
+                }
+            }
+        }
+    }
 
     #endregion   
 
