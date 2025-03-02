@@ -62,8 +62,6 @@ public class Horno : MonoBehaviour
 
     #endregion
 
-    public MaterialType matType;
-
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
