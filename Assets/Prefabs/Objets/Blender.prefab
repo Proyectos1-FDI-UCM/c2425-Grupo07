@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6046970825805907103
+--- !u!1 &1993284467259624052
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5465621805917360665}
-  - component: {fileID: 3317164196597587}
-  - component: {fileID: 296801959639560811}
-  - component: {fileID: -6285852559532474633}
+  - component: {fileID: 1216634303414473063}
+  - component: {fileID: 2585332840734265191}
+  - component: {fileID: 6642236695818915294}
+  - component: {fileID: 1479825596925224267}
   m_Layer: 8
-  m_Name: Metal Procesado
+  m_Name: Blender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5465621805917360665
+--- !u!4 &1216634303414473063
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046970825805907103}
+  m_GameObject: {fileID: 1993284467259624052}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18821885, y: 0.024329983, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.34, y: 0.34, z: 0.68}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3317164196597587
+--- !u!212 &2585332840734265191
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046970825805907103}
+  m_GameObject: {fileID: 1993284467259624052}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,11 +72,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -915237093
-  m_SortingLayer: 4
+  m_SortingLayerID: 1280534379
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c5688e459e05194ca7fba261043b153, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,26 +86,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &296801959639560811
+--- !u!114 &6642236695818915294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046970825805907103}
+  m_GameObject: {fileID: 1993284467259624052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c7afa1350cd9c4e83ed00a3a197a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 1
---- !u!61 &-6285852559532474633
+  _materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _ordenPedidos:
+  - {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
+  - {fileID: 6046970825805907103, guid: 0d73921b5b5099d4bb99f9e5985520a2, type: 3}
+  - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
+--- !u!61 &1479825596925224267
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046970825805907103}
+  m_GameObject: {fileID: 1993284467259624052}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -128,19 +135,19 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7121662, y: 0.6231454}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7121662, y: 0.6231454}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
