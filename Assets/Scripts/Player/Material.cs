@@ -12,7 +12,10 @@ using UnityEngine;
 /// </summary>
 public enum MaterialType
 {
-    Arena,
+    Arena, Cristal,
+    Metal, MetalProcesado,
+    Engranaje,
+    Madera, MaderaProcesada,
     Otro,
 }
 /// <summary>
