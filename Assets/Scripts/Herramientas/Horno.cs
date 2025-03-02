@@ -62,6 +62,9 @@ public class Horno : MonoBehaviour
 
     #endregion
 
+    public MaterialType matType;
+
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
@@ -154,6 +157,8 @@ public class Horno : MonoBehaviour
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
         _timerCompletion = 0;
+        //Se cambia el material a ceniza
+        Destroy(transform.GetChild(0).gameObject);
     }
 
     /// <summary>
@@ -162,7 +167,7 @@ public class Horno : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Hay un material puesto");
             _isProcessing = true;

@@ -8,7 +8,11 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
+public enum MaterialType
+{
+    Arena,
+    Otro,
+}
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
@@ -22,10 +26,8 @@ public class Material : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    /*public enum Material
-    {
-        Arena
-    }*/
+
+    public MaterialType matType;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----

@@ -3516,6 +3516,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3444038605325963251, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
   m_PrefabInstance: {fileID: 1299165161}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1318647666 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 422604002928727908, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+  m_PrefabInstance: {fileID: 570700119786082454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1351190314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6816,6 +6821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: TriggerBox
+      value: 
+      objectReference: {fileID: 1318647666}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
