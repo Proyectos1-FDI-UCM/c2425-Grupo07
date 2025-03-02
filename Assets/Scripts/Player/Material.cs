@@ -7,7 +7,9 @@
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-
+/// <summary>
+/// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
+/// </summary>
 public enum MaterialType
 {
     Arena,
