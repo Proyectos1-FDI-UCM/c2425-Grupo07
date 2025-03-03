@@ -134,6 +134,12 @@ public class PlayerVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    // Devuelve actualMesa
+    public GameObject GetActualMesa()
+    {
+        return actualMesa;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
