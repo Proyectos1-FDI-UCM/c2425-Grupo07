@@ -3851,9 +3851,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewRack
       objectReference: {fileID: 0}
-    - target: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 8149262912793967262, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -137,11 +137,11 @@ public class OvenScript : MonoBehaviour
                 {
                     _timerFlash = 0;
                 }
+                if (BurningImage.fillAmount >= 1)
+                {
+                    BurntMaterial();
+                }
             }
-        }
-        if (BurningImage.fillAmount >= 1)
-        {
-            BurntMaterial();
         }
     }
 
