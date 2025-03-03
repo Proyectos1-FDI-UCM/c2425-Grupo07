@@ -61,7 +61,6 @@ public class OvenScript : MonoBehaviour
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
 
-    [SerializeField] private GameObject _objectInProgress;
 
     #endregion
 
@@ -111,7 +110,6 @@ public class OvenScript : MonoBehaviour
         {
             _timerCompletion += Time.deltaTime;
             CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
-            //_objectInProgress.float = _timerCompletion;
             if (CompletionImage.fillAmount >= 1)
             {
                 _hasFinished = true;
@@ -165,8 +163,9 @@ public class OvenScript : MonoBehaviour
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
         _timerCompletion = 0;
+        _isProcessing = false;
         //Se cambia el material a ceniza
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(1).gameObject);
         GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
         child.transform.SetParent(this.transform);
     }
@@ -177,13 +176,12 @@ public class OvenScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) //&& transform.childCount == 0)
         {
             Debug.Log("Hay un material puesto");
-            _objectInProgress = other.gameObject;
             _isProcessing = true;
         }
-        if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
+        if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Se ha procesado el material");
             ProcessedMaterial();
