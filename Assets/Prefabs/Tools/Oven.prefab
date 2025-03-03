@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 295834516013152281}
   m_Layer: 11
-  m_Name: Horno
+  m_Name: Oven
   m_TagString: Herramienta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

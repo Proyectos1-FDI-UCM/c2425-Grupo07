@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5467733868734776611}
   m_Layer: 10
-  m_Name: Sierra
+  m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

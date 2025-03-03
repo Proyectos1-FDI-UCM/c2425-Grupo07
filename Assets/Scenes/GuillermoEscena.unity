@@ -6821,6 +6821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 3818553696410533295, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
     - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: TriggerBox
       value: 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4098811314830823063}
   - component: {fileID: -8931074117635520112}
   m_Layer: 8
-  m_Name: Cristal
+  m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
