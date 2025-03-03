@@ -115,7 +115,11 @@ public class VisionPlayer2Lili : MonoBehaviour
 
     public void InsertMaterial()
     {
-        if (lookedObject.GetComponent<Objets>() != null)
+        if (heldObject != null && lookedObject != null && heldObject.GetComponent<Objets>() != null && lookedObject.GetComponent<Objets>() != null)
+        {
+            Debug.Log("No puedes insertar un objeto dentro de otro objeto.");
+        }
+        else if (lookedObject.GetComponent<Objets>() != null)
         {
             bool materialAdded = lookedObject.GetComponent<Objets>().AddMaterial(heldObject);
             if (materialAdded)

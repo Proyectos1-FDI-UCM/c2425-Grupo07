@@ -6281,7 +6281,7 @@ MonoBehaviour:
   lookedObject: {fileID: 0}
   heldObject: {fileID: 0}
   PickingPos: {fileID: 1898213265}
-  mesaTint: {r: 1, g: 1, b: 1, a: 0.5803922}
+  mesaTint: {r: 1, g: 1, b: 1, a: 0.8352941}
 --- !u!1001 &2090231476
 PrefabInstance:
   m_ObjectHideFlags: 0
