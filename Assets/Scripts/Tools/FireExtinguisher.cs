@@ -1,20 +1,19 @@
 //---------------------------------------------------------
-// Este script sirve para que el jugador pueda interactuar con la sierra pulsando la tecla de accionado
-// Ferran
-// Clank&Clutch
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-using UnityEngine.InputSystem;
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerSierra : MonoBehaviour
+public class FireExtinguisher : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,14 +23,8 @@ public class PlayerSierra : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Referencia a la acción de click
-    [SerializeField] private InputActionReference ClickActionReference;
-
-    // Referencia al script Sierra
-    [SerializeField] private Sierra SierraClick;
-
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -42,23 +35,21 @@ public class PlayerSierra : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        SierraClick = GameObject.FindWithTag("Herramienta").GetComponent<Sierra>();
+        
     }
 
     /// <summary>
@@ -79,7 +70,7 @@ public class PlayerSierra : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -87,29 +78,7 @@ public class PlayerSierra : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void OnEnable()
-    {
-        ClickActionReference.action.performed += OnClickPerformed;
-        ClickActionReference.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        ClickActionReference.action.performed -= OnClickPerformed;
-        ClickActionReference.action.Disable();
-    }
-
-    // Llama al método Click() del script Sierra cuando se hace click y el jugador está dentro del rango de interacción
-    // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
-    private void OnClickPerformed(InputAction.CallbackContext context)
-    {
-        if (SierraClick != null && SierraClick.IsOnRange && SierraClick.CarriesWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
-        {
-            SierraClick.Click();
-        }
-    }
-
     #endregion   
 
-} // class PlayerSierra 
+} // class FireExtinguisher 
 // namespace

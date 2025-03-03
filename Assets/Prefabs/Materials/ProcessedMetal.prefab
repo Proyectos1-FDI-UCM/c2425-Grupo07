@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 296801959639560811}
   - component: {fileID: -6285852559532474633}
   m_Layer: 8
-  m_Name: MetalProcesado
+  m_Name: ProcessedMetal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 1
+  matType: 3
 --- !u!61 &-6285852559532474633
 BoxCollider2D:
   m_ObjectHideFlags: 0

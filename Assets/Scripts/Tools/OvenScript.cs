@@ -188,7 +188,8 @@ public class OvenScript : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Material>() != null)
+        if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().matType == MaterialType.Cristal 
+                                                                || other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) && transform.childCount == 0)
         {
             Debug.Log("No hay un material puesto");
             _isProcessing = false;
