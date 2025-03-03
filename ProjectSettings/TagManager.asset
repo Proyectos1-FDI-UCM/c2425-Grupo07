@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sierra
   - Herramienta
+  - CraftingTable
   layers:
   - Default
   - TransparentFX
