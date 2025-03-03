@@ -15,7 +15,7 @@ using UnityEngine.UI;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Horno : MonoBehaviour
+public class OvenScript : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -37,6 +37,8 @@ public class Horno : MonoBehaviour
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] private bool IsBurnt = false;
+    // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado
+    [SerializeField] private GameObject[] StatesMat;
 
     #endregion
 
@@ -115,6 +117,12 @@ public class Horno : MonoBehaviour
                 _timerBurn += Time.deltaTime;
                 BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
                 _timerFlash += Time.deltaTime;
+
+                Destroy(transform.GetChild(0).gameObject);
+                GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
+                child.transform.SetParent(this.transform);
+
+
                 if (_timerFlash < 0.5 / _timerBurn)
                 {
                     FlashImage.SetActive(false);
@@ -157,6 +165,8 @@ public class Horno : MonoBehaviour
         _timerCompletion = 0;
         //Se cambia el material a ceniza
         Destroy(transform.GetChild(0).gameObject);
+        GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
+        child.transform.SetParent(this.transform);
     }
 
     /// <summary>
