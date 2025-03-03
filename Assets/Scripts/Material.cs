@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 /// <summary>
@@ -44,6 +45,8 @@ public class Material : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private float _materialProgress;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -59,7 +62,7 @@ public class Material : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+
     }
 
     /// <summary>
@@ -67,7 +70,7 @@ public class Material : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
     }
     #endregion
 
@@ -79,8 +82,25 @@ public class Material : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+
+    /// <summary>
+    /// Almacena en el script del material el progreso de procesado que lleve.
+    /// Se puede introducir como parámetro un entero... creo.... no sé, combrobadlo
+    /// </summary>
+    public void StoreProgress(float progreso)
+    {
+        _materialProgress = progreso;
+    }
+    /// <summary>
+    /// Devuelve el progreso de procesado que lleve el script del material.
+    /// </summary>
+    public float ReturnProgress()
+    {
+        return _materialProgress;
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -88,7 +108,7 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Material 
 // namespace
