@@ -39,6 +39,8 @@ public class Soldadora : MonoBehaviour
     // maxProgress es el número max necesario para completar el proceso de refinamiento
     [SerializeField] private int _maxProgress = 6;
 
+    [SerializeField] private InputActionReference ClickActionReference;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -51,11 +53,11 @@ public class Soldadora : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     //
-    private bool _isWorking;
+    public bool _isWorking;
 
     private float _progress;
 
-    public bool canWork;
+    public bool canUse;
 
     #endregion
 
@@ -72,6 +74,7 @@ public class Soldadora : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _progress = 0;
         if (_playerPosition == null)
         {
             _playerPosition = GameObject.FindAnyObjectByType<PlayerMovement>().transform;
@@ -89,7 +92,7 @@ public class Soldadora : MonoBehaviour
        {
             _progress += (Time.deltaTime * _workSpeed);
             UpdateCompletionBar(_maxProgress, _progress);
-       }
+        }
     }
     #endregion
 
@@ -102,10 +105,22 @@ public class Soldadora : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     //
-    public void UpdateWelder(InputAction.CallbackContext context)
+    public void TurnOnWelder(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && canWork) { _isWorking = true; }
-        else if (context.phase == InputActionPhase.Canceled && canWork) { _isWorking = false; }
+        if (canUse)
+        {
+            _isWorking = true;
+            UpdateCompletionBar(_maxProgress, _progress);
+        }
+    }
+    public void TurnOffWelder(InputAction.CallbackContext context)
+    {
+        if (canUse) 
+        { 
+            _isWorking = false;
+            UpdateCompletionBar(_maxProgress, _progress);
+
+        }
     }
 
     #endregion
@@ -117,11 +132,34 @@ public class Soldadora : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // Actualiza la barra de compleción de la sierra
+    
+
+    // Actualiza la barra de compleción de la soldadora
     private void UpdateCompletionBar(float _maxCompletion, float _currentCompletion)
     {
         float _targetCompletion = _currentCompletion / _maxCompletion;
         CompletionImage.fillAmount = _currentCompletion / _maxCompletion;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
+        {
+            _progress = collision.gameObject.GetComponent<Material>().ReturnProgress();
+            
+            canUse = true; 
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
+        { canUse = false;
+            collision.gameObject.GetComponent<Material>().StoreProgress(_progress);
+            _progress = 0;
+            UpdateCompletionBar(_maxProgress, _progress);
+        }
     }
 
     #endregion   

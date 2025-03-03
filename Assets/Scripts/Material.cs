@@ -34,6 +34,7 @@ public class Material : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     public MaterialType matType;
+    [SerializeField] private float _materialProgress;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,7 +46,7 @@ public class Material : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private float _materialProgress;
+
 
     #endregion
 
@@ -89,6 +90,7 @@ public class Material : MonoBehaviour
     /// </summary>
     public void StoreProgress(float progreso)
     {
+        Debug.Log("Progreso guardado: " +  progreso);
         _materialProgress = progreso;
     }
     /// <summary>
@@ -96,6 +98,7 @@ public class Material : MonoBehaviour
     /// </summary>
     public float ReturnProgress()
     {
+        Debug.Log("Progreso aplicado");
         return _materialProgress;
     }
 
