@@ -28,7 +28,7 @@ public class PlayerSierra : MonoBehaviour
     [SerializeField] private InputActionReference ClickActionReference;
 
     // Referencia al script Sierra
-    [SerializeField] private Sierra SierraClick;
+    [SerializeField] private SawScript SierraClick;
 
     #endregion
 
@@ -58,7 +58,7 @@ public class PlayerSierra : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SierraClick = GameObject.FindWithTag("Herramienta").GetComponent<Sierra>();
+        SierraClick = GameObject.FindWithTag("Herramienta").GetComponent<SawScript>();
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class PlayerSierra : MonoBehaviour
     // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (SierraClick != null && SierraClick.IsOnRange && SierraClick.CarriesWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
+        if (SierraClick != null && SierraClick.IsOnRange && SierraClick.HasWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
         {
             SierraClick.Click();
         }
