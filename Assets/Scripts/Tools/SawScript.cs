@@ -46,9 +46,6 @@ public class SawScript : MonoBehaviour
     // _carriesWood determina si hay madera en la sierra (true) o no (false)
     public bool HasWood = false;
 
-    // _isOnRange determina si el jugador está en el rango de interacción de la sierra (true) o no (false)
-    public bool IsOnRange;
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -61,10 +58,6 @@ public class SawScript : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private int _pastClicks = 0;
-
-    // _maxDistanceSquared es el cuadrado de la distancia máxima que puede haber entre el jugador y la
-    // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
-    private float _maxDistanceSquared = 2.5f;
 
     #endregion
     
@@ -96,29 +89,6 @@ public class SawScript : MonoBehaviour
     void Update()
     {
         _pastClicks = CurrentClicks;
-        if ((PlayerPosition.position - gameObject.transform.position).sqrMagnitude < _maxDistanceSquared)
-        {
-            IsOnRange = true;
-        }
-
-        else
-        {
-            IsOnRange = false;
-        }
-
-        /*if (!HasWood || CurrentClicks >= MaxClicks)
-        {
-            if (CurrentClicks >= MaxClicks)
-            {
-                GameObject child = Instantiate(_maderaProcesada, transform.GetChild(0).gameObject.transform.position, transform.GetChild(0).gameObject.transform.rotation);
-                child.transform.SetParent(this.transform);
-                Destroy(transform.GetChild(0).gameObject);
-                HasWood = false;
-            }
-            _pastClicks = 0;
-            CurrentClicks = 0;
-            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
-        }*/
 
         if (CurrentClicks >= MaxClicks)
         {

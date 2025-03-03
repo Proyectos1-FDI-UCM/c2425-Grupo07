@@ -131,9 +131,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2000919877978038094, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000919877978038094, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: SierraClick
       value: 
       objectReference: {fileID: 751077501}
+    - target: {fileID: 2300766749322576627, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3213935928180906448, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -649,6 +657,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9102832338467195711, guid: e618a8e292fff704d89f15f1d479b7f0, type: 3}
   m_PrefabInstance: {fileID: 1027986831}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1040126907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1492598701}
+    m_Modifications:
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14878583
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.06126833
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+      propertyPath: m_Name
+      value: Madera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+--- !u!4 &1040126908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+  m_PrefabInstance: {fileID: 1040126907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1072624665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1075,7 +1145,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9102832338467195711, guid: 92bac3480d48e76419ff4515123fca78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1040126908}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92bac3480d48e76419ff4515123fca78, type: 3}
 --- !u!4 &1492598701 stripped
@@ -1614,6 +1687,10 @@ PrefabInstance:
       propertyPath: PlayerPosition
       value: 
       objectReference: {fileID: 1114627199}
+    - target: {fileID: 3691559963680434258, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
+      propertyPath: m_TagString
+      value: Sierra
+      objectReference: {fileID: 0}
     - target: {fileID: 5467733868734776611, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
