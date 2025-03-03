@@ -39,7 +39,6 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private bool IsBurnt = false;
     // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado
     [SerializeField] private GameObject[] StatesMat;
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -61,6 +60,8 @@ public class OvenScript : MonoBehaviour
     private bool _isProcessing = false;
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
+
+    [SerializeField] private GameObject _objectInProgress;
 
     #endregion
 
@@ -110,6 +111,7 @@ public class OvenScript : MonoBehaviour
         {
             _timerCompletion += Time.deltaTime;
             CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
+            //_objectInProgress.float = _timerCompletion;
             if (CompletionImage.fillAmount >= 1)
             {
                 _hasFinished = true;
@@ -178,6 +180,7 @@ public class OvenScript : MonoBehaviour
         if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Hay un material puesto");
+            _objectInProgress = other.gameObject;
             _isProcessing = true;
         }
         if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
