@@ -106,7 +106,7 @@ public class SawScript : MonoBehaviour
             IsOnRange = false;
         }
 
-        if (!HasWood || CurrentClicks >= MaxClicks)
+        /*if (!HasWood || CurrentClicks >= MaxClicks)
         {
             if (CurrentClicks >= MaxClicks)
             {
@@ -115,6 +115,17 @@ public class SawScript : MonoBehaviour
                 Destroy(transform.GetChild(0).gameObject);
                 HasWood = false;
             }
+            _pastClicks = 0;
+            CurrentClicks = 0;
+            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+        }*/
+
+        if (CurrentClicks >= MaxClicks)
+        {
+            GameObject child = Instantiate(_maderaProcesada, transform.GetChild(0).gameObject.transform.position, transform.GetChild(0).gameObject.transform.rotation);
+            child.transform.SetParent(this.transform);
+            Destroy(transform.GetChild(0).gameObject);
+            HasWood = false;
             _pastClicks = 0;
             CurrentClicks = 0;
             UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
