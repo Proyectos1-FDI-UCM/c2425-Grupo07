@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5467733868734776611}
   - component: {fileID: 5766387698615609872}
   - component: {fileID: 3196785923358403945}
+  - component: {fileID: 4487620837844926395}
   m_Layer: 0
   m_Name: Soldadora
   m_TagString: Sierra
@@ -131,6 +132,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.05, y: 5.05}
   m_EdgeRadius: 0
+--- !u!114 &4487620837844926395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271874080825723453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3637ed471c43bb94d94e9ebc74a63610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPosition: {fileID: 0}
+  CompletionImage: {fileID: 0}
+  _workSpeed: 0
+  _maxProgress: 6
+  canWork: 0
 --- !u!1 &558191109938002010
 GameObject:
   m_ObjectHideFlags: 0
