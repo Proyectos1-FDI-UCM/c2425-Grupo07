@@ -179,7 +179,8 @@ public class PlayerVision : MonoBehaviour
         ContentAnalizer();
         if (heldObject != null && lookedObject == null && actualMesa != null)
         {
-            if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null)
+            if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null||
+                heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
             { Debug.Log("No se puede dropear el material"); }
             else Drop(); // hay objeto en la mano
         }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7244349718523439654
+--- !u!1 &8970695659979435321
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 183197950299654503}
-  - component: {fileID: 241216697791522904}
-  - component: {fileID: 8824451982275326479}
-  - component: {fileID: 1060418434471486651}
+  - component: {fileID: 630088572865326862}
+  - component: {fileID: 8384153602683280208}
+  - component: {fileID: -4098811314830823063}
+  - component: {fileID: 4303538933006017438}
   m_Layer: 8
-  m_Name: BrokenGlassPref
+  m_Name: BrokenGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &183197950299654503
+--- !u!4 &630088572865326862
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244349718523439654}
+  m_GameObject: {fileID: 8970695659979435321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.421, y: -0.886, z: 0}
+  m_LocalPosition: {x: 1.78, y: -1.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &241216697791522904
+--- !u!212 &8384153602683280208
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244349718523439654}
+  m_GameObject: {fileID: 8970695659979435321}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,19 +80,19 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.96, y: 8.96}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8824451982275326479
+--- !u!114 &-4098811314830823063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244349718523439654}
+  m_GameObject: {fileID: 8970695659979435321}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
@@ -100,23 +100,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matType: 7
   _materialProgress: 0
-<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
-<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
---- !u!61 &-2401359824401470037
-BoxCollider2D:
-=======
---- !u!58 &1060418434471486651
+  CompletionBar: {fileID: 0}
+  isBeingProcessed: 0
+--- !u!58 &4303538933006017438
 CircleCollider2D:
->>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
-=======
---- !u!58 &1060418434471486651
-CircleCollider2D:
->>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244349718523439654}
+  m_GameObject: {fileID: 8970695659979435321}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -142,23 +134,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
-<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.96, y: 8.96}
-    newSize: {x: 8.96, y: 8.96}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-=======
   m_Offset: {x: 0, y: -0.4}
->>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
-=======
-  m_Offset: {x: 0, y: -0.4}
->>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
   serializedVersion: 2
   m_Radius: 0.5

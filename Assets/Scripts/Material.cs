@@ -94,7 +94,7 @@ public class Material : MonoBehaviour
     /// <param name="progress"></param>
     public void UpdateProgress(float progress)
     {
-        Debug.Log("Progreso actualizado: " + progress);
+        //Debug.Log("Progreso actualizado: " + progress);
         _materialProgress = progress;
         UpdateBar();
     }
@@ -104,7 +104,7 @@ public class Material : MonoBehaviour
     /// </summary>
     public void StoreProgress(float progress)
     {
-        Debug.Log("Progreso guardado: " +  progress);
+        //Debug.Log("Progreso guardado: " +  progress);
         _materialProgress = progress;
         UpdateBar();
     }

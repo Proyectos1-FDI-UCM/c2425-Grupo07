@@ -8440,6 +8440,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: StatesMat.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: StatesMat.Array.data[1]
+      value: 
+      objectReference: {fileID: 8970695659979435321, guid: b0b8843acfbf4bc41a4c727206b97730, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

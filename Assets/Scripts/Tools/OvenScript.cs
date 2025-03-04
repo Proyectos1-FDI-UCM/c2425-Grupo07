@@ -52,6 +52,8 @@ public class OvenScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    //_timerCompletion es el contador del Tiempo que dura en terminar el proceso
+    private float _timerCompletion = 0;
     //_timerBurn Tiempo que le tomará al horno para incendiarse y quemar el material procesado
     private float _timerBurn = 0;
     //_timerFlash Intervalo de tiempo en que la imagen se activa/desactiva
@@ -63,7 +65,7 @@ public class OvenScript : MonoBehaviour
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
 
-    public Material _matScr;
+    private Material _matScr;
 
 
     #endregion
@@ -115,14 +117,15 @@ public class OvenScript : MonoBehaviour
     {
         if (_isProcessing && !IsBurnt && transform.childCount == 1)
         {
-            progress += (VelCompletion * Time.deltaTime) / CompletionTime;
+            _timerCompletion += Time.deltaTime;
+            progress = (_timerCompletion / 100) * VelCompletion;
             _matScr.UpdateProgress(progress);
             if (progress >= 1)
             {
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _timerBurn += Time.deltaTime;
-                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
+                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
                 _timerFlash += Time.deltaTime;
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
@@ -154,7 +157,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void ProcessedMaterial()
     {
-        progress = _timerBurn = _timerFlash = 0;
+        progress = _timerBurn = _timerFlash = _timerCompletion = 0;
         FlashImage.SetActive(false);
     }
     /// <summary>
