@@ -161,7 +161,7 @@ public class SawScript : MonoBehaviour
         {
             HasWood = true;
             _materialSource = collision.GetComponent<Material>();
-            //CompletionBarReference = _materialSource.ReturnProgressBar();
+            CompletionBarReference = _materialSource.ReturnProgressBar();
         }
     }
 
