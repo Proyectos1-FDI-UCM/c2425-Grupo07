@@ -101,8 +101,13 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
 <<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
 --- !u!61 &-2401359824401470037
 BoxCollider2D:
+=======
+--- !u!58 &1060418434471486651
+CircleCollider2D:
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
 =======
 --- !u!58 &1060418434471486651
 CircleCollider2D:
@@ -138,6 +143,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
 <<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,6 +154,9 @@ CircleCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+=======
+  m_Offset: {x: 0, y: -0.4}
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
 =======
   m_Offset: {x: 0, y: -0.4}
 >>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
