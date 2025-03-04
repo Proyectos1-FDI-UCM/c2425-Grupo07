@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4060324631378023698}
   m_Layer: 10
   m_Name: Soldadora
-  m_TagString: Untagged
+  m_TagString: Soldadora
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -259739391
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8dcf54868e726354a9f09fb9e0e68b63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7bb7c776e1c1daf4e9a8d070e341b1e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.05, y: 5.04}
+    oldSize: {x: 4.957143, y: 4.9857144}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,10 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3637ed471c43bb94d94e9ebc74a63610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPosition: {fileID: 0}
   CompletionImage: {fileID: 8048797817967147116}
+  _metalIntroducido: {fileID: 0}
+  _metalProcesado: {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
   _workSpeed: 1
   _maxProgress: 6
+  _isWorking: 0
   canUse: 0
 --- !u!61 &4060324631378023698
 BoxCollider2D:
@@ -186,7 +188,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.05, y: 5.04}
+    oldSize: {x: 4.957143, y: 4.9857144}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

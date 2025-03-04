@@ -349,7 +349,6 @@ MonoBehaviour:
   StatesMat:
   - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
   - {fileID: 7244349718523439654, guid: d1ad2c79f839a2e4b9a1671da07c7b1f, type: 3}
-  _objectInProgress: {fileID: 0}
 --- !u!1 &3504335975979876622
 GameObject:
   m_ObjectHideFlags: 0

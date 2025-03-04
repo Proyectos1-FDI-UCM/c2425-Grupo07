@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5467733868734776611}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -531992791
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8464145347181323239
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6705416684490303124}
   m_Layer: 10
   m_Name: SierraManager
-  m_TagString: Herramienta
+  m_TagString: Sierra
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,6 @@ MonoBehaviour:
   MaxClicks: 6
   CurrentClicks: 0
   HasWood: 0
-  IsOnRange: 0
 --- !u!212 &6705416684490303124
 SpriteRenderer:
   m_ObjectHideFlags: 0
