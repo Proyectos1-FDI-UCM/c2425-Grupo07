@@ -82,6 +82,10 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void UpdateProgress(float progress)
+    {
+        _materialProgress = progress;
+    }
 
 
     /// <summary>

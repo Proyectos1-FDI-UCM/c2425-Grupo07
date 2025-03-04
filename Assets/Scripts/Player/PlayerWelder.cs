@@ -52,7 +52,10 @@ public class PlayerWelder : MonoBehaviour
     /// </summary>
     void Start()
     {
-        WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<Soldadora>();
+        if (GameObject.FindWithTag("Soldadora") != null)
+        {
+            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<Soldadora>();
+        }
     }
 
     /// <summary>
@@ -83,16 +86,22 @@ public class PlayerWelder : MonoBehaviour
 
     private void OnEnable()
     {
-        ClickActionReference.action.performed += WelderScript.TurnOnWelder;
-        ClickActionReference.action.canceled += WelderScript.TurnOffWelder;
-        ClickActionReference.action.Enable();
+        if (WelderScript != null)
+        {
+            ClickActionReference.action.performed += WelderScript.TurnOnWelder;
+            ClickActionReference.action.canceled += WelderScript.TurnOffWelder;
+            ClickActionReference.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        ClickActionReference.action.performed -= WelderScript.TurnOnWelder;
-        ClickActionReference.action.canceled -= WelderScript.TurnOffWelder;
-        ClickActionReference.action.Disable();
+        if (WelderScript != null)
+        {
+            ClickActionReference.action.performed -= WelderScript.TurnOnWelder;
+            ClickActionReference.action.canceled -= WelderScript.TurnOffWelder;
+            ClickActionReference.action.Disable();
+        }
     }
 
     #endregion   

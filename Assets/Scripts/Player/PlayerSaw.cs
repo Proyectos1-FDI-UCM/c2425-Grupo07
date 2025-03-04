@@ -60,7 +60,10 @@ public class PlayerSaw : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+        if (GameObject.FindWithTag("Sierra") != null)
+        {
+            SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+        }
         Player = GameObject.FindWithTag("Player").GetComponent<PlayerVision>();
     }
 

@@ -61,6 +61,8 @@ public class OvenScript : MonoBehaviour
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
 
+    private Material _matScr;
+
 
     #endregion
 
@@ -110,6 +112,7 @@ public class OvenScript : MonoBehaviour
         {
             _timerCompletion += Time.deltaTime;
             CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
+            _matScr.UpdateProgress(CompletionImage.fillAmount);
             if (CompletionImage.fillAmount >= 1)
             {
                 _hasFinished = true;
@@ -117,7 +120,6 @@ public class OvenScript : MonoBehaviour
                 _timerBurn += Time.deltaTime;
                 BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
                 _timerFlash += Time.deltaTime;
-
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
                 child.transform.SetParent(this.transform);
@@ -176,9 +178,10 @@ public class OvenScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) //&& transform.childCount == 0)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Hay un material puesto");
+            _matScr = other.gameObject.GetComponent<Material>();
             _isProcessing = true;
         }
         if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
