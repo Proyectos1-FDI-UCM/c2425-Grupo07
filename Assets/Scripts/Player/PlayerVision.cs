@@ -168,9 +168,14 @@ public class PlayerVision : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-            ContentAnalizer();
-            if (heldObject != null && lookedObject == null && actualMesa != null ) Drop(); // hay objeto en la mano
-            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
+        ContentAnalizer();
+        if (heldObject != null && lookedObject == null && actualMesa != null)
+        {
+            if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null)
+            { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+            else Drop(); // hay objeto en la mano
+        }
+        else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
     }
     public void Pick()
     {
