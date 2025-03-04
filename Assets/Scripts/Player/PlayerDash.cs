@@ -26,6 +26,7 @@ public class PlayerDash : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] float DashSpeed; // Velocidad del dash
     [SerializeField] float DashDuration; // Tiempo que durará el dash
+    [SerializeField] private InputActionReference DashActionReference;
 
     #endregion
 
@@ -87,9 +88,9 @@ public class PlayerDash : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
     //Cuando se pulsa el Input de dash pregunta si se puede usar y si es que sí, realiza el dash
-    public void RequestDash(InputAction.CallbackContext context)
+    private void RequestDash(InputAction.CallbackContext context)
     {
-        if (!_isDashing && context.phase == InputActionPhase.Started)
+        if (!_isDashing)
         {
             Debug.Log("DASH ACTIVADO");
             StartCoroutine(StartDash());
@@ -113,6 +114,18 @@ public class PlayerDash : MonoBehaviour
         yield return new WaitForSeconds(DashDuration);
         Debug.Log("DASH RECARGADO");
         _isDashing = false;
+    }
+    private void OnEnable()
+    {
+        DashActionReference.action.performed += RequestDash;
+        DashActionReference.action.Enable();
+
+    }
+
+    private void OnDisable()
+    {
+        DashActionReference.action.performed -= RequestDash;
+        DashActionReference.action.Disable();
     }
     #endregion
 

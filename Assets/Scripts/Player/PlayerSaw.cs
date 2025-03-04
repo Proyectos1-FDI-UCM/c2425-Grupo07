@@ -111,7 +111,7 @@ public class PlayerSaw : MonoBehaviour
     {
         if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.HasWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
         {
-            if (Player.GetActualMesa().tag == "Sierra")
+            if (Player.GetActualMesa().CompareTag("Sierra"))
             {
                 SierraClick.Click();
             }

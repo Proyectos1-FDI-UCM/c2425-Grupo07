@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3444038605325963251}
   - component: {fileID: 3287438529484772965}
   - component: {fileID: 5114674989059154014}
-  - component: {fileID: 4434693484599646199}
+  - component: {fileID: 5262004620191043950}
   m_Layer: 8
   m_Name: WoodPlanks
   m_TagString: Untagged
@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matType: 6
---- !u!61 &4434693484599646199
-BoxCollider2D:
+  _materialProgress: 0
+--- !u!58 &5262004620191043950
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,16 +132,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1111112, y: 1.1111112}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
-  m_Size: {x: 1.1111112, y: 1.1111112}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
