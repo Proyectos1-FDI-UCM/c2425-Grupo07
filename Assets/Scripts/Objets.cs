@@ -37,7 +37,7 @@ public class Objets : MonoBehaviour
 
 
     [SerializeField] private GameObject[] _materials = new GameObject[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
-    [SerializeField] private GameObject[] _ordenPedidos = new GameObject[3]; //Array de GameObjects que define el orden correcto de los materiales para completar el objeto.
+    [SerializeField] private GameObject[] _ordenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
     private bool _complete = false; //Indica si el objeto está completado correctamente.
     [SerializeField] private Renderer[] _capacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
 
@@ -93,8 +93,8 @@ public class Objets : MonoBehaviour
             if (_materials[i] == null)
             {
                 _materials[i] = material;
-                IsCompleted();
                 agregado = true;
+                IsCompleted();
             }
             else { i++; }
         }
@@ -111,26 +111,31 @@ public class Objets : MonoBehaviour
     {
         int n = 0;
 
+        // Recorre cada objeto requerido en el pedido
         foreach (GameObject required in _ordenPedidos)
         {
             if (required == null)
             {
-                continue;
+                continue; // Ignora objetos nulos en el pedido
             }
-            // Busca el siguiente material no nulo en el array.
+
+            // Busca el siguiente material no nulo en el array
             while (n < _materials.Length && _materials[n] == null)
             {
                 n++;
             }
-            // Si no hay más materiales o el material no coincide con el requerido, retorna false.
-            if (n >= _materials.Length || _materials[n] != required)
+
+            // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
+            if (n >= _materials.Length || !IsSameMaterialType(_materials[n], required))
             {
                 Debug.Log("FALSE Material no coincide con el pedido o está incompleto");
                 return false;
             }
-            n++;
+
+            n++; // Avanza al siguiente material
         }
 
+        // Verifica si hay materiales adicionales que no están en el pedido
         while (n < _materials.Length)
         {
             if (_materials[n] != null)
@@ -140,11 +145,24 @@ public class Objets : MonoBehaviour
             }
             n++;
         }
-        Debug.Log("TRUE COMPLETADO");
 
+        Debug.Log("TRUE COMPLETADO");
         return true;
     }
+    private bool IsSameMaterialType(GameObject material, GameObject required)
+    {
+        if (material == null || required == null)
+        {
+            return false;
+        }
 
+        // Obtiene el componente MaterialType de ambos objetos
+        var matType1 = material.GetComponent<Material>()?.matType;
+        var matType2 = required.GetComponent<Material>()?.matType;
+
+        // Compara los tipos de material
+        return matType1 == matType2;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

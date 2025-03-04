@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Sierra
   - Herramienta
+  - CraftingTable
+  - Soldadora
   layers:
   - Default
   - TransparentFX

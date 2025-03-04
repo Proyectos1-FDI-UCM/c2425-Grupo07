@@ -15,7 +15,7 @@ using UnityEngine.UI;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Sierra : MonoBehaviour
+public class SawScript : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -31,18 +31,20 @@ public class Sierra : MonoBehaviour
     // CompletionImage es la barra de compleción del proceso de refinamiento
     [SerializeField] private Image CompletionImage;
 
+    // _madera es el GameObject correspondiente a la madera
+    [SerializeField] private GameObject _madera;
+
+    // _maderaProcesada es el GameObject correspondiente a la madera procesada
+    [SerializeField] private GameObject _maderaProcesada;
+
     // _nClicks es el número de clicks necesario para completar el proceso de refinamiento
     public int MaxClicks = 6;
 
     // _currentClicks es el número de clicks necesario para completar el proceso de refinamiento
     public int CurrentClicks = 0;
 
-    // _carriesWood determina si el jugador porta madera (true) o no (false)
-    public bool CarriesWood = true;
-
-    // _isOnRange determina si el jugador está en el rango de interacción de la sierra (true) o no (false)
-    public bool IsOnRange;
-
+    // _carriesWood determina si hay madera en la sierra (true) o no (false)
+    public bool HasWood = false;
 
     #endregion
 
@@ -57,9 +59,6 @@ public class Sierra : MonoBehaviour
 
     private int _pastClicks = 0;
 
-    // _maxDistanceSquared es el cuadrado de la distancia máxima que puede haber entre el jugador y la
-    // sierra y que se siga considerando que el jugador está dentro del rango de interacción de la sierra
-    private float _maxDistanceSquared = 2.5f;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -90,18 +89,13 @@ public class Sierra : MonoBehaviour
     void Update()
     {
         _pastClicks = CurrentClicks;
-        if ((PlayerPosition.position - gameObject.transform.position).sqrMagnitude < _maxDistanceSquared)
-        {
-            IsOnRange = true;
-        }
 
-        else
+        if (CurrentClicks >= MaxClicks)
         {
-            IsOnRange = false;
-        }
-
-        if (!IsOnRange || !CarriesWood || CurrentClicks >= MaxClicks)
-        {
+            GameObject child = Instantiate(_maderaProcesada, transform.GetChild(0).gameObject.transform.position, transform.GetChild(0).gameObject.transform.rotation);
+            child.transform.SetParent(this.transform);
+            Destroy(transform.GetChild(0).gameObject);
+            HasWood = false;
             _pastClicks = 0;
             CurrentClicks = 0;
             UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
@@ -121,8 +115,11 @@ public class Sierra : MonoBehaviour
     // proceso de refinamiento cada vez que se hace click sobre la sierra
     public void Click()
     {
-        CurrentClicks++;
-        UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+        if (transform.childCount == 1)
+        {
+            CurrentClicks++;
+            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+        }
     }
 
     #endregion
@@ -156,7 +153,24 @@ public class Sierra : MonoBehaviour
         CompletionImage.fillAmount = _targetCompletion;
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Madera)
+        {
+            HasWood = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null)
+        {
+            HasWood = false;
+        }
+    }
+
     #endregion   
 
-} // class Sierra 
+} // class SawScript 
 // namespace

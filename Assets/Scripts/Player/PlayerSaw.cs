@@ -1,28 +1,20 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este script sirve para que el jugador pueda interactuar con la sierra pulsando la tecla de accionado
+// Ferran
+// Clank&Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-/// <summary>
-/// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
-/// </summary>
-public enum MaterialType
-{
-    Arena, Cristal,
-    Metal, MetalProcesado,
-    Engranaje,
-    Madera, MaderaProcesada,
-    Otro,
-}
+using UnityEngine.InputSystem;
+
+
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Material : MonoBehaviour
+public class PlayerSaw : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -32,7 +24,14 @@ public class Material : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    public MaterialType matType;
+    // Referencia a la acción de click
+    [SerializeField] private InputActionReference ClickActionReference;
+
+    // Referencia al script Sierra
+    [SerializeField] private SawScript SierraClick;
+
+    [SerializeField] private PlayerVision Player;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -53,13 +52,16 @@ public class Material : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        
+        SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+        Player = GameObject.FindWithTag("Player").GetComponent<PlayerVision>();
     }
 
     /// <summary>
@@ -80,7 +82,7 @@ public class Material : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -88,7 +90,32 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    private void OnEnable()
+    {
+        ClickActionReference.action.performed += OnClickPerformed;
+        ClickActionReference.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        ClickActionReference.action.performed -= OnClickPerformed;
+        ClickActionReference.action.Disable();
+    }
+
+    // Llama al método Click() del script Sierra cuando se hace click y el jugador está dentro del rango de interacción
+    // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
+    private void OnClickPerformed(InputAction.CallbackContext context)
+    {
+        if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.HasWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
+        {
+            if (Player.GetActualMesa().tag == "Sierra")
+            {
+                SierraClick.Click();
+            }
+        }
+    }
+
     #endregion   
 
-} // class Material 
+} // class PlayerSaw 
 // namespace

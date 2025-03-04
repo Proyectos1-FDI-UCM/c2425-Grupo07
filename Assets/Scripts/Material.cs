@@ -5,20 +5,25 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using JetBrains.Annotations;
-using System.Diagnostics.Contracts;
-using UnityEditor.Experimental.GraphView;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
-
-
+/// <summary>
+/// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
+/// </summary>
+public enum MaterialType
+{
+    Arena, Cristal,
+    Metal, MetalProcesado,
+    Engranaje,
+    Madera, MaderaProcesada,
+    Otro,
+}
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-/// 
-public class PlayerVision : MonoBehaviour
+public class Material : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -27,13 +32,9 @@ public class PlayerVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject actualMesa;
-    [SerializeField] GameObject lookedObject;
-    [SerializeField] GameObject heldObject;
-    [SerializeField] Transform PickingPos;
-    [SerializeField] Color mesaTint;
-    //las dejo serializadas de momento para hacer debug
 
+    public MaterialType matType;
+    [SerializeField] private float _materialProgress;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,6 +45,8 @@ public class PlayerVision : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+
 
     #endregion
 
@@ -58,7 +61,6 @@ public class PlayerVision : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
     void Start()
     {
 
@@ -71,61 +73,8 @@ public class PlayerVision : MonoBehaviour
     {
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-        actualMesa = collision.gameObject;
-        actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
-
-
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject != actualMesa) collision.GetComponent<SpriteRenderer>().color = Color.white;
-        else actualMesa = null;
-    }
-
-    public void Interact(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            ContentAnalizer();
-            if (heldObject != null && lookedObject == null && actualMesa != null ) Drop(); // hay objeto en la mano
-            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
-        }
-    }
-    public void Pick()
-    {
-        heldObject = lookedObject;
-        heldObject.transform.position = PickingPos.position;
-        heldObject.transform.SetParent(PickingPos);
-        heldObject.transform.rotation = transform.rotation;
-        lookedObject = null;
-    }
-    public void Drop()
-    {
-        heldObject.transform.position = actualMesa.transform.position;
-        heldObject.transform.rotation = Quaternion.identity;
-        heldObject.transform.SetParent(actualMesa.transform);
-        heldObject = null; 
-    }
-    public void ContentAnalizer()
-    {
-        if (actualMesa != null)
-        {
-            if (actualMesa.transform.childCount >= 1 && actualMesa.GetComponentInChildren<Material>() != null)
-            {
-                lookedObject = actualMesa.GetComponentInChildren<Material>().gameObject;
-            }
-            else lookedObject = null;
-        }
-    }
-
-
-
     #endregion
+
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
@@ -134,10 +83,23 @@ public class PlayerVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    // Devuelve actualMesa
-    public GameObject GetActualMesa()
+
+    /// <summary>
+    /// Almacena en el script del material el progreso de procesado que lleve.
+    /// Se puede introducir como parámetro un entero... creo.... no sé, combrobadlo
+    /// </summary>
+    public void StoreProgress(float progreso)
     {
-        return actualMesa;
+        Debug.Log("Progreso guardado: " +  progreso);
+        _materialProgress = progreso;
+    }
+    /// <summary>
+    /// Devuelve el progreso de procesado que lleve el script del material.
+    /// </summary>
+    public float ReturnProgress()
+    {
+        Debug.Log("Progreso aplicado");
+        return _materialProgress;
     }
 
     #endregion
@@ -149,10 +111,7 @@ public class PlayerVision : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-
-
     #endregion
 
-
-}// class PlayerVision 
-  // namespace
+} // class Material 
+// namespace

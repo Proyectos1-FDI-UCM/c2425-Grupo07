@@ -15,7 +15,7 @@ using UnityEngine.UI;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Horno : MonoBehaviour
+public class OvenScript : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -37,7 +37,8 @@ public class Horno : MonoBehaviour
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] private bool IsBurnt = false;
-
+    // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado
+    [SerializeField] private GameObject[] StatesMat;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -59,6 +60,7 @@ public class Horno : MonoBehaviour
     private bool _isProcessing = false;
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
+
 
     #endregion
 
@@ -115,6 +117,12 @@ public class Horno : MonoBehaviour
                 _timerBurn += Time.deltaTime;
                 BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
                 _timerFlash += Time.deltaTime;
+
+                Destroy(transform.GetChild(0).gameObject);
+                GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
+                child.transform.SetParent(this.transform);
+
+
                 if (_timerFlash < 0.5 / _timerBurn)
                 {
                     FlashImage.SetActive(false);
@@ -127,11 +135,11 @@ public class Horno : MonoBehaviour
                 {
                     _timerFlash = 0;
                 }
+                if (BurningImage.fillAmount >= 1)
+                {
+                    BurntMaterial();
+                }
             }
-        }
-        if (BurningImage.fillAmount >= 1)
-        {
-            BurntMaterial();
         }
     }
 
@@ -155,8 +163,11 @@ public class Horno : MonoBehaviour
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
         _timerCompletion = 0;
+        _isProcessing = false;
         //Se cambia el material a ceniza
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(1).gameObject);
+        GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
+        child.transform.SetParent(this.transform);
     }
 
     /// <summary>
@@ -165,12 +176,12 @@ public class Horno : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) //&& transform.childCount == 0)
         {
             Debug.Log("Hay un material puesto");
             _isProcessing = true;
         }
-        if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
+        if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Se ha procesado el material");
             ProcessedMaterial();
@@ -178,7 +189,8 @@ public class Horno : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Material>() != null)
+        if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().matType == MaterialType.Cristal 
+                                                                || other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) && transform.childCount == 0)
         {
             Debug.Log("No hay un material puesto");
             _isProcessing = false;
