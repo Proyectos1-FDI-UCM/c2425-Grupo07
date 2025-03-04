@@ -92,7 +92,12 @@ public class VisionPlayer2Lili : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             ContentAnalizer();
-            if (heldObject != null && lookedObject == null && actualMesa != null) Drop(); // hay objeto en la mano
+            if (heldObject != null && lookedObject == null && actualMesa != null)
+            {
+                if (heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
+                { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+                else Drop(); // hay objeto en la mano
+            } 
             else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
             else if (heldObject != null && lookedObject != null) InsertMaterial();
         }
@@ -115,11 +120,11 @@ public class VisionPlayer2Lili : MonoBehaviour
 
     public void InsertMaterial()
     {
-        if (heldObject != null && lookedObject != null && heldObject.GetComponent<Objets>() != null && lookedObject.GetComponent<Objets>() != null)
+        if(heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
         {
             Debug.Log("No puedes insertar un objeto dentro de otro objeto");
         }
-        else if (lookedObject.GetComponent<Objets>() != null)
+        else if (lookedObject.GetComponent<Objets>())
         {
             if (actualMesa != null && actualMesa.tag == "CraftingTable")
             {
@@ -129,12 +134,11 @@ public class VisionPlayer2Lili : MonoBehaviour
                 {
                     heldObject.SetActive(false);
                     heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
-
                 }
                 else Debug.Log("No se pudo añadir el material al objeto");
             }
             else Debug.Log("Solo insertar materiales en objetos que estén en la mesa de trabajo");
-        }
+        }   
     }
 
     public void ContentAnalizer()
