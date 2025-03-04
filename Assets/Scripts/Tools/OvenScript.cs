@@ -92,6 +92,9 @@ public class OvenScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public bool ReturnBurnt()
+    {  return IsBurnt; }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

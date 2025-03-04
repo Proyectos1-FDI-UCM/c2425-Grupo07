@@ -172,10 +172,18 @@ public class PlayerVision : MonoBehaviour
         if (heldObject != null && lookedObject == null && actualMesa != null)
         {
             if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null)
-            { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+            { Debug.Log("No se puede dropear el material"); }
             else Drop(); // hay objeto en la mano
         }
-        else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
+        else if (heldObject == null && lookedObject != null)
+        {
+            if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+            { Debug.Log("No se puede recoger el material"); }
+            else
+            {
+                Pick(); // no hay objeto en la mano
+            }
+        }
     }
     public void Pick()
     {
