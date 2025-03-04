@@ -28,7 +28,8 @@ public class PlayerVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private InputActionReference ClickActionReference;
+    [SerializeField] private InputActionReference PickDropActionReference;
+    [SerializeField] private InputActionReference InteractActionReference;
     [SerializeField] GameObject actualMesa;
     [SerializeField] GameObject lookedObject;
     [SerializeField] GameObject heldObject;
@@ -108,7 +109,7 @@ public class PlayerVision : MonoBehaviour
                 nearestDistance = colliderDistance;
             }
         }
-        if (lastMesa != actualMesa) 
+        if (lastMesa != actualMesa && lastMesa != null) 
         {
             lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
         }
@@ -149,24 +150,31 @@ public class PlayerVision : MonoBehaviour
         if (collision.gameObject.tag == "RangoDeMesas")
         {
             _onMesasRange = false;
-            actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+            if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
         }
        
     }
 
     private void OnEnable()
     {
-        ClickActionReference.action.performed += Interact;
-        ClickActionReference.action.Enable();
+        PickDropActionReference.action.performed += PickDrop;
+        PickDropActionReference.action.Enable();
+        //InteractActionReference.action.performed += Interact;
+        //InteractActionReference.action.canceled += Interact;
+        InteractActionReference.action.Enable();
+
     }
 
     private void OnDisable()
     {
-        ClickActionReference.action.performed -= Interact;
-        ClickActionReference.action.Disable();
+        PickDropActionReference.action.performed -= PickDrop;
+        PickDropActionReference.action.Disable();
+        //InteractActionReference.action.performed -= Interact;
+        //InteractActionReference.action.canceled -= Interact;
+        InteractActionReference.action.Disable();
     }
 
-    public void Interact(InputAction.CallbackContext context)
+    public void PickDrop(InputAction.CallbackContext context)
     {
         ContentAnalizer();
         if (heldObject != null && lookedObject == null && actualMesa != null)
@@ -200,6 +208,11 @@ public class PlayerVision : MonoBehaviour
         heldObject.transform.SetParent(actualMesa.transform);
         heldObject = null; 
     }
+
+    //public void Interact(InputAction.CallbackContext context)
+    //{
+    //    if
+    //}
     public void ContentAnalizer()
     {
         if (actualMesa != null)

@@ -9,6 +9,8 @@ TagManager:
   - CraftingTable
   - Soldadora
   - RangoDeMesas
+  - Horno
+  - UI
   layers:
   - Default
   - TransparentFX

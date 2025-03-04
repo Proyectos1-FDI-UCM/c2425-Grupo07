@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 183197950299654503}
   - component: {fileID: 241216697791522904}
   - component: {fileID: 8824451982275326479}
-  - component: {fileID: -2401359824401470037}
+  - component: {fileID: 1060418434471486651}
   m_Layer: 8
   m_Name: BrokenGlassPref
   m_TagString: Untagged
@@ -100,8 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matType: 7
   _materialProgress: 0
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
 --- !u!61 &-2401359824401470037
 BoxCollider2D:
+=======
+--- !u!58 &1060418434471486651
+CircleCollider2D:
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
+=======
+--- !u!58 &1060418434471486651
+CircleCollider2D:
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,6 +142,8 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
+<<<<<<< Updated upstream:Assets/Prefabs/Materials/BrokenGlassPref.prefab
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,6 +154,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+=======
+  m_Offset: {x: 0, y: -0.4}
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
+=======
+  m_Offset: {x: 0, y: -0.4}
+>>>>>>> Stashed changes:Assets/Prefabs/Materials/AshPref.prefab
   serializedVersion: 2
-  m_Size: {x: 0.9025271, y: 0.9025271}
-  m_EdgeRadius: 0
+  m_Radius: 0.5

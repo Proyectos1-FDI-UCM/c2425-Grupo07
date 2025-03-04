@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 630088572865326862}
   - component: {fileID: 8384153602683280208}
   - component: {fileID: -4098811314830823063}
-  - component: {fileID: -8931074117635520112}
+  - component: {fileID: 4303538933006017438}
   m_Layer: 8
   m_Name: Glass
   m_TagString: Untagged
@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matType: 1
---- !u!61 &-8931074117635520112
-BoxCollider2D:
+  _materialProgress: 0
+  CompletionBar: {fileID: 0}
+--- !u!58 &4303538933006017438
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,16 +133,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
