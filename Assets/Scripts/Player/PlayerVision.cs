@@ -7,6 +7,7 @@
 
 using JetBrains.Annotations;
 using System.Diagnostics.Contracts;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,12 +28,21 @@ public class PlayerVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] private InputActionReference ClickActionReference;
     [SerializeField] GameObject actualMesa;
     [SerializeField] GameObject lookedObject;
     [SerializeField] GameObject heldObject;
     [SerializeField] Transform PickingPos;
-    [SerializeField] Color mesaTint;
+    [SerializeField] LayerMask detectedTilesLayer;
+    [SerializeField] float centerOffset;
+    [SerializeField] float circleRadius;
+    [SerializeField] Color mesaTint = Color.yellow;
+    [SerializeField] Color gizmosColor = Color.green;
     //las dejo serializadas de momento para hacer debug
+
+    [SerializeField] float detectionRate;
+    [SerializeField] float detectionTime;
+    [SerializeField] private bool _onMesasRange = false;
 
     #endregion
 
@@ -44,6 +54,9 @@ public class PlayerVision : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+
+    private GameObject player;
 
     #endregion
 
@@ -61,7 +74,7 @@ public class PlayerVision : MonoBehaviour
 
     void Start()
     {
-
+        player = GetComponentInParent<PlayerDash>().gameObject;
     }
 
     /// <summary>
@@ -69,32 +82,95 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (_onMesasRange)
+        {
+            detectionTime += Time.deltaTime;
+            if (detectionTime > detectionRate)
+            {
+                CalculateNearest();
+                detectionTime = 0;
+            }
+        }
+    }
+    private void CalculateNearest()
+    {
+        bool atLeastOneDetected = false;
+        GameObject lastMesa = actualMesa;
+        float nearestDistance = Mathf.Infinity;
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(player.transform.position + transform.up * centerOffset), circleRadius, detectedTilesLayer);
+        foreach (Collider2D collider in colisiones)
+        {
+            float colliderDistance = Vector3.Distance(collider.transform.position, player.transform.position);
+            if (colliderDistance < nearestDistance)
+            {
+                atLeastOneDetected = true;
+                actualMesa = collider.gameObject;
+                nearestDistance = colliderDistance;
+            }
+        }
+        if (lastMesa != actualMesa) 
+        {
+            lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        if (actualMesa != null)
+        {
+            actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
+            if (!atLeastOneDetected)
+            {
+                actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+                actualMesa = null;
+            }
 
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if (player == null) return;
+
+        // Draw the search radius circle
+        Gizmos.color = gizmosColor;
+        Gizmos.DrawWireSphere((Vector2)(player.transform.position + transform.up * centerOffset), circleRadius);
+
+        // Highlight the nearest object
+        if (actualMesa != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(player.transform.position, actualMesa.transform.position);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-        actualMesa = collision.gameObject;
-        actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
-
-
+        if (collision.gameObject.tag == "RangoDeMesas") _onMesasRange = true;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject != actualMesa) collision.GetComponent<SpriteRenderer>().color = Color.white;
-        else actualMesa = null;
+        if (collision.gameObject.tag == "RangoDeMesas")
+        {
+            _onMesasRange = false;
+            actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+       
+    }
+
+    private void OnEnable()
+    {
+        ClickActionReference.action.performed += Interact;
+        ClickActionReference.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        ClickActionReference.action.performed -= Interact;
+        ClickActionReference.action.Disable();
     }
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
-        {
             ContentAnalizer();
             if (heldObject != null && lookedObject == null && actualMesa != null ) Drop(); // hay objeto en la mano
             else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
-        }
     }
     public void Pick()
     {
@@ -115,7 +191,7 @@ public class PlayerVision : MonoBehaviour
     {
         if (actualMesa != null)
         {
-            if (actualMesa.transform.childCount == 1)
+            if (actualMesa.transform.childCount >= 1 && actualMesa.GetComponentInChildren<Material>() != null)
             {
                 lookedObject = actualMesa.GetComponentInChildren<Material>().gameObject;
             }

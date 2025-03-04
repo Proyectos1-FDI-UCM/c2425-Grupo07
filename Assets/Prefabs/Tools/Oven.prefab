@@ -180,8 +180,8 @@ Transform:
   m_GameObject: {fileID: 3367807437681637297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.011, y: -0, z: 0}
+  m_LocalScale: {x: 1.0887139, y: 1.0974404, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 295834516013152281}
@@ -263,7 +263,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 768
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -346,7 +346,9 @@ MonoBehaviour:
   FlashImage: {fileID: 3504335975979876622}
   FireIco: {fileID: 7683220941088754040}
   IsBurnt: 0
-  CarriesWood: 1
+  StatesMat:
+  - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
+  - {fileID: 7244349718523439654, guid: d1ad2c79f839a2e4b9a1671da07c7b1f, type: 3}
 --- !u!1 &3504335975979876622
 GameObject:
   m_ObjectHideFlags: 0

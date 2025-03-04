@@ -61,7 +61,8 @@ public class OvenScript : MonoBehaviour
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
 
-    [SerializeField] private GameObject _objectInProgress;
+    private Material _matScr;
+
 
     #endregion
 
@@ -111,7 +112,7 @@ public class OvenScript : MonoBehaviour
         {
             _timerCompletion += Time.deltaTime;
             CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
-            //_objectInProgress.float = _timerCompletion;
+            _matScr.UpdateProgress(CompletionImage.fillAmount);
             if (CompletionImage.fillAmount >= 1)
             {
                 _hasFinished = true;
@@ -119,7 +120,6 @@ public class OvenScript : MonoBehaviour
                 _timerBurn += Time.deltaTime;
                 BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
                 _timerFlash += Time.deltaTime;
-
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
                 child.transform.SetParent(this.transform);
@@ -165,8 +165,9 @@ public class OvenScript : MonoBehaviour
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
         _timerCompletion = 0;
+        _isProcessing = false;
         //Se cambia el material a ceniza
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(1).gameObject);
         GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
         child.transform.SetParent(this.transform);
     }
@@ -180,10 +181,10 @@ public class OvenScript : MonoBehaviour
         if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Hay un material puesto");
-            _objectInProgress = other.gameObject;
+            _matScr = other.gameObject.GetComponent<Material>();
             _isProcessing = true;
         }
-        if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
+        if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Se ha procesado el material");
             ProcessedMaterial();

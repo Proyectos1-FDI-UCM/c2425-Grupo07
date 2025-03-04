@@ -1,20 +1,29 @@
 //---------------------------------------------------------
-// Este script sirve para que el jugador pueda interactuar con la sierra pulsando la tecla de accionado
-// Ferran
-// Clank&Clutch
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-using UnityEngine.InputSystem;
-
-
+/// <summary>
+/// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
+/// </summary>
+public enum MaterialType
+{
+    Arena, Cristal,
+    Metal, MetalProcesado,
+    Engranaje,
+    Madera, MaderaProcesada,
+    Otro,
+}
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerSaw : MonoBehaviour
+public class Material : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,14 +33,8 @@ public class PlayerSaw : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Referencia a la acción de click
-    [SerializeField] private InputActionReference ClickActionReference;
-
-    // Referencia al script Sierra
-    [SerializeField] private SawScript SierraClick;
-
-    [SerializeField] private PlayerVision Player;
-
+    public MaterialType matType;
+    [SerializeField] private float _materialProgress;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,6 +46,8 @@ public class PlayerSaw : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -52,19 +57,13 @@ public class PlayerSaw : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        if (GameObject.FindWithTag("Sierra") != null)
-        {
-            SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
-        }
-        Player = GameObject.FindWithTag("Player").GetComponent<PlayerVision>();
+
     }
 
     /// <summary>
@@ -72,7 +71,7 @@ public class PlayerSaw : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
     }
     #endregion
 
@@ -83,6 +82,29 @@ public class PlayerSaw : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void UpdateProgress(float progress)
+    {
+        _materialProgress = progress;
+    }
+
+
+    /// <summary>
+    /// Almacena en el script del material el progreso de procesado que lleve.
+    /// Se puede introducir como parámetro un entero... creo.... no sé, combrobadlo
+    /// </summary>
+    public void StoreProgress(float progreso)
+    {
+        Debug.Log("Progreso guardado: " +  progreso);
+        _materialProgress = progreso;
+    }
+    /// <summary>
+    /// Devuelve el progreso de procesado que lleve el script del material.
+    /// </summary>
+    public float ReturnProgress()
+    {
+        Debug.Log("Progreso aplicado");
+        return _materialProgress;
+    }
 
     #endregion
 
@@ -93,32 +115,7 @@ public class PlayerSaw : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void OnEnable()
-    {
-        ClickActionReference.action.performed += OnClickPerformed;
-        ClickActionReference.action.Enable();
-    }
+    #endregion
 
-    private void OnDisable()
-    {
-        ClickActionReference.action.performed -= OnClickPerformed;
-        ClickActionReference.action.Disable();
-    }
-
-    // Llama al método Click() del script Sierra cuando se hace click y el jugador está dentro del rango de interacción
-    // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
-    private void OnClickPerformed(InputAction.CallbackContext context)
-    {
-        if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.HasWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
-        {
-            if (Player.GetActualMesa().tag == "Sierra")
-            {
-                SierraClick.Click();
-            }
-        }
-    }
-
-    #endregion   
-
-} // class PlayerSaw 
+} // class Material 
 // namespace

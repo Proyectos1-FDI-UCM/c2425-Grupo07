@@ -1,28 +1,20 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo
-// Nombre del juego
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
-/// <summary>
-/// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
-/// </summary>
-public enum MaterialType
-{
-    Arena, Cristal,
-    Metal, MetalProcesado,
-    Engranaje,
-    Madera, MaderaProcesada,
-    Otro,
-}
+
+
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Material : MonoBehaviour
+public class PlayerWelder : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -31,8 +23,9 @@ public class Material : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] private Soldadora WelderScript;
+    [SerializeField] private InputActionReference ClickActionReference;
 
-    public MaterialType matType;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -59,7 +52,10 @@ public class Material : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+        if (GameObject.FindWithTag("Soldadora") != null)
+        {
+            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<Soldadora>();
+        }
     }
 
     /// <summary>
@@ -80,7 +76,7 @@ public class Material : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -88,7 +84,27 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    private void OnEnable()
+    {
+        if (WelderScript != null)
+        {
+            ClickActionReference.action.performed += WelderScript.TurnOnWelder;
+            ClickActionReference.action.canceled += WelderScript.TurnOffWelder;
+            ClickActionReference.action.Enable();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (WelderScript != null)
+        {
+            ClickActionReference.action.performed -= WelderScript.TurnOnWelder;
+            ClickActionReference.action.canceled -= WelderScript.TurnOffWelder;
+            ClickActionReference.action.Disable();
+        }
+    }
+
     #endregion   
 
-} // class Material 
+} // class PlayerWelder 
 // namespace
