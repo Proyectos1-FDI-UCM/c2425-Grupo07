@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2783011721986718900}
   - component: {fileID: 5210041020792004804}
   - component: {fileID: 735890420133839902}
+  - component: {fileID: 8544634425404930296}
   m_Layer: 8
   m_Name: MusicBox
   m_TagString: Untagged
@@ -195,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2906912807483375088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
@@ -326,6 +327,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &8544634425404930296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906912807483375088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matType: 7
+  _materialProgress: 0
+  CompletionBar: {fileID: 0}
+  isBeingProcessed: 0
 --- !u!1 &3770509285179975193
 GameObject:
   m_ObjectHideFlags: 0
