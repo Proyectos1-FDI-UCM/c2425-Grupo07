@@ -28,20 +28,23 @@ public class SawScript : MonoBehaviour
     // CompletionBarReference es la barra de compleción del material, se usa para la animación de su barra
     [SerializeField] private Image CompletionBarReference;
 
-    // _madera es el GameObject correspondiente a la madera
-    [SerializeField] private GameObject _madera;
+    // Madera es el GameObject correspondiente a la madera
+    [SerializeField] private GameObject Madera;
 
-    // _maderaProcesada es el GameObject correspondiente a la madera procesada
-    [SerializeField] private GameObject _maderaProcesada;
+    // MaderaProcesada es el GameObject correspondiente a la madera procesada
+    [SerializeField] private GameObject MaderaProcesada;
 
-    // _nClicks es el número de clicks necesario para completar el proceso de refinamiento
+    // MaxClicks es el número de clicks necesario para completar el proceso de refinamiento
     [SerializeField] private int MaxClicks = 6;
 
-    // _currentClicks es el número de clicks necesario para completar el proceso de refinamiento
+    // CurrentClicks es el número de clicks necesario para completar el proceso de refinamiento
     [SerializeField] private int CurrentClicks = 0;
 
-    // _carriesWood determina si hay madera en la sierra (true) o no (false)
+    // CarriesWood determina si hay madera en la sierra (true) o no (false)
     [SerializeField] private bool HasWood = false;
+
+    // Unpickable determina si el material que tiene la sierra como hijo se puede pickear (false) o no (true)
+    [SerializeField] private bool Unpickable = false;
 
     #endregion
 
@@ -77,6 +80,7 @@ public class SawScript : MonoBehaviour
 
         if (CurrentClicks >= MaxClicks)
         {
+            Unpickable = true;
             Invoke("SpawnChild", 0.365f);
             Invoke("DestroyChild", 0.35f);
             HasWood = false;
@@ -124,6 +128,11 @@ public class SawScript : MonoBehaviour
         return HasWood;
     }
 
+    public bool GetUnpickable()
+    {
+        return Unpickable;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -136,7 +145,7 @@ public class SawScript : MonoBehaviour
     // Instancia el material de madera procesada en la posición de la sierra y lo pone como hijo de la sierra
     private void SpawnChild()
     {
-        GameObject child = Instantiate(_maderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject child = Instantiate(MaderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
         child.transform.SetParent(this.transform);
     }
 
@@ -144,6 +153,7 @@ public class SawScript : MonoBehaviour
     private void DestroyChild()
     {
         Destroy(transform.GetChild(0).gameObject);
+        Unpickable = false;
     }
 
     // Actualiza la barra de compleción de la sierra
@@ -190,7 +200,7 @@ public class SawScript : MonoBehaviour
         {
             HasWood = false;
             _materialSource = null;
-            CompletionBarReference = null; 
+            CompletionBarReference = null;
         }
     }
 
