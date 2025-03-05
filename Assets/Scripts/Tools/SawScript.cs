@@ -81,8 +81,7 @@ public class SawScript : MonoBehaviour
         if (CurrentClicks >= MaxClicks)
         {
             Unpickable = true;
-            Invoke("SpawnChild", 0.365f);
-            Invoke("DestroyChild", 0.35f);
+            Invoke("ProcessWood", 0.35f);
             HasWood = false;
             _pastClicks = 0;
             CurrentClicks = 0;
@@ -142,17 +141,12 @@ public class SawScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // Instancia el material de madera procesada en la posición de la sierra y lo pone como hijo de la sierra
-    private void SpawnChild()
-    {
-        GameObject child = Instantiate(MaderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
-        child.transform.SetParent(this.transform);
-    }
-
-    // Destruye el material que tiene como hijo la sierra
-    private void DestroyChild()
+    // Procesa la madera destruyendo el material de madera e instanciando el material de madera procesada poniéndolo como hijo de la sierra
+    private void ProcessWood()
     {
         Destroy(transform.GetChild(0).gameObject);
+        GameObject child = Instantiate(MaderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
+        child.transform.SetParent(this.transform);
         Unpickable = false;
     }
 
