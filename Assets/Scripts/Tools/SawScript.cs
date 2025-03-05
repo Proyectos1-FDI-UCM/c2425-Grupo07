@@ -25,9 +25,6 @@ public class SawScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // PlayerPosition es la posición del jugador
-    [SerializeField] private Transform PlayerPosition;
-
     // CompletionBarReference es la barra de compleción del material, se usa para la animación de su barra
     [SerializeField] private Image CompletionBarReference;
 
@@ -70,19 +67,6 @@ public class SawScript : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
     
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        _pastClicks = CurrentClicks;
-        PlayerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        if (GetComponent<Collider2D>() == null)
-        {
-            gameObject.AddComponent<BoxCollider2D>();
-        }
-    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.

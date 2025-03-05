@@ -29,7 +29,6 @@ public class PlayerVision : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private InputActionReference PickDropActionReference;
-    [SerializeField] private InputActionReference InteractActionReference;
     [SerializeField] GameObject actualMesa;
     [SerializeField] GameObject lookedObject;
     [SerializeField] GameObject heldObject;
@@ -159,9 +158,6 @@ public class PlayerVision : MonoBehaviour
     {
         PickDropActionReference.action.performed += PickDrop;
         PickDropActionReference.action.Enable();
-        //InteractActionReference.action.performed += Interact;
-        //InteractActionReference.action.canceled += Interact;
-        InteractActionReference.action.Enable();
 
     }
 
@@ -169,30 +165,27 @@ public class PlayerVision : MonoBehaviour
     {
         PickDropActionReference.action.performed -= PickDrop;
         PickDropActionReference.action.Disable();
-        //InteractActionReference.action.performed -= Interact;
-        //InteractActionReference.action.canceled -= Interact;
-        InteractActionReference.action.Disable();
     }
 
     public void PickDrop(InputAction.CallbackContext context)
     {
-        ContentAnalizer();
-        if (heldObject != null && lookedObject == null && actualMesa != null)
-        {
-            if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null||
-                heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
-            { Debug.Log("No se puede dropear el material"); }
-            else Drop(); // hay objeto en la mano
-        }
-        else if (heldObject == null && lookedObject != null)
-        {
-            if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
-            { Debug.Log("No se puede recoger el material"); }
-            else
+            ContentAnalizer();
+            if (heldObject != null && lookedObject == null && actualMesa != null)
             {
-                Pick(); // no hay objeto en la mano
+                if (heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
+                { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+                else Drop(); // hay objeto en la mano
             }
-        }
+            else if (heldObject == null && lookedObject != null)
+            {
+                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                { Debug.Log("No se puede recoger el material"); }
+                else
+                {
+                    Pick(); // no hay objeto en la mano
+                }
+            }
+            else if (heldObject != null && lookedObject != null) InsertMaterial();
     }
     public void Pick()
     {
@@ -210,17 +203,36 @@ public class PlayerVision : MonoBehaviour
         heldObject = null; 
     }
 
-    //public void Interact(InputAction.CallbackContext context)
-    //{
-    //    if
-    //}
+    public void InsertMaterial()
+    {
+        if (heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
+        {
+            Debug.Log("No puedes insertar un objeto dentro de otro objeto");
+        }
+        else if (lookedObject.GetComponent<Objets>())
+        {
+            if (actualMesa != null && actualMesa.tag == "CraftingTable")
+            {
+                Objets objetoScript = lookedObject.GetComponent<Objets>();
+                bool materialAdded = objetoScript.AddMaterial(heldObject);
+                if (materialAdded)
+                {
+                    heldObject.SetActive(false);
+                    heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
+                }
+                else Debug.Log("No se pudo añadir el material al objeto");
+            }
+            else Debug.Log("Solo insertar materiales en objetos que estén en la mesa de trabajo");
+        }
+    }
+
     public void ContentAnalizer()
     {
         if (actualMesa != null)
         {
-            if (actualMesa.transform.childCount >= 1 && actualMesa.GetComponentInChildren<Material>() != null)
+            if (actualMesa.transform.childCount >= 1)
             {
-                lookedObject = actualMesa.GetComponentInChildren<Material>().gameObject;
+                lookedObject = actualMesa.transform.GetChild(0).gameObject;
             }
             else lookedObject = null;
         }

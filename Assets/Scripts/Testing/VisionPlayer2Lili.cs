@@ -104,8 +104,16 @@ public class VisionPlayer2Lili : MonoBehaviour
                 if (heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
                 { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
                 else Drop(); // hay objeto en la mano
-            } 
-            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
+            }
+            else if (heldObject == null && lookedObject != null)
+            {
+                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                { Debug.Log("No se puede recoger el material"); }
+                else
+                {
+                    Pick(); // no hay objeto en la mano
+                }
+            }
             else if (heldObject != null && lookedObject != null) InsertMaterial();
         }
     }

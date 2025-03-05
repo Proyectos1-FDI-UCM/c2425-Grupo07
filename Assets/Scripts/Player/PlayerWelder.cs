@@ -24,7 +24,7 @@ public class PlayerWelder : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private Soldadora WelderScript;
-    [SerializeField] private InputActionReference ClickActionReference;
+    [SerializeField] private InputActionReference InteractActionReference;
 
     #endregion
 
@@ -88,9 +88,9 @@ public class PlayerWelder : MonoBehaviour
     {
         if (WelderScript != null)
         {
-            ClickActionReference.action.performed += WelderScript.TurnOnWelder;
-            ClickActionReference.action.canceled += WelderScript.TurnOffWelder;
-            ClickActionReference.action.Enable();
+            InteractActionReference.action.performed += WelderScript.TurnOnWelder;
+            InteractActionReference.action.canceled += WelderScript.TurnOffWelder;
+            InteractActionReference.action.Enable();
         }
     }
 
@@ -98,11 +98,12 @@ public class PlayerWelder : MonoBehaviour
     {
         if (WelderScript != null)
         {
-            ClickActionReference.action.performed -= WelderScript.TurnOnWelder;
-            ClickActionReference.action.canceled -= WelderScript.TurnOffWelder;
-            ClickActionReference.action.Disable();
+            InteractActionReference.action.performed -= WelderScript.TurnOnWelder;
+            InteractActionReference.action.canceled -= WelderScript.TurnOffWelder;
+            InteractActionReference.action.Disable();
         }
     }
+
 
     #endregion   
 

@@ -117,15 +117,14 @@ public class OvenScript : MonoBehaviour
     {
         if (_isProcessing && !IsBurnt && transform.childCount == 1)
         {
-            _timerCompletion += Time.deltaTime;
-            progress = (_timerCompletion / 100) * VelCompletion;
+            progress += (Time.deltaTime * VelCompletion / CompletionTime) ;
             _matScr.UpdateProgress(progress);
             if (progress >= 1)
             {
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _timerBurn += Time.deltaTime;
-                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
+                BurningImage.fillAmount = (_timerBurn / CompletionTime) * VelCompletion / 1.5f; //de momento el burnTime es igual al CompletionTime
                 _timerFlash += Time.deltaTime;
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
