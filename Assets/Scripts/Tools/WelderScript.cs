@@ -29,7 +29,7 @@ public class WelderScript : MonoBehaviour
 
 
     // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionBarReference;
+    //[SerializeField] private Image CompletionBarReference;
     [SerializeField] private GameObject _metalProcesado;
 
     //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
@@ -119,26 +119,27 @@ public class WelderScript : MonoBehaviour
     public void TurnOffWelder()
     {
         Debug.Log("apagando soldadora");
-        if (canUse) _isWorking = false;
+        if (!canUse) _isWorking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
+        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
         {
-            _materialSource = collision.GetComponent<Material>();
+            Debug.Log("Hay un material puesto");
+            _materialSource = collision.gameObject.GetComponent<Material>();
             _progress = _materialSource.ReturnProgress();
-            CompletionBarReference = _materialSource.ReturnProgressBar();
+            //CompletionBarReference = _materialSource.ReturnProgressBar();
             canUse = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Material>() != null)
+        if (collision.gameObject.GetComponent<Material>() != null)
         {
             _materialSource = null;
-            CompletionBarReference = null;
+            //CompletionBarReference = null;
             canUse = false;
         }
     }
