@@ -107,7 +107,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Processing()
     {
-        if (_isProcessing && !IsBurnt && transform.childCount == 1 && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
+        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(progress);
@@ -181,7 +181,7 @@ public class OvenScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena && transform.childCount == 0)
         {
             Debug.Log("Hay un material puesto");
             _matScr = other.gameObject.GetComponent<Material>();
