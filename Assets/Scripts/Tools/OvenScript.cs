@@ -56,7 +56,7 @@ public class OvenScript : MonoBehaviour
     private bool _isProcessing = false;
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
-
+    //Recoge el script de material para acceder a su progreso
     private Material _matScr;
 
 
@@ -87,7 +87,7 @@ public class OvenScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    // Devuelve si el material se ha quemado
     public bool ReturnBurnt()
     {  return IsBurnt; }
 
@@ -102,7 +102,7 @@ public class OvenScript : MonoBehaviour
 
     /// <summary>
     /// Maneja cada barra del proceso del horno
-    /// Si se completa la de procesamiento, ha terminado el procesamiento del material e inicia la de quemado si no se retira
+    /// Si se completa la de procesamiento, ha terminado el procesamiento del material e inicia la de quemado con si no se retira a tiempo
     /// Mientras no se retire el material activa y desactiva la imagen de flash hasta que se quema y activa el fuego. Quemando el material
     /// </summary>
     void Processing()
@@ -194,6 +194,7 @@ public class OvenScript : MonoBehaviour
             ProcessedMaterial();
         }
     }
+    //Si se saca antes de tiempo pausa el proceso
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().matType == MaterialType.Cristal 
