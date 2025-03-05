@@ -77,13 +77,11 @@ public class SawScript : MonoBehaviour
 
         if (CurrentClicks >= MaxClicks)
         {
-            GameObject child = Instantiate(_maderaProcesada, transform.GetChild(0).gameObject.transform.position, transform.GetChild(0).gameObject.transform.rotation);
-            child.transform.SetParent(this.transform);
-            Destroy(transform.GetChild(0).gameObject);
+            Invoke("SpawnChild", 0.365f);
+            Invoke("DestroyChild", 0.35f);
             HasWood = false;
             _pastClicks = 0;
             CurrentClicks = 0;
-            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
     }
     #endregion
@@ -104,7 +102,10 @@ public class SawScript : MonoBehaviour
         {
             CurrentClicks++;
             _materialSource.StoreProgress(CurrentClicks);
-            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+            if (CompletionBarReference != null && CurrentClicks <= MaxClicks)
+            {
+                UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
+            }
         }
     }
 
@@ -132,13 +133,29 @@ public class SawScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    // Instancia el material de madera procesada en la posición de la sierra y lo pone como hijo de la sierra
+    private void SpawnChild()
+    {
+        GameObject child = Instantiate(_maderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
+        child.transform.SetParent(this.transform);
+    }
+
+    // Destruye el material que tiene como hijo la sierra
+    private void DestroyChild()
+    {
+        Destroy(transform.GetChild(0).gameObject);
+    }
+
     // Actualiza la barra de compleción de la sierra
     private void UpdateCompletionBar(float _maxCompletion, float _currentCompletion, float _pastCompletion)
     {
-        float _targetCompletion = _currentCompletion / _maxCompletion;
-        _pastCompletion = _pastCompletion / _maxCompletion;
-        CompletionBarReference.fillAmount = _currentCompletion / _maxCompletion;
-        StartCoroutine(CompletionBarAnimation(_targetCompletion, _pastCompletion));
+        if (CompletionBarReference != null)
+        {
+            float _targetCompletion = _currentCompletion / _maxCompletion;
+            _pastCompletion = _pastCompletion / _maxCompletion;
+            CompletionBarReference.fillAmount = _currentCompletion / _maxCompletion;
+            StartCoroutine(CompletionBarAnimation(_targetCompletion, _pastCompletion));
+        }
     }
 
     // Hace la animación de rellenar la barra de compleción de la sierra
@@ -164,7 +181,6 @@ public class SawScript : MonoBehaviour
             CompletionBarReference = _materialSource.ReturnProgressBar();
             CurrentClicks = (int)_materialSource.ReturnProgress();
             _pastClicks = CurrentClicks;
-            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
     }
 
