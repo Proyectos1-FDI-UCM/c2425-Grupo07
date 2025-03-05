@@ -191,7 +191,7 @@ public class PlayerVision : MonoBehaviour
             }
             else if (heldObject == null && lookedObject != null)
             {
-                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                if ((actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt()) || (actualMesa.GetComponent<SawScript>() != null && actualMesa.GetComponent<SawScript>().GetUnpickable()))
                 { Debug.Log("No se puede recoger el material"); }
                 else
                 {
