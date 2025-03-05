@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matType: 1
   _materialProgress: 0
-  CompletionBar: {fileID: 0}
+  CompletionBar: {fileID: 441515981582200879}
   isBeingProcessed: 0
 --- !u!58 &4303538933006017438
 CircleCollider2D:

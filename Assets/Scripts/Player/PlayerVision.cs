@@ -182,16 +182,16 @@ public class PlayerVision : MonoBehaviour
             ContentAnalizer();
             if (heldObject != null && lookedObject == null && actualMesa != null)
             {
-                if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null ||
+                if (heldObject.GetComponent<Material>() && (actualMesa.tag == "CraftingTable" && !heldObject.GetComponent<Objects>() ||
+                    heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null ||
                     heldObject.GetComponent<Material>().matType != MaterialType.Madera && actualMesa.GetComponent<SawScript>() != null ||
-                    heldObject.GetComponent<Material>().matType != MaterialType.Metal && actualMesa.GetComponent<WelderScript>() != null ||
-                    heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
-                { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+                    heldObject.GetComponent<Material>().matType != MaterialType.Metal && actualMesa.GetComponent<WelderScript>() != null))
+                { Debug.Log("No se puede dropear aquí"); }
                 else Drop(); // hay objeto en la mano
             }
             else if (heldObject == null && lookedObject != null)
             {
-                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                if ((actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt()) || (actualMesa.GetComponent<SawScript>() != null && actualMesa.GetComponent<SawScript>().GetUnpickable()))
                 { Debug.Log("No se puede recoger el material"); }
                 else
                 {
@@ -222,15 +222,15 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     public void InsertMaterial()
     {
-        if (heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
+        if (heldObject.GetComponent<Objects>() && lookedObject.GetComponent<Objects>())
         {
             Debug.Log("No puedes insertar un objeto dentro de otro objeto");
         }
-        else if (lookedObject.GetComponent<Objets>())
+        else if (lookedObject.GetComponent<Objects>())
         {
             if (actualMesa != null && actualMesa.tag == "CraftingTable")
             {
-                Objets objetoScript = lookedObject.GetComponent<Objets>();
+                Objects objetoScript = lookedObject.GetComponent<Objects>();
                 bool materialAdded = objetoScript.AddMaterial(heldObject);
                 if (materialAdded)
                 {
