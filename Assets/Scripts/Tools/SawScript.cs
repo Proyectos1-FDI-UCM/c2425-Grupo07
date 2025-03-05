@@ -35,13 +35,13 @@ public class SawScript : MonoBehaviour
     [SerializeField] private GameObject _maderaProcesada;
 
     // _nClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int MaxClicks = 6;
+    [SerializeField] private int MaxClicks = 6;
 
     // _currentClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int CurrentClicks = 0;
+    [SerializeField] private int CurrentClicks = 0;
 
     // _carriesWood determina si hay madera en la sierra (true) o no (false)
-    public bool HasWood = false;
+    [SerializeField] private bool HasWood = false;
 
     #endregion
 
@@ -103,8 +103,24 @@ public class SawScript : MonoBehaviour
         if (transform.childCount == 1)
         {
             CurrentClicks++;
+            _materialSource.StoreProgress(CurrentClicks);
             UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
+    }
+
+    public int GetMaxClicks()
+    {
+        return MaxClicks;
+    }
+
+    public int GetCurrentClicks()
+    {
+        return CurrentClicks;
+    }
+
+    public bool GetHasWood()
+    {
+        return HasWood;
     }
 
     #endregion
@@ -146,6 +162,9 @@ public class SawScript : MonoBehaviour
             HasWood = true;
             _materialSource = collision.GetComponent<Material>();
             CompletionBarReference = _materialSource.ReturnProgressBar();
+            CurrentClicks = (int)_materialSource.ReturnProgress();
+            _pastClicks = CurrentClicks;
+            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
     }
 
