@@ -23,7 +23,7 @@ public class PlayerWelder : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private Soldadora WelderScript;
+    [SerializeField] private WelderScript WelderScript;
     [SerializeField] private InputActionReference InteractActionReference;
 
     #endregion
@@ -54,7 +54,7 @@ public class PlayerWelder : MonoBehaviour
     {
         if (GameObject.FindWithTag("Soldadora") != null)
         {
-            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<Soldadora>();
+            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<WelderScript>();
         }
     }
 
