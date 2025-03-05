@@ -140,15 +140,15 @@ public class VisionPlayer2Lili : MonoBehaviour
     /// </summary>
     public void InsertMaterial()
     {
-        if(heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
+        if(heldObject.GetComponent<Objects>() && lookedObject.GetComponent<Objects>())
         {
             Debug.Log("No puedes insertar un objeto dentro de otro objeto");
         }
-        else if (lookedObject.GetComponent<Objets>())
+        else if (lookedObject.GetComponent<Objects>())
         {
             if (actualMesa != null && actualMesa.tag == "CraftingTable")
             {
-                Objets objetoScript = lookedObject.GetComponent<Objets>();
+                Objects objetoScript = lookedObject.GetComponent<Objects>();
                 bool materialAdded = objetoScript.AddMaterial(heldObject);
                 if (materialAdded)
                 {

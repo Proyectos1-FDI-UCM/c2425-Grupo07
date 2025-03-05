@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839d46c4234b63b4aa72fdb80a46babe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CompletionImage: {fileID: 1082255256875247736}
+  CompletionBarReference: {fileID: 0}
   BurningImage: {fileID: 5850556365681649959}
   VelCompletion: 15
   FlashImage: {fileID: 3504335975979876622}
@@ -348,7 +348,7 @@ MonoBehaviour:
   IsBurnt: 0
   StatesMat:
   - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
-  - {fileID: 7244349718523439654, guid: d1ad2c79f839a2e4b9a1671da07c7b1f, type: 3}
+  - {fileID: 8970695659979435321, guid: b0b8843acfbf4bc41a4c727206b97730, type: 3}
 --- !u!1 &3504335975979876622
 GameObject:
   m_ObjectHideFlags: 0

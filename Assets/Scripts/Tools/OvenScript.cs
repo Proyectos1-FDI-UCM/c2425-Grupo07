@@ -123,8 +123,8 @@ public class OvenScript : MonoBehaviour
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _timerBurn += Time.deltaTime;
-                //BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
-                progress = (_timerBurn / 100) * VelCompletion / 1.5f;
+                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
+                //progress = (_timerBurn / 100) * VelCompletion / 1.5f;
                 _timerFlash += Time.deltaTime;
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
