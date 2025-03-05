@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 9102832338467195711}
   - component: {fileID: 8121037233921599516}
   - component: {fileID: 3193425242773086990}
-  - component: {fileID: 6413022986089115775}
+  - component: {fileID: 6655306971994225856}
   m_Layer: 10
   m_Name: Mesa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9102832338467195711
 Transform:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!61 &6413022986089115775
+--- !u!61 &6655306971994225856
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
