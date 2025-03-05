@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WelderScript: {fileID: 0}
-  ClickActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
+  InteractActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
 --- !u!114 &8383434901366803709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickDropActionReference: {fileID: 470773517313567529, guid: 842a061437231409385e5d08046b3753, type: 3}
-  InteractActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
   actualMesa: {fileID: 0}
   lookedObject: {fileID: 0}
   heldObject: {fileID: 0}
