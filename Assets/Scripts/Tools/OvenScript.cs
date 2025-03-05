@@ -31,8 +31,6 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private Image BurningImage;
     // VelCompletion es la unidad de progreso que se añade al material por segundo, si VelCompletion == CompletionTime entonces el material tardaría 1 segundo en procesarse 
     [SerializeField] private float VelCompletion;
-    // CompletionTime es el tiempo que tarda un objeto en ser procesado
-    [SerializeField] private float CompletionTime;
     // FlashImage es la imagen que aparece para advertir al jugador que se va a quemar un objeto
     [SerializeField] private GameObject FlashImage;
     // FireIco es la imagen temporal cuando se quema un objeto
@@ -117,14 +115,15 @@ public class OvenScript : MonoBehaviour
     {
         if (_isProcessing && !IsBurnt && transform.childCount == 1)
         {
-            progress += (Time.deltaTime * VelCompletion / CompletionTime) ;
+            _timerCompletion += Time.deltaTime;
+            progress = (_timerCompletion / 100) * VelCompletion;
             _matScr.UpdateProgress(progress);
             if (progress >= 1)
             {
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _timerBurn += Time.deltaTime;
-                BurningImage.fillAmount = (_timerBurn / CompletionTime) * VelCompletion / 1.5f; //de momento el burnTime es igual al CompletionTime
+                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
                 _timerFlash += Time.deltaTime;
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
