@@ -88,24 +88,25 @@ public class PlayerWelder : MonoBehaviour
     {
         if (WelderScript != null)
         {
-            InteractActionReference.action.performed += WelderScript.TurnOnWelder;
-            InteractActionReference.action.canceled += WelderScript.TurnOffWelder;
+            InteractActionReference.action.performed += TurningWelder;
+            InteractActionReference.action.canceled += StopingWelder;
             InteractActionReference.action.Enable();
         }
     }
 
     private void OnDisable()
     {
-        if (WelderScript != null)
-        {
-            InteractActionReference.action.performed -= WelderScript.TurnOnWelder;
-            InteractActionReference.action.canceled -= WelderScript.TurnOffWelder;
+            InteractActionReference.action.performed -= TurningWelder;
+            InteractActionReference.action.canceled -= StopingWelder;
             InteractActionReference.action.Disable();
-        }
     }
 
+    private void TurningWelder(InputAction.CallbackContext context) { WelderScript.TurnOnWelder(); }
+    private void StopingWelder(InputAction.CallbackContext context) { WelderScript.TurnOffWelder(); }
 
-    #endregion   
+
+
+    #endregion
 
 } // class PlayerWelder 
 // namespace

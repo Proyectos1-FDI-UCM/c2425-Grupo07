@@ -91,7 +91,7 @@ public class Soldadora : MonoBehaviour
             _materialSource.UpdateProgress(_progress);
             
         }
-        if (_progress >= _completionTime)
+        if (_progress >= 1)
         {
             _progress = 0;
             Destroy(_materialSource);
@@ -111,12 +111,12 @@ public class Soldadora : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     //
-    public void TurnOnWelder(InputAction.CallbackContext context)
+    public void TurnOnWelder()
     {
         Debug.Log("encendiendo soldadora");
         if (canUse) _isWorking = true;
     }
-    public void TurnOffWelder(InputAction.CallbackContext context)
+    public void TurnOffWelder()
     {
         Debug.Log("apagando soldadora");
         if (canUse) _isWorking = false;
