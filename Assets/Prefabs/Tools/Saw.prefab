@@ -169,13 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce346677737aff04680144b1666fe41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPosition: {fileID: 0}
-  CompletionImage: {fileID: 0}
-  _madera: {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
-  _maderaProcesada: {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
+  CompletionBarReference: {fileID: 0}
+  Madera: {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
+  MaderaProcesada: {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
   MaxClicks: 6
   CurrentClicks: 0
   HasWood: 0
+  Unpickable: 0
 --- !u!212 &6705416684490303124
 SpriteRenderer:
   m_ObjectHideFlags: 0
