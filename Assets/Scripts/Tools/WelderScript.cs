@@ -54,9 +54,9 @@ public class WelderScript : MonoBehaviour
 
     private float _progress;
 
-    public bool canUse;
+    public bool hasMetal;
 
-    private Material _materialSource;
+    [SerializeField] private Material _materialSource;
     
 
     #endregion
@@ -93,10 +93,11 @@ public class WelderScript : MonoBehaviour
         if (_progress >= 1)
         {
             _progress = 0;
-            Destroy(_materialSource);
+            Destroy(_materialSource.gameObject);
             GameObject metalProcesado = Instantiate(_metalProcesado, this.gameObject.transform.position, gameObject.transform.rotation);
             metalProcesado.transform.SetParent(this.transform);
-            canUse = false;
+            hasMetal = false;
+            _isWorking = false;
         }
     }
     #endregion
@@ -109,16 +110,28 @@ public class WelderScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    //
-    public void TurnOnWelder()
+    /// <summary>
+    /// Se llama a este metodo para hacer funcionar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
+    /// </summary>
+    public void TurnOnWelder() 
     {
-        Debug.Log("encendiendo soldadora");
-        if (canUse) _isWorking = true;
+
+        if (hasMetal)
+        {
+            Debug.Log("encendiendo soldadora");
+            _isWorking = true;
+        }
     }
+    /// <summary>
+    /// Se llama a este metodo para hacer parar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
+    /// </summary>
     public void TurnOffWelder()
     {
-        Debug.Log("apagando soldadora");
-        if (canUse) _isWorking = false;
+        if(hasMetal)
+        {
+            Debug.Log("apagando soldadora");
+            _isWorking = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -128,7 +141,7 @@ public class WelderScript : MonoBehaviour
             _materialSource = collision.GetComponent<Material>();
             _progress = _materialSource.ReturnProgress();
             CompletionBarReference = _materialSource.ReturnProgressBar();
-            canUse = true;
+            hasMetal = true;
         }
     }
 
@@ -138,7 +151,7 @@ public class WelderScript : MonoBehaviour
         {
             _materialSource = null;
             CompletionBarReference = null;
-            canUse = false;
+            hasMetal = false;
         }
     }
 

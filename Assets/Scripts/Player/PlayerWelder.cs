@@ -37,6 +37,10 @@ public class PlayerWelder : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private PlayerVision _playerVision;
+    private PlayerMovement _playerMovement;
+
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -56,6 +60,8 @@ public class PlayerWelder : MonoBehaviour
         {
             WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<WelderScript>();
         }
+        _playerVision = GetComponent<PlayerVision>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     /// <summary>
@@ -85,27 +91,31 @@ public class PlayerWelder : MonoBehaviour
     // mayúscula, incluida la primera letra)
     void Awake()
     {
-        if (WelderScript != null)
-        {
             InteractActionReference.action.performed += ctx => TurningWelder();
             InteractActionReference.action.canceled += ctx => StopingWelder();
             InteractActionReference.action.Enable();
+    }
+
+    private void TurningWelder() 
+    { 
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
+        {
+            _playerMovement.enabled = false;
+            _playerVision.enabled = false;
+            WelderScript.TurnOnWelder();
         }
+         
     }
-    /*private void OnEnable()
+    private void StopingWelder() 
     {
-
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
+        {
+            _playerMovement.enabled = true;
+            _playerVision.enabled = true;
+            WelderScript.TurnOffWelder();
+        }
+             
     }
-
-    private void OnDisable()
-    {
-            InteractActionReference.action.performed += ctx => TurningWelder();
-        InteractActionReference.action.canceled -= ctx => StopingWelder();
-            InteractActionReference.action.Disable();
-    }*/
-
-    private void TurningWelder() { WelderScript.TurnOnWelder(); }
-    private void StopingWelder() { WelderScript.TurnOffWelder(); }
 
 
 
