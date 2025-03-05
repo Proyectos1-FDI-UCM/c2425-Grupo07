@@ -79,10 +79,10 @@ public class Objets : MonoBehaviour
     /// <summary>
     /// AddMaterial busca por el array de _materials un hueco null, si lo encuentra, inserta en i el 
     /// Gameobject y devuelve true, sino, sigue buscando por el array hasta el último, si no hay más 
-    /// huevo lo notifica y agredado será false
+    /// hueco lo notifica y agredado (bool) será false
     /// </summary>
     /// <param name="material"></param>  GameObject que será añadido a la array
-    /// <returns>True si el material fue añadido correctamente, False si no hay espacio.</returns>
+    /// <returns>True si el material fue añadido correctamente, False si no hay espacio</returns>
 
     public bool AddMaterial (GameObject material)
     {
@@ -98,7 +98,6 @@ public class Objets : MonoBehaviour
             }
             else { i++; }
         }
-        if (!agregado) Debug.Log("No hay más hueco");
         return agregado;
     }
 
@@ -114,24 +113,14 @@ public class Objets : MonoBehaviour
         // Recorre cada objeto requerido en el pedido
         foreach (GameObject required in _ordenPedidos)
         {
-            if (required == null)
-            {
-                continue; // Ignora objetos nulos en el pedido
-            }
-
-            // Busca el siguiente material no nulo en el array
-            while (n < _materials.Length && _materials[n] == null)
-            {
-                n++;
-            }
+            if (required == null) continue; // Ignora objetos nulos en el pedido
 
             // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
-            if (n >= _materials.Length || !IsSameMaterialType(_materials[n], required))
+            if (!IsSameMaterialType(_materials[n], required))
             {
                 Debug.Log("FALSE Material no coincide con el pedido o está incompleto");
                 return false;
             }
-
             n++; // Avanza al siguiente material
         }
 
@@ -149,6 +138,13 @@ public class Objets : MonoBehaviour
         Debug.Log("TRUE COMPLETADO");
         return true;
     }
+
+    /// <summary>
+    /// Método que verifica que los materiales del requerido del array de _ordenPedidos y del array del _materiales del objeto sean iguales dependiendo del emun (tipo) que es de su script Material
+    /// </summary>
+    /// <param name="material"> Contenido del array de _materiales que el objeto almacena </param>
+    /// <param name="required"> Contenido del array de _ordenPedidos que son la condición para que se complete el objeto </param>
+    /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material, si son iguales retorna true </returns>
     private bool IsSameMaterialType(GameObject material, GameObject required)
     {
         if (material == null || required == null)
@@ -173,9 +169,8 @@ public class Objets : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Actualiza los indicadores de capacidad
+    /// Actualiza los indicadores de capacidad haciendolos cambiar de color, de blanco a verde
     /// </summary>
-
     private void CapacityIndicator ()
     {
         for (int i = 0; i < _materials.Length; i++)

@@ -26,10 +26,10 @@ public class OvenScript : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionImage;
+    [SerializeField] private Image CompletionBarReference;
     // BurningImage es la barra de quemado cuando se empieza a calentar de más un material
     [SerializeField] private Image BurningImage;
-    // VelCompletion es la velocidad con la que avanza la barra de completion y de burning
+    // VelCompletion es la unidad de progreso que se añade al material por segundo, si VelCompletion == CompletionTime entonces el material tardaría 1 segundo en procesarse 
     [SerializeField] private float VelCompletion;
     // FlashImage es la imagen que aparece para advertir al jugador que se va a quemar un objeto
     [SerializeField] private GameObject FlashImage;
@@ -56,12 +56,15 @@ public class OvenScript : MonoBehaviour
     private float _timerBurn = 0;
     //_timerFlash Intervalo de tiempo en que la imagen se activa/desactiva
     private float _timerFlash = 0;
+
+    private float progress = 0;
     //_isProcessing booleano que comprueba si se está procesando el material
     private bool _isProcessing = false;
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
     private bool _hasFinished = false;
 
-    [SerializeField] private GameObject _objectInProgress;
+    private Material _matScr;
+
 
     #endregion
 
@@ -79,7 +82,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-        CompletionBars();
+        Processing();
     }
     #endregion
 
@@ -90,6 +93,9 @@ public class OvenScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    public bool ReturnBurnt()
+    {  return IsBurnt; }
 
     #endregion
 
@@ -105,21 +111,21 @@ public class OvenScript : MonoBehaviour
     /// Si se completa la de procesamiento, ha terminado el procesamiento del material e inicia la de quemado si no se retira
     /// Mientras no se retire el material activa y desactiva la imagen de flash hasta que se quema y activa el fuego. Quemando el material
     /// </summary>
-    void CompletionBars()
+    void Processing()
     {
         if (_isProcessing && !IsBurnt && transform.childCount == 1)
         {
             _timerCompletion += Time.deltaTime;
-            CompletionImage.fillAmount = (_timerCompletion / 100) * VelCompletion;
-            //_objectInProgress.float = _timerCompletion;
-            if (CompletionImage.fillAmount >= 1)
+            progress = (_timerCompletion / 100) * VelCompletion;
+            _matScr.UpdateProgress(progress);
+            if (progress >= 1)
             {
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _timerBurn += Time.deltaTime;
-                BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 2;
+                //BurningImage.fillAmount = (_timerBurn / 100) * VelCompletion / 1.5f;
+                progress = (_timerBurn / 100) * VelCompletion / 1.5f;
                 _timerFlash += Time.deltaTime;
-
                 Destroy(transform.GetChild(0).gameObject);
                 GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
                 child.transform.SetParent(this.transform);
@@ -150,8 +156,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void ProcessedMaterial()
     {
-        _timerCompletion = _timerBurn = _timerFlash = 0;
-        BurningImage.fillAmount = CompletionImage.fillAmount = 0;
+        progress = _timerBurn = _timerFlash = _timerCompletion = 0;
         FlashImage.SetActive(false);
     }
     /// <summary>
@@ -164,9 +169,10 @@ public class OvenScript : MonoBehaviour
         IsBurnt = true;
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
-        _timerCompletion = 0;
+        progress = 0;
+        _isProcessing = false;
         //Se cambia el material a ceniza
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(1).gameObject);
         GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
         child.transform.SetParent(this.transform);
     }
@@ -180,10 +186,12 @@ public class OvenScript : MonoBehaviour
         if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Hay un material puesto");
-            _objectInProgress = other.gameObject;
+            _matScr = other.gameObject.GetComponent<Material>();
+            progress = _matScr.ReturnProgress();
+
             _isProcessing = true;
         }
-        if (other.gameObject.GetComponent<Material>() != null && _hasFinished)
+        if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
         {
             Debug.Log("Se ha procesado el material");
             ProcessedMaterial();
@@ -195,6 +203,7 @@ public class OvenScript : MonoBehaviour
                                                                 || other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) && transform.childCount == 0)
         {
             Debug.Log("No hay un material puesto");
+            _matScr = null;
             _isProcessing = false;
         }
     }

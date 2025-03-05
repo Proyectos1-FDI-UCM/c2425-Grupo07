@@ -5,8 +5,10 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 /// <summary>
 /// Este enum clasifica los prefabs para luego usarse en determinadas máquinas
@@ -35,6 +37,8 @@ public class Material : MonoBehaviour
 
     public MaterialType matType;
     [SerializeField] private float _materialProgress;
+    [SerializeField] private Image CompletionBar;
+    [SerializeField] private bool isBeingProcessed;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -46,7 +50,8 @@ public class Material : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-
+    //firstUse sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
+    private bool _firstUse = false;
 
     #endregion
 
@@ -63,7 +68,7 @@ public class Material : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        UpdateBar();
     }
 
     /// <summary>
@@ -83,16 +88,27 @@ public class Material : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-
+    /// <summary>
+    /// Actualiza el progreso de procesado del material, se almacenan y recogen valores entre 0 y 1 siendo 0 el objeto intacto y 1 el objeto ya procesado 
+    /// </summary>
+    /// <param name="progress"></param>
+    public void UpdateProgress(float progress)
+    {
+        //Debug.Log("Progreso actualizado: " + progress);
+        _materialProgress = progress;
+        UpdateBar();
+    }
     /// <summary>
     /// Almacena en el script del material el progreso de procesado que lleve.
     /// Se puede introducir como parámetro un entero... creo.... no sé, combrobadlo
     /// </summary>
-    public void StoreProgress(float progreso)
+    public void StoreProgress(float progress)
     {
-        Debug.Log("Progreso guardado: " +  progreso);
-        _materialProgress = progreso;
+        //Debug.Log("Progreso guardado: " +  progress);
+        _materialProgress = progress;
+        UpdateBar();
     }
+
     /// <summary>
     /// Devuelve el progreso de procesado que lleve el script del material.
     /// </summary>
@@ -100,6 +116,11 @@ public class Material : MonoBehaviour
     {
         Debug.Log("Progreso aplicado");
         return _materialProgress;
+    }
+
+    public Image ReturnProgressBar()
+    {
+        return CompletionBar;
     }
 
     #endregion
@@ -110,6 +131,19 @@ public class Material : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+
+    private void UpdateBar()
+    {
+        if (CompletionBar != null)
+        {
+            if (_firstUse) CompletionBar.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(false);
+            else
+            {
+                CompletionBar.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(true);
+                CompletionBar.fillAmount = _materialProgress;
+            }
+        }
+    }
 
     #endregion
 

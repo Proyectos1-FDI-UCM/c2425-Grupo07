@@ -60,7 +60,10 @@ public class PlayerSaw : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+        if (GameObject.FindWithTag("Sierra") != null)
+        {
+            SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+        }
         Player = GameObject.FindWithTag("Player").GetComponent<PlayerVision>();
     }
 
@@ -106,12 +109,9 @@ public class PlayerSaw : MonoBehaviour
     // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.HasWood && SierraClick.CurrentClicks < SierraClick.MaxClicks)
+        if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.GetHasWood() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks() && Player.GetActualMesa().CompareTag("Sierra"))
         {
-            if (Player.GetActualMesa().tag == "Sierra")
-            {
-                SierraClick.Click();
-            }
+            SierraClick.Click();
         }
     }
 

@@ -25,11 +25,8 @@ public class SawScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // PlayerPosition es la posición del jugador
-    [SerializeField] private Transform PlayerPosition;
-
-    // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionImage;
+    // CompletionBarReference es la barra de compleción del material, se usa para la animación de su barra
+    [SerializeField] private Image CompletionBarReference;
 
     // _madera es el GameObject correspondiente a la madera
     [SerializeField] private GameObject _madera;
@@ -38,13 +35,13 @@ public class SawScript : MonoBehaviour
     [SerializeField] private GameObject _maderaProcesada;
 
     // _nClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int MaxClicks = 6;
+    [SerializeField] private int MaxClicks = 6;
 
     // _currentClicks es el número de clicks necesario para completar el proceso de refinamiento
-    public int CurrentClicks = 0;
+    [SerializeField] private int CurrentClicks = 0;
 
     // _carriesWood determina si hay madera en la sierra (true) o no (false)
-    public bool HasWood = false;
+    [SerializeField] private bool HasWood = false;
 
     #endregion
 
@@ -59,6 +56,8 @@ public class SawScript : MonoBehaviour
 
     private int _pastClicks = 0;
 
+    private Material _materialSource;
+
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -68,20 +67,6 @@ public class SawScript : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
     
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        _pastClicks = CurrentClicks;
-        UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
-        PlayerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        if (GetComponent<Collider2D>() == null)
-        {
-            gameObject.AddComponent<BoxCollider2D>();
-        }
-    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -118,8 +103,24 @@ public class SawScript : MonoBehaviour
         if (transform.childCount == 1)
         {
             CurrentClicks++;
+            _materialSource.StoreProgress(CurrentClicks);
             UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
+    }
+
+    public int GetMaxClicks()
+    {
+        return MaxClicks;
+    }
+
+    public int GetCurrentClicks()
+    {
+        return CurrentClicks;
+    }
+
+    public bool GetHasWood()
+    {
+        return HasWood;
     }
 
     #endregion
@@ -136,7 +137,7 @@ public class SawScript : MonoBehaviour
     {
         float _targetCompletion = _currentCompletion / _maxCompletion;
         _pastCompletion = _pastCompletion / _maxCompletion;
-        CompletionImage.fillAmount = _currentCompletion / _maxCompletion;
+        CompletionBarReference.fillAmount = _currentCompletion / _maxCompletion;
         StartCoroutine(CompletionBarAnimation(_targetCompletion, _pastCompletion));
     }
 
@@ -147,10 +148,10 @@ public class SawScript : MonoBehaviour
         while (_timePassed < _transitionTime)
         {
             _timePassed += Time.deltaTime;
-            CompletionImage.fillAmount = Mathf.Lerp(_pastCompletion, _targetCompletion, _timePassed / _transitionTime);
+            CompletionBarReference.fillAmount = Mathf.Lerp(_pastCompletion, _targetCompletion, _timePassed / _transitionTime);
             yield return null;
         }
-        CompletionImage.fillAmount = _targetCompletion;
+        CompletionBarReference.fillAmount = _targetCompletion;
     }
 
 
@@ -159,6 +160,11 @@ public class SawScript : MonoBehaviour
         if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Madera)
         {
             HasWood = true;
+            _materialSource = collision.GetComponent<Material>();
+            CompletionBarReference = _materialSource.ReturnProgressBar();
+            CurrentClicks = (int)_materialSource.ReturnProgress();
+            _pastClicks = CurrentClicks;
+            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
     }
 
@@ -167,6 +173,8 @@ public class SawScript : MonoBehaviour
         if (collision.GetComponent<Material>() != null)
         {
             HasWood = false;
+            _materialSource = null;
+            CompletionBarReference = null; 
         }
     }
 

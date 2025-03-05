@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5465621805917360665}
   - component: {fileID: 3317164196597587}
   - component: {fileID: 1883931610630439363}
-  - component: {fileID: 4164938823036872464}
+  - component: {fileID: 4813525127284193470}
   m_Layer: 8
   m_Name: Cog
   m_TagString: Untagged
@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matType: 4
---- !u!61 &4164938823036872464
-BoxCollider2D:
+  _materialProgress: 0
+--- !u!58 &4813525127284193470
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,16 +132,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2831062, y: 1.2831062}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
-  m_Size: {x: 1.2831062, y: 1.2831062}
-  m_EdgeRadius: 0
+  m_Radius: 0.5

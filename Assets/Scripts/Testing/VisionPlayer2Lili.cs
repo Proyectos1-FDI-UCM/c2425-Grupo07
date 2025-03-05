@@ -74,12 +74,9 @@ public class VisionPlayer2Lili : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
         actualMesa = collision.gameObject;
         actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
-
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -87,13 +84,36 @@ public class VisionPlayer2Lili : MonoBehaviour
         else actualMesa = null;
     }
 
+    /// <summary>
+    /// ++(Drop) Si hay un objeto en la mano (heldObject) y hay una mesa interactiva (actualMesa),
+    /// se intenta soltar el elemento:
+    ///     Si el objeto en la mano es un material y la mesa actual es una mesa de trabajo, no se permite
+    ///     soltar el material y muestra un mensaje por Debug. De lo contrario, suelta el objeto que tenga
+    ///     en heldObject
+    /// ++(InsertMaterial) Si hay un objeto en la mano (heldObject) y hay objeto en donde mira (lookedObject)
+    /// se llama a InsertMaterial
+    /// </summary>
+    /// <param name="context"></param>
     public void Interact(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
             ContentAnalizer();
-            if (heldObject != null && lookedObject == null && actualMesa != null) Drop(); // hay objeto en la mano
-            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
+            if (heldObject != null && lookedObject == null && actualMesa != null)
+            {
+                if (heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
+                { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+                else Drop(); // hay objeto en la mano
+            }
+            else if (heldObject == null && lookedObject != null)
+            {
+                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                { Debug.Log("No se puede recoger el material"); }
+                else
+                {
+                    Pick(); // no hay objeto en la mano
+                }
+            }
             else if (heldObject != null && lookedObject != null) InsertMaterial();
         }
     }
@@ -113,13 +133,18 @@ public class VisionPlayer2Lili : MonoBehaviour
         heldObject = null;
     }
 
+    /// <summary>
+    /// Método que inserta el material al objeto llamando al AddMaterial del script de Objets, siempre y cuando si el lookedObject
+    /// está en una mesa con el tag de "CraftingTable", también mira si el objeto añadido es otro objeto, si es así no se realizará
+    /// el AddMaterial y si el objeto en el que se le añade el material está lleno, se notifica de dicho detalle.
+    /// </summary>
     public void InsertMaterial()
     {
-        if (heldObject != null && lookedObject != null && heldObject.GetComponent<Objets>() != null && lookedObject.GetComponent<Objets>() != null)
+        if(heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
         {
             Debug.Log("No puedes insertar un objeto dentro de otro objeto");
         }
-        else if (lookedObject.GetComponent<Objets>() != null)
+        else if (lookedObject.GetComponent<Objets>())
         {
             if (actualMesa != null && actualMesa.tag == "CraftingTable")
             {
@@ -129,12 +154,11 @@ public class VisionPlayer2Lili : MonoBehaviour
                 {
                     heldObject.SetActive(false);
                     heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
-
                 }
                 else Debug.Log("No se pudo añadir el material al objeto");
             }
             else Debug.Log("Solo insertar materiales en objetos que estén en la mesa de trabajo");
-        }
+        }   
     }
 
     public void ContentAnalizer()

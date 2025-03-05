@@ -23,8 +23,8 @@ public class PlayerWelder : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private Soldadora WelderScript;
-    [SerializeField] private InputActionReference ClickActionReference;
+    [SerializeField] private WelderScript WelderScript;
+    [SerializeField] private InputActionReference InteractActionReference;
 
     #endregion
 
@@ -52,7 +52,10 @@ public class PlayerWelder : MonoBehaviour
     /// </summary>
     void Start()
     {
-        WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<Soldadora>();
+        if (GameObject.FindWithTag("Soldadora") != null)
+        {
+            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<WelderScript>();
+        }
     }
 
     /// <summary>
@@ -83,19 +86,27 @@ public class PlayerWelder : MonoBehaviour
 
     private void OnEnable()
     {
-        ClickActionReference.action.performed += WelderScript.TurnOnWelder;
-        ClickActionReference.action.canceled += WelderScript.TurnOffWelder;
-        ClickActionReference.action.Enable();
+        if (WelderScript != null)
+        {
+            InteractActionReference.action.performed += TurningWelder;
+            InteractActionReference.action.canceled += StopingWelder;
+            InteractActionReference.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        ClickActionReference.action.performed -= WelderScript.TurnOnWelder;
-        ClickActionReference.action.canceled -= WelderScript.TurnOffWelder;
-        ClickActionReference.action.Disable();
+            InteractActionReference.action.performed -= TurningWelder;
+            InteractActionReference.action.canceled -= StopingWelder;
+            InteractActionReference.action.Disable();
     }
 
-    #endregion   
+    private void TurningWelder(InputAction.CallbackContext context) { WelderScript.TurnOnWelder(); }
+    private void StopingWelder(InputAction.CallbackContext context) { WelderScript.TurnOffWelder(); }
+
+
+
+    #endregion
 
 } // class PlayerWelder 
 // namespace

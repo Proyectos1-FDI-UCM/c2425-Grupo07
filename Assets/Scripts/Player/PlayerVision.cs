@@ -7,6 +7,7 @@
 
 using JetBrains.Annotations;
 using System.Diagnostics.Contracts;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,12 +28,21 @@ public class PlayerVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] private InputActionReference PickDropActionReference;
     [SerializeField] GameObject actualMesa;
     [SerializeField] GameObject lookedObject;
     [SerializeField] GameObject heldObject;
     [SerializeField] Transform PickingPos;
-    [SerializeField] Color mesaTint;
+    [SerializeField] LayerMask detectedTilesLayer;
+    [SerializeField] float centerOffset;
+    [SerializeField] float circleRadius;
+    [SerializeField] Color mesaTint = Color.yellow;
+    [SerializeField] Color gizmosColor = Color.green;
     //las dejo serializadas de momento para hacer debug
+
+    [SerializeField] float detectionRate;
+    [SerializeField] float detectionTime;
+    [SerializeField] private bool _onMesasRange = false;
 
     #endregion
 
@@ -44,6 +54,9 @@ public class PlayerVision : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+
+    private GameObject player;
 
     #endregion
 
@@ -61,7 +74,7 @@ public class PlayerVision : MonoBehaviour
 
     void Start()
     {
-
+        player = GetComponentInParent<PlayerDash>().gameObject;
     }
 
     /// <summary>
@@ -69,32 +82,123 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (_onMesasRange)
+        {
+            detectionTime += Time.deltaTime;
+            if (detectionTime > detectionRate)
+            {
+                CalculateNearest();
+                detectionTime = 0;
+            }
+        }
+    }
+    private void CalculateNearest()
+    {
+        bool atLeastOneDetected = false;
+        GameObject lastMesa = actualMesa;
+        float nearestDistance = Mathf.Infinity;
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(player.transform.position + transform.up * centerOffset), circleRadius, detectedTilesLayer);
+        foreach (Collider2D collider in colisiones)
+        {
+            float colliderDistance = Vector3.Distance(collider.transform.position, player.transform.position);
+            if (colliderDistance < nearestDistance)
+            {
+                atLeastOneDetected = true;
+                actualMesa = collider.gameObject;
+                nearestDistance = colliderDistance;
+            }
+        }
+        if (lastMesa != actualMesa && lastMesa != null) 
+        {
+            lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        if (actualMesa != null)
+        {
+            actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
+            if (!atLeastOneDetected)
+            {
+                actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+                actualMesa = null;
+            }
 
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if (player == null) return;
+
+        // Draw the search radius circle
+        Gizmos.color = gizmosColor;
+        Gizmos.DrawWireSphere((Vector2)(player.transform.position + transform.up * centerOffset), circleRadius);
+
+        // Highlight the nearest object
+        if (actualMesa != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(player.transform.position, actualMesa.transform.position);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-        actualMesa = collision.gameObject;
-        actualMesa.GetComponent<SpriteRenderer>().color = mesaTint;
-
-
+        if (collision.gameObject.tag == "RangoDeMesas") _onMesasRange = true;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject != actualMesa) collision.GetComponent<SpriteRenderer>().color = Color.white;
-        else actualMesa = null;
+        if (collision.gameObject.tag == "RangoDeMesas")
+        {
+            _onMesasRange = false;
+            if (actualMesa != null) actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+       
     }
 
-    public void Interact(InputAction.CallbackContext context)
+    private void OnEnable()
     {
-        if (context.phase == InputActionPhase.Started)
-        {
+        PickDropActionReference.action.performed += PickDrop;
+        PickDropActionReference.action.Enable();
+
+    }
+
+    private void OnDisable()
+    {
+        PickDropActionReference.action.performed -= PickDrop;
+        PickDropActionReference.action.Disable();
+    }
+
+    /// <summary>
+    /// ++(Drop) Si hay un objeto en la mano (heldObject) y hay una mesa interactiva (actualMesa),
+    /// se intenta soltar el elemento:
+    ///     Si el objeto en la mano es un material y la mesa actual es una mesa de trabajo, no se permite
+    ///     soltar el material y muestra un mensaje por Debug. De lo contrario, suelta el objeto que tenga
+    ///     en heldObject
+    /// ++(InsertMaterial) Si hay un objeto en la mano (heldObject) y hay objeto en donde mira (lookedObject)
+    /// se llama a InsertMaterial
+    /// </summary>
+    /// <param name="context"></param>
+    public void PickDrop(InputAction.CallbackContext context)
+    {
             ContentAnalizer();
-            if (heldObject != null && lookedObject == null && actualMesa != null ) Drop(); // hay objeto en la mano
-            else if (heldObject == null && lookedObject != null) Pick(); // no hay objeto en la mano
-        }
+            if (heldObject != null && lookedObject == null && actualMesa != null)
+            {
+                if (heldObject.GetComponent<Material>().matType != MaterialType.Arena && actualMesa.GetComponent<OvenScript>() != null ||
+                    heldObject.GetComponent<Material>().matType != MaterialType.Madera && actualMesa.GetComponent<SawScript>() != null ||
+                    heldObject.GetComponent<Material>().matType != MaterialType.Metal && actualMesa.GetComponent<WelderScript>() != null ||
+                    heldObject.GetComponent<Material>() && actualMesa.tag == "CraftingTable")
+                { Debug.Log("No se puede dropear el material en la mesa de trabajo"); }
+                else Drop(); // hay objeto en la mano
+            }
+            else if (heldObject == null && lookedObject != null)
+            {
+                if (actualMesa.GetComponent<OvenScript>() != null && actualMesa.GetComponent<OvenScript>().ReturnBurnt())
+                { Debug.Log("No se puede recoger el material"); }
+                else
+                {
+                    Pick(); // no hay objeto en la mano
+                }
+            }
+            else if (heldObject != null && lookedObject != null) InsertMaterial();
     }
     public void Pick()
     {
@@ -111,13 +215,41 @@ public class PlayerVision : MonoBehaviour
         heldObject.transform.SetParent(actualMesa.transform);
         heldObject = null; 
     }
+    /// <summary>
+    /// Método que inserta el material al objeto llamando al AddMaterial del script de Objets, siempre y cuando si el lookedObject
+    /// está en una mesa con el tag de "CraftingTable", también mira si el objeto añadido es otro objeto, si es así no se realizará
+    /// el AddMaterial y si el objeto en el que se le añade el material está lleno, se notifica de dicho detalle.
+    /// </summary>
+    public void InsertMaterial()
+    {
+        if (heldObject.GetComponent<Objets>() && lookedObject.GetComponent<Objets>())
+        {
+            Debug.Log("No puedes insertar un objeto dentro de otro objeto");
+        }
+        else if (lookedObject.GetComponent<Objets>())
+        {
+            if (actualMesa != null && actualMesa.tag == "CraftingTable")
+            {
+                Objets objetoScript = lookedObject.GetComponent<Objets>();
+                bool materialAdded = objetoScript.AddMaterial(heldObject);
+                if (materialAdded)
+                {
+                    heldObject.SetActive(false);
+                    heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
+                }
+                else Debug.Log("No se pudo añadir el material al objeto");
+            }
+            else Debug.Log("Solo insertar materiales en objetos que estén en la mesa de trabajo");
+        }
+    }
+
     public void ContentAnalizer()
     {
         if (actualMesa != null)
         {
-            if (actualMesa.transform.childCount >= 1 && actualMesa.GetComponentInChildren<Material>() != null)
+            if (actualMesa.transform.childCount >= 1)
             {
-                lookedObject = actualMesa.GetComponentInChildren<Material>().gameObject;
+                lookedObject = actualMesa.transform.GetChild(0).gameObject;
             }
             else lookedObject = null;
         }

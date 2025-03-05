@@ -7,6 +7,10 @@ TagManager:
   - Sierra
   - Herramienta
   - CraftingTable
+  - Soldadora
+  - RangoDeMesas
+  - Horno
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -18,9 +22,9 @@ TagManager:
   - Ground
   - Pickable
   - Picker
-  - Mesas
+  - Detectable
   - Herramientas
-  - 
+  - RangoDeDeteccion
   - 
   - 
   - 

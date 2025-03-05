@@ -17,7 +17,7 @@ using UnityEngine.UI;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Soldadora : MonoBehaviour
+public class WelderScript : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -27,19 +27,16 @@ public class Soldadora : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // PlayerPosition es la posición del jugador
-    [SerializeField] private Transform _playerPosition;
 
     // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionImage;
+    [SerializeField] private Image CompletionBarReference;
+    [SerializeField] private GameObject _metalProcesado;
 
-    //Rapidez de trabajo 
+    //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
     [SerializeField] private float _workSpeed;
 
-    // maxProgress es el número max necesario para completar el proceso de refinamiento
-    [SerializeField] private int _maxProgress = 6;
-
-    [SerializeField] private InputActionReference ClickActionReference;
+    // completionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    [SerializeField] private int _completionTime = 6;
 
     #endregion
 
@@ -59,6 +56,9 @@ public class Soldadora : MonoBehaviour
 
     public bool canUse;
 
+    private Material _materialSource;
+    
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -68,6 +68,8 @@ public class Soldadora : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -75,12 +77,6 @@ public class Soldadora : MonoBehaviour
     void Start()
     {
         _progress = 0;
-        if (_playerPosition == null)
-        {
-            _playerPosition = GameObject.FindAnyObjectByType<PlayerMovement>().transform;
-        }
-
-        UpdateCompletionBar(_maxProgress, _progress);
     }
 
     /// <summary>
@@ -88,10 +84,20 @@ public class Soldadora : MonoBehaviour
     /// </summary>
     void Update()
     {
-       if (_isWorking)
-       {
-            _progress += (Time.deltaTime * _workSpeed);
-            UpdateCompletionBar(_maxProgress, _progress);
+
+        if (_isWorking)
+        {
+            _progress += (Time.deltaTime * _workSpeed) / _completionTime;
+            _materialSource.UpdateProgress(_progress);
+            
+        }
+        if (_progress >= 1)
+        {
+            _progress = 0;
+            Destroy(_materialSource);
+            GameObject metalProcesado = Instantiate(_metalProcesado, this.gameObject.transform.position, gameObject.transform.rotation);
+            metalProcesado.transform.SetParent(this.transform);
+            canUse = false;
         }
     }
     #endregion
@@ -105,21 +111,35 @@ public class Soldadora : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     //
-    public void TurnOnWelder(InputAction.CallbackContext context)
+    public void TurnOnWelder()
     {
-        if (canUse)
+        Debug.Log("encendiendo soldadora");
+        if (canUse) _isWorking = true;
+    }
+    public void TurnOffWelder()
+    {
+        Debug.Log("apagando soldadora");
+        if (canUse) _isWorking = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
         {
-            _isWorking = true;
-            UpdateCompletionBar(_maxProgress, _progress);
+            _materialSource = collision.GetComponent<Material>();
+            _progress = _materialSource.ReturnProgress();
+            CompletionBarReference = _materialSource.ReturnProgressBar();
+            canUse = true;
         }
     }
-    public void TurnOffWelder(InputAction.CallbackContext context)
-    {
-        if (canUse) 
-        { 
-            _isWorking = false;
-            UpdateCompletionBar(_maxProgress, _progress);
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null)
+        {
+            _materialSource = null;
+            CompletionBarReference = null;
+            canUse = false;
         }
     }
 
@@ -132,35 +152,15 @@ public class Soldadora : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    
+
 
     // Actualiza la barra de compleción de la soldadora
-    private void UpdateCompletionBar(float _maxCompletion, float _currentCompletion)
-    {
-        float _targetCompletion = _currentCompletion / _maxCompletion;
-        CompletionImage.fillAmount = _currentCompletion / _maxCompletion;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
-        {
-            _progress = collision.gameObject.GetComponent<Material>().ReturnProgress();
-            
-            canUse = true; 
 
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
-        { canUse = false;
-            collision.gameObject.GetComponent<Material>().StoreProgress(_progress);
-            _progress = 0;
-            UpdateCompletionBar(_maxProgress, _progress);
-        }
-    }
+
+
+
 
     #endregion   
 
