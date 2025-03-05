@@ -107,7 +107,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Processing()
     {
-        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena)
+        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena && transform.childCount == 1)
         {
             progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(progress);
