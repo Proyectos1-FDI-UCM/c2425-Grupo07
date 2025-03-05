@@ -83,26 +83,29 @@ public class PlayerWelder : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    private void OnEnable()
+    void Awake()
     {
         if (WelderScript != null)
         {
-            InteractActionReference.action.performed += TurningWelder;
-            InteractActionReference.action.canceled += StopingWelder;
+            InteractActionReference.action.performed += ctx => TurningWelder();
+            InteractActionReference.action.canceled += ctx => StopingWelder();
             InteractActionReference.action.Enable();
         }
+    }
+    /*private void OnEnable()
+    {
+
     }
 
     private void OnDisable()
     {
-            InteractActionReference.action.performed -= TurningWelder;
-            InteractActionReference.action.canceled -= StopingWelder;
+            InteractActionReference.action.performed += ctx => TurningWelder();
+        InteractActionReference.action.canceled -= ctx => StopingWelder();
             InteractActionReference.action.Disable();
-    }
+    }*/
 
-    private void TurningWelder(InputAction.CallbackContext context) { WelderScript.TurnOnWelder(); }
-    private void StopingWelder(InputAction.CallbackContext context) { WelderScript.TurnOffWelder(); }
+    private void TurningWelder() { WelderScript.TurnOnWelder(); }
+    private void StopingWelder() { WelderScript.TurnOffWelder(); }
 
 
 

@@ -89,7 +89,6 @@ public class WelderScript : MonoBehaviour
         {
             _progress += (Time.deltaTime * _workSpeed) / _completionTime;
             _materialSource.UpdateProgress(_progress);
-            
         }
         if (_progress >= 1)
         {
