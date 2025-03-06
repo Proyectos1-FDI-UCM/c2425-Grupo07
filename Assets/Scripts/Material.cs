@@ -51,7 +51,7 @@ public class Material : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     //firstUse sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
-    private bool _firstUse = false;
+    private bool _UsedOnce = false;
 
     #endregion
 
@@ -94,17 +94,7 @@ public class Material : MonoBehaviour
     /// <param name="progress"></param>
     public void UpdateProgress(float progress)
     {
-        //Debug.Log("Progreso actualizado: " + progress);
-        _materialProgress = progress;
-        UpdateBar();
-    }
-    /// <summary>
-    /// Almacena en el script del material el progreso de procesado que lleve.
-    /// Se puede introducir como parámetro un entero... creo.... no sé, combrobadlo
-    /// </summary>
-    public void StoreProgress(float progress)
-    {
-        //Debug.Log("Progreso guardado: " +  progress);
+        _UsedOnce = true;
         _materialProgress = progress;
         UpdateBar();
     }
@@ -136,10 +126,10 @@ public class Material : MonoBehaviour
     {
         if (CompletionBar != null)
         {
-            if (_firstUse) CompletionBar.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(false);
+            if (!_UsedOnce) CompletionBar.gameObject.GetComponentInParent<Canvas>().enabled = false;
             else
             {
-                CompletionBar.gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(true);
+                CompletionBar.gameObject.GetComponentInParent<Canvas>().enabled = true;
                 CompletionBar.fillAmount = _materialProgress;
             }
         }

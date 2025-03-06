@@ -104,7 +104,7 @@ public class SawScript : MonoBehaviour
         if (transform.childCount == 1)
         {
             CurrentClicks++;
-            _materialSource.StoreProgress(CurrentClicks);
+            _materialSource.UpdateProgress(CurrentClicks);
             if (CompletionBarReference != null && CurrentClicks <= MaxClicks)
             {
                 UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
