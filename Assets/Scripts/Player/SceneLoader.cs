@@ -69,9 +69,9 @@ public class SceneLoader : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void WarpScene(int index)
+    public void WarpScene(string nameScene)
     {
-        GameManager.Instance.ChangeScene(index);
+        Application.LoadLevel(nameScene);
     }
     public void SelectRack(bool selection)
     {
