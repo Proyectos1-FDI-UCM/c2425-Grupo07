@@ -168,9 +168,9 @@ public class PlayerVision : MonoBehaviour
     }
 
     /// <summary>
-    /// ++(Drop) Si hay un objeto en la mano (heldObject) y hay una mesa interactiva (actualMesa),
+    /// ++(Drop) Si hay un objeto en la mano (heldObject) y hay una herramienta interactiva,
     /// se intenta soltar el elemento:
-    ///     Si el objeto en la mano es un material y la mesa actual es una mesa de trabajo, no se permite
+    ///     Si el objeto en la mano es el correcto y la mesa actual es una herramienta no adecuada, no se permite
     ///     soltar el material y muestra un mensaje por Debug. De lo contrario, suelta el objeto que tenga
     ///     en heldObject
     /// ++(InsertMaterial) Si hay un objeto en la mano (heldObject) y hay objeto en donde mira (lookedObject)

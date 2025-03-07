@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Mesa : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,7 +23,6 @@ public class Mesa : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject placedObject;
 
     #endregion
     
@@ -69,6 +69,10 @@ public class Mesa : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void WarpScene(string nameScene)
+    {
+        Application.LoadLevel(nameScene);
+    }
 
     #endregion
     
@@ -81,5 +85,5 @@ public class Mesa : MonoBehaviour
 
     #endregion   
 
-} // class Mesa 
+} // class SceneLoader 
 // namespace

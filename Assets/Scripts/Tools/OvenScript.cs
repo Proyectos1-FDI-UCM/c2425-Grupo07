@@ -1,19 +1,27 @@
 //---------------------------------------------------------
-// El horno deberá procesar un material que se ha insertado cuando vaya pasando un tiempo. Si pasa demasiado tiempo, el material se quema y sale fuego.
-// Guillermo Isaac Rmaos Medina
+// El horno deberá procesar un material que se ha insertado cuando vaya pasando un tiempo. Si pasa demasiado tiempo, el material se quema y sale fuego. Contiene:
+// Contador de procesamiento de la arena que inicia si se coloca el material concreto
+// Contador de quemado que empieza cuando se procesa un material
+// Método que actualiza el progreso del material
+// Guillermo 
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Este script es el que procesa únicamente la arena y la convierte en cristal. 
+/// Se tiene que inserta un objeto de arena soltándolo sobre el horno para que inicie el contador de progreso del material
+/// Después de “n” segundos, se tendrá preparado un material procesado de “cristal”. 
+/// Si el objeto procesado se queda un tiempo en el horno, se incendia esta estación de trabajo, 
+/// Y el material se convierte en “Cristal roto”, el cual no tendrá ninguna utilidad y podrá ser descartado en la basura (después de quitar el fuego).
 /// </summary>
 public class OvenScript : MonoBehaviour
 {
@@ -51,7 +59,7 @@ public class OvenScript : MonoBehaviour
     //_timerFlash Intervalo de tiempo en que la imagen se activa/desactiva
     private float _timerFlash = 0;
 
-    [SerializeField]private float progress = 0;
+    private float _progress = 0;
     //_isProcessing booleano que comprueba si se está procesando el material
     private bool _isProcessing = false;
     //_hasFinished booleano que comprueba si el proceso se ha terminado el proceso
@@ -109,11 +117,11 @@ public class OvenScript : MonoBehaviour
     {
         if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena && transform.childCount == 1)
         {
-            progress += (Time.deltaTime / 100) * VelCompletion;
-            _matScr.UpdateProgress(progress);
-            if (progress >= 1)
+            _progress += (Time.deltaTime / 100) * VelCompletion;
+            _matScr.UpdateProgress(_progress);
+            if (_progress >= 1)
             {
-                progress = 0;
+                _progress = 0;
                 _hasFinished = true;
                 Debug.Log("Se ha procesado el material");
                 _hasFinished = true;
@@ -125,9 +133,9 @@ public class OvenScript : MonoBehaviour
         }
         if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Cristal)
         {
-            _matScr.UpdateProgress(progress);
+            _matScr.UpdateProgress(_progress);
             _timerBurn += Time.deltaTime;
-            progress = (_timerBurn / 100) * VelCompletion / 1.5f;
+            _progress = (_timerBurn / 100) * VelCompletion / 1.5f;
             _timerFlash += Time.deltaTime;
 
             if (_timerFlash < 0.5 / _timerBurn)
@@ -142,7 +150,7 @@ public class OvenScript : MonoBehaviour
             {
                 _timerFlash = 0;
             }
-            if (progress >= 1)
+            if (_progress >= 1)
             {
                 BurntMaterial();
             }
@@ -154,7 +162,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void ProcessedMaterial()
     {
-        progress = _timerBurn = _timerFlash = 0;
+        _progress = _timerBurn = _timerFlash = 0;
         FlashImage.SetActive(false);
     }
     /// <summary>
@@ -167,7 +175,7 @@ public class OvenScript : MonoBehaviour
         IsBurnt = true;
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
-        progress = 0;
+        _progress = 0;
         _isProcessing = false;
         //Se cambia el material a ceniza
         Destroy(transform.GetChild(0).gameObject);
@@ -185,7 +193,7 @@ public class OvenScript : MonoBehaviour
         {
             Debug.Log("Hay un material puesto");
             _matScr = other.gameObject.GetComponent<Material>();
-            progress = _matScr.ReturnProgress();
+            _progress = _matScr.ReturnProgress();
             _isProcessing = true;
         }
         if (other.gameObject.GetComponent<Material>() != null && _hasFinished && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena)

@@ -71,7 +71,7 @@ public class PlayerDash : MonoBehaviour
             }
     }
     /// <summary>
-    /// Awake se llama para los componentes de físicas y movimiento
+    /// Start se llama para los componentes de físicas y movimiento
     /// </summary>
     void Start()
     {

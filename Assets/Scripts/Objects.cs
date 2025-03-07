@@ -140,11 +140,13 @@ public class Objects : MonoBehaviour
     }
 
     /// <summary>
-    /// Método que verifica que los materiales del requerido del array de _ordenPedidos y del array del _materiales del objeto sean iguales dependiendo del emun (tipo) que es de su script Material
+    /// Método que verifica que los materiales del requerido del array de _ordenPedidos y del array del _materiales del objeto sean iguales
+    /// dependiendo del emun (tipo) que es de su script Material
     /// </summary>
     /// <param name="material"> Contenido del array de _materiales que el objeto almacena </param>
     /// <param name="required"> Contenido del array de _ordenPedidos que son la condición para que se complete el objeto </param>
-    /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material, si son iguales retorna true </returns>
+    /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material,
+    /// si son iguales retorna true </returns>
     private bool IsSameMaterialType(GameObject material, GameObject required)
     {
         if (material == null || required == null)
