@@ -109,7 +109,13 @@ public class WelderScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    /// <summary>
+    /// Cambia el tiempo máximo acorde a qué jugador interactua con la soldadora
+    /// </summary>
+    public void ChangeMaxTime(int time)
+    {
+        _completionTime = time;
+    }
     /// <summary>
     /// Se llama a este metodo para hacer funcionar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
     /// </summary>

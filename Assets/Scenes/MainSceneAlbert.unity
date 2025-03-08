@@ -624,6 +624,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3047328990291088811, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
+      propertyPath: MaxClicks
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3603700040163876187, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -4733,6 +4737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: VelCompletion
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7830616770942427782, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8397,6 +8405,10 @@ PrefabInstance:
     - target: {fileID: 271874080825723453, guid: a06e3ed025e8bee4db2f8df1ab848574, type: 3}
       propertyPath: m_Name
       value: Soldadora
+      objectReference: {fileID: 0}
+    - target: {fileID: 2842001806073438869, guid: a06e3ed025e8bee4db2f8df1ab848574, type: 3}
+      propertyPath: _completionTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5467733868734776611, guid: a06e3ed025e8bee4db2f8df1ab848574, type: 3}
       propertyPath: m_LocalPosition.x

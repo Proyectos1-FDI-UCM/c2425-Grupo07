@@ -116,7 +116,13 @@ public class SawScript : MonoBehaviour
     {
         return MaxClicks;
     }
-
+    /// <summary>
+    /// Cambia el número de clicks máximo acorde a qué jugador interactua con ella
+    /// </summary>
+    public void ChangeMaxClicks(int clicks)
+    {
+        MaxClicks = clicks;
+    }
     public int GetCurrentClicks()
     {
         return CurrentClicks;

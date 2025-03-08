@@ -92,6 +92,27 @@ public class PlayerVision : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Change Velocity se encarga de asignar la velocidad de las herramientas acorde a qué personaje se acerque a estas
+    /// En el horno solo funciona cuando se coloca el material
+    /// En la sierra y la soldadora cuando se interactue
+    /// </summary>
+    void ChangeVelocity()
+    {
+        gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().pType);
+        if (actualMesa.GetComponent<OvenScript>() != null && !actualMesa.GetComponent<OvenScript>().ReturnInProgress())
+        {
+            actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());
+        }
+        else if (actualMesa.GetComponent<SawScript>() != null)
+        {
+            actualMesa.GetComponent<SawScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnSaw());
+        }
+        else if (actualMesa.GetComponent<WelderScript>() != null)
+        {
+            actualMesa.GetComponent<WelderScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnWelder());
+        }
+    }
     private void CalculateNearest()
     {
         bool atLeastOneDetected = false;
@@ -134,6 +155,7 @@ public class PlayerVision : MonoBehaviour
         // Highlight the nearest object
         if (actualMesa != null)
         {
+            ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
             Gizmos.color = Color.red;
             Gizmos.DrawLine(player.transform.position, actualMesa.transform.position);
         }

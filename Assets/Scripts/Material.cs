@@ -34,7 +34,7 @@ public class Material : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
+    // Hace que los métodos puedan acceder al tipo de Material 
     public MaterialType matType;
     [SerializeField] private float _materialProgress;
     [SerializeField] private Image CompletionBar;

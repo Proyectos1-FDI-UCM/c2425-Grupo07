@@ -95,9 +95,15 @@ public class OvenScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    // Devuelve si el material se ha quemado
+    // Devuelve si el material se ha quemado para saber si se puede interactuar con él
     public bool ReturnBurnt()
     {  return IsBurnt; }
+    // Cambia la velocidad del horno acorde a qué jugador interactua él
+    public void ChangeVelocity(int vel)
+    { VelCompletion = vel; }
+    // Devuelve si se está procesando el horno para cambiarle la velocidad o no
+    public bool ReturnInProgress()
+    { return _isProcessing; }
 
     #endregion
 
