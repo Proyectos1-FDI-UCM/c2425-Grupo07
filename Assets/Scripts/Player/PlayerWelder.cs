@@ -37,6 +37,10 @@ public class PlayerWelder : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private PlayerVision _playerVision;
+    private PlayerMovement _playerMovement;
+
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -56,6 +60,8 @@ public class PlayerWelder : MonoBehaviour
         {
             WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<WelderScript>();
         }
+        _playerVision = GetComponent<PlayerVision>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     /// <summary>
@@ -83,26 +89,33 @@ public class PlayerWelder : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    private void OnEnable()
+    void Awake()
     {
-        if (WelderScript != null)
-        {
-            InteractActionReference.action.performed += TurningWelder;
-            InteractActionReference.action.canceled += StopingWelder;
+            InteractActionReference.action.performed += ctx => TurningWelder();
+            InteractActionReference.action.canceled += ctx => StopingWelder();
             InteractActionReference.action.Enable();
+    }
+
+    private void TurningWelder() 
+    { 
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
+        {
+            _playerMovement.enabled = false;
+            _playerVision.enabled = false;
+            WelderScript.TurnOnWelder();
         }
+         
     }
-
-    private void OnDisable()
+    private void StopingWelder() 
     {
-            InteractActionReference.action.performed -= TurningWelder;
-            InteractActionReference.action.canceled -= StopingWelder;
-            InteractActionReference.action.Disable();
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
+        {
+            _playerMovement.enabled = true;
+            _playerVision.enabled = true;
+            WelderScript.TurnOffWelder();
+        }
+             
     }
-
-    private void TurningWelder(InputAction.CallbackContext context) { WelderScript.TurnOnWelder(); }
-    private void StopingWelder(InputAction.CallbackContext context) { WelderScript.TurnOffWelder(); }
 
 
 

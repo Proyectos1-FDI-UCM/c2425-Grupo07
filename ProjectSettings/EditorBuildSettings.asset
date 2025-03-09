@@ -8,29 +8,26 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuPlantilla.unity
     guid: 88ab91c3c24f24d8789e651802f2b486
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: 20527f57389d748ee93839d6d77bce46
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 1efe92992ed1ca34fbbfa563c2cb0334
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FerranEscena.unity
     guid: f358fa1dce3720d4da6cfd2307313901
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GuillermoEscena.unity
     guid: e78cedf7806259443a4e3dcd4e7239cd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LilingEscene.unity
     guid: 432bf19693c30954fa39ab36b0485879
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Oliver.unity
     guid: 67989654c80ca9b4a9dd68607612e146
   - enabled: 1
-    path: Assets/Scenes/TitleScreen Test.unity
+    path: Assets/Scenes/TitleScreen.unity
     guid: ce6c3796a24afcd4e892d5afa9ecc268
   - enabled: 1
     path: Assets/Scenes/SelectionMenu.unity
@@ -38,7 +35,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Player1Selection.unity
     guid: f3bd93c1b8dfb9e40b9d5f76bcaeeaa8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Player2Selection.unity
     guid: 97960771d03a85540ab4fd671feb81cc
+  - enabled: 1
+    path: Assets/Scenes/MainSceneAlbert.unity
+    guid: 530f3fc3ac071474e9ea8b33fcbca9cd
+  - enabled: 1
+    path: Assets/Scenes/MainSceneRack.unity
+    guid: 1efe92992ed1ca34fbbfa563c2cb0334
   m_configObjects: {}

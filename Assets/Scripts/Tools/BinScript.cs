@@ -11,7 +11,7 @@ using UnityEngine;
 /// Clase que representa un contenedor de basura donde los jugadores pueden desechar materiales.
 /// Cuando un material se establece como hijo de este objeto, se destruye automáticamente.
 /// </summary>
-public class Basura : MonoBehaviour
+public class BinScript : MonoBehaviour
 {
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour

@@ -1,19 +1,27 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Se encarga de diferenciar a los dos personajes del juego y cambiar la velocidad de las herramientas
+// Guillermo
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
+public enum PlayerType
+{
+    Velocista, 
+    Reparador
+}
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// La clase del PlayerManager se encarga de hacer que los métodos puedan acceder al tipo de jugador 
+/// Después se puede llamar al método SetVel para definir la velocidad en ciertas herramientas
 /// </summary>
-public class Mesa : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,10 +30,11 @@ public class Mesa : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject placedObject;
+    // Hacer que los métodos puedan acceder al tipo de jugador 
+    public PlayerType pType;
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,33 +43,13 @@ public class Mesa : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    // Atributos de la velocidad deseada en:
+    int _velOven;  // Horno
+    int _velWelder; // Soldadora
+    int _clicksSaw; // Sierra
 
     #endregion
-    
-    // ---- MÉTODOS DE MONOBEHAVIOUR ----
-    #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
-    #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -69,17 +58,32 @@ public class Mesa : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    // Define la velocidad en ciertas herramientas
+    public void SetVel(PlayerType pType)
+    {
+        this.pType = pType;
+        switch (pType)
+        {
+            case PlayerType.Reparador:
+                _velOven = 30;
+                _clicksSaw = 3;
+                _velWelder = 3;
+                break;
+            case PlayerType.Velocista:
+                _velOven = 15;
+                _clicksSaw = 6;
+                _velWelder = 6;
+                break;
+        }
+    }
+    // Devuelve la velocidad acorde al jugador de:
+    public int ReturnOven() // El Horno
+    { return _velOven; }
+    public int ReturnSaw() // La Sierra
+    { return _clicksSaw; }
+    public int ReturnWelder() // La Soldadora
+    { return _velWelder; }
     #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
-    #endregion   
-
-} // class Mesa 
+} // class PlayerManager 
 // namespace

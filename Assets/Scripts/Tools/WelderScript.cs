@@ -29,7 +29,7 @@ public class WelderScript : MonoBehaviour
 
 
     // CompletionImage es la barra de compleción del proceso de refinamiento
-    //[SerializeField] private Image CompletionBarReference;
+    [SerializeField] private Image CompletionBarReference;
     [SerializeField] private GameObject _metalProcesado;
 
     //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
@@ -54,9 +54,9 @@ public class WelderScript : MonoBehaviour
 
     private float _progress;
 
-    public bool canUse;
+    public bool hasMetal;
 
-    private Material _materialSource;
+    [SerializeField] private Material _materialSource;
     
 
     #endregion
@@ -89,15 +89,15 @@ public class WelderScript : MonoBehaviour
         {
             _progress += (Time.deltaTime * _workSpeed) / _completionTime;
             _materialSource.UpdateProgress(_progress);
-            
         }
         if (_progress >= 1)
         {
             _progress = 0;
-            Destroy(_materialSource);
+            Destroy(_materialSource.gameObject);
             GameObject metalProcesado = Instantiate(_metalProcesado, this.gameObject.transform.position, gameObject.transform.rotation);
             metalProcesado.transform.SetParent(this.transform);
-            canUse = false;
+            hasMetal = false;
+            _isWorking = false;
         }
     }
     #endregion
@@ -109,38 +109,55 @@ public class WelderScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
-    //
-    public void TurnOnWelder()
+    /// <summary>
+    /// Cambia el tiempo máximo acorde a qué jugador interactua con la soldadora
+    /// </summary>
+    public void ChangeMaxTime(int time)
     {
-        Debug.Log("encendiendo soldadora");
-        if (canUse) _isWorking = true;
+        _completionTime = time;
     }
+    /// <summary>
+    /// Se llama a este metodo para hacer funcionar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
+    /// </summary>
+    public void TurnOnWelder() 
+    {
+
+        if (hasMetal)
+        {
+            Debug.Log("encendiendo soldadora");
+            _isWorking = true;
+        }
+    }
+    /// <summary>
+    /// Se llama a este metodo para hacer parar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
+    /// </summary>
     public void TurnOffWelder()
     {
-        Debug.Log("apagando soldadora");
-        if (!canUse) _isWorking = false;
+        if(hasMetal)
+        {
+            Debug.Log("apagando soldadora");
+            _isWorking = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
+        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
         {
-            Debug.Log("Hay un material puesto");
-            _materialSource = collision.gameObject.GetComponent<Material>();
+            _materialSource = collision.GetComponent<Material>();
             _progress = _materialSource.ReturnProgress();
-            //CompletionBarReference = _materialSource.ReturnProgressBar();
-            canUse = true;
+            CompletionBarReference = _materialSource.ReturnProgressBar();
+            hasMetal = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Material>() != null)
+        if (collision.GetComponent<Material>() != null)
         {
             _materialSource = null;
-            //CompletionBarReference = null;
-            canUse = false;
+            CompletionBarReference = null;
+            hasMetal = false;
         }
     }
 

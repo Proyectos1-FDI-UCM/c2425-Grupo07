@@ -104,7 +104,7 @@ public class SawScript : MonoBehaviour
         if (transform.childCount == 1)
         {
             CurrentClicks++;
-            _materialSource.StoreProgress(CurrentClicks);
+            _materialSource.UpdateProgress(CurrentClicks);
             if (CompletionBarReference != null && CurrentClicks <= MaxClicks)
             {
                 UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
@@ -116,7 +116,13 @@ public class SawScript : MonoBehaviour
     {
         return MaxClicks;
     }
-
+    /// <summary>
+    /// Cambia el número de clicks máximo acorde a qué jugador interactua con ella
+    /// </summary>
+    public void ChangeMaxClicks(int clicks)
+    {
+        MaxClicks = clicks;
+    }
     public int GetCurrentClicks()
     {
         return CurrentClicks;

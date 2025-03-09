@@ -16,6 +16,9 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Este script se encarga de recoger un input de jugador dedicado al movimiento y mueve al personaje en las 
+/// direcciones introducidas por el jugador. Además se gira al jugador acourde al input del jugador 
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
