@@ -1,12 +1,10 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este es el script responsable de la identidad de cada material y de su progreso de procesado. 
+// Óliver García Aguado
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
@@ -35,10 +33,9 @@ public class Material : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     // Hace que los métodos puedan acceder al tipo de Material 
-    public MaterialType matType;
-    [SerializeField] private float _materialProgress;
-    [SerializeField] private Image CompletionBar;
-    [SerializeField] private bool isBeingProcessed;
+    public MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
+    [SerializeField] private float _materialProgress; // El progreso de procesado del material
+    [SerializeField] private Image CompletionBar; //La barra de progreso del material
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -71,13 +68,6 @@ public class Material : MonoBehaviour
         UpdateBar();
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -100,14 +90,17 @@ public class Material : MonoBehaviour
     }
 
     /// <summary>
-    /// Devuelve el progreso de procesado que lleve el script del material.
+    /// Devuelve el progreso de procesado que lleve el script del material y actualiza la variable de progreso de la herramienta a la que el jugador se haya acercado..
     /// </summary>
     public float ReturnProgress()
     {
         Debug.Log("Progreso aplicado");
         return _materialProgress;
     }
-
+    /// <summary>
+    ///Devuelve una referencia de la barra de progreso del material, esta referencia es utilizada para que la sierra pueda realizar la animación de procesado
+    /// </summary>
+    /// <returns></returns>
     public Image ReturnProgressBar()
     {
         return CompletionBar;
@@ -122,9 +115,12 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Se encarga de actualizar como de avanzada debe estar la barra del material, toma como argumento el progreso del material (valores entre 0 y 1) 
+    /// </summary>
     private void UpdateBar()
     {
-        if (CompletionBar != null)
+        if (CompletionBar != null) //No todos los materiales tienen una barra, esta condicional evita errores de tipo NullReferenceException
         {
             if (!_UsedOnce) CompletionBar.gameObject.GetComponentInParent<Canvas>().enabled = false;
             else
