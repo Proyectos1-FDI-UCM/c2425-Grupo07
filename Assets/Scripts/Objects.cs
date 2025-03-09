@@ -23,24 +23,9 @@ public class Objects : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    #endregion
-
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
-
-    [SerializeField] private GameObject[] _materials = new GameObject[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
-    [SerializeField] private GameObject[] _ordenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
-    private bool _complete = false; //Indica si el objeto está completado correctamente.
-    [SerializeField] private Renderer[] _capacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
-
+    [SerializeField] private GameObject[] Materials = new GameObject[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
+    [SerializeField] private GameObject[] OrdenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
+    [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -77,7 +62,7 @@ public class Objects : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// AddMaterial busca por el array de _materials un hueco null, si lo encuentra, inserta en i el 
+    /// AddMaterial busca por el array de Materials un hueco null, si lo encuentra, inserta en i el 
     /// Gameobject y devuelve true, sino, sigue buscando por el array hasta el último, si no hay más 
     /// hueco lo notifica y agredado (bool) será false
     /// </summary>
@@ -88,11 +73,11 @@ public class Objects : MonoBehaviour
     {
         bool agregado = false;
         int i = 0;
-        while (!agregado && i < _materials.Length)
+        while (!agregado && i < Materials.Length)
         {
-            if (_materials[i] == null)
+            if (Materials[i] == null)
             {
-                _materials[i] = material;
+                Materials[i] = material;
                 agregado = true;
                 IsCompleted();
             }
@@ -111,12 +96,12 @@ public class Objects : MonoBehaviour
         int n = 0;
 
         // Recorre cada objeto requerido en el pedido
-        foreach (GameObject required in _ordenPedidos)
+        foreach (GameObject required in OrdenPedidos)
         {
             if (required == null) continue; // Ignora objetos nulos en el pedido
 
             // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
-            if (!IsSameMaterialType(_materials[n], required))
+            if (!IsSameMaterialType(Materials[n], required))
             {
                 Debug.Log("FALSE Material no coincide con el pedido o está incompleto");
                 return false;
@@ -125,9 +110,9 @@ public class Objects : MonoBehaviour
         }
 
         // Verifica si hay materiales adicionales que no están en el pedido
-        while (n < _materials.Length)
+        while (n < Materials.Length)
         {
-            if (_materials[n] != null)
+            if (Materials[n] != null)
             {
                 Debug.Log("FALSE Hay materiales adicionales que no están en el orden de pedidos.");
                 return false;
@@ -140,11 +125,11 @@ public class Objects : MonoBehaviour
     }
 
     /// <summary>
-    /// Método que verifica que los materiales del requerido del array de _ordenPedidos y del array del _materiales del objeto sean iguales
+    /// Método que verifica que los materiales del requerido del array de OrdenPedidos y del array del Materiales del objeto sean iguales
     /// dependiendo del emun (tipo) que es de su script Material
     /// </summary>
-    /// <param name="material"> Contenido del array de _materiales que el objeto almacena </param>
-    /// <param name="required"> Contenido del array de _ordenPedidos que son la condición para que se complete el objeto </param>
+    /// <param name="material"> Contenido del array de Materiales que el objeto almacena </param>
+    /// <param name="required"> Contenido del array de OrdenPedidos que son la condición para que se complete el objeto </param>
     /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material,
     /// si son iguales retorna true </returns>
     private bool IsSameMaterialType(GameObject material, GameObject required)
@@ -171,21 +156,21 @@ public class Objects : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Actualiza los indicadores de capacidad haciendolos cambiar de color, de blanco a verde
+    /// Actualiza los indicadores de capacidad haciéndolos cambiar de color, de blanco a verde
     /// </summary>
     private void CapacityIndicator ()
     {
-        for (int i = 0; i < _materials.Length; i++)
+        for (int i = 0; i < Materials.Length; i++)
         {
-            if (_capacityAmount[i] != null)
+            if (CapacityAmount[i] != null)
             {
-                if (_materials[i] != null)
+                if (Materials[i] != null)
                 {
-                    _capacityAmount[i].material.color = Color.green; // Cambia a color de ocupado.
+                    CapacityAmount[i].material.color = Color.green; // Cambia a color de ocupado.
                 }
                 else
                 {
-                    _capacityAmount[i].material.color = Color.white; // Cambia a color de vacío.
+                    CapacityAmount[i].material.color = Color.white; // Cambia a color de vacío.
                 }
             }
         }
