@@ -28,8 +28,6 @@ public class WelderScript : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
 
-    // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionBarReference;
     [SerializeField] private GameObject _metalProcesado;
 
     //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
@@ -146,7 +144,6 @@ public class WelderScript : MonoBehaviour
         {
             _materialSource = collision.GetComponent<Material>();
             _progress = _materialSource.ReturnProgress();
-            CompletionBarReference = _materialSource.ReturnProgressBar();
             hasMetal = true;
         }
     }
@@ -156,7 +153,6 @@ public class WelderScript : MonoBehaviour
         if (collision.GetComponent<Material>() != null)
         {
             _materialSource = null;
-            CompletionBarReference = null;
             hasMetal = false;
         }
     }

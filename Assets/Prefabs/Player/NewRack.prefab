@@ -284,7 +284,6 @@ MonoBehaviour:
   DashSpeed: 35
   DashDuration: 0.5
   DashActionReference: {fileID: 1120369429361536294, guid: 842a061437231409385e5d08046b3753, type: 3}
-  _isDashing: 0
 --- !u!58 &5138623324550365096
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -362,20 +361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickDropActionReference: {fileID: 470773517313567529, guid: 842a061437231409385e5d08046b3753, type: 3}
-  actualMesa: {fileID: 0}
-  lookedObject: {fileID: 0}
-  heldObject: {fileID: 0}
   PickingPos: {fileID: 6278016846825631367}
-  detectedTilesLayer:
+  DetectedTilesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  centerOffset: 0.5
-  circleRadius: 0.5
-  mesaTint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  gizmosColor: {r: 0, g: 1, b: 0, a: 1}
-  detectionRate: 0.1
-  detectionTime: 0
-  _onMesasRange: 0
+  MesaTint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!58 &8660095150174552816
 CircleCollider2D:
   m_ObjectHideFlags: 0

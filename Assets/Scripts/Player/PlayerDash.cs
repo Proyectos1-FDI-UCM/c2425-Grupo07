@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este script es el responsable de la habilidad de Dash del personaje
+// Óliver García Aguado
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
@@ -26,7 +26,7 @@ public class PlayerDash : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] float DashSpeed; // Velocidad del dash
     [SerializeField] float DashDuration; // Tiempo que durará el dash
-    [SerializeField] private InputActionReference DashActionReference;
+    [SerializeField] private InputActionReference DashActionReference; //El inputAction que va a realizar el Dash
 
     #endregion
 
@@ -40,14 +40,14 @@ public class PlayerDash : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     // componentes de físicas y movimiento del jugador
     private Rigidbody2D _rb;
-    private PlayerMovement _pM;
+    private bool _isDashing = false; // Esta boleana se activa mientras que se está realizando un Dash
 
 
     #endregion
     // ---- ATRIBUTOS PÚBLICOS ----
     #region
 
-    public bool _isDashing = false; // Bool que se activará para que el dash se pueda usar de nuevo
+
 
     #endregion
 
@@ -76,7 +76,6 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
        _rb = GetComponent<Rigidbody2D>();
-       _pM = GetComponent<PlayerMovement>();
     }
     #endregion
 
@@ -87,12 +86,18 @@ public class PlayerDash : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    //Cuando se pulsa el Input de dash pregunta si se puede usar y si es que sí, realiza el dash
+
+    /// <summary>
+    /// Cuando se pulsa el Input de dash pregunta si se puede usar y si es que sí, realiza el dash.
+    /// El parámetro context es manejado por el input system de forma automática, se establece la fase del input a ser detectada desde la suscr
+    /// </summary>
+    /// <param name="context"></param>
     private void RequestDash(InputAction.CallbackContext context)
     {
         if (!_isDashing)
         {
             Debug.Log("DASH ACTIVADO");
+            _isDashing = true;
             StartCoroutine(StartDash());
         }
     }
@@ -106,15 +111,22 @@ public class PlayerDash : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    // Realiza el dash empujando por física al jugador una dirección con una velocidad, esperando un tiempo para volverlo a realizar
+
+
+    /// <summary>
+    /// Realiza el dash igualando la velocidad del rigidbody del juegador a una velocidad dada en la dirección que este este mirando y durante un tiempo establecido.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator StartDash()
     {
-        _isDashing = true;
+        
         _rb.velocity = (Vector2)transform.up * DashSpeed;
         yield return new WaitForSeconds(DashDuration);
-        Debug.Log("DASH RECARGADO");
         _isDashing = false;
+        Debug.Log("DASH RECARGADO");
     }
+
+    // La suscripción del input al Dash
     private void OnEnable()
     {
         DashActionReference.action.performed += RequestDash;
