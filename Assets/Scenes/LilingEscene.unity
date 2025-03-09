@@ -854,6 +854,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basura
       objectReference: {fileID: 0}
+    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1977433
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.19187859
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00046662986
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0067999214
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.19961002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.19088914
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00046658516
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0063559934
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5467733868734776611, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5.0043745
@@ -6814,7 +6854,7 @@ MonoBehaviour:
   - {fileID: 2906912807483375088, guid: 748337188ccccc34da2b7d3b92e29dba, type: 3}
   - {fileID: 3452281655754456913, guid: a3ae905c1fef5d04a9e79d1dda95b43f, type: 3}
   PressingTime: 0
-  VelCompletion: 30
+  VelCompletion: 50
   ProgressBarFill: {fileID: 804879491}
   BarCanvasGroup: {fileID: 1442881574}
 --- !u!1 &1684963686

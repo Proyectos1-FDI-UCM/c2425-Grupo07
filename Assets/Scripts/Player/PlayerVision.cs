@@ -163,7 +163,8 @@ public class PlayerVision : MonoBehaviour
         ContentAnalizer();
         if (_heldObject != null && _lookedObject == null && _actualMesa != null)
         {
-            if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() ||
+            if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
+                _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
                 _heldObject.GetComponent<Material>().matType != MaterialType.Arena && _actualMesa.GetComponent<OvenScript>() != null ||
                 _heldObject.GetComponent<Material>().matType != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
                 _heldObject.GetComponent<Material>().matType != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null))
