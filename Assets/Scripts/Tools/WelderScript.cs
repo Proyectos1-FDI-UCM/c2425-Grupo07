@@ -5,12 +5,8 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 // Añadir aquí el resto de directivas using
-using UnityEngine.UI;
 
 
 /// <summary>
@@ -27,13 +23,13 @@ public class WelderScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-
+    //MetalProcesado: material de metal procesado
     [SerializeField] private GameObject _metalProcesado;
 
     //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
     [SerializeField] private float _workSpeed;
 
-    // completionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    //CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
     [SerializeField] private int _completionTime = 6;
 
     #endregion
@@ -46,12 +42,14 @@ public class WelderScript : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    //
+    
+    //isWorking: es la booleana que indica si la soldadora está trabajando o no;
     public bool _isWorking;
 
+    //progress: es la unidad que indica el progreso de la acción, cuanto lleva solsaddo un objeto
     private float _progress;
 
+    //hasMetal: es una boleana que indica si la soldadora tiene el material de metal
     public bool hasMetal;
 
     [SerializeField] private Material _materialSource;
@@ -82,7 +80,6 @@ public class WelderScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-
         if (_isWorking)
         {
             _progress += (Time.deltaTime * _workSpeed) / _completionTime;
@@ -107,6 +104,7 @@ public class WelderScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
     /// <summary>
     /// Cambia el tiempo máximo acorde a qué jugador interactua con la soldadora
     /// </summary>
@@ -120,7 +118,7 @@ public class WelderScript : MonoBehaviour
     public void TurnOnWelder() 
     {
 
-        if (hasMetal)
+        if (hasMetal && transform.childCount == 1)
         {
             Debug.Log("encendiendo soldadora");
             _isWorking = true;
@@ -131,12 +129,17 @@ public class WelderScript : MonoBehaviour
     /// </summary>
     public void TurnOffWelder()
     {
-        if(hasMetal)
+        if(hasMetal && transform.childCount == 1)
         {
             Debug.Log("apagando soldadora");
             _isWorking = false;
         }
     }
+
+    /// <summary>
+    /// Cuando colisiona con la soldadora se activa el trigger
+    /// </summary>
+    /// <param name="collision"></param>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -148,6 +151,10 @@ public class WelderScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cuando se leja/ sale de la soldadora se activa el trigger
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Material>() != null)
@@ -165,16 +172,6 @@ public class WelderScript : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-
-
-    // Actualiza la barra de compleción de la soldadora
-
-
-
-
-
-
 
     #endregion   
 
