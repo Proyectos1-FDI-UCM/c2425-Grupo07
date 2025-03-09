@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5467733868734776611}
   - component: {fileID: 5766387698615609872}
   - component: {fileID: 3196785923358403945}
-  - component: {fileID: -857453342574984047}
   - component: {fileID: 5151176405640283576}
+  - component: {fileID: -857453342574984047}
   m_Layer: 10
   m_Name: Basura
   m_TagString: Basura
@@ -132,18 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-857453342574984047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271874080825723453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee7be58bacadc9498583336ef4577bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &5151176405640283576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,3 +177,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-857453342574984047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271874080825723453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee7be58bacadc9498583336ef4577bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
