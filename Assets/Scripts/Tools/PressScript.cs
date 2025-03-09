@@ -1,13 +1,14 @@
 //---------------------------------------------------------
-// Se programa el funcionamiento de la prensa
+// Se programa el funcionamiento de la prensa que si un objeto es puesto en este,
+// devuelve después de x tiempo el objeto en su estado original
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 
@@ -24,11 +25,13 @@ public class PressScript : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    [SerializeField] private float PressTime = 5f; // Tiempo que tarda la prensa en devolver el objeto a su estado original.
-    [SerializeField] private GameObject ProgressBar; // Barra de progreso visual (opcional).
+   
+    [SerializeField] private GameObject CurrentObject; // Objeto actual en la prensa
     [SerializeField] private GameObject[] OriginalStatePrefabs; // Lista de prefabs de los objetos en su estado original.
-
+    [SerializeField] private float PressingTime = 0f; // Tiempo actual de prensado.
+    [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
+    [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
+    [SerializeField] private Canvas BarCanvasGroup;// Referencia al CanvasGroup de la barra de progreso
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -40,10 +43,9 @@ public class PressScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private float _currentPressTime = 0f; // Tiempo actual de prensado.
+
     private bool _isPressing = false; // Indica si la prensa está activa.
-    private GameObject _currentObject; // Objeto actual en la prensa.
-    private Vector3 _originalPosition; // Posición original del objeto (para devolverlo después).
+    private bool _isComplete = false; //Indica si se ha completado el progreso
 
     #endregion
 
@@ -60,7 +62,7 @@ public class PressScript : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+
     }
 
     /// <summary>
@@ -68,23 +70,24 @@ public class PressScript : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (transform.childCount > 0 && !_isComplete)
+        {
+            Debug.Log("Iniciando proceso de prensado.");
+            _isPressing = true;
+            _isComplete = false;
+            BarCanvasGroup.gameObject.SetActive(true);
+        }
+        else if(transform.childCount == 0)
+        {
+            _isPressing = false;
+            BarCanvasGroup.gameObject.SetActive(false);
+            PressingTime = 0f;
+        }
         if (_isPressing)
         {
-            _currentPressTime += Time.deltaTime;
-
-            // Actualiza la barra de progreso (si existe).
-            if (ProgressBar != null)
-            {
-                float progress = _currentPressTime / PressTime;
-                ProgressBar.transform.localScale = new Vector3(progress, 1, 1);
-            }
-
-            // Si se completa el tiempo de prensado, devuelve el objeto a su estado original.
-            if (_currentPressTime >= PressTime)
-            {
-                ResetObject();
-            }
+            PressInProcess();
         }
+
     }
     #endregion
 
@@ -96,21 +99,11 @@ public class PressScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void StartPress(GameObject objectToPress)
-    {
-        if (!_isPressing && objectToPress != null)
-        {
-            _currentObject = objectToPress;
-            _originalPosition = _currentObject.transform.position;
-            _isPressing = true;
-            _currentPressTime = 0f;
-
-            Debug.Log("Prensado iniciado.");
-        }
-    }
-
+    // Cambia la velocidad del horno acorde a qué jugador interactua él
+    public void ChangeVelocity(int vel)
+    { VelCompletion = vel; }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -118,42 +111,75 @@ public class PressScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void ResetObject()
+    /// <summary>
+    /// Controla el proceso de la prensa, actualiza el tiempo de este
+    /// y verifica si el proceso ha finalizado.
+    /// </summary>
+    private void PressInProcess()
     {
-        if (_currentObject != null)
+        if (CurrentObject != null)
         {
-            // Busca el prefab correspondiente al objeto actual.
-            GameObject originalPrefab = FindOriginal(_currentObject);
-
-            if (originalPrefab != null)
+            PressingTime += (Time.deltaTime / 100) * VelCompletion;
+            
+            if (ProgressBarFill != null)
             {
-                // Destruye el objeto actual.
-                Destroy(_currentObject);
-
-                // Instancia el objeto en su estado original.
-                GameObject newObject = Instantiate(originalPrefab, _originalPosition, Quaternion.identity);
-                newObject.name = originalPrefab.name; // Mantén el nombre original.
-
-                Debug.Log("Objeto devuelto a su estado original: " + originalPrefab.name);
+                ProgressBarFill.fillAmount = PressingTime;
             }
-            else
+            
+            if (PressingTime >= 1)
             {
-                Debug.LogWarning("No se encontró el prefab original para el objeto: " + _currentObject.name);
-            }
-
-            // Reinicia la prensa.
-            _isPressing = false;
-            _currentObject = null;
-            _currentPressTime = 0f;
-
-            // Reinicia la barra de progreso (si existe).
-            if (ProgressBar != null)
-            {
-                ProgressBar.transform.localScale = new Vector3(0, 1, 1);
+                _isComplete = true;
+                ResetObject();
             }
         }
     }
 
+    /// <summary>
+    /// Devuelve el objeto a su estado original y reinicia la prensa.
+    /// </summary>
+    private void ResetObject()
+    {
+        if (CurrentObject != null)
+        {
+            // Busca el prefab correspondiente al objeto actual.
+            GameObject originalPrefab = FindOriginal(CurrentObject);
+
+            // Destruye el objeto actual.
+            Destroy(CurrentObject);
+            // Instancia el objeto en su estado original.
+            Debug.Log("Objeto devuelto a su estado original: " + originalPrefab.name);
+            GameObject newObject = Instantiate(originalPrefab, transform.position, transform.rotation);
+            newObject.name = originalPrefab.name; // Mantén el nombre original.
+            newObject.transform.SetParent(this.transform);
+
+            ResetPress();
+        }
+    }
+
+    /// <summary>
+    /// Reinicia el estado de la prensa, eliminando el objeto actual
+    /// y reinicia el tiempo de este.
+    /// </summary>
+    private void ResetPress()
+    {
+        CurrentObject = null;
+        PressingTime = 0f;
+        _isPressing = false;
+        
+
+        if (ProgressBarFill != null)
+        {
+            ProgressBarFill.fillAmount = 0f;
+        }
+
+        BarCanvasGroup.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Busca el prefab original correspondiente al objeto actual en el array OriginalStatePrefabs.
+    /// </summary>
+    /// <param name="currentObject">Objeto actual en la prensa</param>
+    /// <returns>Devuelve el prefab del objeto en su estado original</returns>
     private GameObject FindOriginal(GameObject currentObject)
     {
         foreach (GameObject prefab in OriginalStatePrefabs)
@@ -166,15 +192,39 @@ public class PressScript : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Detecta si un objeto entra en la zona de la prensa.
+    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
+    /// lo asigna como el objeto actual.
+    /// </summary>
+    /// <param name="other">Colisión del objeto que entra en la prensa</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!_isPressing)
+        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
         {
-            StartPress(other.gameObject);
+            Debug.Log("Objeto colocado en la prensa.");
+            CurrentObject = other.gameObject; // Asignación del objeto actual.
         }
     }
 
-    #endregion   
+    /// <summary>
+    /// Detecta si un objeto sale de la zona de la prensa.
+    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
+    /// reinicia el estado de la prensa.
+    /// </summary>
+    /// <param name="other">Colisión del objeto que entra en la prensa</param>
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
+        {
+            Debug.Log("No hay objeto");
+            ResetPress();
+            _isComplete = false;
+        }
+    }
+
+
+    #endregion
 
 } // class PressScript 
 // namespace

@@ -1,5 +1,8 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// El Objeto podrá almacenar hasta tres materiales que hayan sido insertados cuando el objeto está en la mesa de trabajo
+// ,también entrá un UI que muestra el límite de capacidad que tiene el objeto que será actualizado cada vez que se le
+// inserte el material. Cuando el contenido del objeto sea de igual orden y material a la condición, este objeto estará
+// completado
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -86,6 +89,11 @@ public class Objects : MonoBehaviour
         return agregado;
     }
 
+
+    public bool ThereIsMaterial(GameObject material)
+    {
+        return Materials[0] == null;
+    }
 
     /// <summary>
     /// Verifica si los materiales están en el orden correcto y si el objeto está completado.
