@@ -121,7 +121,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Processing()
     {
-        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Arena && transform.childCount == 1)
+        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Arena && transform.childCount == 1)
         {
             _progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(_progress);
@@ -130,7 +130,7 @@ public class OvenScript : MonoBehaviour
                 ProcessedMaterial();
             }
         }
-        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr.gameObject.GetComponent<Material>().matType == MaterialType.Cristal)
+        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Cristal)
         {
             _matScr.UpdateProgress(_progress);
             _timerBurn += Time.deltaTime;
@@ -199,7 +199,7 @@ public class OvenScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().matType == MaterialType.Arena && transform.childCount == 0)
+        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Arena && transform.childCount == 0)
         {
             Debug.Log("Hay un material puesto");
             _matScr = other.gameObject.GetComponent<Material>();
@@ -210,8 +210,8 @@ public class OvenScript : MonoBehaviour
     //Si se saca antes de tiempo pausa el proceso
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().matType == MaterialType.Cristal 
-                                                                || other.gameObject.GetComponent<Material>().matType == MaterialType.Arena) && transform.childCount == 0)
+        if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Cristal 
+                                                                || other.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Arena) && transform.childCount == 0)
         {
             Debug.Log("No hay un material puesto");
             FlashImage.SetActive(false);

@@ -165,9 +165,9 @@ public class PlayerVision : MonoBehaviour
         {
             if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
                 _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
-                _heldObject.GetComponent<Material>().matType != MaterialType.Arena && _actualMesa.GetComponent<OvenScript>() != null ||
-                _heldObject.GetComponent<Material>().matType != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
-                _heldObject.GetComponent<Material>().matType != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null))
+                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Arena && _actualMesa.GetComponent<OvenScript>() != null ||
+                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
+                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null))
             { Debug.Log("No se puede dropear aquí"); }
             else Drop(); // hay objeto en la mano
         }
@@ -267,7 +267,7 @@ public class PlayerVision : MonoBehaviour
 
     private void ChangeVelocity()
     {
-        gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().pType);
+        gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().PlayerNum());
         if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
         {
             _actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());

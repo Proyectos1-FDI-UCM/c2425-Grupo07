@@ -7,7 +7,7 @@
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-
+//Separa los personajes por sus habilidades pasivas
 public enum PlayerType
 {
     Velocista, 
@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     // Hacer que los métodos puedan acceder al tipo de jugador 
-    public PlayerType pType;
+    [SerializeField]private PlayerType pType;
 
     #endregion
 
@@ -83,6 +83,11 @@ public class PlayerManager : MonoBehaviour
     { return _clicksSaw; }
     public int ReturnWelder() // La Soldadora
     { return _velWelder; }
+
+    public PlayerType PlayerNum()
+    {
+        return pType;
+    }
     #endregion
 
 } // class PlayerManager 

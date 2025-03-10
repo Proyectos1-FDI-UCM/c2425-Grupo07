@@ -33,7 +33,7 @@ public class Material : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     // Hace que los métodos puedan acceder al tipo de Material 
-    public MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
+    [SerializeField] private MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
     [SerializeField] private float _materialProgress; // El progreso de procesado del material
     [SerializeField] private Image CompletionBar; //La barra de progreso del material
     #endregion
@@ -104,6 +104,11 @@ public class Material : MonoBehaviour
     public Image ReturnProgressBar()
     {
         return CompletionBar;
+    }
+
+    public MaterialType MaterialType()
+    {
+        return matType;
     }
 
     #endregion

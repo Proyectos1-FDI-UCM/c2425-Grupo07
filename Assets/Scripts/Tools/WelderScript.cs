@@ -151,7 +151,7 @@ public class WelderScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
+        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Metal)
         {
             _materialSource = collision.GetComponent<Material>();
             _progress = _materialSource.ReturnProgress();
