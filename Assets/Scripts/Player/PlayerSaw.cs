@@ -13,6 +13,9 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Esta clase se encarga de que el jugador pueda interactuar con la sierra de manera adecuada.
+/// Solo puede interactuar si está mirando a la sierra llevando madera y habiendo hecho menos clicks de los necesarios para procesar la madera.
 /// </summary>
 public class PlayerSaw : MonoBehaviour
 {
@@ -27,9 +30,10 @@ public class PlayerSaw : MonoBehaviour
     // Referencia a la acción de click
     [SerializeField] private InputActionReference ClickActionReference;
 
-    // Referencia al script Sierra
+    // Referencia al script SawScript
     [SerializeField] private SawScript SierraClick;
 
+    // Referencia al script PlayerVision
     [SerializeField] private PlayerVision Player;
 
     #endregion
@@ -67,13 +71,6 @@ public class PlayerSaw : MonoBehaviour
         Player = GetComponent<PlayerVision>();
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -105,11 +102,11 @@ public class PlayerSaw : MonoBehaviour
         ClickActionReference.action.Disable();
     }
 
-    // Llama al método Click() del script Sierra cuando se hace click y el jugador está dentro del rango de interacción
-    // de la sierra llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
+    // Llama al método Click() del script Sierra cuando se hace click y el jugador está mirando a la sierra
+    // llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (SierraClick != null && Player.GetActualMesa() != null && SierraClick.GetHasWood() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks() && Player.GetActualMesa().CompareTag("Sierra"))
+        if (SierraClick != null && Player.GetActualMesa().CompareTag("Sierra") && SierraClick.GetHasWood() && !SierraClick.GetUnpickable() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks())
         {
             SierraClick.Click();
         }

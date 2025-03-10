@@ -14,6 +14,9 @@ using UnityEngine.UI;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Esta clase se encarga de convertir el material de madera en madera procesada.
+/// También hace que la barra de compleción tenga animación cada vez que se incrementa el progreso.
 /// </summary>
 public class SawScript : MonoBehaviour
 {
@@ -57,8 +60,10 @@ public class SawScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    // _pastClicks es el número anterior de clicks, se usa para la animación de la barra de compleción
     private int _pastClicks = 0;
 
+    // _materialSource es el material que hay en la sierra
     private Material _materialSource;
 
     #endregion
@@ -78,13 +83,23 @@ public class SawScript : MonoBehaviour
     {
         _pastClicks = CurrentClicks;
 
+        if (transform.childCount == 1 && GetComponentInChildren<Material>().MaterialType() == MaterialType.Madera)
+        {
+            HasWood = true;
+        }
+
+        else
+        {
+            HasWood = false;
+        }
+
         if (CurrentClicks >= MaxClicks)
         {
             Unpickable = true;
             Invoke("ProcessWood", 0.35f);
-            HasWood = false;
-            _pastClicks = 0;
+            //HasWood = false;
             CurrentClicks = 0;
+            _pastClicks = CurrentClicks;
         }
     }
     #endregion
@@ -97,42 +112,43 @@ public class SawScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    // Click() suma 1 al número de clicks necesario para completar el
-    // proceso de refinamiento cada vez que se hace click sobre la sierra
+    // Click() suma 1 al número de clicks necesario para completar el proceso de refinamiento
+    // cada vez que se hace click sobre la sierra y actualiza la barra de compleción
     public void Click()
     {
-        if (transform.childCount == 1)
+        CurrentClicks++;
+        _materialSource.UpdateProgress(CurrentClicks);
+        if (CompletionBarReference != null && CurrentClicks <= MaxClicks)
         {
-            CurrentClicks++;
-            _materialSource.UpdateProgress(CurrentClicks);
-            if (CompletionBarReference != null && CurrentClicks <= MaxClicks)
-            {
-                UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
-            }
+            UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
         }
     }
 
+    // Devuelve el número de clicks necesario para completar el proceso de refinamiento
     public int GetMaxClicks()
     {
         return MaxClicks;
     }
-    /// <summary>
-    /// Cambia el número de clicks máximo acorde a qué jugador interactua con ella
-    /// </summary>
+
+    // Cambia el número de clicks máximo acorde a qué jugador interactua con ella
     public void ChangeMaxClicks(int clicks)
     {
         MaxClicks = clicks;
     }
+
+    // Devuelve el número de clicks que tiene actualmente el material
     public int GetCurrentClicks()
     {
         return CurrentClicks;
     }
 
+    // Devuelve la variable HasWood, que determina si hay madera en la sierra (true) o no (false)
     public bool GetHasWood()
     {
         return HasWood;
     }
 
+    // Devuelve la variable Unpickable, que determina si se puede coger el material de la sierra (false) o no (true)
     public bool GetUnpickable()
     {
         return Unpickable;
@@ -181,12 +197,12 @@ public class SawScript : MonoBehaviour
         CompletionBarReference.fillAmount = _targetCompletion;
     }
 
-
+    // Cuando un objeto entra en el área de colisión de la sierra, mira si es madera y en ese caso se lo
+    // asigna a _materialSource y asigna la referencia de la barra de compleción y del progreso actual
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Madera)
         {
-            HasWood = true;
             _materialSource = collision.GetComponent<Material>();
             CompletionBarReference = _materialSource.ReturnProgressBar();
             CurrentClicks = (int)_materialSource.ReturnProgress();
@@ -194,11 +210,12 @@ public class SawScript : MonoBehaviour
         }
     }
 
+    // Cuando un objeto sale del área de colisión de la sierra, mira si es un material
+    // y en ese caso se quita la referencia del material y de la barra de compleción
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Material>() != null)
         {
-            HasWood = false;
             _materialSource = null;
             CompletionBarReference = null;
         }
