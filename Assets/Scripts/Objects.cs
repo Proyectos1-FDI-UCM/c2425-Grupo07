@@ -132,6 +132,14 @@ public class Objects : MonoBehaviour
         return true;
     }
 
+    public void ResetObject()
+    {
+        for (int i = 0; i < Materials.Length; i++)
+        {
+            Materials[i] = null;
+        }
+    }
+
     /// <summary>
     /// Método que verifica que los materiales del requerido del array de OrdenPedidos y del array del Materiales del objeto sean iguales
     /// dependiendo del emun (tipo) que es de su script Material

@@ -142,15 +142,17 @@ public class PressScript : MonoBehaviour
         if (CurrentObject != null)
         {
             // Busca el prefab correspondiente al objeto actual.
-            GameObject originalPrefab = FindOriginal(CurrentObject);
+            //GameObject originalPrefab = FindOriginal(CurrentObject);
 
-            // Destruye el objeto actual.
-            Destroy(CurrentObject);
-            // Instancia el objeto en su estado original.
-            Debug.Log("Objeto devuelto a su estado original: " + originalPrefab.name);
-            GameObject newObject = Instantiate(originalPrefab, transform.position, transform.rotation);
-            newObject.name = originalPrefab.name; // Mantén el nombre original.
-            newObject.transform.SetParent(this.transform);
+            //// Destruye el objeto actual.
+            //Destroy(CurrentObject);
+            //// Instancia el objeto en su estado original.
+            //Debug.Log("Objeto devuelto a su estado original: " + originalPrefab.name);
+            //GameObject newObject = Instantiate(originalPrefab, transform.position, transform.rotation);
+            //newObject.name = originalPrefab.name; // Mantén el nombre original.
+            //newObject.transform.SetParent(this.transform);
+
+            CurrentObject.GetComponent<Objects>().ResetObject();
 
             ResetPress();
         }
