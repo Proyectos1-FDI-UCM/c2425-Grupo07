@@ -72,7 +72,6 @@ public class PressScript : MonoBehaviour
     {
         if (transform.childCount > 0 && !_isComplete)
         {
-            Debug.Log("Iniciando proceso de prensado.");
             _isPressing = true;
             _isComplete = false;
             BarCanvasGroup.gameObject.SetActive(true);
@@ -141,17 +140,6 @@ public class PressScript : MonoBehaviour
     {
         if (CurrentObject != null)
         {
-            // Busca el prefab correspondiente al objeto actual.
-            //GameObject originalPrefab = FindOriginal(CurrentObject);
-
-            //// Destruye el objeto actual.
-            //Destroy(CurrentObject);
-            //// Instancia el objeto en su estado original.
-            //Debug.Log("Objeto devuelto a su estado original: " + originalPrefab.name);
-            //GameObject newObject = Instantiate(originalPrefab, transform.position, transform.rotation);
-            //newObject.name = originalPrefab.name; // Mantén el nombre original.
-            //newObject.transform.SetParent(this.transform);
-
             CurrentObject.GetComponent<Objects>().ResetObject();
 
             ResetPress();
@@ -167,7 +155,7 @@ public class PressScript : MonoBehaviour
         CurrentObject = null;
         PressingTime = 0f;
         _isPressing = false;
-        
+
 
         if (ProgressBarFill != null)
         {
@@ -175,23 +163,6 @@ public class PressScript : MonoBehaviour
         }
 
         BarCanvasGroup.gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// Busca el prefab original correspondiente al objeto actual en el array OriginalStatePrefabs.
-    /// </summary>
-    /// <param name="currentObject">Objeto actual en la prensa</param>
-    /// <returns>Devuelve el prefab del objeto en su estado original</returns>
-    private GameObject FindOriginal(GameObject currentObject)
-    {
-        foreach (GameObject prefab in OriginalStatePrefabs)
-        {
-            if (prefab.name == currentObject.name)
-            {
-                return prefab;
-            }
-        }
-        return null;
     }
 
     /// <summary>
