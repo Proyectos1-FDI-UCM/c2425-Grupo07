@@ -14,6 +14,11 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Esta clase es la encargada de la mecánica del PickDrop (coger y soltar objetos) 
+/// y tambien es la encargada de la visión del jugador. Analiza las mesas cercanas al jugador para determinar cual es la más cercana que este siendo mirada por el jugador.
+/// GetActualMesa() devuelve el gameobject de la mesa que el jugador esté mirando.
+/// 
 /// </summary>
 /// 
 public class PlayerVision : MonoBehaviour

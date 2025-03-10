@@ -20,8 +20,12 @@ public enum MaterialType
     Otro,
 }
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Esta clase es la responsable de el funcionamiento interno de los materiales, cada prefab de material viene establecido
+/// con su propio enum dependiendo del material.
+/// La clase contiene métodos públicos para almacenar y retornar el progreso de procesamiento del material.
+/// Al actualizar el progreso se modifica la barra de progreso del material (bar.fillammount) en base al progreso que tenga en el momento de la actualización
+/// En aspectos visuales, la actualización de la barra es inmediata (no se realiza ninguna animación) por lo que para obtener una animación fluida/interpolada se tendrá que obtener una referencia 
+/// de la barra de progreso del material mediante el método publico ReturnProgressBar() para después ser alterada a conveniencia.
 /// </summary>
 public class Material : MonoBehaviour
 {

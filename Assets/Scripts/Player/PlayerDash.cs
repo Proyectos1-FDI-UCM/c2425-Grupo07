@@ -14,6 +14,10 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Esta clase es la encargada de la mecánica del Dash del jugador, el metodo del Dash está suscrito al inputActionReference correspondiente (LeftShift)
+/// y la condición para empezar un dash es que no haya otro en curso (_isDashing debe estar en false) esta clase, una vez accionado el dash, modifica la velocidad del rigidbody
+/// a una establecida durante un tiempo establecido mediante una corrutina.
 /// </summary>
 public class PlayerDash : MonoBehaviour
 {
