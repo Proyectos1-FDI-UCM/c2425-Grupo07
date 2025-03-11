@@ -234,6 +234,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 48b9f442-99a7-4ec0-9eb1-b526e20e5f8a
     m_ActionName: Player/PickOrDrop[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 178f3a819f4cb9949a192f64f5a3fdf5, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e18de1f9-bf5a-402f-8733-4b9c162bb565
+    m_ActionName: Player/UseFireExtinguiser[/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

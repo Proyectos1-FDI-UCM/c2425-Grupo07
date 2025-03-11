@@ -114,6 +114,18 @@ public class OvenScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    // Este método se ejecutará cuando el extintor lo active
+    public void OnExtinguish()
+    {
+        if (IsBurnt)
+        {
+            IsBurnt = false;        // Desactiva el estado quemado
+            FireIco.SetActive(false); // Oculta el fuego
+            Debug.Log("¡Horno apagado y listo para usar de nuevo!");
+        }
+    }
+
+
     /// <summary>
     /// Maneja cada barra del proceso del horno
     /// Si se completa la de procesamiento, ha terminado el procesamiento del material e inicia la de quemado con si no se retira a tiempo
