@@ -26,8 +26,7 @@ public class PressScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
    
-    [SerializeField] private GameObject CurrentObject; // Objeto actual en la prensa
-    [SerializeField] private GameObject[] OriginalStatePrefabs; // Lista de prefabs de los objetos en su estado original.
+    [SerializeField] private GameObject CurrentObject; // Objeto actual en la 
     [SerializeField] private float PressingTime = 0f; // Tiempo actual de prensado.
     [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
