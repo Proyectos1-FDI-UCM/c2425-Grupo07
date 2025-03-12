@@ -1,12 +1,10 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este es el script responsable de la identidad de cada material y de su progreso de procesado. 
+// Óliver García Aguado
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
@@ -22,8 +20,12 @@ public enum MaterialType
     Otro,
 }
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Esta clase es la responsable de el funcionamiento interno de los materiales, cada prefab de material viene establecido
+/// con su propio enum dependiendo del material.
+/// La clase contiene métodos públicos para almacenar y retornar el progreso de procesamiento del material.
+/// Al actualizar el progreso se modifica la barra de progreso del material (bar.fillammount) en base al progreso que tenga en el momento de la actualización
+/// En aspectos visuales, la actualización de la barra es inmediata (no se realiza ninguna animación) por lo que para obtener una animación fluida/interpolada se tendrá que obtener una referencia 
+/// de la barra de progreso del material mediante el método publico ReturnProgressBar() para después ser alterada a conveniencia.
 /// </summary>
 public class Material : MonoBehaviour
 {
@@ -34,11 +36,10 @@ public class Material : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    public MaterialType matType;
-    [SerializeField] private float _materialProgress;
-    [SerializeField] private Image CompletionBar;
-    [SerializeField] private bool isBeingProcessed;
+    // Hace que los métodos puedan acceder al tipo de Material 
+    [SerializeField] private MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
+    [SerializeField] private float _materialProgress; // El progreso de procesado del material
+    [SerializeField] private Image CompletionBar; //La barra de progreso del material
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -71,13 +72,6 @@ public class Material : MonoBehaviour
         UpdateBar();
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -100,17 +94,25 @@ public class Material : MonoBehaviour
     }
 
     /// <summary>
-    /// Devuelve el progreso de procesado que lleve el script del material.
+    /// Devuelve el progreso de procesado que lleve el script del material y actualiza la variable de progreso de la herramienta a la que el jugador se haya acercado..
     /// </summary>
     public float ReturnProgress()
     {
         Debug.Log("Progreso aplicado");
         return _materialProgress;
     }
-
+    /// <summary>
+    ///Devuelve una referencia de la barra de progreso del material, esta referencia es utilizada para que la sierra pueda realizar la animación de procesado
+    /// </summary>
+    /// <returns></returns>
     public Image ReturnProgressBar()
     {
         return CompletionBar;
+    }
+
+    public MaterialType MaterialType()
+    {
+        return matType;
     }
 
     #endregion
@@ -122,9 +124,12 @@ public class Material : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Se encarga de actualizar como de avanzada debe estar la barra del material, toma como argumento el progreso del material (valores entre 0 y 1) 
+    /// </summary>
     private void UpdateBar()
     {
-        if (CompletionBar != null)
+        if (CompletionBar != null) //No todos los materiales tienen una barra, esta condicional evita errores de tipo NullReferenceException
         {
             if (!_UsedOnce) CompletionBar.gameObject.GetComponentInParent<Canvas>().enabled = false;
             else

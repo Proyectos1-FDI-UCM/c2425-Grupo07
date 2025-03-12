@@ -64,6 +64,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseFireExtinguiser"",
+                    ""type"": ""Button"",
+                    ""id"": ""e18de1f9-bf5a-402f-8733-4b9c162bb565"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -225,7 +234,7 @@ namespace UnityEngine.InputSystem
                     ""name"": """",
                     ""id"": ""d5bd8d39-57c0-4ec9-8230-ac4d44628f57"",
                     ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
@@ -262,6 +271,17 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PickOrDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9af08f6b-964c-484b-a445-caa045a72a30"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""UseFireExtinguiser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -853,6 +873,7 @@ namespace UnityEngine.InputSystem
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
+            m_Player_UseFireExtinguiser = m_Player.FindAction("UseFireExtinguiser", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -930,6 +951,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_PickOrDrop;
+        private readonly InputAction m_Player_UseFireExtinguiser;
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
@@ -938,6 +960,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
+            public InputAction @UseFireExtinguiser => m_Wrapper.m_Player_UseFireExtinguiser;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -959,6 +982,9 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started += instance.OnPickOrDrop;
                 @PickOrDrop.performed += instance.OnPickOrDrop;
                 @PickOrDrop.canceled += instance.OnPickOrDrop;
+                @UseFireExtinguiser.started += instance.OnUseFireExtinguiser;
+                @UseFireExtinguiser.performed += instance.OnUseFireExtinguiser;
+                @UseFireExtinguiser.canceled += instance.OnUseFireExtinguiser;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -975,6 +1001,9 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started -= instance.OnPickOrDrop;
                 @PickOrDrop.performed -= instance.OnPickOrDrop;
                 @PickOrDrop.canceled -= instance.OnPickOrDrop;
+                @UseFireExtinguiser.started -= instance.OnUseFireExtinguiser;
+                @UseFireExtinguiser.performed -= instance.OnUseFireExtinguiser;
+                @UseFireExtinguiser.canceled -= instance.OnUseFireExtinguiser;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1161,6 +1190,7 @@ namespace UnityEngine.InputSystem
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnPickOrDrop(InputAction.CallbackContext context);
+            void OnUseFireExtinguiser(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

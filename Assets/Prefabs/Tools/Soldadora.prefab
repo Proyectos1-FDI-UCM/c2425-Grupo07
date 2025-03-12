@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5467733868734776611}
   - component: {fileID: 5766387698615609872}
   - component: {fileID: 3196785923358403945}
-  - component: {fileID: 2842001806073438869}
-  - component: {fileID: 4060324631378023698}
+  - component: {fileID: 8095845819353284150}
+  - component: {fileID: 511321770857408786}
   m_Layer: 10
   m_Name: Soldadora
   m_TagString: Soldadora
@@ -132,26 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.05, y: 5.05}
   m_EdgeRadius: 0
---- !u!114 &2842001806073438869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271874080825723453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3637ed471c43bb94d94e9ebc74a63610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CompletionImage: {fileID: 0}
-  _metalIntroducido: {fileID: 0}
-  _metalProcesado: {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
-  _workSpeed: 1
-  _maxProgress: 6
-  _isWorking: 0
-  canUse: 0
---- !u!61 &4060324631378023698
+--- !u!61 &8095845819353284150
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,5 +175,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.05, y: 5.05}
+  m_Size: {x: 4.957143, y: 4.9857144}
   m_EdgeRadius: 0
+--- !u!114 &511321770857408786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271874080825723453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3637ed471c43bb94d94e9ebc74a63610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _metalProcesado: {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
+  _workSpeed: 1
+  _completionTime: 6
+  _isWorking: 0
+  canUse: 0

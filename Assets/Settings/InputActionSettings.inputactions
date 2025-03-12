@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseFireExtinguiser",
+                    "type": "Button",
+                    "id": "e18de1f9-bf5a-402f-8733-4b9c162bb565",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,7 +210,7 @@
                     "name": "",
                     "id": "d5bd8d39-57c0-4ec9-8230-ac4d44628f57",
                     "path": "<Keyboard>/j",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
@@ -238,6 +247,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PickOrDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9af08f6b-964c-484b-a445-caa045a72a30",
+                    "path": "<Keyboard>/b",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "UseFireExtinguiser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

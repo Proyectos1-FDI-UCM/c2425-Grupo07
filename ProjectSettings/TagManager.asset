@@ -12,6 +12,7 @@ TagManager:
   - Horno
   - UI
   - Basura
+  - Prensa
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Detectable
   - Herramientas
   - RangoDeDeteccion
-  - 
+  - Fire
   - 
   - 
   - 

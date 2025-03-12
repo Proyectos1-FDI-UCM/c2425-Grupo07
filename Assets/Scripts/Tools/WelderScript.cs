@@ -1,16 +1,12 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Funcionamiento de la soldadora
+// Alicia Sanchez
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 // Añadir aquí el resto de directivas using
-using UnityEngine.UI;
 
 
 /// <summary>
@@ -27,16 +23,17 @@ public class WelderScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-
-    // CompletionImage es la barra de compleción del proceso de refinamiento
-    [SerializeField] private Image CompletionBarReference;
+    //MetalProcesado: material de metal procesado
     [SerializeField] private GameObject _metalProcesado;
 
     //Rapidez de trabajo: las unidades de tiempo en segundos que avanza el procesamiento del material
     [SerializeField] private float _workSpeed;
 
-    // completionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    //CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
     [SerializeField] private int _completionTime = 6;
+
+    //materialSource es una variable para indicar el material inicial
+    [SerializeField] private Material _materialSource;
 
     #endregion
 
@@ -49,15 +46,14 @@ public class WelderScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //
-    public bool _isWorking;
+    //isWorking: es la booleana que indica si la soldadora está trabajando o no;
+    private bool _isWorking;
 
+    //progress: es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
     private float _progress;
 
-    public bool hasMetal;
-
-    [SerializeField] private Material _materialSource;
-    
+    //hasMetal: es una boleana que indica si la soldadora tiene el material de metal
+    private bool hasMetal;
 
     #endregion
 
@@ -69,7 +65,6 @@ public class WelderScript : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -84,7 +79,6 @@ public class WelderScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-
         if (_isWorking)
         {
             _progress += (Time.deltaTime * _workSpeed) / _completionTime;
@@ -111,12 +105,19 @@ public class WelderScript : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
+    /// Cambia el tiempo máximo acorde a qué jugador interactua con la soldadora
+    /// </summary>
+    public void ChangeMaxTime(int time)
+    {
+        _completionTime = time;
+    }
+    /// <summary>
     /// Se llama a este metodo para hacer funcionar la soldadora si el jugador le da a la j teniendo a la soldadora como actualmesa
     /// </summary>
     public void TurnOnWelder() 
     {
 
-        if (hasMetal)
+        if (hasMetal && transform.childCount == 1)
         {
             Debug.Log("encendiendo soldadora");
             _isWorking = true;
@@ -127,31 +128,10 @@ public class WelderScript : MonoBehaviour
     /// </summary>
     public void TurnOffWelder()
     {
-        if(hasMetal)
+        if(hasMetal && transform.childCount == 1)
         {
             Debug.Log("apagando soldadora");
             _isWorking = false;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().matType == MaterialType.Metal)
-        {
-            _materialSource = collision.GetComponent<Material>();
-            _progress = _materialSource.ReturnProgress();
-            CompletionBarReference = _materialSource.ReturnProgressBar();
-            hasMetal = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Material>() != null)
-        {
-            _materialSource = null;
-            CompletionBarReference = null;
-            hasMetal = false;
         }
     }
 
@@ -164,15 +144,33 @@ public class WelderScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Cuando colisiona con la soldadora se activa el trigger
+    /// </summary>
+    /// <param name="collision"></param>
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Metal)
+        {
+            _materialSource = collision.GetComponent<Material>();
+            _progress = _materialSource.ReturnProgress();
+            hasMetal = true;
+        }
+    }
 
-    // Actualiza la barra de compleción de la soldadora
-
-
-
-
-
-
+    /// <summary>
+    /// Cuando se aleja/ sale de la soldadora se activa el trigger
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Material>() != null)
+        {
+            _materialSource = null;
+            hasMetal = false;
+        }
+    }
 
     #endregion   
 
