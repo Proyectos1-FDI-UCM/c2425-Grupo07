@@ -1,4 +1,4 @@
-//---------------------------------------------------------
+ //---------------------------------------------------------
 // Este script es el responsable de la mecánica PickDrop y de la visión del jugador
 // Este script almacena la informacìón de la mesa que el jugador está mirando para que otros scripts puedan aprovecharlo
 // Óliver García Aguado
@@ -94,6 +94,7 @@ public class PlayerVision : MonoBehaviour
     // Devuelve actualMesa
     public GameObject GetActualMesa()
     {
+        ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
         return _actualMesa;
     }
 
@@ -117,7 +118,6 @@ public class PlayerVision : MonoBehaviour
         // Highlight the nearest object
         if (_actualMesa != null)
         {
-            ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, _actualMesa.transform.position);
         }
