@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,12 +13,13 @@ public class FireExtinguisher : MonoBehaviour
 {
     [Header("Configuración del extintor")]
     [SerializeField] private ParticleSystem extinguisherParticles; // Sistema de partículas del extintor
+    [SerializeField] private Collider2D fireCollider; // El Collider2D del fuego
 
     private bool _isUsing = false;
 
     private void Update()
     {
-        // Activa el Particle System cuando el extintor está siendo usado
+        // Activar el sistema de partículas solo cuando se use el extintor
         if (_isUsing && !extinguisherParticles.isPlaying)
         {
             extinguisherParticles.Play();
@@ -37,20 +39,22 @@ public class FireExtinguisher : MonoBehaviour
         Debug.Log($"Extintor activado: {_isUsing}");
     }
 
-    // Detecta las colisiones con el fuego y lo apaga
+    // Método que se ejecuta cuando las partículas colisionan con el fuego
     private void OnParticleCollision(GameObject other)
     {
         if (other.CompareTag("Fire"))
         {
-            Debug.Log("Fuego apagado");
-            other.SetActive(false); // Desactiva el objeto fuego (o realiza la acción de apagar)
-
-            // Resetear el estado del horno
-            Transform parent = other.transform.parent;
-            if (parent != null)
-            {
-                parent.SendMessage("OnExtinguish", SendMessageOptions.DontRequireReceiver);
-            }
+            Debug.Log("¡Partículas detectadas!");
+            // Llama al método del horno para apagar el fuego
+            transform.parent?.SendMessage("OnExtinguish", SendMessageOptions.DontRequireReceiver);
+            // Desactiva el fuego cuando las partículas colisionen
+            other.SetActive(false);
         }
     }
 }
+
+
+
+
+
+

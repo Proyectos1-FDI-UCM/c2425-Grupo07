@@ -595,6 +595,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9102832338467195711, guid: 92bac3480d48e76419ff4515123fca78, type: 3}
   m_PrefabInstance: {fileID: 301656462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &319252048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7683220941088754040, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+  m_PrefabInstance: {fileID: 772608185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &319252051
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319252048}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.79, y: 4.88}
+    newSize: {x: 2.79, y: 4.88}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8}
+  m_EdgeRadius: 0
 --- !u!4 &326240199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: 0d73921b5b5099d4bb99f9e5985520a2, type: 3}
@@ -4453,7 +4503,7 @@ Transform:
   m_GameObject: {fileID: 708794979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4643,7 +4693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295834516013152281, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.585607
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 295834516013152281, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4681,18 +4731,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 3367807437681637297, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: m_TagString
+      value: Horno
+      objectReference: {fileID: 0}
     - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: VelCompletion
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683220941088754040, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683220941088754040, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      propertyPath: m_TagString
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 7830616770942427782, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4725428963687980358, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7683220941088754040, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 319252051}
   m_SourcePrefab: {fileID: 100100000, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
 --- !u!4 &772608186 stripped
 Transform:
@@ -5945,7 +6011,7 @@ Transform:
   m_GameObject: {fileID: 1257705382}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11136,8 +11202,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -11255,7 +11321,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 6774e7e33bd7ab3499071dbaa69bdb50, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -13452,7 +13518,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13557,14 +13623,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 5
     collidesWith:
       serializedVersion: 2
-      m_Bits: 8192
+      m_Bits: 11265
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -14581,7 +14647,7 @@ GameObject:
   - component: {fileID: 7864997298519250141}
   - component: {fileID: 2738871942647352833}
   - component: {fileID: 8673817409578685179}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Fire Extinguisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14599,7 +14665,7 @@ GameObject:
   - component: {fileID: 5395134054687532119}
   - component: {fileID: 601902393076986186}
   - component: {fileID: 5154104212288708521}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14689,7 +14755,7 @@ Transform:
   m_GameObject: {fileID: 3646512975306196804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14776,6 +14842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extinguisherParticles: {fileID: 601902393076986186}
+  fireCollider: {fileID: 319252051}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -119,11 +119,13 @@ public class OvenScript : MonoBehaviour
     {
         if (IsBurnt)
         {
-            IsBurnt = false;        // Desactiva el estado quemado
-            FireIco.SetActive(false); // Oculta el fuego
+            IsBurnt = false;
+            FireIco.SetActive(false);
+            _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
         }
     }
+
 
 
     /// <summary>
