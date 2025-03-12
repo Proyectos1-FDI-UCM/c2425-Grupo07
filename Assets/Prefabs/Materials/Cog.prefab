@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -915237093
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c8b7c4c83089864bb1c654d178707af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a465a0704ad1c854a9872d4f651ceeed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,6 @@ MonoBehaviour:
   matType: 4
   _materialProgress: 0
   CompletionBar: {fileID: 0}
-  isBeingProcessed: 0
 --- !u!58 &4813525127284193470
 CircleCollider2D:
   m_ObjectHideFlags: 0
