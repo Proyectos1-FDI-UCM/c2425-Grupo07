@@ -278,7 +278,7 @@ namespace UnityEngine.InputSystem
                     ""name"": """",
                     ""id"": ""9af08f6b-964c-484b-a445-caa045a72a30"",
                     ""path"": ""<Keyboard>/b"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UseFireExtinguiser"",
