@@ -66,12 +66,12 @@ public class PlayerManager : MonoBehaviour
         {
             case PlayerType.Reparador:
                 _velOven = 30;
-                _clicksSaw = 3;
+                _clicksSaw = 7;
                 _velWelder = 3;
                 break;
             case PlayerType.Velocista:
                 _velOven = 15;
-                _clicksSaw = 6;
+                _clicksSaw = 14;
                 _velWelder = 6;
                 break;
         }

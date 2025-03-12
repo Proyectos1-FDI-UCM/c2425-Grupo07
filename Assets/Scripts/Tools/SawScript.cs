@@ -97,7 +97,6 @@ public class SawScript : MonoBehaviour
         {
             Unpickable = true;
             Invoke("ProcessWood", 0.35f);
-            //HasWood = false;
             CurrentClicks = 0;
             _pastClicks = CurrentClicks;
         }
