@@ -81,6 +81,10 @@ public class PlayerVision : MonoBehaviour
             }
         }
     }
+    private void Start()
+    {
+        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor
+    }
 
     #endregion
     // ---- MÉTODOS PÚBLICOS ----
@@ -96,6 +100,28 @@ public class PlayerVision : MonoBehaviour
     {
         ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
         return _actualMesa;
+    }
+    /// <summary>
+    /// Este metodo se encarga de la recogida del item que esté en la mesa que esté mirando el jugador.
+    /// </summary>
+    public void Pick(GameObject lookedObject)
+    {
+        _heldObject = lookedObject;
+        _heldObject.transform.position = PickingPos.position;
+        _heldObject.transform.SetParent(PickingPos);
+        _heldObject.transform.rotation = transform.rotation;
+        _lookedObject = null;
+    }
+
+    /// <summary>
+    /// Este metodo se encarga de el soltado de objetos en la mesa que esté mirando el jugador.
+    /// </summary>
+    public void Drop()
+    {
+        _heldObject.transform.position = _actualMesa.transform.position;
+        _heldObject.transform.rotation = Quaternion.identity;
+        _heldObject.transform.SetParent(_actualMesa.transform);
+        _heldObject = null;
     }
 
     #endregion
@@ -182,34 +208,13 @@ public class PlayerVision : MonoBehaviour
             { Debug.Log("No se puede recoger el material"); }
             else
             {
-                Pick(); // no hay objeto en la mano
+                Pick(_lookedObject); // no hay objeto en la mano
             }
         }
         else if (_heldObject != null && _lookedObject != null) InsertMaterial();
     }
 
-    /// <summary>
-    /// Este metodo se encarga de la recogida del item que esté en la mesa que esté mirando el jugador.
-    /// </summary>
-    private void Pick()
-    {
-        _heldObject = _lookedObject;
-        _heldObject.transform.position = PickingPos.position;
-        _heldObject.transform.SetParent(PickingPos);
-        _heldObject.transform.rotation = transform.rotation;
-        _lookedObject = null;
-    }
 
-    /// <summary>
-    /// Este metodo se encarga de el soltado de objetos en la mesa que esté mirando el jugador.
-    /// </summary>
-    private void Drop()
-    {
-        _heldObject.transform.position = _actualMesa.transform.position;
-        _heldObject.transform.rotation = Quaternion.identity;
-        _heldObject.transform.SetParent(_actualMesa.transform);
-        _heldObject = null;
-    }
 
 
     /// <summary>
@@ -222,6 +227,11 @@ public class PlayerVision : MonoBehaviour
             if (_actualMesa.transform.childCount >= 1)
             {
                 _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
+                if (_lookedObject.CompareTag("UI"))
+                {
+                    Debug.Log("asdijsaodhaskjdh");
+                    _lookedObject = null;
+                }
             }
             else _lookedObject = null;
         }
@@ -247,10 +257,6 @@ public class PlayerVision : MonoBehaviour
                 nearestDistance = colliderDistance;
             }
         }
-        if (lastMesa != _actualMesa && lastMesa != null)
-        {
-            lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
-        }
         if (_actualMesa != null)
         {
             _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
@@ -259,7 +265,26 @@ public class PlayerVision : MonoBehaviour
                 _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
                 _actualMesa = null;
             }
+            else if (_actualMesa.GetComponent<Receiver>() != null) // ESTA PARTE DE AQUI RELACIONA EL PLAYERVISION CON EL RECIBIDOR 
+            {
+                Receiver recibidor = _actualMesa.GetComponent<Receiver>();
+                if (_heldObject == null && recibidor.getState() != receiverState.Receiving )
+                {
+                    recibidor.setState(receiverState.Receiving);
+                }
+                else if (_heldObject != null)
+                {
+                    recibidor.AnalizeDeliveredObject(_heldObject);
+                    if (recibidor.getState() != receiverState.Delivering) recibidor.setState(receiverState.Delivering);
 
+                }
+            }
+
+        }
+        if (_actualMesa != lastMesa && lastMesa != null)
+        {
+            lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
+            if (lastMesa.GetComponent<Receiver>() != null) lastMesa.GetComponent<Receiver>().setState(receiverState.Idle);
         }
     }
 

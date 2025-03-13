@@ -14,6 +14,7 @@ TagManager:
   - Basura
   - Prensa
   - Fire
+  - Recibidor
   layers:
   - Default
   - TransparentFX

@@ -358,7 +358,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  OrdenPedidos: []
+  OrdenPedidos:
+  - {fileID: 6046970825805907103, guid: 0d73921b5b5099d4bb99f9e5985520a2, type: 3}
+  - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
+  - {fileID: 0}
   CapacityAmount:
   - {fileID: 8053359385350861521}
   - {fileID: 8266355872541756415}
@@ -423,4 +426,3 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
   CompletionBar: {fileID: 0}
-  isBeingProcessed: 0
