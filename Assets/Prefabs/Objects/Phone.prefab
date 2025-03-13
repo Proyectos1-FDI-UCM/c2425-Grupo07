@@ -190,7 +190,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  OrdenPedidos: []
+  OrdenPedidos:
+  - {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
+  - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
+  - {fileID: 0}
   CapacityAmount:
   - {fileID: 6656215889982112269}
   - {fileID: 6377106424473830956}
@@ -255,7 +258,6 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
   CompletionBar: {fileID: 0}
-  isBeingProcessed: 0
 --- !u!1 &5430633686913710762
 GameObject:
   m_ObjectHideFlags: 0

@@ -106,7 +106,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  OrdenPedidos: []
+  OrdenPedidos:
+  - {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   CapacityAmount:
   - {fileID: 1047434574959082183}
   - {fileID: 2120209803151792140}
@@ -171,7 +174,6 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
   CompletionBar: {fileID: 0}
-  isBeingProcessed: 0
 --- !u!1 &2605358448500336566
 GameObject:
   m_ObjectHideFlags: 0
