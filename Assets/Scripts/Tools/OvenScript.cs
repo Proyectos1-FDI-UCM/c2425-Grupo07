@@ -40,7 +40,7 @@ public class OvenScript : MonoBehaviour
     // FireIco es la imagen temporal cuando se quema un objeto
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
-    [SerializeField] private bool IsBurnt = false;
+    [SerializeField] public bool IsBurnt = false;
     // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado
     [SerializeField] private GameObject[] StatesMat;
     #endregion
@@ -123,6 +123,7 @@ public class OvenScript : MonoBehaviour
             FireIco.SetActive(false);
             _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
+
         }
     }
 
