@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 5210041020792004804}
   - component: {fileID: 735890420133839902}
   - component: {fileID: 8544634425404930296}
+  - component: {fileID: -1850669805353144280}
   m_Layer: 8
   m_Name: MusicBox
   m_TagString: Untagged
@@ -198,8 +199,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 1.9999999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8160061394984920587}
   - {fileID: 8735138677419152792}
@@ -342,6 +343,19 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
   CompletionBar: {fileID: 0}
+--- !u!114 &-1850669805353144280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906912807483375088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49556d8de735e84185f3e554abb76b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: 2ca41aa856167464fbd756a70409edaf, type: 3}
 --- !u!1 &3770509285179975193
 GameObject:
   m_ObjectHideFlags: 0

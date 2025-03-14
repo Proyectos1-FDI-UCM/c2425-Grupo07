@@ -32,6 +32,8 @@ public class Receiver : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] private InputActionReference InteractActionReference;
     [SerializeField] private GameObject[] ObjectsUI;
+
+    [SerializeField] private Transform TaskPosition;
     [SerializeField] private GameObject[] ReceivingObjects;
     [SerializeField] private bool InfiniteMode;
 
@@ -48,8 +50,13 @@ public class Receiver : MonoBehaviour
     private PlayerVision _playerVision;
     public Objects _deliveredObject;
     private receiverState _state;
-    private int _indexer = 0; // esta variable lleva el tracking del array de objetos por recibir
+    public int _indexer = 0; // esta variable lleva el tracking del array de objetos por recibir
     private GameObject _actualDeliveryUI;
+    private GameObject _correctAlert;
+    private GameObject _wrongAlert;
+
+    private int activeTasks = 0;
+
 
 
     #endregion
@@ -73,9 +80,14 @@ public class Receiver : MonoBehaviour
 
     private void Start()
     {
-        SetObjectUI(true);
-        _actualDeliveryUI.SetActive(false);
+        TaskPosition = GameObject.Find("Pedidos").transform;
+        _correctAlert = transform.GetChild(0).gameObject;
+        _wrongAlert = transform.GetChild(1).gameObject;
+        _correctAlert.SetActive(false);
+        _wrongAlert.SetActive(false);
+        InstatiateObjectUI(false);
         _state = receiverState.Idle;
+
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -93,9 +105,7 @@ public class Receiver : MonoBehaviour
             {
                 if (_indexer < ReceivingObjects.Length)
                 {
-                    SetObjectUI(true);
-                    _playerVision.Pick(Instantiate(ReceivingObjects[_indexer]));
-                    _indexer++;
+                    Receive();
                 }
                 else Debug.Log("No quedan más pedidos");
             }
@@ -153,30 +163,65 @@ public class Receiver : MonoBehaviour
     {
         Debug.Log("Modo de recogida activado");
         _actualDeliveryUI.SetActive(true);
+        _correctAlert.SetActive(false);
+        _wrongAlert.SetActive(false);
         
     }
     
     private void SetDeliveryMode()
     {
         _actualDeliveryUI.SetActive(false);
+        if (_deliveredObject != null)
+        {
+            _correctAlert.SetActive(true);
+            _wrongAlert.SetActive(false);
+        } 
+        else 
+        {
+            _correctAlert.SetActive(false);
+            _wrongAlert.SetActive(true);
+        }
+    }
+
+    public void AddSubTaskCount(int amount)
+    {
+        activeTasks += amount;
+    }
+    private void Receive()
+    {
+        if (activeTasks < 5)
+        {
+            GameObject broken_object = Instantiate(ReceivingObjects[_indexer]);
+            broken_object.GetComponent<TaskManager>().GetReceiver(this);
+            _indexer++;
+            InstatiateObjectUI(false);
+            _playerVision.Pick(broken_object);
+            broken_object.GetComponent<TaskManager>().AddTask(TaskPosition);
+            SetDeliveryMode();
+        }
+        else Debug.Log("No puedes recibir más pedidos");
+
     }
     private void Deliver()
     {
+        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask();
         Destroy(_deliveredObject.gameObject);
-        SetObjectUI(false); // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
+        InstatiateObjectUI(true); // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
         // aqui se pondrá el resto del codigo más adelante
     }
     private void SetIdleMode()
     {
         _actualDeliveryUI.SetActive(false);
+        _correctAlert.SetActive(false);
+        _wrongAlert.SetActive(false);
     }
-    private void SetObjectUI(bool hide)
+    private void InstatiateObjectUI(bool visible)
     {
         if (!InfiniteMode) // Más adelante implementamos el modo infinito :)
         {
             if (_actualDeliveryUI != null) Destroy(_actualDeliveryUI); // quita el cartel anterior
             _actualDeliveryUI = Instantiate(ObjectsUI[_indexer], transform); // Instancia el popUp visual del siguiente Objeto a reparar
-            _actualDeliveryUI.SetActive(!hide);
+            _actualDeliveryUI.SetActive(visible);
         }
     }
 

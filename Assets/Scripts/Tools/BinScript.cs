@@ -19,11 +19,12 @@ public class BinScript : MonoBehaviour
     /// <summary>
     /// Destruye automáticamente cualquier objeto que se convierta en hijo de la basura.
     /// </summary>
-    void LateUpdate()
+  
+    private void OnTransformChildrenChanged()
     {
-        for (int i = transform.childCount - 1; i >= 0; i--)
+        if (transform.childCount > 0)
         {
-            GameObject child = transform.GetChild(i).gameObject;
+            GameObject child = transform.GetChild(0).gameObject;
             DestruirMaterial(child);
         }
     }
@@ -39,6 +40,10 @@ public class BinScript : MonoBehaviour
     /// <param name="material">Objeto del material a destruir.</param>
     private void DestruirMaterial(GameObject material)
     {
+        if (material.GetComponent<TaskManager>() != null)
+        {
+            material.GetComponent<TaskManager>().EndTask();
+        }
         Destroy(material);
         Debug.Log("Material destruido en la basura.");
     }

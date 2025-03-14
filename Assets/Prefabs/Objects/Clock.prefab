@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 9081904571190492634}
   - component: {fileID: 5809380253560200837}
   - component: {fileID: 6146176122007907349}
+  - component: {fileID: -560427588021119210}
   m_Layer: 8
   m_Name: Clock
   m_TagString: Untagged
@@ -282,8 +283,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 1.9999999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8620387180722336710}
   - {fileID: 6079422323969122756}
@@ -426,3 +427,16 @@ MonoBehaviour:
   matType: 7
   _materialProgress: 0
   CompletionBar: {fileID: 0}
+--- !u!114 &-560427588021119210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7900758067909218852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49556d8de735e84185f3e554abb76b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: f952e3d1f64b5924f9bedb3c427a9c4a, type: 3}
