@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5eb77b69f28265240ada1ec3267e6394
+guid: e9f659716d755ec4d8f0276623a2c5b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,11 +97,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Robot1Tool_0
+      name: Robot3Tool_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 8
+        x: 3
+        y: 0
         width: 13
         height: 18
       alignment: 0
@@ -111,18 +111,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b46ed16cb2cc5834a85bb5639d9c7c54
-      internalID: -1617829665
+      spriteID: 8627f57db6c9fdd4186b9d13d8ecbc46
+      internalID: -1462701949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Robot1Tool_1
+      name: Robot3Tool_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 8
+        x: 36
+        y: 0
         width: 11
         height: 18
       alignment: 0
@@ -132,18 +132,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7875fd6e05a1a7241879702e635efc7c
-      internalID: -417775360
+      spriteID: 9cd028c17c288c442a368768ffaca39c
+      internalID: -648995657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Robot1Tool_2
+      name: Robot3Tool_2
       rect:
         serializedVersion: 2
-        x: 66
-        y: 8
+        x: 67
+        y: 0
         width: 13
         height: 18
       alignment: 0
@@ -153,18 +153,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c42eb8aeba7b684c846185ac4fd3820
-      internalID: 1617360325
+      spriteID: 8d256afa2a6adc6488bd9b83e8c20fb2
+      internalID: -1005746468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Robot1Tool_3
+      name: Robot3Tool_3
       rect:
         serializedVersion: 2
-        x: 99
-        y: 8
+        x: 100
+        y: 0
         width: 11
         height: 18
       alignment: 0
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9ed121055943e14287ad34387c1c17e
-      internalID: -1006437000
+      spriteID: c43e46c764698f24fa02f270029f910c
+      internalID: 82118905
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Robot1Tool_0: -1617829665
-      Robot1Tool_1: -417775360
-      Robot1Tool_2: 1617360325
-      Robot1Tool_3: -1006437000
+      Robot3Tool_0: -1462701949
+      Robot3Tool_1: -648995657
+      Robot3Tool_2: -1005746468
+      Robot3Tool_3: 82118905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
