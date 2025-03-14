@@ -9817,6 +9817,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 7774481975647927830, guid: 69b2d20bbd60d2c4da0cea983d77e13f, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 9102664224816378316, guid: 69b2d20bbd60d2c4da0cea983d77e13f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
