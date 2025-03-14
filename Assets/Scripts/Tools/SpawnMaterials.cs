@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Este script sirve para que el jugador pueda interactuar con la sierra pulsando la tecla de accionado
+// Este script se encarga de spawnear los materiales para la cinta mecánica en orden aleatorio y de manera cíclica
 // Ferran Escribá Cufí
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -7,17 +7,18 @@
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-using UnityEngine.InputSystem;
+using System.Collections;
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// 
-/// Esta clase se encarga de que el jugador pueda interactuar con la sierra de manera adecuada.
-/// Solo puede interactuar si está mirando a la sierra llevando madera y habiendo hecho menos clicks de los necesarios para procesar la madera.
+/// Esta clase tiene un array con todos los materiales para spawnear que desordena y recorre cíclicamente para spawnearlos.
+/// Spawnea los materiales en la posición del spawner y los asigna como sus hijos.
+/// Usa una corrutina para spawnear los materiales, la frecuencia con la que spawnea los materiales se puede ajustar en este código.
 /// </summary>
-public class PlayerSaw : MonoBehaviour
+public class SpawnMaterials : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -27,14 +28,8 @@ public class PlayerSaw : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Referencia a la acción de click
-    [SerializeField] private InputActionReference ClickActionReference;
-
-    // Referencia al script SawScript
-    [SerializeField] private SawScript SierraClick;
-
-    // Referencia al script PlayerVision
-    [SerializeField] private PlayerVision Player;
+    // Materials es un array que contiene todos los GameObjects de los materiales
+    [SerializeField] GameObject[] Materials = new GameObject[4];
 
     #endregion
 
@@ -47,30 +42,44 @@ public class PlayerSaw : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    #endregion
+    // _spawnPoint es el lugar en el que tienen que spawnear los materiales
+    private Transform _spawnPoint;
 
+    // _currentObjectIndex es el índice actual que está recorriendo el array Materials
+    private int _currentObjectIndex = 0;
+
+    // _spawnInterval es el tiempo en segundos que pasa entre cada spawn
+    private float _spawnInterval = 1.5f;
+
+    #endregion
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        if (GameObject.FindWithTag("Sierra") != null)
-        {
-            SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
-        }
-        Player = GetComponent<PlayerVision>();
+        _spawnPoint = GetComponent<Transform>();
+
+        ShuffleArray(Materials);
+
+        StartCoroutine(SpawnObjects());
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -82,7 +91,7 @@ public class PlayerSaw : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -90,29 +99,34 @@ public class PlayerSaw : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void OnEnable()
+    // SpawnObjects spawnea el material que corresponda respetando el intervalo de tiempo entre
+    // cada spawn. Spawnea el material en la posición del spawner y lo asigna como su hijo
+    private IEnumerator SpawnObjects()
     {
-        ClickActionReference.action.performed += OnClickPerformed;
-        ClickActionReference.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        ClickActionReference.action.performed -= OnClickPerformed;
-        ClickActionReference.action.Disable();
-    }
-
-    // Llama al método Click() del script Sierra cuando se hace click y el jugador está mirando a la sierra
-    // llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
-    private void OnClickPerformed(InputAction.CallbackContext context)
-    {
-        if (SierraClick != null && Player.GetActualMesa().CompareTag("Sierra") && SierraClick.GetHasWood() && !SierraClick.GetUnpickable() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks())
+        while (true)
         {
-            SierraClick.Click();
+            GameObject _material = Instantiate(Materials[_currentObjectIndex], _spawnPoint.position, _spawnPoint.rotation);
+            _material.transform.SetParent(transform);
+
+            _currentObjectIndex = (_currentObjectIndex + 1) % Materials.Length;
+
+            yield return new WaitForSeconds(_spawnInterval);
+        }
+    }
+
+    // SuffleArray desordena el array Materials para que spawneen en un orden más aleatorio
+    private void ShuffleArray(GameObject[] _materials)
+    {
+        for (int i = _materials.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            GameObject temp = _materials[i];
+            _materials[i] = _materials[j];
+            _materials[j] = temp;
         }
     }
 
     #endregion   
 
-} // class PlayerSaw 
+} // class SpawnMaterials 
 // namespace
