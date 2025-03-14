@@ -38,19 +38,19 @@ public class FireExtinguisher : MonoBehaviour
     {
         if (_isUsing && other.CompareTag("Fire"))
         {
-            Debug.Log("🔥 ¡Extinguiendo fuego!");
+            Debug.Log(" ¡Extinguiendo fuego!");
             other.gameObject.SetActive(false);
 
             // Busca directamente el script del horno en la escena
             OvenScript horno = FindObjectOfType<OvenScript>();
             if (horno != null)
             {
-                Debug.Log("✅ Horno encontrado, llamando a OnExtinguish()");
+                Debug.Log(" Horno encontrado, llamando a OnExtinguish()");
                 horno.OnExtinguish();
             }
             else
             {
-                Debug.LogError("❌ No se encontró el script OvenScript en la escena.");
+                Debug.LogError(" No se encontró el script OvenScript en la escena.");
             }
         }
     }

@@ -1,13 +1,13 @@
 //---------------------------------------------------------
 // En este script se programa el funcionamiento de la sierra
-// Ferran
-// Clank&Clutch
+// Ferran Escribá Cufí
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
+using System.Collections;
 using UnityEngine.UI;
 
 
