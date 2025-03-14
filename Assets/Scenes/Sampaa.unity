@@ -9809,6 +9809,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Extinguisher
       objectReference: {fileID: 0}
+    - target: {fileID: 540002389679584719, guid: 69b2d20bbd60d2c4da0cea983d77e13f, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109036630859096690, guid: 69b2d20bbd60d2c4da0cea983d77e13f, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9102664224816378316, guid: 69b2d20bbd60d2c4da0cea983d77e13f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
