@@ -8,10 +8,12 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+
+
+
 using UnityEngine;
 using UnityEngine.UIElements;
 // Añadir aquí el resto de directivas using
-
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
