@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Se programa el funcionamiento de la prensa que si un objeto es puesto en este,
+// Se programa el funcionamiento de la prensa cuando un objeto es puesto en este
 // devuelve después de x tiempo el objeto en su estado original
 // Liling Chen
 // Clank & Clutch
@@ -26,11 +26,11 @@ public class PressScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
    
-    [SerializeField] private GameObject CurrentObject; // Objeto actual en la 
-    [SerializeField] private float PressingTime = 0f; // Tiempo actual de prensado.
+    [SerializeField] private GameObject CurrentObject; // Objeto actual en la prensa
+    [SerializeField] private float PressingTime = 0f; // Tiempo actual de prensado
     [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
-    [SerializeField] private Canvas BarCanvasGroup;// Referencia al CanvasGroup de la barra de progreso
+    [SerializeField] private Canvas BarCanvasGroup;// Referencia al Canvas de la barra de progreso
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -96,10 +96,6 @@ public class PressScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
-    // Cambia la velocidad del horno acorde a qué jugador interactua él
-    public void ChangeVelocity(int vel)
-    { VelCompletion = vel; }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
