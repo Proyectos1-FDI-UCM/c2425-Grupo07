@@ -1,6 +1,7 @@
 //---------------------------------------------------------
-// Este script se encargara de establecer un vínculo entre el objeto que el jugador recibe y el panel de su tarea para que cuando el pedido se entregue, se elimine el panel de la tarea.
-// Responsable de la creación de este archivo
+// Este script vincula los objetos que el jugador recibe con sus
+// respectivos paneles de tarea en el HUD.
+// Óliver Garcia Aguado
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -8,45 +9,47 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Clase que gestiona la relación entre objetos y sus paneles de tarea.
+/// Se encarga de:
+/// - Crear y destruir paneles de tarea en la UI
+/// - Gestionar alertas visuales cuando el objeto está cerca del contenedor
+/// - Mantener el conteo de tareas activas en el receptor
 /// </summary>
 public class TaskManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+    /// <summary>
+    /// Prefab del panel de tarea que se mostrará en el HUD
+    /// </summary>
     [SerializeField] GameObject HUDTaskPanelPrefab;
-
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+    /// <summary>
+    /// Referencia al panel de tarea actual en la UI
+    /// </summary>
     private GameObject _actualPanel;
-    private GameObject _binAlert;
-    private Receiver _receiver;
-    
 
+    /// <summary>
+    /// Alerta visual que se activa cuando el objeto está cerca de la basura
+    /// </summary>
+    private GameObject _binAlert;
+
+    /// <summary>
+    /// Referencia al recibidor
+    /// </summary>
+    private Receiver _receiver;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
+    /// <summary>
+    /// Activa la alerta visual si el objeto entra en la zona de la basura.
+    /// </summary>
+    /// <param name="other">Collider que ha entrado en contacto</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<BinScript>() != null)
@@ -54,6 +57,11 @@ public class TaskManager : MonoBehaviour
             _binAlert.SetActive(true);
         }
     }
+
+    /// <summary>
+    /// Desactiva la alerta visual si el objeto sale de la zona de la basura.
+    /// </summary>
+    /// <param name="other">Collider que ha dejado de estar en contacto</param>
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.GetComponent<BinScript>() != null)
@@ -61,17 +69,15 @@ public class TaskManager : MonoBehaviour
             _binAlert.SetActive(false);
         }
     }
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-    
+    /// <summary>
+    /// Crea un nuevo panel de tarea en la UI y lo vincula con este objeto.
+    /// Incrementa el contador de tareas activas en el receptor.
+    /// </summary>
+    /// <param name="position">Posición donde se creará el panel en la UI</param>
     public void AddTask(Transform position)
     {
         _actualPanel = Instantiate(HUDTaskPanelPrefab, position);
@@ -79,28 +85,30 @@ public class TaskManager : MonoBehaviour
         _binAlert = _actualPanel.transform.Find("BinAlert").gameObject;
         _binAlert.SetActive(false);
         _receiver.AddSubTaskCount(1);
-
     }
+
+        /// <summary>
+        /// Elimina el panel de tarea asociado y decrementa el contador de tareas activas.
+        /// Se llama cuando el objeto es entregado o destruido.
+        /// </summary>
     public void EndTask()
     {
         Destroy(_actualPanel);
         _receiver.AddSubTaskCount(-1);
     }
 
+    /// <summary>
+    /// Recoge la referencia al recibidor que creó este objeto.
+    /// </summary>
+    /// <param name="receiver">Receptor que generó este objeto</param>
     public void GetReceiver(Receiver receiver)
     {
         _receiver = receiver;
     }
-
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion   
 
 } // class TaskManager 

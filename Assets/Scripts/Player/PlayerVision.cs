@@ -54,9 +54,9 @@ public class PlayerVision : MonoBehaviour
     private GameObject _heldObject;  // El item que está en las manos del jugador.
     private bool _onMesasRange = false; // Permite que el escaneo de mesas cercanas se lleve a cabo solo cuando el jugador esté dentro de un collider cercano a las Mesas
     private float _detectionTime; // Variable de tiempo, se va incrementando con DeltaTime y se reinicia cuando supera detectionRate
-    private float CenterOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
-    private float CircleRadius = 0.75f; // EL radio del circulo de detección de mesas
-    private float DetectionRate = 0.2f; // El intervalo de tiempo entre cada detección de mesas
+    private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
+    private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
+    private float _detectionRate = 0.2f; // El intervalo de tiempo entre cada detección de mesas
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -229,7 +229,6 @@ public class PlayerVision : MonoBehaviour
                 _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
                 if (_lookedObject.CompareTag("UI"))
                 {
-                    Debug.Log("asdijsaodhaskjdh");
                     _lookedObject = null;
                 }
             }
