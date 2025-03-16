@@ -47,6 +47,7 @@ public class PlayerDash : MonoBehaviour
     /// Componente Rigidbody2D del jugador para controlar su movimiento
     /// </summary>
     private Rigidbody2D _rb;
+    private PlayerMovement _pM;
 
     /// <summary>
     /// Indica si el dash está actualmente en ejecución
@@ -75,6 +76,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
        _rb = GetComponent<Rigidbody2D>();
+        _pM = GetComponent<PlayerMovement>();
     }
     #endregion
 
@@ -106,7 +108,7 @@ public class PlayerDash : MonoBehaviour
     /// <returns>IEnumerator para la corrutina</returns>
     private IEnumerator StartDash()
     {
-        _rb.velocity = (Vector2)transform.up * DashSpeed;
+        _rb.velocity = _pM.GetLastMove() * DashSpeed;
         yield return new WaitForSeconds(DashDuration);
         _isDashing = false;
         Debug.Log("DASH RECARGADO");

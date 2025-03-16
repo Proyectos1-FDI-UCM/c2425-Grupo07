@@ -57,6 +57,8 @@ public class PlayerVision : MonoBehaviour
     private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
     private float _detectionRate = 0.2f; // El intervalo de tiempo entre cada detección de mesas
+    private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
+    private PlayerMovement _pM; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -80,9 +82,14 @@ public class PlayerVision : MonoBehaviour
                 _detectionTime = 0;
             }
         }
+        if (_isBeingPicked)
+        {
+            _heldObject.transform.position = (Vector2)transform.position + _pM.GetLastMove().normalized;
+        }
     }
     private void Start()
     {
+        _pM = GetComponent<PlayerMovement>();
         FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor
     }
 
@@ -107,9 +114,8 @@ public class PlayerVision : MonoBehaviour
     public void Pick(GameObject lookedObject)
     {
         _heldObject = lookedObject;
-        _heldObject.transform.position = PickingPos.position;
-        _heldObject.transform.SetParent(PickingPos);
-        _heldObject.transform.rotation = transform.rotation;
+        _heldObject.transform.SetParent(gameObject.transform);
+        _isBeingPicked = true;
         _lookedObject = null;
     }
 
@@ -118,6 +124,7 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     public void Drop()
     {
+        _isBeingPicked = false;
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
         _heldObject.transform.SetParent(_actualMesa.transform);
@@ -245,7 +252,7 @@ public class PlayerVision : MonoBehaviour
         bool atLeastOneDetected = false;
         GameObject lastMesa = _actualMesa;
         float nearestDistance = Mathf.Infinity;
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(transform.position + transform.up * _centerOffset), _circleRadius, DetectedTilesLayer);
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(((Vector2)transform.position + _pM.GetLastMove() * _centerOffset), _circleRadius, DetectedTilesLayer);
         foreach (Collider2D collider in colisiones)
         {
             float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);
