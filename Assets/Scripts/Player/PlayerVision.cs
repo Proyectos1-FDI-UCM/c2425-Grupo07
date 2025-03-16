@@ -1,4 +1,4 @@
- //---------------------------------------------------------
+//---------------------------------------------------------
 // Este script es el responsable de la mecánica PickDrop y de la visión del jugador
 // Este script almacena la informacìón de la mesa que el jugador está mirando para que otros scripts puedan aprovecharlo
 // Óliver García Aguado
@@ -56,7 +56,7 @@ public class PlayerVision : MonoBehaviour
     private float _detectionTime; // Variable de tiempo, se va incrementando con DeltaTime y se reinicia cuando supera detectionRate
     private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
-    private float _detectionRate = 0.2f; // El intervalo de tiempo entre cada detección de mesas
+    private float _detectionRate = 0.1f; // El intervalo de tiempo entre cada detección de mesas
     private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _pM; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.
     #endregion
@@ -90,7 +90,7 @@ public class PlayerVision : MonoBehaviour
     private void Start()
     {
         _pM = GetComponent<PlayerMovement>();
-        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor
+        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
     }
 
     #endregion
@@ -207,7 +207,23 @@ public class PlayerVision : MonoBehaviour
                 _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
                 _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
             { Debug.Log("No se puede dropear aquí"); }
-            else Drop(); // hay objeto en la mano
+            else 
+            {
+                // Actualizar referencias antes de soltar el objeto
+                if (_actualMesa.GetComponent<OvenScript>() != null)
+                {
+                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                else if (_actualMesa.GetComponent<SawScript>() != null)
+                {
+                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                else if (_actualMesa.GetComponent<WelderScript>() != null)
+                {
+                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                Drop(); 
+            }
         }
         else if (_heldObject == null && _lookedObject != null)
         {
@@ -215,7 +231,20 @@ public class PlayerVision : MonoBehaviour
             { Debug.Log("No se puede recoger el material"); }
             else
             {
-                Pick(_lookedObject); // no hay objeto en la mano
+                // Limpiar referencias antes de recoger el objeto
+                if (_actualMesa.GetComponent<OvenScript>() != null)
+                {
+                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(null);
+                }
+                else if (_actualMesa.GetComponent<SawScript>() != null)
+                {
+                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(null);
+                }
+                else if (_actualMesa.GetComponent<WelderScript>() != null)
+                {
+                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(null);
+                }
+                Pick(_lookedObject);
             }
         }
         else if (_heldObject != null && _lookedObject != null) InsertMaterial();
@@ -280,9 +309,8 @@ public class PlayerVision : MonoBehaviour
                 }
                 else if (_heldObject != null)
                 {
-                    recibidor.AnalizeDeliveredObject(_heldObject);
+                    recibidor.UpdateDeliveredObjectReference(_heldObject);
                     if (recibidor.getState() != receiverState.Delivering) recibidor.setState(receiverState.Delivering);
-
                 }
             }
 

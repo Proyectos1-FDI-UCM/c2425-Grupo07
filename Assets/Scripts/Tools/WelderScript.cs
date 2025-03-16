@@ -135,6 +135,24 @@ public class WelderScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Actualiza la referencia del material directamente desde PlayerVision
+    /// </summary>
+    public void UpdateMaterialReference(Material material)
+    {
+        if (material != null && material.MaterialType() == MaterialType.Metal)
+        {
+            _materialSource = material;
+            _progress = _materialSource.ReturnProgress();
+            hasMetal = true;
+        }
+        else
+        {
+            _materialSource = null;
+            hasMetal = false;
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -143,34 +161,6 @@ public class WelderScript : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    /// <summary>
-    /// Cuando colisiona con la soldadora se activa el trigger
-    /// </summary>
-    /// <param name="collision"></param>
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Metal)
-        {
-            _materialSource = collision.GetComponent<Material>();
-            _progress = _materialSource.ReturnProgress();
-            hasMetal = true;
-        }
-    }
-
-    /// <summary>
-    /// Cuando se aleja/ sale de la soldadora se activa el trigger
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Material>() != null)
-        {
-            _materialSource = null;
-            hasMetal = false;
-        }
-    }
 
     #endregion   
 

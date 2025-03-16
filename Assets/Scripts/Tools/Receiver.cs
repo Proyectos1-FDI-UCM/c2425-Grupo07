@@ -218,6 +218,38 @@ public class Receiver : MonoBehaviour
     }
 
     /// <summary>
+    /// Actualiza la referencia del objeto entregado directamente desde PlayerVision.
+    /// Sigue el mismo patrón que OvenScript y SawScript.
+    /// </summary>
+    /// <param name="deliveredObject">El objeto que se está entregando o null si se retira</param>
+    public void UpdateDeliveredObjectReference(GameObject deliveredObject)
+    {
+        if (deliveredObject != null && deliveredObject.GetComponent<Objects>() != null)
+        {
+            Objects analized = deliveredObject.GetComponent<Objects>();
+            if (!analized.IsCompleted())
+            {
+                Debug.Log("El objeto no está apto para la entrega");
+                _deliveredObject = null;
+            }
+            else
+            {
+                _deliveredObject = analized;
+            }
+        }
+        else
+        {
+            _deliveredObject = null;
+        }
+
+        // Actualizar el estado visual según la nueva referencia
+        if (_state == receiverState.Delivering)
+        {
+            SetDeliveryMode();
+        }
+    }
+
+    /// <summary>
     /// Modifica el contador de subtareas activas.
     /// </summary>
     /// <param name="amount">Cantidad a añadir (puede ser negativa)</param>
