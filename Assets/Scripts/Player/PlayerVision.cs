@@ -74,7 +74,7 @@ public class PlayerVision : MonoBehaviour
         if (_onMesasRange)
         {
             _detectionTime += Time.deltaTime;
-            if (_detectionTime > DetectionRate)
+            if (_detectionTime > _detectionRate)
             {
                 CalculateNearest();
                 _detectionTime = 0;
@@ -139,7 +139,7 @@ public class PlayerVision : MonoBehaviour
 
         // Draw the search radius circle
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere((Vector2)(transform.position + transform.up * CenterOffset), CircleRadius);
+        Gizmos.DrawWireSphere((Vector2)(transform.position + transform.up * _centerOffset), _circleRadius);
 
         // Highlight the nearest object
         if (_actualMesa != null)
@@ -245,7 +245,7 @@ public class PlayerVision : MonoBehaviour
         bool atLeastOneDetected = false;
         GameObject lastMesa = _actualMesa;
         float nearestDistance = Mathf.Infinity;
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(transform.position + transform.up * CenterOffset), CircleRadius, DetectedTilesLayer);
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(transform.position + transform.up * _centerOffset), _circleRadius, DetectedTilesLayer);
         foreach (Collider2D collider in colisiones)
         {
             float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);
