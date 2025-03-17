@@ -58,7 +58,8 @@ public class PlayerVision : MonoBehaviour
     private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
     private float _detectionRate = 0.1f; // El intervalo de tiempo entre cada detección de mesas
     private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
-    private PlayerMovement _pM; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.
+    private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -84,12 +85,12 @@ public class PlayerVision : MonoBehaviour
         }
         if (_isBeingPicked)
         {
-            _heldObject.transform.position = (Vector2)transform.position + _pM.GetLastMove().normalized;
+            _heldObject.transform.position = (Vector2)transform.position + _playerMovement.GetLastMove().normalized;
         }
     }
     private void Start()
     {
-        _pM = GetComponent<PlayerMovement>();
+        _playerMovement = GetComponent<PlayerMovement>();
         FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
     }
 
@@ -131,6 +132,7 @@ public class PlayerVision : MonoBehaviour
         _heldObject = null;
     }
 
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -139,6 +141,7 @@ public class PlayerVision : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+      
 
     // Este método (Hecho con IA) permite poder ver el comportamiento de la detección de Mesas (no sé utilizar Gizmos, no me suspendan porfa :c)
     private void OnDrawGizmos()
@@ -281,7 +284,7 @@ public class PlayerVision : MonoBehaviour
         bool atLeastOneDetected = false;
         GameObject lastMesa = _actualMesa;
         float nearestDistance = Mathf.Infinity;
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(((Vector2)transform.position + _pM.GetLastMove() * _centerOffset), _circleRadius, DetectedTilesLayer);
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(((Vector2)transform.position + _playerMovement.GetLastMove() * _centerOffset), _circleRadius, DetectedTilesLayer);
         foreach (Collider2D collider in colisiones)
         {
             float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);

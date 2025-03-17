@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private InputActionSettings _theController;
 
-    //atributo aniamtior para las animaciones
+    //atributo animatior para las animaciones
     private Animator _animator;
 
     ////guarda el valor de la ultima posicion del jugador para el idle
