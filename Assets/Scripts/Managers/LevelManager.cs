@@ -54,17 +54,15 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos de MonoBehaviour
 
-    protected void Awake()
-    {
-        if (_instance == null)
-        {
-            // Somos la primera y única instancia
-            _instance = this;
-            Init();
-        }
-    }
+    
     private void Start()
     {
+
+    }
+
+    private void Update()
+    {
+        
     }
 
     #endregion
@@ -110,15 +108,6 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos Privados
 
-    /// <summary>
-    /// Dispara la inicialización.
-    /// </summary>
-    private void Init()
-    {
-        // De momento no hay nada que inicializar
-        if (isRack) Instantiate(Rack, new Vector2(0,0), Quaternion.identity);
-        else Instantiate(Albert, new Vector2(0, 0), Quaternion.identity);
-    }
 
     #endregion
 } // class LevelManager 
