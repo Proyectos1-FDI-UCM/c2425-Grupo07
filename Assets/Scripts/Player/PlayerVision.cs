@@ -1,4 +1,4 @@
- //---------------------------------------------------------
+//---------------------------------------------------------
 // Este script es el responsable de la mecánica PickDrop y de la visión del jugador
 // Este script almacena la informacìón de la mesa que el jugador está mirando para que otros scripts puedan aprovecharlo
 // Óliver García Aguado
@@ -54,9 +54,11 @@ public class PlayerVision : MonoBehaviour
     private GameObject _heldObject;  // El item que está en las manos del jugador.
     private bool _onMesasRange = false; // Permite que el escaneo de mesas cercanas se lleve a cabo solo cuando el jugador esté dentro de un collider cercano a las Mesas
     private float _detectionTime; // Variable de tiempo, se va incrementando con DeltaTime y se reinicia cuando supera detectionRate
-    private float CenterOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
-    private float CircleRadius = 0.75f; // EL radio del circulo de detección de mesas
-    private float DetectionRate = 0.2f; // El intervalo de tiempo entre cada detección de mesas
+    private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
+    private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
+    private float _detectionRate = 0.1f; // El intervalo de tiempo entre cada detección de mesas
+    private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
+    private PlayerMovement _pM; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -74,16 +76,21 @@ public class PlayerVision : MonoBehaviour
         if (_onMesasRange)
         {
             _detectionTime += Time.deltaTime;
-            if (_detectionTime > DetectionRate)
+            if (_detectionTime > _detectionRate)
             {
                 CalculateNearest();
                 _detectionTime = 0;
             }
         }
+        if (_isBeingPicked)
+        {
+            _heldObject.transform.position = (Vector2)transform.position + _pM.GetLastMove().normalized;
+        }
     }
     private void Start()
     {
-        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor
+        _pM = GetComponent<PlayerMovement>();
+        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
     }
 
     #endregion
@@ -107,9 +114,8 @@ public class PlayerVision : MonoBehaviour
     public void Pick(GameObject lookedObject)
     {
         _heldObject = lookedObject;
-        _heldObject.transform.position = PickingPos.position;
-        _heldObject.transform.SetParent(PickingPos);
-        _heldObject.transform.rotation = transform.rotation;
+        _heldObject.transform.SetParent(gameObject.transform);
+        _isBeingPicked = true;
         _lookedObject = null;
     }
 
@@ -118,6 +124,7 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     public void Drop()
     {
+        _isBeingPicked = false;
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
         _heldObject.transform.SetParent(_actualMesa.transform);
@@ -139,7 +146,7 @@ public class PlayerVision : MonoBehaviour
 
         // Draw the search radius circle
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere((Vector2)(transform.position + transform.up * CenterOffset), CircleRadius);
+        Gizmos.DrawWireSphere((Vector2)(transform.position + transform.up * _centerOffset), _circleRadius);
 
         // Highlight the nearest object
         if (_actualMesa != null)
@@ -200,7 +207,23 @@ public class PlayerVision : MonoBehaviour
                 _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
                 _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
             { Debug.Log("No se puede dropear aquí"); }
-            else Drop(); // hay objeto en la mano
+            else 
+            {
+                // Actualizar referencias antes de soltar el objeto
+                if (_actualMesa.GetComponent<OvenScript>() != null)
+                {
+                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                else if (_actualMesa.GetComponent<SawScript>() != null)
+                {
+                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                else if (_actualMesa.GetComponent<WelderScript>() != null)
+                {
+                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                }
+                Drop(); 
+            }
         }
         else if (_heldObject == null && _lookedObject != null)
         {
@@ -208,7 +231,20 @@ public class PlayerVision : MonoBehaviour
             { Debug.Log("No se puede recoger el material"); }
             else
             {
-                Pick(_lookedObject); // no hay objeto en la mano
+                // Limpiar referencias antes de recoger el objeto
+                if (_actualMesa.GetComponent<OvenScript>() != null)
+                {
+                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(null);
+                }
+                else if (_actualMesa.GetComponent<SawScript>() != null)
+                {
+                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(null);
+                }
+                else if (_actualMesa.GetComponent<WelderScript>() != null)
+                {
+                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(null);
+                }
+                Pick(_lookedObject);
             }
         }
         else if (_heldObject != null && _lookedObject != null) InsertMaterial();
@@ -229,7 +265,6 @@ public class PlayerVision : MonoBehaviour
                 _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
                 if (_lookedObject.CompareTag("UI"))
                 {
-                    Debug.Log("asdijsaodhaskjdh");
                     _lookedObject = null;
                 }
             }
@@ -246,7 +281,7 @@ public class PlayerVision : MonoBehaviour
         bool atLeastOneDetected = false;
         GameObject lastMesa = _actualMesa;
         float nearestDistance = Mathf.Infinity;
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll((Vector2)(transform.position + transform.up * CenterOffset), CircleRadius, DetectedTilesLayer);
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(((Vector2)transform.position + _pM.GetLastMove() * _centerOffset), _circleRadius, DetectedTilesLayer);
         foreach (Collider2D collider in colisiones)
         {
             float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);
@@ -274,9 +309,8 @@ public class PlayerVision : MonoBehaviour
                 }
                 else if (_heldObject != null)
                 {
-                    recibidor.AnalizeDeliveredObject(_heldObject);
+                    recibidor.UpdateDeliveredObjectReference(_heldObject);
                     if (recibidor.getState() != receiverState.Delivering) recibidor.setState(receiverState.Delivering);
-
                 }
             }
 

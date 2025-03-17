@@ -60,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private InputActionSettings _theController;
 
+    //atributo aniamtior para las animaciones
+    private Animator _animator;
+
+    ////guarda el valor de la ultima posicion del jugador para el idle
+    //private Vector2 _lastMoveDir; 
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -78,7 +84,9 @@ public class PlayerMovement : MonoBehaviour
         InputAction movement = _moveControls.Player.Move;
         // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
         movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
-        movement.canceled += ctx => MovementVector = new Vector2(0,0);
+        movement.canceled += ctx => MovementVector = new Vector2(0, 0);
+
+        _animator = GetComponentInParent<Animator>();
     }
     /// <summary>
     /// Start asigna la velocidad actual con la máxima
@@ -94,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         OnMove();
+        Animate();
     }
     #endregion
 
@@ -113,14 +122,29 @@ public class PlayerMovement : MonoBehaviour
     {
         _translateMovement = MovementVector * CurrentVelocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
         transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
-        
+
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             LastMovementVector = _translateMovement;
-            _targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * Time.deltaTime); // El jugador gira a la dirección
+            //_targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * Time.deltaTime); // El jugador gira a la dirección
         }
     }
+
+    private void Animate()
+    {
+        _animator.SetFloat("WalkX", MovementVector.x);
+        _animator.SetFloat("WalkY", MovementVector.y);
+        _animator.SetFloat("MoveMagnitude", MovementVector.magnitude);
+        _animator.SetFloat("LastMoveX", LastMovementVector.x);
+        _animator.SetFloat("LastMoveY", LastMovementVector.y);
+    }
+
+    public Vector2 GetLastMove()
+    {
+        return LastMovementVector;
+    }
+
     #endregion
 
 } // class PlayerMovement 

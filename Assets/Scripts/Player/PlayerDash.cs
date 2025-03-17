@@ -1,5 +1,8 @@
 //---------------------------------------------------------
-// Este script es el responsable de la habilidad de Dash del personaje
+// Sistema de Dash del Jugador
+// Este script implementa la mecánica de impulso rápido (dash)
+// permitiendo al jugador moverse rápidamente en la dirección
+// que está mirando.
 // Óliver García Aguado
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -10,92 +13,80 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
-/// 
-/// Esta clase es la encargada de la mecánica del Dash del jugador, el metodo del Dash está suscrito al inputActionReference correspondiente (LeftShift)
-/// y la condición para empezar un dash es que no haya otro en curso (_isDashing debe estar en false) esta clase, una vez accionado el dash, modifica la velocidad del rigidbody
-/// a una establecida durante un tiempo establecido mediante una corrutina.
+/// Clase que gestiona la mecánica de dash del jugador.
+/// Se encarga de:
+/// - Detectar la activación del dash mediante input
+/// - Aplicar el impulso en la dirección del jugador
+/// - Controlar el tiempo de duración y recarga del dash
+/// - Gestionar el estado del dash (activo/inactivo)
 /// </summary>
 public class PlayerDash : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-    [SerializeField] float DashSpeed; // Velocidad del dash
-    [SerializeField] float DashDuration; // Tiempo que durará el dash
-    [SerializeField] private InputActionReference DashActionReference; //El inputAction que va a realizar el Dash
+    /// <summary>
+    /// Velocidad a la que se moverá el jugador durante el dash
+    /// </summary>
+    [SerializeField] float DashSpeed;
 
+    /// <summary>
+    /// Duración en segundos del dash
+    /// </summary>
+    [SerializeField] float DashDuration;
+
+    /// <summary>
+    /// Referencia a la acción de input que activará el dash
+    /// </summary>
+    [SerializeField] private InputActionReference DashActionReference;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-    // componentes de físicas y movimiento del jugador
+    /// <summary>
+    /// Componente Rigidbody2D del jugador para controlar su movimiento
+    /// </summary>
     private Rigidbody2D _rb;
-    private bool _isDashing = false; // Esta boleana se activa mientras que se está realizando un Dash
+    private PlayerMovement _pM;
 
-
-    #endregion
-    // ---- ATRIBUTOS PÚBLICOS ----
-    #region
-
-
-
+    /// <summary>
+    /// Indica si el dash está actualmente en ejecución
+    /// </summary>
+    private bool _isDashing = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
-    /// Awake se llama para recoger el playerinput y detectar cuando está disponible.
+    /// Inicializa y habilita el sistema de input del jugador.
     /// </summary>
     private void Awake()
     {
-            var playerInput = GetComponent<PlayerInput>();
-            if (playerInput != null)
-            {
-                playerInput.actions.Enable();
-                Debug.Log("Player Input habilitado");
-            }
+        var playerInput = GetComponent<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.actions.Enable();
+            Debug.Log("Player Input habilitado");
+        }
     }
+
     /// <summary>
-    /// Start se llama para los componentes de físicas y movimiento
+    /// Obtiene la referencia al componente Rigidbody2D del jugador.
     /// </summary>
     void Start()
     {
        _rb = GetComponent<Rigidbody2D>();
+        _pM = GetComponent<PlayerMovement>();
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     /// <summary>
-    /// Cuando se pulsa el Input de dash pregunta si se puede usar y si es que sí, realiza el dash.
-    /// El parámetro context es manejado por el input system de forma automática, se establece la fase del input a ser detectada desde la suscr
+    /// Procesa la solicitud de dash del jugador.
+    /// Solo se ejecuta si no hay un dash actualmente en curso.
     /// </summary>
-    /// <param name="context"></param>
+    /// <param name="context">Contexto del input proporcionado por el sistema de input</param>
     private void RequestDash(InputAction.CallbackContext context)
     {
         if (!_isDashing)
@@ -105,45 +96,41 @@ public class PlayerDash : MonoBehaviour
             StartCoroutine(StartDash());
         }
     }
-
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-
     /// <summary>
-    /// Realiza el dash igualando la velocidad del rigidbody del juegador a una velocidad dada en la dirección que este este mirando y durante un tiempo establecido.
+    /// Ejecuta la mecánica del dash.
+    /// Aplica la velocidad en la dirección actual del jugador y
+    /// espera la duración configurada antes de permitir otro dash.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>IEnumerator para la corrutina</returns>
     private IEnumerator StartDash()
     {
-        
-        _rb.velocity = (Vector2)transform.up * DashSpeed;
+        _rb.velocity = _pM.GetLastMove() * DashSpeed;
         yield return new WaitForSeconds(DashDuration);
         _isDashing = false;
         Debug.Log("DASH RECARGADO");
     }
 
-    // La suscripción del input al Dash
+    /// <summary>
+    /// Suscribe el método RequestDash al evento de input cuando el componente se habilita.
+    /// </summary>
     private void OnEnable()
     {
         DashActionReference.action.performed += RequestDash;
         DashActionReference.action.Enable();
-
     }
 
+    /// <summary>
+    /// Desuscribe el método RequestDash del evento de input cuando el componente se deshabilita.
+    /// </summary>
     private void OnDisable()
     {
         DashActionReference.action.performed -= RequestDash;
         DashActionReference.action.Disable();
     }
     #endregion
-
 } // class Dash 
 // namespace

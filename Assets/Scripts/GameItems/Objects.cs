@@ -8,6 +8,9 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+
+
+
 using UnityEngine;
 using UnityEngine.UIElements;
 // Añadir aquí el resto de directivas using
@@ -88,11 +91,7 @@ public class Objects : MonoBehaviour
         return agregado;
     }
 
-    /// <summary>
-    /// Método booleano que comprueba que el objeto tenga GameObject en la array
-    /// </summary>
-    /// <param name="material"></param>
-    /// <returns>retorna true si en Materials[0] es null, representando que en la array no hay material y false de lo contrario</returns>
+
     public bool ThereIsMaterial(GameObject material)
     {
         return Materials[0] == null;
@@ -135,9 +134,6 @@ public class Objects : MonoBehaviour
         return true;
     }
 
-    /// <summary>
-    /// Al llamar a este método, recorre por la array del objeto y pone todos sus huecos a null
-    /// </summary>
     public void ResetObject()
     {
         for (int i = 0; i < Materials.Length; i++)

@@ -153,6 +153,25 @@ public class SawScript : MonoBehaviour
         return Unpickable;
     }
 
+    /// <summary>
+    /// Actualiza la referencia del material directamente desde PlayerVision
+    /// </summary>
+    public void UpdateMaterialReference(Material material)
+    {
+        if (material != null && material.GetComponent<Material>().MaterialType() == MaterialType.Madera)
+        {
+            _materialSource = material;
+            CompletionBarReference = _materialSource.ReturnProgressBar();
+            CurrentClicks = (int)_materialSource.ReturnProgress();
+            _pastClicks = CurrentClicks;
+        }
+        else
+        {
+            _materialSource = null;
+            CompletionBarReference = null;
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -198,7 +217,7 @@ public class SawScript : MonoBehaviour
 
     // Cuando un objeto entra en el área de colisión de la sierra, mira si es madera y en ese caso se lo
     // asigna a _materialSource y asigna la referencia de la barra de compleción y del progreso actual
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Material>() != null && collision.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Madera)
         {
@@ -218,7 +237,7 @@ public class SawScript : MonoBehaviour
             _materialSource = null;
             CompletionBarReference = null;
         }
-    }
+    } */
 
     #endregion   
 

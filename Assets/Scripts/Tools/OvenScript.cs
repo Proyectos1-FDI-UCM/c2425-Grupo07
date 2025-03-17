@@ -105,6 +105,25 @@ public class OvenScript : MonoBehaviour
     public bool ReturnInProgress()
     { return _isProcessing; }
 
+    /// <summary>
+    /// Actualiza la referencia del material directamente desde PlayerVision
+    /// </summary>
+    public void UpdateMaterialReference(Material material)
+    {
+        if (material != null && material.MaterialType() == MaterialType.Arena)
+        {
+            _matScr = material;
+            _progress = _matScr.ReturnProgress();
+            _isProcessing = true;
+        }
+        else
+        {
+            _matScr = null;
+            _isProcessing = false;
+            FlashImage.SetActive(false);
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -136,7 +155,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Processing()
     {
-        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Arena && transform.childCount == 1)
+        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.MaterialType() == MaterialType.Arena && transform.childCount == 1)
         {
             _progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(_progress);
@@ -145,18 +164,18 @@ public class OvenScript : MonoBehaviour
                 ProcessedMaterial();
             }
         }
-        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Cristal)
+        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && _matScr.MaterialType() == MaterialType.Cristal)
         {
             _matScr.UpdateProgress(_progress);
             _timerBurn += Time.deltaTime;
             _progress = (_timerBurn / 100) * VelCompletion / 1.5f;
             _timerFlash += Time.deltaTime;
 
-            if (_timerFlash < 0.5 / _timerBurn)
+            if (_timerFlash < 0.5f / _timerBurn)
             {
                 FlashImage.SetActive(false);
             }
-            else if (_timerFlash < 1 / _timerBurn)
+            else if (_timerFlash < 1f / _timerBurn)
             {
                 FlashImage.SetActive(true);
             }
@@ -192,7 +211,7 @@ public class OvenScript : MonoBehaviour
     }
     /// <summary>
     /// Si el objeto procesado se mantiene demasiado tiempo en el horno,
-    /// se incendia esta estación de trabajo y el material se convierte en “ceniza”,
+    /// se incendia esta estación de trabajo y el material se convierte en "ceniza",
     /// el cual no tendrá ninguna utilidad y podrá ser descartado en la basura.
     /// </summary>
     void BurntMaterial()
@@ -211,7 +230,7 @@ public class OvenScript : MonoBehaviour
     /// <summary>
     /// Detecta si se ha colocado un material en el horno y puede iniciar o pausar el proceso
     /// </summary>
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
         if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().MaterialType() == MaterialType.Arena && transform.childCount == 0)
@@ -233,7 +252,7 @@ public class OvenScript : MonoBehaviour
             _matScr = null;
             _isProcessing = false;
         }
-    }
+    }*/
     #endregion
 
 } // class Horno 

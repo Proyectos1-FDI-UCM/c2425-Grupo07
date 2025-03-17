@@ -38,7 +38,6 @@ public class Material : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     // Hace que los métodos puedan acceder al tipo de Material 
     [SerializeField] private MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
-    [SerializeField] private float _materialProgress; // El progreso de procesado del material
     [SerializeField] private Image CompletionBar; //La barra de progreso del material
     #endregion
 
@@ -50,8 +49,9 @@ public class Material : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private float _materialProgress; // El progreso de procesado del material
 
-    //firstUse sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
+    //_UsedOnce sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
     private bool _UsedOnce = false;
 
     #endregion
