@@ -30,9 +30,12 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] public bool isRack;
-    [SerializeField] GameObject Rack;
-    [SerializeField] GameObject Albert;
+    [SerializeField] public bool isRack; //Booleana que depende del jugador, si es Rack, está activo sino, significa que es Albert
+    [SerializeField] GameObject Rack; //Para el prefab de Rack
+    [SerializeField] GameObject Albert; //Para el prefab de Albert
+    [SerializeField] private int Time; //Unidad de tiempo
+    [SerializeField] private int Money; //Cantidad de dinero/puntuación que el jugador consigue
+
 
     #endregion
 
@@ -94,6 +97,12 @@ public class LevelManager : MonoBehaviour
     {
         return _instance != null;
     }
+
+    public enum Range
+    {
+        S,A,B,C,D,E,F,
+    }
+
 
     #endregion
 
