@@ -163,6 +163,8 @@ GameObject:
   - component: {fileID: 3317164196597587}
   - component: {fileID: 1883931610630439363}
   - component: {fileID: 6475533781192141353}
+  - component: {fileID: 8333093449011649546}
+  - component: {fileID: -7307473720866624258}
   m_Layer: 8
   m_Name: MetalBlob
   m_TagString: Untagged
@@ -251,7 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matType: 2
-  _materialProgress: 0
   CompletionBar: {fileID: 3953583605506256008}
 --- !u!58 &6475533781192141353
 CircleCollider2D:
@@ -288,6 +289,48 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &8333093449011649546
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046970825805907103}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!114 &-7307473720866624258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046970825805907103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23b93cc00053764c9ca4ccf3e9b1fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  siguienteBelt: {fileID: 0}
+  beltVel: 0.5
+  _direction: {x: 0, y: 1, z: 0}
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0
