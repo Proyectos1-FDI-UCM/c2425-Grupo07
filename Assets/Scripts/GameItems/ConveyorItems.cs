@@ -80,64 +80,35 @@ public class ConveyorItems : MonoBehaviour
     // mayúscula, incluida la primera letra)
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Herramienta" && transform.parent.tag != "Player")
+        if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
         {
             siguienteBelt = other.gameObject;
+
             AvanzaConParent();
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Herramienta" && transform.parent.tag != "Player")
-        {
-            //transform.SetParent(siguienteBelt.transform);
-            CompruebaParent();
-        }
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Herramienta" && transform.parent.tag != "Player")
-        {
-            //transform.SetParent(siguienteBelt.transform);
-        }
-    }
-    void CompruebaParent()
-    {
-        if (siguienteBelt.transform.childCount == 0)
-        {
-            transform.SetParent(siguienteBelt.transform);
-            transform.position = siguienteBelt.transform.position;
-            if (siguienteBelt.transform.rotation.y != transform.rotation.y)
-            {
-                transform.rotation = siguienteBelt.transform.rotation;
-                _direction = siguienteBelt.transform.up;
-            }
         }
     }
     void AvanzaConParent()
     {
-        transform.Translate(_direction * -1 * Time.deltaTime * beltVel, Space.World);
-        if (true)
-        {
-            Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
-            //transform.position = siguienteBelt.transform.position;
-            transform.SetParent(siguienteBelt.transform);
-            if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.1)
+            transform.Translate(_direction * -1 * Time.deltaTime * beltVel, Space.World);
+                Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
+                //transform.position = siguienteBelt.transform.position;
+                transform.SetParent(siguienteBelt.transform);
+            if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.01)
             {
                 _direction = siguienteBelt.transform.up;
                 //transform.rotation = siguienteBelt.transform.rotation;
                 //_direction = siguienteBelt.transform.rotation * -_direction;
             }
-        }
-        if (transform.position.y <= -1 || transform.position.x <= -1)
-        {
-            transform.SetParent(siguienteBelt.transform);
-        }
+
+            if (transform.position.y <= -1 || transform.position.x <= -1)
+            {
+                transform.SetParent(siguienteBelt.transform);
+            }
 
     }
     void OnTransformChildrenChanged()
     {
-        AvanzaConParent();
+
     }
     #endregion
 
