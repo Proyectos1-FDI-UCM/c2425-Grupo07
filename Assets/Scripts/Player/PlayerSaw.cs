@@ -106,7 +106,7 @@ public class PlayerSaw : MonoBehaviour
     // llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (SierraClick != null && Player.GetActualMesa().CompareTag("Sierra") && SierraClick.GetHasWood() && !SierraClick.GetUnpickable() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks())
+        if (SierraClick != null && Player.GetActualMesa() != null && Player.GetActualMesa().CompareTag("Sierra") && SierraClick.GetHasWood() && !SierraClick.GetUnpickable() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks())
         {
             SierraClick.Click();
         }
