@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class CoveyorBeltScr : MonoBehaviour
+public class ConveyorBeltScr : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,7 +24,7 @@ public class CoveyorBeltScr : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] private GameObject MovingObject;
     [SerializeField] private int BeltVel;
-    [SerializeField] private bool muevoObjeto;
+    [SerializeField] private bool isMoving;
 
     #endregion
 
@@ -60,7 +60,7 @@ public class CoveyorBeltScr : MonoBehaviour
     /// </summary>
     void Update()
     {
-        MoveTheObject();
+        //MoveTheObject();
     }
     #endregion
 
@@ -80,34 +80,59 @@ public class CoveyorBeltScr : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerStay2D(Collider2D other)
     {
         //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && transform.childCount == 0)
+        /*if (other.gameObject.GetComponent<Material>() != null && transform.childCount == 0)
         {
             Debug.Log("Hay un material puesto");
-            muevoObjeto = true;
+            isMoving = true;
+            if (other.transform.parent.tag == "Herramienta")
+            {
+                other.transform.parent = gameObject.transform;
+            }
         }
+        other.transform.Translate(Vector2.down * Time.deltaTime * BeltVel, Space.World);
+        if (other.gameObject.GetComponent<Material>() != null) //&& transform.childCount == 1)//&& transform.transform.parent.tag == "Herramienta")
+        {
+            //other.transform.parent = gameObject.transform;
+            other.transform.Translate(Vector2.down * Time.deltaTime * BeltVel, Space.World);
+            //Debug.Log("Hay un material puesto");
+        }
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Material>() != null)
+        if (other.transform.parent == gameObject.transform)
+        {
+            other.transform.parent = null;
+        }
+        /*if (other.gameObject.GetComponent<Material>() != null && transform.childCount == 1)
         {
             Debug.Log("No Hay un material puesto");
-            MovingObject = other.gameObject;
+            //MovingObject = other.gameObject;
             BeltVel = 0;
+            isMoving = false;
             MovingObject.transform.SetParent(null);
         }
-    }
-
+    }*/
+    /*
     void MoveTheObject()
     {
-        if (muevoObjeto && transform.childCount ==1)
+        if (transform.childCount == 1 && transform.GetChild(0).gameObject != null)// Si hay un material como child
         {
-            MovingObject= transform.GetChild(0).gameObject;
+            MovingObject = transform.GetChild(0).gameObject;
+            MovingObject.transform.position = transform.position;
+
+            MovingObject.transform.rotation = transform.rotation;
             MovingObject.transform.Translate(Vector2.down * Time.deltaTime * BeltVel, Space.World);
+            
         }
     }
+    /*private void OnTransformChildrenChanged()
+    {
+        MovingObject = null;
+    }*/
     #endregion   
 
 } // class CoveyorBeltScr 
