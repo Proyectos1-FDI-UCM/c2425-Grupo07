@@ -32,7 +32,6 @@ public class PlayerVision : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] private InputActionReference PickDropActionReference; // La acción que realiza el pickDrop
 
-    [SerializeField] private Transform PickingPos; // Un empty object que representa la posición donde el item sujetado por el jugador estará con respecto a este.
     [SerializeField] LayerMask DetectedTilesLayer; // Esta mascara permite que la detección de mesas solo detecte a gameObjects que tengan esta Layer
     [SerializeField] Color MesaTint = Color.yellow; // El color con el cual se tintará la mesa que esté siendo selecionada/vista por el jugador (_actualmesa)
     
@@ -57,7 +56,7 @@ public class PlayerVision : MonoBehaviour
     private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
     private float _detectionRate = 0.1f; // El intervalo de tiempo entre cada detección de mesas
-    private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
+    public bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
 
     #endregion
@@ -181,11 +180,6 @@ public class PlayerVision : MonoBehaviour
         }
 
     }
-    private void OnTransformChildrenChanged()
-    {
-        if(transform.childCount == 1) _isBeingPicked = true;
-        else if (transform.childCount == 0) _isBeingPicked = false;
-    }
 
     // Las suscripciones al InputActionReference
     private void OnEnable()
@@ -225,15 +219,15 @@ public class PlayerVision : MonoBehaviour
             else 
             {
                 // Actualizar referencias antes de soltar el objeto
-                if (_actualMesa.GetComponent<OvenScript>() != null)
+                if (_actualMesa != null && _actualMesa.GetComponent<OvenScript>() != null)
                 {
                     _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
                 }
-                else if (_actualMesa.GetComponent<SawScript>() != null)
+                else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
                 {
                     _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
                 }
-                else if (_actualMesa.GetComponent<WelderScript>() != null)
+                else if (_actualMesa != null && _actualMesa.GetComponent<WelderScript>() != null)
                 {
                     _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
                 }

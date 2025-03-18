@@ -110,7 +110,8 @@ public class PlayerAnimation : MonoBehaviour
         //No Activo, cambia entre el estado de Idle y Walk
         if (_movement != Vector2.zero)
         {
-            _animator.SetFloat("BlendNA", 1f);
+            _animator.SetFloat("BlendNA", 1f); 
+            _working = false;
         }
         else _animator.SetFloat("BlendNA", 0f);
 
@@ -147,7 +148,10 @@ public class PlayerAnimation : MonoBehaviour
 
     private void SetBoolTrue(InputAction.CallbackContext context)
     {
-        _working = true;
+        if (_movement == Vector2.zero)
+        {
+            _working = true;
+        }
     }
 
     private void SetBoolFalse(InputAction.CallbackContext context)
