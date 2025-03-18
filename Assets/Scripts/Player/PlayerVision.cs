@@ -132,6 +132,13 @@ public class PlayerVision : MonoBehaviour
         _heldObject = null;
     }
 
+    /// <summary>
+    /// Metodo que se encarga de retornar la condicion de si el objecto ha sido recogido para la animacion
+    /// </summary>
+    /// <returns></returns>
+    public bool IsBeingPicked()
+    { return _isBeingPicked; }
+
 
     #endregion
 

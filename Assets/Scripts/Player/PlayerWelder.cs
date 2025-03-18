@@ -64,13 +64,6 @@ public class PlayerWelder : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -96,6 +89,7 @@ public class PlayerWelder : MonoBehaviour
             InteractActionReference.action.Enable();
     }
 
+    
     private void TurningWelder() 
     { 
         if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
