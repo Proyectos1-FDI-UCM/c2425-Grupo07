@@ -4,72 +4,64 @@
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Maneja la entrada del jugador para activar o desactivar el extintor.
-/// Funciona mientras el jugador mantenga presionada la tecla asignada.
-/// </summary>
 public class PlayerFireExtinguisher : MonoBehaviour
 {
-    // ---- ATRIBUTOS DEL INSPECTOR ----
-    #region Atributos del Inspector (serialized fields)
+    [SerializeField] private InputActionReference ExtinguisherActionReference;  // Acción del extintor
+    private FireExtinguisher extinguisher;  // Referencia al extintor
 
-    [SerializeField] private InputActionReference ExtinguisherActionReference;
-    private FireExtinguisher extinguisher;
-
-    #endregion
-
-    // ---- MÉTODOS DE MONOBEHAVIOUR ----
-    #region Métodos de MonoBehaviour
+    private PlayerVision _playerVision;
+    private PlayerMovement _playerMovement;
 
     private void Start()
     {
-        extinguisher = FindObjectOfType<FireExtinguisher>();
+        extinguisher = FindObjectOfType<FireExtinguisher>();  // Buscamos el extintor en la escena
 
         if (extinguisher == null)
         {
             Debug.LogError("No se encontró un objeto con el script FireExtinguisher en la escena.");
         }
+
+        // Inicializamos las referencias del jugador
+        _playerVision = GetComponent<PlayerVision>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Awake()
     {
+        if (ExtinguisherActionReference == null || ExtinguisherActionReference.action == null)
+        {
+            Debug.LogError("ExtinguisherActionReference no está asignado o no tiene una acción.");
+            return;
+        }
+
+        // Nos suscribimos a los eventos de la acción
         ExtinguisherActionReference.action.performed += ctx => OnExtinguisherUsed(ctx);
         ExtinguisherActionReference.action.canceled += ctx => OnExtinguisherStopped(ctx);
         ExtinguisherActionReference.action.Enable();
     }
 
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-
+    // Llamado cuando el jugador usa el extintor
     private void OnExtinguisherUsed(InputAction.CallbackContext ctx)
     {
-        // Verificar si el extintor existe y si es hijo de PickingPos
-        Transform pickingPosTransform = transform.Find("PickingPos");
-
-        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform))
+        if (extinguisher.IsExtinguisherAssociatedWithValidParent())  // Verificamos si el extintor es hijo del jugador
         {
-            extinguisher.OnUseExtinguisher(ctx);
+            _playerMovement.enabled = false;
+            _playerVision.enabled = false;
+            extinguisher.OnUseExtinguisher(ctx);  // Usamos el extintor
         }
     }
 
+    // Llamado cuando el jugador deja de usar el extintor
     private void OnExtinguisherStopped(InputAction.CallbackContext ctx)
     {
-        // Verificar si el extintor existe y si es hijo de PickingPos
-        Transform pickingPosTransform = transform.Find("PickingPos");
-
-        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform))
+        if (extinguisher.IsExtinguisherAssociatedWithValidParent())  // Verificamos si el extintor es hijo del jugador
         {
-            extinguisher.OnUseExtinguisher(ctx);
+            _playerMovement.enabled = true;
+            _playerVision.enabled = true;
+            extinguisher.OnUseExtinguisher(ctx);  // Detenemos el uso del extintor
         }
     }
-
-    #endregion
 }
-
-
