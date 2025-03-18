@@ -174,6 +174,11 @@ public class PlayerVision : MonoBehaviour
         }
 
     }
+    private void OnTransformChildrenChanged()
+    {
+        if(transform.childCount == 1) _isBeingPicked = true;
+        else if (transform.childCount == 0) _isBeingPicked = false;
+    }
 
     // Las suscripciones al InputActionReference
     private void OnEnable()
@@ -335,15 +340,15 @@ public class PlayerVision : MonoBehaviour
     private void ChangeVelocity()
     {
         gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().PlayerNum());
-        if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
+        if (_actualMesa != null && _actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
         {
             _actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());
         }
-        else if (_actualMesa.GetComponent<SawScript>() != null)
+        else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
         {
             _actualMesa.GetComponent<SawScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnSaw());
         }
-        else if (_actualMesa.GetComponent<WelderScript>() != null)
+        else if (_actualMesa != null && _actualMesa.GetComponent<WelderScript>() != null)
         {
             _actualMesa.GetComponent<WelderScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnWelder());
         }
