@@ -31,7 +31,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
 
         if (extinguisher == null)
         {
-            Debug.LogError(" No se encontró un objeto con el script FireExtinguisher en la escena.");
+            Debug.LogError("No se encontró un objeto con el script FireExtinguisher en la escena.");
         }
     }
 
@@ -52,7 +52,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
         // Verificar si el extintor existe y si es hijo de PickingPos
         Transform pickingPosTransform = transform.Find("PickingPos");
 
-        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform) && extinguisher.GetComponent<FireExtinguisher>() != null)
+        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform))
         {
             extinguisher.OnUseExtinguisher(ctx);
         }
@@ -63,13 +63,13 @@ public class PlayerFireExtinguisher : MonoBehaviour
         // Verificar si el extintor existe y si es hijo de PickingPos
         Transform pickingPosTransform = transform.Find("PickingPos");
 
-        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform) && extinguisher.GetComponent<FireExtinguisher>() != null)
+        if (extinguisher != null && pickingPosTransform != null && extinguisher.transform.IsChildOf(pickingPosTransform))
         {
             extinguisher.OnUseExtinguisher(ctx);
         }
     }
 
-
     #endregion
 }
+
 
