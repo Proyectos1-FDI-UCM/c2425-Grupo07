@@ -15,6 +15,7 @@ TagManager:
   - Prensa
   - Fire
   - Recibidor
+  - Cinta
   layers:
   - Default
   - TransparentFX

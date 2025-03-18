@@ -146,7 +146,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void HandleInput()
     {
-        if (_playerVision.GetActualMesa().CompareTag("Recibidor"))
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Recibidor"))
         {
             if (_state == receiverState.Receiving)
             {

@@ -87,6 +87,10 @@ public class PlayerDash : MonoBehaviour
     /// Solo se ejecuta si no hay un dash actualmente en curso.
     /// </summary>
     /// <param name="context">Contexto del input proporcionado por el sistema de input</param>
+
+    public bool IsDashing()
+    { return _isDashing; }
+
     private void RequestDash(InputAction.CallbackContext context)
     {
         if (!_isDashing)

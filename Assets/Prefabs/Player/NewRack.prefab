@@ -52,6 +52,8 @@ GameObject:
   - component: {fileID: 8383434901366803709}
   - component: {fileID: 8660095150174552816}
   - component: {fileID: 5208378399631633673}
+  - component: {fileID: 3716442948494014657}
+  - component: {fileID: -116823599935405296}
   m_Layer: 6
   m_Name: NewRack
   m_TagString: Player
@@ -116,7 +118,7 @@ SpriteRenderer:
   m_SortingLayerID: 1280534379
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1376504153, guid: 0a8cb19650350ed459ecb850a7f56403, type: 3}
+  m_Sprite: {fileID: 1954902719, guid: 953ccad47489a6f4baa385dbf3678c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -431,3 +433,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExtinguisherActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
+--- !u!114 &3716442948494014657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6dfe125515a434ba47109274c375fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
+--- !u!95 &-116823599935405296
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a72326d742dc924ebb9ba44d4ff15cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -132,6 +132,13 @@ public class PlayerVision : MonoBehaviour
         _heldObject = null;
     }
 
+    /// <summary>
+    /// Metodo que se encarga de retornar la condicion de si el objecto ha sido recogido para la animacion
+    /// </summary>
+    /// <returns></returns>
+    public bool IsBeingPicked()
+    { return _isBeingPicked; }
+
 
     #endregion
 
@@ -173,6 +180,11 @@ public class PlayerVision : MonoBehaviour
             if (_actualMesa != null) _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
+    }
+    private void OnTransformChildrenChanged()
+    {
+        if(transform.childCount == 1) _isBeingPicked = true;
+        else if (transform.childCount == 0) _isBeingPicked = false;
     }
 
     // Las suscripciones al InputActionReference
@@ -335,15 +347,15 @@ public class PlayerVision : MonoBehaviour
     private void ChangeVelocity()
     {
         gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().PlayerNum());
-        if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
+        if (_actualMesa != null && _actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
         {
             _actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());
         }
-        else if (_actualMesa.GetComponent<SawScript>() != null)
+        else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
         {
             _actualMesa.GetComponent<SawScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnSaw());
         }
-        else if (_actualMesa.GetComponent<WelderScript>() != null)
+        else if (_actualMesa != null && _actualMesa.GetComponent<WelderScript>() != null)
         {
             _actualMesa.GetComponent<WelderScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnWelder());
         }

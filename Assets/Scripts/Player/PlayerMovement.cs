@@ -52,19 +52,13 @@ public class PlayerMovement : MonoBehaviour
     private InputActionSettings _moveControls; // El input en el que se rige el movimiento
     private Vector2 _translateMovement; // El movimiento que realizará el personaje con su movimiento
     private Quaternion _targetRotation; // La rotación que seguirá el personaje 
-
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
     /// InputAction que se puede configurar desde el editor y que está en
     /// la carpeta Settings
     /// </summary>
     private InputActionSettings _theController;
-
-    //atributo animatior para las animaciones
-    private Animator _animator;
-
-    ////guarda el valor de la ultima posicion del jugador para el idle
-    //private Vector2 _lastMoveDir; 
+    private PlayerAnimation _playerAnimation;
 
     #endregion
 
@@ -85,8 +79,6 @@ public class PlayerMovement : MonoBehaviour
         // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
         movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
         movement.canceled += ctx => MovementVector = new Vector2(0, 0);
-
-        _animator = GetComponentInParent<Animator>();
     }
     /// <summary>
     /// Start asigna la velocidad actual con la máxima
@@ -94,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         CurrentVelocity = MaxVelocity;
+        _playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     /// <summary>
@@ -102,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         OnMove();
-        Animate();
+       _playerAnimation.Animate();
+
     }
     #endregion
 
@@ -131,18 +125,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Animate()
-    {
-        _animator.SetFloat("WalkX", MovementVector.x);
-        _animator.SetFloat("WalkY", MovementVector.y);
-        _animator.SetFloat("MoveMagnitude", MovementVector.magnitude);
-        _animator.SetFloat("LastMoveX", LastMovementVector.x);
-        _animator.SetFloat("LastMoveY", LastMovementVector.y);
-    }
+    #endregion
 
+    // ---- METODOS PUBLICOS ----
+    #region Métodos Públicos
     public Vector2 GetLastMove()
     {
         return LastMovementVector;
+    }
+
+    public Vector2 GetMovement()
+    {
+        return MovementVector;
     }
 
     #endregion
