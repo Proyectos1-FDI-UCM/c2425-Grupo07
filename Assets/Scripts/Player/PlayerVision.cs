@@ -48,14 +48,14 @@ public class PlayerVision : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
+    public GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
     private GameObject _lookedObject; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
     private GameObject _heldObject;  // El item que está en las manos del jugador.
-    private bool _onMesasRange = false; // Permite que el escaneo de mesas cercanas se lleve a cabo solo cuando el jugador esté dentro de un collider cercano a las Mesas
+    //private bool _onMesasRange = false; // Permite que el escaneo de mesas cercanas se lleve a cabo solo cuando el jugador esté dentro de un collider cercano a las Mesas
     private float _detectionTime; // Variable de tiempo, se va incrementando con DeltaTime y se reinicia cuando supera detectionRate
-    private float _centerOffset = 0.75f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
+    private float _centerOffset = 3f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
-    private float _detectionRate = 0.1f; // El intervalo de tiempo entre cada detección de mesas
+    private float _detectionRate = 0.05f; // El intervalo de tiempo entre cada detección de mesas
     public bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
 
@@ -73,15 +73,13 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_onMesasRange)
-        {
             _detectionTime += Time.deltaTime;
             if (_detectionTime > _detectionRate)
             {
                 CalculateNearest();
                 _detectionTime = 0;
             }
-        }
+        
         if (_isBeingPicked)
         {
             _heldObject.transform.position = (Vector2)transform.position + _playerMovement.GetLastMove().normalized;
@@ -152,10 +150,13 @@ public class PlayerVision : MonoBehaviour
     // Este método (Hecho con IA) permite poder ver el comportamiento de la detección de Mesas (no sé utilizar Gizmos, no me suspendan porfa :c)
     private void OnDrawGizmos()
     {
-
-        // Draw the search radius circle
+        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+        Vector2 lastMove = playerMovement != null ? playerMovement.GetLastMove() : Vector2.up;
+        Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
+        
+        // Draw the search radius circle in the direction of movement
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere((Vector2)(transform.position + transform.up * _centerOffset), _circleRadius);
+        Gizmos.DrawWireSphere(position2D + (lastMove * _centerOffset), _circleRadius);
 
         // Highlight the nearest object
         if (_actualMesa != null)
@@ -166,7 +167,7 @@ public class PlayerVision : MonoBehaviour
     }
 
     //Estos dos metodos se encargan de actualizar si el jugador se encuentra cerca de las mesas (se usará cuando la disposición del mapa sea definitiva)
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "RangoDeMesas") _onMesasRange = true;
     }
@@ -176,10 +177,11 @@ public class PlayerVision : MonoBehaviour
         if (collision.gameObject.tag == "RangoDeMesas")
         {
             _onMesasRange = false;
+            _actualMesa = null;
             if (_actualMesa != null) _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
-    }
+    } */
 
     // Las suscripciones al InputActionReference
     private void OnEnable()
@@ -287,48 +289,72 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     private void CalculateNearest()
     {
-        bool atLeastOneDetected = false;
-        GameObject lastMesa = _actualMesa;
+
+        GameObject nearestMesa = null;
         float nearestDistance = Mathf.Infinity;
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(((Vector2)transform.position + _playerMovement.GetLastMove() * _centerOffset), _circleRadius, DetectedTilesLayer);
+        
+        // Calculamos el punto de detección (el centro del círculo verde)
+        Vector2 detectionPoint = (Vector2)transform.position + _playerMovement.GetLastMove() * _centerOffset;
+        
+        // Detectamos las mesas en el círculo
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(detectionPoint, _circleRadius, DetectedTilesLayer);
+
+        // Si no hay colisiones, limpiamos la mesa actual y salimos
+        if (colisiones.Length == 0 && _actualMesa != null)
+        {
+                _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+                if (_actualMesa.GetComponent<Receiver>() != null)
+                    _actualMesa.GetComponent<Receiver>().setState(receiverState.Idle);
+                _actualMesa = null;
+        }
+        else
+        {
+            
+        // Se busca la mesa más cercana
         foreach (Collider2D collider in colisiones)
         {
-            float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);
+            float colliderDistance = Vector2.Distance(detectionPoint, collider.transform.position);
             if (colliderDistance < nearestDistance)
             {
-                atLeastOneDetected = true;
-                _actualMesa = collider.gameObject;
+                nearestMesa = collider.gameObject;
                 nearestDistance = colliderDistance;
             }
         }
-        if (_actualMesa != null)
+
+        // Si la mesa más cercana es diferente a la actual, y habia una anterior, se quita la seleccion de la anterior y la mesa actual pasa a ser la mas cercana
+        if (nearestMesa != _actualMesa)
         {
-            _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
-            if (!atLeastOneDetected)
+            if (_actualMesa != null)
             {
                 _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-                _actualMesa = null;
-            }
-            else if (_actualMesa.GetComponent<Receiver>() != null) // ESTA PARTE DE AQUI RELACIONA EL PLAYERVISION CON EL RECIBIDOR 
-            {
-                Receiver recibidor = _actualMesa.GetComponent<Receiver>();
-                if (_heldObject == null && recibidor.getState() != receiverState.Receiving )
-                {
-                    recibidor.setState(receiverState.Receiving);
-                }
-                else if (_heldObject != null)
-                {
-                    recibidor.UpdateDeliveredObjectReference(_heldObject);
-                    if (recibidor.getState() != receiverState.Delivering) recibidor.setState(receiverState.Delivering);
-                }
+                if (_actualMesa.GetComponent<Receiver>() != null) _actualMesa.GetComponent<Receiver>().setState(receiverState.Idle);
             }
 
+            _actualMesa = nearestMesa;
+
+            if (_actualMesa != null) // si la mesa mas cercana no es null, se le aplica el color de la mesa y se actualiza el estado del recibidor en caso de que la mesa sea un recibidor
+            {
+                _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
+                
+                if (_actualMesa.GetComponent<Receiver>() != null)
+                {
+                    Receiver recibidor = _actualMesa.GetComponent<Receiver>();
+                    if (_heldObject == null && recibidor.getState() != receiverState.Receiving)
+                    {
+                        recibidor.setState(receiverState.Receiving);
+                    }
+                    else if (_heldObject != null)
+                    {
+                        recibidor.UpdateDeliveredObjectReference(_heldObject);
+                        if (recibidor.getState() != receiverState.Delivering)
+                            recibidor.setState(receiverState.Delivering);
+                    }
+                }
+            }
         }
-        if (_actualMesa != lastMesa && lastMesa != null)
-        {
-            lastMesa.GetComponent<SpriteRenderer>().color = Color.white;
-            if (lastMesa.GetComponent<Receiver>() != null) lastMesa.GetComponent<Receiver>().setState(receiverState.Idle);
         }
+
+
     }
 
     /// <summary>
