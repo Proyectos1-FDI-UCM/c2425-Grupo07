@@ -86,10 +86,8 @@ public class ConveyorItems : MonoBehaviour
         {
             //_direction = new Vector3(Mathf.RoundToInt(_direction.x), Mathf.RoundToInt(_direction.y), 0);
             siguienteBelt = other.gameObject;
-            if (siguienteBelt.transform.childCount != 0)
-            {
                 transform.Translate(_direction * -1 * Time.deltaTime * beltVel , Space.World);
-            }
+            
 
             AvanzaConParent();
         }
