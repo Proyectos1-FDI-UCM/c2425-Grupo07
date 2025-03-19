@@ -376,6 +376,7 @@ public class PlayerVision : MonoBehaviour
                 {
                     _heldObject.SetActive(false);
                     _heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
+                    _isBeingPicked = false;
                 }
                 else Debug.Log("No se pudo añadir el material al objeto");
             }
