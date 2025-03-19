@@ -90,7 +90,7 @@ public class PlayerVision : MonoBehaviour
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-      //  FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
+        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
     }
 
     #endregion
