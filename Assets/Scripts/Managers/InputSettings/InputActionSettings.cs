@@ -73,6 +73,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EnterLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""6105fb19-008f-433e-82a7-0449647e273d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +291,17 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UseFireExtinguiser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ec0f0b0-4479-40b9-b69c-8d2cc1754b0f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""EnterLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -874,6 +894,7 @@ namespace UnityEngine.InputSystem
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
             m_Player_UseFireExtinguiser = m_Player.FindAction("UseFireExtinguiser", throwIfNotFound: true);
+            m_Player_EnterLevel = m_Player.FindAction("EnterLevel", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -952,6 +973,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_PickOrDrop;
         private readonly InputAction m_Player_UseFireExtinguiser;
+        private readonly InputAction m_Player_EnterLevel;
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
@@ -961,6 +983,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
             public InputAction @UseFireExtinguiser => m_Wrapper.m_Player_UseFireExtinguiser;
+            public InputAction @EnterLevel => m_Wrapper.m_Player_EnterLevel;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -985,6 +1008,9 @@ namespace UnityEngine.InputSystem
                 @UseFireExtinguiser.started += instance.OnUseFireExtinguiser;
                 @UseFireExtinguiser.performed += instance.OnUseFireExtinguiser;
                 @UseFireExtinguiser.canceled += instance.OnUseFireExtinguiser;
+                @EnterLevel.started += instance.OnEnterLevel;
+                @EnterLevel.performed += instance.OnEnterLevel;
+                @EnterLevel.canceled += instance.OnEnterLevel;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1004,6 +1030,9 @@ namespace UnityEngine.InputSystem
                 @UseFireExtinguiser.started -= instance.OnUseFireExtinguiser;
                 @UseFireExtinguiser.performed -= instance.OnUseFireExtinguiser;
                 @UseFireExtinguiser.canceled -= instance.OnUseFireExtinguiser;
+                @EnterLevel.started -= instance.OnEnterLevel;
+                @EnterLevel.performed -= instance.OnEnterLevel;
+                @EnterLevel.canceled -= instance.OnEnterLevel;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1191,6 +1220,7 @@ namespace UnityEngine.InputSystem
             void OnInteract(InputAction.CallbackContext context);
             void OnPickOrDrop(InputAction.CallbackContext context);
             void OnUseFireExtinguiser(InputAction.CallbackContext context);
+            void OnEnterLevel(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
