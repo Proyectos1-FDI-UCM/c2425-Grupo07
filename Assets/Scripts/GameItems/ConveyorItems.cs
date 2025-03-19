@@ -14,7 +14,12 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// 
-/// 
+/// Los objetos con este script serán transportados con una velocidad lineal por la cinta mecánica hasta alcanzar el final
+/// de la misma donde se encontrará la basura. 
+/// Si un material u objeto transportado por la cinta mecánica alcanza la basura, 
+/// Este será desechado de igual forma que si el jugador descarta el objeto que lleve en sus manos al interactuar con ella.
+/// El jugador podrá recoger y soltar elementos no estáticos (exceptuando el extintor) sobre la cinta mecánica.
+
 /// </summary>
 public class ConveyorItems : MonoBehaviour
 {
@@ -25,8 +30,8 @@ public class ConveyorItems : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject NextBelt;
-    [SerializeField] float BeltVel;
+    [SerializeField] GameObject NextBelt; // Detecta cuál sería la siguiente tile de cinta mecánica para moverse hacia ella
+    [SerializeField] float BeltVel; // La velocidad apropiada a la cinta
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -37,8 +42,8 @@ public class ConveyorItems : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private Vector3 _direction = Vector3.up;
-    private float _timerDeletion;
+    private Vector3 _direction = Vector3.up; // Para que siempre siga la dirección hacia arriba del material
+    private float _timerDeletion; // Tiempo que tarda en borrarse el material cuando toca el trigger de la basura
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -65,6 +70,10 @@ public class ConveyorItems : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    
+    // Detecta si el item está en una cinta fuera de las manos del jugador para que empieze el movimiento
+    // Inicia un timer al tocar la basura para que si llega a un tiempo concreto se borra el item
+    // Si no hay un objeto al final se mueve directamente a la siguiente cinta
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
@@ -87,6 +96,7 @@ public class ConveyorItems : MonoBehaviour
             transform.position = NextBelt.transform.position;
         }
     }
+    // Avanza si llega al centro de la cinta y cambia la dirección si es distinta a la del objeto
     void AvanzaConParent()
     {
         if (Vector3.Distance(transform.position, NextBelt.transform.position) < 0.1 && _direction != NextBelt.transform.up)
@@ -100,6 +110,7 @@ public class ConveyorItems : MonoBehaviour
             transform.SetParent(NextBelt.transform);
         }
     }
+    // Si se recoge el item la siguiente cinta será nula
     void OnTransformParentChanged()
     {
         NextBelt = null;
