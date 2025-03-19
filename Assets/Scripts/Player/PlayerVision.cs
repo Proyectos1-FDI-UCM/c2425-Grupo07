@@ -136,6 +136,11 @@ public class PlayerVision : MonoBehaviour
     public bool IsBeingPicked()
     { return _isBeingPicked; }
 
+    public void SetIsBeingPicked(bool isBeingPicked)
+    {
+        _isBeingPicked = isBeingPicked;
+    }
+
 
     #endregion
 

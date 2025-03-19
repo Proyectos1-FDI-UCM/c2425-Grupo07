@@ -6,7 +6,9 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 /// <summary>
@@ -24,6 +26,13 @@ public class TaskManager : MonoBehaviour
     /// Prefab del panel de tarea que se mostrará en el HUD
     /// </summary>
     [SerializeField] GameObject HUDTaskPanelPrefab;
+    [SerializeField] int Tasktime;
+
+    [SerializeField] Color color1;
+    [SerializeField] Color color2;
+    [SerializeField] Color color3;
+     [SerializeField] Color color4;
+     [SerializeField] int BasePayment;
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,9 +48,23 @@ public class TaskManager : MonoBehaviour
     private GameObject _binAlert;
 
     /// <summary>
+    /// Referencia a la barra de progreso
+    /// </summary>
+    private Image _progressBar;
+
+    /// <summary>
     /// Referencia al recibidor
     /// </summary>
     private Receiver _receiver;
+
+    private void Start()
+    {
+        // Por lo que sea los colores que se introducen por serializefield se ponen con alfa en 0,  con esto se evita ese problema.
+        color1.a = 1f;
+        color2.a = 1f;
+        color3.a = 1f;
+        color4.a = 1f;
+    }
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -83,18 +106,107 @@ public class TaskManager : MonoBehaviour
         _actualPanel = Instantiate(HUDTaskPanelPrefab, position);
         _actualPanel.transform.SetParent(position, false);
         _binAlert = _actualPanel.transform.Find("BinAlert").gameObject;
+        _progressBar = _actualPanel.transform.Find("ProgressBar").GetComponent<Image>();
         _binAlert.SetActive(false);
         _receiver.AddSubTaskCount(1);
+        StartCoroutine(ProgressBar(Tasktime));
     }
 
         /// <summary>
         /// Elimina el panel de tarea asociado y decrementa el contador de tareas activas.
         /// Se llama cuando el objeto es entregado o destruido.
         /// </summary>
-    public void EndTask()
+    public void EndTask(bool delivered)
     {
+        if (delivered) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
+        {
+            if (_progressBar.color == color1)
+            {
+                Debug.Log("Entregado Correctamente, 100%");
+                _receiver.AddMoney(BasePayment);
+            }
+            else if (_progressBar.color == color2)
+            {
+                Debug.Log("Entregado Correctamente, 75%");
+                _receiver.AddMoney((int)(BasePayment * 0.75f));
+            }
+            else if (_progressBar.color == color3)
+            {
+                Debug.Log("Entregado Correctamente, 50%");
+                _receiver.AddMoney((int)(BasePayment * 0.5f));
+            }
+            else if (_progressBar.color == color4)
+            {
+                Debug.Log("Entregado Correctamente, 25%");
+                _receiver.AddMoney((int)(BasePayment * 0.25f));
+            }
+        }
+        else //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
+        {
+            Debug.Log("No entregado, penalización de 50€");
+            _receiver.AddMoney(-50);
+        }
         Destroy(_actualPanel);
         _receiver.AddSubTaskCount(-1);
+         StopAllCoroutines();
+    }
+    public bool IsTaskEnded()
+    {
+        return _actualPanel == null;
+    }
+
+/// <summary>
+/// Esta corrutina va decreciendo el
+/// </summary>
+/// <param name="Tasktime"></param>
+/// <returns></returns>
+    private IEnumerator ProgressBar(int Tasktime)
+    {
+        float time = 0f;
+        float cuarto = Tasktime / 4;
+        float fillAmount = 1f;
+        
+        // Primer cuarto - Color inicial
+        _progressBar.color = color1;
+        while (time < cuarto)
+        {
+            time += Time.deltaTime;
+            fillAmount = 1 - (time / Tasktime);
+            _progressBar.fillAmount = fillAmount;
+            yield return null;
+        }
+        
+        // Segundo cuarto - Color gris
+        _progressBar.color = color2;
+        while (time < cuarto * 2)
+        {
+            time += Time.deltaTime;
+            fillAmount = 1 - (time / Tasktime);
+            _progressBar.fillAmount = fillAmount;
+            yield return null;
+        }
+        
+        // Tercer cuarto - Color amarillo
+        _progressBar.color = color3;
+        while (time < cuarto * 3)
+        {
+            time += Time.deltaTime;
+            fillAmount = 1 - (time / Tasktime);
+            _progressBar.fillAmount = fillAmount;
+            yield return null;
+        }
+        
+        // Último cuarto - Color rojo
+        _progressBar.color = color4;
+        while (time < Tasktime)
+        {
+            time += Time.deltaTime;
+            fillAmount = 1 - (time / Tasktime);
+            _progressBar.fillAmount = fillAmount;
+            yield return null;
+        }
+        
+        EndTask(false);
     }
 
     /// <summary>

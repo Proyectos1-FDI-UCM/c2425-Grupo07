@@ -57,7 +57,8 @@ public class LevelManager : MonoBehaviour
     
     private void Start()
     {
-
+        
+        Money = 0;
     }
 
     private void Update()
@@ -81,6 +82,11 @@ public class LevelManager : MonoBehaviour
             Debug.Assert(_instance != null);
             return _instance;
         }
+    }
+
+    public void SumMoney(int amount)
+    {
+        Money += amount;
     }
 
     /// <summary>

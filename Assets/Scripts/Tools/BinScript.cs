@@ -40,9 +40,9 @@ public class BinScript : MonoBehaviour
     /// <param name="material">Objeto del material a destruir.</param>
     private void DestruirMaterial(GameObject material)
     {
-        if (material.GetComponent<TaskManager>() != null)
+        if (material.GetComponent<TaskManager>() != null && !material.GetComponent<TaskManager>().IsTaskEnded())
         {
-            material.GetComponent<TaskManager>().EndTask();
+            material.GetComponent<TaskManager>().EndTask(false);
         }
         Destroy(material);
         Debug.Log("Material destruido en la basura.");

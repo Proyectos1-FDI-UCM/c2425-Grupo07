@@ -3009,6 +3009,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6106819510156855759, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
+      propertyPath: _wrongAlert
+      value: 
+      objectReference: {fileID: 922215966}
+    - target: {fileID: 6106819510156855759, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
+      propertyPath: _correctAlert
+      value: 
+      objectReference: {fileID: 1454142797}
+    - target: {fileID: 6106819510156855759, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
+      propertyPath: _levelManager
+      value: 
+      objectReference: {fileID: 930274977}
     - target: {fileID: 8076476612073332609, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
       propertyPath: m_Name
       value: Recibidor
@@ -3137,6 +3149,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+--- !u!1 &922215966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1816171351821805295, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
+  m_PrefabInstance: {fileID: 856386294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &930274976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,7 +3170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &930274977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6097,6 +6114,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: 0d73921b5b5099d4bb99f9e5985520a2, type: 3}
   m_PrefabInstance: {fileID: 478693953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1454142797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4208372819002569292, guid: 1db8c3eb6421d4a4ebbafaeddb9082a5, type: 3}
+  m_PrefabInstance: {fileID: 856386294}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1486902256
 PrefabInstance:

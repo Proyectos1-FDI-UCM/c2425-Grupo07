@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractActionReference: {fileID: 470773517313567529, guid: 842a061437231409385e5d08046b3753, type: 3}
+  _levelManager: {fileID: 0}
   ObjectsUI:
   - {fileID: 8585802570284938555, guid: 12ee9b8d4e68e0341be3cdb04ae2c34c, type: 3}
   - {fileID: 8585802570284938555, guid: 3048855783dcb094fa126b5c3eb103e2, type: 3}
@@ -332,5 +333,7 @@ MonoBehaviour:
   - {fileID: 3452281655754456913, guid: a3ae905c1fef5d04a9e79d1dda95b43f, type: 3}
   - {fileID: 3452281655754456913, guid: a3ae905c1fef5d04a9e79d1dda95b43f, type: 3}
   InfiniteMode: 0
+  _correctAlert: {fileID: 4208372819002569292}
+  _wrongAlert: {fileID: 1816171351821805295}
   _deliveredObject: {fileID: 0}
   _indexer: 0

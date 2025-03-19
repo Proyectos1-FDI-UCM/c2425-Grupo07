@@ -41,6 +41,11 @@ public class Receiver : MonoBehaviour
     /// </summary>
     [SerializeField] private InputActionReference InteractActionReference;
 
+/// <summary>
+/// Referencia al manager de nivel
+/// </summary>
+    [SerializeField] private LevelManager _levelManager;
+
     /// <summary>
     /// Array de elementos UI que muestran información sobre los objetos cuando el jugador está mirando al recibidor
     /// </summary>
@@ -60,6 +65,16 @@ public class Receiver : MonoBehaviour
     /// Determina si el receptor funciona en modo infinito, en false, los arrays avanzan en orden, de 1 en uno, en true, el array se accede aleatoriamente.
     /// </summary>
     [SerializeField] private bool InfiniteMode;
+
+        /// <summary>
+    /// Indicador visual de entrega correcta
+    /// </summary>
+    [SerializeField] private GameObject _correctAlert;
+
+    /// <summary>
+    /// Indicador visual de entrega incorrecta
+    /// </summary>
+    [SerializeField] private GameObject _wrongAlert;
 
     #endregion
 
@@ -90,15 +105,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private GameObject _actualDeliveryUI;
 
-    /// <summary>
-    /// Indicador visual de entrega correcta
-    /// </summary>
-    private GameObject _correctAlert;
 
-    /// <summary>
-    /// Indicador visual de entrega incorrecta
-    /// </summary>
-    private GameObject _wrongAlert;
 
     /// <summary>
     /// Contador de tareas activas actualmente
@@ -130,8 +137,6 @@ public class Receiver : MonoBehaviour
     private void Start()
     {
         TaskPosition = GameObject.Find("Pedidos").transform;
-        _correctAlert = transform.GetChild(0).gameObject;
-        _wrongAlert = transform.GetChild(1).gameObject;
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);
         InstatiateObjectUI(false);
@@ -334,10 +339,20 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void Deliver()
     {
-        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask();
+        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true); // termina la tarea satisfactoriamente.
+        _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
         InstatiateObjectUI(true); // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
         // aqui se pondrá el resto del codigo más adelante
+
+    }
+    public void AddMoney(int amount)
+    {
+        if (_levelManager != null)
+        {
+            _levelManager.SumMoney(amount);
+        }
+        else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
     }
 
     /// <summary>
