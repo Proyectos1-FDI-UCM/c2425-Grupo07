@@ -1,12 +1,11 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Este scipt se encarga de mover al objeto que tiene el script en dirección de la cinta mecánica
 // Guillermo
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
-using System.Collections;
 
 // Añadir aquí el resto de directivas using
 
@@ -14,6 +13,8 @@ using System.Collections;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// 
 /// </summary>
 public class ConveyorItems : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class ConveyorItems : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject siguienteBelt;
-    [SerializeField] float beltVel;
+    [SerializeField] GameObject NextBelt;
+    [SerializeField] float BeltVel;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,8 +37,8 @@ public class ConveyorItems : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    [SerializeField]private Vector3 _direction = Vector3.up;
-
+    private Vector3 _direction = Vector3.up;
+    private float _timerDeletion;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -46,22 +47,6 @@ public class ConveyorItems : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -73,7 +58,7 @@ public class ConveyorItems : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -84,50 +69,40 @@ public class ConveyorItems : MonoBehaviour
     {
         if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
         {
-            //_direction = new Vector3(Mathf.RoundToInt(_direction.x), Mathf.RoundToInt(_direction.y), 0);
-            siguienteBelt = other.gameObject;
-                transform.Translate(_direction * -1 * Time.deltaTime * beltVel , Space.World);
-            
-
+            NextBelt = other.gameObject;
+            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel , Space.World);
+           
             AvanzaConParent();
+        }
+        if (other.gameObject.tag == "Basura" && NextBelt != null)
+        {
+            _timerDeletion += Time.deltaTime;
+            if (_timerDeletion > 0.5f)
+            {
+                Destroy(gameObject);
+            }
         }
         if (other.gameObject == null)
         {
-            transform.position = siguienteBelt.transform.position;
+            transform.position = NextBelt.transform.position;
         }
     }
     void AvanzaConParent()
     {
-        //Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
-        //transform.position = siguienteBelt.transform.position;
-        //transform.SetParent(siguienteBelt.transform);
-        if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.1 && _direction != siguienteBelt.transform.up)
+        if (Vector3.Distance(transform.position, NextBelt.transform.position) < 0.1 && _direction != NextBelt.transform.up)
         {
-            _direction = siguienteBelt.transform.up;
-            transform.position = siguienteBelt.transform.position;
-            //GetComponent<Rigidbody2D>().AddForce(_direction* beltVel);
-            //Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, 10);
-            //_direction = _direction.Lerp(transform.position, 0, 0) ;
-            //transform.rotation = siguienteBelt.transform.rotation;
-            //_direction = siguienteBelt.transform.rotation * -_direction;
+            _direction = NextBelt.transform.up;
+            transform.position = NextBelt.transform.position;
+            transform.SetParent(NextBelt.transform);
         }
-        if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.8)
+        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < 0.8)
         {
-            transform.SetParent(siguienteBelt.transform);
+            transform.SetParent(NextBelt.transform);
         }
-
-
     }
-    void OnTransformChildrenChanged()
+    void OnTransformParentChanged()
     {
-        siguienteBelt = null;
-    }
-
-    IEnumerator SecuenciaMover()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
-
+        NextBelt = null;
     }
     #endregion
 
