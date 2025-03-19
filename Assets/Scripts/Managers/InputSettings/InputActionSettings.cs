@@ -82,6 +82,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""313c360b-30f9-46ba-97f8-98e738a4c8ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,6 +311,28 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""EnterLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2cc8797-0a6e-4c5b-b59a-ade08cf0306d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c2b7c17-e3e5-4c59-bf0f-5b9adda1568d"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -895,6 +926,7 @@ namespace UnityEngine.InputSystem
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
             m_Player_UseFireExtinguiser = m_Player.FindAction("UseFireExtinguiser", throwIfNotFound: true);
             m_Player_EnterLevel = m_Player.FindAction("EnterLevel", throwIfNotFound: true);
+            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -974,6 +1006,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_PickOrDrop;
         private readonly InputAction m_Player_UseFireExtinguiser;
         private readonly InputAction m_Player_EnterLevel;
+        private readonly InputAction m_Player_Pause;
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
@@ -984,6 +1017,7 @@ namespace UnityEngine.InputSystem
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
             public InputAction @UseFireExtinguiser => m_Wrapper.m_Player_UseFireExtinguiser;
             public InputAction @EnterLevel => m_Wrapper.m_Player_EnterLevel;
+            public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1011,6 +1045,9 @@ namespace UnityEngine.InputSystem
                 @EnterLevel.started += instance.OnEnterLevel;
                 @EnterLevel.performed += instance.OnEnterLevel;
                 @EnterLevel.canceled += instance.OnEnterLevel;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1033,6 +1070,9 @@ namespace UnityEngine.InputSystem
                 @EnterLevel.started -= instance.OnEnterLevel;
                 @EnterLevel.performed -= instance.OnEnterLevel;
                 @EnterLevel.canceled -= instance.OnEnterLevel;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1221,6 +1261,7 @@ namespace UnityEngine.InputSystem
             void OnPickOrDrop(InputAction.CallbackContext context);
             void OnUseFireExtinguiser(InputAction.CallbackContext context);
             void OnEnterLevel(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
