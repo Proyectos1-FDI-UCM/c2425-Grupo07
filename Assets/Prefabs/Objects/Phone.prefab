@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 7460034837075847538}
   - component: {fileID: 2636204294701368527}
   - component: {fileID: 8926891954924372174}
+  - component: {fileID: -4076785967151593552}
+  - component: {fileID: 2393403701215131055}
   m_Layer: 8
   m_Name: Phone
   m_TagString: Untagged
@@ -271,6 +273,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: 5e6395d449375184890050217f84f0b4, type: 3}
+--- !u!114 &-4076785967151593552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452281655754456913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23b93cc00053764c9ca4ccf3e9b1fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextBelt: {fileID: 0}
+  BeltVel: 1
+--- !u!50 &2393403701215131055
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452281655754456913}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &5430633686913710762
 GameObject:
   m_ObjectHideFlags: 0

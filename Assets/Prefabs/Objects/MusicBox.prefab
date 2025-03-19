@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 735890420133839902}
   - component: {fileID: 8544634425404930296}
   - component: {fileID: -1850669805353144280}
+  - component: {fileID: 8657441335696718122}
+  - component: {fileID: 7523137954642974139}
   m_Layer: 8
   m_Name: MusicBox
   m_TagString: Untagged
@@ -355,6 +357,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: 2ca41aa856167464fbd756a70409edaf, type: 3}
+--- !u!114 &8657441335696718122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906912807483375088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23b93cc00053764c9ca4ccf3e9b1fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextBelt: {fileID: 0}
+  BeltVel: 1
+--- !u!50 &7523137954642974139
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906912807483375088}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &3770509285179975193
 GameObject:
   m_ObjectHideFlags: 0
