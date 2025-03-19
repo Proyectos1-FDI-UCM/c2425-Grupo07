@@ -6,6 +6,8 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using System.Collections;
+
 // Añadir aquí el resto de directivas using
 
 
@@ -82,32 +84,51 @@ public class ConveyorItems : MonoBehaviour
     {
         if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
         {
+            //_direction = new Vector3(Mathf.RoundToInt(_direction.x), Mathf.RoundToInt(_direction.y), 0);
             siguienteBelt = other.gameObject;
+            if (siguienteBelt.transform.childCount != 0)
+            {
+                transform.Translate(_direction * -1 * Time.deltaTime * beltVel , Space.World);
+            }
 
             AvanzaConParent();
+        }
+        if (other.gameObject == null)
+        {
+            transform.position = siguienteBelt.transform.position;
         }
     }
     void AvanzaConParent()
     {
-            transform.Translate(_direction * -1 * Time.deltaTime * beltVel, Space.World);
-                Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
-                //transform.position = siguienteBelt.transform.position;
-                transform.SetParent(siguienteBelt.transform);
-            if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.01)
-            {
-                _direction = siguienteBelt.transform.up;
-                //transform.rotation = siguienteBelt.transform.rotation;
-                //_direction = siguienteBelt.transform.rotation * -_direction;
-            }
+        //Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
+        //transform.position = siguienteBelt.transform.position;
+        //transform.SetParent(siguienteBelt.transform);
+        if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.1 && _direction != siguienteBelt.transform.up)
+        {
+            _direction = siguienteBelt.transform.up;
+            transform.position = siguienteBelt.transform.position;
+            //GetComponent<Rigidbody2D>().AddForce(_direction* beltVel);
+            //Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, 10);
+            //_direction = _direction.Lerp(transform.position, 0, 0) ;
+            //transform.rotation = siguienteBelt.transform.rotation;
+            //_direction = siguienteBelt.transform.rotation * -_direction;
+        }
+        if (Vector3.Distance(transform.position, siguienteBelt.transform.position) < 0.8)
+        {
+            transform.SetParent(siguienteBelt.transform);
+        }
 
-            if (transform.position.y <= -1 || transform.position.x <= -1)
-            {
-                transform.SetParent(siguienteBelt.transform);
-            }
 
     }
     void OnTransformChildrenChanged()
     {
+        siguienteBelt = null;
+    }
+
+    IEnumerator SecuenciaMover()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Vector2.MoveTowards(transform.position, siguienteBelt.transform.position, Time.deltaTime * beltVel);
 
     }
     #endregion
