@@ -105,7 +105,7 @@ public class ConveyorItems : MonoBehaviour
             transform.position = NextBelt.transform.position;
             transform.SetParent(NextBelt.transform);
         }
-        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < 0.8)
+        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < 1)
         {
             transform.SetParent(NextBelt.transform);
         }
