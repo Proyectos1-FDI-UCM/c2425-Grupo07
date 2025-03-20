@@ -7,6 +7,7 @@
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -36,6 +37,12 @@ public class SceneManager : MonoBehaviour
     {
         Application.LoadLevel("SelectionMenu");
     }
+
+    public void LoadScene(int index)
+    {
+        Application.LoadLevel(index);
+    }
+
     #endregion
 
 

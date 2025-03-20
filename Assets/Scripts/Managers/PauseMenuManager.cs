@@ -39,7 +39,7 @@ public class PauseMenuManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static bool _paused = true;
+    private bool _paused = false;
 
     #endregion
 
@@ -51,15 +51,7 @@ public class PauseMenuManager : MonoBehaviour
         InteractActionReference.action.started += ctx => ChangeState();
         InteractActionReference.action.Enable();
     }
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
 
-
-     void Start()
-    {
-        ChangeState();
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -70,8 +62,16 @@ public class PauseMenuManager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public bool GetGameState()
-    { return _paused; }
+
+    public void RestartLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ChangeScenesButtons(string nameScene)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
+    }
 
 
     #endregion

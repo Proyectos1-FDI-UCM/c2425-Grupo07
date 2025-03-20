@@ -385,7 +385,6 @@ GameObject:
   - component: {fileID: 5442521684706841132}
   - component: {fileID: 31818781334522428}
   - component: {fileID: 2311941872123564670}
-  - component: {fileID: 4025816381437536225}
   m_Layer: 5
   m_Name: Level Canvas UI
   m_TagString: Untagged
@@ -402,7 +401,7 @@ RectTransform:
   m_GameObject: {fileID: 2778172070644378493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8359882253430074689}
@@ -413,7 +412,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5442521684706841132
 Canvas:
   m_ObjectHideFlags: 0
@@ -477,20 +476,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4025816381437536225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2778172070644378493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5949ef3d472546142a75ad0b2ed2489b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractActionReference: {fileID: -4307168464764248023, guid: 842a061437231409385e5d08046b3753, type: 3}
-  PauseMenuUI: {fileID: 8062978524075430693}
 --- !u!1 &2967759130416198935
 GameObject:
   m_ObjectHideFlags: 0
