@@ -32,6 +32,7 @@ public class ConveyorItems : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] GameObject NextBelt; // Detecta cuál sería la siguiente tile de cinta mecánica para moverse hacia ella
     [SerializeField] float BeltVel; // La velocidad apropiada a la cinta
+    [SerializeField] float BeltDistance; // La distancia hasta que se cambia de cinta
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -88,7 +89,7 @@ public class ConveyorItems : MonoBehaviour
             _timerDeletion += Time.deltaTime;
             if (_timerDeletion > 0.5f)
             {
-                Destroy(gameObject);
+                transform.SetParent(other.gameObject.transform);
             }
         }
         if (other.gameObject == null)
@@ -105,7 +106,7 @@ public class ConveyorItems : MonoBehaviour
             transform.position = NextBelt.transform.position;
             transform.SetParent(NextBelt.transform);
         }
-        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < 1)
+        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < BeltDistance)
         {
             transform.SetParent(NextBelt.transform);
         }
