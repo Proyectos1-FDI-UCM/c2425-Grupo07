@@ -111,8 +111,10 @@ public class SawScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    // Click() suma 1 al número de clicks necesario para completar el proceso de refinamiento
-    // cada vez que se hace click sobre la sierra y actualiza la barra de compleción
+    /// <summary>
+    /// Click() suma 1 al número de clicks necesario para completar el proceso de refinamiento
+    /// cada vez que se hace click sobre la sierra y actualiza la barra de compleción
+    /// </summary>
     public void Click()
     {
         CurrentClicks++;
@@ -123,19 +125,25 @@ public class SawScript : MonoBehaviour
         }
     }
 
-    // Devuelve el número de clicks necesario para completar el proceso de refinamiento
+    /// <summary>
+    /// Devuelve el número de clicks necesario para completar el proceso de refinamiento
+    /// </summary>
     public int GetMaxClicks()
     {
         return MaxClicks;
     }
 
-    // Cambia el número de clicks máximo acorde a qué jugador interactua con ella
+    /// <summary>
+    /// Cambia el número de clicks máximo acorde a qué jugador interactua con ella
+    /// </summary>
     public void ChangeMaxClicks(int clicks)
     {
         MaxClicks = clicks;
     }
 
-    // Devuelve el número de clicks que tiene actualmente el material
+    /// <summary>
+    /// Devuelve el número de clicks que tiene actualmente el material
+    /// </summary>
     public int GetCurrentClicks()
     {
         return CurrentClicks;
@@ -147,7 +155,9 @@ public class SawScript : MonoBehaviour
         return HasWood;
     }
 
-    // Devuelve la variable Unpickable, que determina si se puede coger el material de la sierra (false) o no (true)
+    /// <summary>
+    /// Devuelve la variable Unpickable, que determina si se puede coger el material de la sierra (false) o no (true)
+    /// </summary>
     public bool GetUnpickable()
     {
         return Unpickable;

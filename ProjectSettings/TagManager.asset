@@ -16,6 +16,7 @@ TagManager:
   - Fire
   - Recibidor
   - Cinta
+  - TimerNivel
   layers:
   - Default
   - TransparentFX

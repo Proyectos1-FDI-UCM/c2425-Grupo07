@@ -48,17 +48,24 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private static LevelManager _instance;
 
+    /// <summary>
+    /// Referencia al timer del nivel
+    /// </summary>
+    private GameObject _timer;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
 
     #region Métodos de MonoBehaviour
 
-    
+
     private void Start()
     {
-        
         Money = 0;
+
+        _timer = GameObject.FindWithTag("TimerNivel");
+        _timer.GetComponent<LevelTimer>().StartTimer();
     }
 
     private void Update()
