@@ -32,6 +32,11 @@ public class Objects : MonoBehaviour
     [SerializeField] private GameObject[] OrdenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
     [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
     #endregion
+    // ---- ATRIBUTOS PRIVADOS ----
+    #region Atributos Privados (private fields)
+    private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
+
+    #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -58,7 +63,7 @@ public class Objects : MonoBehaviour
     }
     #endregion
 
-    private bool _canBeSent = true;
+    
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
@@ -100,7 +105,11 @@ public class Objects : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Comprueba que haya material dentro de la array del objeto
+    /// </summary>
+    /// <param name="material"></param>
+    /// <returns>retorna true si no hay material en el objeto, false si hay material</returns>
     public bool ThereIsMaterial(GameObject material)
     {
         return Materials[0] == null;
@@ -150,7 +159,9 @@ public class Objects : MonoBehaviour
             return false;
         }
     }
-
+    /// <summary>
+    /// Al llamar al método, pone todos los huecos de la array a null
+    /// </summary>
     public void ResetObject()
     {
         for (int i = 0; i < Materials.Length; i++)
