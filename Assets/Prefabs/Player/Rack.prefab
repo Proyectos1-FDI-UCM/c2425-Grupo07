@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 5208378399631633673}
   - component: {fileID: 3716442948494014657}
   - component: {fileID: -116823599935405296}
+  - component: {fileID: -7595878016294337482}
   m_Layer: 6
   m_Name: Rack
   m_TagString: Player
@@ -221,6 +222,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e18de1f9-bf5a-402f-8733-4b9c162bb565
     m_ActionName: Player/UseFireExtinguiser[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6105fb19-008f-433e-82a7-0449647e273d
+    m_ActionName: Player/EnterLevel[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 313c360b-30f9-46ba-97f8-98e738a4c8ca
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -352,6 +361,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   MesaTint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _actualMesa: {fileID: 0}
   _isBeingPicked: 0
 --- !u!58 &8660095150174552816
 CircleCollider2D:
@@ -435,3 +445,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7595878016294337482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6f7a509e9d3e04fa627000c4e9a585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enter: {fileID: 2064291648275711002, guid: 842a061437231409385e5d08046b3753, type: 3}

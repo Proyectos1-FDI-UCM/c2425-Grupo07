@@ -26,11 +26,11 @@ public class Level : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField] Canvas canvas; //Canvas con la información del nivel
-    [SerializeField] Image Rank; //Imagen del canvas
-    [SerializeField] Text Money;
-    [SerializeField] Text Time;
-    [SerializeField] SceneLoader scene;
-    [SerializeField] string level;
+    [SerializeField] Image Rank; //Imagen del rango del canvas
+    [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
+    [SerializeField] Text Time; //Texto que muestra el tiempo
+    [SerializeField] SceneLoader scene; //Referencia al SceneLoader
+    [SerializeField] string level; //Nombre del nivel al que se carga en SceneLoader
 
     #endregion
 
@@ -78,9 +78,16 @@ public class Level : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Cuando se realiza la acción context, se llama al script de SceneLoader para usar WarpScene y cargar la escena level
+    /// </summary>
+    /// <param name="context"></param>
     public void OnEnterLevel(InputAction.CallbackContext context)
     {
-        scene.WarpScene(level);
+        if (context.performed)
+        {
+            scene.WarpScene(level);
+        }
     }
 
 
@@ -95,11 +102,18 @@ public class Level : MonoBehaviour
 
     #endregion
 
+    /// <summary>
+    /// Verifica si el jugador se colisiona con el objeto para cargar el canvas con los datos 
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         canvas.gameObject.SetActive(true);
     }
-
+    /// <summary>
+    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el canvas con los datos
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
         canvas.gameObject.SetActive(false);
