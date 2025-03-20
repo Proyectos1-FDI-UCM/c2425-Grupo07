@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
   BeltVel: 0.65
-  BeltDistance: 0
+  BeltDistance: 0.6
 --- !u!50 &-3239848673262794401
 Rigidbody2D:
   serializedVersion: 4

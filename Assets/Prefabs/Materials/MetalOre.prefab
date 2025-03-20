@@ -330,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
   BeltVel: 0.65
+  BeltDistance: 0.6
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0

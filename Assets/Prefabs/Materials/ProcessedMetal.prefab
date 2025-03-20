@@ -178,3 +178,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
   BeltVel: 0.65
+  BeltDistance: 0.6
