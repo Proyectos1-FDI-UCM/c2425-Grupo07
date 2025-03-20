@@ -58,6 +58,7 @@ public class Objects : MonoBehaviour
     }
     #endregion
 
+    private bool _canBeSent = true;
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     // Documentar cada método que aparece aquí con ///<summary>
@@ -76,6 +77,8 @@ public class Objects : MonoBehaviour
 
     public bool AddMaterial (GameObject material)
     {
+        if (_canBeSent) // Si el objeto puede ser enviado
+        {
         bool agregado = false;
         int i = 0;
         while (!agregado && i < Materials.Length)
@@ -89,6 +92,12 @@ public class Objects : MonoBehaviour
             else { i++; }
         }
         return agregado;
+        }
+        else
+        {
+            Debug.Log(" No se puede añadir material, se acabó el tiempo del pedido");
+            return false;
+        }
     }
 
 
@@ -103,7 +112,9 @@ public class Objects : MonoBehaviour
     /// <returns>True si los materiales están en el orden correcto, False en caso contrario.</returns>
     public bool IsCompleted()
     {
-        int n = 0;
+        if (_canBeSent) // Si el objeto puede ser enviado
+        {
+            int n = 0;
 
         // Recorre cada objeto requerido en el pedido
         foreach (GameObject required in OrdenPedidos)
@@ -130,8 +141,14 @@ public class Objects : MonoBehaviour
             n++;
         }
 
-        Debug.Log("TRUE COMPLETADO");
-        return true;
+            Debug.Log("TRUE COMPLETADO");
+            return true;
+        }
+        else
+        {
+            Debug.Log("No se puede enviar, se acabó el tiempo del pedido");
+            return false;
+        }
     }
 
     public void ResetObject()
@@ -140,6 +157,14 @@ public class Objects : MonoBehaviour
         {
             Materials[i] = null;
         }
+    }
+    /// <summary>
+    /// Establece si el objeto puede ser enviado o no para evitar que el jugador intente añadir materiales o que intente enviar el objeto después de que se acabó el tiempo del pedido.
+    /// </summary>
+    /// <param name="canBeSent">True si el objeto puede ser enviado, False en caso contrario.</param>
+    public void SetCanBeSent(bool canBeSent)
+    {
+        _canBeSent = canBeSent;
     }
 
     /// <summary>
