@@ -7,6 +7,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -30,11 +31,24 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] public bool isRack; //Booleana que depende del jugador, si es Rack, está activo sino, significa que es Albert
-    [SerializeField] GameObject Rack; //Para el prefab de Rack
-    [SerializeField] GameObject Albert; //Para el prefab de Albert
-    [SerializeField] private int Time; //Unidad de tiempo
-    [SerializeField] private int Money; //Cantidad de dinero/puntuación que el jugador consigue
+
+    //Booleana que depende del jugador, si es Rack, está activo sino, significa que es Albert
+    [SerializeField] public bool isRack;
+
+    //Para el prefab de Rack
+    [SerializeField] GameObject Rack;
+
+    //Para el prefab de Albert
+    [SerializeField] GameObject Albert;
+
+    //Cantidad de dinero/puntuación que el jugador consigue
+    [SerializeField] private int Money;
+
+    // ShowText es el texto para mostrar en partida
+    [SerializeField] private TextMeshProUGUI ShowText;
+
+    // Panel es el panel que se muestra cuando se acaba el tiempo con el mensaje de que se ha acabado el tiempo
+    [SerializeField] private GameObject Panel;
 
 
     #endregion
@@ -49,9 +63,27 @@ public class LevelManager : MonoBehaviour
     private static LevelManager _instance;
 
     /// <summary>
-    /// Referencia al timer del nivel
+    /// _continue determina si el timer debe empezar (true) o no (false)
     /// </summary>
-    private GameObject _timer;
+    private bool _continue = false;
+
+    /// <summary>
+    /// // _maxTime es el tiempo máximo que puede durar la partida
+    /// </summary>
+    private float _maxTime = 180;
+
+    // _currentSecondsLeft es el tiempo restante en segundos
+    private float _currentSecondsLeft;
+
+    /// <summary>
+    /// _minutesShow son los minutos para mostrar en el timer del juego
+    /// </summary>
+    private int _minutesShow;
+
+    /// <summary>
+    /// _secondsShow son los segundos para mostrar en el timer del juego
+    /// </summary>
+    private int _secondsShow;
 
     #endregion
 
@@ -62,15 +94,25 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        Money = 0;
+        StartTimer();
 
-        _timer = GameObject.FindWithTag("TimerNivel");
-        _timer.GetComponent<LevelTimer>().StartTimer();
+        Money = 0;
     }
 
     private void Update()
     {
-        
+        if (_continue)
+        {
+            _currentSecondsLeft -= Time.deltaTime;
+        }
+        if (_currentSecondsLeft < 0)
+        {
+            StopTimer();
+            _currentSecondsLeft = 0;
+            Panel.SetActive(true);
+            Time.timeScale = 0;
+        }
+        ShowTime();
     }
 
     #endregion
@@ -121,6 +163,41 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos Privados
 
+    // StartTimer() inicializa _currentSecondsLeft al valor de _maxTime y pone _continue a true para que el timer empiece
+    public void StartTimer()
+    {
+        _currentSecondsLeft = _maxTime;
+        _continue = true;
+    }
+
+    // StopTimer() pone _continue a false para que el timer pare
+    private void StopTimer()
+    {
+        _continue = false;
+    }
+
+    // ShowTime() muestra el tiempo restante en formato MM:SS
+    private void ShowTime()
+    {
+        _minutesShow = (int)_currentSecondsLeft / 60;
+        _secondsShow = (int)_currentSecondsLeft % 60;
+        if (_minutesShow < 10 && _secondsShow > 9)
+        {
+            ShowText.text = "0" + _minutesShow + ":" + _secondsShow;
+        }
+        else if (_minutesShow < 10 && _secondsShow < 10)
+        {
+            ShowText.text = "0" + _minutesShow + ":" + "0" + _secondsShow;
+        }
+        else if (_minutesShow > 9 && _secondsShow > 9)
+        {
+            ShowText.text = _minutesShow + ":" + _secondsShow;
+        }
+        else if (_minutesShow > 9 && _secondsShow < 10)
+        {
+            ShowText.text = _minutesShow + ":" + "0" + _secondsShow;
+        }
+    }
 
     #endregion
 } // class LevelManager 
