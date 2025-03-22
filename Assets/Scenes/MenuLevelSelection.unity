@@ -1695,7 +1695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: level
-      value: MainSceneAlbert
+      value: MainSceneRack
       objectReference: {fileID: 0}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: scene
@@ -2347,7 +2347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4057c91f06919f34badc873adc63634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
 --- !u!4 &1766797390
 Transform:
   m_ObjectHideFlags: 0

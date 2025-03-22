@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    private GameObject Player; //GameObject del jugador
-    private PlayerLevel PlayerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
-    private Level Level; //Para almacenar el nivel entrado
-    private string LevelName; //Para almacenar el nombre del nivel
-    private PlayerBool PlayerBool; //Para almacenar el script del personaje elegido
-    private bool _isRack; //Booleana del personaje, true si es Rack, false si es Albert
+    private GameObject _player; //GameObject del jugador
+    private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
+    [SerializeField] private Level _level; //Para almacenar el nivel entrado
+    [SerializeField] private string _levelName; //Para almacenar el nombre del nivel
+    private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
+    [SerializeField] private bool _isRack; //Booleana del personaje, true si es Rack, false si es Albert
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -164,31 +164,37 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetData() 
     {
-        if (PlayerLevel == null)
+        if (_playerLevel == null)
         {
-            PlayerLevel = Player.GetComponent<PlayerLevel>();
+            _playerLevel = _player.GetComponent<PlayerLevel>();
             Debug.Log("Player Level obtenido");
         }
-        Level = PlayerLevel.GetLevel();
-        LevelName = Level.GetLevelName();
+        _level = _playerLevel.GetLevel();
+        _levelName = _level.GetLevelName();
     }
 
     /// <summary>
-    /// Obtiene del scritp del PlayerBool el personaje elegido y es guardado en el GameManager
+    /// Obtiene del scritp del _playerBool el personaje elegido y es guardado en el GameManager
     /// </summary>
     public void GetPlayer()
     {
-        if(PlayerBool != null)
+        if(_playerBool != null)
         {
-            _isRack = PlayerBool.PlayerSelection();
+            _isRack = _playerBool.PlayerSelection();
         }
     }
 
+    //Carga la escena dependiendo de _levelName
     public void ChangeToLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(LevelName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_levelName);
     }
 
+    //Devuelve la booleana _isRack al ser llamado
+    public bool ReturnBool()
+    {
+        return _isRack;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -200,20 +206,26 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        Player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
-        PlayerBool = FindObjectOfType<PlayerBool>();
+        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
+        _playerBool = FindObjectOfType<PlayerBool>();
 
-        if(LevelName != null)
+        if(_levelName != null)
         {
-            FindLevelByName(LevelName);
+            FindLevelByName(_levelName);
         }
+        else Debug.Log("No hay nivel asignado");
     }
-
+    /// <summary>
+    /// Método privado que crea una array de componentes con el script de _level (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
+    /// </summary>
+    /// <param name="levelName"></param>
     private void FindLevelByName(string levelName)
     {
         Level[] allLevels = FindObjectsOfType<Level>();
-        if (allLevels[0] == null) { Debug.Log("No hay nivel en escena, está en juego");}
-        else Level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
+        if (allLevels.Length == 0) { Debug.Log("No hay nivel en escena, está en juego");
+            return;
+        }
+        else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
     }
 
 

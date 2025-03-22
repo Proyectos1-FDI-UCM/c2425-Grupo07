@@ -1,21 +1,20 @@
 //---------------------------------------------------------
-// Responsable de verificar si el jugador está con un bloque de nivel y que esté presionando la acción que se le hace referencia
-// Liling Chen
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
+using UnityEngine.UI;
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerLevel : MonoBehaviour
+public class PlayerBool : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,7 +23,7 @@ public class PlayerLevel : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private InputActionReference Enter; //El input al que va a accionar las cosas 
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,9 +34,9 @@ public class PlayerLevel : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    private Level _level; //Script del nivel al que va a entrar
-
+    private bool _isRack; // true si el jugador eligió a Rack, false si eligió a Albert
+    private Canvas _canvas; //Canvas con la selección del jugador
+    private GameManager _gameManager; //Referencia para el GameManager
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -53,7 +52,7 @@ public class PlayerLevel : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+        _gameManager = GameManager.Instance;
     }
 
     /// <summary>
@@ -62,24 +61,6 @@ public class PlayerLevel : MonoBehaviour
     void Update()
     {
         
-    }
-
-    /// <summary>
-    /// Habilita la acción de entrada y suscribe el método OnEnterLevel 
-    /// </summary>
-    private void OnEnable()
-    {
-        Enter.action.Enable();
-        Enter.action.performed += OnEnterLevel;
-    }
-
-    /// <summary>
-    /// Desuscribe el método OnEnterLevel y deshabilita la acción de entrada
-    /// </summary>
-    private void OnDisable()
-    {
-        Enter.action.performed -= OnEnterLevel;
-        Enter.action.Disable();
     }
     #endregion
 
@@ -92,26 +73,38 @@ public class PlayerLevel : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando presiona el input reference, se llama al método OnEnterlevel para entrar a la escena del juego, solo si _level tiene una referencia
+    /// Devuelve una booleana que hace referencia a la selección del jugador
     /// </summary>
-    /// <param name="context"></param>
-    public void OnEnterLevel(InputAction.CallbackContext context)
+    /// <returns>True si es Rack, false si es Albert</returns>
+    public bool PlayerSelection()
     {
-        if (_level != null) 
-        {
-            _level.OnEnterLevel(context);
-            Debug.Log("Nivel entrado");
-        }
+        return _isRack;
+    }
+    /// <summary>
+    /// Al llamar al método, pone la booleana a true además de encontar el canvas y desabilitarlo para después llamar a los métodos de Game Manager para obtener la booleana del personaje elegido y por último
+    /// transladar a la escena elegida por el jugador
+    /// </summary>
+    public void SelectRack()
+    {
+        _isRack = true;
+        Debug.Log("Jugador seleccionó a Rack.");
+        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
+        _canvas.gameObject.SetActive(false);
+        _gameManager.GetPlayer();
+        _gameManager.ChangeToLevel();
     }
 
-    /// <summary>
-    /// Retorna el script del nivel interactuado para más tarde cambiar los datos desde el GameManager
-    /// </summary>
-    /// <returns>Retorna el nivel al que el jugador entra</returns>
-    public Level GetLevel()
+    //Mismo método que de arriba pero con Albert
+    public void SelectAlbert()
     {
-        return _level;
+        _isRack = false;
+        Debug.Log("Jugador seleccionó a Albert.");
+        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
+        _canvas.gameObject.SetActive(false);
+        _gameManager.GetPlayer();
+        _gameManager.ChangeToLevel();
     }
+
 
     #endregion
 
@@ -123,34 +116,7 @@ public class PlayerLevel : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
 
-    /// <summary>
-    /// Verifica si el objeto con el que colisiona el jugador tiene el script Level, si lo tiene almacena la referencia
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Level level = collision.GetComponent<Level>();
-        if (level != null)
-        {
-            _level = level;
-        }
-    }
-
-    // Método llamado cuando el jugador sale de un trigger
-    /// <summary>
-    /// Verifica si el objeto con el que sale el jugador tiene el script Level, si lo tiene y esta escena se corresponde con la que tiene almacenada la referencia actual, esta se vacía
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Level level = collision.GetComponent<Level>();
-        if (level != null && _level == level)
-        {
-            _level = null;
-        }
-    }
-
     #endregion
 
-} // class PlayerLevel 
+} // class _playerBool 
 // namespace

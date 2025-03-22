@@ -85,6 +85,10 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private int _secondsShow;
 
+    /// <summary>
+    /// _gameManager es el que gestiona el estado global del juego, es este cago para obtener una dato
+    /// </summary>
+    private GameManager _gameManager;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -94,8 +98,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        _gameManager = GameManager.Instance;
+        isRack = _gameManager.ReturnBool();
+        SpawnPlayer();
         StartTimer();
-
         Money = 0;
     }
 
@@ -199,6 +205,20 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawnea el personaje y dependiendo de la booleana de isRack, se le asigna a playerPrefab el prefab del personaje
+    /// </summary>
+    private void SpawnPlayer()
+    {
+        GameObject playerPrefab = isRack ? Rack : Albert;
+
+        if (playerPrefab != null)
+        {
+            Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
+            Debug.Log("Player SPAWNS");
+        }
+        else Debug.Log("No hay prefab del player");
+    }
     #endregion
 } // class LevelManager 
 // namespace
