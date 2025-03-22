@@ -84,7 +84,7 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""OpenPauseMenu"",
                     ""type"": ""Button"",
                     ""id"": ""313c360b-30f9-46ba-97f8-98e738a4c8ca"",
                     ""expectedControlType"": ""Button"",
@@ -321,7 +321,7 @@ namespace UnityEngine.InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Pause"",
+                    ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -332,7 +332,7 @@ namespace UnityEngine.InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Pause"",
+                    ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -428,6 +428,15 @@ namespace UnityEngine.InputSystem
                     ""type"": ""PassThrough"",
                     ""id"": ""9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoBackInMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""65934a42-e991-41ff-90b2-d9b42438fd07"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -851,6 +860,28 @@ namespace UnityEngine.InputSystem
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e81f3a56-b929-4ba3-b1e5-778b08cb67af"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""GoBackInMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f2cf4b4-2459-4922-a638-d92d17934fe7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""GoBackInMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -926,7 +957,7 @@ namespace UnityEngine.InputSystem
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
             m_Player_UseFireExtinguiser = m_Player.FindAction("UseFireExtinguiser", throwIfNotFound: true);
             m_Player_EnterLevel = m_Player.FindAction("EnterLevel", throwIfNotFound: true);
-            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+            m_Player_OpenPauseMenu = m_Player.FindAction("OpenPauseMenu", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -939,6 +970,7 @@ namespace UnityEngine.InputSystem
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_GoBackInMenu = m_UI.FindAction("GoBackInMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1006,7 +1038,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_PickOrDrop;
         private readonly InputAction m_Player_UseFireExtinguiser;
         private readonly InputAction m_Player_EnterLevel;
-        private readonly InputAction m_Player_Pause;
+        private readonly InputAction m_Player_OpenPauseMenu;
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
@@ -1017,7 +1049,7 @@ namespace UnityEngine.InputSystem
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
             public InputAction @UseFireExtinguiser => m_Wrapper.m_Player_UseFireExtinguiser;
             public InputAction @EnterLevel => m_Wrapper.m_Player_EnterLevel;
-            public InputAction @Pause => m_Wrapper.m_Player_Pause;
+            public InputAction @OpenPauseMenu => m_Wrapper.m_Player_OpenPauseMenu;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1045,9 +1077,9 @@ namespace UnityEngine.InputSystem
                 @EnterLevel.started += instance.OnEnterLevel;
                 @EnterLevel.performed += instance.OnEnterLevel;
                 @EnterLevel.canceled += instance.OnEnterLevel;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
+                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1070,9 +1102,9 @@ namespace UnityEngine.InputSystem
                 @EnterLevel.started -= instance.OnEnterLevel;
                 @EnterLevel.performed -= instance.OnEnterLevel;
                 @EnterLevel.canceled -= instance.OnEnterLevel;
-                @Pause.started -= instance.OnPause;
-                @Pause.performed -= instance.OnPause;
-                @Pause.canceled -= instance.OnPause;
+                @OpenPauseMenu.started -= instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed -= instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled -= instance.OnOpenPauseMenu;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1104,6 +1136,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_GoBackInMenu;
         public struct UIActions
         {
             private @InputActionSettings m_Wrapper;
@@ -1118,6 +1151,7 @@ namespace UnityEngine.InputSystem
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @GoBackInMenu => m_Wrapper.m_UI_GoBackInMenu;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1157,6 +1191,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @GoBackInMenu.started += instance.OnGoBackInMenu;
+                @GoBackInMenu.performed += instance.OnGoBackInMenu;
+                @GoBackInMenu.canceled += instance.OnGoBackInMenu;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -1191,6 +1228,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @GoBackInMenu.started -= instance.OnGoBackInMenu;
+                @GoBackInMenu.performed -= instance.OnGoBackInMenu;
+                @GoBackInMenu.canceled -= instance.OnGoBackInMenu;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1261,7 +1301,7 @@ namespace UnityEngine.InputSystem
             void OnPickOrDrop(InputAction.CallbackContext context);
             void OnUseFireExtinguiser(InputAction.CallbackContext context);
             void OnEnterLevel(InputAction.CallbackContext context);
-            void OnPause(InputAction.CallbackContext context);
+            void OnOpenPauseMenu(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
@@ -1275,6 +1315,7 @@ namespace UnityEngine.InputSystem
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnGoBackInMenu(InputAction.CallbackContext context);
         }
     }
 }

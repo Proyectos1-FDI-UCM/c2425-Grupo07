@@ -24,8 +24,10 @@ public class PauseMenuManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private InputActionReference InteractActionReference;
+    [SerializeField] private InputActionReference ActionOpenMenu;
+    [SerializeField] private InputActionReference ActionGoBackInMenu;
     [SerializeField] private GameObject PauseMenuUI;
+    [SerializeField] private GameObject ControlsUI;
 
 
     #endregion
@@ -48,8 +50,12 @@ public class PauseMenuManager : MonoBehaviour
 
     void Awake()
     {
-        InteractActionReference.action.started += ctx => ChangeState();
-        InteractActionReference.action.Enable();
+        ActionOpenMenu.action.started += ctx => ChangeState();
+        ActionOpenMenu.action.Enable();
+
+        ActionGoBackInMenu.action.started += ctx => ChangeControlsState();
+        ActionGoBackInMenu.action.Enable();
+
     }
 
     #endregion
@@ -73,17 +79,18 @@ public class PauseMenuManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
+    public void ChangeControlsState()
+    {
+        ControlsUI.SetActive(false);
+        PauseMenuUI.SetActive(true);
+    }
 
-    #endregion
+    public void ShowControls()
+    {
+        ControlsUI.SetActive(true);
+    }
 
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-    private void ChangeState()
+    public void ChangeState()
     {
         if (!_paused)
         {
@@ -98,8 +105,18 @@ public class PauseMenuManager : MonoBehaviour
             _paused = false;
         }
     }
+    #endregion
 
-    #endregion   
+    // ---- MÉTODOS PRIVADOS ----
+    #region Métodos Privados
+    // Documentar cada método que aparece aquí
+    // El convenio de nombres de Unity recomienda que estos métodos
+    // se nombren en formato PascalCase (palabras con primera letra
+    // mayúscula, incluida la primera letra)
+
+
+
+    #endregion
 
 } // class PauseMenuManager 
 // namespace
