@@ -24,8 +24,7 @@ public class PauseMenuManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private InputActionReference ActionOpenMenu;
-    [SerializeField] private InputActionReference ActionGoBackInMenu;
+    [SerializeField] private InputActionReference ActionOpenCloseMenu;
     [SerializeField] private GameObject PauseMenuUI;
     [SerializeField] private GameObject ControlsUI;
 
@@ -42,6 +41,7 @@ public class PauseMenuManager : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private bool _paused = false;
+    private bool _controlPannelActive = false;
 
     #endregion
 
@@ -50,12 +50,8 @@ public class PauseMenuManager : MonoBehaviour
 
     void Awake()
     {
-        ActionOpenMenu.action.started += ctx => ChangeState();
-        ActionOpenMenu.action.Enable();
-
-        ActionGoBackInMenu.action.started += ctx => ChangeControlsState();
-        ActionGoBackInMenu.action.Enable();
-
+        ActionOpenCloseMenu.action.started += ctx => HandleInput();
+        ActionOpenCloseMenu.action.Enable();
     }
 
     #endregion
@@ -79,18 +75,13 @@ public class PauseMenuManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
-    public void ChangeControlsState()
-    {
-        ControlsUI.SetActive(false);
-        PauseMenuUI.SetActive(true);
-    }
-
     public void ShowControls()
     {
         ControlsUI.SetActive(true);
+        _controlPannelActive = true;
     }
 
-    public void ChangeState()
+    public void HandleInput()
     {
         if (!_paused)
         {
@@ -100,23 +91,32 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
-            PauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
-            _paused = false;
+            if (_controlPannelActive)
+            {
+                ControlsUI.SetActive(false);
+                _controlPannelActive = false;
+            }
+            else
+            {
+                PauseMenuUI.SetActive(false);
+                Time.timeScale = 1f;
+                _paused = false;
+            }
         }
+
+        #endregion
+
+        // ---- MÉTODOS PRIVADOS ----
+        #region Métodos Privados
+        // Documentar cada método que aparece aquí
+        // El convenio de nombres de Unity recomienda que estos métodos
+        // se nombren en formato PascalCase (palabras con primera letra
+        // mayúscula, incluida la primera letra)
+
+
+
+        #endregion
+
     }
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-
-
-    #endregion
-
-} // class PauseMenuManager 
+}// class PauseMenuManager 
 // namespace
