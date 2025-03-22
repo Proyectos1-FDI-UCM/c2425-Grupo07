@@ -24,7 +24,7 @@ public class PlayerLevel : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private InputActionReference Enter;
+    [SerializeField] private InputActionReference Enter; //El input al que va a accionar las cosas 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,7 +36,7 @@ public class PlayerLevel : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Level _level;
+    private Level _level; //Script del nivel al que va a entrar
 
     #endregion
 
@@ -102,6 +102,15 @@ public class PlayerLevel : MonoBehaviour
             _level.OnEnterLevel(context);
             Debug.Log("Nivel entrado");
         }
+    }
+
+    /// <summary>
+    /// Retorna el script del nivel interactuado para más tarde cambiar los datos desde el GameManager
+    /// </summary>
+    /// <returns>Retorna el nivel al que el jugador entra</returns>
+    public Level GetLevel()
+    {
+        return _level;
     }
 
     #endregion

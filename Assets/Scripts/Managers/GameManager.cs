@@ -5,6 +5,8 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -41,7 +43,12 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-
+    private GameObject Player; //GameObject del jugador
+    private PlayerLevel PlayerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
+    private Level Level; //Para almacenar el nivel entrado
+    private string LevelName; //Para almacenar el nombre del nivel
+    private PlayerBool PlayerBool; //Para almacenar el script del personaje elegido
+    private bool _isRack; //Booleana del personaje, true si es Rack, false si es Albert
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -151,6 +158,37 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
+    /// <summary>
+    /// Obtiene los datos del nivel al ser llamado, de aquí se obtiene: el nivel nombre del nivel y con ello la
+    /// refencia de los datos de ese nivel que más tarde será sustituidos por los nuevos al ser completados
+    /// </summary>
+    public void GetData() 
+    {
+        if (PlayerLevel == null)
+        {
+            PlayerLevel = Player.GetComponent<PlayerLevel>();
+            Debug.Log("Player Level obtenido");
+        }
+        Level = PlayerLevel.GetLevel();
+        LevelName = Level.GetLevelName();
+    }
+
+    /// <summary>
+    /// Obtiene del scritp del PlayerBool el personaje elegido y es guardado en el GameManager
+    /// </summary>
+    public void GetPlayer()
+    {
+        if(PlayerBool != null)
+        {
+            _isRack = PlayerBool.PlayerSelection();
+        }
+    }
+
+    public void ChangeToLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(LevelName);
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -162,8 +200,22 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        // De momento no hay nada que inicializar
+        Player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
+        PlayerBool = FindObjectOfType<PlayerBool>();
+
+        if(LevelName != null)
+        {
+            FindLevelByName(LevelName);
+        }
     }
+
+    private void FindLevelByName(string levelName)
+    {
+        Level[] allLevels = FindObjectsOfType<Level>();
+        if (allLevels[0] == null) { Debug.Log("No hay nivel en escena, está en juego");}
+        else Level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
+    }
+
 
     private void TransferSceneState()
     {

@@ -1,21 +1,20 @@
 //---------------------------------------------------------
-// Muestra la información del nivel jugado además de que lo accede
-// Liling Chen
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
+using UnityEngine.UI;
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Level : MonoBehaviour
+public class PlayerBool : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,13 +23,6 @@ public class Level : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    [SerializeField] Canvas canvas; //Canvas con la información del nivel
-    [SerializeField] Image Rank; //Imagen del rango del canvas
-    [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
-    [SerializeField] Text Time; //Texto que muestra el tiempo
-    [SerializeField] string level; //Nombre del nivel al que se carga en SceneLoader
-    [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
     #endregion
 
@@ -42,9 +34,9 @@ public class Level : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    private GameManager gameManager;
-
+    private bool _isRack; // true si el jugador eligió a Rack, false si eligió a Albert
+    private Canvas _canvas; //Canvas con la selección del jugador
+    private GameManager _gameManager; //Referencia para el GameManager
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -60,7 +52,7 @@ public class Level : MonoBehaviour
     /// </summary>
     void Start()
     {
-        gameManager = GameManager.Instance;
+        _gameManager = GameManager.Instance;
     }
 
     /// <summary>
@@ -81,24 +73,37 @@ public class Level : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando se realiza la acción context, se llama al script de SceneLoader para usar WarpScene y cargar la escena level
+    /// Devuelve una booleana que hace referencia a la selección del jugador
     /// </summary>
-    /// <param name="context"></param>
-    public void OnEnterLevel(InputAction.CallbackContext context)
+    /// <returns>True si es Rack, false si es Albert</returns>
+    public bool PlayerSelection()
     {
-        
-        if (context.performed)
-        {
-            SelectionPlayer.gameObject.SetActive(true);
-            gameManager.GetData();
-        }
+        return _isRack;
+    }
+    /// <summary>
+    /// Al llamar al método, pone la booleana a true además de encontar el canvas y desabilitarlo para después llamar a los métodos de Game Manager para obtener la booleana del personaje elegido y por último
+    /// transladar a la escena elegida por el jugador
+    /// </summary>
+    public void SelectRack()
+    {
+        _isRack = true;
+        Debug.Log("Jugador seleccionó a Rack.");
+        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
+        _canvas.gameObject.SetActive(false);
+        _gameManager.GetPlayer();
+        _gameManager.ChangeToLevel();
     }
 
-    /// <summary>
-    /// Devuelve el nombre del nivel
-    /// </summary>
-    /// <returns>Retorna un string al ser llamado</returns>
-    public string GetLevelName() { return level; }
+    //Mismo método que de arriba pero con Albert
+    public void SelectAlbert()
+    {
+        _isRack = false;
+        Debug.Log("Jugador seleccionó a Albert.");
+        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
+        _canvas.gameObject.SetActive(false);
+        _gameManager.GetPlayer();
+        _gameManager.ChangeToLevel();
+    }
 
 
     #endregion
@@ -110,24 +115,8 @@ public class Level : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+
     #endregion
 
-    /// <summary>
-    /// Verifica si el jugador se colisiona con el objeto para cargar el canvas con los datos 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        canvas.gameObject.SetActive(true);
-    }
-    /// <summary>
-    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el canvas con los datos
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        canvas.gameObject.SetActive(false);
-    }
-
-} // class Level 
+} // class PlayerBool 
 // namespace
