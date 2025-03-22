@@ -85,10 +85,21 @@ public class PlayerVision : MonoBehaviour
             _heldObject.transform.position = (Vector2)transform.position + _playerMovement.GetLastMove().normalized;
         }
     }
+
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        FindAnyObjectByType<Receiver>().GetPlayerVision(this); // para el buen funcionamiento del recibidor :)
+        Receiver temp = FindAnyObjectByType<Receiver>(); // para el buen funcionamiento del recibidor :)
+
+        if (temp != null)
+        {
+            temp.GetPlayerVision(this);
+        }
+        else
+        {
+            Debug.Log("No hay recibidor en escena");
+        }
+        
     }
 
     #endregion

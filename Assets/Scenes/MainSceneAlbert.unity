@@ -6210,8 +6210,9 @@ MonoBehaviour:
   isRack: 1
   Rack: {fileID: 7584395163546786512, guid: 1b06df7848e2ec44ba70d3358644e898, type: 3}
   Albert: {fileID: 7584395163546786512, guid: 8188dd1ba9e39164382c2674bf173ef3, type: 3}
-  Time: 0
   Money: 0
+  ShowText: {fileID: 0}
+  Panel: {fileID: 0}
 --- !u!4 &930274978
 Transform:
   m_ObjectHideFlags: 0
@@ -10391,6 +10392,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 297250889081714122, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenCloseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 621332150888265718, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10476,12 +10481,52 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4307168464764248023, guid: 842a061437231409385e5d08046b3753, type: 3}
     - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionCloseMenu
+      value: 
+      objectReference: {fileID: -1314671334916831613, guid: 842a061437231409385e5d08046b3753, type: 3}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: ActionGoBackInMenu
       value: 
-      objectReference: {fileID: -2318073231971900452, guid: 842a061437231409385e5d08046b3753, type: 3}
+      objectReference: {fileID: -3154635857676088132, guid: 842a061437231409385e5d08046b3753, type: 3}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionOpenCloseMenu
+      value: 
+      objectReference: {fileID: -4307168464764248023, guid: 842a061437231409385e5d08046b3753, type: 3}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionOpenMenu.m_Name
+      value: Action Open Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionCloseMenu.m_Name
+      value: Action Close Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionGoBackInMenu.m_Name
+      value: Action Go Back In Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionOpenMenu.m_SingletonActionBindings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionOpenMenu.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 4ac95635-4857-4ed0-83c2-707ab9ccaf04
+      objectReference: {fileID: 0}
+    - target: {fileID: 649886911657838024, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: ActionOpenMenu.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Action Open Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 2778172070644378493, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Name
       value: Level Canvas UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987863188875327086, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_Name
+      value: SelectLevelButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832230888723392228, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MenuLevelSelection
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

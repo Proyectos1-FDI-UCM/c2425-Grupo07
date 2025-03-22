@@ -67,6 +67,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     private InputAction _fire;
 
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -101,6 +102,7 @@ public class InputManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             Init();
         }
+
     } // Awake
 
     /// <summary>
