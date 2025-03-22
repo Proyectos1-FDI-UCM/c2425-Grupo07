@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Archivo para destruir materiales, pone como hijos a los materiales introducidos y lo destruye
+// Archivo para destruir materiales, pone como hijos a los materiales introducidos y lo destruye.
 // Cheng Xiang Ye Xu
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -13,13 +13,23 @@ using UnityEngine;
 /// </summary>
 public class BinScript : MonoBehaviour
 {
+    // ---- ATRIBUTOS DEL INSPECTOR ----
+    #region Atributos del Inspector (serialized fields)
+    // No hay atributos de inspector en esta clase.
+    #endregion
+
+    // ---- ATRIBUTOS PRIVADOS ----
+    #region Atributos Privados (private fields)
+    // No hay atributos privados en esta clase.
+    #endregion
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
     /// <summary>
-    /// Destruye automáticamente cualquier objeto que se convierta en hijo de la basura.
+    /// Se llama cuando la jerarquía de hijos del objeto cambia.
+    /// Si se añade un objeto como hijo, se destruye automáticamente.
     /// </summary>
-  
     private void OnTransformChildrenChanged()
     {
         if (transform.childCount > 0)
@@ -35,18 +45,22 @@ public class BinScript : MonoBehaviour
     #region Métodos Privados
 
     /// <summary>
-    /// Destruye el objeto de material inmediatamente.
+    /// Destruye un objeto material si es necesario.
+    /// Si el objeto tiene una tarea en curso, la finaliza antes de la destrucción.
     /// </summary>
     /// <param name="material">Objeto del material a destruir.</param>
     private void DestruirMaterial(GameObject material)
     {
-        if (material.GetComponent<TaskManager>() != null && !material.GetComponent<TaskManager>().IsTaskEnded())
+        TaskManager taskManager = material.GetComponent<TaskManager>();
+
+        if (taskManager != null && !taskManager.IsTaskEnded())
         {
-            material.GetComponent<TaskManager>().EndTask(false);
+            taskManager.EndTask(false);
         }
+
         Destroy(material);
         Debug.Log("Material destruido en la basura.");
     }
 
     #endregion
-} // class Basura
+} // class BinScript

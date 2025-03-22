@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Archivo que controla el uso del extintor, activando partículas y apagando el fuego al contacto.
+// Cheng Xiang Ye Xu
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -9,60 +9,64 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Clase que representa el funcionamiento de un extintor en el juego.
+/// Permite al jugador activar el extintor para apagar fuegos y afectar elementos en la escena.
+/// </summary>
 public class FireExtinguisher : MonoBehaviour
 {
+    // ---- ATRIBUTOS DEL INSPECTOR ----
+    #region Atributos del Inspector (serialized fields)
+
     [Header("Configuración del extintor")]
-    [SerializeField] private ParticleSystem extinguisherParticles;
-    [SerializeField] private Collider2D extinguisherTrigger;  // Área de acción del extintor
+    [SerializeField] private ParticleSystem extinguisherParticles; // Sistema de partículas del extintor
+    [SerializeField] private Collider2D extinguisherTrigger; // Área de acción del extintor
 
-    private bool _isUsing = false;
+    #endregion
 
+    // ---- ATRIBUTOS PRIVADOS ----
+    #region Atributos Privados (private fields)
+
+    private bool _isUsing = false; // Indica si el extintor está en uso
+
+    #endregion
+
+    // ---- MÉTODOS DE MONOBEHAVIOUR ----
+    #region Métodos de MonoBehaviour
+
+    /// <summary>
+    /// Se ejecuta en cada frame. Controla la activación de las partículas del extintor.
+    /// </summary>
     private void Update()
     {
         if (_isUsing && !extinguisherParticles.isPlaying)
         {
-            extinguisherParticles.Play();  // Reproducimos las partículas del extintor
+            extinguisherParticles.Play(); // Inicia las partículas del extintor
         }
         else if (!_isUsing && extinguisherParticles.isPlaying)
         {
-            extinguisherParticles.Stop();  // Detenemos las partículas cuando no se usa
+            extinguisherParticles.Stop(); // Detiene las partículas del extintor
         }
     }
 
-    // Se llama cuando el jugador usa el extintor (presiona el botón asignado)
-    public void OnUseExtinguisher(InputAction.CallbackContext context)
-    {
-        _isUsing = context.performed;
-    }
-
-    // Verifica si el extintor está asociado con un padre válido (el jugador)
-    public bool IsExtinguisherAssociatedWithValidParent()
-    {
-        // Verificamos si el objeto padre tiene la etiqueta "Player"
-        Transform parentTransform = transform.parent;
-
-        if (parentTransform != null)
-        {
-            return parentTransform.CompareTag("Player");
-        }
-
-        return false;  // Si no tiene un padre válido, no es un extintor asociado al jugador
-    }
-
+    /// <summary>
+    /// Se ejecuta cuando el extintor entra en contacto con otro collider.
+    /// Si el objeto tocado es fuego, lo apaga y notifica al horno.
+    /// </summary>
+    /// <param name="other">Collider del objeto en contacto con el extintor.</param>
     private void OnTriggerStay2D(Collider2D other)
     {
-        // Si estamos usando el extintor y tocamos algo con la etiqueta "Fire"
         if (_isUsing && other.CompareTag("Fire"))
         {
             Debug.Log("¡Extinguiendo fuego!");
-            other.gameObject.SetActive(false);  // Apagamos el fuego
+            other.gameObject.SetActive(false); // Apaga el fuego
 
-            // Buscamos un horno en la escena y lo llamamos
+            // Busca un horno en la escena y ejecuta su método de apagado
             OvenScript horno = FindObjectOfType<OvenScript>();
             if (horno != null)
             {
                 Debug.Log("Horno encontrado, llamando a OnExtinguish()");
-                horno.OnExtinguish();  // Apagamos el horno
+                horno.OnExtinguish();
             }
             else
             {
@@ -70,10 +74,31 @@ public class FireExtinguisher : MonoBehaviour
             }
         }
     }
-}
 
+    #endregion
 
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
 
+    /// <summary>
+    /// Se llama cuando el jugador usa el extintor.
+    /// Activa o desactiva su uso dependiendo del contexto.
+    /// </summary>
+    /// <param name="context">Contexto de la acción del Input System.</param>
+    public void OnUseExtinguisher(InputAction.CallbackContext context)
+    {
+        _isUsing = context.performed;
+    }
 
+    /// <summary>
+    /// Verifica si el extintor está asociado a un jugador válido.
+    /// </summary>
+    /// <returns>True si el objeto padre es el jugador, de lo contrario False.</returns>
+    public bool IsExtinguisherAssociatedWithValidParent()
+    {
+        Transform parentTransform = transform.parent;
+        return parentTransform != null && parentTransform.CompareTag("Player");
+    }
 
-
+    #endregion
+} // class FireExtinguisher
