@@ -72,6 +72,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ChangeScenesButtons(string nameScene)
     {
+        Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
