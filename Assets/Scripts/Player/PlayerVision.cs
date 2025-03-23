@@ -230,9 +230,9 @@ public class PlayerVision : MonoBehaviour
         {
             if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
                 _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
-                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Arena && _actualMesa.GetComponent<OvenScript>() != null ||
+                (_heldObject.GetComponent<Material>().MaterialType() != MaterialType.Arena && _heldObject.GetComponent<Material>().MaterialType() != MaterialType.MetalRoca) && _actualMesa.GetComponent<OvenScript>() != null ||
                 _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
-                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.Metal && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
+                _heldObject.GetComponent<Material>().MaterialType() != MaterialType.MetalMineral && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
             { Debug.Log("No se puede dropear aquí"); }
             else 
             {

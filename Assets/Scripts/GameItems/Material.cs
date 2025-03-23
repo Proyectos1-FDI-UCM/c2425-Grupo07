@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public enum MaterialType
 {
     Arena, Cristal,
-    Metal, MetalProcesado,
+    MetalRoca, MetalMineral, MetalProcesado,
     Engranaje,
     Madera, MaderaProcesada,
     Otro,

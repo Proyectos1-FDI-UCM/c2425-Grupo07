@@ -41,7 +41,7 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] public bool IsBurnt = false;
-    // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado
+    // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado, 2 procesado, 3 fallido
     [SerializeField] private GameObject[] StatesMat;
     #endregion
 
@@ -110,7 +110,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     public void UpdateMaterialReference(Material material)
     {
-        if (material != null && material.MaterialType() == MaterialType.Arena)
+        if (material != null && (material.MaterialType() == MaterialType.Arena || material.MaterialType() == MaterialType.MetalRoca))
         {
             _matScr = material;
             _progress = _matScr.ReturnProgress();
@@ -155,7 +155,7 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     void Processing()
     {
-        if (_isProcessing && !IsBurnt && _matScr != null && _matScr.MaterialType() == MaterialType.Arena && transform.childCount == 1)
+        if (_isProcessing && !IsBurnt && _matScr != null && (_matScr.MaterialType() == MaterialType.Arena || _matScr.MaterialType() == MaterialType.MetalRoca) && transform.childCount == 1)
         {
             _progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(_progress);
@@ -164,7 +164,7 @@ public class OvenScript : MonoBehaviour
                 ProcessedMaterial();
             }
         }
-        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && _matScr.MaterialType() == MaterialType.Cristal)
+        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && (_matScr.MaterialType() == MaterialType.Cristal || _matScr.MaterialType() == MaterialType.MetalMineral))
         {
             _matScr.UpdateProgress(_progress);
             _timerBurn += Time.deltaTime;
@@ -205,7 +205,15 @@ public class OvenScript : MonoBehaviour
         FlashImage.SetActive(false);
 
         Destroy(transform.GetChild(0).gameObject);
-        GameObject child = Instantiate(StatesMat[0], transform.position, transform.rotation);
+        GameObject child;
+        if (_matScr.MaterialType() == MaterialType.Arena)
+        {
+            child = Instantiate(StatesMat[0], transform.position, transform.rotation);
+        }
+        else
+        {
+            child = Instantiate(StatesMat[2], transform.position, transform.rotation);
+        }
         child.transform.SetParent(this.transform);
         _matScr = child.GetComponent<Material>();
     }
@@ -223,7 +231,15 @@ public class OvenScript : MonoBehaviour
         _isProcessing = false;
         //Se cambia el material a ceniza
         Destroy(transform.GetChild(0).gameObject);
-        GameObject child = Instantiate(StatesMat[1], transform.position, transform.rotation);
+        GameObject child;
+        if (_matScr.MaterialType() == MaterialType.Cristal)
+        {
+            child = Instantiate(StatesMat[1], transform.position, transform.rotation);
+        }
+        else
+        {
+            child = Instantiate(StatesMat[3], transform.position, transform.rotation);
+        }
         child.transform.SetParent(this.transform);
     }
 
