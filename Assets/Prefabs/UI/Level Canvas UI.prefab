@@ -611,8 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949ef3d472546142a75ad0b2ed2489b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionOpenMenu: {fileID: -4307168464764248023, guid: 842a061437231409385e5d08046b3753, type: 3}
-  ActionGoBackInMenu: {fileID: -2318073231971900452, guid: 842a061437231409385e5d08046b3753, type: 3}
+  ActionOpenCloseMenu: {fileID: -4307168464764248023, guid: 842a061437231409385e5d08046b3753, type: 3}
   PauseMenuUI: {fileID: 7086150569153657121}
   ControlsUI: {fileID: 5772676089323387009}
 --- !u!1 &2778172070644378493
@@ -730,7 +729,7 @@ GameObject:
   - component: {fileID: 2042391326654218633}
   - component: {fileID: 5832230888723392228}
   m_Layer: 5
-  m_Name: SelectmenuButton
+  m_Name: SelectLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,7 +846,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SelectionMenu
+          m_StringArgument: MenuLevelSelection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3216842997811734874
@@ -973,7 +972,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 649886911657838024}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
-        m_MethodName: ChangeState
+        m_MethodName: HandleInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
