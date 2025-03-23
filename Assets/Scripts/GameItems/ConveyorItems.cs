@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Este scipt se encarga de mover al objeto que tiene el script en dirección de la cinta mecánica
-// Guillermo
+// Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -45,6 +45,7 @@ public class ConveyorItems : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private Vector3 _direction = Vector3.up; // Para que siempre siga la dirección hacia arriba del material
     private float _timerDeletion; // Tiempo que tarda en borrarse el material cuando toca el trigger de la basura
+    bool _enCinta;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -53,6 +54,14 @@ public class ConveyorItems : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    void FixedUpdate()
+    {
+        if (_enCinta)
+        {
+            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel, Space.World);
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -71,7 +80,7 @@ public class ConveyorItems : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    
+
     // Detecta si el item está en una cinta fuera de las manos del jugador para que empieze el movimiento
     // Inicia un timer al tocar la basura para que si llega a un tiempo concreto se borra el item
     // Si no hay un objeto al final se mueve directamente a la siguiente cinta
@@ -80,15 +89,20 @@ public class ConveyorItems : MonoBehaviour
         if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
         {
             NextBelt = other.gameObject;
-            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel , Space.World);
-           
+           _enCinta = true;
             AvanzaConParent();
+        }
+        else
+        {
+            _enCinta = false;
         }
         if (other.gameObject.tag == "Basura" && NextBelt != null)
         {
             _timerDeletion += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
             if (_timerDeletion > 0.5f)
             {
+                transform.position = other.transform.position;
                 transform.SetParent(other.gameObject.transform);
             }
         }
