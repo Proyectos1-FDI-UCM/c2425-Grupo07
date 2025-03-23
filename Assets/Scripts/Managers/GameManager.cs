@@ -109,6 +109,22 @@ public class GameManager : MonoBehaviour
         } // if somos la instancia principal
     }
 
+    /// <summary>
+    /// Cuando se habilita el objeto en la escena, es decir, que se activa, se llama al OnSceneLoaded cada vez que se cargue una nueva escena
+    /// </summary>
+    private void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    /// <summary>
+    /// Lo mismo que la anterior, solo que en vez de activar el método de OnSceneLoaded, este detecta cuando el objeto
+    /// se desativa al salir de escena y evita que se siga llamando a OnSceneLoaded
+    /// </summary>
+    private void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -170,7 +186,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetData() 
     {
-        
         _playerLevel = _player.GetComponent<PlayerLevel>();
         if (_playerLevel == null)
         {
@@ -273,23 +288,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
-    }
-
-    /// <summary>
-    /// Cuando se habilita el objeto en la escena, es decir, que se activa, se llama al OnSceneLoaded cada vez que se cargue una nueva escena
-    /// </summary>
-    private void OnEnable()
-    {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    /// <summary>
-    /// Lo mismo que la anterior, solo que en vez de activar el método de OnSceneLoaded, este detecta cuando el objeto
-    /// se desativa al salir de escena y evita que se siga llamando a OnSceneLoaded
-    /// </summary>
-    private void OnDisable()
-    {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     /// <summary>

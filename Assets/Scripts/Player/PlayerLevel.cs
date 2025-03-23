@@ -37,6 +37,8 @@ public class PlayerLevel : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private Level _level; //Script del nivel al que va a entrar
+    [SerializeField] private PauseMenuManager _menuManager;
+    [SerializeField] private bool _enabledPause = false;
 
     #endregion
 
@@ -65,16 +67,17 @@ public class PlayerLevel : MonoBehaviour
     }
 
     /// <summary>
-    /// Habilita la acción de entrada y suscribe el método OnEnterLevel 
+    /// Habilita la acción de entrada y llama al método OnEnterLevel 
     /// </summary>
     private void OnEnable()
     {
+        _menuManager = GameObject.FindObjectOfType<PauseMenuManager>();
         Enter.action.Enable();
         Enter.action.performed += OnEnterLevel;
     }
 
     /// <summary>
-    /// Desuscribe el método OnEnterLevel y deshabilita la acción de entrada
+    /// Deja de llamar al método OnEnterLevel y deshabilita la acción de entrada
     /// </summary>
     private void OnDisable()
     {
@@ -92,12 +95,14 @@ public class PlayerLevel : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando presiona el input reference, se llama al método OnEnterlevel para entrar a la escena del juego, solo si _level tiene una referencia
+    /// Cuando presiona el input reference, primero se mira si la booleana del menu de pausa esta activa, sino entonces se llama al método OnEnterlevel para entrar a la escena del juego,
+    /// solo si _level tiene una referencia, de otra forma, entonces no se activaría
     /// </summary>
     /// <param name="context"></param>
     public void OnEnterLevel(InputAction.CallbackContext context)
     {
-        if (_level != null) 
+        _enabledPause = _menuManager.PauseActive();
+        if (_level != null && !_enabledPause) 
         {
             _level.OnEnterLevel(context);
             Debug.Log("Elección del jugador abierto");

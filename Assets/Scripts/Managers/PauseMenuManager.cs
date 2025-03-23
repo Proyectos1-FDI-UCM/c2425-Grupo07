@@ -105,6 +105,11 @@ public class PauseMenuManager : MonoBehaviour
             }
         }
     }
+
+    public bool PauseActive()
+    {
+        return _paused;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

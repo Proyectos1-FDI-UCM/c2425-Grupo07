@@ -70,6 +70,23 @@ public class Level : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// Verifica si el jugador se colisiona con el objeto para cargar el canvas con los datos 
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        canvas.gameObject.SetActive(true);
+    }
+    /// <summary>
+    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el canvas con los datos
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        canvas.gameObject.SetActive(false);
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -86,7 +103,6 @@ public class Level : MonoBehaviour
     /// <param name="context"></param>
     public void OnEnterLevel(InputAction.CallbackContext context)
     {
-        
         if (context.performed)
         {
             SelectionPlayer.gameObject.SetActive(true);
@@ -112,22 +128,6 @@ public class Level : MonoBehaviour
 
     #endregion
 
-    /// <summary>
-    /// Verifica si el jugador se colisiona con el objeto para cargar el canvas con los datos 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        canvas.gameObject.SetActive(true);
-    }
-    /// <summary>
-    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el canvas con los datos
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        canvas.gameObject.SetActive(false);
-    }
 
 } // class _level 
 // namespace
