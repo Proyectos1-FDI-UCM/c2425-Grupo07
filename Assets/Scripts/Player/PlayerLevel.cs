@@ -37,8 +37,8 @@ public class PlayerLevel : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private Level _level; //Script del nivel al que va a entrar
-    [SerializeField] private PauseMenuManager _menuManager;
-    [SerializeField] private bool _enabledPause = false;
+    private PauseMenuManager _menuManager;
+    private bool _enabledPause = false;
 
     #endregion
 

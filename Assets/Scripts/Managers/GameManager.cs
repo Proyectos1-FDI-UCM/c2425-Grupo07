@@ -46,12 +46,12 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    [SerializeField] private GameObject _player; //GameObject del jugador
-    [SerializeField] private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
-    [SerializeField] private Level _level; //Para almacenar el nivel entrado
-    [SerializeField] private string _levelName; //Para almacenar el nombre del nivel
+    private GameObject _player; //GameObject del jugador
+    private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
+    private Level _level; //Para almacenar el nivel entrado
+    private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
-    [SerializeField] private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
+    private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
     
     #endregion
 
