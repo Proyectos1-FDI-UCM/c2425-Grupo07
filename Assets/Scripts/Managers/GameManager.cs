@@ -8,6 +8,8 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -32,7 +34,8 @@ public class GameManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
+    [SerializeField] GameObject Rack;
+    [SerializeField] GameObject Albert;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,12 +46,13 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    private GameObject _player; //GameObject del jugador
-    private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
+    [SerializeField] private GameObject _player; //GameObject del jugador
+    [SerializeField] private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
     [SerializeField] private Level _level; //Para almacenar el nivel entrado
     [SerializeField] private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
-    [SerializeField] private bool _isRack; //Booleana del personaje, true si es Rack, false si es Albert
+    [SerializeField] private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
             // real mantener su estado interno pero acceder a los elementos
             // de la escena particulares o bien olvidar los de la escena
             // previa de la que venimos para que sean efectivamente liberados.
+            Debug.Log("Ya existe una instancia de GameManager. Destruyendo esta instancia.");
             TransferSceneState();
 
             // Y ahora nos destruímos del todo. DestroyImmediate y no Destroy para evitar
@@ -85,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             // Somos el primer GameManager.
             // Queremos sobrevivir a cambios de escena.
+            Debug.Log("Inicializando GameManager.");
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
             Init();
@@ -164,13 +170,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetData() 
     {
+        
+        _playerLevel = _player.GetComponent<PlayerLevel>();
         if (_playerLevel == null)
         {
-            _playerLevel = _player.GetComponent<PlayerLevel>();
-            Debug.Log("Player Level obtenido");
+            Debug.LogError("PlayerLevel no encontrado en el jugador.");
+            return;
         }
+        Debug.Log("Player Level obtenido");
+        
         _level = _playerLevel.GetLevel();
+        
         _levelName = _level.GetLevelName();
+       
     }
 
     /// <summary>
@@ -178,7 +190,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetPlayer()
     {
-        if(_playerBool != null)
+        if (_playerBool != null)
         {
             _isRack = _playerBool.PlayerSelection();
         }
@@ -195,6 +207,48 @@ public class GameManager : MonoBehaviour
     {
         return _isRack;
     }
+
+    /// <summary>
+    /// Busca los componenes de _player, _playerLevel, _playerBool y _levelName para almacenarlos en el GameManager.
+    /// _player para el GameObject del jugador
+    /// _playerLevel para obtener de aquí el nombre del nivel en el principio
+    /// _playerBool para obtener la elección del personaje, este escript solo esta en la escena de MenuLevelSelection
+    /// Si hay nombre guardado en el string de _levelName, se llama al siguiente método FindLevelByName
+    /// </summary>
+    public void FirstFindPlayerComponents()
+    {
+        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
+        if (_player == null)
+        {
+            Debug.LogError("Player no encontrado");
+            return;
+        }
+        _playerLevel = _player.GetComponent<PlayerLevel>();
+
+        _playerBool = FindObjectOfType<PlayerBool>();
+
+        if (_levelName != null)
+        {
+            FindLevelByName(_levelName);
+        }
+        else Debug.Log("No hay nivel asignado");
+    }
+
+    /// <summary>
+    /// Inicializa el personaje y dependiendo de la booleana de _isRack, se le asigna a playerPrefab el prefab del personaje
+    /// </summary>
+    public void SpawnPlayer()
+    {
+        GameObject playerPrefab = _isRack ? Rack : Albert;
+
+        if (playerPrefab != null)
+        {
+            Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
+            Debug.Log("Player SPAWNS");
+        }
+        else Debug.Log("No hay prefab del player");
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -206,14 +260,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
-        _playerBool = FindObjectOfType<PlayerBool>();
-
-        if(_levelName != null)
-        {
-            FindLevelByName(_levelName);
-        }
-        else Debug.Log("No hay nivel asignado");
+        
     }
     /// <summary>
     /// Método privado que crea una array de componentes con el script de _level (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
@@ -228,6 +275,39 @@ public class GameManager : MonoBehaviour
         else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
     }
 
+    /// <summary>
+    /// Cuando se habilita el objeto en la escena, es decir, que se activa, se llama al OnSceneLoaded cada vez que se cargue una nueva escena
+    /// </summary>
+    private void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    /// <summary>
+    /// Lo mismo que la anterior, solo que en vez de activar el método de OnSceneLoaded, este detecta cuando el objeto
+    /// se desativa al salir de escena y evita que se siga llamando a OnSceneLoaded
+    /// </summary>
+    private void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    /// <summary>
+    /// Tiene dos funciones este método, uno es inicializar el personaje en la escena cuando se trata de MenuLevelSelection
+    /// , por default es Albert porque depende de la booleana de _isRack, en este caso es a falso y también, llama al método
+    /// de FirstFindPlayerComponents para obtener la referencia de los componenetes descritos en este método
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Escena cargada: " + scene.name);
+        if(scene.name == "MenuLevelSelection")
+        {
+            SpawnPlayer();
+        }
+        FirstFindPlayerComponents();
+    }
 
     private void TransferSceneState()
     {

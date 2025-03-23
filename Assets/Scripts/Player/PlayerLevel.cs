@@ -100,7 +100,7 @@ public class PlayerLevel : MonoBehaviour
         if (_level != null) 
         {
             _level.OnEnterLevel(context);
-            Debug.Log("Nivel entrado");
+            Debug.Log("Elección del jugador abierto");
         }
     }
 

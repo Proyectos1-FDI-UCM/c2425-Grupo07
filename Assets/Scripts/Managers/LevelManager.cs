@@ -35,12 +35,6 @@ public class LevelManager : MonoBehaviour
     //Booleana que depende del jugador, si es Rack, está activo sino, significa que es Albert
     [SerializeField] public bool isRack;
 
-    //Para el prefab de Rack
-    [SerializeField] GameObject Rack;
-
-    //Para el prefab de Albert
-    [SerializeField] GameObject Albert;
-
     //Cantidad de dinero/puntuación que el jugador consigue
     [SerializeField] private int Money;
 
@@ -100,7 +94,8 @@ public class LevelManager : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         isRack = _gameManager.ReturnBool();
-        SpawnPlayer();
+        _gameManager.SpawnPlayer();
+        _gameManager.FirstFindPlayerComponents();
         StartTimer();
         Money = 0;
     }
@@ -157,6 +152,9 @@ public class LevelManager : MonoBehaviour
         return _instance != null;
     }
 
+    /// <summary>
+    /// Rango del juego al completarse
+    /// </summary>
     public enum Range
     {
         S,A,B,C,D,E,F,
@@ -205,20 +203,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Spawnea el personaje y dependiendo de la booleana de isRack, se le asigna a playerPrefab el prefab del personaje
-    /// </summary>
-    private void SpawnPlayer()
-    {
-        GameObject playerPrefab = isRack ? Rack : Albert;
-
-        if (playerPrefab != null)
-        {
-            Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
-            Debug.Log("Player SPAWNS");
-        }
-        else Debug.Log("No hay prefab del player");
-    }
     #endregion
 } // class LevelManager 
 // namespace

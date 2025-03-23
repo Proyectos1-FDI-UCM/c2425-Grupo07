@@ -10648,6 +10648,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2091418342153821287, guid: 2ddfb40746a4d2a4b863739ced0c241a, type: 3}
+      propertyPath: Rack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091418342153821287, guid: 2ddfb40746a4d2a4b863739ced0c241a, type: 3}
+      propertyPath: Albert
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091418342153821287, guid: 2ddfb40746a4d2a4b863739ced0c241a, type: 3}
+      propertyPath: isRack
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7294117109817122297, guid: 2ddfb40746a4d2a4b863739ced0c241a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2362.4778
