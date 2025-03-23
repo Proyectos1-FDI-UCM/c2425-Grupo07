@@ -303,6 +303,7 @@ public class GameManager : MonoBehaviour
         if(scene.name == "MenuLevelSelection")
         {
             SpawnPlayer();
+            Debug.Log("MenuLevelSelection");
         }
         FirstFindPlayerComponents();
     }
