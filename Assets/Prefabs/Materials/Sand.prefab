@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 5
+  BeltVel: 1
   BeltDistance: 0.79
 --- !u!58 &2406807137711535684
 CircleCollider2D:

@@ -431,5 +431,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 5
+  BeltVel: 1
   BeltDistance: 0.79

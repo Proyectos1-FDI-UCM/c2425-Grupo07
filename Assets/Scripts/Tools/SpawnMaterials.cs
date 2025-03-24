@@ -30,6 +30,7 @@ public class SpawnMaterials : MonoBehaviour
 
     // Materials es un array que contiene todos los GameObjects de los materiales
     [SerializeField] GameObject[] Materials = new GameObject[4];
+    [SerializeField] Transform CintaInicial;
 
     #endregion
 
@@ -106,7 +107,7 @@ public class SpawnMaterials : MonoBehaviour
         while (true)
         {
             GameObject _material = Instantiate(Materials[_currentObjectIndex], _spawnPoint.position, _spawnPoint.rotation);
-            _material.transform.SetParent(transform);
+            _material.transform.SetParent(CintaInicial);
 
             _currentObjectIndex = (_currentObjectIndex + 1) % Materials.Length;
 

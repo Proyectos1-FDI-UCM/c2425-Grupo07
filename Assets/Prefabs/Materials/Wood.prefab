@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 5
+  matType: 6
   CompletionBar: {fileID: 6479202520729302266}
 --- !u!58 &7015354541423950742
 CircleCollider2D:
@@ -431,5 +431,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 5
+  BeltVel: 1
   BeltDistance: 0.79
