@@ -25,11 +25,11 @@ public class Level : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] Canvas canvas; //Canvas con la información del nivel
-    [SerializeField] Image Rank; //Imagen del rango del canvas
+    [SerializeField] Canvas CanvasInfo; //Canvas con la información del nivel
+    [SerializeField] Image Rank; //Imagen del rango del CanvasInfo
     [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
-    [SerializeField] Text Time; //Texto que muestra el tiempo
-    [SerializeField] string level; //Nombre del nivel al que se carga en SceneLoader
+    [SerializeField] Text TimeText; //Texto que muestra el tiempo
+    [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
     #endregion
@@ -72,20 +72,20 @@ public class Level : MonoBehaviour
     }
 
     /// <summary>
-    /// Verifica si el jugador se colisiona con el objeto para cargar el canvas con los datos 
+    /// Verifica si el jugador se colisiona con el objeto para cargar el CanvasInfo con los datos 
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        canvas.gameObject.SetActive(true);
+        CanvasInfo.gameObject.SetActive(true);
     }
     /// <summary>
-    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el canvas con los datos
+    /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el CanvasInfo con los datos
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        canvas.gameObject.SetActive(false);
+        CanvasInfo.gameObject.SetActive(false);
     }
     #endregion
 
@@ -98,7 +98,7 @@ public class Level : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando se realiza la acción context, se llama al script de SceneLoader para usar WarpScene y cargar la escena level
+    /// Cuando se realiza la acción context, se llama al script de SceneLoader para usar WarpScene y cargar la escena LevelName
     /// </summary>
     /// <param name="context"></param>
     public void OnEnterLevel(InputAction.CallbackContext context)
@@ -106,6 +106,7 @@ public class Level : MonoBehaviour
         if (context.performed)
         {
             SelectionPlayer.gameObject.SetActive(true);
+            Time.timeScale = 0f;
             gameManager.GetData();
         }
     }
@@ -114,7 +115,7 @@ public class Level : MonoBehaviour
     /// Devuelve el nombre del nivel
     /// </summary>
     /// <returns>Retorna un string al ser llamado</returns>
-    public string GetLevelName() { return level; }
+    public string GetLevelName() { return LevelName; }
 
 
     #endregion

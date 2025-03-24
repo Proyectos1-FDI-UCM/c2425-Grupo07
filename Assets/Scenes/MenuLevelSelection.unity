@@ -1655,6 +1655,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 219680482}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: LevelName
+      value: NivelInfinito
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: SelectionPlayer
       value: 
       objectReference: {fileID: 1438992041}

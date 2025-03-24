@@ -10,6 +10,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 
 /// <summary>
@@ -173,7 +174,7 @@ public class GameManager : MonoBehaviour
         //
         // "Since Unity's Auto Garbage Collection is usually only called when the heap is full
         // or there is not a large enough freeblock, consider calling (System.GC..Collect) before
-        // and after loading a level (or put it on a timer) or otherwise cleanup at transition times."
+        // and after loading a LevelName (or put it on a timer) or otherwise cleanup at transition times."
         //
         // En realidad... todo esto es algo antiguo por lo que lo mismo ya está resuelto)
         System.GC.Collect();
@@ -255,6 +256,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void SpawnPlayer()
     {
+        Time.timeScale = 1f;
         GameObject playerPrefab = _isRack ? Rack : Albert;
 
         if (playerPrefab != null)

@@ -534,12 +534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e5f65e65d4e724d8795dcab2c7a951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1868145721706707110}
+  CanvasInfo: {fileID: 1868145721706707110}
   Rank: {fileID: 1107574255492705784}
-  Money: {fileID: 259124798876969267}
-  Time: {fileID: 2847744418707342921}
-  scene: {fileID: 0}
-  level: MainSceneAlbert
+  Money: {fileID: 63269740593518019}
+  TimeText: {fileID: 2847744418707342921}
+  LevelName: NivelPrincipal
+  SelectionPlayer: {fileID: 0}
 --- !u!1 &6367347105475073404
 GameObject:
   m_ObjectHideFlags: 0

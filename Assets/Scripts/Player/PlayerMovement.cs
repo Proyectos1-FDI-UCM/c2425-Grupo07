@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         {
             LastMovementVector = _translateMovement;
             //_targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * Time.deltaTime); // El jugador gira a la dirección
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * TimeText.deltaTime); // El jugador gira a la dirección
         }
     }
 

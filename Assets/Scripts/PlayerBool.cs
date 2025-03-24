@@ -81,7 +81,7 @@ public class PlayerBool : MonoBehaviour
         return _isRack;
     }
     /// <summary>
-    /// Al llamar al método, pone la booleana a true además de encontar el canvas y desabilitarlo para después llamar a los métodos de Game Manager para obtener la booleana del personaje elegido y por último
+    /// Al llamar al método, pone la booleana a true además de encontar el CanvasInfo y desabilitarlo para después llamar a los métodos de Game Manager para obtener la booleana del personaje elegido y por último
     /// transladar a la escena elegida por el jugador
     /// </summary>
     public void SelectRack()
