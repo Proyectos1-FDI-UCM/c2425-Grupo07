@@ -121,6 +121,10 @@ public class OvenScript : MonoBehaviour
             _matScr.ReturnProgressBar().color = Color.green;
             _matScr.UpdateProgress(0);
             _matScr.ReturnProgressBar().gameObject.GetComponentInParent<Canvas>().enabled = false;
+            _isProcessing = false;
+            _hasFinished = false;
+            FlashImage.SetActive(false);
+            _matScr = null;
         }
         else
         {
