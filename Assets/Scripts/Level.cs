@@ -98,7 +98,8 @@ public class Level : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando se realiza la acción context, se llama al script de SceneLoader para usar WarpScene y cargar la escena LevelName
+    /// Cuando se realiza la acción context, se activa el canvas para elegir el personaje y para el tiempo del juego para evitar que el jugador se mueva en escena, además, se llama al GameManager para obtener 
+    /// el dato de este script y guardarlo como referencia
     /// </summary>
     /// <param name="context"></param>
     public void OnEnterLevel(InputAction.CallbackContext context)

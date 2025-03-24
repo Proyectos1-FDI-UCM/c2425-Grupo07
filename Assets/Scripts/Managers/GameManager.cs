@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
     private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
-    [SerializeField] private GameObject _spawnPlayer;
+    private GameObject _spawnPlayer;
     
     #endregion
 
