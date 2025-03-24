@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,7315 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: automation spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3765
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e576e14a71cb864d800bd3db8bf4dca
+      internalID: 1143868760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3765
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fab894ec0552d941af99586103d8109
+      internalID: -1245860051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3769
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9da718673c0485438c5572f0ee4d8a9
+      internalID: -2047419764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3769
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8bb8742a4e3c749a8d880336571ed7
+      internalID: 2060001533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3769
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e51a4cddd107c954a9f37d73fcc530b6
+      internalID: 497899790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3769
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b526dcf2ca2054469430f22435e051d
+      internalID: -1407448653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3768
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b48c0f138de224f90ba66702c1ba99
+      internalID: -1331256475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3762
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307884efdf967d340afefc9a503bb538
+      internalID: -1585903473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3762
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d000d94bb6f74f47888914dc63357b5
+      internalID: 940487873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3768
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d0f9895bae9364f9ad103311e5ed1f
+      internalID: 686264476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3738
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f955a8daedee64a8de80839b249c5e
+      internalID: 718078635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3736
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba4e1a7be195bd4faac721f81fdb0b2
+      internalID: 224623808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5aa13257ab99340a80f5c995571b11
+      internalID: 3058024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3733
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2bfb432bd88e54fbb11700b15a96b1
+      internalID: 1230850675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3733
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a294278de19a274fa58a3fd0a8c297d
+      internalID: 588493315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44a4afb6c5cde9408203d7ff8bf9497
+      internalID: -880544065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330e403cdf18edb4e9fa88eb6848c667
+      internalID: -2529334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475809d10ea4c7b40b94e8ed9e687321
+      internalID: -636589219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38f542beaa05b845bd81655ec18d95f
+      internalID: 2116545783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3733
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5b52f1f0c115443a8fe00d2160750d
+      internalID: -455615066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f280c725947254e8e2a5766072490a
+      internalID: -1599856868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d735b062d54f0134fa5e447ef82f8a2d
+      internalID: -2086297520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5bc3087f109c1843aea6ca4d8f0899b
+      internalID: -1035378204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7bddf826374c5241bb10377da98ace1
+      internalID: -224248340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28cf858d8b64fa24c9ba7431a542bf4f
+      internalID: -805118284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 182c3d414ba6a44438b00762a801f176
+      internalID: 1104025508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71198c232a8fc004c84bd10a956a3da0
+      internalID: -971718916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3701
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc792caba508a54284e7bc1cbf916fa
+      internalID: -804853289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3704
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c3a716c4e28d84d96716a244a338a4
+      internalID: 1787447069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3704
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac72c18fd9ecf64793064ec07c00aa0
+      internalID: -1471843409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3670
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e39ac08b5da0a14bbe72d058ca3fa28
+      internalID: -1037586719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3669
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62964afcf8be7704681f4dcf74ef4ad8
+      internalID: 280491304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 3624
+        width: 287
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba88587ce33b5da4d873529e1eea6d39
+      internalID: 819038065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3584
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa62e901e85b179439430f27ebd6e3c4
+      internalID: 2003210973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3552
+        width: 128
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5098b98cc3f594b4a9f6cfff3dd54e42
+      internalID: 82711476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3617
+        width: 320
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d882457277bbaf47bf722d19d975d4d
+      internalID: -1435009688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3360
+        width: 95
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754477b548957c5448108547cf4b9e06
+      internalID: -1939572729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fefb76b8dd0bb764180fdd88f1ac431f
+      internalID: 2078306340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ceaf086c30e5ae408980ad18c6b124b
+      internalID: -1406728118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4279433aebed9754da16d7ff62f6119b
+      internalID: -1262898907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe1d67d853bd9940a7acde30ee4031b
+      internalID: -1875734173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a41066021f90d4f94fff0be1e0931f
+      internalID: 713457364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007ddc414479e7949aeeee955a4f1df4
+      internalID: -2123366116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 3360
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a3eb8944e830547a625f4cc6c32758
+      internalID: -1527108264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49868bcea62bf854bb73d025414273a6
+      internalID: 1632831325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a4d1f3ffb02a84397f4d8b7017ab4c
+      internalID: -1962737018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e6a8eb9cce7244ea42516088c76ddb
+      internalID: 2032757625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079f05c78e2bea04d85f5331356f48bc
+      internalID: -117701982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc89fea9f4e1ae4cb85af79847f8dcd
+      internalID: 1887384402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 803397fbf2961bf4291b7ec3a7183389
+      internalID: 546070543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3328
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbbc62d4244d3f4e8d9d45c1ccfa571
+      internalID: 653101252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 3264
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c642a78a7036b54da2d277c7dc026cf
+      internalID: -899027330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 3264
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a742e972c9722e646bd9a28c1585cc87
+      internalID: -1365693775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 3264
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d98583f3f56634b84b3c32ee93f955
+      internalID: 226448960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 3200
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd58b0fbdd56d814aafacf7ba677fbc8
+      internalID: 106811654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 3200
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c80d0c3ec27064ab432214d2d8aec0
+      internalID: -1172378753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 3200
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c653a751547436b4ba1914607cd35ce1
+      internalID: 447433905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 3136
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65cd9c33a70c914694475cfb7782a53
+      internalID: -1358210715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 3136
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b196118d32ad13845825c188dd137765
+      internalID: 1289021672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 3136
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a38b5c4c798eb41b7a0105be235eea
+      internalID: 635453136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 3072
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1d564088bbf584790a68270d3263f5
+      internalID: -931159870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 3017
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d61eff80ace68b4ca935f396f7dbd17
+      internalID: -1481474086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 3028
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c40c73681c1e9b489e5095fcbca6f04
+      internalID: 45819219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 3030
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78f6b6c828b2e7409fcf77c5c70e96c
+      internalID: 122427526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3028
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d49fa090772599048995e5d9c5f9b95c
+      internalID: -1129506598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 3032
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c0f5196c9455c48a18b065a91ba426
+      internalID: 1932678080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 3019
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50d0c1cc13a5ea43950815ca725b4fa
+      internalID: 385961847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3019
+        width: 68
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee9509d8cbe8e554391a9086acda28ea
+      internalID: 1705892919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 3017
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b455ffc716dce647a31816bc0169a87
+      internalID: 1406405088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 3024
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2296fa17e2820842a2518430395a17d
+      internalID: -503389321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 3022
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee2a887befacb84cb9f5dd403691db9
+      internalID: -1416121763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 3017
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc95a7ed19918041a1c3a69d41e2466
+      internalID: -1917419591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 3017
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53943e8f5463084c8f3cf8154123460
+      internalID: 1872311536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 3019
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce91e14357d2a74aaf83784abf46eb9
+      internalID: -1303040972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 3017
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9c79c4e934f4449a9498d31c8f6c9e
+      internalID: -613015763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 3017
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88275506e379584288da7fb56a20329
+      internalID: 1419202837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2976
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2dc66ac20019024daa24d3479762171
+      internalID: -1107642686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2976
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3781c813edbe16042b29209ed4ac8726
+      internalID: -2048736810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_78
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2976
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbcf241a9a130849b06c990833f954a
+      internalID: 97063063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_79
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2944
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1912579facbca87489bc73c7142d1b8c
+      internalID: -1358900394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_80
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2944
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e48553567a986e4783446ac31331ff3
+      internalID: 771046860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_81
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2944
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2551542b22e5123478a397e45e9d9c5b
+      internalID: -2037083322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_82
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2912
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e6da5e178cd6246b6376473b40ec72
+      internalID: -572925715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_83
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2816
+        width: 39
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850ecaaed8920b946b64ab89194c2b49
+      internalID: 1005019274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_84
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2816
+        width: 39
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd84410408d1e564cbcdd4c4d78cc348
+      internalID: 351518712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_85
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2816
+        width: 39
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342f5e7855dde824b957a558a05c9934
+      internalID: -1698052905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_86
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2772
+        width: 54
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eece18b7424a0e94fad3c4586f362a99
+      internalID: -1156870249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_87
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 2779
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597c1027fbe5371489e8d20dfd395a93
+      internalID: 1051185193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_88
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2772
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a812693b5d5a8f4e8ab5a0171f69421
+      internalID: -1729845506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_89
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 2772
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad4593b116b35d4aaa66ce7fdd67a7d
+      internalID: -661993097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_90
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 2779
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80cf8cb23af4bd439d85a54490777d1
+      internalID: 1292430742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_91
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2777
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10860721bef575d41900e6ecd7cbe448
+      internalID: 937691214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_92
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 2772
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17423262f218ac4e97a39190564cae3
+      internalID: 1710816443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_93
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 2772
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ab54a883b532a47a9b8f06cb4571d5
+      internalID: 311866005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_94
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 2772
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dd2f08f7d459044a8f223cd097ec22
+      internalID: -1721806967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_95
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 2772
+        width: 70
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a545d65677d0ffc479d28feeb572731c
+      internalID: 852282725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_96
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 2772
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187db4261008ba744a80aef063aeecd2
+      internalID: 1032972782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_97
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 2689
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff273a1d50f5f442a25866a006d3692
+      internalID: -639477896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_98
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2689
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabdce9c7104c084fbd8975b3a053dfe
+      internalID: -1848620567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_99
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2689
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a9b7a12d66ff44c814698a79c23766
+      internalID: 1671352235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_100
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 2625
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02308b2acbe13644296c0324a54eb28c
+      internalID: 1681987772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_101
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2625
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4920b1563a256d459b3244679009f51
+      internalID: 65253351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_102
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2625
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af3f7903685ef844909af81b954eb98
+      internalID: -125447891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_103
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 2561
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c943ab093db9649b23d1ecdae5a736
+      internalID: 1303778279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_104
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2561
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d51f3dccadf9b44d969a191047041c3
+      internalID: -375348696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_105
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2561
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88f40cfd6120344d80e8ab3092fc2f8
+      internalID: 1946784096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_106
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 2497
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad79b9d93f3fc54fafb13848c83e273
+      internalID: -1828648741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_107
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2497
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d4810b23329d6488533bb8821cbf01
+      internalID: 1183150853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_108
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2497
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d56ffd53e3754847a5e5ac8ef1bf67a
+      internalID: 1964445879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_109
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 2433
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 868f5f6fb4ffd284ea3f9d7fdbcd2abe
+      internalID: 722282056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_110
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2368
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a1c629663e82243b59c989c0c186d2
+      internalID: 1806429358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_111
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 2400
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72eb73f370a5504eae10142e83f1c92
+      internalID: 498566409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_112
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 2377
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781a5f1b2d4e89b469abda5d6e4e70d4
+      internalID: -107206431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_113
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 2368
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15dc9d45ddd3c14da8c9f87d81b715a
+      internalID: -279559201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_114
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 2400
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e602c60fe5b6b047bb756843542ebf3
+      internalID: -1948575305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_115
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2378
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6d5c90af6890604ca1283d439afdbc0
+      internalID: -1505130286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_116
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 2368
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b03af0afb0d466a40b434098fcb59039
+      internalID: 502679675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_117
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 2400
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846c2e8e3e2153743ae989db951f5552
+      internalID: -426863707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_118
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 2369
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e573f9c5223ad34f9ee0037951c5c46
+      internalID: -1620941126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_119
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 2400
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daacb2ebc30c6524e91c45e8b8126900
+      internalID: 1811395880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_120
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 2369
+        width: 11
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869b35f6b4b78ac4d8da72bb402d35bd
+      internalID: 1601872678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_121
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 2371
+        width: 10
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1cda6566bf7d14580195fd5761691a
+      internalID: 1183196194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_122
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2305
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1adf594df186a1d4d8045a7729f538bf
+      internalID: 1280311497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_123
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2305
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3bb832bc48dc1649ac7890ae525f454
+      internalID: -174818531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_124
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2305
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b57c7cdd99ae2342b4e84a837c0a7de
+      internalID: 1897331556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_125
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2241
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eddb6c63dabb18443b405df055d6c19e
+      internalID: 808622713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_126
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2241
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357f0ee4409a56744a31b3d248518bff
+      internalID: 553217683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_127
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2241
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a29292c8318664f8f0ac6ced8b870d
+      internalID: 858906324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_128
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2177
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a073483585ab114bb236b3808ea2f16
+      internalID: 114450536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_129
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2177
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b974a20a5a09346af2d5949e0f133f
+      internalID: -926151699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_130
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2177
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c0e8f409ca6304da44755dae633182
+      internalID: 228297273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_131
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2113
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17458ff1266c794996f93e73d04aa15
+      internalID: -860913730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_132
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2113
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9dc6ba6a83054d4886ab0efe8f9cf33
+      internalID: -1262255139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_133
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2113
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22e3a1a8818743489ef3e4b856a396f
+      internalID: 282110303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_134
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2049
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 133ac5fdf940aff4a9a7907fc5b76715
+      internalID: -1196954436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_135
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 2049
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2fb8d9a499fd994a9443e32ff42fa37
+      internalID: 117595870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_136
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2049
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26bf49645943ff409b2680068c213e7
+      internalID: 1456051844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_137
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1985
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f48131d16d1df4468cdb95cad609c09
+      internalID: 1089926405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_138
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1985
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 560585755ecab8e46bf42300500f778c
+      internalID: -1392579873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_139
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1974
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c35eb4cf30c08c94e8f6432f5e35d9cf
+      internalID: 1260789772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_140
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1974
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f731c5d09be6c14cb5b199c9737014b
+      internalID: -918556408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_141
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1974
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387e2eff59d1b53438daefadd63a9040
+      internalID: 394606872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_142
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1974
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db86fd3844770a46ab679d11b0f96d7
+      internalID: -1979336390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_143
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1969
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6438453e08df3d4b933d2a0446cae4f
+      internalID: -1906195602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_144
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1964
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9253df8c4a375c4b8acb1d207720377
+      internalID: -1114884420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_145
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1964
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84873dfe36ef647419c35ef95e7d0c18
+      internalID: -895856861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_146
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1900
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8568f4727c644e4cb52130ace6490ce
+      internalID: -2140315280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_147
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1910
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46814a50366fc014d895452313e44a82
+      internalID: -2005792897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_148
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1910
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd2fe37f8d1ad746beb1e81bb967825
+      internalID: 805044677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_149
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1910
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b86cc0f26921141b091545b2a2c609
+      internalID: 984241047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_150
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1910
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23bb9520c1e66a44b060e4fc2d61779
+      internalID: -1967887526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_151
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1905
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfc61aa6c217fd4fa2e933be75fcf2f
+      internalID: 1690640434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_152
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1900
+        width: 5
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7ab5712e8f6d846a056bfb681e5eb0
+      internalID: -2078718842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_153
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1878
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a527a2d792354ee4e8ade69d66cfd055
+      internalID: -912941989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_154
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1878
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ba3163f3732874cac3802ce013483a
+      internalID: -2102088340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_155
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1878
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55118af0df327a04496142948c8c8134
+      internalID: -1628580544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_156
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1878
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf41fc378eaa65b47a1f2260ba0e4fd1
+      internalID: -1253097220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_157
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1873
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ce98d4d2a3841145a779196eb779807
+      internalID: -1714704022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_158
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1868
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3af8cc0cb71bbc4dbf95bc107f81856
+      internalID: 1506262079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_159
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1868
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f02e6f713d8bc44a94c80ff62c9bfa5
+      internalID: 1321286888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_160
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1846
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b708d5964c9f7748a5b4f9a3bbe67bd
+      internalID: 1526529496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_161
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1846
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742e04fdd3e978d46b801492c7a79140
+      internalID: 184189444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_162
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1846
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011f1fe58e7355745ae1dd4b6bf358c2
+      internalID: -1062139793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_163
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1846
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d7ecdb941937e408ad8969f1a95b15
+      internalID: -49048691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_164
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1841
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854fe0051f3c22442855d8d5f2d44bab
+      internalID: -1263422428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_165
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1836
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d5bb8edb33a70498203fdfe7e55513
+      internalID: -69350443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_166
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1836
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b708a5ccc8d5ebb4fa3c345d4e37a963
+      internalID: -1260986948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_167
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1814
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50be0d0b7b18eff40ac51e5f83efb0c3
+      internalID: -1610091266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_168
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1814
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def62096b8d08ee478c8c2b1cf55b8b0
+      internalID: 1133580421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_169
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1814
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997a33adfd3d8394b8dba4db074c4645
+      internalID: -1064575371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_170
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1814
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c3ed550d709534aba61008b6fc8a64
+      internalID: -946521758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_171
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1809
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ad6b259b82ae14ca82b4289cdc7ae6
+      internalID: -766327961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_172
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1804
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0697ea927781b5140b35b5e61d3b574d
+      internalID: 855758734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_173
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1804
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235d08b937787904890d64b41ada3a00
+      internalID: 784727480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_174
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1782
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba43151a6667be9409e2fbc44e3494dd
+      internalID: -381000187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_175
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1782
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f831274a23c66c4191c4b32cd00a846
+      internalID: -478548767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_176
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1782
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce713b6dcfe002c40a4148c3ade315e9
+      internalID: 88294650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_177
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1782
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f64ec7df493bd4193a3d8751f1c45e
+      internalID: -915427457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_178
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1777
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e36d58b7ecc7b4993d0ae7ae55df08
+      internalID: -2044493480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_179
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1772
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721a6f490a50cc54c99a1ba659b87b4e
+      internalID: 2072000818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_180
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1772
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd3946b480b1224792eec81b37a0caa
+      internalID: -313518076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_181
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1750
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db7266aa34518941926006839bc3a99
+      internalID: -1989741041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_182
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1750
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23817d04521e9954d879fab24f1c2cdc
+      internalID: -1745070878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_183
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1750
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417ee09fb1a120340b36225ca9871fcb
+      internalID: 1914440541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_184
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1750
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996aa4b1975543c458e39bc0f3ab390d
+      internalID: -651548854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_185
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1745
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f6e103ac318d0345991b45e7a1f0a12
+      internalID: -271245845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_186
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1740
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b7930e00a8bc548848a6e5cd426b10
+      internalID: -1168519027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_187
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1740
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac4392c3193f684ea0bab33b70f45af
+      internalID: 1260726768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_188
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1718
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ca27462dcf98c4e8499102e7adc2c3
+      internalID: -1973161868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_189
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1718
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78df7a47e41ab741983e2705d125ba6
+      internalID: 1454660548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_190
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1718
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a292f407418e4489bb3c7ce19466aa
+      internalID: -1499104373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_191
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1718
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae34749b94526764b88e3008037d1476
+      internalID: 387999844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_192
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1713
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb82278e6c22fc1448cf82e7283d4439
+      internalID: 1417177199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_193
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1708
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7caf1ef2e36c9249b238d4c04d46124
+      internalID: -1232872599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_194
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1708
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a992023d9713e43a4b93ce89ea2bf8
+      internalID: -701299856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_195
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1686
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae54e50c142ede4994221db003e9ab7
+      internalID: -827111285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_196
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1686
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3b74bc5cc93ab47ab4b6873ff10696
+      internalID: -689860538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_197
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 1686
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5cb9619d8923448aef0050b3e48685
+      internalID: -1212080609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_198
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1686
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a1d48e88a16a4468963d4f7ccc62f8
+      internalID: -102089259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_199
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1681
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b9f8873443a7a4b9b256c299ec3019
+      internalID: 682447760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_200
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1676
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24caf4e20fc38694a97d40829ca777a4
+      internalID: -1083731439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_201
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1676
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e95aebb82457a84ba0b2bcd5f34845f
+      internalID: -396969480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_202
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1601
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d82a260123041e409337eaf005281ea
+      internalID: 149081351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_203
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1601
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b8fb97dc77d0b41962f77522d8d0ea
+      internalID: -1944309361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_204
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1601
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e50b72b21c1d345ad4e9690de0cb3b
+      internalID: 1268229264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_205
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1537
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cea2532bcf5d64a80589df58eca905
+      internalID: -2042082266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_206
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1537
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f901b4a2ee65d104f952bdda9c25b4cc
+      internalID: -149405113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_207
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1537
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7cfefeddfe90344b8c408e73584fd99
+      internalID: -1969688118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_208
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1454
+        width: 49
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40c350af852f2b4d98d9d282d01f7b5
+      internalID: 374225392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_209
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1473
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280b6ab5835f9c74aa66752a0b79a807
+      internalID: 865127392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_210
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1473
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6b30bda2ace3141b896fc446af9c68
+      internalID: 527453150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_211
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1409
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c8150afc9956740a81f385b4d27f59
+      internalID: 1368329049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_212
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1409
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39d594f7711fe44485ce8b7a856ad81
+      internalID: -1635279025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_213
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1409
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3e21548e1727c4988073aa89946791
+      internalID: -925915004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_214
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1377
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4d70b5a2397ca4c95725d598150e26
+      internalID: 534525805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_215
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1377
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc236566f5494c45afe39e381f5ce63
+      internalID: 1952055378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_216
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1377
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813cd9b88c0194d40aaa839174976973
+      internalID: 1033984023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_217
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 1345
+        width: 41
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e46c638d5f19604fa0455d9534e8e07
+      internalID: -1326233241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_218
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1345
+        width: 45
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a649f3256914c694883c155d19bac105
+      internalID: 1758601837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_219
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1344
+        width: 43
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f40c419e0e626478c038bbebf39ce1
+      internalID: -830958263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_220
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1313
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2038c3568e13b149b9babace39766de
+      internalID: -1042207573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_221
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1313
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a247cb2d60e72943ae77462a685827c
+      internalID: -694319266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_222
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1313
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c2453b5b3a1ee4583f98569b147b21
+      internalID: 1706739011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_223
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1281
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086adb19a7fc1914e95c4708183cab24
+      internalID: 1097718973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_224
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1281
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251f39544a83c604b98ba749579c6176
+      internalID: -703767236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_225
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1281
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ce029bca0fde74995cec7966a19a0d
+      internalID: -1050157665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_226
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1249
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7221375dd0108b24fbde85314b56a8f2
+      internalID: 1293153657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_227
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1249
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f06762a414c6284792874e199258ad8
+      internalID: 1374577667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_228
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74948befddbac9c4da4994b225a78016
+      internalID: -766818923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_229
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de8bc391c0940f4e998df271f752003
+      internalID: -1041597817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_230
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3571fc4bab5cf14db04653a7e4e8f87
+      internalID: -1155385790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_231
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a48c29c4d6a66448fd464cabe86158
+      internalID: 1325414707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_232
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1180
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72329f7cb0303c24e97b0e823b01ea5d
+      internalID: 1999374821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_233
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1180
+        width: 18
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e736b080e651b24a92d33ab99e3d083
+      internalID: 1706089715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_234
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1180
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f65821b7a61a249bbfe08fe9cf3bd5
+      internalID: 1273099251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_235
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41bbe726b2d65e84eb81258d6f53aeff
+      internalID: 583851727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_236
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235379d878987d84ebd8f74bf7e2bda9
+      internalID: 1685224020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_237
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1180
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37982e97742179b458604f0a97484b80
+      internalID: -107642200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_238
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1084
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8d526bcfd19ba48a66f1b36eca1938
+      internalID: 2012235912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_239
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1091
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbe2216447dc754ea302555b5005ab0
+      internalID: -1845589584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_240
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1101
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44be4f364a4712546b2ad127f466027f
+      internalID: -1493204831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_241
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1103
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4955d5313f12d46aad4ace49a2b78e
+      internalID: 1684824020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_242
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1101
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed031b25bddfede4282b2a749edc7199
+      internalID: -298389802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_243
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1105
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b7f0a7f8fb3e8a4992489b65e4c1f82
+      internalID: -339323820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_244
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1093
+        width: 67
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a97d5369bc68141883dcc45857ee10
+      internalID: 1826370710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_245
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1091
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136d81351f59c124185a496210e3066a
+      internalID: -641821192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_246
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1091
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501724be737344249b5d593e9ded8962
+      internalID: -1041293502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_247
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1091
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612b1946687d6f04a91ef1c8b3b3c8a8
+      internalID: 1261254785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_248
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1095
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2ac5d837389ec4f957630e56750967
+      internalID: 676341674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_249
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6225be2901c14ec47b21d1c250af5213
+      internalID: -1718358376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_250
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dffcbaf9cef17743854a65d515eb164
+      internalID: 869163882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_251
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2e72746b8d25f94f9e366e236bdaf25
+      internalID: 202889516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_252
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67015b5c036e6540b816872e81a0b1a
+      internalID: -785001159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_253
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26daf0e1ba0b44e4fbc93903b62699b5
+      internalID: 1506538449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_254
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb4aade586efec498a0e8897dd5cbd9
+      internalID: 908160286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_255
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4c2f9d213b18e42a17e406f8ccc90a
+      internalID: 30295241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_256
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110a72629cf60564489534711d185728
+      internalID: 1580147409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_257
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e41fa8635f99df4aa29646a0ea745fb
+      internalID: -1041046279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_258
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 988
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ab5ffdbda18384fa88286c8a0e21e1
+      internalID: -1591902490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_259
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6503c22edf5cb5441a42fa5aab18fbe8
+      internalID: 1260439444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_260
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aedae6cd43ddca48a89f1cbf47c3df1
+      internalID: -1117782425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_261
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9504e9aa20b611b4aa5a344e0771c20e
+      internalID: -966095283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_262
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ccab50e60a67246bca8b590a0fe05a
+      internalID: 1423469812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_263
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42bc3fdbdc35983498146314a8eb76a1
+      internalID: -1934029482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_264
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06256f8efadf6e549b4126a3d1b453c8
+      internalID: -2044493329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_265
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27639d80ebccc8469afe520db738a65
+      internalID: -2018432671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_266
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146f3095c3c007243898f33cadeff262
+      internalID: -1252555524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_267
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 892
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc9f336b3514da4c85b2ea962866323
+      internalID: -1844814411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_268
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 814
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2d36fd1a1000d43a3707ebb94222b7
+      internalID: 161382937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_269
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 833
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a8af7bf5962be4585ad8a45abbd709
+      internalID: -1834384406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_270
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 814
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c976d17d9213045a362d0e62493da4
+      internalID: -1503378760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_271
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 833
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2329d8cd7ab95c647840be30fcf6ae03
+      internalID: 1963054649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_272
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 814
+        width: 74
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd13c48d535ed241bbff64e9c134039
+      internalID: -1328043994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_273
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 821
+        width: 4
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0dab643e1f4034283dc62603f4fbcb
+      internalID: 123735158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_274
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 814
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c648f48f13b1d499dc3a1d1711fa8b
+      internalID: -112626245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_275
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 821
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083201a8c544cab4597ad1a75618b235
+      internalID: -101095808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_276
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 814
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55fa773676951464bb13ea042f15a475
+      internalID: 1336232883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_277
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbfcd132da56e7448345ce0bdffb327
+      internalID: -201651653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_278
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e04052b5fbce24da0e5140f6728e97
+      internalID: -2043649099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_279
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52212ce789965bc459ad9af810752b07
+      internalID: -705543695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_280
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba068de341fe3a419b4954a2beae084
+      internalID: 1291526303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_281
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdf2ecc7568ed4479eacf4af98fb829
+      internalID: 453797211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_282
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce63d4715311ef0458df4f41505059bf
+      internalID: 435751797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_283
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d69f709f41389f4493b582fb2f0f747
+      internalID: 1542013304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_284
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef14ca4716c717c4d8252db3efb11795
+      internalID: -680664288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_285
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6704033f9b153144bbd2984f2f5b2fa0
+      internalID: 752802258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_286
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 701
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c24139e2caba16468a723f77f6771b5
+      internalID: -2058354612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_287
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 605
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e886c5a5543d7c4b8c5c09f6ec4e7cb
+      internalID: -1302340690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_288
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 605
+        width: 18
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d600ea8403a364c43b24e2ff80c4ed1d
+      internalID: 196688086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_289
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 634
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c9a40ac5e3ec54ab4e245eefbfd813
+      internalID: -607786083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_290
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 656
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1b81ce40286ee45b392b166ca10a5c
+      internalID: 879501478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_291
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 656
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52e7104a4f5179645a8147604bf81665
+      internalID: -430548080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_292
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 634
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5f181c7041e7d459a6f4db4e586afc
+      internalID: 553978329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_293
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 633
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6beb6593e78a0408e32a158148cae4
+      internalID: -625729741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_294
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 655
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3059facf03d4f41abd30d454f77e75
+      internalID: -1931725882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_295
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 634
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e699f3ff28e2742894e7bcad2a0aca
+      internalID: 754659820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_296
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 665
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d76bbdae8b3f744a2ea3b0c5ef2f36
+      internalID: -91099926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_297
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 655
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e9bfeaab9292d4a8fb0de0c7d5233f
+      internalID: 1169417586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_298
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 644
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cfe4ed35194c714abc274535ea11eb1
+      internalID: -1045443934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_299
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 634
+        width: 39
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060bb05e2afc59f42835de43d62a3d53
+      internalID: -513909099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_300
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 638
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88456cb41bc6ac5469a164f06bed2ec5
+      internalID: 909545281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_301
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abd80b5442ad19418a22574cf8e9923
+      internalID: -1903132063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_302
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e500e30e7eb5b4982fbba899511968
+      internalID: 189336954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_303
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae40a7e3563de24988b3cd63751214f
+      internalID: 581773140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_304
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 503e801f467d92a4f895fc45fc665ed1
+      internalID: 1693517145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_305
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917972652d3144e459cf924a209d0126
+      internalID: -1557482460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_306
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df59710218fd9004bb5614ca0ca1672e
+      internalID: -437037529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_307
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51bda3663ceb1f46abb62de07e9363e
+      internalID: 1996722746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_308
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d243cbde157354fb5dbb0003796d10
+      internalID: -502538704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_309
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4f8631b6e27354295704abfc729ace
+      internalID: 774303258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_310
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 510
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef2d7c440c614647a055fd04bcef398
+      internalID: 1086533190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_311
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861a6cac794f6a542bbe2afdf04b0945
+      internalID: 1653834338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_312
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1bf0be000875a42839035800bc13f0
+      internalID: -1115667357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_313
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf634d0f635ee042bcce757e6a623ef
+      internalID: -1130002063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_314
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b48f59fdca56d489b21738e1e19c40
+      internalID: 1120603195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_315
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce4c0e0b53cc73140be39954028bf3bc
+      internalID: 1050613217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_316
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa2fc83dd05e334ea326c3cb78bc3cf
+      internalID: 1940974146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_317
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 414
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2f357832366434bbbc2fc0fb09a1b5
+      internalID: -374069567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_318
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 231
+        width: 27
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78179b73027ad9b4682c88f371712c39
+      internalID: -1240817038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_319
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 318
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980907e0e63e1b84db5fe3b4bde48235
+      internalID: 1102567969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_320
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 318
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2792a2a4df7b5d49a25b585a2e24769
+      internalID: 768622909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_321
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 318
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a01b2783f6055e428e3ce3ec7f2c3d5
+      internalID: -126506688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_322
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 318
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609beff73bb9c8e4cad3b1464de17adf
+      internalID: -1210748635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_323
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 318
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e673d475c995a4abac294ce8a09231
+      internalID: -511524060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_324
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 318
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e0c6f517f3b6340bfbe552c23ee958
+      internalID: 1965673750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_325
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 318
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4c56e7db173d940855d4d6b06a10b2
+      internalID: -1630130132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_326
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 318
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2bf4ef3b40b31547be184bd058cc8cc
+      internalID: 339818211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_327
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169c47a8be1ef95449828263a79e33da
+      internalID: 106330600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_328
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7f7d7216a5ceb49a21a606670360e0
+      internalID: -754877865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_329
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232bc77155a90c44493fd0c2ef156558
+      internalID: -865420571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_330
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ff31b94406f244ea17b3d3c792b77e
+      internalID: 1822674246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_331
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8575fa56f57f4834daae6cbb833723b1
+      internalID: 2018504422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_332
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a57e90f2dc23d4ca79ca399395b0ea
+      internalID: -1777743232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_333
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 124
+        width: 20
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70073af9cff3e6f458d57bdbabfdc44c
+      internalID: 1930622556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_334
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 124
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e0662e6d6de814ab40299d78c9f3db
+      internalID: -1037940777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_335
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 124
+        width: 20
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ba7812002f8d1429eff0e37a4053c5
+      internalID: 680203194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_336
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 124
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570f0a17d6c972e4cb9a03e8826a6581
+      internalID: -1595915848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_337
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 28
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 951518af46c7c2c46ac3ecddd72f9fb9
+      internalID: 1117412786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_338
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 28
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4aa678feddc284db1524014432e59b
+      internalID: 803618042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_339
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 28
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16cb2b74d5566d549a085b0135b20bbd
+      internalID: 1263229654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_340
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 28
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c95373b32f86d40a7fd12d67ad2657
+      internalID: -1017195437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_341
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 28
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa4756f5d5ccb145a8fadb645f599db
+      internalID: -733978123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_342
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 28
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7ee29760f983f498ca611afc7c9f45
+      internalID: -1791379188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_343
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3456
+        width: 63
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517369b9d594c1b42995c6c98f1dd504
+      internalID: -1033276530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_344
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3552
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e867243f49bef348bc3c9ea1d7605f6
+      internalID: -1355550851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_345
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 3552
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c31ec350b80e144a3c9562ca6865e4
+      internalID: 1937684864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_346
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3552
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7bd0a9524516f48a4a3f292f7a29f6
+      internalID: -84877299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet_347
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 3552
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9fb9e98f77be5e42aaa535f8f97e784
+      internalID: -1923790295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +7414,355 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      automation spritesheet_0: 1143868760
+      automation spritesheet_1: -1245860051
+      automation spritesheet_10: 718078635
+      automation spritesheet_100: 1681987772
+      automation spritesheet_101: 65253351
+      automation spritesheet_102: -125447891
+      automation spritesheet_103: 1303778279
+      automation spritesheet_104: -375348696
+      automation spritesheet_105: 1946784096
+      automation spritesheet_106: -1828648741
+      automation spritesheet_107: 1183150853
+      automation spritesheet_108: 1964445879
+      automation spritesheet_109: 722282056
+      automation spritesheet_11: 224623808
+      automation spritesheet_110: 1806429358
+      automation spritesheet_111: 498566409
+      automation spritesheet_112: -107206431
+      automation spritesheet_113: -279559201
+      automation spritesheet_114: -1948575305
+      automation spritesheet_115: -1505130286
+      automation spritesheet_116: 502679675
+      automation spritesheet_117: -426863707
+      automation spritesheet_118: -1620941126
+      automation spritesheet_119: 1811395880
+      automation spritesheet_12: 3058024
+      automation spritesheet_120: 1601872678
+      automation spritesheet_121: 1183196194
+      automation spritesheet_122: 1280311497
+      automation spritesheet_123: -174818531
+      automation spritesheet_124: 1897331556
+      automation spritesheet_125: 808622713
+      automation spritesheet_126: 553217683
+      automation spritesheet_127: 858906324
+      automation spritesheet_128: 114450536
+      automation spritesheet_129: -926151699
+      automation spritesheet_13: 1230850675
+      automation spritesheet_130: 228297273
+      automation spritesheet_131: -860913730
+      automation spritesheet_132: -1262255139
+      automation spritesheet_133: 282110303
+      automation spritesheet_134: -1196954436
+      automation spritesheet_135: 117595870
+      automation spritesheet_136: 1456051844
+      automation spritesheet_137: 1089926405
+      automation spritesheet_138: -1392579873
+      automation spritesheet_139: 1260789772
+      automation spritesheet_14: 588493315
+      automation spritesheet_140: -918556408
+      automation spritesheet_141: 394606872
+      automation spritesheet_142: -1979336390
+      automation spritesheet_143: -1906195602
+      automation spritesheet_144: -1114884420
+      automation spritesheet_145: -895856861
+      automation spritesheet_146: -2140315280
+      automation spritesheet_147: -2005792897
+      automation spritesheet_148: 805044677
+      automation spritesheet_149: 984241047
+      automation spritesheet_15: -880544065
+      automation spritesheet_150: -1967887526
+      automation spritesheet_151: 1690640434
+      automation spritesheet_152: -2078718842
+      automation spritesheet_153: -912941989
+      automation spritesheet_154: -2102088340
+      automation spritesheet_155: -1628580544
+      automation spritesheet_156: -1253097220
+      automation spritesheet_157: -1714704022
+      automation spritesheet_158: 1506262079
+      automation spritesheet_159: 1321286888
+      automation spritesheet_16: -2529334
+      automation spritesheet_160: 1526529496
+      automation spritesheet_161: 184189444
+      automation spritesheet_162: -1062139793
+      automation spritesheet_163: -49048691
+      automation spritesheet_164: -1263422428
+      automation spritesheet_165: -69350443
+      automation spritesheet_166: -1260986948
+      automation spritesheet_167: -1610091266
+      automation spritesheet_168: 1133580421
+      automation spritesheet_169: -1064575371
+      automation spritesheet_17: -636589219
+      automation spritesheet_170: -946521758
+      automation spritesheet_171: -766327961
+      automation spritesheet_172: 855758734
+      automation spritesheet_173: 784727480
+      automation spritesheet_174: -381000187
+      automation spritesheet_175: -478548767
+      automation spritesheet_176: 88294650
+      automation spritesheet_177: -915427457
+      automation spritesheet_178: -2044493480
+      automation spritesheet_179: 2072000818
+      automation spritesheet_18: 2116545783
+      automation spritesheet_180: -313518076
+      automation spritesheet_181: -1989741041
+      automation spritesheet_182: -1745070878
+      automation spritesheet_183: 1914440541
+      automation spritesheet_184: -651548854
+      automation spritesheet_185: -271245845
+      automation spritesheet_186: -1168519027
+      automation spritesheet_187: 1260726768
+      automation spritesheet_188: -1973161868
+      automation spritesheet_189: 1454660548
+      automation spritesheet_19: -455615066
+      automation spritesheet_190: -1499104373
+      automation spritesheet_191: 387999844
+      automation spritesheet_192: 1417177199
+      automation spritesheet_193: -1232872599
+      automation spritesheet_194: -701299856
+      automation spritesheet_195: -827111285
+      automation spritesheet_196: -689860538
+      automation spritesheet_197: -1212080609
+      automation spritesheet_198: -102089259
+      automation spritesheet_199: 682447760
+      automation spritesheet_2: -2047419764
+      automation spritesheet_20: -1599856868
+      automation spritesheet_200: -1083731439
+      automation spritesheet_201: -396969480
+      automation spritesheet_202: 149081351
+      automation spritesheet_203: -1944309361
+      automation spritesheet_204: 1268229264
+      automation spritesheet_205: -2042082266
+      automation spritesheet_206: -149405113
+      automation spritesheet_207: -1969688118
+      automation spritesheet_208: 374225392
+      automation spritesheet_209: 865127392
+      automation spritesheet_21: -2086297520
+      automation spritesheet_210: 527453150
+      automation spritesheet_211: 1368329049
+      automation spritesheet_212: -1635279025
+      automation spritesheet_213: -925915004
+      automation spritesheet_214: 534525805
+      automation spritesheet_215: 1952055378
+      automation spritesheet_216: 1033984023
+      automation spritesheet_217: -1326233241
+      automation spritesheet_218: 1758601837
+      automation spritesheet_219: -830958263
+      automation spritesheet_22: -1035378204
+      automation spritesheet_220: -1042207573
+      automation spritesheet_221: -694319266
+      automation spritesheet_222: 1706739011
+      automation spritesheet_223: 1097718973
+      automation spritesheet_224: -703767236
+      automation spritesheet_225: -1050157665
+      automation spritesheet_226: 1293153657
+      automation spritesheet_227: 1374577667
+      automation spritesheet_228: -766818923
+      automation spritesheet_229: -1041597817
+      automation spritesheet_23: -224248340
+      automation spritesheet_230: -1155385790
+      automation spritesheet_231: 1325414707
+      automation spritesheet_232: 1999374821
+      automation spritesheet_233: 1706089715
+      automation spritesheet_234: 1273099251
+      automation spritesheet_235: 583851727
+      automation spritesheet_236: 1685224020
+      automation spritesheet_237: -107642200
+      automation spritesheet_238: 2012235912
+      automation spritesheet_239: -1845589584
+      automation spritesheet_24: -805118284
+      automation spritesheet_240: -1493204831
+      automation spritesheet_241: 1684824020
+      automation spritesheet_242: -298389802
+      automation spritesheet_243: -339323820
+      automation spritesheet_244: 1826370710
+      automation spritesheet_245: -641821192
+      automation spritesheet_246: -1041293502
+      automation spritesheet_247: 1261254785
+      automation spritesheet_248: 676341674
+      automation spritesheet_249: -1718358376
+      automation spritesheet_25: 1104025508
+      automation spritesheet_250: 869163882
+      automation spritesheet_251: 202889516
+      automation spritesheet_252: -785001159
+      automation spritesheet_253: 1506538449
+      automation spritesheet_254: 908160286
+      automation spritesheet_255: 30295241
+      automation spritesheet_256: 1580147409
+      automation spritesheet_257: -1041046279
+      automation spritesheet_258: -1591902490
+      automation spritesheet_259: 1260439444
+      automation spritesheet_26: -971718916
+      automation spritesheet_260: -1117782425
+      automation spritesheet_261: -966095283
+      automation spritesheet_262: 1423469812
+      automation spritesheet_263: -1934029482
+      automation spritesheet_264: -2044493329
+      automation spritesheet_265: -2018432671
+      automation spritesheet_266: -1252555524
+      automation spritesheet_267: -1844814411
+      automation spritesheet_268: 161382937
+      automation spritesheet_269: -1834384406
+      automation spritesheet_27: -804853289
+      automation spritesheet_270: -1503378760
+      automation spritesheet_271: 1963054649
+      automation spritesheet_272: -1328043994
+      automation spritesheet_273: 123735158
+      automation spritesheet_274: -112626245
+      automation spritesheet_275: -101095808
+      automation spritesheet_276: 1336232883
+      automation spritesheet_277: -201651653
+      automation spritesheet_278: -2043649099
+      automation spritesheet_279: -705543695
+      automation spritesheet_28: 1787447069
+      automation spritesheet_280: 1291526303
+      automation spritesheet_281: 453797211
+      automation spritesheet_282: 435751797
+      automation spritesheet_283: 1542013304
+      automation spritesheet_284: -680664288
+      automation spritesheet_285: 752802258
+      automation spritesheet_286: -2058354612
+      automation spritesheet_287: -1302340690
+      automation spritesheet_288: 196688086
+      automation spritesheet_289: -607786083
+      automation spritesheet_29: -1471843409
+      automation spritesheet_290: 879501478
+      automation spritesheet_291: -430548080
+      automation spritesheet_292: 553978329
+      automation spritesheet_293: -625729741
+      automation spritesheet_294: -1931725882
+      automation spritesheet_295: 754659820
+      automation spritesheet_296: -91099926
+      automation spritesheet_297: 1169417586
+      automation spritesheet_298: -1045443934
+      automation spritesheet_299: -513909099
+      automation spritesheet_3: 2060001533
+      automation spritesheet_30: -1037586719
+      automation spritesheet_300: 909545281
+      automation spritesheet_301: -1903132063
+      automation spritesheet_302: 189336954
+      automation spritesheet_303: 581773140
+      automation spritesheet_304: 1693517145
+      automation spritesheet_305: -1557482460
+      automation spritesheet_306: -437037529
+      automation spritesheet_307: 1996722746
+      automation spritesheet_308: -502538704
+      automation spritesheet_309: 774303258
+      automation spritesheet_31: 280491304
+      automation spritesheet_310: 1086533190
+      automation spritesheet_311: 1653834338
+      automation spritesheet_312: -1115667357
+      automation spritesheet_313: -1130002063
+      automation spritesheet_314: 1120603195
+      automation spritesheet_315: 1050613217
+      automation spritesheet_316: 1940974146
+      automation spritesheet_317: -374069567
+      automation spritesheet_318: -1240817038
+      automation spritesheet_319: 1102567969
+      automation spritesheet_32: 819038065
+      automation spritesheet_320: 768622909
+      automation spritesheet_321: -126506688
+      automation spritesheet_322: -1210748635
+      automation spritesheet_323: -511524060
+      automation spritesheet_324: 1965673750
+      automation spritesheet_325: -1630130132
+      automation spritesheet_326: 339818211
+      automation spritesheet_327: 106330600
+      automation spritesheet_328: -754877865
+      automation spritesheet_329: -865420571
+      automation spritesheet_33: 2003210973
+      automation spritesheet_330: 1822674246
+      automation spritesheet_331: 2018504422
+      automation spritesheet_332: -1777743232
+      automation spritesheet_333: 1930622556
+      automation spritesheet_334: -1037940777
+      automation spritesheet_335: 680203194
+      automation spritesheet_336: -1595915848
+      automation spritesheet_337: 1117412786
+      automation spritesheet_338: 803618042
+      automation spritesheet_339: 1263229654
+      automation spritesheet_34: 82711476
+      automation spritesheet_340: -1017195437
+      automation spritesheet_341: -733978123
+      automation spritesheet_342: -1791379188
+      automation spritesheet_343: -1033276530
+      automation spritesheet_344: -1355550851
+      automation spritesheet_345: 1937684864
+      automation spritesheet_346: -84877299
+      automation spritesheet_347: -1923790295
+      automation spritesheet_35: -1435009688
+      automation spritesheet_36: -1939572729
+      automation spritesheet_37: 2078306340
+      automation spritesheet_38: -1406728118
+      automation spritesheet_39: -1262898907
+      automation spritesheet_4: 497899790
+      automation spritesheet_40: -1875734173
+      automation spritesheet_41: 713457364
+      automation spritesheet_42: -2123366116
+      automation spritesheet_43: -1527108264
+      automation spritesheet_44: 1632831325
+      automation spritesheet_45: -1962737018
+      automation spritesheet_46: 2032757625
+      automation spritesheet_47: -117701982
+      automation spritesheet_48: 1887384402
+      automation spritesheet_49: 546070543
+      automation spritesheet_5: -1407448653
+      automation spritesheet_50: 653101252
+      automation spritesheet_51: -899027330
+      automation spritesheet_52: -1365693775
+      automation spritesheet_53: 226448960
+      automation spritesheet_54: 106811654
+      automation spritesheet_55: -1172378753
+      automation spritesheet_56: 447433905
+      automation spritesheet_57: -1358210715
+      automation spritesheet_58: 1289021672
+      automation spritesheet_59: 635453136
+      automation spritesheet_6: -1331256475
+      automation spritesheet_60: -931159870
+      automation spritesheet_61: -1481474086
+      automation spritesheet_62: 45819219
+      automation spritesheet_63: 122427526
+      automation spritesheet_64: -1129506598
+      automation spritesheet_65: 1932678080
+      automation spritesheet_66: 385961847
+      automation spritesheet_67: 1705892919
+      automation spritesheet_68: 1406405088
+      automation spritesheet_69: -503389321
+      automation spritesheet_7: -1585903473
+      automation spritesheet_70: -1416121763
+      automation spritesheet_71: -1917419591
+      automation spritesheet_72: 1872311536
+      automation spritesheet_73: -1303040972
+      automation spritesheet_74: -613015763
+      automation spritesheet_75: 1419202837
+      automation spritesheet_76: -1107642686
+      automation spritesheet_77: -2048736810
+      automation spritesheet_78: 97063063
+      automation spritesheet_79: -1358900394
+      automation spritesheet_8: 940487873
+      automation spritesheet_80: 771046860
+      automation spritesheet_81: -2037083322
+      automation spritesheet_82: -572925715
+      automation spritesheet_83: 1005019274
+      automation spritesheet_84: 351518712
+      automation spritesheet_85: -1698052905
+      automation spritesheet_86: -1156870249
+      automation spritesheet_87: 1051185193
+      automation spritesheet_88: -1729845506
+      automation spritesheet_89: -661993097
+      automation spritesheet_9: 686264476
+      automation spritesheet_90: 1292430742
+      automation spritesheet_91: 937691214
+      automation spritesheet_92: 1710816443
+      automation spritesheet_93: 311866005
+      automation spritesheet_94: -1721806967
+      automation spritesheet_95: 852282725
+      automation spritesheet_96: 1032972782
+      automation spritesheet_97: -639477896
+      automation spritesheet_98: -1848620567
+      automation spritesheet_99: 1671352235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

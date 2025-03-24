@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 2
+  matType: 3
   CompletionBar: {fileID: 3953583605506256008}
 --- !u!58 &6475533781192141353
 CircleCollider2D:

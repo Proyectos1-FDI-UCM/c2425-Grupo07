@@ -347,7 +347,7 @@ MonoBehaviour:
   StatesMat:
   - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
   - {fileID: 8970695659979435321, guid: b0b8843acfbf4bc41a4c727206b97730, type: 3}
-  - {fileID: 6046970825805907103, guid: 6c2fca0b794fed54c9510d8c2dd5f8ec, type: 3}
+  - {fileID: 6046970825805907103, guid: fa4ef3d7f8f8032419872981da19ded3, type: 3}
   - {fileID: 8970695659979435321, guid: a6286717ef58d8b439308c9b141a4f2a, type: 3}
 --- !u!1 &3504335975979876622
 GameObject:
