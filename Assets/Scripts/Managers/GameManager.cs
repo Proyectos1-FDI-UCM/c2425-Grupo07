@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
     private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
+    [SerializeField] private GameObject _spawnPlayer;
     
     #endregion
 
@@ -232,7 +233,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void FirstFindPlayerComponents()
     {
-        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena
+        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena junto con sus componentes
         if (_player == null)
         {
             Debug.LogError("Player no encontrado");
@@ -258,7 +259,7 @@ public class GameManager : MonoBehaviour
 
         if (playerPrefab != null)
         {
-            Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
+            Instantiate(playerPrefab, _spawnPlayer.transform.position, Quaternion.identity);
             Debug.Log("Player SPAWNS");
         }
         else Debug.Log("No hay prefab del player");
@@ -300,7 +301,12 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Escena cargada: " + scene.name);
-        if(scene.name == "MenuLevelSelection")
+        _spawnPlayer = GameObject.FindWithTag("Spawn");
+        if (_spawnPlayer == null)
+        {
+            Debug.LogError("No hay spawn");
+        }
+        if (scene.name == "MenuLevelSelection")
         {
             SpawnPlayer();
             Debug.Log("MenuLevelSelection");
