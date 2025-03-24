@@ -17,6 +17,7 @@ TagManager:
   - Recibidor
   - Cinta
   - TimerNivel
+  - Spawn
   layers:
   - Default
   - TransparentFX
