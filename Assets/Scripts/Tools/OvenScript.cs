@@ -118,9 +118,12 @@ public class OvenScript : MonoBehaviour
         }
         else
         {
-            _matScr = null;
             _isProcessing = false;
             FlashImage.SetActive(false);
+            _matScr.ReturnProgressBar().color = Color.green;
+            _matScr.UpdateProgress(0);
+            _matScr.ReturnProgressBar().gameObject.GetComponentInParent<Canvas>().enabled = false;
+            _matScr = null;
         }
     }
 
@@ -164,9 +167,10 @@ public class OvenScript : MonoBehaviour
                 ProcessedMaterial();
             }
         }
-        if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && (_matScr.MaterialType() == MaterialType.Cristal || _matScr.MaterialType() == MaterialType.MetalMineral))
+        else if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && (_matScr.MaterialType() == MaterialType.Cristal || _matScr.MaterialType() == MaterialType.MetalMineral))
         {
             _matScr.UpdateProgress(_progress);
+            _matScr.ReturnProgressBar().color = Color.red;
             _timerBurn += Time.deltaTime;
             _progress = (_timerBurn / 100) * VelCompletion / 1.5f;
             _timerFlash += Time.deltaTime;
@@ -187,10 +191,6 @@ public class OvenScript : MonoBehaviour
             {
                 BurntMaterial();
             }
-        }
-        else
-        {
-            FlashImage.SetActive(false);
         }
     }
 
