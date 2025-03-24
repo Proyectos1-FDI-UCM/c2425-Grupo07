@@ -45,7 +45,6 @@ public class ConveyorItems : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private Vector3 _direction = Vector3.up; // Para que siempre siga la dirección hacia arriba del material
     private float _timerDeletion; // Tiempo que tarda en borrarse el material cuando toca el trigger de la basura
-    bool _enCinta;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -54,14 +53,6 @@ public class ConveyorItems : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    void FixedUpdate()
-    {
-        if (_enCinta)
-        {
-            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel, Space.World);
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -89,12 +80,8 @@ public class ConveyorItems : MonoBehaviour
         if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
         {
             NextBelt = other.gameObject;
-           _enCinta = true;
+            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel, Space.World); 
             AvanzaConParent();
-        }
-        else
-        {
-            _enCinta = false;
         }
         if (other.gameObject.tag == "Basura" && NextBelt != null)
         {

@@ -273,7 +273,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,6 +281,27 @@ TextureImporter:
       bones: []
       spriteID: 6cc80935ec12c10429b0339b190f6fa4
       internalID: -1872800837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: items_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 145
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d555e668964e49b479690154d12045fc
+      internalID: 370377286
       vertices: []
       indices: 
       edges: []
@@ -305,6 +326,7 @@ TextureImporter:
       MetalBlob: -625002849
       MetalOre: 1508383589
       items_sheet_0: -1872800837
+      items_sheet_1: 370377286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
