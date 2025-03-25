@@ -89,7 +89,6 @@ public class PlayerBool : MonoBehaviour
         _isRack = true;
         Debug.Log("Jugador seleccionó a Rack.");
         _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
-        _canvas.gameObject.SetActive(false);
         _gameManager.GetPlayer();
         _gameManager.ChangeToLevel();
     }
@@ -100,7 +99,6 @@ public class PlayerBool : MonoBehaviour
         _isRack = false;
         Debug.Log("Jugador seleccionó a Albert.");
         _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
-        _canvas.gameObject.SetActive(false);
         _gameManager.GetPlayer();
         _gameManager.ChangeToLevel();
     }
