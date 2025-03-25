@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: d490912059d2dda40bc3e4e58624b1c8, type: 3}
-  Tasktime: 5
+  Tasktime: 50
   color1: {r: 0.003921569, g: 1, b: 0.12941177, a: 1}
   color2: {r: 0.8705883, g: 0.92549026, b: 0.0627451, a: 0}
   color3: {r: 0.9607843, g: 0.029417088, b: 0, a: 0}

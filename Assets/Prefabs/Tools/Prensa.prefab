@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6212744009168466049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -476,12 +476,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentObject: {fileID: 0}
-  OriginalStatePrefabs:
-  - {fileID: 1993284467259624052, guid: d7d2dfe406c57904d828833ef11ac3dd, type: 3}
-  - {fileID: 2172803512526281095, guid: cc719eaabba23654393959e71438a0e8, type: 3}
-  - {fileID: 7900758067909218852, guid: 5af5ed6cb3c37684c928a270708bdff8, type: 3}
-  - {fileID: 2906912807483375088, guid: 748337188ccccc34da2b7d3b92e29dba, type: 3}
-  - {fileID: 3452281655754456913, guid: a3ae905c1fef5d04a9e79d1dda95b43f, type: 3}
   PressingTime: 0
   VelCompletion: 50
   ProgressBarFill: {fileID: 5731390066909951490}

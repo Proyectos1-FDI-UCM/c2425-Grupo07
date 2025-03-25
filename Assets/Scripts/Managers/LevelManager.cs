@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// // _maxTime es el tiempo máximo que puede durar la partida
     /// </summary>
-    private float _maxTime = 180;
+    [SerializeField] private float _maxTime = 180;
 
     // _currentSecondsLeft es el tiempo restante en segundos
     private float _currentSecondsLeft;
