@@ -140,7 +140,7 @@ public class WelderScript : MonoBehaviour
     /// </summary>
     public void UpdateMaterialReference(Material material)
     {
-        if (material != null && material.MaterialType() == MaterialType.MetalMineral)
+        if (material != null && material.MaterialTypeReturn() == MaterialType.MetalMineral)
         {
             _materialSource = material;
             _progress = _materialSource.ReturnProgress();

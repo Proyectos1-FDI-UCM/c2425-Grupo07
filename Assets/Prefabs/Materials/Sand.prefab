@@ -254,6 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matType: 0
   CompletionBar: {fileID: 2167422407013768425}
+  MatState:
+  - {fileID: -1417738725, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  - {fileID: 288120203, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
 --- !u!114 &2370582184180194420
 MonoBehaviour:
   m_ObjectHideFlags: 0

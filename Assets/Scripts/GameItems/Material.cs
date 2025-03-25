@@ -39,6 +39,8 @@ public class Material : MonoBehaviour
     // Hace que los métodos puedan acceder al tipo de Material 
     [SerializeField] private MaterialType matType; //Este enum sirve para que las herramientas sepan diferenciar entre los distintos materiales
     [SerializeField] private Image CompletionBar; //La barra de progreso del material
+    [SerializeField] private Sprite[] MatState; //Sprite Procesado, 0 procesado, 1 quemado, 2 procesado final (para el metal)
+    //[SerializeField] private Sprite BurntSprite; //Sprite Quemado
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -110,9 +112,43 @@ public class Material : MonoBehaviour
         return CompletionBar;
     }
 
-    public MaterialType MaterialType()
+    public MaterialType MaterialTypeReturn()
     {
         return matType;
+    }
+
+    public void ProcessTheMaterial()
+    {
+        GetComponent<SpriteRenderer>().sprite = MatState[0];
+        switch (matType)
+        {
+            case MaterialType.Arena:
+                matType = MaterialType.Cristal;
+                break;
+            case MaterialType.MetalRoca:
+                matType = MaterialType.MetalMineral;
+                break;
+            case MaterialType.MetalMineral:
+                matType = MaterialType.MetalProcesado;
+                GetComponent<SpriteRenderer>().sprite = MatState[2];
+                break;
+            case MaterialType.Madera:
+                matType = MaterialType.MaderaProcesada;
+                break;
+        }
+    }
+    public void BurnTheMaterial()
+    {
+        GetComponent<SpriteRenderer>().sprite= MatState[1];
+        switch (matType)
+        {
+            case MaterialType.Arena:
+                matType = MaterialType.Otro;
+                break;
+            case MaterialType.MetalRoca:
+                matType = MaterialType.Otro;
+                break;
+        }
     }
 
     #endregion

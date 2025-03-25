@@ -194,8 +194,8 @@ public class Objects : MonoBehaviour
         }
 
         // Obtiene el componente MaterialType de ambos objetos
-        var matType1 = material.GetComponent<Material>()?.MaterialType();
-        var matType2 = required.GetComponent<Material>()?.MaterialType();
+        var matType1 = material.GetComponent<Material>()?.MaterialTypeReturn();
+        var matType2 = required.GetComponent<Material>()?.MaterialTypeReturn();
 
         // Compara los tipos de material
         return matType1 == matType2;

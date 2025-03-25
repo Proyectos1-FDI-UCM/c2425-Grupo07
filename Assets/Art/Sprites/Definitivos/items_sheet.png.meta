@@ -265,11 +265,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_sheet_0
+      name: MetalFallido
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 160
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -294,7 +294,7 @@ TextureImporter:
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,8 +324,8 @@ TextureImporter:
       MaderaProcesada: -533892489
       MetalBar: 979421830
       MetalBlob: -625002849
+      MetalFallido: -1872800837
       MetalOre: 1508383589
-      items_sheet_0: -1872800837
       items_sheet_1: 370377286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

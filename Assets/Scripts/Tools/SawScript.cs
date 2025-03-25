@@ -83,7 +83,7 @@ public class SawScript : MonoBehaviour
     {
         _pastClicks = CurrentClicks;
 
-        if (transform.childCount == 1 && GetComponentInChildren<Material>().MaterialType() == MaterialType.Madera)
+        if (transform.childCount == 1 && GetComponentInChildren<Material>().MaterialTypeReturn() == MaterialType.Madera)
         {
             HasWood = true;
         }
@@ -168,7 +168,7 @@ public class SawScript : MonoBehaviour
     /// </summary>
     public void UpdateMaterialReference(Material material)
     {
-        if (material != null && material.GetComponent<Material>().MaterialType() == MaterialType.Madera)
+        if (material != null && material.GetComponent<Material>().MaterialTypeReturn() == MaterialType.Madera)
         {
             _materialSource = material;
             CompletionBarReference = _materialSource.ReturnProgressBar();
