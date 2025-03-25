@@ -57,6 +57,30 @@ public class LevelManager : MonoBehaviour
     private static LevelManager _instance;
 
     /// <summary>
+    /// _gameManager es el que gestiona el estado global del juego, es este cago para obtener una dato
+    /// </summary>
+    private GameManager _gameManager;
+
+    /// <summary>
+    /// _minS es la cantidad mínima de dinero para alcanzar el rango S
+    /// </summary>
+    [SerializeField] private int _minS = 900;
+
+    /// <summary>
+    /// _minA es la cantidad mínima de dinero para alcanzar el rango A
+    /// </summary>
+    [SerializeField] private int _minA = 650;
+
+    /// <summary>
+    /// _minB es la cantidad mínima de dinero para alcanzar el rango B
+    /// </summary>
+    [SerializeField] private int _minB = 400;
+    #endregion
+
+    // ---- ATRIBUTOS PRIVADOS ----
+    #region Atributos Privados (private fields)
+
+    /// <summary>
     /// _continue determina si el timer debe empezar (true) o no (false)
     /// </summary>
     private bool _continue = false;
@@ -79,10 +103,6 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private int _secondsShow;
 
-    /// <summary>
-    /// _gameManager es el que gestiona el estado global del juego, es este cago para obtener una dato
-    /// </summary>
-    private GameManager _gameManager;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -92,11 +112,11 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        StartTimer();
         _gameManager = GameManager.Instance;
         isRack = _gameManager.ReturnBool();
         _gameManager.SpawnPlayer();
         _gameManager.FirstFindPlayerComponents();
-        StartTimer();
         Money = 0;
     }
 
@@ -111,6 +131,7 @@ public class LevelManager : MonoBehaviour
             StopTimer();
             _currentSecondsLeft = 0;
             Panel.SetActive(true);
+            CalculateRange(Money);
             Time.timeScale = 0;
         }
         ShowTime();
@@ -157,7 +178,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public enum Range
     {
-        S,A,B,C,D,E,F,
+        S,A,B,F
     }
 
 
@@ -201,6 +222,29 @@ public class LevelManager : MonoBehaviour
         {
             ShowText.text = _minutesShow + ":" + "0" + _secondsShow;
         }
+    }
+
+    // CalculateRange(int _money) calcula el rango según la cantidad de dinero lograda durante la partida
+    private Range CalculateRange(int _money)
+    {
+        Range _range = new Range();
+        if (_money >= _minS)
+        {
+            _range = Range.S;
+        }
+        else if (_money >= _minA)
+        {
+            _range = Range.A;
+        }
+        else if (_money >= _minB)
+        {
+            _range = Range.B;
+        }
+        else
+        {
+            _range = Range.F;
+        }
+        return _range;
     }
 
     #endregion
