@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Alicia Sarahi Sanchez Varela
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -23,8 +23,8 @@ public class PlayerWelder : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private WelderScript WelderScript;
-    [SerializeField] private InputActionReference InteractActionReference;
+    [SerializeField] private WelderScript WelderScript; //Objeto para llamar al script de Welder
+    [SerializeField] private InputActionReference InteractActionReference; //Input que permite realizar la accion
 
     #endregion
 
@@ -37,8 +37,8 @@ public class PlayerWelder : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private PlayerVision _playerVision;
-    private PlayerMovement _playerMovement;
+    private PlayerVision _playerVision;  // sirve para llamar luego al script de PlayerVision
+    private PlayerMovement _playerMovement; //sirve para llamar luego al script de PlayerMovement
 
 
     #endregion
@@ -51,8 +51,7 @@ public class PlayerWelder : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// Se encarga de encontrar la Soldadora y llamar a los scrpits de los atributos correspondientes.
     /// </summary>
     void Start()
     {
@@ -82,6 +81,10 @@ public class PlayerWelder : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+
+    /// <summary>
+    /// Indica el tipo de estado que el input va a realizar.
+    /// </summary>
     void Awake()
     {
             InteractActionReference.action.performed += ctx => TurningWelder();
@@ -89,7 +92,9 @@ public class PlayerWelder : MonoBehaviour
             InteractActionReference.action.Enable();
     }
 
-    
+    /// <summary>
+    /// Indica que se puede utilizar la soldadora, y llama a la función para activar la soldadora.
+    /// </summary>
     private void TurningWelder() 
     { 
         if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
@@ -98,8 +103,11 @@ public class PlayerWelder : MonoBehaviour
             _playerVision.enabled = false;
             WelderScript.TurnOnWelder();
         }
-         
     }
+
+    /// <summary>
+    /// indica que el jugador está en movimiento y llama a la función correspondiente para detener la soldadora.
+    /// </summary>
     private void StopingWelder() 
     {
         if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))

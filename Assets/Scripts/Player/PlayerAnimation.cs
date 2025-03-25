@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Alicia Sarahi Sánchez Varela
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -11,8 +11,8 @@ using UnityEngine.InputSystem;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// La clase PlayerAnimtor se encarga principalmente de definir los parametros usados en el Animator del editor que hacen posibles 
+/// las animaciones de Idle, Caminar, Dash y de Trabajar/usar estaciones de trabajo.
 /// </summary>
 public class PlayerAnimation : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class PlayerAnimation : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private InputActionReference InteractActionReference;
+    [SerializeField] private InputActionReference InteractActionReference; //obtiene el input para la acción correspondiente.
 
     #endregion
 
@@ -37,22 +37,21 @@ public class PlayerAnimation : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Animator _animator; //atributo animator para las animaciones
-    private PlayerVision _playerVision;//
-    private PlayerDash _playerDash;
-    private PlayerMovement _playerMovement;
-    private bool _picked;
-    private bool _working;
-    private Vector2 _movement; 
-    private Vector2 _lastMove;
+    private Animator _animator; //atributo animator para las animaciones.
+    private PlayerVision _playerVision;// sirve para llaamar al playerVision scrpit.
+    private PlayerDash _playerDash; // sirve para llmar al playerDash scrpit.
+    private PlayerMovement _playerMovement;// sirve para llamar al playerMovemnt script. 
+    private bool _picked; // indica si un objecto está siendo reocgido o no.
+    private bool _working;// indica si el jugador está realizando una acción o no.
+    private Vector2 _movement; // guarda el movimiento del jugador.
+    private Vector2 _lastMove; //guarda la última posición del jugador.
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// cada atributo inicializa su script correspondiente.
     /// </summary>
     void Start()
     {
@@ -62,6 +61,9 @@ public class PlayerAnimation : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
+    /// <summary>
+    /// Recoge el input correspondiente cuando está activo.
+    /// </summary>
     private void OnEnable()
     {
         InteractActionReference.action.canceled += SetBoolFalse;
@@ -69,6 +71,9 @@ public class PlayerAnimation : MonoBehaviour
         InteractActionReference.action.Enable();
     }
 
+    /// <summary>
+    /// Recoge el input correspondiente cuando está inactivo.
+    /// </summary>
     private void OnDisable()
     {
         InteractActionReference.action.performed -= SetBoolTrue;
@@ -93,6 +98,12 @@ public class PlayerAnimation : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+
+    /// <summary>
+    /// La función animate se encarga de llevar acabo todo el proceso de animación, se han dado el valor correspondiente a las 
+    /// variable para que su escritura sea más fácil, se definen los parámetros para ser usados en el animator del editor y se definen
+    /// las condiciones para cada estado del personaje.
+    /// </summary>
     public void Animate()
     {
         _picked = _playerVision.IsBeingPicked();
@@ -146,6 +157,10 @@ public class PlayerAnimation : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Se activa la booleana de working para enviarla a las funciones de Input y así el correcto funcionamiento del inputAction.
+    /// </summary>
+    /// <param name="context"></param>
     private void SetBoolTrue(InputAction.CallbackContext context)
     {
         if (_movement == Vector2.zero)
@@ -154,6 +169,10 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Se desactiva la booleana de working para enviarla a las funciones de Input y así el correcto funcionamiento del inputAction.
+    /// </summary>
+    /// <param name="context"></param>
     private void SetBoolFalse(InputAction.CallbackContext context)
     {
         _working = false;

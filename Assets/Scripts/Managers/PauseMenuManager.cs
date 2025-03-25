@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Alicia Sarahi Sanchez Varela
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -8,11 +8,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
+using UnityEngine.EventSystems;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Esta clase de PauseMenuManager se encarga de pausar el juego, abrir y cerrar el menu de pausa, que contiene botones para la funcion 
+/// de reanudar el juego, cambiar a la escena de seleccion de niveles, a la escena de menu principal, mostrar los controles y poder navegar
+/// en el menu con teclado y mando.
 /// </summary>
 public class PauseMenuManager : MonoBehaviour
 {
@@ -24,9 +26,10 @@ public class PauseMenuManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private InputActionReference ActionOpenCloseMenu;
-    [SerializeField] private GameObject PauseMenuUI;
-    [SerializeField] private GameObject ControlsUI;
+    [SerializeField] private InputActionReference ActionOpenCloseMenu; //El input que va a realizar la accion de abrir y cerrar el menu.
+    [SerializeField] private GameObject PauseMenuUI; // para colocar el Objecto de Menu de Pausa desde el editor para su correcto funcionamiento.
+    [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
+    [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
 
 
     #endregion
@@ -40,14 +43,17 @@ public class PauseMenuManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private bool _paused = false;
-    private bool _controlPannelActive = false;
+    private bool _paused = false;  //Indica si el juego esta pausado o no.
+    private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
+    /// <summary>
+    /// Inicia el Input del Menu de pausa.
+    /// </summary>
     void Awake()
     {
         ActionOpenCloseMenu.action.started += ctx => HandleInput();
@@ -65,23 +71,39 @@ public class PauseMenuManager : MonoBehaviour
     // Ejemplo: GetPlayerController
 
 
+    /// <summary>
+    /// Reincia la escena del nivel
+    /// </summary>
     public void RestartLevel()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Cambia a la escena que este escrita en el editor, sirve para cualquier boton que cambie a una escena.
+    /// </summary>
+    /// <param name="nameScene"></param>
     public void ChangeScenesButtons(string nameScene)
     {
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
+    /// <summary>
+    /// Muestra la imagen de los controles y acrtiva su booleana correspondiente.
+    /// </summary>
     public void ShowControls()
     {
         ControlsUI.SetActive(true);
         _controlPannelActive = true;
     }
 
+    /// <summary>
+    ///  Controla la activacion y d esactivacion del menu de pausa. Si el menu no esta activo y se da el input correspondiente
+    ///  el menu de pausa se activa y se pausa el juego. Si no esta activo, ve si los controles estan activos, si no lo estan cierra
+    ///  el menu de pausa. Si lo estan, los desactiva para que la siguiente vez que se pulse el input correspondiente se cierre el menu de pausa
+    ///  asi primero se cierran los controles y luego se cierra el menu.
+    /// </summary>
     public void HandleInput()
     {
         if (!_paused)
@@ -89,6 +111,8 @@ public class PauseMenuManager : MonoBehaviour
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             _paused = true;
+
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
         }
         else
         {
@@ -102,10 +126,17 @@ public class PauseMenuManager : MonoBehaviour
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 _paused = false;
+
+                EventSystem.current.SetSelectedGameObject(null);
             }
         }
     }
 
+
+    /// <summary>
+    /// Para que la booleana de _pause pueda ser accedida por otros scrpits 
+    /// </summary>
+    /// <returns></returns>
     public bool PauseActive()
     {
         return _paused;
