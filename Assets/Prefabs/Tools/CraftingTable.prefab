@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5917029561986034062}
   - component: {fileID: 1921578993453997602}
   - component: {fileID: 8131231624129148731}
+  - component: {fileID: 8163756225512812788}
   m_Layer: 10
   m_Name: CraftingManager
   m_TagString: CraftingTable
@@ -219,5 +220,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7fa3403c91adea4cb045a20047255f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8163756225512812788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488978998334215486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb602d1eaa7804642bda2b17efdf0334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
