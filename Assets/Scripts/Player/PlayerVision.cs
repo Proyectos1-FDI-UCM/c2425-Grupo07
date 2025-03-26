@@ -118,6 +118,7 @@ public class PlayerVision : MonoBehaviour
                 if(_heldObject != null)
                 {
                 Debug.Log("Delivery mode");
+                _actualMesa.GetComponent<Receiver>().AnalizeDeliveredObject(_heldObject);
                 _actualMesa.GetComponent<Receiver>().SetDeliveryMode();
                 }
                 else
@@ -266,17 +267,12 @@ public class PlayerVision : MonoBehaviour
             }
             else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
             {
-                if ((_actualMesa.GetComponent<OvenScript>() != null && _actualMesa.GetComponent<OvenScript>().ReturnBurnt()) || (_actualMesa.GetComponent<SawScript>() != null && _actualMesa.GetComponent<SawScript>().GetUnpickable()))
-                { Debug.Log("No se puede recoger el material"); }
-                else
-                {
                     // Limpiar referencias antes de recoger el objeto
                     if (IsMesaATool()) 
                     {
                     _actualMesa.SendMessage("Pick",SendMessageOptions.DontRequireReceiver);
                     }
                     Pick(_lookedObject);
-                }
             }
             else if (_heldObject != null && _lookedObject != null) InsertMaterial();
         }
@@ -284,7 +280,7 @@ public class PlayerVision : MonoBehaviour
 
     private bool IsMesaATool()
     {
-        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<WelderScript>() != null;
+        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<AnvilScript>() != null;
     }
 
 
@@ -324,13 +320,13 @@ public class PlayerVision : MonoBehaviour
         {
             _actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());
         }
+        else if (_actualMesa != null && _actualMesa.GetComponent<AnvilScript>() != null)
+        {
+            _actualMesa.GetComponent<AnvilScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnAnvil());
+        }
         else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
         {
-            _actualMesa.GetComponent<SawScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnSaw());
-        }
-        else if (_actualMesa != null && _actualMesa.GetComponent<WelderScript>() != null)
-        {
-            _actualMesa.GetComponent<WelderScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnWelder());
+            _actualMesa.GetComponent<SawScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnSaw());
         }
     }
 

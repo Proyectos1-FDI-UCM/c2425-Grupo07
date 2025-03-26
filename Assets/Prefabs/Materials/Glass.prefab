@@ -356,6 +356,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matType: 1
   CompletionBar: {fileID: 441515981582200879}
+  MatState:
+  - {fileID: -1417738725, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  - {fileID: 288120203, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  _materialProgress: 0
 --- !u!58 &4303538933006017438
 CircleCollider2D:
   m_ObjectHideFlags: 0

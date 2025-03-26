@@ -45,8 +45,8 @@ public class PlayerManager : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     // Atributos de la velocidad deseada en:
     int _velOven;  // Horno
-    int _velWelder; // Soldadora
-    int _clicksSaw; // Sierra
+    int _velSaw; // Soldadora
+    int _clicksAnvil; // Sierra
 
     #endregion
 
@@ -66,23 +66,23 @@ public class PlayerManager : MonoBehaviour
         {
             case PlayerType.Reparador:
                 _velOven = 30;
-                _clicksSaw = 7;
-                _velWelder = 3;
+                _clicksAnvil = 7;
+                _velSaw = 3;
                 break;
             case PlayerType.Velocista:
                 _velOven = 15;
-                _clicksSaw = 14;
-                _velWelder = 6;
+                _clicksAnvil = 14;
+                _velSaw = 6;
                 break;
         }
     }
     // Devuelve la velocidad acorde al jugador de:
     public int ReturnOven() // El Horno
     { return _velOven; }
-    public int ReturnSaw() // La Sierra
-    { return _clicksSaw; }
-    public int ReturnWelder() // La Soldadora
-    { return _velWelder; }
+    public int ReturnAnvil() // La Sierra
+    { return _clicksAnvil; }
+    public int ReturnSaw() // La Soldadora
+    { return _velSaw; }
 
     public PlayerType PlayerNum()
     {

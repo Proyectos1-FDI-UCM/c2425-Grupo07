@@ -47,6 +47,8 @@ public class PlayerSaw : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+ private PlayerVision _playerVision;  // sirve para llamar luego al script de PlayerVision
+    private PlayerMovement _playerMovement; //sirve para llamar luego al script de PlayerMovement
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -64,11 +66,12 @@ public class PlayerSaw : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if (GameObject.FindWithTag("Sierra") != null)
+        if (FindAnyObjectByType<SawScript>() != null)
         {
-            SierraClick = GameObject.FindWithTag("Sierra").GetComponent<SawScript>();
+            SierraClick = FindAnyObjectByType<SawScript>();
         }
-        Player = GetComponent<PlayerVision>();
+        _playerVision = GetComponent<PlayerVision>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     #endregion
@@ -81,6 +84,7 @@ public class PlayerSaw : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -89,29 +93,37 @@ public class PlayerSaw : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    private void OnEnable()
+      private void OnEnable()
     {
-        ClickActionReference.action.performed += OnClickPerformed;
+        ClickActionReference.action.performed += TurnOn;
+        ClickActionReference.action.canceled += TurnOff;
         ClickActionReference.action.Enable();
     }
 
     private void OnDisable()
     {
-        ClickActionReference.action.performed -= OnClickPerformed;
+        ClickActionReference.action.performed -= TurnOn;
+        ClickActionReference.action.canceled -= TurnOff;
         ClickActionReference.action.Disable();
     }
 
-    // Llama al método Click() del script Sierra cuando se hace click y el jugador está mirando a la sierra
-    // llevando madera y haya hecho menos clicks de los necesarios para completar el proceso de refinamiento
-    private void OnClickPerformed(InputAction.CallbackContext context)
+    private void TurnOn(InputAction.CallbackContext context)
     {
-        if (SierraClick != null && Player.GetActualMesa() != null && Player.GetActualMesa().CompareTag("Sierra") && SierraClick.GetHasWood() && !SierraClick.GetUnpickable() && SierraClick.GetCurrentClicks() < SierraClick.GetMaxClicks())
-        {
-            SierraClick.Click();
-        }
+        // if (_playerVision.GetActualMesa() != null && _playerVision.GetComponent<SawScript>() != null)
+        // {
+            Debug.Log("TurnOn");
+            SierraClick.TurnOnSaw();
+            _playerMovement.enabled = false;
+            _playerVision.enabled = false;
+        // }
     }
-
+    private void TurnOff(InputAction.CallbackContext context)
+    {
+        Debug.Log("TurnOff");
+        SierraClick.TurnOffSaw();
+        _playerMovement.enabled = true;
+        _playerVision.enabled = true;
+    }
     #endregion   
 
 } // class PlayerSaw 

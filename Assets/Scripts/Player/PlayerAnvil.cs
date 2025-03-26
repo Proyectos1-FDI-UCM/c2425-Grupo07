@@ -14,7 +14,7 @@ using UnityEngine.InputSystem;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerWelder : MonoBehaviour
+public class PlayerAnvil : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,7 +23,7 @@ public class PlayerWelder : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private WelderScript WelderScript; //Objeto para llamar al script de Welder
+    [SerializeField] private AnvilScript AnvilScript; //Objeto para llamar al script de Welder
     [SerializeField] private InputActionReference InteractActionReference; //Input que permite realizar la accion
 
     #endregion
@@ -37,9 +37,6 @@ public class PlayerWelder : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private PlayerVision _playerVision;  // sirve para llamar luego al script de PlayerVision
-    private PlayerMovement _playerMovement; //sirve para llamar luego al script de PlayerMovement
-
 
     #endregion
 
@@ -50,17 +47,22 @@ public class PlayerWelder : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    void Awake()
+    {
+        InteractActionReference.action.performed += ctx => OnClickPerformed();
+        InteractActionReference.action.Enable();
+    }
+
     /// <summary>
     /// Se encarga de encontrar la Soldadora y llamar a los scrpits de los atributos correspondientes.
     /// </summary>
     void Start()
     {
-        if (GameObject.FindWithTag("Soldadora") != null)
+        if (FindAnyObjectByType<AnvilScript>() != null)
         {
-            WelderScript = GameObject.FindWithTag("Soldadora").GetComponent<WelderScript>();
+            AnvilScript = FindAnyObjectByType<AnvilScript>();
         }
-        _playerVision = GetComponent<PlayerVision>();
-        _playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     #endregion
@@ -82,44 +84,11 @@ public class PlayerWelder : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    /// <summary>
-    /// Indica el tipo de estado que el input va a realizar.
-    /// </summary>
-    void Awake()
+    private void OnClickPerformed()
     {
-            InteractActionReference.action.performed += ctx => TurningWelder();
-            InteractActionReference.action.canceled += ctx => StopingWelder();
-            InteractActionReference.action.Enable();
+        Debug.Log("Anvil Clicked");
+            AnvilScript.Click();
     }
-
-    /// <summary>
-    /// Indica que se puede utilizar la soldadora, y llama a la función para activar la soldadora.
-    /// </summary>
-    private void TurningWelder() 
-    { 
-        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
-        {
-            _playerMovement.enabled = false;
-            _playerVision.enabled = false;
-            WelderScript.TurnOnWelder();
-        }
-    }
-
-    /// <summary>
-    /// indica que el jugador está en movimiento y llama a la función correspondiente para detener la soldadora.
-    /// </summary>
-    private void StopingWelder() 
-    {
-        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Soldadora"))
-        {
-            _playerMovement.enabled = true;
-            _playerVision.enabled = true;
-            WelderScript.TurnOffWelder();
-        }
-             
-    }
-
-
 
     #endregion
 

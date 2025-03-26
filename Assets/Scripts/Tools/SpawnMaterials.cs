@@ -69,8 +69,6 @@ public class SpawnMaterials : MonoBehaviour
     {
         _spawnPoint = GetComponent<Transform>();
 
-        ShuffleArray(Materials);
-
         StartCoroutine(SpawnObjects());
     }
 
@@ -106,6 +104,10 @@ public class SpawnMaterials : MonoBehaviour
     {
         while (true)
         {
+            if (_currentObjectIndex % Materials.Length == 0)
+            {
+                ShuffleArray(Materials);
+            }
             GameObject _material = Instantiate(Materials[_currentObjectIndex], _spawnPoint.position, _spawnPoint.rotation);
             _material.transform.SetParent(CintaInicial);
 

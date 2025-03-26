@@ -51,7 +51,7 @@ public class Material : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private float _materialProgress; // El progreso de procesado del material
+    public float _materialProgress; // El progreso de procesado del material
 
     //_UsedOnce sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
     private bool _UsedOnce = false;
@@ -92,6 +92,7 @@ public class Material : MonoBehaviour
     {
         _UsedOnce = true;
         _materialProgress = progress;
+        Debug.Log($"Progreso actualizado: {_materialProgress}");
         UpdateBar();
     }
 
@@ -119,6 +120,7 @@ public class Material : MonoBehaviour
 
     public void ProcessTheMaterial()
     {
+        
         GetComponent<SpriteRenderer>().sprite = MatState[0];
         switch (matType)
         {
