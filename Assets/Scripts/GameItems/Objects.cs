@@ -28,8 +28,8 @@ public class Objects : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject[] Materials = new GameObject[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
-    [SerializeField] private GameObject[] OrdenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
+    [SerializeField] private MaterialType[] Materials = new MaterialType[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
+    [SerializeField] private MaterialType[] OrdenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
     [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
     #endregion
     // ---- ATRIBUTOS PRIVADOS ----
@@ -80,7 +80,7 @@ public class Objects : MonoBehaviour
     /// <param name="material"></param>  GameObject que será añadido a la array
     /// <returns>True si el material fue añadido correctamente, False si no hay espacio</returns>
 
-    public bool AddMaterial (GameObject material)
+    public bool AddMaterial (MaterialType material)
     {
         if (_canBeSent) // Si el objeto puede ser enviado
         {
@@ -88,7 +88,7 @@ public class Objects : MonoBehaviour
         int i = 0;
         while (!agregado && i < Materials.Length)
         {
-            if (Materials[i] == null)
+            if (Materials[i] == MaterialType.Otro)
             {
                 Materials[i] = material;
                 agregado = true;
@@ -112,7 +112,7 @@ public class Objects : MonoBehaviour
     /// <returns>retorna true si no hay material en el objeto, false si hay material</returns>
     public bool ThereIsMaterial(GameObject material)
     {
-        return Materials[0] == null;
+        return Materials[0] == MaterialType.Otro;
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class Objects : MonoBehaviour
             int n = 0;
 
         // Recorre cada objeto requerido en el pedido
-        foreach (GameObject required in OrdenPedidos)
+        foreach (MaterialType required in OrdenPedidos)
         {
             if (required == null) continue; // Ignora objetos nulos en el pedido
 
@@ -142,7 +142,7 @@ public class Objects : MonoBehaviour
         // Verifica si hay materiales adicionales que no están en el pedido
         while (n < Materials.Length)
         {
-            if (Materials[n] != null)
+            if (Materials[n] != MaterialType.Otro)
             {
                 Debug.Log("FALSE Hay materiales adicionales que no están en el orden de pedidos.");
                 return false;
@@ -166,7 +166,7 @@ public class Objects : MonoBehaviour
     {
         for (int i = 0; i < Materials.Length; i++)
         {
-            Materials[i] = null;
+            Materials[i] = MaterialType.Otro;
         }
     }
     /// <summary>
@@ -186,19 +186,20 @@ public class Objects : MonoBehaviour
     /// <param name="required"> Contenido del array de OrdenPedidos que son la condición para que se complete el objeto </param>
     /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material,
     /// si son iguales retorna true </returns>
-    private bool IsSameMaterialType(GameObject material, GameObject required)
+    private bool IsSameMaterialType(MaterialType material, MaterialType required)
     {
-        if (material == null || required == null)
-        {
-            return false;
-        }
+        //if (material == MaterialType.Otro || required == MaterialType.Otro)
+        //{
+        //    return false;
+        //}
 
         // Obtiene el componente MaterialType de ambos objetos
-        var matType1 = material.GetComponent<Material>()?.MaterialTypeReturn();
-        var matType2 = required.GetComponent<Material>()?.MaterialTypeReturn();
+        //var matType1 = material.GetComponent<Material>()?.MaterialTypeReturn();
+        //var matType2 = required.GetComponent<Material>()?.MaterialTypeReturn();
 
         // Compara los tipos de material
-        return matType1 == matType2;
+        Debug.Log(material == required);
+        return material == required;
     }
     #endregion
 
@@ -218,7 +219,7 @@ public class Objects : MonoBehaviour
         {
             if (CapacityAmount[i] != null)
             {
-                if (Materials[i] != null)
+                if (Materials[i] != MaterialType.Otro)
                 {
                     CapacityAmount[i].material.color = Color.green; // Cambia a color de ocupado.
                 }

@@ -8,6 +8,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private InputActionSettings _moveControls; // El input en el que se rige el movimiento
     private Vector2 _translateMovement; // El movimiento que realizará el personaje con su movimiento
     private Quaternion _targetRotation; // La rotación que seguirá el personaje 
+    private Rigidbody2D _rigidBody; // La rotación que seguirá el personaje 
     /// <summary>
     /// Controlador de las acciones del Input. Es una instancia del asset de 
     /// InputAction que se puede configurar desde el editor y que está en
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CurrentVelocity = MaxVelocity;
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -114,9 +117,9 @@ public class PlayerMovement : MonoBehaviour
     ///</summary>
     private void OnMove()
     {
-        _translateMovement = MovementVector * CurrentVelocity * Time.deltaTime; // Indico el vector de movimiento en función del tiempo y la velocidad
-        transform.Translate(_translateMovement, Space.World); // Muevo al personaje en el espacio del mundo
-
+        _translateMovement = MovementVector * CurrentVelocity; // Indico el vector de movimiento en función de la dirección y la velocidad
+        _rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
+        //transform.Translate(_translateMovement, Space.WorldFo
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             LastMovementVector = _translateMovement;

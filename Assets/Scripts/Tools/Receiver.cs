@@ -163,7 +163,7 @@ public class Receiver : MonoBehaviour
             }
             else if (_state == receiverState.Delivering)
             {
-                if (_deliveredObject != null) Deliver();
+                if (_deliveredObject == null) Deliver();
                 else Debug.Log("No puedes enviar esto");
             }
         }

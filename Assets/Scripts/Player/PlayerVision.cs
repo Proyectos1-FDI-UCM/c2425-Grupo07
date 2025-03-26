@@ -346,7 +346,7 @@ public class PlayerVision : MonoBehaviour
             if (_actualMesa != null && _actualMesa.GetComponent<CraftingTableScript>() != null)
             {
                 Objects objetoScript = _lookedObject.GetComponent<Objects>();
-                bool materialAdded = objetoScript.AddMaterial(_heldObject);
+                bool materialAdded = objetoScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
                 if (materialAdded)
                 {
                     _heldObject.SetActive(false);
