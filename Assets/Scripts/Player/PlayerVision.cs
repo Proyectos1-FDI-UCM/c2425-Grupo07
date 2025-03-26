@@ -97,7 +97,8 @@ public class PlayerVision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null) // me aseguro que solo el collider de la visión del jugador es el que actúa.
+        // me aseguro que solo el collider de la visión del jugador es el que actúa.
+        if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null) 
         {
             if (_actualMesa == null) 
             {
@@ -114,7 +115,16 @@ public class PlayerVision : MonoBehaviour
             _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
+                if(_heldObject != null)
+                {
+                Debug.Log("Delivery mode");
+                _actualMesa.GetComponent<Receiver>().SetDeliveryMode();
+                }
+                else
+                {
+                Debug.Log("Receiving mode");
                 _actualMesa.GetComponent<Receiver>().SetReceivingMode();
+                }
             }
         }
     }
@@ -126,6 +136,7 @@ public class PlayerVision : MonoBehaviour
             _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
+                 Debug.Log("Idle mode");
                 _actualMesa.GetComponent<Receiver>().SetIdleMode();
             }
             _actualMesa = null;
@@ -248,7 +259,10 @@ public class PlayerVision : MonoBehaviour
                   _actualMesa.SendMessage("Drop", _heldObject,SendMessageOptions.DontRequireReceiver); // Actualizar referencias y soltar el objeto si es posible
                   if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
                 }
-                else Drop(); // Soltar el objeto
+                else if (_actualMesa.GetComponent<Receiver>() == null) 
+                {
+                Drop(); // Soltar el objeto
+                }
             }
             else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
             {
@@ -333,7 +347,7 @@ public class PlayerVision : MonoBehaviour
         }
         else if (_lookedObject.GetComponent<Objects>())
         {
-            if (_actualMesa != null && _actualMesa.tag == "CraftingTable")
+            if (_actualMesa != null && _actualMesa)
             {
                 Objects objetoScript = _lookedObject.GetComponent<Objects>();
                 bool materialAdded = objetoScript.AddMaterial(_heldObject);

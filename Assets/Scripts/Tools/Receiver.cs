@@ -317,7 +317,7 @@ public class Receiver : MonoBehaviour
     {
         if (activeTasks < 5)
         {
-            GameObject broken_object = Instantiate(ReceivingObjects[_indexer]);
+            GameObject broken_object = Instantiate(ReceivingObjects[_indexer], transform.position, Quaternion.identity);
             broken_object.GetComponent<TaskManager>().GetReceiver(this);
             UpdateIndexer();
             InstatiateObjectUI(false);
