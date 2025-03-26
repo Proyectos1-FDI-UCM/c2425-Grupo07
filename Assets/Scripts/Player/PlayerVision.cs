@@ -245,7 +245,7 @@ public class PlayerVision : MonoBehaviour
 
                 if (IsMesaATool()) // Si la mesa es una herramienta
                 {
-                  _actualMesa.SendMessage("UpdateMaterialReference", _heldObject); // Actualizar referencias y soltar el objeto si es posible
+                  _actualMesa.SendMessage("Drop", _heldObject,SendMessageOptions.DontRequireReceiver); // Actualizar referencias y soltar el objeto si es posible
                   if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
                 }
                 else Drop(); // Soltar el objeto
@@ -257,7 +257,10 @@ public class PlayerVision : MonoBehaviour
                 else
                 {
                     // Limpiar referencias antes de recoger el objeto
-                    if (IsMesaATool()) _actualMesa.SendMessage("UpdateMaterialReference", null);
+                    if (IsMesaATool()) 
+                    {
+                    _actualMesa.SendMessage("Pick",SendMessageOptions.DontRequireReceiver);
+                    }
                     Pick(_lookedObject);
                 }
             }

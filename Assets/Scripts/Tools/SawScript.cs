@@ -163,24 +163,29 @@ public class SawScript : MonoBehaviour
         return Unpickable;
     }
 
-    /// <summary>
-    /// Actualiza la referencia del material directamente desde PlayerVision
-    /// </summary>
-    public void UpdateMaterialReference(Material material)
+
+    public void Drop(GameObject item)
     {
-        if (material != null && material.GetComponent<Material>().MaterialTypeReturn() == MaterialType.Madera)
+        if (item.GetComponent<Material>() != null)
         {
-            _materialSource = material;
-            CompletionBarReference = _materialSource.ReturnProgressBar();
-            CurrentClicks = (int)_materialSource.ReturnProgress();
-            _pastClicks = CurrentClicks;
-        }
-        else
-        {
-            _materialSource = null;
-            CompletionBarReference = null;
+            Material material = item.GetComponent<Material>();
+            if(material.MaterialTypeReturn() == MaterialType.Madera)
+            {
+                item.GetComponentInParent<PlayerVision>().Drop();
+                _materialSource = material;
+                CompletionBarReference = _materialSource.ReturnProgressBar();
+                CurrentClicks = (int)_materialSource.ReturnProgress();
+                _pastClicks = CurrentClicks;
+            }
+            else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
     }
+    public void Pick()
+    {
+        _materialSource = null;
+        CompletionBarReference = null;
+    }
+
 
     #endregion
 

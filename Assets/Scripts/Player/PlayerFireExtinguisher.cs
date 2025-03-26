@@ -81,7 +81,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
     /// <param name="ctx">Contexto de la acción del Input System.</param>
     private void OnExtinguisherUsed(InputAction.CallbackContext ctx)
     {
-        if (extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
+        if (extinguisher != null && extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
         {
             _playerMovement.enabled = false;
             _playerVision.enabled = false;
@@ -96,7 +96,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
     /// <param name="ctx">Contexto de la acción del Input System.</param>
     private void OnExtinguisherStopped(InputAction.CallbackContext ctx)
     {
-        if (extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
+        if (extinguisher != null && extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
         {
             _playerMovement.enabled = true;
             _playerVision.enabled = true;

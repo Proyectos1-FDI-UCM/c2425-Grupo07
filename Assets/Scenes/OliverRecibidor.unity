@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!58 &570204 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8660095150174552816, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+  m_PrefabInstance: {fileID: 27896922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &11669242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3187990038340186631, guid: 5af5ed6cb3c37684c928a270708bdff8, type: 3}
@@ -200,8 +205,20 @@ PrefabInstance:
       value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 8383434901366803709, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: _offSetSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383434901366803709, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: DetectionRate
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383434901366803709, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: _visionCollider
+      value: 
+      objectReference: {fileID: 570204}
+    - target: {fileID: 8383434901366803709, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: _visionDistance
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3172,8 +3189,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRack: 1
-  Rack: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-  Albert: {fileID: 7584395163546786512, guid: 21e32d5d9c586b04aaf77f38d20362f6, type: 3}
+  Money: 0
+  ShowText: {fileID: 0}
+  Panel: {fileID: 0}
+  _minS: 900
+  _minA: 650
+  _minB: 400
+  _maxTime: 180
 --- !u!4 &930274978
 Transform:
   m_ObjectHideFlags: 0

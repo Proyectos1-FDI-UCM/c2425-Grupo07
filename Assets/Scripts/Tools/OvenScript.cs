@@ -108,33 +108,35 @@ public class OvenScript : MonoBehaviour
     /// <summary>
     /// Actualiza la referencia del material directamente desde PlayerVision
     /// </summary>
-    public void UpdateMaterialReference(Material material)
+    public void Drop(GameObject item)
     {
-        if (material != null && (material.MaterialTypeReturn() == MaterialType.Arena || material.MaterialTypeReturn() == MaterialType.MetalRoca))
+        if (item.GetComponent<Material>() != null)
         {
+            Material material = item.GetComponent<Material>();
+            if (material.MaterialTypeReturn() == MaterialType.Arena || material.MaterialTypeReturn() == MaterialType.MetalRoca)
+            {
+            item.GetComponentInParent<PlayerVision>().Drop();
             _matScr = material;
             _progress = _matScr.ReturnProgress();
             _isProcessing = true;
+            }
+            else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
-        else if(_hasFinished)
+        
+    }
+    public void Pick()
+    {
+        if(_hasFinished)
         {
             _matScr.ReturnProgressBar().color = Color.green;
             _matScr.UpdateProgress(0);
             _matScr.ReturnProgressBar().gameObject.GetComponentInParent<Canvas>().enabled = false;
-            _isProcessing = false;
+        }
+        _isProcessing = false;
             _hasFinished = false;
             FlashImage.SetActive(false);
             _matScr = null;
-        }
-        else
-        {
-            _isProcessing = false;
-            _hasFinished = false;
-            FlashImage.SetActive(false);
-            _matScr = null;
-        }
     }
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

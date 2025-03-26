@@ -33,6 +33,7 @@ public class Mesa : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private GameObject item;
 
     #endregion
     
@@ -68,6 +69,7 @@ public class Mesa : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
 
     #endregion
     
