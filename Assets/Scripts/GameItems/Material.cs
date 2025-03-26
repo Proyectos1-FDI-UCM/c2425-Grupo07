@@ -136,6 +136,7 @@ public class Material : MonoBehaviour
                 matType = MaterialType.MaderaProcesada;
                 break;
         }
+        ProcessHasEnded();
     }
     public void BurnTheMaterial()
     {
@@ -150,7 +151,12 @@ public class Material : MonoBehaviour
                 break;
         }
     }
-
+    public void ProcessHasEnded()
+    {
+        CompletionBar.color = Color.green;
+        UpdateProgress(0);
+        CompletionBar.gameObject.GetComponentInParent<Canvas>().enabled = false;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

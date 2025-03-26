@@ -87,9 +87,7 @@ public class WelderScript : MonoBehaviour
         if (_progress >= 1)
         {
             _progress = 0;
-            Destroy(_materialSource.gameObject);
-            GameObject metalProcesado = Instantiate(_metalProcesado, this.gameObject.transform.position, gameObject.transform.rotation);
-            metalProcesado.transform.SetParent(this.transform);
+            _materialSource.ProcessTheMaterial();
             hasMetal = false;
             _isWorking = false;
         }

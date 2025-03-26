@@ -273,14 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c7afa1350cd9c4e83ed00a3a197a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  OrdenPedidos:
-  - {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
-  - {fileID: 6046970825805907103, guid: 0d73921b5b5099d4bb99f9e5985520a2, type: 3}
-  - {fileID: 0}
+  Materials: 080000000800000008000000
+  OrdenPedidos: 0700000005000000
   CapacityAmount:
   - {fileID: 8169051576135727932}
   - {fileID: 3466255422690560801}
@@ -342,8 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 7
+  matType: 8
   CompletionBar: {fileID: 0}
+  MatState: []
 --- !u!114 &-1850669805353144280
 MonoBehaviour:
   m_ObjectHideFlags: 0

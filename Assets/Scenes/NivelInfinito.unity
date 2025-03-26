@@ -1921,7 +1921,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4072,17 +4072,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5138623324550365096, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_Radius
-      value: 0.2
+    - target: {fileID: 7047706930552799375, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+      propertyPath: CurrentVelocity
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
       propertyPath: m_Name
       value: Rack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

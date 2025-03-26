@@ -58,6 +58,9 @@ TagManager:
   - name: Floor
     uniqueID: 3159893843
     locked: 0
+  - name: Player
+    uniqueID: 1280534379
+    locked: 0
   - name: Walls
     uniqueID: 1394175883
     locked: 0
@@ -66,9 +69,6 @@ TagManager:
     locked: 0
   - name: Objects/Materials
     uniqueID: 3379730203
-    locked: 0
-  - name: Player
-    uniqueID: 1280534379
     locked: 0
   - name: Decorations
     uniqueID: 322545677

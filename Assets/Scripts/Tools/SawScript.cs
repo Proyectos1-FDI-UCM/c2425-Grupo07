@@ -199,9 +199,7 @@ public class SawScript : MonoBehaviour
     // Procesa la madera destruyendo el material de madera e instanciando el material de madera procesada poniéndolo como hijo de la sierra
     private void ProcessWood()
     {
-        Destroy(transform.GetChild(0).gameObject);
-        GameObject child = Instantiate(MaderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
-        child.transform.SetParent(this.transform);
+        _materialSource.ProcessTheMaterial();
         Unpickable = false;
     }
 

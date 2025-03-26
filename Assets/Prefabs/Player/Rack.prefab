@@ -85,7 +85,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1280534379
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1954902719, guid: 953ccad47489a6f4baa385dbf3678c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,7 +111,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 15
+  m_LinearDrag: 100
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: e48f446c3dbf5fe48a2bd4abaf9ac538, type: 2}
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1662058436714557962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493fe882243c17a4d92cb66204c619e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentVelocity: 2
-  MaxVelocity: 5
+  CurrentVelocity: 500
+  MaxVelocity: 500
   RotationSpeed: 1000
   MovementVector: {x: 0, y: 0}
   LastMovementVector: {x: 0, y: 0}
