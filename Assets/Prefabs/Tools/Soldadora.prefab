@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3196785923358403945}
   - component: {fileID: 8095845819353284150}
   - component: {fileID: 511321770857408786}
+  - component: {fileID: 4430715627000207075}
   m_Layer: 10
   m_Name: Soldadora
   m_TagString: Soldadora
@@ -192,5 +193,16 @@ MonoBehaviour:
   _metalProcesado: {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
   _workSpeed: 1
   _completionTime: 6
-  _isWorking: 0
-  canUse: 0
+  _materialSource: {fileID: 0}
+--- !u!114 &4430715627000207075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271874080825723453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc3c2aeb91b6304b8069fcf29175151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

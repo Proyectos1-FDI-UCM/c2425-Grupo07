@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 8313386655554011488}
   - component: {fileID: 1067026803749916783}
   - component: {fileID: 6106819510156855759}
+  - component: {fileID: 2974423646940703754}
   m_Layer: 10
   m_Name: Recibidor
   m_TagString: Recibidor
@@ -337,3 +338,15 @@ MonoBehaviour:
   _wrongAlert: {fileID: 1816171351821805295}
   _deliveredObject: {fileID: 0}
   _indexer: 0
+--- !u!114 &2974423646940703754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076476612073332609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc3c2aeb91b6304b8069fcf29175151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

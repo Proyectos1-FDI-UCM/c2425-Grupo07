@@ -184,13 +184,6 @@ public class Receiver : MonoBehaviour
     /// Cambia el estado actual del receptor y actualiza la UI correspondiente.
     /// </summary>
     /// <param name="newState">Nuevo estado a establecer</param>
-    public void setState(receiverState newState)
-    {
-        _state = newState;
-        if (_state == receiverState.Receiving) SetReceivingMode();
-        else if (_state == receiverState.Delivering) SetDeliveryMode();
-        else SetIdleMode();
-    }
 
     /// <summary>
     /// Obtiene el estado actual del receptor.
@@ -270,8 +263,9 @@ public class Receiver : MonoBehaviour
     /// Activa el modo de recepción de objetos.
     /// Muestra la UI correspondiente y oculta las alertas.
     /// </summary>
-    private void SetReceivingMode() 
+    public void SetReceivingMode() 
     {
+        _state = receiverState.Receiving;
         Debug.Log("Modo de recogida activado");
         _actualDeliveryUI.SetActive(true);
         _correctAlert.SetActive(false);
@@ -282,8 +276,9 @@ public class Receiver : MonoBehaviour
     /// Activa el modo de entrega de objetos.
     /// Muestra las alertas según si hay un objeto válido para entregar.
     /// </summary>
-    private void SetDeliveryMode()
+    public void SetDeliveryMode()
     {
+        _state = receiverState.Delivering;
         _actualDeliveryUI.SetActive(false);
         if (_deliveredObject != null)
         {
@@ -359,8 +354,9 @@ public class Receiver : MonoBehaviour
     /// Establece el modo inactivo del receptor.
     /// Oculta todas las UI y alertas.
     /// </summary>
-    private void SetIdleMode()
+    public void SetIdleMode()
     {
+        _state = receiverState.Idle;
         _actualDeliveryUI.SetActive(false);
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);

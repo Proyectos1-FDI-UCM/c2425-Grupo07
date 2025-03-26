@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2389876008715340079}
   - component: {fileID: 5917029561986034062}
   - component: {fileID: 1921578993453997602}
+  - component: {fileID: 8131231624129148731}
   m_Layer: 10
   m_Name: CraftingManager
   m_TagString: CraftingTable
@@ -208,3 +209,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8131231624129148731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488978998334215486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc3c2aeb91b6304b8069fcf29175151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

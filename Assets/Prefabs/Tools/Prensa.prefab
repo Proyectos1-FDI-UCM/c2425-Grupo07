@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 7522288734362641203}
   - component: {fileID: 4181249592540718077}
   - component: {fileID: 2614240796166921127}
+  - component: {fileID: 360731875773519600}
   m_Layer: 10
   m_Name: PressManager
   m_TagString: Prensa
@@ -480,3 +481,15 @@ MonoBehaviour:
   VelCompletion: 50
   ProgressBarFill: {fileID: 5731390066909951490}
   BarCanvasGroup: {fileID: 1738537655760811564}
+--- !u!114 &360731875773519600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201882549307868478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc3c2aeb91b6304b8069fcf29175151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,6 +6,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
@@ -34,7 +35,10 @@ public class PlayerVision : MonoBehaviour
 
     [SerializeField] LayerMask DetectedTilesLayer; // Esta mascara permite que la detección de mesas solo detecte a gameObjects que tengan esta Layer
     [SerializeField] Color MesaTint = Color.yellow; // El color con el cual se tintará la mesa que esté siendo selecionada/vista por el jugador (_actualmesa)
+    [SerializeField] private Collider2D _visionCollider; // Collider que se encarga de detectar las mesas cercanas al jugador.   
+    [SerializeField] private float _visionDistance; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     
+    [SerializeField] private float _offSetSpeed = 0.1f; // Velocidad a la que se mueve el offset del collider de visión
     
 
     #endregion
@@ -51,14 +55,8 @@ public class PlayerVision : MonoBehaviour
     public GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
     private GameObject _lookedObject; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
     private GameObject _heldObject;  // El item que está en las manos del jugador.
-    //private bool _onMesasRange = false; // Permite que el escaneo de mesas cercanas se lleve a cabo solo cuando el jugador esté dentro de un collider cercano a las Mesas
-    private float _detectionTime; // Variable de tiempo, se va incrementando con DeltaTime y se reinicia cuando supera detectionRate
-    private float _centerOffset = 3f; // La distancia del circulo de detección de mesas con respecto al centro del jugador
-    private float _circleRadius = 0.75f; // EL radio del circulo de detección de mesas
-    private float _detectionRate = 0.05f; // El intervalo de tiempo entre cada detección de mesas
     public bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -67,24 +65,6 @@ public class PlayerVision : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Se encarga de la detección de mesas, se da cada detectionRate.
-    /// </summary>
-    void Update()
-    {
-            _detectionTime += Time.deltaTime;
-            if (_detectionTime > _detectionRate)
-            {
-                CalculateNearest();
-                _detectionTime = 0;
-            }
-        
-        if (_isBeingPicked)
-        {
-            _heldObject.transform.position = (Vector2)transform.position + _playerMovement.GetLastMove().normalized;
-        }
-    }
 
     private void Start()
     {
@@ -100,6 +80,56 @@ public class PlayerVision : MonoBehaviour
             Debug.Log("No hay recibidor en escena");
         }
         
+    }
+    /// <summary>
+    /// Se encarga de la detección de mesas, se da cada detectionRate.
+    /// </summary>
+    void FixedUpdate()
+    {
+
+        _visionCollider.offset = Vector2.Lerp(_visionCollider.offset, _playerMovement.GetLastMove().normalized * _visionDistance , _offSetSpeed * Time.deltaTime); 
+        if (_isBeingPicked)
+        {
+            _heldObject.transform.position = Vector2.Lerp(_heldObject.transform.position,(Vector2)transform.position + _playerMovement.GetLastMove().normalized,_offSetSpeed * Time.deltaTime );
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null) // me aseguro que solo el collider de la visión del jugador es el que actúa.
+        {
+            if (_actualMesa == null) 
+            {
+                _actualMesa = collision.gameObject;
+            }
+            else if (collision.gameObject != _actualMesa)
+            {
+                if (Vector2.Distance(transform.position, collision.transform.position) < Vector2.Distance(transform.position, _actualMesa.transform.position))
+                {
+                    _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+                    _actualMesa = collision.gameObject;
+                }
+            }
+            _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
+            if (_actualMesa.GetComponent<Receiver>() != null)
+            {
+                _actualMesa.GetComponent<Receiver>().SetReceivingMode();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)
+        {
+            _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+            if (_actualMesa.GetComponent<Receiver>() != null)
+            {
+                _actualMesa.GetComponent<Receiver>().SetIdleMode();
+            }
+            _actualMesa = null;
+        }
     }
 
     #endregion
@@ -122,10 +152,14 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     public void Pick(GameObject lookedObject)
     {
-        _heldObject = lookedObject;
-        _heldObject.transform.SetParent(gameObject.transform);
-        _isBeingPicked = true;
-        _lookedObject = null;
+        if (_heldObject == null)
+        {
+            _heldObject = lookedObject;
+            _heldObject.transform.SetParent(gameObject.transform);
+            _isBeingPicked = true;
+            _lookedObject = null;
+        }
+        else Debug.LogError("Ya tienes un objeto en la mano");
     }
 
     /// <summary>
@@ -163,41 +197,7 @@ public class PlayerVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
       
 
-    // Este método (Hecho con IA) permite poder ver el comportamiento de la detección de Mesas (no sé utilizar Gizmos, no me suspendan porfa :c)
-    private void OnDrawGizmos()
-    {
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        Vector2 lastMove = playerMovement != null ? playerMovement.GetLastMove() : Vector2.up;
-        Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
-        
-        // Draw the search radius circle in the direction of movement
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(position2D + (lastMove * _centerOffset), _circleRadius);
 
-        // Highlight the nearest object
-        if (_actualMesa != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, _actualMesa.transform.position);
-        }
-    }
-
-    //Estos dos metodos se encargan de actualizar si el jugador se encuentra cerca de las mesas (se usará cuando la disposición del mapa sea definitiva)
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "RangoDeMesas") _onMesasRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "RangoDeMesas")
-        {
-            _onMesasRange = false;
-            _actualMesa = null;
-            if (_actualMesa != null) _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-        }
-
-    } */
 
     // Las suscripciones al InputActionReference
     private void OnEnable()
@@ -225,59 +225,50 @@ public class PlayerVision : MonoBehaviour
     /// <param name="context"></param>
     private void PickDrop(InputAction.CallbackContext context)
     {
-        ContentAnalizer();
-        if (_heldObject != null && _lookedObject == null && _actualMesa != null)
+        if (_actualMesa != null) 
         {
-            if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
-                _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
-                (_heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.Arena && _heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.MetalRoca) && _actualMesa.GetComponent<OvenScript>() != null ||
-                _heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
-                _heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.MetalMineral && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
-            { Debug.Log("No se puede dropear aquí"); }
-            else 
+            ContentAnalizer();
+       
+            if (_heldObject != null && _lookedObject == null) // EL jugador tiene un objeto en la mano y no hay objeto en la mesa : Soltar el objeto
             {
-                // Actualizar referencias antes de soltar el objeto
-                if (_actualMesa != null && _actualMesa.GetComponent<OvenScript>() != null)
+                #region Antiguo sistema de comprobacion de si se puede soltar el objeto, descartado
+                
+
+                // if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
+                //     _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
+                //     (_heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.Arena && _heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.MetalRoca) && _actualMesa.GetComponent<OvenScript>() != null ||
+                //     _heldObject.GetComponent<Material>().MaterialTypeReturn() != MaterialType.Madera && _actualMesa.GetComponent<SawScript>() != null ||
+                //     _heldObject.GetComponent<Material>().MaterialTypeReturn() != 
+                // MaterialType.MetalMineral && _actualMesa.GetComponent<WelderScript>() != null) || _actualMesa.GetComponent<Receiver>() != null)
+                // { Debug.Log("No se puede dropear aquí"); }
+                #endregion
+
+                if (IsMesaATool()) // Si la mesa es una herramienta
                 {
-                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
+                  _actualMesa.SendMessage("UpdateMaterialReference", _heldObject); // Actualizar referencias y soltar el objeto si es posible
+                  if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
                 }
-                else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
-                {
-                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
-                }
-                else if (_actualMesa != null && _actualMesa.GetComponent<WelderScript>() != null)
-                {
-                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(_heldObject.GetComponent<Material>());
-                }
-                Drop(); 
+                else Drop(); // Soltar el objeto
             }
-        }
-        else if (_heldObject == null && _lookedObject != null)
-        {
-            if ((_actualMesa.GetComponent<OvenScript>() != null && _actualMesa.GetComponent<OvenScript>().ReturnBurnt()) || (_actualMesa.GetComponent<SawScript>() != null && _actualMesa.GetComponent<SawScript>().GetUnpickable()))
-            { Debug.Log("No se puede recoger el material"); }
-            else
+            else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
             {
-                // Limpiar referencias antes de recoger el objeto
-                if (_actualMesa.GetComponent<OvenScript>() != null)
+                if ((_actualMesa.GetComponent<OvenScript>() != null && _actualMesa.GetComponent<OvenScript>().ReturnBurnt()) || (_actualMesa.GetComponent<SawScript>() != null && _actualMesa.GetComponent<SawScript>().GetUnpickable()))
+                { Debug.Log("No se puede recoger el material"); }
+                else
                 {
-                    _actualMesa.GetComponent<OvenScript>().UpdateMaterialReference(null);
+                    // Limpiar referencias antes de recoger el objeto
+                    if (IsMesaATool()) _actualMesa.SendMessage("UpdateMaterialReference", null);
+                    Pick(_lookedObject);
                 }
-                else if (_actualMesa.GetComponent<SawScript>() != null)
-                {
-                    _actualMesa.GetComponent<SawScript>().UpdateMaterialReference(null);
-                }
-                else if (_actualMesa.GetComponent<WelderScript>() != null)
-                {
-                    _actualMesa.GetComponent<WelderScript>().UpdateMaterialReference(null);
-                }
-                Pick(_lookedObject);
             }
+            else if (_heldObject != null && _lookedObject != null) InsertMaterial();
         }
-        else if (_heldObject != null && _lookedObject != null) InsertMaterial();
     }
 
-
+    private bool IsMesaATool()
+    {
+        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<WelderScript>() != null;
+    }
 
 
     /// <summary>
@@ -285,93 +276,22 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     private void ContentAnalizer()
     {
-        if (_actualMesa != null)
+        _lookedObject = null;
+
+        if (_actualMesa.transform.childCount >= 1)
         {
-            if (_actualMesa.transform.childCount >= 1)
+           _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
+
+            if (_lookedObject.GetComponent<Collider2D>() == null)
             {
-                _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
-                if (_lookedObject.CompareTag("UI"))
-                {
-                    _lookedObject = null;
-                }
+            _lookedObject = null;
             }
-            else _lookedObject = null;
         }
+
+        
     }
 
-    /// <summary>
-    /// Este metodo es el encargado de la detección de mesas, este metodo se encarga de comprobar todas las mesas que están al alcance de la vista del jugador
-    /// para determinar cual de estas es la mas cercanas, actualizando la variable _actualMesa a la mas cercana de todas, si no se detecta ninguna mesa, actualMesa queda null
-    /// </summary>
-    private void CalculateNearest()
-    {
 
-        GameObject nearestMesa = null;
-        float nearestDistance = Mathf.Infinity;
-        
-        // Calculamos el punto de detección (el centro del círculo verde)
-        Vector2 detectionPoint = (Vector2)transform.position + _playerMovement.GetLastMove() * _centerOffset;
-        
-        // Detectamos las mesas en el círculo
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(detectionPoint, _circleRadius, DetectedTilesLayer);
-
-        // Si no hay colisiones, limpiamos la mesa actual y salimos
-        if (colisiones.Length == 0 && _actualMesa != null)
-        {
-                _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-                if (_actualMesa.GetComponent<Receiver>() != null)
-                    _actualMesa.GetComponent<Receiver>().setState(receiverState.Idle);
-                _actualMesa = null;
-        }
-        else
-        {
-            
-        // Se busca la mesa más cercana
-        foreach (Collider2D collider in colisiones)
-        {
-            float colliderDistance = Vector2.Distance(detectionPoint, collider.transform.position);
-            if (colliderDistance < nearestDistance)
-            {
-                nearestMesa = collider.gameObject;
-                nearestDistance = colliderDistance;
-            }
-        }
-
-        // Si la mesa más cercana es diferente a la actual, y habia una anterior, se quita la seleccion de la anterior y la mesa actual pasa a ser la mas cercana
-        if (nearestMesa != _actualMesa)
-        {
-            if (_actualMesa != null)
-            {
-                _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-                if (_actualMesa.GetComponent<Receiver>() != null) _actualMesa.GetComponent<Receiver>().setState(receiverState.Idle);
-            }
-
-            _actualMesa = nearestMesa;
-
-            if (_actualMesa != null) // si la mesa mas cercana no es null, se le aplica el color de la mesa y se actualiza el estado del recibidor en caso de que la mesa sea un recibidor
-            {
-                _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
-                
-                if (_actualMesa.GetComponent<Receiver>() != null)
-                {
-                    Receiver recibidor = _actualMesa.GetComponent<Receiver>();
-                    if (_heldObject == null && recibidor.getState() != receiverState.Receiving)
-                    {
-                        recibidor.setState(receiverState.Receiving);
-                    }
-                    else if (_heldObject != null)
-                    {
-                        recibidor.UpdateDeliveredObjectReference(_heldObject);
-                        if (recibidor.getState() != receiverState.Delivering)
-                            recibidor.setState(receiverState.Delivering);
-                    }
-                }
-            }
-        }
-        }
-
-
-    }
 
     /// <summary>
     /// Change Velocity se encarga de asignar la velocidad de las herramientas acorde a qué personaje se acerque a estas
@@ -430,5 +350,6 @@ public class PlayerVision : MonoBehaviour
     #endregion
 
 
-}// class PlayerVision 
- // namespace
+}
+// class PlayerVision 
+// namespace
