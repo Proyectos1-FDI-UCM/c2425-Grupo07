@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    private GameObject _player; //GameObject del jugador
+    private GameObject _player; //GameObject del jugador en la escena
     private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
     private Level _level; //Para almacenar el nivel entrado
     private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
     private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
-    private GameObject _spawnPlayer;
+    private GameObject _spawnPlayer; //GameObject del spawner del jugador
     
     #endregion
 

@@ -56,15 +56,6 @@ public class PressScript : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
@@ -85,7 +76,37 @@ public class PressScript : MonoBehaviour
         {
             PressInProcess();
         }
+    }
 
+    /// <summary>
+    /// Detecta si un objeto entra en la zona de la prensa.
+    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
+    /// lo asigna como el objeto actual.
+    /// </summary>
+    /// <param name="other">Colisión del objeto que entra en la prensa</param>
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
+        {
+            Debug.Log("Objeto colocado en la prensa.");
+            CurrentObject = other.gameObject; // Asignación del objeto actual.
+        }
+    }
+
+    /// <summary>
+    /// Detecta si un objeto sale de la zona de la prensa.
+    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
+    /// reinicia el estado de la prensa.
+    /// </summary>
+    /// <param name="other">Colisión del objeto que entra en la prensa</param>
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
+        {
+            Debug.Log("No hay objeto");
+            ResetPress();
+            _isComplete = false;
+        }
     }
     #endregion
 
@@ -159,39 +180,6 @@ public class PressScript : MonoBehaviour
 
         BarCanvasGroup.gameObject.SetActive(false);
     }
-
-    /// <summary>
-    /// Detecta si un objeto entra en la zona de la prensa.
-    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
-    /// lo asigna como el objeto actual.
-    /// </summary>
-    /// <param name="other">Colisión del objeto que entra en la prensa</param>
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
-        {
-            Debug.Log("Objeto colocado en la prensa.");
-            CurrentObject = other.gameObject; // Asignación del objeto actual.
-        }
-    }
-
-    /// <summary>
-    /// Detecta si un objeto sale de la zona de la prensa.
-    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
-    /// reinicia el estado de la prensa.
-    /// </summary>
-    /// <param name="other">Colisión del objeto que entra en la prensa</param>
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
-        {
-            Debug.Log("No hay objeto");
-            ResetPress();
-            _isComplete = false;
-        }
-    }
-
-
     #endregion
 
 } // class PressScript 
