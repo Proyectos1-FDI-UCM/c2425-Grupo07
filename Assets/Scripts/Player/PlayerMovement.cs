@@ -119,12 +119,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _translateMovement = MovementVector * CurrentVelocity; // Indico el vector de movimiento en función de la dirección y la velocidad
         _rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
-        //transform.Translate(_translateMovement, Space.WorldFo
+        //transform.Translate(_translateMovement, Space.World); Anteriormente
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
             LastMovementVector = _translateMovement;
-            //_targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apunta a la dirección
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * TimeText.deltaTime); // El jugador gira a la dirección
+            //_targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apuntaba a la dirección
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * TimeText.deltaTime); // El jugador giraba a la dirección
         }
     }
 

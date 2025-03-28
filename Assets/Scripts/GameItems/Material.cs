@@ -24,8 +24,9 @@ public enum MaterialType
 /// con su propio enum dependiendo del material.
 /// La clase contiene métodos públicos para almacenar y retornar el progreso de procesamiento del material.
 /// Al actualizar el progreso se modifica la barra de progreso del material (bar.fillammount) en base al progreso que tenga en el momento de la actualización
-/// En aspectos visuales, la actualización de la barra es inmediata (no se realiza ninguna animación) por lo que para obtener una animación fluida/interpolada se tendrá que obtener una referencia 
-/// de la barra de progreso del material mediante el método publico ReturnProgressBar() para después ser alterada a conveniencia.
+/// En aspectos visuales, la actualización de la barra es inmediata (no se realiza ninguna animación) por lo que para obtener una animación fluida/interpolada 
+/// se tendrá que obtener una referencia de la barra de progreso del material mediante el método publico ReturnProgressBar()
+/// para después ser alterada a conveniencia.
 /// </summary>
 public class Material : MonoBehaviour
 {
@@ -97,7 +98,8 @@ public class Material : MonoBehaviour
     }
 
     /// <summary>
-    /// Devuelve el progreso de procesado que lleve el script del material y actualiza la variable de progreso de la herramienta a la que el jugador se haya acercado..
+    /// Devuelve el progreso de procesado que lleve el script del material y actualiza la variable de progreso de la herramienta a
+    /// la que el jugador se haya acercado..
     /// </summary>
     public float ReturnProgress()
     {
@@ -112,15 +114,20 @@ public class Material : MonoBehaviour
     {
         return CompletionBar;
     }
-
+    /// <summary>
+    /// Devuelve el tipo de material, "otro" engloba elementos que no son materiales
+    /// </summary>
+    /// <returns></returns>
     public MaterialType MaterialTypeReturn()
     {
         return matType;
     }
-
+    /// <summary>
+    /// Procesa el material cambiando su sprite (el metal tendrá otro estado extra)
+    /// Y su enum
+    /// </summary>
     public void ProcessTheMaterial()
     {
-        
         GetComponent<SpriteRenderer>().sprite = MatState[0];
         switch (matType)
         {
@@ -140,6 +147,9 @@ public class Material : MonoBehaviour
         }
         ProcessHasEnded();
     }
+    /// <summary>
+    /// Funciona igual que si se procesa el material, los materiales que se queman tendrán un estado extra
+    /// </summary>
     public void BurnTheMaterial()
     {
         GetComponent<SpriteRenderer>().sprite= MatState[1];
@@ -153,6 +163,10 @@ public class Material : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// Al terminar el procesamiento de un material se pone en verde la barra para indicar que se vuelve a procesar
+    /// El progreso se reiniciará y se desactivará su barra de progreso.
+    /// </summary>
     public void ProcessHasEnded()
     {
         CompletionBar.color = Color.green;
