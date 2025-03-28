@@ -199,7 +199,6 @@ public class AnvilScript : MonoBehaviour
         if (_hasFinished)
         {
             _hasFinished = false;
-            _materialSource.UpdateProgress(CurrentClicks/MaxClicks);
             _materialSource = null;
             hasMetal = false;
         }
