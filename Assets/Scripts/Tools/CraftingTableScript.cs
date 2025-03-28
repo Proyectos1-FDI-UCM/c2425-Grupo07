@@ -35,9 +35,9 @@ public class CraftingTableScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameObject _object;
+    //private GameObject _object;
     private Objects _scriptObject;
-    private Material[] _materials;
+    private MaterialType[] _materials;
 
     #endregion
     
@@ -48,21 +48,6 @@ public class CraftingTableScript : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        if (transform.childCount > 0)
-        {
-            _object = transform.GetChild(0).gameObject;
-            if(_object.GetComponent<Objects>()!= null)
-            {
-                _scriptObject = _object.GetComponent<Objects>();
-                //_materials = _object.GetCurrentMaterial();
-            }
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -73,20 +58,29 @@ public class CraftingTableScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public bool AddMaterial(Material material)
+    /// <summary>
+    /// AddMaterial busca por el array de Materials un hueco null, si lo encuentra, inserta en i el 
+    /// Gameobject y devuelve true, sino, sigue buscando por el array hasta el último, si no hay más 
+    /// hueco lo notifica y agredado (bool) será false
+    /// </summary>
+    /// <param name="material"></param>  GameObject que será añadido a la array
+    /// <returns>True si el material fue añadido correctamente, False si no hay espacio</returns>
+
+    public bool AddMaterial(MaterialType material)
     {
         if (_scriptObject.GetComponent<Objects>() != null)
         {
-            if (true /*_scriptObject.GetCanBeSent()*/) // Si el objeto puede ser enviado
+            if (_scriptObject.GetCanBeSent()) // Si el objeto puede ser enviado
             {
                 bool agregado = false;
                 int i = 0;
                 while (!agregado && i < _materials.Length)
                 {
-                    if (_materials[i] == null)
+                    if (_materials[i] == MaterialType.Otro)
                     {
                         _materials[i] = material;
                         agregado = true;
+                        ReturnMaterials(_materials);
                         _scriptObject.IsCompleted();
                     }
                     else { i++; }
@@ -102,15 +96,34 @@ public class CraftingTableScript : MonoBehaviour
         else return false;
     }
 
-    public void ReturnMaterials (Material[] materials)
+    public void ReturnMaterials (MaterialType[] materials)
     {
         if(_scriptObject != null)
         {
-            //_scriptObject.SetMaterials(materials);
+            _scriptObject.SetMaterials(materials);
         }
     }
 
+    public void Drop(GameObject item)
+    {
+        if (item.GetComponent<Objects>() != null)
+        {
+            Objects objects = item.GetComponent<Objects>();
+            if (objects != null)
+            {
+                item.GetComponentInParent<PlayerVision>().Drop();
+                _scriptObject = objects;
+                _materials = _scriptObject.GetCurrentMaterial();
+            }
+            else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
+        }
+    }
 
+    public void Pick()
+    {
+        _scriptObject = null;
+        _materials = null;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
