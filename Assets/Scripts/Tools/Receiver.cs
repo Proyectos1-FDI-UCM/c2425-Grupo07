@@ -151,7 +151,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void HandleInput()
     {
-        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().CompareTag("Recibidor"))
+        if (_playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().GetComponent<Receiver>() != null)
         {
             if (_state == receiverState.Receiving)
             {
@@ -163,7 +163,7 @@ public class Receiver : MonoBehaviour
             }
             else if (_state == receiverState.Delivering)
             {
-                if (_deliveredObject == null) Deliver();
+                if (_deliveredObject != null) Deliver();
                 else Debug.Log("No puedes enviar esto");
             }
         }
@@ -337,7 +337,8 @@ public class Receiver : MonoBehaviour
         _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true); // termina la tarea satisfactoriamente.
         _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
-        InstatiateObjectUI(true); // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
+        SetReceivingMode();
+       /* InstatiateObjectUI(true);*/ // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
         // aqui se pondrá el resto del codigo más adelante
 
     }
