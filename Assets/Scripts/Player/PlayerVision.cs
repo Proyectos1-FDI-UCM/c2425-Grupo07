@@ -280,7 +280,7 @@ public class PlayerVision : MonoBehaviour
 
     private bool IsMesaATool()
     {
-        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<AnvilScript>() != null;
+        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<AnvilScript>() != null || _actualMesa.GetComponent<PressScript>() != null || _actualMesa.GetComponent<CraftingTableScript>() != null;
     }
 
 
@@ -345,8 +345,8 @@ public class PlayerVision : MonoBehaviour
         {
             if (_actualMesa != null && _actualMesa.GetComponent<CraftingTableScript>() != null)
             {
-                Objects objetoScript = _lookedObject.GetComponent<Objects>();
-                bool materialAdded = objetoScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
+                CraftingTableScript craftingScript = _actualMesa.GetComponent<CraftingTableScript>();
+                bool materialAdded = craftingScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
                 if (materialAdded)
                 {
                     _heldObject.SetActive(false);

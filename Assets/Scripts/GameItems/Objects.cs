@@ -46,15 +46,6 @@ public class Objects : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
@@ -73,44 +64,11 @@ public class Objects : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// AddMaterial busca por el array de Materials un hueco null, si lo encuentra, inserta en i el 
-    /// Gameobject y devuelve true, sino, sigue buscando por el array hasta el último, si no hay más 
-    /// hueco lo notifica y agredado (bool) será false
-    /// </summary>
-    /// <param name="material"></param>  GameObject que será añadido a la array
-    /// <returns>True si el material fue añadido correctamente, False si no hay espacio</returns>
-
-    public bool AddMaterial (MaterialType material)
-    {
-        if (_canBeSent) // Si el objeto puede ser enviado
-        {
-        bool agregado = false;
-        int i = 0;
-        while (!agregado && i < Materials.Length)
-        {
-            if (Materials[i] == MaterialType.Otro)
-            {
-                Materials[i] = material;
-                agregado = true;
-                IsCompleted();
-            }
-            else { i++; }
-        }
-        return agregado;
-        }
-        else
-        {
-            Debug.Log(" No se puede añadir material, se acabó el tiempo del pedido");
-            return false;
-        }
-    }
-
-    /// <summary>
     /// Comprueba que haya material dentro de la array del objeto
     /// </summary>
     /// <param name="material"></param>
     /// <returns>retorna true si no hay material en el objeto, false si hay material</returns>
-    public bool ThereIsMaterial(GameObject material)
+    public bool ThereIsMaterial()
     {
         return Materials[0] == MaterialType.Otro;
     }
@@ -178,28 +136,16 @@ public class Objects : MonoBehaviour
         _canBeSent = canBeSent;
     }
 
-    /// <summary>
-    /// Método que verifica que los materiales del requerido del array de OrdenPedidos y del array del Materiales del objeto sean iguales
-    /// dependiendo del emun (tipo) que es de su script Material
-    /// </summary>
-    /// <param name="material"> Contenido del array de Materiales que el objeto almacena </param>
-    /// <param name="required"> Contenido del array de OrdenPedidos que son la condición para que se complete el objeto </param>
-    /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material,
-    /// si son iguales retorna true </returns>
-    private bool IsSameMaterialType(MaterialType material, MaterialType required)
+    public bool GetCanBeSent() { return _canBeSent; }
+
+    public void SetMaterials(MaterialType[] materials)
     {
-        //if (material == MaterialType.Otro || required == MaterialType.Otro)
-        //{
-        //    return false;
-        //}
+        Materials = materials;
+    }
 
-        // Obtiene el componente MaterialType de ambos objetos
-        //var matType1 = material.GetComponent<Material>()?.MaterialTypeReturn();
-        //var matType2 = required.GetComponent<Material>()?.MaterialTypeReturn();
-
-        // Compara los tipos de material
-        Debug.Log(material == required);
-        return material == required;
+    public MaterialType[] GetCurrentMaterial()
+    {
+        return Materials;
     }
     #endregion
 
@@ -229,6 +175,21 @@ public class Objects : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Método que verifica que los materiales del requerido del array de OrdenPedidos y del array del Materiales del objeto sean iguales
+    /// dependiendo del emun (tipo) que es de su script Material
+    /// </summary>
+    /// <param name="material"> Contenido del array de Materiales que el objeto almacena </param>
+    /// <param name="required"> Contenido del array de OrdenPedidos que son la condición para que se complete el objeto </param>
+    /// <returns>Retorna false cuando el contenido de material y required son nulos o cuando son distintos por su emun en el script Material,
+    /// si son iguales retorna true </returns>
+    private bool IsSameMaterialType(MaterialType material, MaterialType required)
+    {
+        // Compara los tipos de material
+        Debug.Log(material == required);
+        return material == required;
     }
 
     #endregion   

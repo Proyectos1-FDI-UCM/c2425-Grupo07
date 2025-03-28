@@ -26,7 +26,7 @@ public class PressScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
    
-    [SerializeField] private GameObject CurrentObject; // Objeto actual en la prensa
+    [SerializeField] private Objects CurrentObject; // Objeto actual en la prensa
     [SerializeField] private float PressingTime = 0f; // Tiempo actual de prensado
     [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
@@ -60,54 +60,12 @@ public class PressScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (transform.childCount > 0 && !_isComplete)
-        {
-            _isPressing = true;
-            _isComplete = false;
-            BarCanvasGroup.gameObject.SetActive(true);
-        }
-        else if(transform.childCount == 0)
-        {
-            _isPressing = false;
-            BarCanvasGroup.gameObject.SetActive(false);
-            PressingTime = 0f;
-        }
         if (_isPressing)
         {
             PressInProcess();
         }
     }
 
-    /// <summary>
-    /// Detecta si un objeto entra en la zona de la prensa.
-    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
-    /// lo asigna como el objeto actual.
-    /// </summary>
-    /// <param name="other">Colisión del objeto que entra en la prensa</param>
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
-        {
-            Debug.Log("Objeto colocado en la prensa.");
-            CurrentObject = other.gameObject; // Asignación del objeto actual.
-        }
-    }
-
-    /// <summary>
-    /// Detecta si un objeto sale de la zona de la prensa.
-    /// Si el objeto tiene el componente "Objects" y la prensa no tiene hijos,
-    /// reinicia el estado de la prensa.
-    /// </summary>
-    /// <param name="other">Colisión del objeto que entra en la prensa</param>
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Objects>() != null && transform.childCount == 0)
-        {
-            Debug.Log("No hay objeto");
-            ResetPress();
-            _isComplete = false;
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -117,6 +75,30 @@ public class PressScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    public void Drop(GameObject item)
+    {
+        if (item.GetComponent<Objects>() != null)
+        {
+            Objects objects = item.GetComponent<Objects>();
+            if (!objects.ThereIsMaterial())
+            {
+                item.GetComponentInParent<PlayerVision>().Drop();
+                CurrentObject = objects;
+                _isPressing = true;
+                _isComplete = false;
+                BarCanvasGroup.gameObject.SetActive(true);
+            }
+            else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
+        }
+    }
+
+    public void Pick()
+    {
+        _isPressing = false;
+        BarCanvasGroup.gameObject.SetActive(false);
+        PressingTime = 0f;
+    } 
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
