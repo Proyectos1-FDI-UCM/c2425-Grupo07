@@ -10,7 +10,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -33,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float CurrentVelocity; // La velocidad actual con la que se mueve el personaje en cada dirección.
     [SerializeField] float MaxVelocity;// La velocidad máxima con la que se mueve el personaje en cada dirección.
     [SerializeField] int RotationSpeed; // La velocidad máxima con la que rota el personaje en cada dirección.
-    [SerializeField] Vector2 MovementVector;// El vector de movimiento que sigue el personaje
     [SerializeField] public Vector2 LastMovementVector; // La última posición que siguió el personaje
 
 
@@ -50,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Instancia única de la clase (singleton).
     /// </summary>
-    private InputActionSettings _moveControls; // El input en el que se rige el movimiento
     private Vector2 _translateMovement; // El movimiento que realizará el personaje con su movimiento
     private Quaternion _targetRotation; // La rotación que seguirá el personaje 
     private Rigidbody2D _rigidBody; // La rotación que seguirá el personaje 
@@ -59,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     /// InputAction que se puede configurar desde el editor y que está en
     /// la carpeta Settings
     /// </summary>
-    private InputActionSettings _theController;
     private PlayerAnimation _playerAnimation;
 
     #endregion
@@ -71,17 +67,7 @@ public class PlayerMovement : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    // Creamos el controlador del input y activamos los controles del jugador
-    void Awake()
-    {
-        _moveControls = new InputActionSettings();
-        _moveControls.Player.Enable();
-        // Cacheamos la acción de movimiento
-        InputAction movement = _moveControls.Player.Move;
-        // Para el movimiento, actualizamos el vector de movimiento usando, si se deja de pulsar no se mueve el jugador
-        movement.performed += ctx => MovementVector = ctx.ReadValue<Vector2>();
-        movement.canceled += ctx => MovementVector = new Vector2(0, 0);
-    }
+
     /// <summary>
     /// Start asigna la velocidad actual con la máxima
     /// </summary>
@@ -117,8 +103,9 @@ public class PlayerMovement : MonoBehaviour
     ///</summary>
     private void OnMove()
     {
-        _translateMovement = MovementVector * CurrentVelocity; // Indico el vector de movimiento en función de la dirección y la velocidad
-        _rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
+        _translateMovement = InputManager.Instance.MovementVector * CurrentVelocity; // Indico el vector de movimiento en función de la dirección y la velocidad
+        _rigidBody.velocity = _translateMovement;
+        //_rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
         //transform.Translate(_translateMovement, Space.World); Anteriormente
         if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
         {
@@ -139,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 GetMovement()
     {
-        return MovementVector;
+        return InputManager.Instance.MovementVector;
     }
 
     #endregion

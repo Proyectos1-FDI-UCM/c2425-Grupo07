@@ -15056,57 +15056,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2492276412553730386, guid: a766d509db78a264e9d400280fddf282, type: 3}
-      propertyPath: m_Name
-      value: Albert
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0966303
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0248563
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0020291903
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6504953505114545318, guid: a766d509db78a264e9d400280fddf282, type: 3}
+    - target: {fileID: 9134530467755513829, guid: a766d509db78a264e9d400280fddf282, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7741029605271397614, guid: a766d509db78a264e9d400280fddf282, type: 3}
-      propertyPath: MaxVelocity
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776060826716270877, guid: a766d509db78a264e9d400280fddf282, type: 3}
-      propertyPath: DashSpeed
-      value: 400
+    - target: {fileID: 9153345443677232179, guid: a766d509db78a264e9d400280fddf282, type: 3}
+      propertyPath: m_Name
+      value: Albert
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

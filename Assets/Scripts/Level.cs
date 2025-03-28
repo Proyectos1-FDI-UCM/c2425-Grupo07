@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
@@ -63,13 +62,7 @@ public class Level : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
+
 
     /// <summary>
     /// Verifica si el jugador se colisiona con el objeto para cargar el CanvasInfo con los datos 
@@ -98,18 +91,15 @@ public class Level : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Cuando se realiza la acción context, se activa el canvas para elegir el personaje y para el tiempo del juego para evitar que el jugador se mueva en escena, además, se llama al GameManager para obtener 
+    /// Cuando se realiza la acción context, se activa el canvas para elegir el personaje y para el tiempo del juego 
+    /// para evitar que el jugador se mueva en escena, además, se llama al GameManager para obtener 
     /// el dato de este script y guardarlo como referencia
     /// </summary>
-    /// <param name="context"></param>
-    public void OnEnterLevel(InputAction.CallbackContext context)
+    public void OnEnterLevel()
     {
-        if (context.performed)
-        {
-            SelectionPlayer.gameObject.SetActive(true);
-            Time.timeScale = 0f;
-            gameManager.GetData();
-        }
+        SelectionPlayer.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+        gameManager.GetData();
     }
 
     /// <summary>

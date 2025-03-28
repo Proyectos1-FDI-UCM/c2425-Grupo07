@@ -7,7 +7,6 @@
 
 using UnityEngine;
 // Añadir aquí el resto de directivas using
-using UnityEngine.InputSystem;
 
 
 /// <summary>
@@ -26,9 +25,6 @@ public class PlayerSaw : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    // Referencia a la acción de click
-    [SerializeField] private InputActionReference ClickActionReference;
 
     // Referencia al script SawScript
     [SerializeField] private SawScript SierraClick;
@@ -76,6 +72,23 @@ public class PlayerSaw : MonoBehaviour
         _playerVision = GetComponent<PlayerVision>();
         _playerMovement = GetComponent<PlayerMovement>();
     }
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha mantenido el botón de interactuar y se enciende cada vez que
+    /// se deja pulsado, se apaga cuando no
+    /// </summary>
+    void Update()
+    {
+        if (InputManager.Instance.InteractIsPressed() && _playerVision.GetActualMesa() != null
+            && _playerVision.GetActualMesa().GetComponent<SawScript>() != null)
+        {
+            TurnOn();
+        }
+        else if (InputManager.Instance.InteractWasReleasedThisFrame())
+        {
+            TurnOff();
+        }
+    }
 
     #endregion
 
@@ -96,21 +109,8 @@ public class PlayerSaw : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-      private void OnEnable()
-    {
-        ClickActionReference.action.performed += TurnOn;
-        ClickActionReference.action.canceled += TurnOff;
-        ClickActionReference.action.Enable();
-    }
 
-    private void OnDisable()
-    {
-        ClickActionReference.action.performed -= TurnOn;
-        ClickActionReference.action.canceled -= TurnOff;
-        ClickActionReference.action.Disable();
-    }
-
-    private void TurnOn(InputAction.CallbackContext context)
+    private void TurnOn()
     {
         // if (_playerVision.GetActualMesa() != null && _playerVision.GetComponent<SawScript>() != null)
         // {
@@ -120,7 +120,7 @@ public class PlayerSaw : MonoBehaviour
             _playerVision.enabled = false;
         // }
     }
-    private void TurnOff(InputAction.CallbackContext context)
+    private void TurnOff()
     {
         Debug.Log("TurnOff");
         SierraClick.TurnOffSaw();

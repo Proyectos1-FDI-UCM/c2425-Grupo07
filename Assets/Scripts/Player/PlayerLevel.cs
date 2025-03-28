@@ -7,7 +7,6 @@
 
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -24,7 +23,6 @@ public class PlayerLevel : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private InputActionReference Enter; //El input al que va a accionar las cosas 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -50,39 +48,16 @@ public class PlayerLevel : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha pulsado el botón Enter para 
+    /// realizar la acción de entrar al nivel
     /// </summary>
     void Update()
     {
-        
-    }
-
-    /// <summary>
-    /// Habilita la acción de entrada y llama al método OnEnterLevel 
-    /// </summary>
-    private void OnEnable()
-    {
-        _menuManager = GameObject.FindObjectOfType<PauseMenuManager>();
-        Enter.action.Enable();
-        Enter.action.performed += OnEnterLevel;
-    }
-
-    /// <summary>
-    /// Deja de llamar al método OnEnterLevel y deshabilita la acción de entrada
-    /// </summary>
-    private void OnDisable()
-    {
-        Enter.action.performed -= OnEnterLevel;
-        Enter.action.Disable();
+        if (_level!=null && InputManager.Instance.EnterWasPressedThisFrame())
+        {
+            OnEnterLevel();
+        }
     }
     #endregion
 
@@ -98,13 +73,15 @@ public class PlayerLevel : MonoBehaviour
     /// Cuando presiona el input reference, primero se mira si la booleana del menu de pausa esta activa, sino entonces se llama al método OnEnterlevel para entrar a la escena del juego,
     /// solo si _level tiene una referencia, de otra forma, entonces no se activaría
     /// </summary>
-    /// <param name="context"></param>
-    public void OnEnterLevel(InputAction.CallbackContext context)
+    public void OnEnterLevel()
     {
-        _enabledPause = _menuManager.PauseActive();
+        if (_menuManager != null)
+        {
+            _enabledPause = _menuManager.PauseActive();
+        }
         if (_level != null && !_enabledPause) 
         {
-            _level.OnEnterLevel(context);
+            _level.OnEnterLevel();
             Debug.Log("Elección del jugador abierto");
         }
     }

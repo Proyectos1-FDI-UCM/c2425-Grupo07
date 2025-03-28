@@ -7,7 +7,6 @@
 
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Clase que gestiona el uso del extintor por parte del jugador.
@@ -19,7 +18,6 @@ public class PlayerFireExtinguisher : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
-    [SerializeField] private InputActionReference ExtinguisherActionReference; // Acción del extintor
 
     #endregion
 
@@ -51,22 +49,21 @@ public class PlayerFireExtinguisher : MonoBehaviour
         _playerVision = GetComponent<PlayerVision>();
         _playerMovement = GetComponent<PlayerMovement>();
     }
-
     /// <summary>
-    /// Se ejecuta al despertar el objeto. Configura y suscribe eventos de entrada.
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha mantenido el botón de interactuar para que cada frame 
+    /// accione el exintor cuando no lo pulse, lo apaga
     /// </summary>
-    private void Awake()
+    void Update()
     {
-        if (ExtinguisherActionReference == null || ExtinguisherActionReference.action == null)
+        if (InputManager.Instance.InteractIsPressed())
         {
-            Debug.LogError("ExtinguisherActionReference no está asignado o no tiene una acción.");
-            return;
+            OnExtinguisherUsed();
         }
-
-        // Nos suscribimos a los eventos de la acción
-        ExtinguisherActionReference.action.performed += ctx => OnExtinguisherUsed(ctx);
-        ExtinguisherActionReference.action.canceled += ctx => OnExtinguisherStopped(ctx);
-        ExtinguisherActionReference.action.Enable();
+        else if (InputManager.Instance.InteractWasReleasedThisFrame())
+        {
+            OnExtinguisherStopped();
+        }
     }
 
     #endregion
@@ -79,13 +76,13 @@ public class PlayerFireExtinguisher : MonoBehaviour
     /// Deshabilita el movimiento y la visión mientras el extintor está en uso.
     /// </summary>
     /// <param name="ctx">Contexto de la acción del Input System.</param>
-    private void OnExtinguisherUsed(InputAction.CallbackContext ctx)
+    private void OnExtinguisherUsed()
     {
         if (extinguisher != null && extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
         {
             _playerMovement.enabled = false;
             _playerVision.enabled = false;
-            extinguisher.OnUseExtinguisher(ctx); // Activamos el extintor
+            extinguisher.OnUseExtinguisher(InputManager.Instance.InteractIsPressed()); // Activamos el extintor
         }
     }
 
@@ -94,13 +91,13 @@ public class PlayerFireExtinguisher : MonoBehaviour
     /// Reactiva el movimiento y la visión cuando el extintor deja de usarse.
     /// </summary>
     /// <param name="ctx">Contexto de la acción del Input System.</param>
-    private void OnExtinguisherStopped(InputAction.CallbackContext ctx)
+    private void OnExtinguisherStopped()
     {
         if (extinguisher != null && extinguisher.IsExtinguisherAssociatedWithValidParent()) // Verificamos si el extintor es hijo del jugador
         {
             _playerMovement.enabled = true;
             _playerVision.enabled = true;
-            extinguisher.OnUseExtinguisher(ctx); // Desactivamos el extintor
+            extinguisher.OnUseExtinguisher(InputManager.Instance.InteractIsPressed()); // Desactivamos el extintor
         }
     }
 

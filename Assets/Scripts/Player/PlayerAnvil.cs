@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -24,7 +23,6 @@ public class PlayerAnvil : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private AnvilScript AnvilScript; //Objeto para llamar al script de Welder
-    [SerializeField] private InputActionReference InteractActionReference; //Input que permite realizar la accion
 
     #endregion
 
@@ -37,6 +35,7 @@ public class PlayerAnvil : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private PlayerVision _playerVision;  // sirve para llamar luego al script de PlayerVision
 
     #endregion
 
@@ -47,11 +46,6 @@ public class PlayerAnvil : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    void Awake()
-    {
-        InteractActionReference.action.performed += ctx => OnClickPerformed();
-        InteractActionReference.action.Enable();
-    }
 
     /// <summary>
     /// Se encarga de encontrar la Soldadora y llamar a los scrpits de los atributos correspondientes.
@@ -62,9 +56,21 @@ public class PlayerAnvil : MonoBehaviour
         {
             AnvilScript = FindAnyObjectByType<AnvilScript>();
         }
-
+        _playerVision = GetComponent<PlayerVision>();
     }
-
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha pulsado el botón de interactuar para 
+    /// realizar la acción solamente cuando esté frente a un yunque
+    /// </summary>
+    void Update()
+    {
+        if (InputManager.Instance.InteractWasPressedThisFrame() && _playerVision.GetActualMesa() != null
+            && _playerVision.GetActualMesa().GetComponent<AnvilScript>() != null)
+        {
+            OnClickPerformed();
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----

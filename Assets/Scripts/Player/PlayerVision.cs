@@ -8,7 +8,6 @@
 
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -31,8 +30,6 @@ public class PlayerVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private InputActionReference PickDropActionReference; // La acción que realiza el pickDrop
-
     [SerializeField] LayerMask DetectedTilesLayer; // Esta mascara permite que la detección de mesas solo detecte a gameObjects que tengan esta Layer
     [SerializeField] Color MesaTint = Color.yellow; // El color con el cual se tintará la mesa que esté siendo selecionada/vista por el jugador (_actualmesa)
     [SerializeField] private Collider2D _visionCollider; // Collider que se encarga de detectar las mesas cercanas al jugador.   
@@ -65,7 +62,10 @@ public class PlayerVision : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
@@ -82,11 +82,23 @@ public class PlayerVision : MonoBehaviour
         
     }
     /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha pulsado el botón de recoger y dejar para 
+    /// realizar la acción
+    /// </summary>
+    void Update()
+    {
+        if (InputManager.Instance.PickDropWasPressedThisFrame())
+        {
+            PickDrop();
+        }
+    }
+    /// <summary>
     /// Se encarga de la detección de mesas, se da cada detectionRate.
+    /// Se ejecuta después de las físicas 50 veces por segundo
     /// </summary>
     void FixedUpdate()
     {
-
         _visionCollider.offset = Vector2.Lerp(_visionCollider.offset, _playerMovement.GetLastMove().normalized * _visionDistance , _offSetSpeed * Time.deltaTime); 
         if (_isBeingPicked)
         {
@@ -209,22 +221,6 @@ public class PlayerVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
       
 
-
-
-    // Las suscripciones al InputActionReference
-    private void OnEnable()
-    {
-        PickDropActionReference.action.performed += PickDrop;
-        PickDropActionReference.action.Enable();
-
-    }
-
-    private void OnDisable()
-    {
-        PickDropActionReference.action.performed -= PickDrop;
-        PickDropActionReference.action.Disable();
-    }
-
     /// <summary>
     /// ++(Drop) Si hay un objeto en la mano (heldObject) y hay una herramienta interactiva,
     /// se intenta soltar el elemento:
@@ -235,7 +231,7 @@ public class PlayerVision : MonoBehaviour
     /// se llama a InsertMaterial
     /// </summary>
     /// <param name="context"></param>
-    private void PickDrop(InputAction.CallbackContext context)
+    private void PickDrop()
     {
         if (_actualMesa != null) 
         {

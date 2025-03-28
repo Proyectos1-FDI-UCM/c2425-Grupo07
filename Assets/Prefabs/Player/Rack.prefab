@@ -10,20 +10,21 @@ GameObject:
   m_Component:
   - component: {fileID: 3213935928180906448}
   - component: {fileID: 3624883344303887281}
+  - component: {fileID: 5138623324550365096}
+  - component: {fileID: 8660095150174552816}
   - component: {fileID: 4943864478356929494}
+  - component: {fileID: -116823599935405296}
   - component: {fileID: 1662058436714557962}
   - component: {fileID: 5489212139537908723}
   - component: {fileID: 7047706930552799375}
   - component: {fileID: -7357599917820336469}
-  - component: {fileID: 5138623324550365096}
   - component: {fileID: 2181786244054239903}
   - component: {fileID: 1938771744806729756}
   - component: {fileID: 8383434901366803709}
-  - component: {fileID: 8660095150174552816}
   - component: {fileID: 5208378399631633673}
   - component: {fileID: 3716442948494014657}
-  - component: {fileID: -116823599935405296}
   - component: {fileID: -7595878016294337482}
+  - component: {fileID: 3665743094127962671}
   m_Layer: 6
   m_Name: Rack
   m_TagString: Player
@@ -98,6 +99,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &5138623324550365096
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!58 &8660095150174552816
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.04
 --- !u!50 &4943864478356929494
 Rigidbody2D:
   serializedVersion: 4
@@ -125,6 +196,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &-116823599935405296
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a72326d742dc924ebb9ba44d4ff15cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1662058436714557962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,22 +299,6 @@ MonoBehaviour:
     m_ActionId: 48b9f442-99a7-4ec0-9eb1-b526e20e5f8a
     m_ActionName: Player/PickOrDrop[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 178f3a819f4cb9949a192f64f5a3fdf5, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e18de1f9-bf5a-402f-8733-4b9c162bb565
-    m_ActionName: Player/UseFireExtinguiser[/Keyboard/b]
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 6105fb19-008f-433e-82a7-0449647e273d
     m_ActionName: Player/EnterLevel[/Keyboard/enter]
@@ -279,42 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashSpeed: 35
   DashDuration: 0.5
-  DashActionReference: {fileID: 1120369429361536294, guid: 842a061437231409385e5d08046b3753, type: 3}
---- !u!58 &5138623324550365096
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584395163546786512}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!114 &2181786244054239903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fd66a7d1179ea4faaf1b17234f9df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClickActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
   SierraClick: {fileID: 0}
   Player: {fileID: 0}
 --- !u!114 &1938771744806729756
@@ -342,8 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c421086306ee741b2caa38d354474d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WelderScript: {fileID: 0}
-  InteractActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
+  AnvilScript: {fileID: 0}
 --- !u!114 &8383434901366803709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6575136e312cb6b4db6b3d9edd4e4c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickDropActionReference: {fileID: 470773517313567529, guid: 842a061437231409385e5d08046b3753, type: 3}
   DetectedTilesLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -366,41 +403,6 @@ MonoBehaviour:
   _offSetSpeed: 20
   _actualMesa: {fileID: 0}
   _isBeingPicked: 0
---- !u!58 &8660095150174552816
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584395163546786512}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.04
 --- !u!114 &5208378399631633673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cf15b2c211614489330df1cb863ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExtinguisherActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
 --- !u!114 &3716442948494014657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,28 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6dfe125515a434ba47109274c375fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractActionReference: {fileID: -1161888413862932218, guid: 842a061437231409385e5d08046b3753, type: 3}
---- !u!95 &-116823599935405296
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584395163546786512}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a72326d742dc924ebb9ba44d4ff15cc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-7595878016294337482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,3 +440,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enter: {fileID: 2064291648275711002, guid: 842a061437231409385e5d08046b3753, type: 3}
+--- !u!114 &3665743094127962671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b75e5bd40a4bb18a055b69393ed67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

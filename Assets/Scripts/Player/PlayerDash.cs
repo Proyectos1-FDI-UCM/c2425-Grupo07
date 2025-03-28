@@ -10,7 +10,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 /// <summary>
@@ -34,11 +33,6 @@ public class PlayerDash : MonoBehaviour
     /// Duración en segundos del dash
     /// </summary>
     [SerializeField] float DashDuration;
-
-    /// <summary>
-    /// Referencia a la acción de input que activará el dash
-    /// </summary>
-    [SerializeField] private InputActionReference DashActionReference;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -57,18 +51,6 @@ public class PlayerDash : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    /// <summary>
-    /// Inicializa y habilita el sistema de input del jugador.
-    /// </summary>
-    private void Awake()
-    {
-        var playerInput = GetComponent<PlayerInput>();
-        if (playerInput != null)
-        {
-            playerInput.actions.Enable();
-            Debug.Log("Player Input habilitado");
-        }
-    }
 
     /// <summary>
     /// Obtiene la referencia al componente Rigidbody2D del jugador.
@@ -77,6 +59,16 @@ public class PlayerDash : MonoBehaviour
     {
        _rb = GetComponent<Rigidbody2D>();
         _pM = GetComponent<PlayerMovement>();
+    }
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (InputManager.Instance.DashWasPressedThisFrame())
+        {
+            RequestDash();
+        }
     }
     #endregion
 
@@ -91,7 +83,7 @@ public class PlayerDash : MonoBehaviour
     public bool IsDashing()
     { return _isDashing; }
 
-    private void RequestDash(InputAction.CallbackContext context)
+    private void RequestDash()
     {
         if (!_isDashing)
         {
@@ -118,23 +110,7 @@ public class PlayerDash : MonoBehaviour
         Debug.Log("DASH RECARGADO");
     }
 
-    /// <summary>
-    /// Suscribe el método RequestDash al evento de input cuando el componente se habilita.
-    /// </summary>
-    private void OnEnable()
-    {
-        DashActionReference.action.performed += RequestDash;
-        DashActionReference.action.Enable();
-    }
 
-    /// <summary>
-    /// Desuscribe el método RequestDash del evento de input cuando el componente se deshabilita.
-    /// </summary>
-    private void OnDisable()
-    {
-        DashActionReference.action.performed -= RequestDash;
-        DashActionReference.action.Disable();
-    }
     #endregion
 } // class Dash 
 // namespace

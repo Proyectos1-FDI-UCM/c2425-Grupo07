@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseFireExtinguiser",
-                    "type": "Button",
-                    "id": "e18de1f9-bf5a-402f-8733-4b9c162bb565",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "EnterLevel",
                     "type": "Button",
                     "id": "6105fb19-008f-433e-82a7-0449647e273d",
@@ -265,17 +256,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PickOrDrop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9af08f6b-964c-484b-a445-caa045a72a30",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "UseFireExtinguiser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

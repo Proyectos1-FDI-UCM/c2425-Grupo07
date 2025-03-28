@@ -84,10 +84,9 @@ public class FireExtinguisher : MonoBehaviour
     /// Se llama cuando el jugador usa el extintor.
     /// Activa o desactiva su uso dependiendo del contexto.
     /// </summary>
-    /// <param name="context">Contexto de la acción del Input System.</param>
-    public void OnUseExtinguisher(InputAction.CallbackContext context)
+    public void OnUseExtinguisher(bool isPressed)
     {
-        _isUsing = context.performed;
+        _isUsing = isPressed;
     }
 
     /// <summary>

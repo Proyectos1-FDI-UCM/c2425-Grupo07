@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -23,8 +22,6 @@ public class PlayerAnimation : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    [SerializeField] private InputActionReference InteractActionReference; //obtiene el input para la acción correspondiente.
 
     #endregion
 
@@ -60,34 +57,22 @@ public class PlayerAnimation : MonoBehaviour
         _playerDash = GetComponent<PlayerDash>();
         _playerMovement = GetComponent<PlayerMovement>();
     }
-
     /// <summary>
-    /// Recoge el input correspondiente cuando está activo.
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha pulsado el botón de interactuar para 
+    /// reproducir la animación acorde
     /// </summary>
-    private void OnEnable()
+    void Update()
     {
-        InteractActionReference.action.canceled += SetBoolFalse;
-        InteractActionReference.action.performed += SetBoolTrue;
-        InteractActionReference.action.Enable();
+        if (InputManager.Instance.InteractWasPressedThisFrame())
+        {
+            SetBoolTrue();
+        }
+        else if (InputManager.Instance.InteractWasReleasedThisFrame())
+        {
+            SetBoolFalse();
+        }
     }
-
-    /// <summary>
-    /// Recoge el input correspondiente cuando está inactivo.
-    /// </summary>
-    private void OnDisable()
-    {
-        InteractActionReference.action.performed -= SetBoolTrue;
-        InteractActionReference.action.canceled -= SetBoolFalse;
-        InteractActionReference.action.Disable();
-    }
-
-    //void Awake()
-    //{
-    //    InteractActionReference.action.performed += ctx => SetBool(true);
-    //    InteractActionReference.action.canceled += ctx => SetBool(false);
-    //    InteractActionReference.action.Enable();
-    //}
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -160,8 +145,7 @@ public class PlayerAnimation : MonoBehaviour
     /// <summary>
     /// Se activa la booleana de working para enviarla a las funciones de Input y así el correcto funcionamiento del inputAction.
     /// </summary>
-    /// <param name="context"></param>
-    private void SetBoolTrue(InputAction.CallbackContext context)
+    private void SetBoolTrue()
     {
         if (_movement == Vector2.zero)
         {
@@ -172,8 +156,7 @@ public class PlayerAnimation : MonoBehaviour
     /// <summary>
     /// Se desactiva la booleana de working para enviarla a las funciones de Input y así el correcto funcionamiento del inputAction.
     /// </summary>
-    /// <param name="context"></param>
-    private void SetBoolFalse(InputAction.CallbackContext context)
+    private void SetBoolFalse()
     {
         _working = false;
     }

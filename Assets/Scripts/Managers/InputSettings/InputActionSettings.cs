@@ -66,15 +66,6 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UseFireExtinguiser"",
-                    ""type"": ""Button"",
-                    ""id"": ""e18de1f9-bf5a-402f-8733-4b9c162bb565"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""EnterLevel"",
                     ""type"": ""Button"",
                     ""id"": ""6105fb19-008f-433e-82a7-0449647e273d"",
@@ -289,17 +280,6 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PickOrDrop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9af08f6b-964c-484b-a445-caa045a72a30"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""UseFireExtinguiser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -924,7 +904,6 @@ namespace UnityEngine.InputSystem
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
-            m_Player_UseFireExtinguiser = m_Player.FindAction("UseFireExtinguiser", throwIfNotFound: true);
             m_Player_EnterLevel = m_Player.FindAction("EnterLevel", throwIfNotFound: true);
             m_Player_OpenPauseMenu = m_Player.FindAction("OpenPauseMenu", throwIfNotFound: true);
             // UI
@@ -1004,7 +983,6 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_PickOrDrop;
-        private readonly InputAction m_Player_UseFireExtinguiser;
         private readonly InputAction m_Player_EnterLevel;
         private readonly InputAction m_Player_OpenPauseMenu;
         public struct PlayerActions
@@ -1015,7 +993,6 @@ namespace UnityEngine.InputSystem
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
-            public InputAction @UseFireExtinguiser => m_Wrapper.m_Player_UseFireExtinguiser;
             public InputAction @EnterLevel => m_Wrapper.m_Player_EnterLevel;
             public InputAction @OpenPauseMenu => m_Wrapper.m_Player_OpenPauseMenu;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1039,9 +1016,6 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started += instance.OnPickOrDrop;
                 @PickOrDrop.performed += instance.OnPickOrDrop;
                 @PickOrDrop.canceled += instance.OnPickOrDrop;
-                @UseFireExtinguiser.started += instance.OnUseFireExtinguiser;
-                @UseFireExtinguiser.performed += instance.OnUseFireExtinguiser;
-                @UseFireExtinguiser.canceled += instance.OnUseFireExtinguiser;
                 @EnterLevel.started += instance.OnEnterLevel;
                 @EnterLevel.performed += instance.OnEnterLevel;
                 @EnterLevel.canceled += instance.OnEnterLevel;
@@ -1064,9 +1038,6 @@ namespace UnityEngine.InputSystem
                 @PickOrDrop.started -= instance.OnPickOrDrop;
                 @PickOrDrop.performed -= instance.OnPickOrDrop;
                 @PickOrDrop.canceled -= instance.OnPickOrDrop;
-                @UseFireExtinguiser.started -= instance.OnUseFireExtinguiser;
-                @UseFireExtinguiser.performed -= instance.OnUseFireExtinguiser;
-                @UseFireExtinguiser.canceled -= instance.OnUseFireExtinguiser;
                 @EnterLevel.started -= instance.OnEnterLevel;
                 @EnterLevel.performed -= instance.OnEnterLevel;
                 @EnterLevel.canceled -= instance.OnEnterLevel;
@@ -1259,7 +1230,6 @@ namespace UnityEngine.InputSystem
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnPickOrDrop(InputAction.CallbackContext context);
-            void OnUseFireExtinguiser(InputAction.CallbackContext context);
             void OnEnterLevel(InputAction.CallbackContext context);
             void OnOpenPauseMenu(InputAction.CallbackContext context);
         }

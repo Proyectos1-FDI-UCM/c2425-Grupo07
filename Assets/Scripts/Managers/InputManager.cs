@@ -61,11 +61,10 @@ public class InputManager : MonoBehaviour
     private InputActionSettings _theController;
     
     /// <summary>
-    /// Acción para Fire. Si tenemos más botones tendremos que crear más
-    /// acciones como esta (y crear los métodos que necesitemos para
-    /// conocer el estado del botón)
+    /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa. 
+    /// Si hubieran más botones tendremos que crear más
     /// </summary>
-    private InputAction _fire;
+    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _openPauseMenu;
 
 
     #endregion
@@ -156,36 +155,74 @@ public class InputManager : MonoBehaviour
     public Vector2 MovementVector { get; private set; }
 
     /// <summary>
-    /// Método para saber si el botón de disparo (Fire) está pulsado
+    /// Método para saber si el botón de interactuar (Interact) está pulsado
     /// Devolverá true en todos los frames en los que se mantenga pulsado
     /// <returns>True, si el botón está pulsado</returns>
     /// </summary>
-    public bool FireIsPressed()
+    public bool InteractIsPressed()
     {
-        return _fire.IsPressed();
+        return _interact.IsPressed();
     }
 
+    /// <summary>
+    /// Método para saber si el botón de impulso (Dash) se ha pulsado en este frame
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </returns>
+    /// </summary>
+    public bool DashWasPressedThisFrame()
+    {
+        return _dash.WasPressedThisFrame();
+    }
     /// <summary>
     /// Método para saber si el botón de disparo (Fire) se ha pulsado en este frame
     /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
     /// y false, en otro caso
     /// </returns>
     /// </summary>
-    public bool FireWasPressedThisFrame()
+    public bool InteractWasPressedThisFrame()
     {
-        return _fire.WasPressedThisFrame();
+        return _interact.WasPressedThisFrame();
     }
-
     /// <summary>
-    /// Método para saber si el botón de disparo (Fire) ha dejado de pulsarse
+    /// Método para saber si el botón de recoger/dejar (pickOrDrop) está pulsado
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </summary>
+    public bool PickDropWasPressedThisFrame()
+    {
+        return _pickOrDrop.WasPressedThisFrame();
+    }
+    /// <summary>
+    /// Método para saber si el botón de pausa (Pause) se ha pulsado en este frame
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </returns>
+    /// </summary>
+    public bool PauseWasPressedThisFrame()
+    {
+        return _openPauseMenu.WasPressedThisFrame();
+    }
+    /// <summary>
+    /// Método para saber si el botón de entrar a un nivel (Enter) se ha pulsado en este frame
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </returns>
+    /// </summary>
+    public bool EnterWasPressedThisFrame()
+    {
+        return _enterLevel.WasPressedThisFrame();
+    }
+    /// <summary>
+    /// Método para saber si el botón de interactuar (Interact) ha dejado de pulsarse
     /// durante este frame
     /// <returns>Devuelve true, si el botón se ha dejado de pulsar en
     /// este frame; y false, en otro caso.
     /// </returns>
     /// </summary>
-    public bool FireWasReleasedThisFrame()
+    public bool InteractWasReleasedThisFrame()
     {
-        return _fire.WasReleasedThisFrame();
+        return _interact.WasReleasedThisFrame();
     }
 
     #endregion
@@ -210,11 +247,26 @@ public class InputManager : MonoBehaviour
         movement.performed += OnMove;
         movement.canceled += OnMove;
 
-        // Para el disparo solo cacheamos la acción de disparo.
+        // Para el dash solo cacheamos la acción de impulsarse.
         // El estado lo consultaremos a través de los métodos públicos que 
-        // tenemos (FireIsPressed, FireWasPressedThisFrame 
-        // y FireWasReleasedThisFrame)
-        _fire = _theController.Player.Dash;
+        // tenemos (DashWasPressedThisFrame)
+        _dash = _theController.Player.Dash;
+        // Para el enter solo cacheamos la acción de entrar a un nivel.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (EnterWasPressedThisFrame)
+        _enterLevel = _theController.Player.EnterLevel;
+        // Para interact solo cacheamos la acción de interactuar.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (InteractIsPressed, InteractWasPressedThisFrame y InteractWasReleasedThisFrame)
+        _interact = _theController.Player.Interact;
+        // Para el pickOrDrop solo cacheamos la acción de recoger y dejar.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (PickDropWasPressedThisFrame)
+        _pickOrDrop = _theController.Player.PickOrDrop;
+        // Para el pause solo cacheamos la acción de pausar el juego.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (PauseWasPressedThisFrame)
+        _openPauseMenu = _theController.Player.OpenPauseMenu;
     }
 
     /// <summary>

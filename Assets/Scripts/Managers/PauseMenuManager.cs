@@ -6,10 +6,8 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 using UnityEngine.EventSystems;
-
 
 /// <summary>
 /// Esta clase de PauseMenuManager se encarga de pausar el juego, abrir y cerrar el menu de pausa, que contiene botones para la funcion 
@@ -26,7 +24,6 @@ public class PauseMenuManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private InputActionReference ActionOpenCloseMenu; //El input que va a realizar la accion de abrir y cerrar el menu.
     [SerializeField] private GameObject PauseMenuUI; // para colocar el Objecto de Menu de Pausa desde el editor para su correcto funcionamiento.
     [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
     [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
@@ -52,12 +49,16 @@ public class PauseMenuManager : MonoBehaviour
     #region Métodos de MonoBehaviour
 
     /// <summary>
-    /// Inicia el Input del Menu de pausa.
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Comprueba si el jugador ha pulsado el botón de pausar para 
+    /// realizar la acción
     /// </summary>
-    void Awake()
+    void Update()
     {
-        ActionOpenCloseMenu.action.started += ctx => HandleInput();
-        ActionOpenCloseMenu.action.Enable();
+        if (InputManager.Instance.PauseWasPressedThisFrame())
+        {
+            HandleInput();
+        }
     }
 
     #endregion
