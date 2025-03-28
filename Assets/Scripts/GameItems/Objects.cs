@@ -28,9 +28,12 @@ public class Objects : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private MaterialType[] Materials = new MaterialType[3]; //Array de GameObjects que representan los materiales que el objeto puede contener. 
-    [SerializeField] private MaterialType[] OrdenPedidos; //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
-    [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
+    //Array de GameObjects que representan los materiales que el objeto puede contener.
+    [SerializeField] private MaterialType[] Materials = new MaterialType[3];
+    //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
+    [SerializeField] private MaterialType[] OrdenPedidos;
+    //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
+    [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; 
     #endregion
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
@@ -136,13 +139,16 @@ public class Objects : MonoBehaviour
         _canBeSent = canBeSent;
     }
 
+    //Retorna la booleana _canBeSent
     public bool GetCanBeSent() { return _canBeSent; }
 
+    //Asigna los materiales actualizados a la array del objeto
     public void SetMaterials(MaterialType[] materials)
     {
         Materials = materials;
     }
 
+    //Retorna el array del objecto
     public MaterialType[] GetCurrentMaterial()
     {
         return Materials;

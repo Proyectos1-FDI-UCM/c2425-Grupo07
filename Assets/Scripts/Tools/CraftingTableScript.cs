@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Se programa la función de la mesa de trabajo, donde se inserta el material a la array del objecto
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -35,15 +35,14 @@ public class CraftingTableScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //private GameObject _object;
-    private Objects _scriptObject;
-    private MaterialType[] _materials;
+    private Objects _scriptObject; //_scriptObject es para tener referencia al script de los objetos de aquí obtener los datos necesarios
+    private MaterialType[] _materials; //Se almacena la array de los materiales del objeto
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
@@ -59,13 +58,13 @@ public class CraftingTableScript : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// AddMaterial busca por el array de Materials un hueco null, si lo encuentra, inserta en i el 
-    /// Gameobject y devuelve true, sino, sigue buscando por el array hasta el último, si no hay más 
-    /// hueco lo notifica y agredado (bool) será false
+    /// Al llamar a este, se realiza un ducktying para ver si hay algo referenciado en _scriptObject antes de usar alguno
+    /// de sus métodos y si es así, se obtiene la booleana del _scriptObject y se realiza una busqueda dentro del array del material
+    /// para encontrar un hueco en este, al ser agregado, este retorna el array al objecto y complueba si esta completado
+    /// el objecto, sino, avanza en la array hasta el final.
     /// </summary>
-    /// <param name="material"></param>  GameObject que será añadido a la array
-    /// <returns>True si el material fue añadido correctamente, False si no hay espacio</returns>
-
+    /// <param name="material"> Material al que se añade al objeto</param>
+    /// <returns>Retorna falso si no fue aglegado el material, verdadero si se a insertado el material a la array</returns>
     public bool AddMaterial(MaterialType material)
     {
         if (_scriptObject.GetComponent<Objects>() != null)
@@ -96,6 +95,7 @@ public class CraftingTableScript : MonoBehaviour
         else return false;
     }
 
+    //Asigna la array actualizada al array del objeto
     public void ReturnMaterials (MaterialType[] materials)
     {
         if(_scriptObject != null)
@@ -104,6 +104,11 @@ public class CraftingTableScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Comprueba que se trata de un objecto y llama después al Player vision para asignar el objeto a la mesa de trabajo
+    /// despues de asigna los atributos de _scriptObject y _materials.
+    /// </summary>
+    /// <param name="item">En este caso es el objecto</param>
     public void Drop(GameObject item)
     {
         if (item.GetComponent<Objects>() != null)
@@ -119,6 +124,9 @@ public class CraftingTableScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Se resetea los atributos cuando el objeto es recojido por el jugador
+    /// </summary>
     public void Pick()
     {
         _scriptObject = null;

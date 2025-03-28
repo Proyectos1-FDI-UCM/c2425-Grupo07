@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Se programa el funcionamiento de la prensa cuando un objeto es puesto en este
-// devuelve después de x tiempo el objeto en su estado original
+// Se programa el funcionamiento de la prensa cuando un objeto con material es puesto en este
+// devuelve después de x tiempo el objeto en su estado original, osea, vacío
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -76,6 +76,12 @@ public class PressScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Método que asigna los atributos necesarios para que funcione la prensa, este llamará al script del playerVision
+    /// para que inserte el objecto como child a la prensa, este tambien pondrá _isPressing en true, _isComplete en false
+    /// y activa la barra de progreso
+    /// </summary>
+    /// <param name="item"></param>
     public void Drop(GameObject item)
     {
         if (item.GetComponent<Objects>() != null)
@@ -92,7 +98,10 @@ public class PressScript : MonoBehaviour
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
     }
-
+    /// <summary>
+    /// Al llamar a este método, se pone la booleana de la prensa en falso, resetea el tiempo de la prensa y desactiva la 
+    /// barra de progreso
+    /// </summary>
     public void Pick()
     {
         _isPressing = false;
