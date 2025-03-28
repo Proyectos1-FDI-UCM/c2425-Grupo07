@@ -1,11 +1,13 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Se programa el funcionamiento del spawner
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 // Añadir aquí el resto de directivas using
 
 
@@ -23,8 +25,12 @@ public class SpawnPlayer : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField] GameObject Rack;
+    [SerializeField] GameObject Albert;
+    [SerializeField] GameObject Spawn;
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,31 +40,30 @@ public class SpawnPlayer : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private GameManager _gameManager;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        
+        _gameManager = GameManager.Instance;  
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
+    private void Awake()
     {
-        
+        _gameManager.RegisterSpawner(this);
     }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -69,8 +74,27 @@ public class SpawnPlayer : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Inicializa el personaje y dependiendo de la booleana de _isRack del GameManager, se le asigna a playerPrefab el prefab del personaje
+    /// </summary>
+    public void SpawnPlayerInit()
+    {
+        if(Spawn != null)
+        {
+            Time.timeScale = 1f;
+            GameObject playerPrefab = _gameManager.ReturnBool() ? Rack : Albert;
+
+            if (playerPrefab != null)
+            {
+                Instantiate(playerPrefab, Spawn.transform.position, Quaternion.identity);
+                Debug.Log("Player SPAWNS");
+            }
+            else Debug.Log("No hay prefab del player");
+        }
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -78,7 +102,7 @@ public class SpawnPlayer : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class SpawnPlayer 
 // namespace
