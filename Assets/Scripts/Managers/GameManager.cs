@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
     private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
     private GameObject _spawnPlayer; //GameObject del spawner del jugador
+    private LevelManager.Range _levelRange; //Mejor rango obtenido
     
     #endregion
 
@@ -199,7 +200,6 @@ public class GameManager : MonoBehaviour
         _level = _playerLevel.GetLevel();
         
         _levelName = _level.GetLevelName();
-       
     }
 
     /// <summary>
@@ -265,6 +265,24 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player SPAWNS");
         }
         else Debug.Log("No hay prefab del player");
+    }
+
+    /// <summary>
+    /// SetRange modifica _levelRange según el rango que ha obtenido en la partida
+    /// </summary>
+    /// <param name="_range">Rango obtenido en la partida</param>
+    public void SetRange(LevelManager.Range _range)
+    {
+        _levelRange = _range;
+    }
+
+    /// <summary>
+    /// GetRange devuelve el rango del nivel
+    /// </summary>
+    /// <returns></returns>
+    public LevelManager.Range GetRange()
+    {
+        return _levelRange;
     }
 
     #endregion

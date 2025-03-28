@@ -44,6 +44,25 @@ public class LevelManager : MonoBehaviour
     // Panel es el panel que se muestra cuando se acaba el tiempo con el mensaje de que se ha acabado el tiempo
     [SerializeField] private GameObject Panel;
 
+    /// <summary>
+    /// // _maxTime es el tiempo máximo que puede durar la partida
+    /// </summary>
+    [SerializeField] private float _maxTime = 180;
+
+    /// <summary>
+    /// _minS es la cantidad mínima de dinero para alcanzar el rango S
+    /// </summary>
+    [SerializeField] private int _minS = 900;
+
+    /// <summary>
+    /// _minA es la cantidad mínima de dinero para alcanzar el rango A
+    /// </summary>
+    [SerializeField] private int _minA = 650;
+
+    /// <summary>
+    /// _minB es la cantidad mínima de dinero para alcanzar el rango B
+    /// </summary>
+    [SerializeField] private int _minB = 400;
 
     #endregion
 
@@ -62,33 +81,9 @@ public class LevelManager : MonoBehaviour
     private GameManager _gameManager;
 
     /// <summary>
-    /// _minS es la cantidad mínima de dinero para alcanzar el rango S
-    /// </summary>
-    [SerializeField] private int _minS = 900;
-
-    /// <summary>
-    /// _minA es la cantidad mínima de dinero para alcanzar el rango A
-    /// </summary>
-    [SerializeField] private int _minA = 650;
-
-    /// <summary>
-    /// _minB es la cantidad mínima de dinero para alcanzar el rango B
-    /// </summary>
-    [SerializeField] private int _minB = 400;
-    #endregion
-
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-
-    /// <summary>
     /// _continue determina si el timer debe empezar (true) o no (false)
     /// </summary>
     private bool _continue = false;
-
-    /// <summary>
-    /// // _maxTime es el tiempo máximo que puede durar la partida
-    /// </summary>
-    [SerializeField] private float _maxTime = 180;
 
     // _currentSecondsLeft es el tiempo restante en segundos
     private float _currentSecondsLeft;
@@ -102,6 +97,11 @@ public class LevelManager : MonoBehaviour
     /// _secondsShow son los segundos para mostrar en el timer del juego
     /// </summary>
     private int _secondsShow;
+
+    /// <summary>
+    /// _levelRange es el rango obtenido en la partida
+    /// </summary>
+    private Range _levelRange;
 
     #endregion
 
@@ -131,7 +131,13 @@ public class LevelManager : MonoBehaviour
             StopTimer();
             _currentSecondsLeft = 0;
             Panel.SetActive(true);
-            CalculateRange(Money);
+            _levelRange = CalculateRange(Money);
+            if ((_gameManager.GetRange() == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
+                (_gameManager.GetRange() == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
+                (_gameManager.GetRange() == Range.A && _levelRange == Range.S))
+            {
+                _gameManager.SetRange(_levelRange);
+            }
             Time.timeScale = 0;
         }
         ShowTime();
@@ -178,7 +184,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public enum Range
     {
-        S,A,B,F
+        F,B,A,S
     }
 
 

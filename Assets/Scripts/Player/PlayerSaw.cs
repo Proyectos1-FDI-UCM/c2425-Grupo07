@@ -47,8 +47,11 @@ public class PlayerSaw : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
- private PlayerVision _playerVision;  // sirve para llamar luego al script de PlayerVision
-    private PlayerMovement _playerMovement; //sirve para llamar luego al script de PlayerMovement
+    // _playerVision sirve para llamar luego al script de PlayerVision
+    private PlayerVision _playerVision;
+
+    // _playerMovement sirve para llamar luego al script de PlayerMovement
+    private PlayerMovement _playerMovement;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
