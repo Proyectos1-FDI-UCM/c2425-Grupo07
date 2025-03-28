@@ -53,8 +53,12 @@ public class GameManager : MonoBehaviour
     private string _levelName; //Para almacenar el nombre del nivel
     private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
     private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
+<<<<<<< Updated upstream
     private GameObject _spawnPlayer; //GameObject del spawner del jugador
     private LevelManager.Range _levelRange; //Mejor rango obtenido
+=======
+    private SpawnPlayer _spawnPlayer; //GameObject del spawner del jugador
+>>>>>>> Stashed changes
     
     #endregion
 
@@ -225,6 +229,17 @@ public class GameManager : MonoBehaviour
         return _isRack;
     }
 
+    public void RegisterPlayer(GameObject player)
+    {
+        _player = player;
+    }
+
+    public void RegisterSpawner(SpawnPlayer spawn)
+    {
+        _spawnPlayer = spawn;
+    }
+
+
     /// <summary>
     /// Busca los componenes de _player, _playerLevel, _playerBool y _levelName para almacenarlos en el GameManager.
     /// _player para el GameObject del jugador
@@ -234,7 +249,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void FirstFindPlayerComponents()
     {
-        _player = GameObject.FindWithTag("Player"); //Encuentra al jugador en cuando inicializa en escena junto con sus componentes
+         //Encuentra al jugador en cuando inicializa en escena junto con sus componentes
         if (_player == null)
         {
             Debug.LogError("Player no encontrado");
@@ -251,21 +266,21 @@ public class GameManager : MonoBehaviour
         else Debug.Log("No hay nivel asignado");
     }
 
-    /// <summary>
-    /// Inicializa el personaje y dependiendo de la booleana de _isRack, se le asigna a playerPrefab el prefab del personaje
-    /// </summary>
-    public void SpawnPlayer()
-    {
-        Time.timeScale = 1f;
-        GameObject playerPrefab = _isRack ? Rack : Albert;
+    ///// <summary>
+    ///// Inicializa el personaje y dependiendo de la booleana de _isRack, se le asigna a playerPrefab el prefab del personaje
+    ///// </summary>
+    //public void SpawnPlayer()
+    //{
+    //    Time.timeScale = 1f;
+    //    GameObject playerPrefab = _isRack ? Rack : Albert;
 
-        if (playerPrefab != null)
-        {
-            Instantiate(playerPrefab, _spawnPlayer.transform.position, Quaternion.identity);
-            Debug.Log("Player SPAWNS");
-        }
-        else Debug.Log("No hay prefab del player");
-    }
+    //    if (playerPrefab != null)
+    //    {
+    //        Instantiate(playerPrefab, _spawnPlayer.transform.position, Quaternion.identity);
+    //        Debug.Log("Player SPAWNS");
+    //    }
+    //    else Debug.Log("No hay prefab del player");
+    //}
 
     /// <summary>
     /// SetRange modifica _levelRange según el rango que ha obtenido en la partida
@@ -321,16 +336,13 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Escena cargada: " + scene.name);
-        _spawnPlayer = GameObject.FindWithTag("Spawn");
+        
+        SpawnPlayer _spawnPlayer = FindAnyObjectByType<SpawnPlayer>();
         if (_spawnPlayer == null)
         {
             Debug.LogError("No hay spawn");
         }
-        if (scene.name == "MenuLevelSelection")
-        {
-            SpawnPlayer();
-            Debug.Log("MenuLevelSelection");
-        }
+        else _spawnPlayer.SpawnPlayerInit();
         FirstFindPlayerComponents();
     }
 
