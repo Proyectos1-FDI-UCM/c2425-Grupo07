@@ -37,8 +37,7 @@ public class PlayerLevel : MonoBehaviour
     private Level _level; //Script del nivel al que va a entrar
     private PauseMenuManager _menuManager;
     private bool _enabledPause = false;
-    private GameManager _gameManager;
-    private GameObject _player;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -49,7 +48,6 @@ public class PlayerLevel : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-<<<<<<< Updated upstream
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// Comprueba si el jugador ha pulsado el botón Enter para 
     /// realizar la acción de entrar al nivel
@@ -59,62 +57,6 @@ public class PlayerLevel : MonoBehaviour
         if (_level!=null && InputManager.Instance.EnterWasPressedThisFrame())
         {
             OnEnterLevel();
-        }
-=======
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-        _gameManager.RegisterPlayer(gameObject);
-    }
-
-    /// <summary>
-    /// Habilita la acción de entrada y llama al método OnEnterLevel 
-    /// </summary>
-    private void OnEnable()
-    {
-        _menuManager = GameObject.FindObjectOfType<PauseMenuManager>();
-        Enter.action.Enable();
-        Enter.action.performed += OnEnterLevel;
-    }
-
-    /// <summary>
-    /// Deja de llamar al método OnEnterLevel y deshabilita la acción de entrada
-    /// </summary>
-    private void OnDisable()
-    {
-        Enter.action.performed -= OnEnterLevel;
-        Enter.action.Disable();
->>>>>>> Stashed changes
-    }
-
-
-    /// <summary>
-    /// Verifica si el objeto con el que colisiona el jugador tiene el script _level, si lo tiene almacena la referencia
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Level level = collision.GetComponent<Level>();
-        if (level != null)
-        {
-            _level = level;
-        }
-    }
-
-    // Método llamado cuando el jugador sale de un trigger
-    /// <summary>
-    /// Verifica si el objeto con el que sale el jugador tiene el script _level, si lo tiene y esta escena se corresponde con la que tiene almacenada la referencia actual, esta se vacía
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Level level = collision.GetComponent<Level>();
-        if (level != null && _level == level)
-        {
-            _level = null;
         }
     }
     #endregion
@@ -163,6 +105,32 @@ public class PlayerLevel : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
 
+    /// <summary>
+    /// Verifica si el objeto con el que colisiona el jugador tiene el script _level, si lo tiene almacena la referencia
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Level level = collision.GetComponent<Level>();
+        if (level != null)
+        {
+            _level = level;
+        }
+    }
+
+    // Método llamado cuando el jugador sale de un trigger
+    /// <summary>
+    /// Verifica si el objeto con el que sale el jugador tiene el script _level, si lo tiene y esta escena se corresponde con la que tiene almacenada la referencia actual, esta se vacía
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Level level = collision.GetComponent<Level>();
+        if (level != null && _level == level)
+        {
+            _level = null;
+        }
+    }
 
     #endregion
 
