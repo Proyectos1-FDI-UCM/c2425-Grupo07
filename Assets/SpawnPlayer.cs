@@ -8,6 +8,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
 
 
@@ -41,6 +42,9 @@ public class SpawnPlayer : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private GameManager _gameManager;
+    private GameObject _playerInScene;
+    private bool _isRack;
+    private Transform _spawnPosition;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -56,13 +60,23 @@ public class SpawnPlayer : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _gameManager = GameManager.Instance;  
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+            _isRack = GameManager.Instance.ReturnBool();
+        }
+
+        _spawnPosition = Spawn.GetComponent<Transform>();
+
+        if (Spawn != null)
+        {
+            SpawnPlayerInScene();
+        }
+        
+        //_gameManager.FirstFindPlayerComponents();
+
     }
 
-    private void Awake()
-    {
-        _gameManager.RegisterSpawner(this);
-    }
 
     #endregion
 
@@ -74,23 +88,34 @@ public class SpawnPlayer : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    /// <summary>
-    /// Inicializa el personaje y dependiendo de la booleana de _isRack del GameManager, se le asigna a playerPrefab el prefab del personaje
-    /// </summary>
-    public void SpawnPlayerInit()
+    public void SpawnPlayerInScene()
     {
-        if(Spawn != null)
-        {
-            Time.timeScale = 1f;
-            GameObject playerPrefab = _gameManager.ReturnBool() ? Rack : Albert;
+        Time.timeScale = 1f;
 
-            if (playerPrefab != null)
+        if (Rack != null && Albert != null)
+        {
+            if (_isRack)
             {
-                Instantiate(playerPrefab, Spawn.transform.position, Quaternion.identity);
-                Debug.Log("Player SPAWNS");
+                _playerInScene = Rack;
+                Rack.transform.position = _spawnPosition.position;
+                Rack.gameObject.SetActive(true);
             }
-            else Debug.Log("No hay prefab del player");
+            else
+            {
+                _playerInScene = Albert;
+                Albert.transform.position = _spawnPosition.position;
+                Albert.gameObject.SetActive(true);
+            }
+
+            GameManager.Instance.SetPlayer(_playerInScene);
         }
+        else Debug.Log("No hay personaje asignado");
+
+    }
+
+    public GameObject ReturnPlayerInScene()
+    {
+        return _playerInScene;
     }
 
     #endregion

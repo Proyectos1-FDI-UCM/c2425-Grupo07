@@ -37,6 +37,8 @@ public class PlayerLevel : MonoBehaviour
     private Level _level; //Script del nivel al que va a entrar
     private PauseMenuManager _menuManager;
     private bool _enabledPause = false;
+    private GameManager _gameManager;
+    private GameObject _player;
 
     #endregion
 
@@ -46,6 +48,14 @@ public class PlayerLevel : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    private void Start()
+    {
+        if(_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+        }
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -59,6 +69,7 @@ public class PlayerLevel : MonoBehaviour
             OnEnterLevel();
         }
     }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----

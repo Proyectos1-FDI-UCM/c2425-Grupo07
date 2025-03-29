@@ -44,7 +44,6 @@ public class PressScript : MonoBehaviour
 
 
     private bool _isPressing = false; // Indica si la prensa está activa.
-    private bool _isComplete = false; //Indica si se ha completado el progreso
 
     #endregion
 
@@ -92,7 +91,6 @@ public class PressScript : MonoBehaviour
                 item.GetComponentInParent<PlayerVision>().Drop();
                 CurrentObject = objects;
                 _isPressing = true;
-                _isComplete = false;
                 BarCanvasGroup.gameObject.SetActive(true);
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
@@ -134,7 +132,6 @@ public class PressScript : MonoBehaviour
             
             if (PressingTime >= 1)
             {
-                _isComplete = true;
                 ResetObject();
             }
         }
