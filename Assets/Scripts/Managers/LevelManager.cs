@@ -113,10 +113,11 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         StartTimer();
-        _gameManager = GameManager.Instance;
+        if(_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+        }
         isRack = _gameManager.ReturnBool();
-        _gameManager.SpawnPlayer();
-        _gameManager.FirstFindPlayerComponents();
         Money = 0;
     }
 

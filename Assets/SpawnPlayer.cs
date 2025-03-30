@@ -1,11 +1,14 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Se programa el funcionamiento del spawner
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
 
 
@@ -23,8 +26,12 @@ public class SpawnPlayer : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField] GameObject Rack;
+    [SerializeField] GameObject Albert;
+    [SerializeField] GameObject Spawn;
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,31 +41,43 @@ public class SpawnPlayer : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private GameManager _gameManager;
+    private GameObject _playerInScene;
+    private bool _isRack;
+    private Transform _spawnPosition;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+            _isRack = GameManager.Instance.ReturnBool();
+        }
+
+        _spawnPosition = Spawn.GetComponent<Transform>();
+
+        if (Spawn != null)
+        {
+            SpawnPlayerInScene();
+        }
         
+        //_gameManager.FirstFindPlayerComponents();
+
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -69,8 +88,38 @@ public class SpawnPlayer : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public void SpawnPlayerInScene()
+    {
+        Time.timeScale = 1f;
+
+        if (Rack != null && Albert != null)
+        {
+            if (_isRack)
+            {
+                _playerInScene = Rack;
+                Rack.transform.position = _spawnPosition.position;
+                Rack.gameObject.SetActive(true);
+            }
+            else
+            {
+                _playerInScene = Albert;
+                Albert.transform.position = _spawnPosition.position;
+                Albert.gameObject.SetActive(true);
+            }
+
+            GameManager.Instance.SetPlayer(_playerInScene);
+        }
+        else Debug.Log("No hay personaje asignado");
+
+    }
+
+    public GameObject ReturnPlayerInScene()
+    {
+        return _playerInScene;
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -78,7 +127,7 @@ public class SpawnPlayer : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class SpawnPlayer 
 // namespace

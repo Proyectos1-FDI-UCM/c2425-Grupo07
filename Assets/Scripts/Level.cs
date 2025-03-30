@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
@@ -59,7 +60,10 @@ public class Level : MonoBehaviour
     /// </summary>
     void Start()
     {
-        gameManager = GameManager.Instance;
+        if(gameManager == null)
+        {
+            gameManager = GameManager.Instance;
+        }
     }
 
 

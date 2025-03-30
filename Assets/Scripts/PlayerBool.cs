@@ -52,7 +52,7 @@ public class PlayerBool : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _gameManager = GameManager.Instance;
+        if(_gameManager == null) _gameManager = GameManager.Instance;
     }
 
     /// <summary>
