@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493fe882243c17a4d92cb66204c619e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentVelocity: 12
+  CurrentVelocity: 7
   MaxVelocity: 12
   RotationSpeed: 1000
   LastMovementVector: {x: 0, y: 0}

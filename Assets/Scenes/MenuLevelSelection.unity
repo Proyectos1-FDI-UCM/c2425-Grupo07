@@ -1452,30 +1452,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 591601033602810794, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 96.98999
-      objectReference: {fileID: 0}
-    - target: {fileID: 740069326747556813, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_Text
-      value: Level Infinito
-      objectReference: {fileID: 0}
     - target: {fileID: 1868145721706707110, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 123758431}
-    - target: {fileID: 2132490699389255359, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2299596515602896418, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 174.52002
-      objectReference: {fileID: 0}
-    - target: {fileID: 2501762909082068442, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3483448752317047062, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.99
@@ -1516,45 +1496,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4356183969435576177, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633213175519584139, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 286
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009709931683692485, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 331
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329987298542091509, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 111.54999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843458911791375975, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6227435691425189737, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_Name
       value: LevelMenuBlock (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577839480903422384, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 248
-      objectReference: {fileID: 0}
-    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: level
-      value: MainSceneRack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: scene
-      value: 
-      objectReference: {fileID: 219680482}
-    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: LevelName
-      value: NivelInfinito
       objectReference: {fileID: 0}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: SelectionPlayer
@@ -2247,10 +2191,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 123758431}
-    - target: {fileID: 2501762909082068442, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3483448752317047062, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.79
@@ -2295,10 +2235,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelMenuBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: scene
-      value: 
-      objectReference: {fileID: 219680482}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: SelectionPlayer
       value: 

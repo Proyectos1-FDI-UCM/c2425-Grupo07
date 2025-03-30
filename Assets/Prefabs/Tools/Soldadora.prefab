@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7bb7c776e1c1daf4e9a8d070e341b1e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83f272269f5e14c419d7a5bdc4c2c68a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.957143, y: 4.9857144}
+    oldSize: {x: 7.142857, y: 7.142857}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -169,7 +169,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.957143, y: 4.9857144}
+    oldSize: {x: 7.142857, y: 7.142857}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -190,10 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3637ed471c43bb94d94e9ebc74a63610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CompletionBarReference: {fileID: 0}
   _metalProcesado: {fileID: 6046970825805907103, guid: 1483d9f1dffde054b906911a9f6dc7cf, type: 3}
-  _workSpeed: 1
-  _completionTime: 6
   _materialSource: {fileID: 0}
+  MaxClicks: 6
+  CurrentClicks: 0
 --- !u!114 &4430715627000207075
 MonoBehaviour:
   m_ObjectHideFlags: 0

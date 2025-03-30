@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.01, y: 1.008}
+    oldSize: {x: 1.1111112, y: 1.1111112}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.01, y: 1.008}
+    oldSize: {x: 1.1111112, y: 1.1111112}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -170,13 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce346677737aff04680144b1666fe41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CompletionBarReference: {fileID: 0}
   Madera: {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
   MaderaProcesada: {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
-  MaxClicks: 6
-  CurrentClicks: 0
   HasWood: 0
-  Unpickable: 0
+  _completionTime: 6
 --- !u!212 &6705416684490303124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,9 +213,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8dcf54868e726354a9f09fb9e0e68b63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34dc1ffac99973042b3b8a5f047841ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

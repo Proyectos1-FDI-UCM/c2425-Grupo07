@@ -42,7 +42,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
 
         if (extinguisher == null)
         {
-            Debug.LogError("No se encontró un objeto con el script FireExtinguisher en la escena.");
+            Debug.LogWarning("No se encontró un objeto con el script FireExtinguisher en la escena.");
         }
 
         // Inicializamos las referencias del jugador
