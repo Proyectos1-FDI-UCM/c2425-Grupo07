@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 5208378399631633673}
   - component: {fileID: 3716442948494014657}
   - component: {fileID: -7595878016294337482}
-  - component: {fileID: 3665743094127962671}
   m_Layer: 6
   m_Name: Rack
   m_TagString: Player
@@ -339,7 +338,6 @@ MonoBehaviour:
   CurrentVelocity: 500
   MaxVelocity: 500
   RotationSpeed: 1000
-  MovementVector: {x: 0, y: 0}
   LastMovementVector: {x: 0, y: 0}
 --- !u!114 &-7357599917820336469
 MonoBehaviour:
@@ -439,16 +437,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6f7a509e9d3e04fa627000c4e9a585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enter: {fileID: 2064291648275711002, guid: 842a061437231409385e5d08046b3753, type: 3}
---- !u!114 &3665743094127962671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584395163546786512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23b75e5bd40a4bb18a055b69393ed67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _level: {fileID: 0}

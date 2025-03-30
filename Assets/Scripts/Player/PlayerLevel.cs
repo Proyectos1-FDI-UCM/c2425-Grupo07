@@ -34,7 +34,7 @@ public class PlayerLevel : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Level _level; //Script del nivel al que va a entrar
+    [SerializeField] private Level _level; //Script del nivel al que va a entrar
     private PauseMenuManager _menuManager;
     private bool _enabledPause = false;
     private GameManager _gameManager;
@@ -55,6 +55,7 @@ public class PlayerLevel : MonoBehaviour
         {
             _gameManager = GameManager.Instance;
         }
+        
     }
 
     /// <summary>
@@ -104,6 +105,11 @@ public class PlayerLevel : MonoBehaviour
     public Level GetLevel()
     {
         return _level;
+    }
+
+    public void SetLevelScript( Level level)
+    {
+        if(level != null) _level = level;
     }
 
     #endregion

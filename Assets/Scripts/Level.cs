@@ -43,7 +43,9 @@ public class Level : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameManager gameManager;
+    private GameManager _gameManager;
+    private PlayerLevel _player;
+    private Level _thisLevel;
 
     #endregion
 
@@ -60,10 +62,11 @@ public class Level : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if(gameManager == null)
+        if(_gameManager == null)
         {
-            gameManager = GameManager.Instance;
+            _gameManager = GameManager.Instance;
         }
+        _thisLevel = gameObject.GetComponent<Level>();
     }
 
 
@@ -75,6 +78,8 @@ public class Level : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CanvasInfo.gameObject.SetActive(true);
+        _player = collision.GetComponent<PlayerLevel>();
+        _player.SetLevelScript(_thisLevel);
     }
     /// <summary>
     /// Verifica si el jugador se sale de la colisión del objeto para hacer invisible el CanvasInfo con los datos
@@ -83,6 +88,8 @@ public class Level : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         CanvasInfo.gameObject.SetActive(false);
+        _player = null;
+
     }
     #endregion
 
@@ -103,7 +110,7 @@ public class Level : MonoBehaviour
     {
         SelectionPlayer.gameObject.SetActive(true);
         Time.timeScale = 0f;
-        gameManager.GetData();
+        _gameManager.SetLevelData(_thisLevel);
     }
 
     /// <summary>
@@ -111,7 +118,7 @@ public class Level : MonoBehaviour
     /// </summary>
     /// <returns>Retorna un string al ser llamado</returns>
     public string GetLevelName() { return LevelName; }
-
+    
 
     #endregion
 

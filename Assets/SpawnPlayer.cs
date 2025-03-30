@@ -63,7 +63,7 @@ public class SpawnPlayer : MonoBehaviour
         if (_gameManager == null)
         {
             _gameManager = GameManager.Instance;
-            _isRack = GameManager.Instance.ReturnBool();
+            _isRack = _gameManager.ReturnBool();
         }
 
         _spawnPosition = Spawn.GetComponent<Transform>();
@@ -72,8 +72,8 @@ public class SpawnPlayer : MonoBehaviour
         {
             SpawnPlayerInScene();
         }
-        
-        //_gameManager.FirstFindPlayerComponents();
+        _gameManager.SetPlayer(_playerInScene);
+        _gameManager.FirstFindPlayerComponents();
 
     }
 
@@ -94,28 +94,14 @@ public class SpawnPlayer : MonoBehaviour
 
         if (Rack != null && Albert != null)
         {
-            if (_isRack)
-            {
-                _playerInScene = Rack;
-                Rack.transform.position = _spawnPosition.position;
-                Rack.gameObject.SetActive(true);
-            }
-            else
-            {
-                _playerInScene = Albert;
-                Albert.transform.position = _spawnPosition.position;
-                Albert.gameObject.SetActive(true);
-            }
+            GameObject player = _isRack ? Rack : Albert;
 
-            GameManager.Instance.SetPlayer(_playerInScene);
+            Instantiate(player, Spawn.transform.position, Quaternion.identity);
+
+            _playerInScene = player;   
         }
         else Debug.Log("No hay personaje asignado");
 
-    }
-
-    public GameObject ReturnPlayerInScene()
-    {
-        return _playerInScene;
     }
 
     #endregion

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a316c7063c2bc384c8f43a3e1f76f6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rack: {fileID: 0}
-  Albert: {fileID: 0}
+  Rack: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
+  Albert: {fileID: 9153345443677232179, guid: a766d509db78a264e9d400280fddf282, type: 3}
   Spawn: {fileID: 6254998581236326790}

@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    private GameObject _player; //GameObject del jugador en la escena
-    private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
-    private Level _level; //Para almacenar el nivel entrado
-    private string _levelName; //Para almacenar el nombre del nivel
-    private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
-    private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
+    [SerializeField]private GameObject _player; //GameObject del jugador en la escena
+    [SerializeField] private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
+    [SerializeField] private Level _level; //Para almacenar el nivel entrado
+    [SerializeField] private string _levelName; //Para almacenar el nombre del nivel
+    [SerializeField] private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
+    [SerializeField] private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
     private LevelManager.Range _levelRange; //Mejor rango obtenido
     
     #endregion
@@ -183,6 +183,12 @@ public class GameManager : MonoBehaviour
         _levelName = _level.GetLevelName();
     }
 
+    public void SetLevelData(Level level)
+    {
+        _level = level;
+        _levelName = _level.GetLevelName();
+    }
+
     /// <summary>
     /// Obtiene del scritp del _playerBool el personaje elegido y es guardado en el GameManager
     /// </summary>
@@ -222,7 +228,7 @@ public class GameManager : MonoBehaviour
     {
         if (_player == null)
         {
-            Debug.LogError("Player no encontrado");
+            Debug.Log("Player no encontrado");
             return;
         }
         _playerLevel = _player.GetComponent<PlayerLevel>();

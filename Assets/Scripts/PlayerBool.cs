@@ -35,7 +35,7 @@ public class PlayerBool : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private bool _isRack; // true si el jugador eligió a Rack, false si eligió a Albert
-    private Canvas _canvas; //Canvas con la selección del jugador
+    [SerializeField] private Canvas _canvas; //Canvas con la selección del jugador
     private GameManager _gameManager; //Referencia para el GameManager
     #endregion
 
@@ -53,14 +53,6 @@ public class PlayerBool : MonoBehaviour
     void Start()
     {
         if(_gameManager == null) _gameManager = GameManager.Instance;
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
     }
     #endregion
 
@@ -88,7 +80,6 @@ public class PlayerBool : MonoBehaviour
     {
         _isRack = true;
         Debug.Log("Jugador seleccionó a Rack.");
-        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
         _gameManager.GetPlayer();
         _gameManager.ChangeToLevel();
     }
@@ -98,7 +89,6 @@ public class PlayerBool : MonoBehaviour
     {
         _isRack = false;
         Debug.Log("Jugador seleccionó a Albert.");
-        _canvas = GameObject.Find("SelectionPlayer").GetComponent<Canvas>();
         _gameManager.GetPlayer();
         _gameManager.ChangeToLevel();
     }
