@@ -89,7 +89,6 @@ public class Level : MonoBehaviour
     {
         CanvasInfo.gameObject.SetActive(false);
         _player = null;
-
     }
     #endregion
 
