@@ -44,6 +44,7 @@ public class ConveyorItems : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private Vector3 _direction = Vector3.up; // Para que siempre siga la dirección hacia arriba del material
+                                             // 90º Derecha, 0º Abajo, -90º Izquierda, 180º Arriba, en el Eje Z de la cinta
     private float _timerDeletion; // Tiempo que tarda en borrarse el material cuando toca el trigger de la basura
     #endregion
 
