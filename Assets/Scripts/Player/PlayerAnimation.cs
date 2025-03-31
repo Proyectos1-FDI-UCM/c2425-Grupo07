@@ -34,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Animator _animator; //atributo animator para las animaciones.
+    private Animator _animator; //atributo _animator para las animaciones.
     private PlayerVision _playerVision;// sirve para llaamar al playerVision scrpit.
     private PlayerDash _playerDash; // sirve para llmar al playerDash scrpit.
     private PlayerMovement _playerMovement;// sirve para llamar al playerMovemnt script. 
@@ -86,7 +86,7 @@ public class PlayerAnimation : MonoBehaviour
 
     /// <summary>
     /// La función animate se encarga de llevar acabo todo el proceso de animación, se han dado el valor correspondiente a las 
-    /// variable para que su escritura sea más fácil, se definen los parámetros para ser usados en el animator del editor y se definen
+    /// variable para que su escritura sea más fácil, se definen los parámetros para ser usados en el _animator del editor y se definen
     /// las condiciones para cada estado del personaje.
     /// </summary>
     public void Animate()
