@@ -104,7 +104,7 @@ public class PlayerDash : MonoBehaviour
     /// <returns>IEnumerator para la corrutina</returns>
     private IEnumerator StartDash()
     {
-        _rb.velocity = _pM.GetLastMove() * DashSpeed * Time.deltaTime;
+        _rb.velocity = _pM.GetLastMove() * DashSpeed;
         yield return new WaitForSeconds(DashDuration);
         _isDashing = false;
         Debug.Log("DASH RECARGADO");

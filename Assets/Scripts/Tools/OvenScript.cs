@@ -129,16 +129,14 @@ public class OvenScript : MonoBehaviour
     }
     public void Pick()
     {
-        if(_hasFinished)
+        if (_hasFinished)
         {
-            _matScr.ReturnProgressBar().color = Color.green;
-            _matScr.UpdateProgress(0);
-            _matScr.ReturnProgressBar().gameObject.GetComponentInParent<Canvas>().enabled = false;
+            _matScr.ProcessTheMaterial();
         }
         _isProcessing = false;
-            _hasFinished = false;
-            FlashImage.SetActive(false);
-            _matScr = null;
+        _hasFinished = false;
+        FlashImage.SetActive(false);
+        _matScr = null;
     }
     #endregion
 
@@ -158,7 +156,6 @@ public class OvenScript : MonoBehaviour
             FireIco.SetActive(false);
             _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
-
         }
     }
 

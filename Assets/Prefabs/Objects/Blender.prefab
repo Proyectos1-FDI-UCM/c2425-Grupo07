@@ -164,7 +164,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -915237093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9b485021d27ac37488132a46c409c677, type: 3}
   m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
@@ -255,6 +255,7 @@ MonoBehaviour:
   matType: 7
   CompletionBar: {fileID: 0}
   MatState: []
+  _materialProgress: 0
 --- !u!114 &-6578448476733511908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 1
+  BeltVel: 2
+  enCinta: 0
   BeltDistance: 0.79
 --- !u!50 &-3239848673262794401
 Rigidbody2D:

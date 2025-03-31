@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 5208378399631633673}
   - component: {fileID: 3716442948494014657}
   - component: {fileID: -7595878016294337482}
+  - component: {fileID: 3801942270484709432}
   m_Layer: 6
   m_Name: Rack
   m_TagString: Player
@@ -438,3 +439,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 0}
+--- !u!114 &3801942270484709432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584395163546786512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b75e5bd40a4bb18a055b69393ed67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

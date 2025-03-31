@@ -32,6 +32,7 @@ public class ConveyorItems : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] GameObject NextBelt; // Detecta cuál sería la siguiente tile de cinta mecánica para moverse hacia ella
     [SerializeField] float BeltVel; // La velocidad apropiada a la cinta
+    [SerializeField] bool enCinta; // La distancia hasta que se cambia de cinta
     [SerializeField] float BeltDistance; // La distancia hasta que se cambia de cinta
     #endregion
 
@@ -54,6 +55,13 @@ public class ConveyorItems : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    void Update()
+    {
+        if (enCinta)
+        {
+            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel, Space.World);
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -78,16 +86,22 @@ public class ConveyorItems : MonoBehaviour
     // Si no hay un objeto al final se mueve directamente a la siguiente cinta
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Cinta" && transform.parent.tag != "Player")
+        if (other.gameObject.GetComponent<Mesa>() != null && 
+            other.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Conveyor && transform.parent.GetComponent<PlayerVision>() == null)
         {
             NextBelt = other.gameObject;
-            transform.Translate(_direction * -1 * Time.deltaTime * BeltVel, Space.World); 
+            enCinta = true;
             AvanzaConParent();
         }
-        if (other.gameObject.tag == "Basura" && NextBelt != null)
+        else if (transform.parent.GetComponent<PlayerVision>() != null)
+        {
+            enCinta = false;
+        }
+        if (other.gameObject.GetComponent<BinScript>() != null && NextBelt != null)
         {
             _timerDeletion += Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
+            transform.localScale = transform.localScale*(1-_timerDeletion);
             if (_timerDeletion > 0.5f)
             {
                 transform.position = other.transform.position;

@@ -91,14 +91,14 @@ public class InputManager : MonoBehaviour
             // que se inicialicen el resto de componentes del GameObject para luego ser
             // destruídos. Esto es importante dependiendo de si hay o no más managers
             // en el GameObject.
-            DestroyImmediate(this.gameObject);
+            //DestroyImmediate(this.gameObject);
         }
         else
         {
             // Somos el primer InputManager.
-            // Queremos sobrevivir a cambios de escena.
+            // NO Queremos sobrevivir a cambios de escena.
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Init();
         }
 

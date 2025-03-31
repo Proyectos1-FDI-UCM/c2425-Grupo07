@@ -227,7 +227,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -915237093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1981903589, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -257,6 +257,7 @@ MonoBehaviour:
   MatState:
   - {fileID: -1417738725, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   - {fileID: 288120203, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  _materialProgress: 0
 --- !u!114 &2370582184180194420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 1
+  BeltVel: 2
+  enCinta: 0
   BeltDistance: 0.79
 --- !u!58 &2406807137711535684
 CircleCollider2D:
@@ -306,7 +308,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1419363691755046708
 Rigidbody2D:
   serializedVersion: 4

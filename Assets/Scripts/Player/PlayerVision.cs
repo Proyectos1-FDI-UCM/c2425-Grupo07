@@ -236,11 +236,11 @@ public class PlayerVision : MonoBehaviour
         if (_actualMesa != null) 
         {
             ContentAnalizer();
-       
+
             if (_heldObject != null && _lookedObject == null) // EL jugador tiene un objeto en la mano y no hay objeto en la mesa : Soltar el objeto
             {
                 #region Antiguo sistema de comprobacion de si se puede soltar el objeto, descartado
-                
+
 
                 // if (_heldObject.GetComponent<Material>() && (_actualMesa.tag == "CraftingTable" && !_heldObject.GetComponent<Objects>() || 
                 //     _actualMesa.tag == "Prensa" && (!_heldObject.GetComponent<Objects>() || _heldObject.GetComponent<Objects>().ThereIsMaterial(_heldObject)) ||
@@ -253,22 +253,22 @@ public class PlayerVision : MonoBehaviour
 
                 if (IsMesaATool()) // Si la mesa es una herramienta
                 {
-                  _actualMesa.SendMessage("Drop", _heldObject,SendMessageOptions.DontRequireReceiver); // Actualizar referencias y soltar el objeto si es posible
-                  if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
+                    _actualMesa.SendMessage("Drop", _heldObject, SendMessageOptions.DontRequireReceiver); // Actualizar referencias y soltar el objeto si es posible
+                    if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
                 }
-                else if (_actualMesa.GetComponent<Receiver>() == null) 
+                else if (_actualMesa.GetComponent<Receiver>() == null)
                 {
-                Drop(); // Soltar el objeto
+                    Drop(); // Soltar el objeto
                 }
             }
             else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
             {
-                    // Limpiar referencias antes de recoger el objeto
-                    if (IsMesaATool()) 
-                    {
-                    _actualMesa.SendMessage("Pick",SendMessageOptions.DontRequireReceiver);
-                    }
-                    Pick(_lookedObject);
+                // Limpiar referencias antes de recoger el objeto
+                if (IsMesaATool())
+                {
+                    _actualMesa.SendMessage("Pick", SendMessageOptions.DontRequireReceiver);
+                }
+                Pick(_lookedObject);
             }
             else if (_heldObject != null && _lookedObject != null) InsertMaterial();
         }
@@ -276,7 +276,7 @@ public class PlayerVision : MonoBehaviour
 
     private bool IsMesaATool()
     {
-        return _actualMesa.GetComponent<OvenScript>() != null || _actualMesa.GetComponent<SawScript>() != null || _actualMesa.GetComponent<AnvilScript>() != null || _actualMesa.GetComponent<PressScript>() != null || _actualMesa.GetComponent<CraftingTableScript>() != null;
+        return _actualMesa.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Tool;
     }
 
 

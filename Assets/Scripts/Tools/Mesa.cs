@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// El Script permite diferenciar entre los distintos sitios en los que se pueden dejar los materiales
+// Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -10,11 +10,19 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Creo un enum con tres posibilidades, si es Conveyor el material se moverá. 
+/// Si es Table el material solamente se podrá colocar si no hay un objeto ya colocado (incluye las basuras). 
+/// Si es Tool solo se podrán colocar materiales concretos si no se está procesando ya uno.
 /// </summary>
 public class Mesa : MonoBehaviour
 {
+    /// <summary>
+    /// Este enum clasifica los prefabs para luego se coloquen determinados objetos
+    /// </summary>
+    public enum TableType
+    {
+        Conveyor, Table, Tool 
+    }
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -22,9 +30,10 @@ public class Mesa : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] private TableType tabType; //Este enum sirve para que el jugador sepa diferenciar entre las distintas mesas
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,30 +45,14 @@ public class Mesa : MonoBehaviour
     private GameObject item;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -70,7 +63,14 @@ public class Mesa : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-
+    /// <summary>
+    /// Devuelve el tipo de mesa para que el playerVision las identifique
+    /// </summary>
+    /// <returns></returns>
+    public TableType TableTypeReturn()
+    {
+        return tabType;
+    }
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----

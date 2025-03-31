@@ -227,7 +227,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -915237093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1508383589, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -258,6 +258,7 @@ MonoBehaviour:
   - {fileID: -625002849, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   - {fileID: -1872800837, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   - {fileID: 979421830, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  _materialProgress: 0
 --- !u!58 &6475533781192141353
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &5449214854101520171
 Rigidbody2D:
   serializedVersion: 4
@@ -333,7 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextBelt: {fileID: 0}
-  BeltVel: 1
+  BeltVel: 2
+  enCinta: 0
   BeltDistance: 0.79
 --- !u!1 &8178194999067490553
 GameObject:
