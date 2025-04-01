@@ -116,6 +116,10 @@ public class SawScript : MonoBehaviour
         _completionTime = time;
     }
   
+    /// <summary>
+    /// Este método es el encarga analizar el objeto que se le pasa como parámetro y colocar el material si es apto, además se encarga de establecer todas las variables necesarias de la mesa de trabajo correspondiente.
+    /// </summary>
+    /// <param name="item"></param>
     public void Drop(GameObject item)
     {
         if (item.GetComponent<Material>() != null)
@@ -132,6 +136,9 @@ public class SawScript : MonoBehaviour
         }
         
     }
+    /// <summary>
+    /// Se encarga de actualizar las variables de la mesa de trabajo para cuando el jugador recoge el material procesado
+    /// /// </summary>
     public void Pick()
     {
         _materialSource = null;

@@ -147,7 +147,7 @@ public class AnvilScript : MonoBehaviour
             }
         }
     }
-        // Actualiza la barra de compleción de la sierra
+        // Actualiza la barra de compleción del yunque
     private void UpdateCompletionBar(float _maxCompletion, float _currentCompletion, float _pastCompletion)
     {
         if (CompletionBarReference != null)
@@ -159,7 +159,7 @@ public class AnvilScript : MonoBehaviour
         }
     }
 
-    // Hace la animación de rellenar la barra de compleción de la sierra
+    // Hace la animación de rellenar la barra de compleción del yunque
     private IEnumerator CompletionBarAnimation(float _targetCompletion, float _pastCompletion)
     {
         float _transitionTime = 0.25f, _timePassed = 0f;
@@ -171,11 +171,19 @@ public class AnvilScript : MonoBehaviour
         }
         CompletionBarReference.fillAmount = _targetCompletion;
     }
+    /// <summary>
+    /// Devuelve una boleana que indica si la soldadora tiene metal dentro o no.
+    /// </summary>
+    /// <returns></returns>
     public bool GetHasMetal()
     {
         return hasMetal;
     }
 
+    /// <summary>
+    /// Este método es el encarga analizar el objeto que se le pasa como parámetro y colocar el material si es apto, además se encarga de establecer todas las variables necesarias de la mesa de trabajo correspondiente.
+    /// </summary>
+    /// <param name="item"></param>
       public void Drop(GameObject item)
     {
         if (item.GetComponent<Material>() != null)
@@ -194,6 +202,9 @@ public class AnvilScript : MonoBehaviour
             else Debug.Log($"No se puede introducir {material.MaterialTypeReturn()} en esta estacion de trabajo por que solo acepta Metal Mineral");
         }
     }
+     /// <summary>
+    /// Se encarga de actualizar las variables de la mesa de trabajo para cuando el jugador recoge el material procesado
+    /// /// </summary>
     public void Pick()
     {
         if (_hasFinished)

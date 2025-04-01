@@ -106,7 +106,11 @@ public class PlayerVision : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Se encarga de detectar si el jugador ha entrado en contacto con una mesa, si es así, se guarda la referencia de la mesa en _actualMesa.
+    /// Si el jugador entra en contacto con otra mesa, se compara la distancia entre el jugador y la mesa, si es menor que la distancia entre el jugador y la mesa anterior, se guarda la nueva mesa como _actualMesa.
+    /// Si el jugador entra en contacto con el recibidor, se llama al metodo correspondiente en funcion de si el jugador lleva un objeto en la mano o no.
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // me aseguro que solo el collider de la visión del jugador es el que actúa.
@@ -141,7 +145,10 @@ public class PlayerVision : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Se encarga de detectar si el jugador ha salido de contacto con una mesa, si es así, se elimina la referencia de la mesa en _actualMesa.
+    /// Si el jugador sale de contacto con el recibidor, se llama a SetIdleMode() para que el recibidor vuelva a su estado normal.
+    /// </summary>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)
@@ -274,6 +281,10 @@ public class PlayerVision : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///  Devuelve una boleana que indica si la mesa actual es una herramienta o no.
+    /// </summary>
+    /// <returns></returns>
     private bool IsMesaATool()
     {
         return _actualMesa.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Tool;

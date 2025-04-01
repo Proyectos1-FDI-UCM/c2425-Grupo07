@@ -37,11 +37,6 @@ public class PlayerDash : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    /// <summary>
-    /// Componente Rigidbody2D del jugador para controlar su movimiento
-    /// </summary>
-    private Rigidbody2D _rb;
-    private PlayerMovement _pM;
 
     /// <summary>
     /// Indica si el dash está actualmente en ejecución
@@ -55,16 +50,14 @@ public class PlayerDash : MonoBehaviour
     #region Métodos de MonoBehaviour
 
     /// <summary>
-    /// Obtiene la referencia al componente Rigidbody2D del jugador.
+    /// Reestablece el contador del dash al iniciar el juego para asegurar el buen funcionamiento.
     /// </summary>
     void Start()
     {
-       _rb = GetComponent<Rigidbody2D>();
-        _pM = GetComponent<PlayerMovement>();
         timecounter = 0f;
     }
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Este update se encarga de activar el dash y de establecer la velocidad del mismo.
     /// </summary>
     void Update()
     {
@@ -98,9 +91,15 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     /// <param name="context">Contexto del input proporcionado por el sistema de input</param>
 
+    /// <summary>
+    /// Devuelve una boleana que indica si el dash está activo o no.
+    /// </summary>
     public bool IsDashing()
     { return _isDashing; }
 
+    /// <summary>
+    /// Devuelve la velocidad del dash en función de la dirección del movimiento del jugador.
+    /// </summary>
     public Vector2 GetDashVelocity()
     { return _dashVelocity; }
 
@@ -109,6 +108,9 @@ public class PlayerDash : MonoBehaviour
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
 
+    /// <summary>
+    /// Activa el dash alterando la boleana _isDashing a true.
+    /// </summary>
     private void RequestDash()
     {
         if (!_isDashing)

@@ -46,9 +46,6 @@ public class PlayerSaw : MonoBehaviour
 
     // _playerVision sirve para llamar luego al script de PlayerVision
     private PlayerVision _playerVision;
-
-    // _playerMovement sirve para llamar luego al script de PlayerMovement
-    private PlayerMovement _playerMovement;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -71,7 +68,6 @@ public class PlayerSaw : MonoBehaviour
             SierraClick = FindAnyObjectByType<SawScript>();
         }
         _playerVision = GetComponent<PlayerVision>();
-        _playerMovement = GetComponent<PlayerMovement>();
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
