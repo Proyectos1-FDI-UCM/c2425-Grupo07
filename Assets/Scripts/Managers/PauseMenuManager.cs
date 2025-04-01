@@ -43,6 +43,8 @@ public class PauseMenuManager : MonoBehaviour
     private bool _paused = false;  //Indica si el juego esta pausado o no.
     private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
 
+    private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -111,6 +113,20 @@ public class PauseMenuManager : MonoBehaviour
         {
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
+            if (_playerDash != null)
+            {
+                _playerDash.enabled = false; // Bloquea el dash del jugador al pausar el juego.
+            }
+            else // Solo se ejecuta una vez si el jugador está en la escena.
+            {
+                _playerDash = FindAnyObjectByType<PlayerDash>(); // Busca el script de PlayerDash en la escena.
+                if (_playerDash != null) // El jugador está en la escena
+                {
+                    _playerDash.enabled = false; // Bloquea el dash del jugador al pausar el juego.
+                }
+                else Debug.LogWarning("No se ha encontrado al jugador en la escena."); // El jugador no está en la escena
+            }
+
             _paused = true;
 
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
@@ -127,6 +143,10 @@ public class PauseMenuManager : MonoBehaviour
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 _paused = false;
+                if (_playerDash != null)
+                {
+                    _playerDash.enabled = true; // Desbloquea el dash del jugador al reanudar el juego.
+                }
 
                 EventSystem.current.SetSelectedGameObject(null);
             }

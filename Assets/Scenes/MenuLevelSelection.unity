@@ -1958,6 +1958,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 357673956085400386, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_Text
+      value: 'EXIT TO MENU
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 621332150888265718, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2042,6 +2048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Canvas UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2987863188875327086, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_Name
+      value: ExitMainMenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5442521684706841132, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2049,6 +2059,10 @@ PrefabInstance:
     - target: {fileID: 5442521684706841132, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_RenderMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832230888723392228, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TitleScreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

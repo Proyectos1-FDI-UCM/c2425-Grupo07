@@ -149,6 +149,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (_movement == Vector2.zero)
         {
+            Debug.Log("Trabajando");
             _working = true;
         }
     }
@@ -158,6 +159,7 @@ public class PlayerAnimation : MonoBehaviour
     /// </summary>
     private void SetBoolFalse()
     {
+        Debug.Log("No Trabajando");
         _working = false;
     }
 

@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using UnityEditor.Callbacks;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -79,12 +80,12 @@ public class PlayerSaw : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance.InteractIsPressed() && _playerVision.GetActualMesa() != null
+        if (InputManager.Instance.InteractWasPressedThisFrame() && _playerVision.GetActualMesa() != null
             && _playerVision.GetActualMesa().GetComponent<SawScript>() != null)
         {
             TurnOn();
         }
-        else if (InputManager.Instance.InteractWasReleasedThisFrame())
+        else if (InputManager.Instance.InteractWasReleasedThisFrame() || _playerMovement.GetMovement() != Vector2.zero)
         {
             TurnOff();
         }
@@ -116,16 +117,12 @@ public class PlayerSaw : MonoBehaviour
         // {
             Debug.Log("TurnOn");
             SierraClick.TurnOnSaw();
-            _playerMovement.enabled = false;
-            _playerVision.enabled = false;
         // }
     }
     private void TurnOff()
     {
         Debug.Log("TurnOff");
         SierraClick.TurnOffSaw();
-        _playerMovement.enabled = true;
-        _playerVision.enabled = true;
     }
     #endregion   
 
