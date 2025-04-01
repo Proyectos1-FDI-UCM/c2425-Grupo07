@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     /// la carpeta Settings
     /// </summary>
     private PlayerAnimation _playerAnimation;
+    private PlayerDash _playerDash;
 
     #endregion
 
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         CurrentVelocity = MaxVelocity;
         _playerAnimation = GetComponent<PlayerAnimation>();
         _rigidBody = GetComponent<Rigidbody2D>();
+        _playerDash = GetComponent<PlayerDash>();
     }
 
     /// <summary>
@@ -104,30 +106,23 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove()
     {
         _translateMovement = InputManager.Instance.MovementVector * CurrentVelocity; // Indico el vector de movimiento en función de la dirección y la velocidad
-        _rigidBody.velocity = _translateMovement;
+        if (!_playerDash.IsDashing()) // Esta condicional busca ahorrar algo de recursos por el hecho de no tener que recoger
+        //la velocidad de dash en todo momento. Si resulta que esto no es eficiente, lo cambio posteriormente.
+        {
+            _rigidBody.velocity = _translateMovement;
+        }
+        else 
+        {
+            _rigidBody.velocity = _translateMovement + _playerDash.GetDashVelocity();
+        }
         //_rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
         //transform.Translate(_translateMovement, Space.World); Anteriormente
-        if (_translateMovement != Vector2.zero) // Quiero que cambie de dirección solo cuando se mueve el personaje
-        {
-            LastMovementVector = _translateMovement;
-            //_targetRotation = Quaternion.LookRotation(transform.forward, _translateMovement); // El Quaternion apuntaba a la dirección
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, RotationSpeed * TimeText.deltaTime); // El jugador giraba a la dirección
-        }
     }
 
     #endregion
 
     // ---- METODOS PUBLICOS ----
     #region Métodos Públicos
-    public Vector2 GetLastMove()
-    {
-        return LastMovementVector;
-    }
-
-    public Vector2 GetMovement()
-    {
-        return InputManager.Instance.MovementVector;
-    }
 
     #endregion
 

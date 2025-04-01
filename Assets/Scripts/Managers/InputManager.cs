@@ -153,6 +153,7 @@ public class InputManager : MonoBehaviour
     /// es un vector normalizado 
     /// </summary>
     public Vector2 MovementVector { get; private set; }
+    public Vector2 LastMovementVector { get; private set; }
 
     /// <summary>
     /// Método para saber si el botón de interactuar (Interact) está pulsado
@@ -277,6 +278,10 @@ public class InputManager : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         MovementVector = context.ReadValue<Vector2>();
+        if (MovementVector != Vector2.zero)
+        {
+            LastMovementVector = MovementVector;
+        }
     }
 
     #endregion

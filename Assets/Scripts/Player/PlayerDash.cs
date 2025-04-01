@@ -47,6 +47,8 @@ public class PlayerDash : MonoBehaviour
     /// Indica si el dash está actualmente en ejecución
     /// </summary>
     private bool _isDashing = false;
+    private float timecounter = 0f;
+    private Vector2 _dashVelocity;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -59,6 +61,7 @@ public class PlayerDash : MonoBehaviour
     {
        _rb = GetComponent<Rigidbody2D>();
         _pM = GetComponent<PlayerMovement>();
+        timecounter = 0f;
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -68,6 +71,21 @@ public class PlayerDash : MonoBehaviour
         if (InputManager.Instance.DashWasPressedThisFrame())
         {
             RequestDash();
+        }
+        if (_isDashing)
+        {
+            if (timecounter < DashDuration)
+            {
+                timecounter += Time.deltaTime;
+                // Aplico la velocidad del dash al la variable _dashVelocity que después tomara PlayerMovement para aplicar la velocidad al Rigidbody2D
+                _dashVelocity = InputManager.Instance.LastMovementVector * DashSpeed * (1 - (timecounter / DashDuration));
+            }
+            else
+            {
+                _isDashing = false;
+                timecounter = 0f;
+                _dashVelocity = Vector2.zero;
+            }
         }
     }
     #endregion
@@ -83,31 +101,22 @@ public class PlayerDash : MonoBehaviour
     public bool IsDashing()
     { return _isDashing; }
 
+    public Vector2 GetDashVelocity()
+    { return _dashVelocity; }
+
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+    #region Métodos Privados
+
     private void RequestDash()
     {
         if (!_isDashing)
         {
             Debug.Log("DASH ACTIVADO");
             _isDashing = true;
-            StartCoroutine(StartDash());
+            
         }
-    }
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    /// <summary>
-    /// Ejecuta la mecánica del dash.
-    /// Aplica la velocidad en la dirección actual del jugador y
-    /// espera la duración configurada antes de permitir otro dash.
-    /// </summary>
-    /// <returns>IEnumerator para la corrutina</returns>
-    private IEnumerator StartDash()
-    {
-        _rb.velocity = _pM.GetLastMove() * DashSpeed;
-        yield return new WaitForSeconds(DashDuration);
-        _isDashing = false;
-        Debug.Log("DASH RECARGADO");
     }
 
 

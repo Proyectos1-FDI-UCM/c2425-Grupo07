@@ -85,7 +85,7 @@ public class PlayerSaw : MonoBehaviour
         {
             TurnOn();
         }
-        else if (InputManager.Instance.InteractWasReleasedThisFrame() || _playerMovement.GetMovement() != Vector2.zero)
+        else if (InputManager.Instance.InteractWasReleasedThisFrame() || InputManager.Instance.MovementVector != Vector2.zero)
         {
             TurnOff();
         }

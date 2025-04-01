@@ -92,9 +92,8 @@ public class PlayerAnimation : MonoBehaviour
     public void Animate()
     {
         _picked = _playerVision.IsBeingPicked();
-        _movement = _playerMovement.GetMovement();
-        _lastMove = _playerMovement.GetLastMove();
-
+        _movement = InputManager.Instance.MovementVector;
+        _lastMove = InputManager.Instance.LastMovementVector;
         _animator.SetFloat("WalkX", _movement.x);
         _animator.SetFloat("WalkY", _movement.y);
         _animator.SetFloat("MoveMagnitude", _movement.magnitude);
