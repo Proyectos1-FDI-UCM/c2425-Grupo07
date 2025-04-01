@@ -44,8 +44,6 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] public bool IsBurnt = false;
-    // StatesMat se especializa en almacenar los prefabs que aparecerán al procesar el material, 0 procesado, 1 quemado, 2 procesado, 3 fallido
-    [SerializeField] private GameObject[] StatesMat;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -131,7 +129,7 @@ public class OvenScript : MonoBehaviour
     {
         if (_hasFinished)
         {
-            _matScr.ProcessTheMaterial();
+            _matScr.ProcessHasEnded();
         }
         _isProcessing = false;
         _hasFinished = false;
