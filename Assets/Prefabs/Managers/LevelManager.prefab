@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRack: 1
-  Rack: {fileID: 7584395163546786512, guid: 75c7cbbc157eb984c9ea72395c6e4025, type: 3}
-  Albert: {fileID: 9153345443677232179, guid: a766d509db78a264e9d400280fddf282, type: 3}
   Money: 0
   ShowText: {fileID: 0}
   Panel: {fileID: 0}
+  _maxTime: 180
+  _minS: 900
+  _minA: 650
+  _minB: 400
