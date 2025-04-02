@@ -116,21 +116,14 @@ public class ConveyorItems : MonoBehaviour
     // Avanza si llega al centro de la cinta y cambia la dirección si es distinta a la del objeto
     void AvanzaConParent()
     {
-        if ((Vector2.Distance(transform.position, NextBelt.transform.position) < 0.1) && _direction != NextBelt.transform.up)
+        if (Vector3.Distance(transform.position, NextBelt.transform.position) < 0.1 && _direction != NextBelt.transform.up)
         {
             _direction = NextBelt.transform.up;
             transform.position = NextBelt.transform.position;
             transform.SetParent(NextBelt.transform);
         }
-        else if (Vector2.Distance(transform.position, NextBelt.transform.position) < BeltDistance)
+        else if (Vector3.Distance(transform.position, NextBelt.transform.position) < BeltDistance)
         {
-            transform.SetParent(NextBelt.transform);
-        }
-        else if (Vector2.Distance(transform.position, NextBelt.transform.position) > 1)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, NextBelt.transform.position, BeltVel);
-            _direction = NextBelt.transform.up;
-            transform.position = NextBelt.transform.position;
             transform.SetParent(NextBelt.transform);
         }
     }
