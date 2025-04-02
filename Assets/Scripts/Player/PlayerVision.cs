@@ -100,7 +100,7 @@ public class PlayerVision : MonoBehaviour
     void FixedUpdate()
     {
         _visionCollider.offset = Vector2.Lerp(_visionCollider.offset, InputManager.Instance.LastMovementVector.normalized * _visionDistance , _offSetSpeed * Time.deltaTime); 
-        if (_isBeingPicked)
+        if (_heldObject!= null && _isBeingPicked)
         {
             _heldObject.transform.position = Vector2.Lerp(_heldObject.transform.position,(Vector2)transform.position + InputManager.Instance.LastMovementVector.normalized,_offSetSpeed * Time.deltaTime );
         }
@@ -268,7 +268,7 @@ public class PlayerVision : MonoBehaviour
                     Drop(); // Soltar el objeto
                 }
             }
-            else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
+            else if (_actualMesa.GetComponent<OvenScript>() == null && _heldObject == null && _lookedObject != null)
             {
                 // Limpiar referencias antes de recoger el objeto
                 if (IsMesaATool())
@@ -277,6 +277,19 @@ public class PlayerVision : MonoBehaviour
                 }
                 Pick(_lookedObject);
             }
+            else if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnBurnt() && _heldObject == null && _lookedObject != null)
+            {
+                // Limpiar referencias antes de recoger el objeto
+                if (IsMesaATool())
+                {
+                    _actualMesa.SendMessage("Pick", SendMessageOptions.DontRequireReceiver);
+                }
+                Pick(_lookedObject);
+            }
+            //else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
+            //{
+ 
+            //}
             else if (_heldObject != null && _lookedObject != null) InsertMaterial();
         }
     }

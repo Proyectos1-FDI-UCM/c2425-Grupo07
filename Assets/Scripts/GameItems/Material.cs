@@ -162,6 +162,7 @@ public class Material : MonoBehaviour
                 matType = MaterialType.Otro;
                 break;
         }
+        ProcessHasEnded();
     }
     /// <summary>
     /// Al terminar el procesamiento de un material se pone en verde la barra para indicar que se vuelve a procesar
