@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5fc1330dc35cfc44985a71fe11a07afd
+guid: 3ee0e08aad1134d43b2ef8fce8e1db14
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8305,7 +8305,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 288
-        width: 31
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8326,7 +8326,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 256
-        width: 31
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8347,7 +8347,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 224
-        width: 31
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8368,7 +8368,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 192
-        width: 31
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8539,7 +8539,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -8547,174 +8547,6 @@ TextureImporter:
       bones: []
       spriteID: 200bf00102cb1d9489b204f2e82d21c3
       internalID: -942572052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_12
-      rect:
-        serializedVersion: 2
-        x: 3520
-        y: 288
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 328ca3235619a5e4190007e2802f4fc2
-      internalID: -287277145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_13
-      rect:
-        serializedVersion: 2
-        x: 3520
-        y: 256
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67ab90bee8a898a41baa2b748e3fe5a2
-      internalID: -1545758363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_14
-      rect:
-        serializedVersion: 2
-        x: 3520
-        y: 224
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a642e5bbac755f42b4ebf3ece566b18
-      internalID: 1933977376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_15
-      rect:
-        serializedVersion: 2
-        x: 3520
-        y: 192
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2701d9a08d57a13479409adf55d46f65
-      internalID: 905995404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_16
-      rect:
-        serializedVersion: 2
-        x: 3552
-        y: 96
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3e3ac386b802734b928321bceb88004
-      internalID: -1288707084
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_17
-      rect:
-        serializedVersion: 2
-        x: 3552
-        y: 64
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7ee7d680ef6c8549801dcc86f5fb53e
-      internalID: -109014291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_18
-      rect:
-        serializedVersion: 2
-        x: 3552
-        y: 32
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a15557b07af48645bfdc3213d43ccf4
-      internalID: 521974042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: automation spritesheet 1_19
-      rect:
-        serializedVersion: 2
-        x: 3552
-        y: 0
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b19c7bb7db7f3024f9dd390a185c0721
-      internalID: -1672700896
       vertices: []
       indices: 
       edges: []
@@ -8734,14 +8566,6 @@ TextureImporter:
       automation spritesheet 1_1: -1807593527
       automation spritesheet 1_10: -1561958320
       automation spritesheet 1_11: -942572052
-      automation spritesheet 1_12: -287277145
-      automation spritesheet 1_13: -1545758363
-      automation spritesheet 1_14: 1933977376
-      automation spritesheet 1_15: 905995404
-      automation spritesheet 1_16: -1288707084
-      automation spritesheet 1_17: -109014291
-      automation spritesheet 1_18: 521974042
-      automation spritesheet 1_19: -1672700896
       automation spritesheet 1_2: 418725894
       automation spritesheet 1_3: -16005243
       automation spritesheet 1_4: -320116689

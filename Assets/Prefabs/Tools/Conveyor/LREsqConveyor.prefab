@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3943826274173617549}
   - component: {fileID: 6033526133785629124}
   - component: {fileID: 6290231491075262399}
+  - component: {fileID: 8533159418041454493}
   m_Layer: 0
   m_Name: C5
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 243728514472335574}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1a9ceadcffe73fc47a2b70b2b2280079, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94f154d449c21754986c7d52f89bfdc8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,6 +107,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8533159418041454493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243728514472335574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3aa47778535cf488f47e420dbbdfd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Entr: 0
+  Exit: 0
+  Up: 0
+  Down: 0
+  Left: 0
+  Right: 1
+  Corner1: 1
+  Corner2: 0
 --- !u!1 &6471003796023895758
 GameObject:
   m_ObjectHideFlags: 0
