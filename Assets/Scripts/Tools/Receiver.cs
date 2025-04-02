@@ -151,6 +151,7 @@ public class Receiver : MonoBehaviour
         _wrongAlert.SetActive(false);
         InstatiateObjectUI(false);
         _state = receiverState.Idle;
+        _levelManager = FindAnyObjectByType<LevelManager>();
     }
 
     /// <summary>
