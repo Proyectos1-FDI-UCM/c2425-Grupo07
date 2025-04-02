@@ -38,7 +38,7 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerVision _playerVision;// sirve para llaamar al playerVision scrpit.
     private PlayerDash _playerDash; // sirve para llmar al playerDash scrpit.
     private PlayerMovement _playerMovement;// sirve para llamar al playerMovemnt script. 
-    private bool _picked; // indica si un objecto está siendo reocgido o no.
+    private bool _picked = false; // indica si un objecto está siendo reocgido o no.
     private bool _working;// indica si el jugador está realizando una acción o no.
     private Vector2 _movement; // guarda el movimiento del jugador.
     private Vector2 _lastMove; //guarda la última posición del jugador.
@@ -91,44 +91,49 @@ public class PlayerAnimation : MonoBehaviour
     /// </summary>
     public void Animate()
     {
-        _picked = _playerVision.IsBeingPicked();
-        _movement = InputManager.Instance.MovementVector;
-        _lastMove = InputManager.Instance.LastMovementVector;
-        _animator.SetFloat("WalkX", _movement.x);
-        _animator.SetFloat("WalkY", _movement.y);
-        _animator.SetFloat("MoveMagnitude", _movement.magnitude);
-        _animator.SetFloat("LastMoveX", _lastMove.x);
-        _animator.SetFloat("LastMoveY", _lastMove.y);
-        _animator.SetBool("Picked", _picked);
-        _animator.SetBool("CanUse", _working);
+        if (_playerVision != null)
+        {
+            _picked = _playerVision.IsBeingPicked();
 
-        //No Activo, cambia entre el estado de Idle y Walk
-        if (_movement != Vector2.zero)
-        {
-            _animator.SetFloat("BlendNA", 1f); 
-            _working = false;
-        }
-        else _animator.SetFloat("BlendNA", 0f);
+            _animator.SetBool("Picked", _picked);
 
-        //dash no activo 
-        if (_movement == Vector2.zero && _playerDash.IsDashing())
-        {
-            _animator.SetFloat("BlendNA", 2f);
-        }
+            _movement = InputManager.Instance.MovementVector;
+            _lastMove = InputManager.Instance.LastMovementVector;
+            _animator.SetFloat("WalkX", _movement.x);
+            _animator.SetFloat("WalkY", _movement.y);
+            _animator.SetFloat("MoveMagnitude", _movement.magnitude);
+            _animator.SetFloat("LastMoveX", _lastMove.x);
+            _animator.SetFloat("LastMoveY", _lastMove.y);
+            _animator.SetBool("CanUse", _working);
 
-        //Activo, cambia entre IdleActivo y WalkActivo 
-        if (_picked && _movement != Vector2.zero)
-        {
-            _animator.SetFloat("Blend", 1f);
-        }
-        else if (_picked && _movement == Vector2.zero)
-        {
-            _animator.SetFloat("Blend", 0f);
-        }
-        //dash activo 
-        if (_movement == Vector2.zero && _picked && _playerDash.IsDashing())
-        {
-            _animator.SetFloat("Blend", 2f);
+            //No Activo, cambia entre el estado de Idle y Walk
+            if (_movement != Vector2.zero)
+            {
+                _animator.SetFloat("BlendNA", 1f);
+                _working = false;
+            }
+            else _animator.SetFloat("BlendNA", 0f);
+
+            //dash no activo 
+            if (_movement == Vector2.zero && _playerDash.IsDashing())
+            {
+                _animator.SetFloat("BlendNA", 2f);
+            }
+
+            //Activo, cambia entre IdleActivo y WalkActivo 
+            if (_picked && _movement != Vector2.zero)
+            {
+                _animator.SetFloat("Blend", 1f);
+            }
+            else if (_picked && _movement == Vector2.zero)
+            {
+                _animator.SetFloat("Blend", 0f);
+            }
+            //dash activo 
+            if (_movement == Vector2.zero && _picked && _playerDash.IsDashing())
+            {
+                _animator.SetFloat("Blend", 2f);
+            }
         }
     }
 

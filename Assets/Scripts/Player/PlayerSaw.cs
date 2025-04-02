@@ -81,7 +81,8 @@ public class PlayerSaw : MonoBehaviour
         {
             TurnOn();
         }
-        else if (InputManager.Instance.InteractWasReleasedThisFrame() || InputManager.Instance.MovementVector != Vector2.zero)
+        else if ((InputManager.Instance.InteractWasReleasedThisFrame() || InputManager.Instance.MovementVector != Vector2.zero)
+            && _playerVision.GetActualMesa() != null && _playerVision.GetActualMesa().GetComponent<SawScript>() != null)
         {
             TurnOff();
         }
