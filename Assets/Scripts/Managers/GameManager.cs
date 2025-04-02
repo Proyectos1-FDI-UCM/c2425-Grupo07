@@ -46,20 +46,76 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    [SerializeField] private GameObject _player; //GameObject del jugador en la escena
-    [SerializeField] private PlayerLevel _playerLevel; //Script que contiene los datos del nivel al que va a entrar el jugador
-    [SerializeField] private Level _level; //Para almacenar el nivel entrado
-    [SerializeField] private string _levelName; //Para almacenar el nombre del nivel
-    [SerializeField] private PlayerBool _playerBool; //Para almacenar el script del personaje elegido
-    [SerializeField] private bool _isRack = false; //Booleana del personaje, true si es Rack, false si es Albert
-    private LevelManager.Range _levelRange1; //Mejor rango obtenido del nivel principal
-    private LevelManager.Range _levelRange2; //Mejor rango obtenido del nivel infinito
-    [SerializeField] private Text _moneyText1; //Texto que muestra el dinero recopilado en el nivel prinicpal
-    [SerializeField] private Text _moneyText2; //Texto que muestra el dinero recopilado en el nivel infinito
-    [SerializeField] private Image _rankImage1; //Imagen que indica el mejor rango obtenido en el nivel prinicpal
-    [SerializeField] private Image _rankImage2; //Imagen que indica el mejor rango obtenido en el nivel inifito
-    [SerializeField] private int _moneyNumber1 = 0; //Entero que indica el dinero recopilado en el nivel principal
-    [SerializeField] private int _moneyNumber2 = 0; //Entero que indica el dinero recopilado en el nivel infinito
+    
+    /// <summary>
+    /// GameObject del jugador en la escena
+    /// </summary>
+    [SerializeField] private GameObject _player;
+    
+    /// <summary>
+    /// Script que contiene los datos del nivel al que va a entrar el jugador
+    /// </summary>
+    [SerializeField] private PlayerLevel _playerLevel;
+    
+    /// <summary>
+    /// Para almacenar el nivel entrado
+    /// </summary>
+    [SerializeField] private Level _level;
+    
+    /// <summary>
+    /// Para almacenar el nombre del nivel
+    /// </summary>
+    [SerializeField] private string _levelName;
+    
+    /// <summary>
+    /// Para almacenar el script del personaje elegido
+    /// </summary>
+    [SerializeField] private PlayerBool _playerBool;
+    
+    /// <summary>
+    /// Booleana del personaje, true si es Rack, false si es Albert
+    /// </summary>
+    [SerializeField] private bool _isRack = false;
+    
+    /// <summary>
+    /// Mejor rango obtenido del nivel principal
+    /// </summary>
+    private LevelManager.Range _levelRange1;
+
+    /// <summary>
+    /// Mejor rango obtenido del nivel infinito
+    /// </summary>
+    private LevelManager.Range _levelRange2;
+
+    /// <summary>
+    /// Texto que muestra el dinero recopilado en el nivel prinicpal
+    /// </summary>
+    [SerializeField] private Text _moneyText1;
+
+    /// <summary>
+    /// Texto que muestra el dinero recopilado en el nivel infinito
+    /// </summary>
+    [SerializeField] private Text _moneyText2;
+    
+    /// <summary>
+    /// Imagen que indica el mejor rango obtenido en el nivel prinicpal
+    /// </summary>
+    [SerializeField] private Image _rankImage1;
+    
+    /// <summary>
+    /// Imagen que indica el mejor rango obtenido en el nivel inifito
+    /// </summary>
+    [SerializeField] private Image _rankImage2;
+    
+    /// <summary>
+    /// Entero que indica el dinero recopilado en el nivel principal
+    /// </summary>
+    [SerializeField] private int _moneyNumber1 = 0;
+    
+    /// <summary>
+    /// Entero que indica el dinero recopilado en el nivel infinito
+    /// </summary>
+    [SerializeField] private int _moneyNumber2 = 0;
 
     #endregion
 
@@ -169,10 +225,6 @@ public class GameManager : MonoBehaviour
         // En realidad... todo esto es algo antiguo por lo que lo mismo ya está resuelto)
         System.GC.Collect();
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
-        if (index == 3)
-        {
-            UpdateStats();
-        }
         System.GC.Collect();
     } // ChangeScene
 
@@ -351,7 +403,7 @@ public class GameManager : MonoBehaviour
         // entre escenas
     }
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         if (_rankImage1 != null)
         {

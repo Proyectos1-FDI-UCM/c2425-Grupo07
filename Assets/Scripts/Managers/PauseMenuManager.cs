@@ -90,6 +90,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
+        if (nameScene == "MenuLevelSelection")
+        {
+            GameManager.Instance.UpdateStats();
+        }
     }
 
     /// <summary>
