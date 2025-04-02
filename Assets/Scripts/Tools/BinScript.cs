@@ -39,6 +39,19 @@ public class BinScript : MonoBehaviour
         }
     }
 
+    public void Drop(GameObject item)
+    {
+        if (item.GetComponent<FireExtinguisher>() == null)
+        {
+            item.transform.SetParent(transform);
+            item.transform.localPosition = Vector3.zero; // Coloca el objeto en la posición del contenedor
+        }
+        else
+        {
+            Debug.LogWarning("No puedes tirar el extintor a la basura, ten cuidado amigo.");
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
