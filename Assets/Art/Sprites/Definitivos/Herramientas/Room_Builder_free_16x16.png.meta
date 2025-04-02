@@ -97,85 +97,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Room_Builder_free_16x16_0
+      name: Table
       rect:
         serializedVersion: 2
-        x: 224
-        y: 208
+        x: 1
+        y: 138
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec0f855aae4b6b243bee29da238c118c
-      internalID: 346108257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Room_Builder_free_16x16_1
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b67c942d5efa91f4592d2fa67af8be9a
-      internalID: -167801844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Room_Builder_free_16x16_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 192
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ec8dd9466dd29043a6c773313f9f25e
-      internalID: 1882270825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Room_Builder_free_16x16_3
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 192
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0162117d22a1fc74eb8f7a6ddc29a6a3
-      internalID: -428749911
+      spriteID: 98152745208bc7b4ab61f5bc32dd23f3
+      internalID: -388704290
       vertices: []
       indices: 
       edges: []
@@ -191,11 +128,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Room_Builder_free_16x16_0: 346108257
       Room_Builder_free_16x16_1: -167801844
       Room_Builder_free_16x16_2: 1882270825
       Room_Builder_free_16x16_3: -428749911
       Room_Builder_free_16x16_4: -1962985612
+      Table: 346108257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
