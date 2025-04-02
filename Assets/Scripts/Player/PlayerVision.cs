@@ -99,10 +99,10 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        _visionCollider.offset = Vector2.Lerp(_visionCollider.offset, InputManager.Instance.MovementVector.normalized * _visionDistance , _offSetSpeed * Time.deltaTime); 
+        _visionCollider.offset = Vector2.Lerp(_visionCollider.offset, InputManager.Instance.LastMovementVector.normalized * _visionDistance , _offSetSpeed * Time.deltaTime); 
         if (_isBeingPicked)
         {
-            _heldObject.transform.position = Vector2.Lerp(_heldObject.transform.position,(Vector2)transform.position + InputManager.Instance.MovementVector.normalized,_offSetSpeed * Time.deltaTime );
+            _heldObject.transform.position = Vector2.Lerp(_heldObject.transform.position,(Vector2)transform.position + InputManager.Instance.LastMovementVector.normalized,_offSetSpeed * Time.deltaTime );
         }
     }
 
