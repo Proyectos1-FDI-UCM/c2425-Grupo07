@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_range">Rango obtenido en la partida</param>
     public void SetRange(LevelManager.Range _range)
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
             _levelRange1 = _range;
         }
@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public LevelManager.Range GetRange()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
             return _levelRange1;
         }
@@ -344,7 +344,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_money">Cantidad de dinero obtenido en la partida</param>
     public void SetMoney(int _money)
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
             _moneyNumber1 = _money;
         }
@@ -360,7 +360,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public int GetMoney()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
             return _moneyNumber1;
         }

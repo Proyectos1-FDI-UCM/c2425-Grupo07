@@ -273,11 +273,11 @@ public class LevelManager : MonoBehaviour
 
     private void TimeIsOverText()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
-            _levelNameText.text = "Nivel prinicpal";
+            _levelNameText.text = "Nivel principal";
         }
-        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 2)
+        else
         {
             _levelNameText.text = "Nivel infinito";
         }
