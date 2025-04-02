@@ -7,6 +7,7 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
@@ -31,6 +32,8 @@ public class Level : MonoBehaviour
     [SerializeField] Text TimeText; //Texto que muestra el tiempo
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
+
+    [SerializeField] GameObject[] PlayersButtons;
 
     #endregion
 
@@ -108,6 +111,8 @@ public class Level : MonoBehaviour
     public void OnEnterLevel()
     {
         SelectionPlayer.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(PlayersButtons[0]);
+
         Time.timeScale = 0f;
         _gameManager.SetLevelData(_thisLevel);
     }

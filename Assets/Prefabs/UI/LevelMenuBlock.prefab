@@ -538,8 +538,11 @@ MonoBehaviour:
   Rank: {fileID: 1107574255492705784}
   Money: {fileID: 63269740593518019}
   TimeText: {fileID: 2847744418707342921}
-  LevelName: NivelInfinito
+  LevelName: NivelPrincipal
   SelectionPlayer: {fileID: 0}
+  PlayersButtons:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6367347105475073404
 GameObject:
   m_ObjectHideFlags: 0
