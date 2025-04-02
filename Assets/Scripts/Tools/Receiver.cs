@@ -147,6 +147,7 @@ public class Receiver : MonoBehaviour
     private void Start()
     {
         TaskPosition = GameObject.Find("Pedidos").transform;
+        if (TaskPosition == null) Debug.Log("No se ha encontrado la posición de los pedidos, actualiza el prefab del UI");
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);
         InstatiateObjectUI(false);
@@ -166,11 +167,7 @@ public class Receiver : MonoBehaviour
         {
             if (_state == receiverState.Receiving)
             {
-                if (_indexer < ReceivingObjects.Length)
-                {
-                    Receive();
-                }
-                else Debug.Log("No quedan más pedidos");
+                Receive();
             }
             else if (_state == receiverState.Delivering)
             {
@@ -334,7 +331,7 @@ public class Receiver : MonoBehaviour
     {
         if (!InfiniteMode)
         {
-            _indexer++;
+            _indexer = (_indexer + 1) % ReceivingObjects.Length; // Incrementa el índice y lo reinicia si supera el tamaño del array
         }
         else
         {
@@ -355,10 +352,15 @@ public class Receiver : MonoBehaviour
             UpdateIndexer();
             InstatiateObjectUI(false);
             _playerVision.Pick(broken_object);
-            broken_object.GetComponent<TaskManager>().AddTask(TaskPosition);
+            if (TaskPosition != null)
+            {
+                broken_object.GetComponent<TaskManager>().AddTask(TaskPosition);
+            }
+            else Debug.LogError("No se ha encontrado la posición de los pedidos, actualiza el prefab del UI");
+            
             SetDeliveryMode();
         }
-        else Debug.Log("No puedes recibir más pedidos");
+        else Debug.Log("No puedes recibir más pedidos a la vez");
     }
 
     /// <summary>
