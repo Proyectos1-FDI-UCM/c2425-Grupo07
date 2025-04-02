@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -64,6 +65,31 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     [SerializeField] private int _minB = 400;
 
+    /// <summary>
+    /// _levelNameText es un texto que indica el nombre del nivel
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _levelNameText;
+
+    /// <summary>
+    /// _moneyText es un texto que indica la cantidad de dinero obtenida en la partida
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _moneyText;
+
+    /// <summary>
+    /// _levelRangeText es un texto que indica el rango obtenido en la partida
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _levelRangeText;
+
+    /// <summary>
+    /// _deliveredObjectsText es un texto que indica el número de pedidos entregados
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _deliveredObjectsText;
+
+    /// <summary>
+    /// _failedDeliveriesText es un texto que indica el número de pedidos fallidos
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -103,6 +129,11 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private Range _levelRange;
 
+    /// <summary>
+    /// Referencia al script Receiver
+    /// </summary>
+    private Receiver _receiver;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -112,8 +143,12 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        if (FindAnyObjectByType<Receiver>() != null)
+        {
+            _receiver = FindAnyObjectByType<Receiver>();
+        }
         StartTimer();
-        if(_gameManager == null)
+        if (_gameManager == null)
         {
             _gameManager = GameManager.Instance;
         }
@@ -131,7 +166,6 @@ public class LevelManager : MonoBehaviour
         {
             StopTimer();
             _currentSecondsLeft = 0;
-            Panel.SetActive(true);
             _levelRange = CalculateRange(Money);
             if ((_gameManager.GetRange() == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
                 (_gameManager.GetRange() == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
@@ -139,6 +173,12 @@ public class LevelManager : MonoBehaviour
             {
                 _gameManager.SetRange(_levelRange);
             }
+            if (_gameManager.GetMoney() < Money)
+            {
+                _gameManager.SetMoney(Money);
+            }
+            TimeIsOverText();
+            Panel.SetActive(true);
             Time.timeScale = 0;
         }
         ShowTime();
@@ -185,7 +225,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public enum Range
     {
-        F,B,A,S
+        F, B, A, S
     }
 
 
@@ -231,6 +271,43 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void TimeIsOverText()
+    {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            _levelNameText.text = "Nivel prinicpal";
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            _levelNameText.text = "Nivel infinito";
+        }
+
+        _moneyText.text = "Dinero recopilado: " + Money.ToString();
+
+        if (_levelRange == Range.S)
+        {
+            _levelRangeText.text = "Rango: S";
+        }
+        else if (_levelRange == Range.A)
+        {
+            _levelRangeText.text = "Rango: A";
+        }
+        else if (_levelRange == Range.B)
+        {
+            _levelRangeText.text = "Rango: B";
+        }
+        else
+        {
+            _levelRangeText.text = "Rango: F";
+        }
+
+        if (_receiver != null)
+        {
+            _deliveredObjectsText.text = "Pedidos entregados: " + _receiver.GetDeliveredObjectsNumber().ToString();
+            _failedDeliveriesText.text = "Pedidos fallidos: " + _receiver.GetFailedDeliveriesNumber().ToString();
+        }
+    }
+
     // CalculateRange(int _money) calcula el rango según la cantidad de dinero lograda durante la partida
     private Range CalculateRange(int _money)
     {
@@ -256,4 +333,4 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 } // class LevelManager 
-// namespace
+  // namespace

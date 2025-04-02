@@ -41,9 +41,9 @@ public class Receiver : MonoBehaviour
     /// </summary>
     [SerializeField] private InputActionReference InteractActionReference;
 
-/// <summary>
-/// Referencia al manager de nivel
-/// </summary>
+    /// <summary>
+    /// Referencia al manager de nivel
+    /// </summary>
     [SerializeField] private LevelManager _levelManager;
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     [SerializeField] private bool InfiniteMode;
 
-        /// <summary>
+    /// <summary>
     /// Indicador visual de entrega correcta
     /// </summary>
     [SerializeField] private GameObject _correctAlert;
@@ -111,6 +111,16 @@ public class Receiver : MonoBehaviour
     /// Contador de tareas activas actualmente
     /// </summary>
     private int activeTasks = 0;
+
+    /// <summary>
+    /// Contador de pedidos entregados
+    /// </summary>
+    private int _deliveredObjectsNumber = 0;
+
+    /// <summary>
+    /// Contador de pedidos fallidos
+    /// </summary>
+    private int _failedDeliveriesNumber = 0;
 
     #endregion
 
@@ -174,7 +184,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
     }
     #endregion
 
@@ -210,7 +220,11 @@ public class Receiver : MonoBehaviour
         if (heldObject.GetComponent<Objects>() != null)
         {
             Objects analized = heldObject.GetComponent<Objects>();
-            if (!analized.IsCompleted()) Debug.Log("El objeto no está apto para la entrega");
+            if (!analized.IsCompleted())
+            {
+                _failedDeliveriesNumber++;
+                Debug.Log("El objeto no está apto para la entrega");
+            }
             else _deliveredObject = analized;
         }
     }
@@ -256,14 +270,14 @@ public class Receiver : MonoBehaviour
         activeTasks += amount;
     }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     /// <summary>
     /// Activa el modo de recepción de objetos.
     /// Muestra la UI correspondiente y oculta las alertas.
     /// </summary>
-    public void SetReceivingMode() 
+    public void SetReceivingMode()
     {
         _state = receiverState.Receiving;
         Debug.Log("Modo de recogida activado");
@@ -271,7 +285,7 @@ public class Receiver : MonoBehaviour
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);
     }
-    
+
     /// <summary>
     /// Activa el modo de entrega de objetos.
     /// Muestra las alertas según si hay un objeto válido para entregar.
@@ -284,12 +298,30 @@ public class Receiver : MonoBehaviour
         {
             _correctAlert.SetActive(true);
             _wrongAlert.SetActive(false);
-        } 
-        else 
+        }
+        else
         {
             _correctAlert.SetActive(false);
             _wrongAlert.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// Devuelve _deliveredObjectsNumber
+    /// </summary>
+    /// <returns></returns>
+    public int GetDeliveredObjectsNumber()
+    {
+        return _deliveredObjectsNumber;
+    }
+
+    /// <summary>
+    /// Devuelve _failedDeliveriesNumber
+    /// </summary>
+    /// <returns></returns>
+    public int GetFailedDeliveriesNumber()
+    {
+        return _failedDeliveriesNumber;
     }
 
     /// <summary>
@@ -337,9 +369,10 @@ public class Receiver : MonoBehaviour
         _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true); // termina la tarea satisfactoriamente.
         _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
+        _deliveredObjectsNumber++;
         SetReceivingMode();
-       /* InstatiateObjectUI(true);*/ // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
-        // aqui se pondrá el resto del codigo más adelante
+        /* InstatiateObjectUI(true);*/ // Hago que se vea el siguiente pedido instanteneamente, se puede quitar sin problema.
+                                       // aqui se pondrá el resto del codigo más adelante
 
     }
     public void AddMoney(int amount)

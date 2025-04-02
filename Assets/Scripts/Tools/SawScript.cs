@@ -54,8 +54,10 @@ public class SawScript : MonoBehaviour
 
     //progress: es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
     private float _progress;
+
     // _materialSource es el material que hay en la sierra
     private Material _materialSource;
+
     //isWorking: es la booleana que indica si la soldadora está trabajando o no;
     private bool _isWorking;
 
@@ -77,6 +79,7 @@ public class SawScript : MonoBehaviour
         _completionDelta = 1f / _completionTime;
         _materialSource = null;
     }
+
     void Update()
     {
       if (_isWorking)
@@ -102,7 +105,10 @@ public class SawScript : MonoBehaviour
     // Ejemplo: GetPlayerController
 
 
-    // Devuelve la variable HasWood, que determina si hay madera en la sierra (true) o no (false)
+    /// <summary>
+    /// Devuelve la variable HasWood, que determina si hay madera en la sierra (true) o no (false)
+    /// </summary>
+    /// <returns>Devuelve la variable HasWood</returns>
     public bool GetHasWood()
     {
         return HasWood;
@@ -136,6 +142,7 @@ public class SawScript : MonoBehaviour
         }
         
     }
+
     /// <summary>
     /// Se encarga de actualizar las variables de la mesa de trabajo para cuando el jugador recoge el material procesado
     /// /// </summary>
@@ -169,7 +176,9 @@ public class SawScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // Procesa la madera destruyendo el material de madera e instanciando el material de madera procesada poniéndolo como hijo de la sierra
+    /// <summary>
+    /// Procesa la madera destruyendo el material de madera e instanciando el material de madera procesada poniéndolo como hijo de la sierra
+    /// </summary>
     private void ProcessWood()
     {
         Destroy(transform.GetChild(0).gameObject);
