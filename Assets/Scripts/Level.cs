@@ -5,7 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using TMPro;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,7 +33,6 @@ public class Level : MonoBehaviour
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
-    [SerializeField] GameObject[] PlayersButtons;
 
     #endregion
 
@@ -111,7 +110,7 @@ public class Level : MonoBehaviour
     public void OnEnterLevel()
     {
         SelectionPlayer.gameObject.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(PlayersButtons[0]);
+        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
 
         Time.timeScale = 0f;
         _gameManager.SetLevelData(_thisLevel);
