@@ -8305,7 +8305,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 288
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8326,7 +8326,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 256
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8347,7 +8347,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 224
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8368,7 +8368,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3584
         y: 192
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -8539,7 +8539,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -8547,6 +8547,174 @@ TextureImporter:
       bones: []
       spriteID: 200bf00102cb1d9489b204f2e82d21c3
       internalID: -942572052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_12
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 288
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6049943a34b3a234c8eee658b1370546
+      internalID: -1628899078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_13
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 256
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8fae9ee3961f9418aadd48b762f1ec
+      internalID: 966019952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_14
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 224
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45f232cfc528e564c82f89a873f36803
+      internalID: -1596867053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_15
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 192
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0b23d407760ed48831428cf2daebfc
+      internalID: -74110108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_16
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 96
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c80efa40720d0d45818af126cb87d61
+      internalID: 2080136897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_17
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 64
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220e956e2a308b14083f7a7670ead633
+      internalID: 1486047839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_18
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 32
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7791bf11aa31f145bd57f732c43197c
+      internalID: -528503983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: automation spritesheet 1_19
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 0
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8104e427b78ed4a4f84520fb260c8857
+      internalID: -206842582
       vertices: []
       indices: 
       edges: []
@@ -8566,6 +8734,14 @@ TextureImporter:
       automation spritesheet 1_1: -1807593527
       automation spritesheet 1_10: -1561958320
       automation spritesheet 1_11: -942572052
+      automation spritesheet 1_12: -1628899078
+      automation spritesheet 1_13: 966019952
+      automation spritesheet 1_14: -1596867053
+      automation spritesheet 1_15: -74110108
+      automation spritesheet 1_16: 2080136897
+      automation spritesheet 1_17: 1486047839
+      automation spritesheet 1_18: -528503983
+      automation spritesheet 1_19: -206842582
       automation spritesheet 1_2: 418725894
       automation spritesheet 1_3: -16005243
       automation spritesheet 1_4: -320116689

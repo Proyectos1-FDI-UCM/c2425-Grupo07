@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -110,6 +111,9 @@ public class Level : MonoBehaviour
     public void OnEnterLevel()
     {
         SelectionPlayer.gameObject.SetActive(true);
+        Text text = SelectionPlayer.GetComponentInChildren<Text>();
+        string[] s = Regex.Split(LevelName, @"(?<!^)(?=[A-Z])");
+        text.text = string.Join(" ", s);
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
 
         Time.timeScale = 0f;

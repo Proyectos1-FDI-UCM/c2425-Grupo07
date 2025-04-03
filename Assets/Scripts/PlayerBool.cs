@@ -23,6 +23,7 @@ public class PlayerBool : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] private Canvas Canvas; //Canvas con la selección del jugador
 
     #endregion
 
@@ -35,8 +36,8 @@ public class PlayerBool : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private bool _isRack; // true si el jugador eligió a Rack, false si eligió a Albert
-    [SerializeField] private Canvas _canvas; //Canvas con la selección del jugador
     private GameManager _gameManager; //Referencia para el GameManager
+     
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -93,7 +94,12 @@ public class PlayerBool : MonoBehaviour
         _gameManager.ChangeToLevel();
     }
 
-
+    //Esconde el canvas para la seleccion del personaje en caso de querer cambiar de mapa 
+    public void ExitCanva()
+    {
+        Time.timeScale = 1f;
+        Canvas.gameObject.SetActive(false);
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
