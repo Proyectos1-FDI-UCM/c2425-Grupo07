@@ -34,7 +34,6 @@ public class ConveyorItems : MonoBehaviour
     [SerializeField] float BeltVel; // La velocidad apropiada a la cinta
     [SerializeField] bool enCinta; // La distancia hasta que se cambia de cinta
     [SerializeField] float BeltDistance; // La distancia hasta que se cambia de cinta
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -48,8 +47,6 @@ public class ConveyorItems : MonoBehaviour
     private Vector3 _direction = Vector3.up; // Para que siempre siga la dirección hacia arriba del material
                                              // 90º Derecha, 0º Abajo, -90º Izquierda, 180º Arriba, en el Eje Z de la cinta
     private float _timerDeletion; // Tiempo que tarda en borrarse el material cuando toca el trigger de la basura
-
-    private bool _toDestroy;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -74,18 +71,7 @@ public class ConveyorItems : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void ToDestroy(GameObject other)
-    {
-        _timerDeletion += Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
-        transform.localScale = transform.localScale * (1 - _timerDeletion);
-        if (_timerDeletion > 0.5f)
-        {
-            transform.position = other.transform.position;
-            transform.SetParent(other.transform);
-            Destroy(gameObject);
-        }
-    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -113,7 +99,14 @@ public class ConveyorItems : MonoBehaviour
         }
         if (other.gameObject.GetComponent<BinScript>() != null && NextBelt != null)
         {
-            ToDestroy(other.gameObject);
+            _timerDeletion += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
+            transform.localScale = transform.localScale*(1-_timerDeletion);
+            if (_timerDeletion > 0.5f)
+            {
+                transform.position = other.transform.position;
+                transform.SetParent(other.gameObject.transform);
+            }
         }
         if (other.gameObject == null)
         {

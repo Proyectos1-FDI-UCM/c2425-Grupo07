@@ -70,8 +70,8 @@ public class BinScript : MonoBehaviour
         {
             taskManager.EndTask(false);
         }
-        material.GetComponent<ConveyorItems>().ToDestroy(gameObject);
-        //Destroy(material);
+
+        Destroy(material);
         Debug.Log("Material destruido en la basura.");
     }
 
