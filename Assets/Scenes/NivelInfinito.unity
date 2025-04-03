@@ -3094,6 +3094,7 @@ MonoBehaviour:
   - {fileID: 6046970825805907103, guid: 6c2fca0b794fed54c9510d8c2dd5f8ec, type: 3}
   - {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
   CintaInicial: {fileID: 213931754}
+  _spawnInterval: 1.5
 --- !u!212 &1138949069
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5432,9 +5433,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5295355623092042187, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: NivelInfinito
+    - target: {fileID: 962413254792643412, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 8305460593797319899, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_Name

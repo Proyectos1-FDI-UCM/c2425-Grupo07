@@ -74,6 +74,11 @@ public class PauseMenuManager : MonoBehaviour
     // Ejemplo: GetPlayerController
 
 
+    public void Resume()
+    {
+        HandleInput();
+    }
+
     /// <summary>
     /// Reincia la escena del nivel
     /// </summary>

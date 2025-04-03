@@ -175,29 +175,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5295355623092042187, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: NivelPrincipal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6062147492026068545, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: m_Name
-      value: GameManager de escena
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: _maxTime
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7619597302428252035, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8305460593797319899, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_Name
       value: Managers
-      objectReference: {fileID: 0}
-    - target: {fileID: 8980957732941073321, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
