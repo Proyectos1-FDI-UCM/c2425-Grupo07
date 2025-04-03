@@ -32,6 +32,8 @@ public class SpawnMaterials : MonoBehaviour
     [SerializeField] GameObject[] Materials = new GameObject[4];
     [SerializeField] Transform CintaInicial;
 
+    // _spawnInterval es el tiempo en segundos que pasa entre cada spawn
+    [SerializeField] private float _spawnInterval = 1.5f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -49,8 +51,7 @@ public class SpawnMaterials : MonoBehaviour
     // _currentObjectIndex es el índice actual que está recorriendo el array Materials
     private int _currentObjectIndex = 0;
 
-    // _spawnInterval es el tiempo en segundos que pasa entre cada spawn
-    private float _spawnInterval = 1.5f;
+    
 
     #endregion
     

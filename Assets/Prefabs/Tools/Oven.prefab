@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 3249073642124791493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.17999999, y: 0.17999999, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -345,11 +345,6 @@ MonoBehaviour:
   FlashImage: {fileID: 3504335975979876622}
   FireIco: {fileID: 7683220941088754040}
   IsBurnt: 0
-  StatesMat:
-  - {fileID: 8970695659979435321, guid: b22cf063bf97c5946b04b055fe1e7030, type: 3}
-  - {fileID: 8970695659979435321, guid: b0b8843acfbf4bc41a4c727206b97730, type: 3}
-  - {fileID: 6046970825805907103, guid: fa4ef3d7f8f8032419872981da19ded3, type: 3}
-  - {fileID: 8970695659979435321, guid: a6286717ef58d8b439308c9b141a4f2a, type: 3}
 --- !u!114 &6081887213893615665
 MonoBehaviour:
   m_ObjectHideFlags: 0
