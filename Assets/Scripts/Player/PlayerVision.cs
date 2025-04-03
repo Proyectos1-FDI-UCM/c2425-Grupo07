@@ -36,6 +36,9 @@ public class PlayerVision : MonoBehaviour
     [SerializeField] private float _visionDistance; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     
     [SerializeField] private float _offSetSpeed = 0.1f; // Velocidad a la que se mueve el offset del collider de visión
+
+    [SerializeField] private Vector2 MaterialPositionOffset = new Vector2(0, 0);
+    // Se usa para que el material se coloque en la posición correcta al soltarlo en una herramienta
     
 
     #endregion
@@ -195,14 +198,20 @@ public class PlayerVision : MonoBehaviour
 
     /// <summary>
     /// Este metodo se encarga de el soltado de objetos en la mesa que esté mirando el jugador.
+    /// La boleana permite saber si el objeto se ha soltado en una herramienta para ajustarle un offset en la disposición del material en pantalla.
     /// </summary>
-    public void Drop()
+    public void Drop(bool onToolPlaced = false)
     {
         _isBeingPicked = false;
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
         _heldObject.transform.SetParent(_actualMesa.transform);
+        if (onToolPlaced)
+        {
+            _heldObject.transform.position += (Vector3)MaterialPositionOffset;
+        }
         _heldObject = null;
+
     }
 
     /// <summary>

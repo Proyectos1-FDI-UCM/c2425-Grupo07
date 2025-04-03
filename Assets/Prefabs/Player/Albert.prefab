@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9134530467755513829}
   - component: {fileID: 6375822479665735645}
   - component: {fileID: 8530380552882982428}
-  - component: {fileID: 182045299076713854}
+  - component: {fileID: 100436692376507235}
   - component: {fileID: 2449734592731028648}
   - component: {fileID: 8105695341805910284}
   - component: {fileID: 1077538524093860285}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1280534379
-  m_SortingLayer: 2
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135592337, guid: 70ab665e4dc7474478b3050d793ca535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,8 +134,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.04
---- !u!58 &182045299076713854
-CircleCollider2D:
+--- !u!70 &100436692376507235
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,9 +166,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
+  m_Offset: {x: 0.0048621963, y: -0.16850863}
+  m_Size: {x: 0.33746263, y: 0.26298583}
+  m_Direction: 1
 --- !u!50 &2449734592731028648
 Rigidbody2D:
   serializedVersion: 4
@@ -195,7 +195,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8105695341805910284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +410,9 @@ MonoBehaviour:
     m_Bits: 1024
   MesaTint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _visionCollider: {fileID: 8530380552882982428}
-  _visionDistance: 0.5
+  _visionDistance: 0.4
   _offSetSpeed: 20
+  MaterialPositionOffset: {x: 0, y: 1}
   _actualMesa: {fileID: 0}
   _isBeingPicked: 0
 --- !u!114 &6136629279217908495

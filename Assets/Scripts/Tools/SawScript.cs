@@ -41,6 +41,9 @@ public class SawScript : MonoBehaviour
     //CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
     [SerializeField] private int _completionTime = 6;
 
+    //_animator es el animator que controla la animación de la sierra
+    [SerializeField] private Animator _animator;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -133,7 +136,7 @@ public class SawScript : MonoBehaviour
             Material material = item.GetComponent<Material>();
             if (material.MaterialTypeReturn() == MaterialType.Madera)
             {
-                item.GetComponentInParent<PlayerVision>().Drop();
+                item.GetComponentInParent<PlayerVision>().Drop(true);
                 _materialSource = material;
                 _progress = _materialSource.ReturnProgress();
                 HasWood = true;
@@ -157,6 +160,7 @@ public class SawScript : MonoBehaviour
         if (HasWood)
         {
            _isWorking = true;
+           _animator.SetBool("working", true);
         }
     }
     public void TurnOffSaw()
@@ -164,6 +168,7 @@ public class SawScript : MonoBehaviour
         if (HasWood)
         {
             _isWorking = false;
+            _animator.SetBool("working", false);
         }
     }
 
@@ -181,9 +186,9 @@ public class SawScript : MonoBehaviour
     /// </summary>
     private void ProcessWood()
     {
-        Destroy(transform.GetChild(0).gameObject);
-        GameObject child = Instantiate(MaderaProcesada, gameObject.transform.position, gameObject.transform.rotation);
-        child.transform.SetParent(this.transform);
+        _materialSource.ProcessTheMaterial();
+       _animator.SetBool("working", false);
+       _materialSource = null;
     }
 
     #endregion   

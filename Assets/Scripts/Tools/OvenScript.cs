@@ -44,6 +44,10 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private GameObject FireIco;
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] public bool IsBurnt = false;
+
+    //_animator es el animator que controla la animación del horno
+    [SerializeField] private Animator _animator;
+    
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -117,10 +121,11 @@ public class OvenScript : MonoBehaviour
             Material material = item.GetComponent<Material>();
             if (material.MaterialTypeReturn() == MaterialType.Arena || material.MaterialTypeReturn() == MaterialType.MetalRoca)
             {
-            item.GetComponentInParent<PlayerVision>().Drop();
+            item.GetComponentInParent<PlayerVision>().Drop(true);
             _matScr = material;
             _progress = _matScr.ReturnProgress();
             _isProcessing = true;
+            _animator.SetBool("working", true);
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
@@ -139,6 +144,7 @@ public class OvenScript : MonoBehaviour
         _hasFinished = false;
         FlashImage.SetActive(false);
         _matScr = null;
+        _animator.SetBool("working", false);
     }
     #endregion
 
@@ -233,6 +239,7 @@ public class OvenScript : MonoBehaviour
         _isProcessing = false;
         //Se cambia el material a ceniza
         _matScr.BurnTheMaterial();
+        _animator.SetBool("working", false);
     }
 
     /// <summary>

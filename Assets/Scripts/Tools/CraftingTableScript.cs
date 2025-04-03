@@ -116,7 +116,7 @@ public class CraftingTableScript : MonoBehaviour
             Objects objects = item.GetComponent<Objects>();
             if (objects != null)
             {
-                item.GetComponentInParent<PlayerVision>().Drop();
+                item.GetComponentInParent<PlayerVision>().Drop(true);
                 _scriptObject = objects;
                 _materials = _scriptObject.GetCurrentMaterial();
             }

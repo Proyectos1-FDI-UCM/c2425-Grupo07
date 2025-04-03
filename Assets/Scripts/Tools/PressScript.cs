@@ -88,7 +88,7 @@ public class PressScript : MonoBehaviour
             Objects objects = item.GetComponent<Objects>();
             if (!objects.ThereIsMaterial())
             {
-                item.GetComponentInParent<PlayerVision>().Drop();
+                item.GetComponentInParent<PlayerVision>().Drop(true);
                 CurrentObject = objects;
                 _isPressing = true;
                 BarCanvasGroup.gameObject.SetActive(true);
