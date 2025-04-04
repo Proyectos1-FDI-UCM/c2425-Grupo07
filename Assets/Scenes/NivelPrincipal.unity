@@ -2669,7 +2669,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -12676,25 +12676,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7968040776053979910, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
-      propertyPath: m_CropFrameX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
       propertyPath: orthographic size
-      value: 5.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.4867924
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.47837302
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.47301525
+      value: 11.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

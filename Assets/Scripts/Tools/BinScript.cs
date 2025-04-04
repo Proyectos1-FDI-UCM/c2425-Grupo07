@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Clase que representa un contenedor de basura donde los jugadores pueden desechar materiales.
@@ -43,7 +44,8 @@ public class BinScript : MonoBehaviour
     {
         if (item.GetComponent<FireExtinguisher>() == null)
         {
-            item.transform.SetParent(transform);
+            item.GetComponentInParent<PlayerVision>().Drop(true);
+            item.transform.SetParent(gameObject.transform);
             item.transform.localPosition = Vector3.zero; // Coloca el objeto en la posición del contenedor
         }
         else
@@ -70,9 +72,33 @@ public class BinScript : MonoBehaviour
         {
             taskManager.EndTask(false);
         }
-
-        Destroy(material);
+        if (material != null)
+        {
+            StartCoroutine(DisminuyeMat(material));
+        }
         Debug.Log("Material destruido en la basura.");
+    }
+    /// <summary>
+    /// Inicia una secuencia que disminuye el tamaño del material hasta ser destruido
+    /// Hecho por Guillermo
+    /// </summary>
+    /// <param name="material">Objeto del material a disminuir.</param>
+    IEnumerator DisminuyeMat(GameObject material)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            float rateDisminuye = (float) i / 10;
+            float tiempoDisminuye = (float)i / 100;
+            yield return new WaitForSeconds(tiempoDisminuye);
+            if (material != null && material.transform.localScale.x > 0.1)
+            {
+                material.transform.localScale = material.transform.localScale * (1 - rateDisminuye);
+            }
+            else
+            {
+                Destroy(material);
+            }
+        }
     }
 
     #endregion

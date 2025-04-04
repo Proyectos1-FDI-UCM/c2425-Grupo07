@@ -361,7 +361,7 @@ MonoBehaviour:
   DetectedTilesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  MesaTint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  MesaTint: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   _visionCollider: {fileID: 8660095150174552816}
   _visionDistance: 0.4
   _offSetSpeed: 20

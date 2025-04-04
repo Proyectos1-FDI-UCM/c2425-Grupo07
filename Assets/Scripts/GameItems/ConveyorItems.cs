@@ -97,22 +97,11 @@ public class ConveyorItems : MonoBehaviour
         {
             enCinta = false;
         }
-        BinScript basura = other.GetComponent<BinScript>();
-        if (basura != null && NextBelt != null)
+        if (other.GetComponent<BinScript>() != null && NextBelt != null)
         {
-            _timerDeletion += Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
-            transform.localScale = transform.localScale*(1-_timerDeletion);
-            if (_timerDeletion > 0.5f)
-            {
-                transform.position = other.transform.position;
-                if (gameObject.GetComponent<TaskManager>() != null)
-                {
-                    print("Se ha desechado el objeto " + gameObject.name);
-                    basura.Drop(gameObject);
-                }
-                transform.SetParent(other.gameObject.transform);
-            }
+            //transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
+            BeltVel = 0.1f;
+            transform.SetParent(other.gameObject.transform);
         }
         if (other.gameObject == null)
         {
