@@ -279,6 +279,11 @@ MonoBehaviour:
   - {fileID: 8169051576135727932}
   - {fileID: 3466255422690560801}
   - {fileID: 7291126420183703476}
+  ObjectImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _nGood: 0
 --- !u!61 &735890420133839902
 BoxCollider2D:
   m_ObjectHideFlags: 0
