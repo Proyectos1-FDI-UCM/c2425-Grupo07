@@ -326,9 +326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 186897796}
-  ParallaxEffect: 0.3
+  ParallaxEffect: 0.85
   Limit: -1000
-  CameraSpeed: 3
+  CameraSpeed: 2
 --- !u!1 &173703076
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 186897796}
-  ParallaxEffect: 0.7
+  ParallaxEffect: 0.2
   Limit: -1000
-  CameraSpeed: 3
+  CameraSpeed: 2
 --- !u!1 &186897796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,9 +1006,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 186897796}
-  ParallaxEffect: 0.5
+  ParallaxEffect: 0.45
   Limit: -1000
-  CameraSpeed: 3
+  CameraSpeed: 2
 --- !u!1001 &814909962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 6
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   Camera: {fileID: 186897796}
   ParallaxEffect: 1
   Limit: -1000
-  CameraSpeed: 3
+  CameraSpeed: 2
 --- !u!1 &1640410525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,9 +1887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 186897796}
-  ParallaxEffect: 0.8
+  ParallaxEffect: 0.1
   Limit: -1000
-  CameraSpeed: 3
+  CameraSpeed: 2
 --- !u!1 &1757980724
 GameObject:
   m_ObjectHideFlags: 0
