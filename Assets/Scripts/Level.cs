@@ -126,6 +126,16 @@ public class Level : MonoBehaviour
     /// <returns>Retorna un string al ser llamado</returns>
     public string GetLevelName() { return LevelName; }
     
+    public Image GetRank()
+    {
+        return Rank;
+    }
+
+    public Text GetMoney()
+    {
+        return Money;
+    }
+
 
     #endregion
 

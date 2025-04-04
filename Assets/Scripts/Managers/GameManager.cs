@@ -117,6 +117,31 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] private int _moneyNumber2 = 0;
 
+    /// <summary>
+    /// Tiempo del nivel principal
+    /// </summary>
+    [SerializeField] private Text _timeText1;
+
+    /// <summary>
+    /// Tiempo del nivel infinito
+    /// </summary>
+    [SerializeField] private Text _timeText2;
+
+    /// <summary>
+    /// Array de referencias a Level
+    /// </summary>
+    [SerializeField] private Level[] _levels;
+
+    /// <summary>
+    /// Comprueba si se han actualizado las stats de MenuLevelSelection
+    /// </summary>
+    [SerializeField] private bool _statsUpdated = false;
+
+    /// <summary>
+    /// Nombre del último nivel jugado
+    /// </summary>
+    [SerializeField] private string _lastLevelPlayed;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -171,6 +196,46 @@ public class GameManager : MonoBehaviour
             // Éramos la instancia de verdad, no un clon.
             _instance = null;
         } // if somos la instancia principal
+    }
+
+    protected void Update()
+    {
+        /*if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuLevelSelection" &&
+            FindAnyObjectByType<Level>() == null && _rankImage1 == null && _rankImage2 == null && _moneyText1 == null && _moneyText2 == null)
+        {
+            _levels[0] = FindObjectsOfType<Level>()[0];
+            _levels[1] = FindObjectsOfType<Level>()[1];
+
+            _rankImage1 = _levels[0].GetRank();
+            _rankImage2 = _levels[1].GetRank();
+
+            _moneyText1 = _levels[0].GetMoney();
+            _moneyText2 = _levels[1].GetMoney();
+        }
+        else
+        {
+            Debug.Log("No se han podido cargar las referencias");
+        }*/
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MenuLevelSelection")
+        {
+            _statsUpdated = false;
+        }
+        else if (!_statsUpdated)
+        {
+            UpdateStats();
+            _statsUpdated = true;
+        }
+
+        /*if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuLevelSelection" && !_statsUpdated)
+        {
+            UpdateStats();
+            _statsUpdated = true;
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MenuLevelSelection")
+        {
+            _statsUpdated = false;
+        }*/
     }
 
     #endregion
@@ -306,6 +371,11 @@ public class GameManager : MonoBehaviour
         else Debug.Log("No hay nivel asignado");
     }
 
+    public void SetLastLevelPlayed(string sceneName)
+    {
+        _lastLevelPlayed = sceneName;
+    }
+
     /// <summary>
     /// SetRange modifica _levelRange según el rango que ha obtenido en la partida
     /// </summary>
@@ -405,7 +475,23 @@ public class GameManager : MonoBehaviour
 
     public void UpdateStats()
     {
-        if (_rankImage1 != null)
+        _levels = FindObjectsOfType<Level>();
+
+        Debug.Log(_levels.Length);
+
+        _levels[0] = FindObjectsOfType<Level>()[0];
+        _levels[1] = FindObjectsOfType<Level>()[1];
+
+        _rankImage1 = _levels[1].GetRank();
+        _rankImage2 = _levels[0].GetRank();
+
+        _moneyText1 = _levels[1].GetMoney();
+        _moneyText2 = _levels[0].GetMoney();
+
+        _timeText1 = _levels[1].GetTime();
+        _timeText2 = _levels[0].GetTime();
+
+        if (_rankImage1 != null && _lastLevelPlayed == "NivelPrincipal")
         {
             if (_levelRange1 == LevelManager.Range.S)
             {
@@ -425,7 +511,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (_rankImage2 != null)
+        else if (_rankImage2 != null && _lastLevelPlayed == "NivelInfinito")
         {
             if (_levelRange2 == LevelManager.Range.S)
             {
@@ -445,12 +531,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (_moneyText1 != null)
+        if (_moneyText1 != null && _lastLevelPlayed == "NivelPrincipal")
         {
             _moneyText1.text = _moneyNumber1.ToString();
         }
 
-        if (_moneyText2 != null)
+        else if (_moneyText2 != null && _lastLevelPlayed == "NivelInfinito")
         {
             _moneyText2.text = _moneyNumber2.ToString();
         }

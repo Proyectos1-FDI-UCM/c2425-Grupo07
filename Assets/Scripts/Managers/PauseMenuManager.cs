@@ -45,10 +45,21 @@ public class PauseMenuManager : MonoBehaviour
 
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
 
+    private GameManager _gameManager;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -94,11 +105,8 @@ public class PauseMenuManager : MonoBehaviour
     public void ChangeScenesButtons(string nameScene)
     {
         Time.timeScale = 1f;
+        _gameManager.SetLastLevelPlayed(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
-        if (nameScene == "MenuLevelSelection")
-        {
-            GameManager.Instance.UpdateStats();
-        }
     }
 
     /// <summary>
