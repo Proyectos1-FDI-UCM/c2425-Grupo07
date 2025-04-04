@@ -488,9 +488,6 @@ public class GameManager : MonoBehaviour
         _moneyText1 = _levels[1].GetMoney();
         _moneyText2 = _levels[0].GetMoney();
 
-        _timeText1 = _levels[1].GetTime();
-        _timeText2 = _levels[0].GetTime();
-
         if (_rankImage1 != null && _lastLevelPlayed == "NivelPrincipal")
         {
             if (_levelRange1 == LevelManager.Range.S)
