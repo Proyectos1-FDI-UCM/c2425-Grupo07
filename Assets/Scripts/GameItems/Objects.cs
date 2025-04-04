@@ -33,11 +33,19 @@ public class Objects : MonoBehaviour
     //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
     [SerializeField] private MaterialType[] OrdenPedidos;
     //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
-    [SerializeField] private Renderer[] CapacityAmount = new Renderer[3]; 
+    [SerializeField] private Renderer[] CapacityAmount = new Renderer[3];
+    //Array de imagenes para el estado del objeto
+    [SerializeField] private Renderer[] ObjectImage;
+
+
     #endregion
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
+    [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
+    private Renderer skin;
+    private int n;
+
 
     #endregion
 
@@ -48,12 +56,18 @@ public class Objects : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    private void Start()
+    {
+        skin = gameObject.GetComponent<Renderer>();
+    }
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
         CapacityIndicator();
+        //ChangeSkin();
     }
     #endregion
 
@@ -129,6 +143,8 @@ public class Objects : MonoBehaviour
         {
             Materials[i] = MaterialType.Otro;
         }
+        _nGood = 0;
+        n = 0;
     }
     /// <summary>
     /// Establece si el objeto puede ser enviado o no para evitar que el jugador intente añadir materiales o que intente enviar el objeto después de que se acabó el tiempo del pedido.
@@ -152,6 +168,17 @@ public class Objects : MonoBehaviour
     public MaterialType[] GetCurrentMaterial()
     {
         return Materials;
+    }
+
+    public void ChangeSkin()
+    {
+        if (IsSameMaterialType(Materials[n], OrdenPedidos[n]))
+        {
+            _nGood++;
+        }
+        if(n<OrdenPedidos.Length) n++;
+
+        //skin = ObjectImage[_nGood];
     }
     #endregion
 
@@ -197,6 +224,8 @@ public class Objects : MonoBehaviour
         Debug.Log(material == required);
         return material == required;
     }
+
+    
 
     #endregion   
 
