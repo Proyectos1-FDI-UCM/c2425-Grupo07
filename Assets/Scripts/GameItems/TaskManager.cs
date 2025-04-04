@@ -138,7 +138,7 @@ public class TaskManager : MonoBehaviour
         /// Se llama cuando el objeto es entregado o destruido.
         /// Además impide que se pueda entregar el pedido o que se puedan añadir materiales si ya se ha acabado el tiempo.
         /// </summary>
-    public void EndTask(bool delivered)
+    public void EndTask(bool delivered=false)
     {
         if (delivered && !IsTaskEnded()) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
         {

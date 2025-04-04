@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_0
+      name: 1
       rect:
         serializedVersion: 2
         x: 13
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_1
+      name: 3
       rect:
         serializedVersion: 2
         x: 35
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_2
+      name: 6
       rect:
         serializedVersion: 2
         x: 35
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_3
+      name: 7
       rect:
         serializedVersion: 2
         x: 13
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_4
+      name: 2
       rect:
         serializedVersion: 2
         x: 24
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_5
+      name: 5
       rect:
         serializedVersion: 2
         x: 64
@@ -307,7 +307,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_6
+      name: 4
       rect:
         serializedVersion: 2
         x: 64
@@ -328,7 +328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_7
+      name: 8
       rect:
         serializedVersion: 2
         x: 6
@@ -349,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_8
+      name: 9
       rect:
         serializedVersion: 2
         x: 26
@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_9
+      name: 10
       rect:
         serializedVersion: 2
         x: 47
@@ -391,7 +391,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_10
+      name: 11
       rect:
         serializedVersion: 2
         x: 65
@@ -412,7 +412,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_11
+      name: 12
       rect:
         serializedVersion: 2
         x: 26
@@ -433,7 +433,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_12
+      name: 13
       rect:
         serializedVersion: 2
         x: 44
@@ -454,7 +454,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suelo y Mesas_13
+      name: 14
       rect:
         serializedVersion: 2
         x: 62
@@ -474,6 +474,195 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopLeft
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 927
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5c95fb2a976114aadd3c0f8c365456
+      internalID: -772704169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Top
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 927
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff121cce187202439e69253a40ecf0a
+      internalID: 1429885346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRight
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 927
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d6016a9f339544f92632e114a2bb75
+      internalID: -1658047033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 910
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4729d3e7b390054492736f34b48c571
+      internalID: -132513781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Middle
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 910
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3324adc58b5f8ca42b967279b33ce784
+      internalID: -1950339802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 910
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8306a053cf308774c9396e0c4beadd1f
+      internalID: 648085532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownLeft
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 892
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d7c07a36de2464aa0caec37153794d
+      internalID: 612026515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 892
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed051be15b14124e87c2866ff832c81
+      internalID: 303035580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownRight
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 892
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39acf9f4c8b8ee45b972053c0b970c1
+      internalID: -1151394955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -485,24 +674,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      1: 56526452
+      10: 963589824
+      11: 381831182
+      12: 2143117954
+      13: -228038107
+      14: 611076772
+      2: -1670870985
+      3: 766923839
+      4: -1343518778
+      5: 1027773502
+      6: 2143502097
+      7: -1364810462
+      8: 256711158
+      9: 1326789633
       Borde: 962532417
       Borde izq: -722332380
+      Down: 303035580
+      DownLeft: 612026515
+      DownRight: -1151394955
       Esquina: -766542572
+      Left: -132513781
       Medio: -224074097
-      Suelo y Mesas_0: 56526452
-      Suelo y Mesas_1: 766923839
-      Suelo y Mesas_10: 381831182
-      Suelo y Mesas_11: 2143117954
-      Suelo y Mesas_12: -228038107
-      Suelo y Mesas_13: 611076772
-      Suelo y Mesas_2: 2143502097
-      Suelo y Mesas_3: -1364810462
-      Suelo y Mesas_4: -1670870985
-      Suelo y Mesas_5: 1027773502
-      Suelo y Mesas_6: -1343518778
-      Suelo y Mesas_7: 256711158
-      Suelo y Mesas_8: 1326789633
-      Suelo y Mesas_9: 963589824
+      Middle: -1950339802
+      Right: 648085532
+      Top: 1429885346
+      TopLeft: -772704169
+      TopRight: -1658047033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

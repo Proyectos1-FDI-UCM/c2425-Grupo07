@@ -206,10 +206,10 @@ public class PlayerVision : MonoBehaviour
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
         _heldObject.transform.SetParent(_actualMesa.transform);
-        if (onToolPlaced)
-        {
-            _heldObject.transform.position += (Vector3)MaterialPositionOffset;
-        }
+        // if (onToolPlaced)
+        // {
+        //     _heldObject.transform.position += (Vector3)MaterialPositionOffset;
+        // }
         _heldObject = null;
 
     }
@@ -272,7 +272,7 @@ public class PlayerVision : MonoBehaviour
                     _actualMesa.SendMessage("Drop", _heldObject, SendMessageOptions.DontRequireReceiver); // Actualizar referencias y soltar el objeto si es posible
                     if (_heldObject != null) Debug.Log("No se puede soltar el material aquí"); // si el jugador sigue teniendo el objeto es por que no ha podido soltarlo
                 }
-                else if (_actualMesa.GetComponent<Receiver>() == null)
+                else if (_actualMesa.GetComponent<Receiver>() == null && !(_heldObject.GetComponent<FireExtinguisher>() != null && _actualMesa.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Conveyor))
                 {
                     Drop(); // Soltar el objeto
                 }
