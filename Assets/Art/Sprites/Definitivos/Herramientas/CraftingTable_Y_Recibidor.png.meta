@@ -147,7 +147,7 @@ TextureImporter:
         width: 47
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
         width: 48
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,6 +176,48 @@ TextureImporter:
       bones: []
       spriteID: 0adcc6ad40dc4d84492be13022b16671
       internalID: 729394018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a1725feadedb94f8a1f383aa5e46ec
+      internalID: 2108323499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 67
+        width: 18
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d843f48ee4c8da4585735a95533c96d
+      internalID: -1467272875
       vertices: []
       indices: 
       edges: []
@@ -195,6 +237,8 @@ TextureImporter:
       CraftingTable_Maderav2: 1948346295
       CraftingTable_Metal: -1225585773
       CraftingTable_Metalv2: 729394018
+      Recibidor1: 2108323499
+      Recibidor2: -1467272875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

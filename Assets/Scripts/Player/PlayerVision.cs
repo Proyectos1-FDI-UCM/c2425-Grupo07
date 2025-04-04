@@ -147,6 +147,7 @@ public class PlayerVision : MonoBehaviour
                 }
             }
         }
+
     }
     /// <summary>
     /// Se encarga de detectar si el jugador ha salido de contacto con una mesa, si es así, se elimina la referencia de la mesa en _actualMesa.
@@ -198,7 +199,7 @@ public class PlayerVision : MonoBehaviour
 
     /// <summary>
     /// Este metodo se encarga de el soltado de objetos en la mesa que esté mirando el jugador.
-    /// La boleana permite saber si el objeto se ha soltado en una herramienta para ajustarle un offset en la disposición del material en pantalla.
+    /// onToolPlaced permite saber si el objeto se ha soltado en una herramienta para ajustarle un offset en la disposición del material en pantalla.
     /// </summary>
     public void Drop(bool onToolPlaced = false)
     {
@@ -206,10 +207,10 @@ public class PlayerVision : MonoBehaviour
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
         _heldObject.transform.SetParent(_actualMesa.transform);
-        // if (onToolPlaced)
-        // {
-        //     _heldObject.transform.position += (Vector3)MaterialPositionOffset;
-        // }
+        if (onToolPlaced)
+        {
+            _heldObject.transform.position += (Vector3)MaterialPositionOffset;
+        }
         _heldObject = null;
 
     }

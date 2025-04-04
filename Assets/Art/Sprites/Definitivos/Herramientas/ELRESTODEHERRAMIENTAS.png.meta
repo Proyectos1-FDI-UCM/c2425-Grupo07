@@ -248,9 +248,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 2560
+        y: 2561
         width: 47
-        height: 35
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,6 +317,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ELRESTODEHERRAMIENTAS_0: -1268626893
       IdleOven: 1010206414
       IdleSaw: -2105982674
       OvenAnim1: -537746734
