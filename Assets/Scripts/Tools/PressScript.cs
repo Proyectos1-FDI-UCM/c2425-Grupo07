@@ -31,6 +31,7 @@ public class PressScript : MonoBehaviour
     [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
     [SerializeField] private Canvas BarCanvasGroup;// Referencia al Canvas de la barra de progreso
+    [SerializeField] private Animator _animator; // Referencia al Animator de la prensa
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -91,6 +92,7 @@ public class PressScript : MonoBehaviour
                 item.GetComponentInParent<PlayerVision>().Drop(true);
                 CurrentObject = objects;
                 _isPressing = true;
+                _animator.SetBool("working", true);
                 BarCanvasGroup.gameObject.SetActive(true);
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
@@ -105,6 +107,7 @@ public class PressScript : MonoBehaviour
         _isPressing = false;
         BarCanvasGroup.gameObject.SetActive(false);
         PressingTime = 0f;
+        _animator.SetBool("working", false);
     } 
     #endregion
 
@@ -145,6 +148,7 @@ public class PressScript : MonoBehaviour
         if (CurrentObject != null)
         {
             CurrentObject.GetComponent<Objects>().ResetObject();
+            _animator.SetBool("working", false);
 
             ResetPress();
         }

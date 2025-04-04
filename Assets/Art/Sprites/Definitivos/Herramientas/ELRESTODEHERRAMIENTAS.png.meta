@@ -306,6 +306,216 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PressIdle
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46cf4757629d254b832f34f5cc30bbd
+      internalID: 248621282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76ede2bac0a6f64abed2c9b9d22607a
+      internalID: 219755363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7ac3836fc4b1e4d986035cbb22a1aa
+      internalID: -388361323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d76824c9bc10042adde7e13383f6cc
+      internalID: 1249224776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim6
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d068794c48b5814fb33af245fc8456e
+      internalID: 622174372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim3
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9d5281cf3c2ab4cb7d8452f8d79fb3
+      internalID: 1198460690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim7
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bbe0a28d21dad946b16b074bd1262fb
+      internalID: -1134575543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim8
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f45d80a140ec24292198ca3732a510
+      internalID: -637461431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim9
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24eb833c78d75e048b161f4adb4d41a1
+      internalID: -1285906640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressAnim10
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1180
+        width: 18
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4530cc2577da02f46a244e9cd372c851
+      internalID: -817366976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -317,7 +527,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ELRESTODEHERRAMIENTAS_0: -1268626893
+      ELRESTODEHERRAMIENTAS_0: 612201068
+      ELRESTODEHERRAMIENTAS_2: 1590950910
       IdleOven: 1010206414
       IdleSaw: -2105982674
       OvenAnim1: -537746734
@@ -325,6 +536,16 @@ TextureImporter:
       OvenAnim3: 1619222549
       OvenAnim4: -824836137
       OvenAnim5: -363244568
+      PressAnim10: -817366976
+      PressAnim2: 219755363
+      PressAnim3: 1198460690
+      PressAnim4: -388361323
+      PressAnim5: 1249224776
+      PressAnim6: 622174372
+      PressAnim7: -1134575543
+      PressAnim8: -637461431
+      PressAnim9: -1285906640
+      PressIdle: 248621282
       SawAnim1: -1487261873
       SawAnim2: 1487629689
       SawAnim3: -1278204425
