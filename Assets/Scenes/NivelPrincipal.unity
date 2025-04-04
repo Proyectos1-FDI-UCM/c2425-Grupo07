@@ -122,6 +122,29 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30721159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676578784783737402, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+  m_PrefabInstance: {fileID: 5719194543619647074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &30721162 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8396754316572057924, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+  m_PrefabInstance: {fileID: 5719194543619647074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &30721164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30721159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fa3403c91adea4cb045a20047255f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 2
 --- !u!1001 &533856332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12678,7 +12701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 5.625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12697,6 +12720,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 428202521685018636, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: extinguisherTrigger
+      value: 
+      objectReference: {fileID: 30721162}
     - target: {fileID: 630717443487895077, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.5
@@ -12840,7 +12867,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5676578784783737402, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 30721164}
   m_SourcePrefab: {fileID: 100100000, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

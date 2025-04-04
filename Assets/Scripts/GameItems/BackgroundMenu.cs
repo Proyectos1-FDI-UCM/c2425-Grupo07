@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using System.Security;
+using UnityEngine.U2D;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -42,9 +43,10 @@ public class BackgroundMenu : MonoBehaviour
     private Vector3 _startPos; //la posicion incial de las capas de spites
     private float _distanceTravelled;//la distancia que se ha recorrido 
     private Vector3 _camStartPosition;//La posicion incial de la camara
-    private Rigidbody2D rb; //El rigidbody para recoger el de la camara
-    
-    
+    private Rigidbody2D _rb; //El rigidbody para recoger el de la camara
+    private PixelPerfectCamera _pixelPerfect;
+
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -62,7 +64,8 @@ public class BackgroundMenu : MonoBehaviour
         _startPos = transform.position;
         _camStartPosition = Camera.transform.position;
         _length = GetComponent<SpriteRenderer>().bounds.size.x;
-        rb = Camera.GetComponent<Rigidbody2D>();
+        _rb = Camera.GetComponent<Rigidbody2D>();
+        _pixelPerfect = Camera.GetComponent<PixelPerfectCamera>();
     }
 
     /// <summary>
@@ -72,9 +75,12 @@ public class BackgroundMenu : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _distanceTravelled = Camera.transform.position.x * ParallaxEffect;
-        float repeat = Camera.transform.position.x * (1 - ParallaxEffect);
-        transform.position = new Vector2(_startPos.x + _distanceTravelled, transform.position.y);
+        Vector2 cameraOffset = _pixelPerfect.RoundToPixel(Camera.transform.position);
+
+
+        _distanceTravelled = cameraOffset.x * ParallaxEffect;
+        float repeat = cameraOffset.x * (1 - ParallaxEffect);
+        transform.position = _pixelPerfect.RoundToPixel(new Vector2(_startPos.x + _distanceTravelled, transform.position.y));
 
         if(repeat > _startPos.x + _length)
         {
@@ -85,12 +91,12 @@ public class BackgroundMenu : MonoBehaviour
             _startPos.x -= _length;
         }
 
-        rb.velocity = new Vector3(-1,0,0) * CameraSpeed;
+        _rb.velocity = new Vector3(-1,0,0) * CameraSpeed;
 
-        if (Camera.transform.position.x < Limit)
+        if (cameraOffset.x < Limit)
         {
             transform.position = _startPos;
-            Camera.transform.position = _camStartPosition;
+            cameraOffset = _camStartPosition;
         }
     }
     #endregion
