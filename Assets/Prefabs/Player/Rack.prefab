@@ -133,7 +133,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.04
+  m_Radius: 0.08
 --- !u!50 &4943864478356929494
 Rigidbody2D:
   serializedVersion: 4
@@ -362,6 +362,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   MesaTint: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  ItemTint: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   _visionCollider: {fileID: 8660095150174552816}
   _visionDistance: 0.4
   _offSetSpeed: 20

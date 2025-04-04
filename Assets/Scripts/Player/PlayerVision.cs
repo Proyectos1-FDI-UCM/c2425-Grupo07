@@ -32,6 +32,7 @@ public class PlayerVision : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] LayerMask DetectedTilesLayer; // Esta mascara permite que la detección de mesas solo detecte a gameObjects que tengan esta Layer
     [SerializeField] Color MesaTint = Color.yellow; // El color con el cual se tintará la mesa que esté siendo selecionada/vista por el jugador (_actualmesa)
+    [SerializeField] Color ItemTint; // El color con el cual se tintará el item que esté siendo selecionada/vista por el jugador (_lookedObject)
     [SerializeField] private Collider2D _visionCollider; // Collider que se encarga de detectar las mesas cercanas al jugador.   
     [SerializeField] private float _visionDistance; // La distancia del circulo de detección de mesas con respecto al centro del jugador
     
@@ -53,7 +54,8 @@ public class PlayerVision : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     public GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
-    private GameObject _lookedObject; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
+    private GameObject _objectInTable; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
+    private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
     private GameObject _heldObject;  // El item que está en las manos del jugador.
     public bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
@@ -117,9 +119,9 @@ public class PlayerVision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // me aseguro que solo el collider de la visión del jugador es el que actúa.
-        if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null) 
+        if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null)
         {
-            if (_actualMesa == null) 
+            if (_actualMesa == null)
             {
                 _actualMesa = collision.gameObject;
             }
@@ -134,24 +136,38 @@ public class PlayerVision : MonoBehaviour
             _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
-                if(_heldObject != null)
+                if (_heldObject != null)
                 {
-                Debug.Log("Delivery mode");
-                _actualMesa.GetComponent<Receiver>().AnalizeDeliveredObject(_heldObject);
-                _actualMesa.GetComponent<Receiver>().SetDeliveryMode();
+                    Debug.Log("Delivery mode");
+                    _actualMesa.GetComponent<Receiver>().AnalizeDeliveredObject(_heldObject);
+                    _actualMesa.GetComponent<Receiver>().SetDeliveryMode();
                 }
                 else
                 {
-                Debug.Log("Receiving mode");
-                _actualMesa.GetComponent<Receiver>().SetReceivingMode();
+                    Debug.Log("Receiving mode");
+                    _actualMesa.GetComponent<Receiver>().SetReceivingMode();
                 }
             }
+        }
+    }
+    /// <summary>
+    /// Activa el contorno de un objeto para que el jugador lo pueda reconocer mejor
+    /// Hecho por Guillermo
+    /// </summary>
+    /// <param name="collision"></param>
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (_lookedObject== null && _heldObject == null && (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
+        {
+            _lookedObject = collision.gameObject;
+            _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
         }
 
     }
     /// <summary>
     /// Se encarga de detectar si el jugador ha salido de contacto con una mesa, si es así, se elimina la referencia de la mesa en _actualMesa.
     /// Si el jugador sale de contacto con el recibidor, se llama a SetIdleMode() para que el recibidor vuelva a su estado normal.
+    /// Desactiva el efecto objeto si se deja de mirar
     /// </summary>
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -164,6 +180,11 @@ public class PlayerVision : MonoBehaviour
                 _actualMesa.GetComponent<Receiver>().SetIdleMode();
             }
             _actualMesa = null;
+        }
+        else if (_lookedObject != null&&(collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
+        {
+            _lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
+            _lookedObject = null;
         }
     }
 
@@ -192,7 +213,7 @@ public class PlayerVision : MonoBehaviour
             _heldObject = lookedObject;
             _heldObject.transform.SetParent(gameObject.transform);
             _isBeingPicked = true;
-            _lookedObject = null;
+            _objectInTable = null;
         }
         else Debug.LogError("Ya tienes un objeto en la mano");
     }
@@ -254,7 +275,7 @@ public class PlayerVision : MonoBehaviour
         {
             ContentAnalizer();
 
-            if (_heldObject != null && _lookedObject == null) // EL jugador tiene un objeto en la mano y no hay objeto en la mesa : Soltar el objeto
+            if (_heldObject != null && _objectInTable == null) // EL jugador tiene un objeto en la mano y no hay objeto en la mesa : Soltar el objeto
             {
                 #region Antiguo sistema de comprobacion de si se puede soltar el objeto, descartado
 
@@ -278,29 +299,29 @@ public class PlayerVision : MonoBehaviour
                     Drop(); // Soltar el objeto
                 }
             }
-            else if (_actualMesa.GetComponent<OvenScript>() == null && _heldObject == null && _lookedObject != null)
+            else if (_actualMesa.GetComponent<OvenScript>() == null && _heldObject == null && _objectInTable != null)
             {
                 // Limpiar referencias antes de recoger el objeto
                 if (IsMesaATool())
                 {
                     _actualMesa.SendMessage("Pick", SendMessageOptions.DontRequireReceiver);
                 }
-                Pick(_lookedObject);
+                Pick(_objectInTable);
             }
-            else if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnBurnt() && _heldObject == null && _lookedObject != null)
+            else if (_actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnBurnt() && _heldObject == null && _objectInTable != null)
             {
                 // Limpiar referencias antes de recoger el objeto
                 if (IsMesaATool())
                 {
                     _actualMesa.SendMessage("Pick", SendMessageOptions.DontRequireReceiver);
                 }
-                Pick(_lookedObject);
+                Pick(_objectInTable);
             }
             //else if (_heldObject == null && _lookedObject != null) // El jugador no tiene un objeto en la mano y hay un objeto en la mesa : Recoger el objeto
             //{
  
             //}
-            else if (_heldObject != null && _lookedObject != null) InsertMaterial();
+            else if (_heldObject != null && _objectInTable != null) InsertMaterial();
         }
     }
 
@@ -319,15 +340,15 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     private void ContentAnalizer()
     {
-        _lookedObject = null;
+        _objectInTable = null;
 
         if (_actualMesa.transform.childCount >= 1)
         {
-           _lookedObject = _actualMesa.transform.GetChild(0).gameObject;
+           _objectInTable = _actualMesa.transform.GetChild(0).gameObject;
 
-            if (_lookedObject.GetComponent<Collider2D>() == null)
+            if (_objectInTable.GetComponent<Collider2D>() == null)
             {
-            _lookedObject = null;
+            _objectInTable = null;
             }
         }
 
@@ -367,11 +388,11 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     private void InsertMaterial()
     {
-        if (_heldObject.GetComponent<Objects>() && _lookedObject.GetComponent<Objects>())
+        if (_heldObject.GetComponent<Objects>() && _objectInTable.GetComponent<Objects>())
         {
             Debug.Log("No puedes insertar un objeto dentro de otro objeto");
         }
-        else if (_lookedObject.GetComponent<Objects>())
+        else if (_objectInTable.GetComponent<Objects>())
         {
             if (_actualMesa != null && _actualMesa.GetComponent<CraftingTableScript>() != null)
             {

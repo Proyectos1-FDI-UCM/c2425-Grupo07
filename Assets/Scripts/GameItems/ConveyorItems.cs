@@ -99,7 +99,6 @@ public class ConveyorItems : MonoBehaviour
         }
         if (other.GetComponent<BinScript>() != null && NextBelt != null)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, other.transform.position, BeltVel * Time.deltaTime);
             BeltVel = 0.1f;
             transform.SetParent(other.gameObject.transform);
         }
