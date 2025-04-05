@@ -290,11 +290,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1229
+        y: 1226
         width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.57894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -663,6 +663,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopLeftSerpent
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1271
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f32386b65efe942a1e653f4cba5fcb
+      internalID: -1315066233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightSerpent
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1271
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb5a0c4d9c59f114b99ad7ef3ab8437c
+      internalID: 360853442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownRightSerpent
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1247
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31696e7175918124da4fc8a92428a28f
+      internalID: 1730487659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownLeftSerpent
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1247
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4334751e25c1474b9660aeb3273c30d
+      internalID: 504018328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -692,7 +776,9 @@ TextureImporter:
       Borde izq: -722332380
       Down: 303035580
       DownLeft: 612026515
+      DownLeftSerpent: 504018328
       DownRight: -1151394955
+      DownRightSerpent: 1730487659
       Esquina: -766542572
       Left: -132513781
       Medio: -224074097
@@ -700,7 +786,9 @@ TextureImporter:
       Right: 648085532
       Top: 1429885346
       TopLeft: -772704169
+      TopLeftSerpent: -1315066233
       TopRight: -1658047033
+      TopRightSerpent: 360853442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

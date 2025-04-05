@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: City Prop Tileset update 2_25
+  m_Name: Grass_58
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -978654039, guid: 26a9448841ec9a743b98c0cc7b718e92, type: 3}
+  m_Sprite: {fileID: 1772220333, guid: 668673e5106f4b84990c0623cbff5ff9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

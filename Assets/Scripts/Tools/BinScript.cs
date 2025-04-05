@@ -17,6 +17,7 @@ public class BinScript : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // No hay atributos de inspector en esta clase.
+    [SerializeField] private Animator _animator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -40,11 +41,20 @@ public class BinScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       _animator.SetBool("Opened",true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _animator.SetBool("Opened",false);
+    }
     public void Drop(GameObject item)
     {
         if (item.GetComponent<FireExtinguisher>() == null)
         {
-            item.GetComponentInParent<PlayerVision>().Drop(true);
+            item.GetComponentInParent<PlayerVision>().Drop(false);
             item.transform.SetParent(gameObject.transform);
             item.transform.localPosition = Vector3.zero; // Coloca el objeto en la posición del contenedor
         }
@@ -93,6 +103,7 @@ public class BinScript : MonoBehaviour
             if (material != null && material.transform.localScale.x > 0.1)
             {
                 material.transform.localScale = material.transform.localScale * (1 - rateDisminuye);
+                material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
             }
             else
             {

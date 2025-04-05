@@ -50,3 +50,16 @@ MonoBehaviour:
   _levelName: 
   _playerBool: {fileID: 0}
   _isRack: 0
+  _moneyText1: {fileID: 0}
+  _moneyText2: {fileID: 0}
+  _rankImage1: {fileID: 0}
+  _rankImage2: {fileID: 0}
+  _moneyNumber1: 0
+  _moneyNumber2: 0
+  _timeText1: {fileID: 0}
+  _timeText2: {fileID: 0}
+  _levels:
+  - {fileID: 0}
+  - {fileID: 0}
+  _statsUpdated: 0
+  _lastLevelPlayed: 

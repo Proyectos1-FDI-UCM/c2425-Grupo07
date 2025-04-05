@@ -55,6 +55,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 3762974505
+    locked: 0
   - name: Floor
     uniqueID: 3159893843
     locked: 0
@@ -75,7 +78,4 @@ TagManager:
     locked: 0
   - name: ObjectsFloating
     uniqueID: 3526214795
-    locked: 0
-  - name: UI
-    uniqueID: 3762974505
     locked: 0
