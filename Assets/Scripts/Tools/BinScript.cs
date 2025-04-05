@@ -22,7 +22,7 @@ public class BinScript : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // No hay atributos privados en esta clase.
+    private float _velMat = 10; //La velocidad que se moverá el material hacia la basura
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -102,6 +102,7 @@ public class BinScript : MonoBehaviour
             yield return new WaitForSeconds(tiempoDisminuye);
             if (material != null && material.transform.localScale.x > 0.1)
             {
+                material.transform.position = Vector3.MoveTowards(material.transform.position, transform.position, _velMat * Time.deltaTime);
                 material.transform.localScale = material.transform.localScale * (1 - rateDisminuye);
                 material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
             }
