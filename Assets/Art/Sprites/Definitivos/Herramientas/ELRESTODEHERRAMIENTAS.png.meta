@@ -516,6 +516,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TrashBinIdle
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1537
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 571803c2891a6e8469b9eaafff530c33
+      internalID: 358426776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrashBinAnim1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1537
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f24678aabdb794c9f7157a7c075f3b
+      internalID: -1827024687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrashBinAnim2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1537
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5583becd4beff274a9ee990b6bd6f07e
+      internalID: 21970889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrashBinAnim3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1473
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d5c73802f64914a8443ba2130bc46a
+      internalID: -1231436109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -527,8 +611,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ELRESTODEHERRAMIENTAS_0: 612201068
-      ELRESTODEHERRAMIENTAS_2: 1590950910
       IdleOven: 1010206414
       IdleSaw: -2105982674
       OvenAnim1: -537746734
@@ -549,6 +631,10 @@ TextureImporter:
       SawAnim1: -1487261873
       SawAnim2: 1487629689
       SawAnim3: -1278204425
+      TrashBinAnim1: -1827024687
+      TrashBinAnim2: 21970889
+      TrashBinAnim3: 1590950910
+      TrashBinIdle: 612201068
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

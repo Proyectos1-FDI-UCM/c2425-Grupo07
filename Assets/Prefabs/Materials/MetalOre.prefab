@@ -293,7 +293,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.2
 --- !u!50 &5449214854101520171
 Rigidbody2D:
   serializedVersion: 4
@@ -337,7 +337,6 @@ MonoBehaviour:
   BeltVel: 2
   enCinta: 0
   BeltDistance: 0.79
-  Muevo1: 1
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0
