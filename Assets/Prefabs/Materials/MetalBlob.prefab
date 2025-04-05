@@ -335,8 +335,7 @@ MonoBehaviour:
   NextBelt: {fileID: 0}
   BeltVel: 2
   enCinta: 0
-  BeltDistance: 0.79
-  Muevo1: 1
+  BeltDistance: 0.7
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0

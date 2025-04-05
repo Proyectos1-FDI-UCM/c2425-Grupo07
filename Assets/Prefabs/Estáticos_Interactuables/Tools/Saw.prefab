@@ -174,6 +174,7 @@ MonoBehaviour:
   MaderaProcesada: {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
   HasWood: 0
   _completionTime: 6
+  _animator: {fileID: 0}
 --- !u!212 &6705416684490303124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34dc1ffac99973042b3b8a5f047841ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -239,3 +240,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabType: 2
+  ItemTint: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}

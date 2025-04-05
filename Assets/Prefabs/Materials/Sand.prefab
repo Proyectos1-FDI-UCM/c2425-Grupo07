@@ -273,8 +273,7 @@ MonoBehaviour:
   NextBelt: {fileID: 0}
   BeltVel: 2
   enCinta: 0
-  BeltDistance: 0.79
-  Muevo1: 1
+  BeltDistance: 0.7
 --- !u!58 &2406807137711535684
 CircleCollider2D:
   m_ObjectHideFlags: 0

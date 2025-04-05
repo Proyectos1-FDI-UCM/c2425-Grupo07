@@ -437,5 +437,4 @@ MonoBehaviour:
   NextBelt: {fileID: 0}
   BeltVel: 2
   enCinta: 0
-  BeltDistance: 0.79
-  Muevo1: 1
+  BeltDistance: 0.7

@@ -55,7 +55,7 @@ public class PlayerVision : MonoBehaviour
 
     public GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
     private GameObject _objectInTable; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
-    private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
+    //private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
     private GameObject _heldObject;  // El item que está en las manos del jugador.
     public bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
@@ -130,10 +130,16 @@ public class PlayerVision : MonoBehaviour
                 if (Vector2.Distance(transform.position, collision.transform.position) < Vector2.Distance(transform.position, _actualMesa.transform.position))
                 {
                     _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+                    if (_actualMesa.transform.childCount>0&& _actualMesa.transform.GetChild(0)!=null)
+                    {
+                        _actualMesa.GetComponent<Mesa>().UnTintObject(_actualMesa.transform.GetChild(0).gameObject);
+                    }
+                    _actualMesa.GetComponent<Mesa>().IsBeingLooked(false);
                     _actualMesa = collision.gameObject;
                 }
             }
             _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
+            _actualMesa.GetComponent<Mesa>().IsBeingLooked(true);
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
                 if (_heldObject != null)
@@ -157,12 +163,18 @@ public class PlayerVision : MonoBehaviour
     /// <param name="collision"></param>
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (_lookedObject== null && _heldObject == null && (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
-        {
-            _lookedObject = collision.gameObject;
-            _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
-        }
-
+        //if (_lookedObject== null && _heldObject == null && (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
+        //{
+        //    _lookedObject = collision.gameObject;
+        //    _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
+        //}
+        //if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null)
+        //{
+        //    if (_actualMesa != null && _actualMesa.transform.childCount > 0)
+        //    {
+        //        _actualMesa.GetComponent<Mesa>().TintObject(_actualMesa.transform.GetChild(0).gameObject);
+        //    }
+        //}
     }
     /// <summary>
     /// Se encarga de detectar si el jugador ha salido de contacto con una mesa, si es así, se elimina la referencia de la mesa en _actualMesa.
@@ -174,6 +186,11 @@ public class PlayerVision : MonoBehaviour
         if (collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)
         {
             _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+            if (_actualMesa.transform.childCount > 0 && _actualMesa.transform.GetChild(0) != null)
+            {
+                _actualMesa.GetComponent<Mesa>().UnTintObject(_actualMesa.transform.GetChild(0).gameObject);
+            }
+            _actualMesa.GetComponent<Mesa>().IsBeingLooked(false);
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
                  Debug.Log("Idle mode");
@@ -181,11 +198,12 @@ public class PlayerVision : MonoBehaviour
             }
             _actualMesa = null;
         }
-        else if (_lookedObject != null&&(collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
-        {
-            _lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
-            _lookedObject = null;
-        }
+        //else if (_lookedObject != null && collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)//&& (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
+        //{
+        //    _actualMesa.GetComponent<Mesa>().UnTintObject(_lookedObject);
+        //   //_lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
+        //    _lookedObject = null;
+        //}
     }
 
     #endregion

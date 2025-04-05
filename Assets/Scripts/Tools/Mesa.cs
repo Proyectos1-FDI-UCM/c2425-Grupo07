@@ -21,7 +21,7 @@ public class Mesa : MonoBehaviour
     /// </summary>
     public enum TableType
     {
-        Conveyor, Table, Tool 
+        Conveyor, Table, Tool
     }
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -31,6 +31,7 @@ public class Mesa : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private TableType tabType; //Este enum sirve para que el jugador sepa diferenciar entre las distintas mesas
+    Color ItemTint = Color.grey; // El color con el cual se tintará el item que esté siendo selecionada/vista por el jugador (_lookedObject)
 
     #endregion
 
@@ -42,7 +43,8 @@ public class Mesa : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private GameObject item;
+    private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
+    private bool _isLooked; // El item que esté mirando el jugador se tintará de un color específico
 
     #endregion
 
@@ -71,15 +73,46 @@ public class Mesa : MonoBehaviour
     {
         return tabType;
     }
+    public void TintObject(GameObject collision)
+    {
+        _lookedObject = collision.gameObject;
+        if (_lookedObject != null)
+        {
+            _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
+        }
+    }
+    public void UnTintObject(GameObject collision)
+    {
+        if (_lookedObject != null)
+        {
+            _lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        _lookedObject = null;
+    }
+    public void IsBeingLooked(bool isLooked)
+    {
+        _isLooked = isLooked;
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    private void OnTransformChildrenChanged()
+    {
+        if (_lookedObject != null)
+        {
+            UnTintObject(_lookedObject);
+        }
+        else if (_isLooked && transform.childCount > 0) 
+        {
+            _lookedObject = transform.GetChild(0).gameObject;
+            TintObject(_lookedObject);
+        }
+    }
     #endregion   
 
 } // class Mesa 
