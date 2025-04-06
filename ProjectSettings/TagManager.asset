@@ -67,14 +67,11 @@ TagManager:
   - name: ObjectsOrMaterials
     uniqueID: 3379730203
     locked: 0
-  - name: Decorations
-    uniqueID: 322545677
-    locked: 0
   - name: PlayerAndItems
     uniqueID: 1280534379
     locked: 0
-  - name: ItemsOnTool
-    uniqueID: 3526214795
+  - name: Decorations
+    uniqueID: 322545677
     locked: 0
   - name: UI
     uniqueID: 3762974505

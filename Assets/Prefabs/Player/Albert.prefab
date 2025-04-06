@@ -409,7 +409,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   MesaTint: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
-  ItemTint: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  ItemTint: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   _visionCollider: {fileID: 8530380552882982428}
   _visionDistance: 0.55
   _offSetSpeed: 20
