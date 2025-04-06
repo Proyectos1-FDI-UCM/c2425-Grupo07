@@ -70,7 +70,7 @@ TagManager:
   - name: Decorations
     uniqueID: 322545677
     locked: 0
-  - name: Player
+  - name: PlayerAndItems
     uniqueID: 1280534379
     locked: 0
   - name: ItemsOnTool
