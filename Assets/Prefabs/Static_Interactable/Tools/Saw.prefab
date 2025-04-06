@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3047328990291088811}
   - component: {fileID: 6705416684490303124}
   - component: {fileID: 1271782686117062488}
+  - component: {fileID: 17094492241830544}
   m_Layer: 10
   m_Name: SierraManager
   m_TagString: Sierra
@@ -62,9 +63,9 @@ Transform:
   m_GameObject: {fileID: 3691559963680434258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 2.61, y: -0.004484892, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5467733868734776611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,18 +101,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.008920431, y: 0.6141162}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1111112, y: 1.1111112}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 7.8, y: 6.2}
+    newSize: {x: 0.39, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7.761247, y: 5.0614643}
   m_EdgeRadius: 0
 --- !u!61 &7109973833845168856
 BoxCollider2D:
@@ -145,18 +146,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.004340887, y: 0.6284757}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1111112, y: 1.1111112}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 7.8, y: 6.2}
+    newSize: {x: 0.39, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7.787582, y: 5.0042663}
   m_EdgeRadius: 0
 --- !u!114 &3047328990291088811
 MonoBehaviour:
@@ -174,7 +175,7 @@ MonoBehaviour:
   MaderaProcesada: {fileID: 7038670483933056925, guid: ba282dd4e5654fe4498132706e65cc15, type: 3}
   HasWood: 0
   _completionTime: 6
-  _animator: {fileID: 0}
+  _animator: {fileID: 17094492241830544}
 --- !u!212 &6705416684490303124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,12 +217,12 @@ SpriteRenderer:
   m_SortingLayerID: -259739391
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 34dc1ffac99973042b3b8a5f047841ee, type: 3}
+  m_Sprite: {fileID: -2105982674, guid: b09098131c555a84fa06954608f64045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.39, y: 0.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -240,4 +241,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabType: 2
-  ItemTint: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+--- !u!95 &17094492241830544
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691559963680434258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 570f0bb61f84659489c8aba822437ff0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
