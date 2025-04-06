@@ -138,6 +138,7 @@ public class SawScript : MonoBehaviour
             {
                 item.GetComponentInParent<PlayerVision>().Drop(true);
                 _materialSource = material;
+                _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _progress = _materialSource.ReturnProgress();
                 HasWood = true;
             }
@@ -151,6 +152,7 @@ public class SawScript : MonoBehaviour
     /// /// </summary>
     public void Pick()
     {
+        _materialSource.GetComponent<SpriteRenderer>().sortingOrder = -1;
         _materialSource = null;
         HasWood = false;
     }

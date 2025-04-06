@@ -89,8 +89,10 @@ public class PressScript : MonoBehaviour
             Objects objects = item.GetComponent<Objects>();
             if (!objects.ThereIsMaterial())
             {
+
                 item.GetComponentInParent<PlayerVision>().Drop(true);
                 CurrentObject = objects;
+                CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _isPressing = true;
                 _animator.SetBool("working", true);
                 BarCanvasGroup.gameObject.SetActive(true);
@@ -104,6 +106,7 @@ public class PressScript : MonoBehaviour
     /// </summary>
     public void Pick()
     {
+        CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
         _isPressing = false;
         BarCanvasGroup.gameObject.SetActive(false);
         PressingTime = 0f;

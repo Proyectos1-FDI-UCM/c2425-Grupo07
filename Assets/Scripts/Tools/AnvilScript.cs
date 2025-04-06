@@ -192,6 +192,7 @@ public class AnvilScript : MonoBehaviour
             if(material.MaterialTypeReturn() == MaterialType.MetalMineral)
             {
                 item.GetComponentInParent<PlayerVision>().Drop(true);
+                _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _materialSource = material;
                 CompletionBarReference = _materialSource.ReturnProgressBar();
                 _progress = _materialSource.ReturnProgress();
@@ -210,6 +211,7 @@ public class AnvilScript : MonoBehaviour
         if (_hasFinished)
         {
             _hasFinished = false;
+            _materialSource.GetComponent<SpriteRenderer>().sortingOrder = -1;
             _materialSource = null;
             hasMetal = false;
         }

@@ -121,12 +121,12 @@ public class OvenScript : MonoBehaviour
             Material material = item.GetComponent<Material>();
             if (material.MaterialTypeReturn() == MaterialType.Arena || material.MaterialTypeReturn() == MaterialType.MetalRoca)
             {
-            item.GetComponentInParent<PlayerVision>().Drop(false);
-            _matScr = material;
-            _matScr.GetComponent<SpriteRenderer>().enabled = false;
-            _progress = _matScr.ReturnProgress();
-            _isProcessing = true;
-            _animator.SetBool("working", true);
+                item.GetComponentInParent<PlayerVision>().Drop(true);
+                _matScr = material;
+                _matScr.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                _progress = _matScr.ReturnProgress();
+                _isProcessing = true;
+                _animator.SetBool("working", true);
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
@@ -137,7 +137,7 @@ public class OvenScript : MonoBehaviour
     /// /// </summary>
     public void Pick()
     {
-        _matScr.GetComponent<SpriteRenderer>().enabled = true;
+        _matScr.GetComponent<SpriteRenderer>().sortingOrder = -1;
         if (_hasFinished)
         {
             _matScr.ProcessHasEnded();
@@ -235,7 +235,6 @@ public class OvenScript : MonoBehaviour
     void BurntMaterial()
     {
         IsBurnt = true;
-        _matScr.GetComponent<SpriteRenderer>().enabled = true;
         FireIco.SetActive(true);
         FlashImage.SetActive(false);
         _progress = 0;
