@@ -266,6 +266,28 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Desactiva o activa el componente PlayerVision del jugador.
+    /// true: desactiva el componente PlayerVision del jugador.
+    /// false: activa el componente PlayerVision del jugador.
+    /// </summary>
+
+    public void DeactivatePlayer(bool state)
+    {
+        if (_player != null)
+        {
+            PlayerVision playerVision = _player.GetComponent<PlayerVision>();
+            if (playerVision != null)
+            {
+                playerVision.enabled = !state;
+            }
+            else
+            {
+                Debug.LogError("No se ha encontrado el componente PlayerVision en el jugador.");
+            }
+        }
+    }
+
+    /// <summary>
     /// Método que cambia la escena actual por la indicada en el parámetro.
     /// </summary>
     /// <param name="index">Índice de la escena (en el build settings)

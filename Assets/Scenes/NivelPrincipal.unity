@@ -3268,6 +3268,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1859086690920436692, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 342.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859086690920436692, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 86.3736
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859086690920436692, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859086690920436692, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9.2544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329167772234547335, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2426647103560321943, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1024.7505
@@ -3300,13 +3320,29 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034620569216663304, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.79663
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034620569216663304, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 76.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _maxTime
-      value: 130
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6442271222107180575, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186957339336009724, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_fontSize
+      value: 103.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186957339336009724, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 103.34
       objectReference: {fileID: 0}
     - target: {fileID: 7722602145844596671, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_IsActive
