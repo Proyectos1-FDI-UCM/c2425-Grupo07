@@ -1,0 +1,2058 @@
+fileFormatVersion: 2
+guid: a24a462a1081954478b3b3d78a564a67
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StreetsNormal_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6992e3d921634a743ac66376b2658a04
+      internalID: 1084738072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b8e3864e990da418c8d5d456f11496
+      internalID: 2069968587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb3cf50fa85240489e0c88c63cbc8f2
+      internalID: -649076529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1823d67c961322047acdfa769c61acbd
+      internalID: 1930751326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8ba384bbf8eba45a325b076054550d
+      internalID: -1248603438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a2b144c9593494fb02f7334b4c2dd8
+      internalID: -866289080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba651e5d0a9b6e046b2f73b86ba85351
+      internalID: 390617287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52a9b02a28af8b4696068cab23fc858
+      internalID: 1836719433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f676b3e36cac7b145bf1c2d8ff9dee0b
+      internalID: -1139432069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3be03695d5ce54eabb8e312fd454eb
+      internalID: -1470457762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_10
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df89b246b96dc3e438a54bb2d9abdf52
+      internalID: 319119512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_11
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 229
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7d091762697844ea9444152328a19d
+      internalID: -778319782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16666956212e8346b910341f5a57913
+      internalID: 1544855669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_13
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51f02b8ae3007749bb500aa75bc3c16
+      internalID: 121836316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_14
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e038803ffb237c4486f858f5836a068
+      internalID: 98967598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_15
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e084adb07c8a8084091884cd52fac6d5
+      internalID: 1461646956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_16
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb4ad767fa88dc47a1ae5a578ebb9bb
+      internalID: -1037086919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_17
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b724a74230f2be4438e96ff251b0c5cd
+      internalID: -905032618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_18
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cf9ea8a6b05b84786a0f18d32a3563
+      internalID: -1157729548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_19
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d324a973c5896d4090ae246b6522bf2
+      internalID: -593995949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_20
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed8c4d3968ef6e4f919ffe58019fa49
+      internalID: -607965629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_21
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0bc8dd326222f49af0bb376dd701b7
+      internalID: -643651251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac6ddc0f80515544820422238c575a7
+      internalID: -374669469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_23
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 197
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e8f78e990d6be4d88abfb7f3e1a8ff
+      internalID: 73172038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616c424ddb10ac74298723611a113ea8
+      internalID: -213876368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_25
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca87ca0f3dd30f4ea256933afd6be82
+      internalID: -1790208576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_26
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4586632c0b5ba9446af14176e0423b49
+      internalID: -858008876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_27
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5a008104eca7444a132a8a3151642a
+      internalID: 1871889289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_28
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c67cd76d7536d4b97f2cf651740755
+      internalID: 540857344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_29
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b86e754c79c6546b600d43f0110ccf
+      internalID: 1754283661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_30
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ecbd77210843d40a5d593f82149917
+      internalID: 1233908460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_31
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71dd704ecc315c347a6fd9f1ec152ec0
+      internalID: -591905118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_32
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e463234150ed0fd4c8395fdd0895c5a8
+      internalID: -1017799265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_33
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5504567dc450a4ea1e1a619cf60c3c
+      internalID: 12788924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_34
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666a3f9de941b6b499380a28d0f9cb4e
+      internalID: 523759320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_35
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 165
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c188c43ce36e5d64f8f085329baf2a5e
+      internalID: 1105266776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_36
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba91f753cb325f408a5807443d37a70
+      internalID: -928768737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_37
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d108b4bcfb76f0b409f9caf525a795c6
+      internalID: 661846228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_38
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87a30c25ba30b04487222a5f3ad26ae
+      internalID: -1956084254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_39
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d1c9610a6711740a19304c62b28a42
+      internalID: 1827971839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_40
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 661fcbdfc508c4745b42ddae2cdb0eef
+      internalID: -449769935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_41
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace4cb5b8564bae4fbdf28f7b19a99d4
+      internalID: -347093358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_42
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e9788e788ded894bb5eee7f52b9b4e8
+      internalID: -2016040460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_43
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2417675912b2f2e4d8c9e0ed70ea3aa4
+      internalID: 1833079181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_44
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f6e54c949f8c94687099fe94151730
+      internalID: -650625299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_45
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36612ceb214c9946b5e219c7fb21767
+      internalID: 2117756384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_46
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d82a2d56fe814042abae83df1a27068
+      internalID: 1134598589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_47
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8883b062717585c49be09317072df059
+      internalID: -905590478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_48
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b06dd77baf68114eb8e31ce73715412
+      internalID: 436698059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_49
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac135c5d8a1602d44bd10e24f8412f29
+      internalID: 321141201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_50
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f08b86e28bfabe4aa00df86bfa9f74f
+      internalID: -1685300440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_51
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7008002895025004eaab74bdb5a9e77d
+      internalID: -969738241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_52
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4ce7b3521dc8f46ad90a972d7b9fe8
+      internalID: -520904186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_53
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac22408f09b8f94e92f1e4157cc41cf
+      internalID: 874737491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_54
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba669477f7e868847b30999ec96789b3
+      internalID: -1750037913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_55
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da58626f141ce34fbef99b1abeb45a4
+      internalID: 1872127909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_56
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b8a84cb4d0a684e9383c9364a330d0
+      internalID: -1199634088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_57
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0df1d69c62783499d198093c8a97e5
+      internalID: 744114006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_58
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f93d38b0441e94baaba95970380cd8
+      internalID: 1186577962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_59
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 101
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145a41eef70c0f243a4aac48f8b680a0
+      internalID: 680765594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_60
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c871c13356dae8f4f8b13014ef398754
+      internalID: 177013724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_61
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ffe539768ce55a4eb4cf9d49ed0a03d
+      internalID: 825823005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_62
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d95ce7409fbd1468e87ce76154cb33
+      internalID: -1880115985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_63
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ffafcfb90c612428c693dd3b85c92b
+      internalID: -938225493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_64
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2bd0567d8c23e459d34cc36c36268c
+      internalID: 1257334975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_65
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962fd446ebbb41d4297989ea497a681e
+      internalID: 1726233421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_66
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91086b2c4ebefc34194d0f013221053d
+      internalID: 1023334831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_67
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d26bcbd1679ff4da9a47ea4e95d73d
+      internalID: -1218396921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_68
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5761b871b0ee66a4c9daeb7f779ad73c
+      internalID: -1944590943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_69
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c908b589c3f09e947b5ce7449ef77f3b
+      internalID: 1605974674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_70
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49be8822c0a01814298048d5c714cc14
+      internalID: -498709426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_71
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9182fec8474a745a0a42a7803e839b
+      internalID: 1497339441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_76
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc11928108e3924db0879f1801dfd6f
+      internalID: -1539835592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_77
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0368e6018c5fc8145b665e02413737f6
+      internalID: -310027107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_78
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d7b77323ee994458b60cc4819eff57
+      internalID: -478815098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_79
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6835b611b5e2543aff51786430bc60
+      internalID: 2131280956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_80
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950ade5fb547db547a6a380b1521ad07
+      internalID: 1882243388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_81
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f80709d47c25334b9d37d07f5f78851
+      internalID: -1317718886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_82
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31863eac9e7ad694bb333ddaf36518e8
+      internalID: -773740762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_83
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 37
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f354866417d6d2f47952e3110123cc3f
+      internalID: -706802823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_88
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 163b19fb86201f749a31fe52a758bd4d
+      internalID: -1141882062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_89
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de96c55fab5557f48a1f60148523bf81
+      internalID: -2087627925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_90
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee82546d3385de040965db3eb62e1fb2
+      internalID: -1905719338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_91
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23784a84d05e4624382eca2f5f44b0cf
+      internalID: -1297219059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_92
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2f8700c56b0a748873ad4163289621
+      internalID: -961898827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_93
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51409a6aa5e7d9041b54f7585e9ed1f6
+      internalID: 106389891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_94
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e0cf9aed7da5a4c89255acc18ca3a6
+      internalID: 1791060346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StreetsNormal_95
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8791ea8db991f914f8050e06c8f8a9f4
+      internalID: 2022020612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      StreetsNormal_0: 1084738072
+      StreetsNormal_1: 2069968587
+      StreetsNormal_10: 319119512
+      StreetsNormal_11: -778319782
+      StreetsNormal_12: 1544855669
+      StreetsNormal_13: 121836316
+      StreetsNormal_14: 98967598
+      StreetsNormal_15: 1461646956
+      StreetsNormal_16: -1037086919
+      StreetsNormal_17: -905032618
+      StreetsNormal_18: -1157729548
+      StreetsNormal_19: -593995949
+      StreetsNormal_2: -649076529
+      StreetsNormal_20: -607965629
+      StreetsNormal_21: -643651251
+      StreetsNormal_22: -374669469
+      StreetsNormal_23: 73172038
+      StreetsNormal_24: -213876368
+      StreetsNormal_25: -1790208576
+      StreetsNormal_26: -858008876
+      StreetsNormal_27: 1871889289
+      StreetsNormal_28: 540857344
+      StreetsNormal_29: 1754283661
+      StreetsNormal_3: 1930751326
+      StreetsNormal_30: 1233908460
+      StreetsNormal_31: -591905118
+      StreetsNormal_32: -1017799265
+      StreetsNormal_33: 12788924
+      StreetsNormal_34: 523759320
+      StreetsNormal_35: 1105266776
+      StreetsNormal_36: -928768737
+      StreetsNormal_37: 661846228
+      StreetsNormal_38: -1956084254
+      StreetsNormal_39: 1827971839
+      StreetsNormal_4: -1248603438
+      StreetsNormal_40: -449769935
+      StreetsNormal_41: -347093358
+      StreetsNormal_42: -2016040460
+      StreetsNormal_43: 1833079181
+      StreetsNormal_44: -650625299
+      StreetsNormal_45: 2117756384
+      StreetsNormal_46: 1134598589
+      StreetsNormal_47: -905590478
+      StreetsNormal_48: 436698059
+      StreetsNormal_49: 321141201
+      StreetsNormal_5: -866289080
+      StreetsNormal_50: -1685300440
+      StreetsNormal_51: -969738241
+      StreetsNormal_52: -520904186
+      StreetsNormal_53: 874737491
+      StreetsNormal_54: -1750037913
+      StreetsNormal_55: 1872127909
+      StreetsNormal_56: -1199634088
+      StreetsNormal_57: 744114006
+      StreetsNormal_58: 1186577962
+      StreetsNormal_59: 680765594
+      StreetsNormal_6: 390617287
+      StreetsNormal_60: 177013724
+      StreetsNormal_61: 825823005
+      StreetsNormal_62: -1880115985
+      StreetsNormal_63: -938225493
+      StreetsNormal_64: 1257334975
+      StreetsNormal_65: 1726233421
+      StreetsNormal_66: 1023334831
+      StreetsNormal_67: -1218396921
+      StreetsNormal_68: -1944590943
+      StreetsNormal_69: 1605974674
+      StreetsNormal_7: 1836719433
+      StreetsNormal_70: -498709426
+      StreetsNormal_71: 1497339441
+      StreetsNormal_72: -220568661
+      StreetsNormal_73: -1287537424
+      StreetsNormal_74: 615304072
+      StreetsNormal_75: 858204768
+      StreetsNormal_76: -1539835592
+      StreetsNormal_77: -310027107
+      StreetsNormal_78: -478815098
+      StreetsNormal_79: 2131280956
+      StreetsNormal_8: -1139432069
+      StreetsNormal_80: 1882243388
+      StreetsNormal_81: -1317718886
+      StreetsNormal_82: -773740762
+      StreetsNormal_83: -706802823
+      StreetsNormal_84: -1517372771
+      StreetsNormal_85: -1160707903
+      StreetsNormal_86: 1163192414
+      StreetsNormal_87: -279545232
+      StreetsNormal_88: -1141882062
+      StreetsNormal_89: -2087627925
+      StreetsNormal_9: -1470457762
+      StreetsNormal_90: -1905719338
+      StreetsNormal_91: -1297219059
+      StreetsNormal_92: -961898827
+      StreetsNormal_93: 106389891
+      StreetsNormal_94: 1791060346
+      StreetsNormal_95: 2022020612
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
