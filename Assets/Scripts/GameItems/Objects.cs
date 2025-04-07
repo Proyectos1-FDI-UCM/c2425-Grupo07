@@ -35,7 +35,7 @@ public class Objects : MonoBehaviour
     //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
     [SerializeField] private Renderer[] CapacityAmount = new Renderer[3];
     //Array de imagenes para el estado del objeto
-    [SerializeField] private Renderer[] ObjectImage;
+    [SerializeField] private Sprite[] ObjectImage;
 
 
     #endregion
@@ -43,7 +43,7 @@ public class Objects : MonoBehaviour
     #region Atributos Privados (private fields)
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
     [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
-    private Renderer skin;
+    private SpriteRenderer skin;
     private int n;
 
 
@@ -58,7 +58,7 @@ public class Objects : MonoBehaviour
 
     private void Start()
     {
-        skin = gameObject.GetComponent<Renderer>();
+        skin = gameObject.GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
@@ -67,7 +67,6 @@ public class Objects : MonoBehaviour
     void Update()
     {
         CapacityIndicator();
-        //ChangeSkin();
     }
     #endregion
 
@@ -177,8 +176,7 @@ public class Objects : MonoBehaviour
             _nGood++;
         }
         if(n<OrdenPedidos.Length) n++;
-
-        //skin = ObjectImage[_nGood];
+        skin.sprite = ObjectImage[_nGood];
     }
     #endregion
 
