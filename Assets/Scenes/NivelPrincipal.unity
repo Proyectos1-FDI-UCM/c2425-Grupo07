@@ -13298,9 +13298,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1593040458, guid: 82bd089a9d6e8344ea3b45335dfee74d, type: 3}
+    - target: {fileID: 2257384634213877969, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3650541404512032607, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_Name
       value: InteractableDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323637807410355314, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6910251898988984021, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_LocalPosition.x
