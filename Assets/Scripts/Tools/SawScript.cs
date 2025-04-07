@@ -190,7 +190,8 @@ public class SawScript : MonoBehaviour
     {
         _materialSource.ProcessTheMaterial();
        _animator.SetBool("working", false);
-       _materialSource = null;
+       _isWorking = false;
+       HasWood = false;
     }
 
     #endregion   
