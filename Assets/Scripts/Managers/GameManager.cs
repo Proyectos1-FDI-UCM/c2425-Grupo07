@@ -502,7 +502,19 @@ public class GameManager : MonoBehaviour
             {
                 _rankImage1.color = Color.yellow;
             }
-            else if (_levelRange1 == LevelManager.Range.F)
+            else if (_levelRange1 == LevelManager.Range.C)
+            {
+                _rankImage1.color = Color.yellow;
+            }
+            else if (_levelRange1 == LevelManager.Range.D)
+            {
+                _rankImage1.color = Color.yellow;
+            }
+            else if (_levelRange1 == LevelManager.Range.E)
+            {
+                _rankImage1.color = Color.yellow;
+            }
+            else
             {
                 _rankImage1.color = Color.red;
             }

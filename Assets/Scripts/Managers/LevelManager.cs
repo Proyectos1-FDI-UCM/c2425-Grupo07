@@ -66,6 +66,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int _minB = 400;
 
     /// <summary>
+    /// _minB es la cantidad mínima de dinero para alcanzar el rango C
+    /// </summary>
+    [SerializeField] private int _minC = 300;
+
+    /// <summary>
+    /// _minB es la cantidad mínima de dinero para alcanzar el rango D
+    /// </summary>
+    [SerializeField] private int _minD = 250;
+    /// <summary>
+    /// _minB es la cantidad mínima de dinero para alcanzar el rango E
+    /// </summary>
+    [SerializeField] private int _minE = 200;
+    /// <summary>
     /// _levelNameText es un texto que indica el nombre del nivel
     /// </summary>
     [SerializeField] private TextMeshProUGUI _levelNameText;
@@ -225,7 +238,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public enum Range
     {
-        F, B, A, S
+        F, E, D, C, B, A, S
     }
 
 
@@ -296,6 +309,18 @@ public class LevelManager : MonoBehaviour
         {
             _levelRangeText.text = "B";
         }
+        else if (_levelRange == Range.C)
+        {
+            _levelRangeText.text = "C";
+        }
+        else if (_levelRange == Range.D)
+        {
+            _levelRangeText.text = "D";
+        }
+        else if (_levelRange == Range.E)
+        {
+            _levelRangeText.text = "E";
+        }
         else
         {
             _levelRangeText.text = "F";
@@ -323,6 +348,18 @@ public class LevelManager : MonoBehaviour
         else if (_money >= _minB)
         {
             _range = Range.B;
+        }
+         else if (_money >= _minC)
+        {
+            _range = Range.C;
+        }
+         else if (_money >= _minD)
+        {
+            _range = Range.D;
+        }
+         else if (_money >= _minE)
+        {
+            _range = Range.E;
         }
         else
         {
