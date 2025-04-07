@@ -36,6 +36,87 @@ public class GameManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
+    /// <summary>
+    /// GameObject del jugador en la escena
+    /// </summary>
+    [SerializeField] private GameObject _player;
+
+    /// <summary>
+    /// Script que contiene los datos del nivel al que va a entrar el jugador
+    /// </summary>
+    [SerializeField] private PlayerLevel _playerLevel;
+
+    /// <summary>
+    /// Para almacenar el nivel entrado
+    /// </summary>
+    [SerializeField] private Level _level;
+
+    /// <summary>
+    /// Para almacenar el nombre del nivel
+    /// </summary>
+    [SerializeField] private string _levelName;
+
+    /// <summary>
+    /// Para almacenar el script del personaje elegido
+    /// </summary>
+    [SerializeField] private PlayerBool _playerBool;
+
+    /// <summary>
+    /// Booleana del personaje, true si es Rack, false si es Albert
+    /// </summary>
+    [SerializeField] private bool _isRack = false;
+
+    /// <summary>
+    /// Texto que muestra el dinero recopilado en el nivel prinicpal
+    /// </summary>
+    [SerializeField] private Text _moneyTextPrincipal;
+
+    /// <summary>
+    /// Texto que muestra el dinero recopilado en el nivel infinito
+    /// </summary>
+    [SerializeField] private Text _moneyTextInfinito;
+
+    /// <summary>
+    /// Imagen que indica el mejor rango obtenido en el nivel prinicpal
+    /// </summary>
+    [SerializeField] private Image _rankImagePrincipal;
+
+    /// <summary>
+    /// Imagen que indica el mejor rango obtenido en el nivel inifito
+    /// </summary>
+    [SerializeField] private Image _rankImageInfinito;
+
+    /// <summary>
+    /// Entero que indica el dinero recopilado en el nivel principal
+    /// </summary>
+    [SerializeField] private int _moneyNumberPrincipal = 0;
+
+    /// <summary>
+    /// Entero que indica el dinero recopilado en el nivel infinito
+    /// </summary>
+    [SerializeField] private int _moneyNumberInfinito = 0;
+
+    /// <summary>
+    /// Tiempo del nivel principal
+    /// </summary>
+    [SerializeField] private Text _timeTextPrincipal;
+
+    /// <summary>
+    /// Tiempo del nivel infinito
+    /// </summary>
+    [SerializeField] private Text _timeTextInfinito;
+
+    /// <summary>
+    /// Array de referencias a Level
+    /// </summary>
+    [SerializeField] private Level[] _levels;
+
+    /// <summary>
+    /// Comprueba si se han actualizado las stats de MenuLevelSelection
+    /// </summary>
+    [SerializeField] private bool _statsUpdated = false;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -48,99 +129,14 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     
     /// <summary>
-    /// GameObject del jugador en la escena
-    /// </summary>
-    [SerializeField] private GameObject _player;
-    
-    /// <summary>
-    /// Script que contiene los datos del nivel al que va a entrar el jugador
-    /// </summary>
-    [SerializeField] private PlayerLevel _playerLevel;
-    
-    /// <summary>
-    /// Para almacenar el nivel entrado
-    /// </summary>
-    [SerializeField] private Level _level;
-    
-    /// <summary>
-    /// Para almacenar el nombre del nivel
-    /// </summary>
-    [SerializeField] private string _levelName;
-    
-    /// <summary>
-    /// Para almacenar el script del personaje elegido
-    /// </summary>
-    [SerializeField] private PlayerBool _playerBool;
-    
-    /// <summary>
-    /// Booleana del personaje, true si es Rack, false si es Albert
-    /// </summary>
-    [SerializeField] private bool _isRack = false;
-    
-    /// <summary>
     /// Mejor rango obtenido del nivel principal
     /// </summary>
-    private LevelManager.Range _levelRange1;
+    private LevelManager.Range _levelRangePrincipal;
 
     /// <summary>
     /// Mejor rango obtenido del nivel infinito
     /// </summary>
-    private LevelManager.Range _levelRange2;
-
-    /// <summary>
-    /// Texto que muestra el dinero recopilado en el nivel prinicpal
-    /// </summary>
-    [SerializeField] private Text _moneyText1;
-
-    /// <summary>
-    /// Texto que muestra el dinero recopilado en el nivel infinito
-    /// </summary>
-    [SerializeField] private Text _moneyText2;
-    
-    /// <summary>
-    /// Imagen que indica el mejor rango obtenido en el nivel prinicpal
-    /// </summary>
-    [SerializeField] private Image _rankImage1;
-    
-    /// <summary>
-    /// Imagen que indica el mejor rango obtenido en el nivel inifito
-    /// </summary>
-    [SerializeField] private Image _rankImage2;
-    
-    /// <summary>
-    /// Entero que indica el dinero recopilado en el nivel principal
-    /// </summary>
-    [SerializeField] private int _moneyNumber1 = 0;
-    
-    /// <summary>
-    /// Entero que indica el dinero recopilado en el nivel infinito
-    /// </summary>
-    [SerializeField] private int _moneyNumber2 = 0;
-
-    /// <summary>
-    /// Tiempo del nivel principal
-    /// </summary>
-    [SerializeField] private Text _timeText1;
-
-    /// <summary>
-    /// Tiempo del nivel infinito
-    /// </summary>
-    [SerializeField] private Text _timeText2;
-
-    /// <summary>
-    /// Array de referencias a Level
-    /// </summary>
-    [SerializeField] private Level[] _levels;
-
-    /// <summary>
-    /// Comprueba si se han actualizado las stats de MenuLevelSelection
-    /// </summary>
-    [SerializeField] private bool _statsUpdated = false;
-
-    /// <summary>
-    /// Nombre del último nivel jugado
-    /// </summary>
-    [SerializeField] private string _lastLevelPlayed;
+    private LevelManager.Range _levelRangeInfinito;
 
     #endregion
 
@@ -371,11 +367,6 @@ public class GameManager : MonoBehaviour
         else Debug.Log("No hay nivel asignado");
     }
 
-    public void SetLastLevelPlayed(string sceneName)
-    {
-        _lastLevelPlayed = sceneName;
-    }
-
     /// <summary>
     /// SetRange modifica _levelRange según el rango que ha obtenido en la partida
     /// </summary>
@@ -384,11 +375,11 @@ public class GameManager : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
-            _levelRange1 = _range;
+            _levelRangePrincipal = _range;
         }
         else
         {
-            _levelRange2 = _range;
+            _levelRangeInfinito = _range;
         }
     }
 
@@ -400,11 +391,11 @@ public class GameManager : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
-            return _levelRange1;
+            return _levelRangePrincipal;
         }
         else
         {
-            return _levelRange2;
+            return _levelRangeInfinito;
         }
     }
 
@@ -416,11 +407,11 @@ public class GameManager : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
-            _moneyNumber1 = _money;
+            _moneyNumberPrincipal = _money;
         }
         else
         {
-            _moneyNumber2 = _money;
+            _moneyNumberInfinito = _money;
         }
     }
 
@@ -432,11 +423,11 @@ public class GameManager : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         {
-            return _moneyNumber1;
+            return _moneyNumberPrincipal;
         }
         else
         {
-            return _moneyNumber2;
+            return _moneyNumberInfinito;
         }
     }
 
@@ -477,77 +468,86 @@ public class GameManager : MonoBehaviour
     {
         _levels = FindObjectsOfType<Level>();
 
-        Debug.Log(_levels.Length);
-
-        _levels[0] = FindObjectsOfType<Level>()[1];
-        _levels[1] = FindObjectsOfType<Level>()[0];
-
-        _rankImage1 = _levels[1].GetRank();
-        _rankImage2 = _levels[0].GetRank();
-
-        _moneyText1 = _levels[1].GetMoney();
-        _moneyText2 = _levels[0].GetMoney();
-
-        if (_rankImage1 != null && _lastLevelPlayed == "NivelPrincipal")
+        if (_levels != null)
         {
-            if (_levelRange1 == LevelManager.Range.S)
+            if (_levels[0].name == "MainLevel")
             {
-                _rankImage1.color = Color.green;
-            }
-            else if (_levelRange1 == LevelManager.Range.A)
-            {
-                _rankImage1.color = Color.cyan;
-            }
-            else if (_levelRange1 == LevelManager.Range.B)
-            {
-                _rankImage1.color = Color.yellow;
-            }
-            else if (_levelRange1 == LevelManager.Range.C)
-            {
-                _rankImage1.color = Color.yellow;
-            }
-            else if (_levelRange1 == LevelManager.Range.D)
-            {
-                _rankImage1.color = Color.yellow;
-            }
-            else if (_levelRange1 == LevelManager.Range.E)
-            {
-                _rankImage1.color = Color.yellow;
+                _levels[0] = FindObjectsOfType<Level>()[1];
+                _levels[1] = FindObjectsOfType<Level>()[0];
             }
             else
             {
-                _rankImage1.color = Color.red;
+                _levels[0] = FindObjectsOfType<Level>()[0];
+                _levels[1] = FindObjectsOfType<Level>()[1];
             }
         }
 
-        else if (_rankImage2 != null && _lastLevelPlayed == "NivelInfinito")
+        _rankImagePrincipal = _levels[1].GetRank();
+        _rankImageInfinito = _levels[0].GetRank();
+
+        _moneyTextPrincipal = _levels[1].GetMoney();
+        _moneyTextInfinito = _levels[0].GetMoney();
+
+        if (_rankImagePrincipal != null && _levelName == "NivelPrincipal")
         {
-            if (_levelRange2 == LevelManager.Range.S)
+            if (_levelRangePrincipal == LevelManager.Range.S)
             {
-                _rankImage2.color = Color.green;
+                _rankImagePrincipal.color = Color.green;
             }
-            else if (_levelRange2 == LevelManager.Range.A)
+            else if (_levelRangePrincipal == LevelManager.Range.A)
             {
-                _rankImage2.color = Color.cyan;
+                _rankImagePrincipal.color = Color.cyan;
             }
-            else if (_levelRange2 == LevelManager.Range.B)
+            else if (_levelRangePrincipal == LevelManager.Range.B)
             {
-                _rankImage2.color = Color.yellow;
+                _rankImagePrincipal.color = Color.yellow;
             }
-            else if (_levelRange2 == LevelManager.Range.F)
+            else if (_levelRangePrincipal == LevelManager.Range.C)
             {
-                _rankImage2.color = Color.red;
+                _rankImagePrincipal.color = Color.yellow;
+            }
+            else if (_levelRangePrincipal == LevelManager.Range.D)
+            {
+                _rankImagePrincipal.color = Color.yellow;
+            }
+            else if (_levelRangePrincipal == LevelManager.Range.E)
+            {
+                _rankImagePrincipal.color = Color.yellow;
+            }
+            else
+            {
+                _rankImagePrincipal.color = Color.red;
             }
         }
 
-        if (_moneyText1 != null && _lastLevelPlayed == "NivelPrincipal")
+        else if (_rankImageInfinito != null && _levelName == "NivelInfinito")
         {
-            _moneyText1.text = _moneyNumber1.ToString();
+            if (_levelRangeInfinito == LevelManager.Range.S)
+            {
+                _rankImageInfinito.color = Color.green;
+            }
+            else if (_levelRangeInfinito == LevelManager.Range.A)
+            {
+                _rankImageInfinito.color = Color.cyan;
+            }
+            else if (_levelRangeInfinito == LevelManager.Range.B)
+            {
+                _rankImageInfinito.color = Color.yellow;
+            }
+            else if (_levelRangeInfinito == LevelManager.Range.F)
+            {
+                _rankImageInfinito.color = Color.red;
+            }
         }
 
-        else if (_moneyText2 != null && _lastLevelPlayed == "NivelInfinito")
+        if (_moneyTextPrincipal != null && _levelName == "NivelPrincipal")
         {
-            _moneyText2.text = _moneyNumber2.ToString();
+            _moneyTextPrincipal.text = _moneyNumberPrincipal.ToString();
+        }
+
+        else if (_moneyTextInfinito != null && _levelName == "NivelInfinito")
+        {
+            _moneyTextInfinito.text = _moneyNumberInfinito.ToString();
         }
     }
 

@@ -105,7 +105,6 @@ public class PauseMenuManager : MonoBehaviour
     public void ChangeScenesButtons(string nameScene)
     {
         Time.timeScale = 1f;
-        _gameManager.SetLastLevelPlayed(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
