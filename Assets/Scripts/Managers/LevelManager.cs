@@ -286,19 +286,19 @@ public class LevelManager : MonoBehaviour
 
         if (_levelRange == Range.S)
         {
-            _levelRangeText.text = "Rango: S";
+            _levelRangeText.text = "S";
         }
         else if (_levelRange == Range.A)
         {
-            _levelRangeText.text = "Rango: A";
+            _levelRangeText.text = "A";
         }
         else if (_levelRange == Range.B)
         {
-            _levelRangeText.text = "Rango: B";
+            _levelRangeText.text = "B";
         }
         else
         {
-            _levelRangeText.text = "Rango: F";
+            _levelRangeText.text = "F";
         }
 
         if (_receiver != null)

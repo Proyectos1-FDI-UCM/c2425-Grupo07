@@ -87,7 +87,7 @@ public class ConveyorItems : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<Mesa>() != null && 
-            transform.parent.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Conveyor && transform.parent.GetComponent<PlayerVision>() == null)
+            transform.parent.GetComponent<Mesa>() != null && transform.parent.GetComponent<Mesa>().TableTypeReturn() == Mesa.TableType.Conveyor && transform.parent.GetComponent<PlayerVision>() == null)
         {
             NextBelt = other.gameObject;
             enCinta = true;
