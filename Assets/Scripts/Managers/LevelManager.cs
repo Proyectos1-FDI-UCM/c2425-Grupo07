@@ -171,7 +171,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
 
-
     {
         if (FindAnyObjectByType<Receiver>() != null)
         {
@@ -187,7 +186,10 @@ public class LevelManager : MonoBehaviour
 
 
         // Activar la imagen de bloqueo al inicio
-        blockingImage.SetActive(true);
+        if (blockingImage != null)
+        {
+            blockingImage.SetActive(true);
+        }
 
         // Crear la acción de espera por input (configura la tecla que prefieras)
         _inputAction = new InputAction(binding: "<Keyboard>/space");
@@ -204,7 +206,10 @@ public class LevelManager : MonoBehaviour
     private void OnInputReceived(InputAction.CallbackContext context)
     {
         // Desactivar la imagen de bloqueo
-        blockingImage.SetActive(false);
+        if (blockingImage != null)
+        {
+            blockingImage.SetActive(false);
+        }
 
         // Reanudar el juego
         Time.timeScale = 1;
@@ -265,6 +270,24 @@ public class LevelManager : MonoBehaviour
     public void SumMoney(int amount)
     {
         Money += amount;
+        if (Money < 0)
+        {
+            _moneyInPlay.color = Color.red;
+        }
+        else
+        {
+            _moneyInPlay.color = Color.green;
+        }
+        if (amount < 0)
+        {
+            _moneyGaining.color = Color.red;
+        }
+        else
+        {
+            _moneyGaining.color = Color.green;
+        }
+        _moneyInPlay.text = "" + Money;
+        _moneyGaining.text = "" + amount;
     }
 
     /// <summary>
