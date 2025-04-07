@@ -10,6 +10,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -113,11 +115,8 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
 
-    /// <summary>
-    /// Hecho por Guillermo
-    /// 
-    /// </summary>
-    [SerializeField] private GameObject _pileOfCash;
+    [SerializeField] private GameObject blockingImage; // Referencia a la imagen de bloqueo
+    private InputAction _inputAction; // Para manejar la entrada del jugador
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -162,12 +161,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private Receiver _receiver;
 
-    /// <summary>
-    /// Hecho por Guillermo
-    /// 
-    /// </summary>
-    [SerializeField]private Vector2[] _initialPos;
-    [SerializeField] private Sprite[] _initialSprite;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -176,12 +170,14 @@ public class LevelManager : MonoBehaviour
 
 
     private void Start()
+
+
     {
         if (FindAnyObjectByType<Receiver>() != null)
         {
             _receiver = FindAnyObjectByType<Receiver>();
         }
-        StartTimer();
+       
         if (_gameManager == null)
         {
             _gameManager = GameManager.Instance;
@@ -189,15 +185,35 @@ public class LevelManager : MonoBehaviour
         isRack = _gameManager.ReturnBool();
         Money = 0;
 
-        //Hecho por Guillermo
-        if (_pileOfCash!=null)
-        {
-            for (int i = 0; i < _pileOfCash.transform.childCount; i++)
-            {
-                _initialPos[i] = _pileOfCash.transform.GetChild(i).position;
-                _initialSprite[i] = _pileOfCash.transform.GetChild(i).gameObject.GetComponent<Image>().sprite;
-            }
-        }
+
+        // Activar la imagen de bloqueo al inicio
+        blockingImage.SetActive(true);
+
+        // Crear la acción de espera por input (configura la tecla que prefieras)
+        _inputAction = new InputAction(binding: "<Keyboard>/space");
+        _inputAction.AddBinding("<Gamepad>/buttonSouth");
+        _inputAction.Enable();
+
+        // Establecer el modo de juego en pausado
+        Time.timeScale = 0;
+
+        // Escuchar el input
+        _inputAction.performed += OnInputReceived;
+
+    }
+    private void OnInputReceived(InputAction.CallbackContext context)
+    {
+        // Desactivar la imagen de bloqueo
+        blockingImage.SetActive(false);
+
+        // Reanudar el juego
+        Time.timeScale = 1;
+        StartTimer();
+    }
+
+    private void OnDestroy()
+    {
+        _inputAction.Dispose();
     }
 
     private void Update()
@@ -249,17 +265,6 @@ public class LevelManager : MonoBehaviour
     public void SumMoney(int amount)
     {
         Money += amount;
-        StartCoroutine(SumaAlDinero(amount));
-        if (Money < 0)
-        {
-            _moneyInPlay.color = Color.red;
-        }
-        else
-        {
-            _moneyInPlay.color = Color.green;
-        }
-        _moneyInPlay.text = "" + Money;
-        _moneyGaining.text = ""+amount;
     }
 
     /// <summary>
@@ -413,44 +418,9 @@ public class LevelManager : MonoBehaviour
     /// Hecho por Guillermo
     /// 
     /// </summary>
-    private void ResetCashPos()
-    {
-        for (int i = 0; i < _pileOfCash.transform.childCount; i++)
-        {
-            _pileOfCash.transform.GetChild(i).position = _initialPos[i];
-            _pileOfCash.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _initialSprite[i] ;
-        }
-    }
 
-    IEnumerator SumaAlDinero(int Money)
-    {
-        ResetCashPos();
-        if (Money < 0)
-        {
-            _moneyGaining.color = Color.red;
-        }
-        else
-        {
-            _moneyGaining.color = Color.green;
-        }
-        float delay = 0f;
-        _pileOfCash.SetActive(true);
-        Vector3 endPos = new Vector3(-80,-300,0);
-        yield return new WaitForSeconds(0); // Luego lo cambio
-        //for (int i = 0; i < _pileOfCash.transform.childCount-1; i++)
-        //{
-        //    for (int j = 0; i < 10; i++)
-        //    {
-        //        float rateAumenta = (float)j / 10;
-        //        float tiempoDisminuye = (float)j / 10;
-        //        yield return new WaitForSeconds(tiempoDisminuye);
-        //        _pileOfCash.transform.GetChild(i).anchoredPosition = Vector3.MoveTowards(_pileOfCash.transform.GetChild(i).anchoredPosition, endPos, 10 * Time.deltaTime);
-        //        _pileOfCash.transform.GetChild(i).transform.localScale = _pileOfCash.transform.GetChild(i).transform.localScale * (1 + rateAumenta);
-        //        //material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
-        //    }
-        //    yield return new WaitForSeconds(delay);
-        //}
-    }
+
+
 
     #endregion
 } // class LevelManager 
