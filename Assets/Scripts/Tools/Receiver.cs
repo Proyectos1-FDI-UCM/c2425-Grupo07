@@ -50,6 +50,7 @@ public class Receiver : MonoBehaviour
     /// Array de elementos UI que muestran información sobre los objetos cuando el jugador está mirando al recibidor
     /// </summary>
     [SerializeField] private GameObject[] ObjectsUI;
+    [SerializeField] private Vector3 UIOffset = new Vector3(0, 0, 0); // Offset para la posición de la UI
 
     /// <summary>
     /// Posición donde se crearán las tareas en la UI
@@ -146,7 +147,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        TaskPosition = GameObject.Find("Pedidos").transform;
+        TaskPosition = GameObject.Find("Pedidos").transform; // Lo siento no se de que otra manera hacerlo, sé que esto es stringtyping.
         if (TaskPosition == null) Debug.Log("No se ha encontrado la posición de los pedidos, actualiza el prefab del UI");
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);
