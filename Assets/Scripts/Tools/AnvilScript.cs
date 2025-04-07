@@ -192,8 +192,8 @@ public class AnvilScript : MonoBehaviour
             if(material.MaterialTypeReturn() == MaterialType.MetalMineral)
             {
                 item.GetComponentInParent<PlayerVision>().Drop(true);
-                _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _materialSource = material;
+                _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 CompletionBarReference = _materialSource.ReturnProgressBar();
                 _progress = _materialSource.ReturnProgress();
                 CurrentClicks = (int)(_progress * MaxClicks);
