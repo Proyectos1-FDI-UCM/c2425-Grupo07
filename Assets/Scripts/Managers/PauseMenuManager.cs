@@ -79,6 +79,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Resume()
     {
         HandleInput();
+        ControlsUI.SetActive(false);
     }
 
     /// <summary>
@@ -102,18 +103,20 @@ public class PauseMenuManager : MonoBehaviour
     /// <summary>
     /// Muestra la imagen de los controles y acrtiva su booleana correspondiente.
     /// </summary>
-    public void ShowControls(bool state)
+    public void ToggleControlPanel()
     {
-        ControlsUI.SetActive(state);
-        if (state)
+        if (!_controlPannelActive)
         {
+            ControlsUI.SetActive(true);
+            _controlPannelActive = true;
             EventSystem.current.SetSelectedGameObject(ControlsUI.GetComponentInChildren<Button>().gameObject); // Selecciona el primer boton de la UI de controles.
         }
         else
         {
+            ControlsUI.SetActive(false);
+            _controlPannelActive = false;
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton); // Selecciona el primer boton del menu de pausa.
         }
-        _controlPannelActive = state;
     }
 
     /// <summary>
@@ -150,7 +153,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             if (_controlPannelActive)
             {
-                ShowControls(false); // Si los controles están activos, los desactiva.
+                ToggleControlPanel(); // Si los controles están activos, los desactiva.
             }
             else
             {
