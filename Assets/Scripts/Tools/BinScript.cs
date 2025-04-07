@@ -22,7 +22,8 @@ public class BinScript : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    private float _velMat = 10; //La velocidad que se moverá el material hacia la basura
+    private float _velMat = 10; //La velocidad que se moverá el material hacia la basura y en la que disminuirá (lo que se repite la función
+                                //Disminuir)
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -95,7 +96,7 @@ public class BinScript : MonoBehaviour
     /// <param name="material">Objeto del material a disminuir.</param>
     IEnumerator DisminuyeMat(GameObject material)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < _velMat; i++)
         {
             float rateDisminuye = (float) i / 10;
             float tiempoDisminuye = (float)i / 100;

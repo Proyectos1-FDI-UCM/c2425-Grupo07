@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using UnityEngine.UI;
 
 /// <summary>
@@ -86,7 +87,16 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// _moneyText es un texto que indica la cantidad de dinero obtenida en la partida
     /// </summary>
-    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _moneyEndText;
+
+    /// <summary>
+    /// _moneyInPlay es un texto que indica la cantidad de dinero siendo obtenida durante la partida
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _moneyInPlay;
+    /// <summary>
+    /// _moneyGaining es un texto que indica la cantidad de dinero que se suma
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _moneyGaining;
 
     /// <summary>
     /// _levelRangeText es un texto que indica el rango obtenido en la partida
@@ -103,6 +113,11 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
 
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject _pileOfCash;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -147,6 +162,12 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private Receiver _receiver;
 
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    [SerializeField]private Vector2[] _initialPos;
+    [SerializeField] private Sprite[] _initialSprite;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -167,6 +188,16 @@ public class LevelManager : MonoBehaviour
         }
         isRack = _gameManager.ReturnBool();
         Money = 0;
+
+        //Hecho por Guillermo
+        if (_pileOfCash!=null)
+        {
+            for (int i = 0; i < _pileOfCash.transform.childCount; i++)
+            {
+                _initialPos[i] = _pileOfCash.transform.GetChild(i).position;
+                _initialSprite[i] = _pileOfCash.transform.GetChild(i).gameObject.GetComponent<Image>().sprite;
+            }
+        }
     }
 
     private void Update()
@@ -218,6 +249,17 @@ public class LevelManager : MonoBehaviour
     public void SumMoney(int amount)
     {
         Money += amount;
+        StartCoroutine(SumaAlDinero(amount));
+        if (Money < 0)
+        {
+            _moneyInPlay.color = Color.red;
+        }
+        else
+        {
+            _moneyInPlay.color = Color.green;
+        }
+        _moneyInPlay.text = "" + Money;
+        _moneyGaining.text = ""+amount;
     }
 
     /// <summary>
@@ -241,6 +283,12 @@ public class LevelManager : MonoBehaviour
         F, E, D, C, B, A, S
     }
 
+    // StartTimer() inicializa _currentSecondsLeft al valor de _maxTime y pone _continue a true para que el timer empiece
+    public void StartTimer()
+    {
+        _currentSecondsLeft = _maxTime;
+        _continue = true;
+    }
 
     #endregion
 
@@ -248,12 +296,6 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos Privados
 
-    // StartTimer() inicializa _currentSecondsLeft al valor de _maxTime y pone _continue a true para que el timer empiece
-    public void StartTimer()
-    {
-        _currentSecondsLeft = _maxTime;
-        _continue = true;
-    }
 
     // StopTimer() pone _continue a false para que el timer pare
     private void StopTimer()
@@ -295,7 +337,7 @@ public class LevelManager : MonoBehaviour
             _levelNameText.text = "Nivel infinito";
         }
 
-        _moneyText.text = "Dinero recopilado: " + Money.ToString();
+        _moneyEndText.text = "Dinero recopilado: " + Money.ToString();
 
         if (_levelRange == Range.S)
         {
@@ -366,6 +408,48 @@ public class LevelManager : MonoBehaviour
             _range = Range.F;
         }
         return _range;
+    }
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    private void ResetCashPos()
+    {
+        for (int i = 0; i < _pileOfCash.transform.childCount; i++)
+        {
+            _pileOfCash.transform.GetChild(i).position = _initialPos[i];
+            _pileOfCash.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _initialSprite[i] ;
+        }
+    }
+
+    IEnumerator SumaAlDinero(int Money)
+    {
+        ResetCashPos();
+        if (Money < 0)
+        {
+            _moneyGaining.color = Color.red;
+        }
+        else
+        {
+            _moneyGaining.color = Color.green;
+        }
+        float delay = 0f;
+        _pileOfCash.SetActive(true);
+        Vector3 endPos = new Vector3(-80,-300,0);
+        yield return new WaitForSeconds(0); // Luego lo cambio
+        //for (int i = 0; i < _pileOfCash.transform.childCount-1; i++)
+        //{
+        //    for (int j = 0; i < 10; i++)
+        //    {
+        //        float rateAumenta = (float)j / 10;
+        //        float tiempoDisminuye = (float)j / 10;
+        //        yield return new WaitForSeconds(tiempoDisminuye);
+        //        _pileOfCash.transform.GetChild(i).anchoredPosition = Vector3.MoveTowards(_pileOfCash.transform.GetChild(i).anchoredPosition, endPos, 10 * Time.deltaTime);
+        //        _pileOfCash.transform.GetChild(i).transform.localScale = _pileOfCash.transform.GetChild(i).transform.localScale * (1 + rateAumenta);
+        //        //material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
+        //    }
+        //    yield return new WaitForSeconds(delay);
+        //}
     }
 
     #endregion
