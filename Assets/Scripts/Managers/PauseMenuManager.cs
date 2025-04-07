@@ -8,6 +8,7 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Esta clase de PauseMenuManager se encarga de pausar el juego, abrir y cerrar el menu de pausa, que contiene botones para la funcion 
@@ -45,21 +46,11 @@ public class PauseMenuManager : MonoBehaviour
 
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
 
-    private GameManager _gameManager;
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    private void Start()
-    {
-        _gameManager = GameManager.Instance;
-    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -111,10 +102,18 @@ public class PauseMenuManager : MonoBehaviour
     /// <summary>
     /// Muestra la imagen de los controles y acrtiva su booleana correspondiente.
     /// </summary>
-    public void ShowControls()
+    public void ShowControls(bool state)
     {
-        ControlsUI.SetActive(true);
-        _controlPannelActive = true;
+        ControlsUI.SetActive(state);
+        if (state)
+        {
+            EventSystem.current.SetSelectedGameObject(ControlsUI.GetComponentInChildren<Button>().gameObject); // Selecciona el primer boton de la UI de controles.
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton); // Selecciona el primer boton del menu de pausa.
+        }
+        _controlPannelActive = state;
     }
 
     /// <summary>
@@ -151,8 +150,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             if (_controlPannelActive)
             {
-                ControlsUI.SetActive(false);
-                _controlPannelActive = false;
+                ShowControls(false); // Si los controles están activos, los desactiva.
             }
             else
             {
