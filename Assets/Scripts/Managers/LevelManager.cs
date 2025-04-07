@@ -9,6 +9,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -103,6 +105,10 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
 
+    [SerializeField] private GameObject blockingImage; // Referencia a la imagen de bloqueo
+    private InputAction _inputAction; // Para manejar la entrada del jugador
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -155,18 +161,49 @@ public class LevelManager : MonoBehaviour
 
 
     private void Start()
+
+
     {
         if (FindAnyObjectByType<Receiver>() != null)
         {
             _receiver = FindAnyObjectByType<Receiver>();
         }
-        StartTimer();
+       
         if (_gameManager == null)
         {
             _gameManager = GameManager.Instance;
         }
         isRack = _gameManager.ReturnBool();
         Money = 0;
+
+        // Activar la imagen de bloqueo al inicio
+        blockingImage.SetActive(true);
+
+        // Crear la acción de espera por input (configura la tecla que prefieras)
+        _inputAction = new InputAction(binding: "<Keyboard>/space");
+        _inputAction.AddBinding("<Gamepad>/buttonSouth");
+        _inputAction.Enable();
+
+        // Establecer el modo de juego en pausado
+        Time.timeScale = 0;
+
+        // Escuchar el input
+        _inputAction.performed += OnInputReceived;
+
+    }
+    private void OnInputReceived(InputAction.CallbackContext context)
+    {
+        // Desactivar la imagen de bloqueo
+        blockingImage.SetActive(false);
+
+        // Reanudar el juego
+        Time.timeScale = 1;
+        StartTimer();
+    }
+
+    private void OnDestroy()
+    {
+        _inputAction.Dispose();
     }
 
     private void Update()
