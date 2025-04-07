@@ -479,8 +479,8 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(_levels.Length);
 
-        _levels[0] = FindObjectsOfType<Level>()[0];
-        _levels[1] = FindObjectsOfType<Level>()[1];
+        _levels[0] = FindObjectsOfType<Level>()[1];
+        _levels[1] = FindObjectsOfType<Level>()[0];
 
         _rankImage1 = _levels[1].GetRank();
         _rankImage2 = _levels[0].GetRank();
