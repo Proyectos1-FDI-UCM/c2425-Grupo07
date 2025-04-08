@@ -162,6 +162,7 @@ public class TaskManager : MonoBehaviour
         {
             Debug.Log("No entregado, penalización de 50€");
             _receiver.AddMoney(-50, Color.red);
+            _receiver.IncreaseFailedDeliveriesNumber();
         }
         GetComponent<Objects>().SetCanBeSent(false);
         Destroy(_actualPanel);
