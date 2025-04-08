@@ -117,6 +117,12 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject blockingImage; // Referencia a la imagen de bloqueo
     private InputAction _inputAction; // Para manejar la entrada del jugador
+
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject _pileOfCash;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -160,8 +166,16 @@ public class LevelManager : MonoBehaviour
     /// Referencia al script Receiver
     /// </summary>
     private Receiver _receiver;
-
-
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    [SerializeField] private Vector2[] _initialPos;
+    /// <summary>
+    /// Hecho por Guillermo
+    /// 
+    /// </summary>
+    [SerializeField] private Vector2 _endPos;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -201,6 +215,15 @@ public class LevelManager : MonoBehaviour
 
         // Escuchar el input
         _inputAction.performed += OnInputReceived;
+
+        //Hecho por Guillermo
+        if (_pileOfCash != null)
+        {
+            for (int i = 0; i < _pileOfCash.transform.childCount; i++)
+            {
+                _initialPos[i] = _pileOfCash.transform.GetChild(i).position;
+            }
+        }
 
     }
     private void OnInputReceived(InputAction.CallbackContext context)
@@ -267,27 +290,22 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void SumMoney(int amount)
+    public void SumMoney(int amount, Color doneColor)
     {
         Money += amount;
+        StartCoroutine(SumaDinero(amount));
         if (Money < 0)
         {
             _moneyInPlay.color = Color.red;
+            Money = 0;
         }
         else
         {
             _moneyInPlay.color = Color.green;
         }
-        if (amount < 0)
-        {
-            _moneyGaining.color = Color.red;
-        }
-        else
-        {
-            _moneyGaining.color = Color.green;
-        }
-        _moneyInPlay.text = "" + Money;
+        _moneyGaining.color = doneColor;
         _moneyGaining.text = "" + amount;
+
     }
 
     /// <summary>
@@ -419,15 +437,15 @@ public class LevelManager : MonoBehaviour
         {
             _range = Range.B;
         }
-         else if (_money >= _minC)
+        else if (_money >= _minC)
         {
             _range = Range.C;
         }
-         else if (_money >= _minD)
+        else if (_money >= _minD)
         {
             _range = Range.D;
         }
-         else if (_money >= _minE)
+        else if (_money >= _minE)
         {
             _range = Range.E;
         }
@@ -441,7 +459,84 @@ public class LevelManager : MonoBehaviour
     /// Hecho por Guillermo
     /// 
     /// </summary>
+    private void ResetCashPos()
+    {
+        for (int i = 0; i<_pileOfCash.transform.childCount; i++)
+        {
+            _pileOfCash.transform.GetChild(i).position = _initialPos[i];
+            _pileOfCash.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+            //_pileOfCash.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _initialSprite[i] ;
+        }
+    }
 
+//    IEnumerator SumaAlDinero(int Money)
+//{
+//    ResetCashPos();
+//    if (Money < 0)
+//    {
+//        _moneyGaining.color = Color.red;
+//    }
+//    else
+//    {
+//        _moneyGaining.color = Color.green;
+//    }
+//    float delay = 0f;
+//    _pileOfCash.SetActive(true);
+//    Vector3 endPos = new Vector3(-80, -300, 0);
+//    yield return new WaitForSeconds(0); // Luego lo cambio
+//                                        //for (int i = 0; i < _pileOfCash.transform.childCount-1; i++)
+//                                        //{
+//                                        //    for (int j = 0; i < 10; i++)
+//                                        //    {
+//                                        //        float rateAumenta = (float)j / 10;
+//                                        //        float tiempoDisminuye = (float)j / 10;
+//                                        //        yield return new WaitForSeconds(tiempoDisminuye);
+//                                        //        _pileOfCash.transform.GetChild(i).anchoredPosition = Vector3.MoveTowards(_pileOfCash.transform.GetChild(i).anchoredPosition, endPos, 10 * Time.deltaTime);
+//                                        //        _pileOfCash.transform.GetChild(i).transform.localScale = _pileOfCash.transform.GetChild(i).transform.localScale * (1 + rateAumenta);
+//                                        //        //material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
+//                                        //    }
+//                                        //    yield return new WaitForSeconds(delay);
+//                                        //}
+//}
+    IEnumerator SumaDinero(int MoneyToSum)
+    {
+        yield return new WaitForSeconds(0);
+        float dineroRate = 0.002f; // Velocidad en la que incrementa el dinero
+        if (_pileOfCash != null && MoneyToSum > 0)
+        {
+            ResetCashPos();
+            _pileOfCash.SetActive(true);
+            float delay = 0.02f;
+            for (int i = 0; i < _pileOfCash.transform.childCount - 1; i++) // Hace que cada objeto de dinero crezca
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    float rateAumenta = (float)j *5;
+                    float tiempoDisminuye = (float)j / 1000;
+                    yield return new WaitForSeconds(tiempoDisminuye);
+                    _pileOfCash.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(rateAumenta, rateAumenta);
+                }
+                yield return new WaitForSeconds(delay);
+            }
+            // Mueve los objetos y los desactiva mientras incrementa el contador de dinero
+            for (int k = 0; k < MoneyToSum; k++)
+            {
+                yield return new WaitForSeconds(dineroRate);
+                float _dineroARepresentar = Money + k;
+                _moneyInPlay.text = "" + _dineroARepresentar;
+                if (k < _pileOfCash.transform.childCount - 1)
+                {
+                    while (_pileOfCash.transform.GetChild(k).GetComponent<RectTransform>().anchoredPosition != _endPos)
+                    {
+                        _pileOfCash.transform.GetChild(k).GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(_pileOfCash.transform.GetChild(k).GetComponent<RectTransform>().anchoredPosition, _endPos, 3000 * Time.deltaTime);
+                        yield return 0; // Espera durante un frame
+                    }
+                    _pileOfCash.transform.GetChild(k).GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+                }
+            }
+            _pileOfCash.SetActive(false);
+        }
+    }
 
 
 

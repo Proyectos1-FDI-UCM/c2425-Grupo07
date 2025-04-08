@@ -379,11 +379,11 @@ public class Receiver : MonoBehaviour
                                        // aqui se pondrá el resto del codigo más adelante
 
     }
-    public void AddMoney(int amount)
+    public void AddMoney(int amount, Color doneColor)
     {
         if (_levelManager != null)
         {
-            _levelManager.SumMoney(amount);
+            _levelManager.SumMoney(amount, doneColor);
         }
         else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
     }

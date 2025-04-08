@@ -145,23 +145,23 @@ public class TaskManager : MonoBehaviour
             if (_progressBar.color == color1)
             {
                 Debug.Log("Entregado Correctamente, 100%");
-                _receiver.AddMoney(BasePayment);
+                _receiver.AddMoney(BasePayment, color1);
             }
             else if (_progressBar.color == color2)
             {
                 Debug.Log("Entregado Correctamente, 75%");
-                _receiver.AddMoney((int)(BasePayment * 0.75f));
+                _receiver.AddMoney((int)(BasePayment * 0.75f), color2);
             }
             else if (_progressBar.color == color3)
             {
                 Debug.Log("Entregado Correctamente, 25%");
-                _receiver.AddMoney((int)(BasePayment * 0.25f));
+                _receiver.AddMoney((int)(BasePayment * 0.25f), color3);
             }
         }
         else if (!IsTaskEnded()) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
         {
             Debug.Log("No entregado, penalización de 50€");
-            _receiver.AddMoney(-50);
+            _receiver.AddMoney(-50, Color.red);
         }
         GetComponent<Objects>().SetCanBeSent(false);
         Destroy(_actualPanel);
