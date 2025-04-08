@@ -148,6 +148,7 @@ public class PauseMenuManager : MonoBehaviour
             _paused = true;
 
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+            InputManager.Instance.EnableActionMap("UI");
         }
         else
         {
@@ -167,6 +168,7 @@ public class PauseMenuManager : MonoBehaviour
 
                 EventSystem.current.SetSelectedGameObject(null);
             }
+            InputManager.Instance.EnableActionMap("Player");
         }
     }
 
