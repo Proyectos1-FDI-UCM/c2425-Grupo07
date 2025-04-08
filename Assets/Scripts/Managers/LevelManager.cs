@@ -10,7 +10,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 
 /// <summary>
@@ -116,7 +115,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
 
     [SerializeField] private GameObject blockingImage; // Referencia a la imagen de bloqueo
-    private InputAction _inputAction; // Para manejar la entrada del jugador
 
     /// <summary>
     /// Hecho por Guillermo
@@ -207,16 +205,9 @@ public class LevelManager : MonoBehaviour
             blockingImage.SetActive(true);
         }
 
-        // Crear la acción de espera por input (configura la tecla que prefieras)
-        _inputAction = new InputAction(binding: "<Keyboard>/space");
-        _inputAction.AddBinding("<Gamepad>/buttonSouth");
-        _inputAction.Enable();
-
         // Establecer el modo de juego en pausado
         Time.timeScale = 0;
-
-        // Escuchar el input
-        _inputAction.performed += OnInputReceived;
+        InputManager.Instance.EnableActionMap("UI");
 
         //Hecho por Guillermo
         if (_pileOfCash != null)
@@ -228,22 +219,17 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-    private void OnInputReceived(InputAction.CallbackContext context)
+    private void OnInputReceived()
     {
         // Desactivar la imagen de bloqueo
         if (blockingImage != null)
         {
             blockingImage.SetActive(false);
         }
-
         // Reanudar el juego
         Time.timeScale = 1;
         StartTimer();
-    }
-
-    private void OnDestroy()
-    {
-        _inputAction.Dispose();
+        InputManager.Instance.EnableActionMap("Player");
     }
 
     private void Update()
@@ -270,6 +256,10 @@ public class LevelManager : MonoBehaviour
             TimeIsOverText();
             Panel.SetActive(true);
             Time.timeScale = 0;
+        }
+        if (InputManager.Instance.EnterWasPressedThisFrame())
+        {
+            OnInputReceived();
         }
         ShowTime();
     }

@@ -272,6 +272,17 @@
                 },
                 {
                     "name": "",
+                    "id": "93520035-c7d3-4e8f-be11-ab5d06efde87",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "EnterLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f3c5e4b6-1af6-4c18-9078-2b77d48a1034",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",

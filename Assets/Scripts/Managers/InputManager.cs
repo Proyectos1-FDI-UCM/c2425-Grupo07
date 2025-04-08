@@ -226,6 +226,19 @@ public class InputManager : MonoBehaviour
         return _interact.WasReleasedThisFrame();
     }
 
+    public void EnableActionMap(string TypeActionMap)
+    {
+        if (TypeActionMap == "Player")
+        {
+            _theController.Player.Enable();
+            _theController.UI.Disable();
+        }
+        else
+        {
+            _theController.Player.Disable();
+            _theController.UI.Enable();
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
