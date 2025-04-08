@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Controla la dirección de la animacion de la cinta mecánica
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -22,7 +22,7 @@ public class conveyorAnimation : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private bool Entr = false, Exit = false, Up = false, Down = false, Left = false, Right = false, Corner1 = false, Corner2 = false;
+    [SerializeField] private bool Entr = false, Exit = false, Up = false, Down = false, Left = false, Right = false, Corner1 = false, Corner2 = false; //booleanas para cada tipo de dirección
 
     #endregion
     
@@ -35,7 +35,7 @@ public class conveyorAnimation : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Animator _animator;
+    private Animator _animator;//Obtiene el componente de animator del objeto
 
     #endregion
     

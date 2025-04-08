@@ -26,9 +26,9 @@ public class SpawnPlayer : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] GameObject Rack;
-    [SerializeField] GameObject Albert;
-    [SerializeField] GameObject Spawn;
+    [SerializeField] GameObject Rack; //Para el prefab de Rack
+    [SerializeField] GameObject Albert; //Para el prefab de Albert
+    [SerializeField] GameObject Spawn; //Para el prefab del Spawn
 
     #endregion
 
@@ -41,10 +41,10 @@ public class SpawnPlayer : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameManager _gameManager;
-    private GameObject _playerInScene;
-    private bool _isRack;
-    private Transform _spawnPosition;
+    private GameManager _gameManager; //instancia del game manager
+    private GameObject _playerInScene; //El personaje que estará en la escena
+    private bool _isRack; //Determina cual personaje será
+    private Transform _spawnPosition; //Posición del spawn
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -88,6 +88,10 @@ public class SpawnPlayer : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Genera el personaje en la escena dependiendo de _isRack, este es 
+    /// dado por el game manager
+    /// </summary>
     public void SpawnPlayerInScene()
     {
         Time.timeScale = 1f;
