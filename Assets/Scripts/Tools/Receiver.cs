@@ -221,7 +221,6 @@ public class Receiver : MonoBehaviour
             Objects analized = heldObject.GetComponent<Objects>();
             if (!analized.IsCompleted())
             {
-                _failedDeliveriesNumber++;
                 Debug.Log("El objeto no está apto para la entrega");
             }
             else _deliveredObject = analized;
@@ -321,6 +320,14 @@ public class Receiver : MonoBehaviour
     public int GetFailedDeliveriesNumber()
     {
         return _failedDeliveriesNumber;
+    }
+
+    /// <summary>
+    /// Incrementa el número de pedidos fallidos
+    /// </summary>
+    public void IncreaseFailedDeliveriesNumber()
+    {
+        _failedDeliveriesNumber++;
     }
 
     /// <summary>
