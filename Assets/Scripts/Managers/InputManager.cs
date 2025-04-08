@@ -129,7 +129,7 @@ public class InputManager : MonoBehaviour
     {
         get
         {
-            Debug.Assert(_instance != null);
+            // Debug.Assert(_instance != null);
             return _instance;
         }
     } // Instance

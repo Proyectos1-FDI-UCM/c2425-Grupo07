@@ -114,8 +114,6 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     [SerializeField] private TextMeshProUGUI _failedDeliveriesText;
 
-    [SerializeField] private GameObject blockingImage; // Referencia a la imagen de bloqueo
-
     /// <summary>
     /// Hecho por Guillermo
     /// 
@@ -195,18 +193,8 @@ public class LevelManager : MonoBehaviour
             _gameManager = GameManager.Instance;
         }
         isRack = _gameManager.ReturnBool();
+        StartTimer();
         Money = 0;
-
-
-        // Activar la imagen de bloqueo al inicio
-        if (blockingImage != null)
-        {
-            blockingImage.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("blockingImage no está asignado en LevelManager.");
-        }
 
         // Establecer el modo de juego en pausado
         //Time.timeScale = 0;
@@ -229,18 +217,6 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-    }
-    private void OnInputReceived()
-    {
-        // Desactivar la imagen de bloqueo
-        if (blockingImage != null)
-        {
-            blockingImage.SetActive(false);
-        }
-        // Reanudar el juego
-        Time.timeScale = 1;
-        StartTimer();
-        InputManager.Instance.EnableActionMap("Player");
     }
 
     private void Update()
@@ -268,10 +244,6 @@ public class LevelManager : MonoBehaviour
             Panel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
             Time.timeScale = 0;
-        }
-        if (InputManager.Instance.SubmitWasReleasedThisFrame() && _currentSecondsLeft == 0)
-        {
-            OnInputReceived();
         }
         ShowTime();
     }
