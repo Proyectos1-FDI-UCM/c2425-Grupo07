@@ -42,15 +42,34 @@ public class BinScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Se llama cuando un collider entra en el área del trigger.
+    /// Abre la tapa de la basura mediante animación.
+    /// </summary>
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
        _animator.SetBool("Opened",true);
     }
 
+    /// <summary>
+    /// Se llama cuando un collider sale del área del trigger.
+    /// Cierra la tapa de la basura mediante animación.
+    /// </summary>
+   
     private void OnTriggerExit2D(Collider2D collision)
     {
         _animator.SetBool("Opened",false);
     }
+
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos Públicos
+
+    /// <summary>
+    /// Método para soltar un objeto dentro de la basura. 
+    /// Si el objeto no es un extintor, se destruye.
+    /// </summary>
+    /// <param name="item">El objeto a desechar.</param>
     public void Drop(GameObject item)
     {
         if (item.GetComponent<FireExtinguisher>() == null)
@@ -64,6 +83,8 @@ public class BinScript : MonoBehaviour
             Debug.LogWarning("No puedes tirar el extintor a la basura, ten cuidado amigo.");
         }
     }
+
+    #endregion
 
     #endregion
 
