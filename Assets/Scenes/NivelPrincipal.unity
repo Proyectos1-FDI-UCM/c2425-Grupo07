@@ -150,15 +150,15 @@ RectTransform:
   m_GameObject: {fileID: 408772197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2081187661}
-  m_Father: {fileID: 638365014}
+  m_Father: {fileID: 1454874539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 819, y: -20}
+  m_AnchoredPosition: {x: 0, y: -59104364}
   m_SizeDelta: {x: 470, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408772199
@@ -6571,9 +6571,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 581487923767706178, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1454874539}
-    - targetCorrespondingSourceObject: {fileID: 581487923767706178, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 408772198}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
 --- !u!114 &1300680981 stripped
@@ -6673,7 +6670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1454874536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6732,7 +6729,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
@@ -6750,6 +6747,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 574295062}
+  - {fileID: 408772198}
   m_Father: {fileID: 638365014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
