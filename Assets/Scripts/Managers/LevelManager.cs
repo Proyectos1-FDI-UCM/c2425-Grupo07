@@ -126,6 +126,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Vector2 _endPos;
 
     /// <summary>
+    /// /// Botón para reiniciar el nivel, se preselecciona al acabar un nivel
+    /// </summary>
+    [SerializeField] private GameObject RestartButton;
+
+    /// <summary>
     /// Hecho por Guillermo
     /// 
     /// </summary>
@@ -242,7 +247,7 @@ public class LevelManager : MonoBehaviour
             }
             TimeIsOverText();
             Panel.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
+            EventSystem.current.SetSelectedGameObject(RestartButton); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
             Time.timeScale = 0;
         }
         ShowTime();
