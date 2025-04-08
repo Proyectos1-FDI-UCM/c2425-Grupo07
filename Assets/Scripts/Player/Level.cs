@@ -46,9 +46,9 @@ public class Level : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameManager _gameManager;
-    private PlayerLevel _player;
-    private Level _thisLevel;
+    private GameManager _gameManager; //instancia del game manager
+    private PlayerLevel _player; //script del PlayerLevel
+    private Level _thisLevel; //Obtención de la información de este nivel
 
     #endregion
 

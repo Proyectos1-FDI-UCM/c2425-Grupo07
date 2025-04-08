@@ -43,8 +43,8 @@ public class Objects : MonoBehaviour
     #region Atributos Privados (private fields)
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
     [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
-    private SpriteRenderer skin;
-    private int n;
+    private SpriteRenderer skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
+    private int n; //numero de objetos insertados
 
 
     #endregion
@@ -56,6 +56,10 @@ public class Objects : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
     private void Start()
     {
         skin = gameObject.GetComponent<SpriteRenderer>();
@@ -169,6 +173,9 @@ public class Objects : MonoBehaviour
         return Materials;
     }
 
+    /// <summary>
+    /// Cambia el sprite del objeto cuando uno de los materiales intersados coincide con el orden determinado
+    /// </summary>
     public void ChangeSkin()
     {
         if (IsSameMaterialType(Materials[n], OrdenPedidos[n]))

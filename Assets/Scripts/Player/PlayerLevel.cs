@@ -35,10 +35,10 @@ public class PlayerLevel : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     [SerializeField] private Level _level; //Script del nivel al que va a entrar
-    private PauseMenuManager _menuManager;
-    private bool _enabledPause = false;
-    private GameManager _gameManager;
-    private GameObject _player;
+    private PauseMenuManager _menuManager; //Script del menu de pausa
+    private bool _enabledPause = false; //Si está activado o no el menu de pausa
+    private GameManager _gameManager; //instancia del game manager
+    private GameObject _player; //prefab del jugador
 
     #endregion
 
