@@ -209,11 +209,11 @@ public class LevelManager : MonoBehaviour
         }
 
         // Establecer el modo de juego en pausado
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (InputManager.Instance != null)
         {
-            InputManager.Instance.EnableActionMap("UI");
+            InputManager.Instance.EnableActionMap("Player");
         }
         else
         {
