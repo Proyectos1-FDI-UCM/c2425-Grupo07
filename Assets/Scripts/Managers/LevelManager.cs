@@ -269,7 +269,7 @@ public class LevelManager : MonoBehaviour
             Panel.SetActive(true);
             Time.timeScale = 0;
         }
-        if (InputManager.Instance.EnterWasPressedThisFrame())
+        if (InputManager.Instance.SubmitWasReleasedThisFrame() && _currentSecondsLeft == 0)
         {
             OnInputReceived();
         }
@@ -525,7 +525,7 @@ public class LevelManager : MonoBehaviour
         {
             int contador = 0;
             _pileOfCash.transform.GetChild(0).gameObject.SetActive(true);
-            while (Money > 0 && contador >= MoneyToSum)
+            while (Money >= 0 && contador >= MoneyToSum)
             {
                 yield return new WaitForSeconds(dineroRate);
                 float _dineroARepresentar = (Money - MoneyToSum)+ contador; //esto se hace con una cantidad de dinero ya actualizada

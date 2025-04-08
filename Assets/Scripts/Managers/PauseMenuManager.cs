@@ -129,6 +129,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (!_paused)
         {
+            InputManager.Instance.EnableActionMap("UI");
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             if (_playerDash != null)
@@ -148,7 +149,6 @@ public class PauseMenuManager : MonoBehaviour
             _paused = true;
 
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
-            InputManager.Instance.EnableActionMap("UI");
         }
         else
         {
@@ -158,6 +158,7 @@ public class PauseMenuManager : MonoBehaviour
             }
             else
             {
+                InputManager.Instance.EnableActionMap("Player");
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 _paused = false;
@@ -168,7 +169,6 @@ public class PauseMenuManager : MonoBehaviour
 
                 EventSystem.current.SetSelectedGameObject(null);
             }
-            InputManager.Instance.EnableActionMap("Player");
         }
     }
 

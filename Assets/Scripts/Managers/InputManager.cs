@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour
     /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa. 
     /// Si hubieran más botones tendremos que crear más
     /// </summary>
-    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _openPauseMenu;
+    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _openPauseMenu, _submit;
 
 
     #endregion
@@ -226,6 +226,11 @@ public class InputManager : MonoBehaviour
         return _interact.WasReleasedThisFrame();
     }
 
+
+    public bool SubmitWasReleasedThisFrame()
+    {
+        return _submit.WasReleasedThisFrame();
+    }
     public void EnableActionMap(string TypeActionMap)
     {
         if (TypeActionMap == "Player")
@@ -281,6 +286,10 @@ public class InputManager : MonoBehaviour
         // El estado lo consultaremos a través de los métodos públicos que 
         // tenemos (PauseWasPressedThisFrame)
         _openPauseMenu = _theController.Player.OpenPauseMenu;
+        // Para el pause solo cacheamos la acción de pausar el juego.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (PauseWasPressedThisFrame)
+        _submit = _theController.UI.Submit;
     }
 
     /// <summary>
