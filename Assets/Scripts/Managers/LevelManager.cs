@@ -199,15 +199,27 @@ public class LevelManager : MonoBehaviour
 
 
         // Activar la imagen de bloqueo al inicio
-
         if (blockingImage != null)
         {
             blockingImage.SetActive(true);
         }
+        else
+        {
+            Debug.LogWarning("blockingImage no está asignado en LevelManager.");
+        }
 
         // Establecer el modo de juego en pausado
         Time.timeScale = 0;
-        InputManager.Instance.EnableActionMap("UI");
+
+        // Activar el mapa de input "UI" si InputManager está disponible
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.EnableActionMap("UI");
+        }
+        else
+        {
+            Debug.LogWarning("InputManager.Instance es null. ¿Está inicializado?");
+        }
 
         //Hecho por Guillermo
         if (_pileOfCash != null)
