@@ -10,7 +10,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -207,7 +207,10 @@ public class LevelManager : MonoBehaviour
 
         // Establecer el modo de juego en pausado
         Time.timeScale = 0;
-        InputManager.Instance.EnableActionMap("UI");
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.EnableActionMap("UI");
+        }
 
         //Hecho por Guillermo
         if (_pileOfCash != null)
@@ -255,6 +258,7 @@ public class LevelManager : MonoBehaviour
             }
             TimeIsOverText();
             Panel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
             Time.timeScale = 0;
         }
         if (InputManager.Instance.SubmitWasReleasedThisFrame() && _currentSecondsLeft == 0)
