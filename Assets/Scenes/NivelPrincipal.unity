@@ -6817,6 +6817,10 @@ PrefabInstance:
       propertyPath: BinAnimator
       value: 
       objectReference: {fileID: 407399510}
+    - target: {fileID: 6502534507861974189, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3058024, guid: 5fc1330dc35cfc44985a71fe11a07afd, type: 3}
     - target: {fileID: 6910251898988984021, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1

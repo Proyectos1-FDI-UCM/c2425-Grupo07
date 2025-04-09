@@ -73,6 +73,10 @@ public class Mesa : MonoBehaviour
     {
         return tabType;
     }
+    /// <summary>
+    /// Tinta el objeto del parámetro si se está mirando la mesa de un color determinado "ItemTint"
+    /// </summary>
+    /// <param name="collision"></param>
     public void TintObject(GameObject collision)
     {
         _lookedObject = collision.gameObject;
@@ -81,14 +85,22 @@ public class Mesa : MonoBehaviour
             _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
         }
     }
-    public void UnTintObject(GameObject collision)
+    /// <summary>
+    /// Se deja de tintar el objeto
+    /// </summary>
+    public void UnTintObject()
     {
         if (_lookedObject != null)
         {
             _lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
         _lookedObject = null;
+        
     }
+    /// <summary>
+    /// Modifica si se está mirando a la mesa o no
+    /// </summary>
+    /// <param name="isLooked"></param>
     public void IsBeingLooked(bool isLooked)
     {
         _isLooked = isLooked;
@@ -105,7 +117,7 @@ public class Mesa : MonoBehaviour
     {
         if (_lookedObject != null)
         {
-            UnTintObject(_lookedObject);
+            UnTintObject();
         }
         else if (_isLooked && transform.childCount > 0) 
         {
