@@ -433,6 +433,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClosePauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""30e3774e-9c6e-4856-b155-b5a645d24842"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -853,6 +862,28 @@ namespace UnityEngine.InputSystem
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e177ffe-73c6-4545-98ed-67c8de871645"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ClosePauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14caa133-82b0-4123-8ffd-28c15770fa9a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ClosePauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -940,6 +971,7 @@ namespace UnityEngine.InputSystem
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_ClosePauseMenu = m_UI.FindAction("ClosePauseMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1097,6 +1129,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_ClosePauseMenu;
         public struct UIActions
         {
             private @InputActionSettings m_Wrapper;
@@ -1111,6 +1144,7 @@ namespace UnityEngine.InputSystem
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @ClosePauseMenu => m_Wrapper.m_UI_ClosePauseMenu;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1150,6 +1184,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @ClosePauseMenu.started += instance.OnClosePauseMenu;
+                @ClosePauseMenu.performed += instance.OnClosePauseMenu;
+                @ClosePauseMenu.canceled += instance.OnClosePauseMenu;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -1184,6 +1221,9 @@ namespace UnityEngine.InputSystem
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @ClosePauseMenu.started -= instance.OnClosePauseMenu;
+                @ClosePauseMenu.performed -= instance.OnClosePauseMenu;
+                @ClosePauseMenu.canceled -= instance.OnClosePauseMenu;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1267,6 +1307,7 @@ namespace UnityEngine.InputSystem
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnClosePauseMenu(InputAction.CallbackContext context);
         }
     }
 }

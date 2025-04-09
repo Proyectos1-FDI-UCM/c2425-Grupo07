@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour
     /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa. 
     /// Si hubieran más botones tendremos que crear más
     /// </summary>
-    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _openPauseMenu, _submit;
+    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _togglePauseMenu, _submit;
 
 
     #endregion
@@ -202,7 +202,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     public bool PauseWasPressedThisFrame()
     {
-        return _openPauseMenu.WasPressedThisFrame();
+        return _togglePauseMenu.WasPressedThisFrame();
     }
     /// <summary>
     /// Método para saber si el botón de entrar a un nivel (Enter) se ha pulsado en este frame
@@ -237,11 +237,13 @@ public class InputManager : MonoBehaviour
         {
             _theController.Player.Enable();
             _theController.UI.Disable();
+            _togglePauseMenu = _theController.Player.OpenPauseMenu;
         }
         else
         {
             _theController.Player.Disable();
             _theController.UI.Enable();
+            _togglePauseMenu = _theController.UI.ClosePauseMenu;
         }
     }
     #endregion
@@ -285,7 +287,7 @@ public class InputManager : MonoBehaviour
         // Para el pause solo cacheamos la acción de pausar el juego.
         // El estado lo consultaremos a través de los métodos públicos que 
         // tenemos (PauseWasPressedThisFrame)
-        _openPauseMenu = _theController.Player.OpenPauseMenu;
+        _togglePauseMenu = _theController.Player.OpenPauseMenu;
         // Para el pause solo cacheamos la acción de pausar el juego.
         // El estado lo consultaremos a través de los métodos públicos que 
         // tenemos (PauseWasPressedThisFrame)

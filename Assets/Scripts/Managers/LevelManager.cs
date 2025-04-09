@@ -135,6 +135,11 @@ public class LevelManager : MonoBehaviour
     /// Recoge el padre de los objetos de la pila de dinero que irá apareciendo de una en una hasta llegar al contador de dinero
     /// </summary>
     [SerializeField] private GameObject _pileOfCash;
+    /// <summary>
+    /// Hecho por Guillermo
+    /// Recoge el padre de los objetos de la pila de dinero que irá apareciendo de una en una hasta llegar al contador de dinero
+    /// </summary>
+    [SerializeField] private int _vecesIncrementado = 10;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -444,7 +449,7 @@ public class LevelManager : MonoBehaviour
     }
     /// <summary>
     /// Hecho por Guillermo
-    /// 
+    /// Reseta la posición de cada uno de los billestes de _pileOfCash, incluyendo su tamaño para que crezca al invocarse el método
     /// </summary>
     private void ResetCashPos()
     {
@@ -456,10 +461,18 @@ public class LevelManager : MonoBehaviour
             _currentChild.gameObject.SetActive(false);
         }
     }
-
+    /// <summary>
+    /// Resetea la posición del dinero para que incremente o disminuya la cantidad MoneyToSum, sumando o restando el dinero con un efecto que suma o resta de uno en uno
+    /// Si el dinero a sumar es mayor que 0 realiza la animación del dinero, si no, convierte el texto a rojo y hace un efecto que no puede bajar más.
+    /// Si el dinero a sumar es mayor que 0, incrementa el tamaño de cada billete por orden de la jerarquía del padre
+    ///     Rate aumenta es la velocidad que aumenta, veces incrementado es lo mucho que se aumentará, tiempo
+    /// Si el dinero a sumar es menor que 0, inicializa un contador que disminuye hasta MoneySum, coloreando el texto en rojo mientras decrementa
+    ///     Al terminar el bucle vuelve a verde y desactiva los billetes.
+    /// </summary>
+    /// <param name="MoneyToSum"></param>
+    /// <returns></returns>
     IEnumerator SumaDinero(int MoneyToSum)
     {
-        float dineroRate = 0.002f; // Velocidad en la que incrementa el dinero
         ResetCashPos();
         if (MoneyToSum > 0)
         {
@@ -468,22 +481,20 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < _pileOfCash.transform.childCount - 1; i++) // Hace que cada objeto de dinero crezca
             {
                 _pileOfCash.transform.GetChild(i).gameObject.SetActive(true);
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < _vecesIncrementado; j++)
                 {
                     float rateAumenta = (float)j *5;
-                    float tiempoDisminuye = (float)j / 1000;
-                    yield return new WaitForSeconds(tiempoDisminuye);
+                    yield return 0; // Espera durante un frame
                     _pileOfCash.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(rateAumenta, rateAumenta);
                 }
                 yield return new WaitForSeconds(delay);
             }
-            // Mueve los objetos y los desactiva mientras incrementa el contador de dinero
-            for (int k = 0; k <= MoneyToSum; k++)
+            for (int k = 0; k <= MoneyToSum; k++) // Mueve los billetes y los desactiva al llegar a endPos mientras se incrementa el contador de dinero
             {
-                yield return new WaitForSeconds(dineroRate);
+                yield return 0; // Espera durante un frame
                 float _dineroARepresentar = (Money-MoneyToSum) + k; //esto se hace con una cantidad de dinero ya actualizada
                 _moneyInPlay.text = "" + _dineroARepresentar;
-                if (k < _pileOfCash.transform.childCount - 1)
+                if (k < _pileOfCash.transform.childCount - 1) // Mientras que k sea menor que la los billetes a mover
                 {
                     while (_pileOfCash.transform.GetChild(k).GetComponent<RectTransform>().anchoredPosition != _endPos)
                     {
@@ -504,7 +515,7 @@ public class LevelManager : MonoBehaviour
             _pileOfCash.transform.GetChild(0).gameObject.SetActive(true);
             while (Money >= 0 && contador >= MoneyToSum)
             {
-                yield return new WaitForSeconds(dineroRate);
+                yield return 0; // Espera durante un frame
                 float _dineroARepresentar = (Money - MoneyToSum)+ contador; //esto se hace con una cantidad de dinero ya actualizada
                 _moneyInPlay.text = "" + _dineroARepresentar;
                 _moneyInPlay.color = Color.red;
