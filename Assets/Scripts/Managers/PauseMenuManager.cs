@@ -124,6 +124,7 @@ public class PauseMenuManager : MonoBehaviour
     ///  el menu de pausa se activa y se pausa el juego. Si no esta activo, ve si los controles estan activos, si no lo estan cierra
     ///  el menu de pausa. Si lo estan, los desactiva para que la siguiente vez que se pulse el input correspondiente se cierre el menu de pausa
     ///  asi primero se cierran los controles y luego se cierra el menu.
+    ///  Activa el Input de Player del jugador si está en el menú de pausa, activando el Input del UI (Esta línea fue hecha por Guillermo)
     /// </summary>
     public void HandleInput()
     {
@@ -132,19 +133,6 @@ public class PauseMenuManager : MonoBehaviour
             InputManager.Instance.EnableActionMap("UI");
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            if (_playerDash != null)
-            {
-                _playerDash.enabled = false; // Bloquea el dash del jugador al pausar el juego.
-            }
-            else // Solo se ejecuta una vez si el jugador está en la escena.
-            {
-                _playerDash = FindAnyObjectByType<PlayerDash>(); // Busca el script de PlayerDash en la escena.
-                if (_playerDash != null) // El jugador está en la escena
-                {
-                    _playerDash.enabled = false; // Bloquea el dash del jugador al pausar el juego.
-                }
-                else Debug.LogWarning("No se ha encontrado al jugador en la escena."); // El jugador no está en la escena
-            }
 
             _paused = true;
 
@@ -162,10 +150,6 @@ public class PauseMenuManager : MonoBehaviour
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 _paused = false;
-                if (_playerDash != null)
-                {
-                    _playerDash.enabled = true; // Desbloquea el dash del jugador al reanudar el juego.
-                }
 
                 EventSystem.current.SetSelectedGameObject(null);
             }

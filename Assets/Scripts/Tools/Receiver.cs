@@ -9,7 +9,6 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 /// <summary>
@@ -36,11 +35,6 @@ public class Receiver : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    /// <summary>
-    /// Referencia a la acción de interacción del jugador
-    /// </summary>
-    [SerializeField] private InputActionReference InteractActionReference;
-
     /// <summary>
     /// Referencia al manager de nivel
     /// </summary>
@@ -129,16 +123,6 @@ public class Receiver : MonoBehaviour
     #region Métodos de MonoBehaviour
 
     /// <summary>
-    /// Se ejecuta cuando el script se habilita.
-    /// Configura el sistema de entrada para la interacción del jugador.
-    /// </summary>
-    void Awake()
-    {
-        InteractActionReference.action.performed += ctx => HandleInput();
-        InteractActionReference.action.Enable();
-    }
-
-    /// <summary>
     /// Inicializa los componentes necesarios y configura el estado inicial.
     /// - Encuentra la posición de los pedidos
     /// - Configura las alertas visuales
@@ -183,7 +167,10 @@ public class Receiver : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        if (InputManager.Instance.PickDropWasPressedThisFrame())
+        {
+            HandleInput();
+        }
     }
     #endregion
 

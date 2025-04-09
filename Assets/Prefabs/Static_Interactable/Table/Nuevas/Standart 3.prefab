@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8121037233921599516}
   - component: {fileID: 3193425242773086990}
   - component: {fileID: 6655306971994225856}
-  - component: {fileID: 7864318274976248841}
   - component: {fileID: 436317244141083187}
   m_Layer: 10
   m_Name: Standart 3
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1394175883
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2143502097, guid: 73de65c3286f4e34aa6de4692c3ffd22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,19 +177,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7864318274976248841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2338494283670101056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fa3403c91adea4cb045a20047255f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tabType: 1
 --- !u!114 &436317244141083187
 MonoBehaviour:
   m_ObjectHideFlags: 0

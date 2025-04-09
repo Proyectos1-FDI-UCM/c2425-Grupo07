@@ -7,7 +7,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 

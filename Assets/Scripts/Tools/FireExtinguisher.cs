@@ -7,7 +7,6 @@
 
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Clase que representa el funcionamiento de un extintor en el juego.

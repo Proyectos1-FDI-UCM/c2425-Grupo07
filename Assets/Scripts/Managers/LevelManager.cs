@@ -116,12 +116,12 @@ public class LevelManager : MonoBehaviour
 
     /// <summary>
     /// Hecho por Guillermo
-    /// 
+    /// Recoge la posición inicial de la pila de dinero (7 objetos en total) que volverán a la posición inicial al ser invocados
     /// </summary>
     [SerializeField] private Vector2[] _initialPos;
     /// <summary>
     /// Hecho por Guillermo
-    /// 
+    /// Recoge la posición final en la que pila de dinero se moverá
     /// </summary>
     [SerializeField] private Vector2 _endPos;
 
@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
 
     /// <summary>
     /// Hecho por Guillermo
-    /// 
+    /// Recoge el padre de los objetos de la pila de dinero que irá apareciendo de una en una hasta llegar al contador de dinero
     /// </summary>
     [SerializeField] private GameObject _pileOfCash;
     #endregion
