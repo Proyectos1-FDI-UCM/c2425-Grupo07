@@ -130,16 +130,22 @@ public class PlayerVision : MonoBehaviour
                 if (Vector2.Distance(transform.position, collision.transform.position) < Vector2.Distance(transform.position, _actualMesa.transform.position))
                 {
                     _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
-                    if (_actualMesa.transform.childCount>0&& _actualMesa.transform.GetChild(0)!=null)
+                    if (_actualMesa.transform.childCount>0&& _actualMesa.transform.GetChild(0)!=null) // Hecho por Guillermo, se deja de tintar el objeto cuando se deja
+                                                                                                        // de tintar la mesa
                     {
-                        _actualMesa.GetComponent<Mesa>().UnTintObject(_actualMesa.transform.GetChild(0).gameObject);
+                        _actualMesa.GetComponent<Mesa>().UnTintObject();
                     }
                     _actualMesa.GetComponent<Mesa>().IsBeingLooked(false);
                     _actualMesa = collision.gameObject;
                 }
             }
             _actualMesa.GetComponent<SpriteRenderer>().color = MesaTint;
+            //Tinta el objeto dentro de la mesa
             _actualMesa.GetComponent<Mesa>().IsBeingLooked(true);
+            if (_actualMesa.transform.childCount > 0 && _actualMesa.transform.GetChild(0) != null)
+            {
+                _actualMesa.GetComponent<Mesa>().TintObject(_actualMesa.transform.GetChild(0).gameObject);
+            }
             if (_actualMesa.GetComponent<Receiver>() != null)
             {
                 if (_heldObject != null)
@@ -156,26 +162,7 @@ public class PlayerVision : MonoBehaviour
             }
         }
     }
-    /// <summary>
-    /// Activa el contorno de un objeto para que el jugador lo pueda reconocer mejor
-    /// Hecho por Guillermo
-    /// </summary>
-    /// <param name="collision"></param>
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        //if (_lookedObject== null && _heldObject == null && (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
-        //{
-        //    _lookedObject = collision.gameObject;
-        //    _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
-        //}
-        //if (_visionCollider.IsTouching(collision) && collision.GetComponent<Mesa>() != null)
-        //{
-        //    if (_actualMesa != null && _actualMesa.transform.childCount > 0)
-        //    {
-        //        _actualMesa.GetComponent<Mesa>().TintObject(_actualMesa.transform.GetChild(0).gameObject);
-        //    }
-        //}
-    }
+
     /// <summary>
     /// Se encarga de detectar si el jugador ha salido de contacto con una mesa, si es así, se elimina la referencia de la mesa en _actualMesa.
     /// Si el jugador sale de contacto con el recibidor, se llama a SetIdleMode() para que el recibidor vuelva a su estado normal.
@@ -186,9 +173,10 @@ public class PlayerVision : MonoBehaviour
         if (collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)
         {
             _actualMesa.GetComponent<SpriteRenderer>().color = Color.white;
+            //Se deja de tintar el objeto, por tanto se deja de mirar la mesa
             if (_actualMesa.transform.childCount > 0 && _actualMesa.transform.GetChild(0) != null)
             {
-                _actualMesa.GetComponent<Mesa>().UnTintObject(_actualMesa.transform.GetChild(0).gameObject);
+                _actualMesa.GetComponent<Mesa>().UnTintObject();
             }
             _actualMesa.GetComponent<Mesa>().IsBeingLooked(false);
             if (_actualMesa.GetComponent<Receiver>() != null)
@@ -198,12 +186,6 @@ public class PlayerVision : MonoBehaviour
             }
             _actualMesa = null;
         }
-        //else if (_lookedObject != null && collision.GetComponent<Mesa>() != null && collision.gameObject == _actualMesa)//&& (collision.GetComponent<ConveyorItems>() != null || collision.GetComponent<FireExtinguisher>() != null))
-        //{
-        //    _actualMesa.GetComponent<Mesa>().UnTintObject(_lookedObject);
-        //   //_lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
-        //    _lookedObject = null;
-        //}
     }
 
     #endregion

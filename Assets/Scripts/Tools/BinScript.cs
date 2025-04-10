@@ -16,8 +16,13 @@ public class BinScript : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // No hay atributos de inspector en esta clase.
-    [SerializeField] private Animator _animator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
+    // Documentar cada atributo que aparece aquí.
+    // El convenio de nombres de Unity recomienda que los atributos
+    // públicos y de inspector se nombren en formato PascalCase
+    // (palabras con primera letra mayúscula, incluida la primera letra)
+    // Ejemplo: MaxHealthPoints
+    [SerializeField] private Animator BinAnimator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
+    [SerializeField] int VecesDisminuido = 10;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -49,7 +54,7 @@ public class BinScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       _animator.SetBool("Opened",true);
+       BinAnimator.SetBool("Opened",true);
     }
 
     /// <summary>
@@ -59,7 +64,7 @@ public class BinScript : MonoBehaviour
    
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _animator.SetBool("Opened",false);
+        BinAnimator.SetBool("Opened",false);
     }
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -111,13 +116,14 @@ public class BinScript : MonoBehaviour
         Debug.Log("Material destruido en la basura.");
     }
     /// <summary>
-    /// Inicia una secuencia que disminuye el tamaño del material hasta ser destruido
     /// Hecho por Guillermo
+    /// Inicia una secuencia que disminuye el tamaño del material hasta ser destruido
+    /// rateDisminuye es velocidad que disminuye, mucho que se aumentará
     /// </summary>
     /// <param name="material">Objeto del material a disminuir.</param>
     IEnumerator DisminuyeMat(GameObject material)
     {
-        for (int i = 0; i < _velMat; i++)
+        for (int i = 0; i < VecesDisminuido; i++)
         {
             float rateDisminuye = (float) i / 10;
             float tiempoDisminuye = (float)i / 100;

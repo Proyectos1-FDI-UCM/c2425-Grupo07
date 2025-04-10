@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &407399510 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5016201982335952176, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+  m_PrefabInstance: {fileID: 5719194543619647074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &611523830
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,6 +6817,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5991968227932103829, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: BinAnimator
+      value: 
+      objectReference: {fileID: 407399510}
+    - target: {fileID: 6502534507861974189, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3058024, guid: 5fc1330dc35cfc44985a71fe11a07afd, type: 3}
     - target: {fileID: 6910251898988984021, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1

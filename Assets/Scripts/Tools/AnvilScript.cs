@@ -127,7 +127,6 @@ public class AnvilScript : MonoBehaviour
     {
         if(hasMetal)
         {
-            
             if (CompletionBarReference != null && _progress < 1) // Es 1 ya que el progreso va de 0 a 1 (No es un magic number... creo...)
             {
                 CurrentClicks++;
