@@ -162,8 +162,7 @@ MonoBehaviour:
   _endPos: {x: -75, y: -400}
   RestartButton: {fileID: 6418934759485609850}
   PileOfCash: {fileID: 8267005209928458821}
-  VecesIncrementado: 10
-  DineroVel: 3000
+  DineroVel: 6000
 --- !u!1 &8305460593797319899
 GameObject:
   m_ObjectHideFlags: 0
