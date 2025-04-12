@@ -99,6 +99,7 @@ public class PlayerBool : MonoBehaviour
     {
         Time.timeScale = 1f;
         Canvas.gameObject.SetActive(false);
+        InputManager.Instance.EnableActionMap("Player");
     }
     #endregion
 

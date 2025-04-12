@@ -111,6 +111,7 @@ public class Level : MonoBehaviour
     public void OnEnterLevel()
     {
         SelectionPlayer.gameObject.SetActive(true);
+        InputManager.Instance.EnableActionMap("UI");
         Text text = SelectionPlayer.GetComponentInChildren<Text>();
         string[] s = Regex.Split(LevelName, @"(?<!^)(?=[A-Z])");
         text.text = string.Join(" ", s);
