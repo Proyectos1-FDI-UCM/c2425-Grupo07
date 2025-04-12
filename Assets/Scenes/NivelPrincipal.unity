@@ -6479,6 +6479,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7554411446442042521, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
   m_PrefabInstance: {fileID: 5719194543619647074}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1854506918 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7983104528980868754, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+  m_PrefabInstance: {fileID: 5719194543619647074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047653677
 GameObject:
   m_ObjectHideFlags: 0
@@ -6817,6 +6822,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4953780980856588713, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 1854506918}
     - target: {fileID: 5991968227932103829, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: BinAnimator
       value: 

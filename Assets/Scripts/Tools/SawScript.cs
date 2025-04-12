@@ -34,15 +34,14 @@ public class SawScript : MonoBehaviour
     // MaderaProcesada es el GameObject correspondiente a la madera procesada
     [SerializeField] private GameObject MaderaProcesada;
 
-
-    // CarriesWood determina si hay madera en la sierra (true) o no (false)
+    // HasWood determina si hay madera en la sierra (true) o no (false)
     [SerializeField] private bool HasWood = false;
 
-    //CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
-    [SerializeField] private int _completionTime = 6;
+    // CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    [SerializeField] private int CompletionTime = 6;
 
-    //_animator es el animator que controla la animación de la sierra
-    [SerializeField] private Animator _animator;
+    // Animator es el animator que controla la animación de la sierra
+    [SerializeField] private Animator Animator;
 
     #endregion
 
@@ -55,7 +54,7 @@ public class SawScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //progress: es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
+    // _progress es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
     private float _progress;
 
     // _materialSource es el material que hay en la sierra
@@ -64,6 +63,7 @@ public class SawScript : MonoBehaviour
     //isWorking: es la booleana que indica si la soldadora está trabajando o no;
     private bool _isWorking;
 
+    // _completionDelta es la constante por la cual se multiplica el tiempo transcurrido para el incremento del progreso
     private float _completionDelta;
 
     #endregion
@@ -79,7 +79,6 @@ public class SawScript : MonoBehaviour
     {
         _progress = 0;
         _isWorking = false;
-        _completionDelta = 1f / _completionTime;
         _materialSource = null;
     }
 
@@ -87,6 +86,7 @@ public class SawScript : MonoBehaviour
     {
       if (_isWorking)
         {
+            _completionDelta = 1f / CompletionTime;
             _progress += _completionDelta * Time.deltaTime;
             _materialSource.UpdateProgress(_progress);
             if (_progress >= 1)
@@ -122,7 +122,7 @@ public class SawScript : MonoBehaviour
     /// </summary>
     public void ChangeMaxTime(int time)
     {
-        _completionTime = time;
+        CompletionTime = time;
     }
   
     /// <summary>
@@ -162,7 +162,7 @@ public class SawScript : MonoBehaviour
         if (HasWood)
         {
            _isWorking = true;
-           _animator.SetBool("working", true);
+           Animator.SetBool("working", true);
         }
     }
     public void TurnOffSaw()
@@ -170,7 +170,7 @@ public class SawScript : MonoBehaviour
         if (HasWood)
         {
             _isWorking = false;
-            _animator.SetBool("working", false);
+            Animator.SetBool("working", false);
         }
     }
 
@@ -189,7 +189,7 @@ public class SawScript : MonoBehaviour
     private void ProcessWood()
     {
         _materialSource.ProcessTheMaterial();
-       _animator.SetBool("working", false);
+       Animator.SetBool("working", false);
        _isWorking = false;
        HasWood = false;
     }
