@@ -20,7 +20,7 @@ using System.Collections;
 /// 
 /// Este script es el que procesa únicamente la arena y la convierte en cristal. 
 /// Se tiene que inserta un objeto de arena soltándolo sobre el horno para que inicie el contador de progreso del material
-/// Después de “n” segundos, se tendrá preparado un material procesado de “cristal”. 
+/// Después de “_n” segundos, se tendrá preparado un material procesado de “cristal”. 
 /// Si el objeto procesado se queda un tiempo en el horno, se incendia esta estación de trabajo, 
 /// Y el material se convierte en “Cristal roto”, el cual no tendrá ninguna utilidad y podrá ser descartado en la basura 
 /// (después de quitar el fuego).

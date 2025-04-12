@@ -106,10 +106,10 @@ public class PressScript : MonoBehaviour
     public void Pick()
     {
         CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
-        _isPressing = false;
         BarCanvasGroup.gameObject.SetActive(false);
         PressingTime = 0f;
         _animator.SetBool("working", false);
+        ResetPress();
     } 
     #endregion
 
@@ -126,7 +126,7 @@ public class PressScript : MonoBehaviour
     /// </summary>
     private void PressInProcess()
     {
-        if (CurrentObject != null)
+        if (_isPressing)
         {
             PressingTime += (Time.deltaTime / 100) * VelCompletion;
             
@@ -138,6 +138,7 @@ public class PressScript : MonoBehaviour
             if (PressingTime >= 1)
             {
                 ResetObject();
+                _isPressing = false;
             }
         }
     }
@@ -151,8 +152,6 @@ public class PressScript : MonoBehaviour
         {
             CurrentObject.GetComponent<Objects>().ResetObject();
             _animator.SetBool("working", false);
-
-            ResetPress();
         }
     }
 
@@ -164,8 +163,6 @@ public class PressScript : MonoBehaviour
     {
         CurrentObject = null;
         PressingTime = 0f;
-        _isPressing = false;
-
 
         if (ProgressBarFill != null)
         {

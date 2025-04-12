@@ -80,7 +80,6 @@ public class CraftingTableScript : MonoBehaviour
                         _materials[i] = material;
                         agregado = true;
                         ReturnMaterials(_materials);
-                        _scriptObject.IsCompleted();
                         _scriptObject.ChangeSkin();
                     }
                     else { i++; }

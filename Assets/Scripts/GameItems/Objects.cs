@@ -29,7 +29,7 @@ public class Objects : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     //Array de GameObjects que representan los materiales que el objeto puede contener.
-    [SerializeField] private MaterialType[] Materials = new MaterialType[3];
+    [SerializeField] private MaterialType[] Materials;
     //Array de GameObject que define el orden correcto de los materiales para completar el objeto.
     [SerializeField] private MaterialType[] OrdenPedidos;
     //Array de GameObjects que son indicadores y representan los huecos que tiene el objeto
@@ -43,9 +43,9 @@ public class Objects : MonoBehaviour
     #region Atributos Privados (private fields)
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
     [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
-    private SpriteRenderer skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
-    private int n; //numero de objetos insertados
-
+    private SpriteRenderer _skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
+    private int _n; //numero de objetos insertados
+    private bool _isFull;
 
     #endregion
 
@@ -62,7 +62,7 @@ public class Objects : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        skin = gameObject.GetComponent<SpriteRenderer>();
+        _skin = gameObject.GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
@@ -70,7 +70,11 @@ public class Objects : MonoBehaviour
     /// </summary>
     void Update()
     {
-        CapacityIndicator();
+        if (_n < Materials.Length)
+        {
+            CapacityIndicator();
+        }
+        else FinalColor();
     }
     #endregion
 
@@ -147,7 +151,7 @@ public class Objects : MonoBehaviour
             Materials[i] = MaterialType.Otro;
         }
         _nGood = 0;
-        n = 0;
+        _n = 0;
     }
     /// <summary>
     /// Establece si el objeto puede ser enviado o no para evitar que el jugador intente añadir materiales o que intente enviar el objeto después de que se acabó el tiempo del pedido.
@@ -178,12 +182,12 @@ public class Objects : MonoBehaviour
     /// </summary>
     public void ChangeSkin()
     {
-        if (IsSameMaterialType(Materials[n], OrdenPedidos[n]))
+        if (IsSameMaterialType(Materials[_n], OrdenPedidos[_n]))
         {
             _nGood++;
         }
-        if(n<OrdenPedidos.Length) n++;
-        skin.sprite = ObjectImage[_nGood];
+        if(_n<OrdenPedidos.Length) _n++;
+        _skin.sprite = ObjectImage[_nGood];
     }
     #endregion
 
@@ -205,12 +209,31 @@ public class Objects : MonoBehaviour
             {
                 if (Materials[i] != MaterialType.Otro)
                 {
-                    CapacityAmount[i].material.color = Color.green; // Cambia a color de ocupado.
+                    CapacityAmount[i].material.color = Color.gray; // Cambia a color de ocupado.
                 }
                 else
                 {
                     CapacityAmount[i].material.color = Color.white; // Cambia a color de vacío.
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Cuando el objeto esta lleno, se le indicará al jugador si está bien o no completado
+    /// </summary>
+    private void FinalColor()
+    {
+        bool complete = IsCompleted();
+        for (int i = 0; i < Materials.Length; i++)
+        {
+            if (complete)
+            {
+                CapacityAmount[i].material.color = Color.green; // Cambia a color de completo.
+            }
+            else
+            {
+                CapacityAmount[i].material.color = Color.red; // Cambia a color de erroneo.
             }
         }
     }
