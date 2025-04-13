@@ -12,8 +12,7 @@ using UnityEngine.EventSystems;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Accederem
 /// </summary>
 public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la UI que cada vez que se seleccione un item 
                                                                     // Del dropdown se ejecuta el código
@@ -50,7 +49,9 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
-    /// 
+    /// En resumen, accedemos a scrollrect (barra de deslizamiento), a los items para desplazarse y 
+    /// el item actual para hacer una operación que se asignará a la barra de deslizamiento cada 
+    /// vez que se selecciona
     /// </summary>
     void Start()
     {
@@ -74,11 +75,17 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    /// <summary>
+    /// Si scrollRect Existe moveremos la posición de este al cálculo que hemos hecho
+    /// en el start
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnSelect(BaseEventData eventData)
     {
         if (scrollRect != null)
         {
-            scrollRect.verticalScrollbar.value = scrollPosition; // 
+            scrollRect.verticalScrollbar.value = scrollPosition; 
         }
 
     }
