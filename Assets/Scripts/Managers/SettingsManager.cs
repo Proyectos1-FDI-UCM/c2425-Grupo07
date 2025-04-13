@@ -11,13 +11,19 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Se controla el sonido a través de un AudioMix, responsable de modificar la música y los 
+/// efectos de sonido en un mismo componente. También se piden los componentes que reproducen
+/// el sonido para implementarlo mejor más tarde. También, para controlar el panel de ajustes se 
+/// necesitará acceder al menú desplegable para meterle las resoluciones y poder cambiarlas y al botón
+/// que se seleccionará al abrir el panel.
+/// Se comprobará si la pantalla está completa para cambiar el modo de pantalla y el panel de la 
+/// interfaz para abrir y cerrarlo.
 /// </summary>
 public class SettingsManager : MonoBehaviour
 {
@@ -33,6 +39,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] AudioSource SfxSource; // La fuente de audio de la que se reproducen los efectos de sonido
     [SerializeField] AudioMixer AudioMix; // El mezclador de audio que contiene la separación de sonidos
     [SerializeField] TMP_Dropdown ResolutionDropdown; // El elemento de la interfaz (UI) que contiene la lista de resoluciones del juego
+    [SerializeField] Button BackButton; // Botón que se seleccionará al abrir el panel
     [SerializeField] GameObject SettingsCanvas; // El panel de la interfaz (UI) de los ajustes
     #endregion
 
@@ -45,7 +52,7 @@ public class SettingsManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     bool _isOnFullscreen; // Booleano que comprueba si está en pantalla completa para activarlo / desactivarlo en el método
-    bool _canvasOpen = true; // Booleano que comprueba si está el panel de la interfaz (UI) para activarlo / desactivarlo en el método
+    bool _canvasOpen = false; // Booleano que comprueba si está el panel de la interfaz (UI) para activarlo / desactivarlo en el método
     int _currentResolutionWidth; // Valor de la resolución actual en la anchura
     int _currentResolutionHeight; // Valor de la resolución actual en la altura
     Resolution[] _resolutionsList; // Lista de resoluciones de Unity
@@ -181,10 +188,14 @@ public class SettingsManager : MonoBehaviour
         if (_canvasOpen)
         {
             SettingsCanvas.SetActive(false);
+            _canvasOpen = false;
+            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
         }
         else
         {
             SettingsCanvas.SetActive(true);
+            _canvasOpen = true;
+            BackButton.Select();
         }
     }
     #endregion
