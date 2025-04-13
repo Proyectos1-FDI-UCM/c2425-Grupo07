@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5731135970881712488}
   - component: {fileID: 7755456720649087661}
   - component: {fileID: 2167422407013768425}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CompletionBarIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7029685470737796403}
   - component: {fileID: 5768015782777736994}
   - component: {fileID: 6764847052216826519}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CompletionBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1280534379
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_Sprite: {fileID: -1981903589, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 702612036130540231}
   - component: {fileID: 5724647002658025138}
   - component: {fileID: 6469498030410678370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CompletionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

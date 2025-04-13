@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 /// 
 /// Este script sirve para que sus métodos sean accedidos por los botones de salir de juego y de ir a la selección de personajes
 /// </summary>
-public class SceneManager : MonoBehaviour
+public class SceneManagerScr : MonoBehaviour
 {
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -35,12 +35,12 @@ public class SceneManager : MonoBehaviour
     //Abre la escena de selección de personajes
     public void RestartGame()
     {
-        Application.LoadLevel("SelectionMenu");
+        SceneManager.LoadScene("SelectionMenu");
     }
 
     public void LoadScene(int index)
     {
-        Application.LoadLevel(index);
+        SceneManager.LoadScene(index);
     }
 
     #endregion

@@ -110,7 +110,6 @@ public class Objects : MonoBehaviour
         // Recorre cada objeto requerido en el pedido
         foreach (MaterialType required in OrdenPedidos)
         {
-            if (required == null) continue; // Ignora objetos nulos en el pedido
 
             // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
             if (!IsSameMaterialType(Materials[n], required))

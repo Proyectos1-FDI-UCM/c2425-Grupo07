@@ -60,7 +60,7 @@ public class SceneLoader : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void WarpScene(string nameScene)
     {
-        Application.LoadLevel(nameScene);
+        SceneManager.LoadScene(nameScene);
     }
 
     public void QuitGame()

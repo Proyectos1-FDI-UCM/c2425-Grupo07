@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6033526133785629124}
   - component: {fileID: 6290231491075262399}
   - component: {fileID: 3388729648607023725}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,4 +318,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabType: 0
-  ItemTint: {r: 0, g: 0, b: 0, a: 1}
