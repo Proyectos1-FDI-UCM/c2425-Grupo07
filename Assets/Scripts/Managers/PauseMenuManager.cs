@@ -165,6 +165,14 @@ public class PauseMenuManager : MonoBehaviour
     {
         return _paused;
     }
+    /// <summary>
+    /// Intercambia entre abrir y cerrar el panel de ajustes
+    /// Accede al SettingsManager para abrirlo
+    /// </summary>
+    public void ToggleSettingsPanel()
+    {
+        GameManager.Instance.gameObject.transform.GetChild(0).gameObject.GetComponent<SettingsManager>().TogglePanel();
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

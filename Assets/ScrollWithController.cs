@@ -12,7 +12,9 @@ using UnityEngine.EventSystems;
 
 
 /// <summary>
-/// Accederem
+/// Accederemos a la Clase de la UI que cada vez que se seleccione un item
+/// para hacer una operación que se asignará a la barra de deslizamiento, 
+/// cambiando su selección con el mando o teclas
 /// </summary>
 public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la UI que cada vez que se seleccione un item 
                                                                     // Del dropdown se ejecuta el código

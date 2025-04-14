@@ -41,6 +41,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] TMP_Dropdown ResolutionDropdown; // El elemento de la interfaz (UI) que contiene la lista de resoluciones del juego
     [SerializeField] Button BackButton; // Botón que se seleccionará al abrir el panel
     [SerializeField] GameObject SettingsCanvas; // El panel de la interfaz (UI) de los ajustes
+    [SerializeField] GameObject PantallaUI; // El UI de la pantalla
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -98,6 +99,11 @@ public class SettingsManager : MonoBehaviour
         _currentResolutionWidth = Screen.currentResolution.width;
         _currentResolutionHeight = Screen.currentResolution.height;
         Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
+
+        if (Application.isMobilePlatform)
+        {
+            PantallaUI.SetActive(false);
+        }
     }
 
     #endregion
