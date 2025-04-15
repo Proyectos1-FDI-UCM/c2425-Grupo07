@@ -153,6 +153,10 @@ public class PauseMenuManager : MonoBehaviour
 
                 EventSystem.current.SetSelectedGameObject(null);
             }
+            if (GameManager.Instance.gameObject.transform.GetChild(0).gameObject.GetComponent<SettingsManager>().IsCanvasOpen())
+            {
+                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
+            }
         }
     }
 

@@ -1036,7 +1036,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 386772519177408261}
-  - component: {fileID: 6952758710768079301}
   m_Layer: 5
   m_Name: Pantalla
   m_TagString: Untagged
@@ -1065,18 +1064,6 @@ RectTransform:
   m_AnchoredPosition: {x: -8.850006, y: 1.875}
   m_SizeDelta: {x: 615.7, y: 303.75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6952758710768079301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2686916240735050779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50b8ab3bec67e642ad17d434e5511e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2803043633350184208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2778,7 @@ MonoBehaviour:
   ResolutionDropdown: {fileID: 3886946076043943046}
   BackButton: {fileID: 5119699905857891724}
   SettingsCanvas: {fileID: 6339821015887235782}
+  PantallaUI: {fileID: 0}
 --- !u!1 &6339821015887235782
 GameObject:
   m_ObjectHideFlags: 0

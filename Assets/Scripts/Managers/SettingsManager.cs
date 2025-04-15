@@ -204,6 +204,14 @@ public class SettingsManager : MonoBehaviour
             BackButton.Select();
         }
     }
+    /// <summary>
+    /// Devuelve si el panel está abierto para abrir y cerrarlo en el pause UI
+    /// </summary>
+    /// <returns></returns>
+    public bool IsCanvasOpen()
+    {
+        return _canvasOpen;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
