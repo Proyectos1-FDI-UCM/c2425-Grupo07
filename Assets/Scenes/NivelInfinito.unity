@@ -3633,7 +3633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6452284759195406458, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: MenuLevelSelect
+      value: MenuLevelSelection
       objectReference: {fileID: 0}
     - target: {fileID: 7722602145844596671, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_IsActive

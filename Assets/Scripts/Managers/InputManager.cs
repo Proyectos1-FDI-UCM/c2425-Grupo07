@@ -81,19 +81,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     protected void Awake()
     {
-        if (_instance != null)
-        {
-            // No somos la primera instancia. Se supone que somos un
-            // InputManager de una escena que acaba de cargarse, pero
-            // ya había otro en DontDestroyOnLoad que se ha registrado
-            // como la única instancia.
-            // Nos destruímos. DestroyImmediate y no Destroy para evitar
-            // que se inicialicen el resto de componentes del GameObject para luego ser
-            // destruídos. Esto es importante dependiendo de si hay o no más managers
-            // en el GameObject.
-            //DestroyImmediate(this.gameObject);
-        }
-        else
+        if (_instance == null)
         {
             // Somos el primer InputManager.
             // NO Queremos sobrevivir a cambios de escena.

@@ -178,7 +178,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Inicializando GameManager.");
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
-            Init();
         } // if-else somos instancia nueva o no.
     }
 
@@ -459,12 +458,6 @@ public class GameManager : MonoBehaviour
 
     #region Métodos Privados
 
-    /// <summary>
-    /// Dispara la inicialización.
-    /// </summary>
-    private void Init()
-    {
-    }
     /// <summary>
     /// Método privado que crea una array de componentes con el script de _level (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
     /// </summary>

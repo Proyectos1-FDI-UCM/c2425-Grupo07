@@ -41,7 +41,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] TMP_Dropdown ResolutionDropdown; // El elemento de la interfaz (UI) que contiene la lista de resoluciones del juego
     [SerializeField] Button BackButton; // Botón que se seleccionará al abrir el panel
     [SerializeField] GameObject SettingsCanvas; // El panel de la interfaz (UI) de los ajustes
-    [SerializeField] GameObject PantallaUI; // El UI de la pantalla
+    [SerializeField] GameObject ScreenUI; // El UI de la pantalla
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -57,6 +57,8 @@ public class SettingsManager : MonoBehaviour
     int _currentResolutionWidth; // Valor de la resolución actual en la anchura
     int _currentResolutionHeight; // Valor de la resolución actual en la altura
     Resolution[] _resolutionsList; // Lista de resoluciones de Unity
+    private static SettingsManager _instance; // Instancia única de la clase (singleton).
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -102,10 +104,67 @@ public class SettingsManager : MonoBehaviour
 
         if (Application.isMobilePlatform)
         {
-            PantallaUI.SetActive(false);
+            ScreenUI.SetActive(false);
         }
     }
 
+
+    /// <summary>
+    /// Propiedad para acceder a la única instancia de la clase.
+    /// </summary>
+    public static SettingsManager Instance
+    {
+        get
+        {
+            Debug.Assert(_instance != null);
+            return _instance;
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    protected void Awake()
+    {
+        if (_instance != null)
+        {
+            // No somos la primera instancia. Se supone que somos un
+            // SettingsManager de una escena que acaba de cargarse, pero
+            // ya había otro en DontDestroyOnLoad que se ha registrado
+            // como la única instancia.
+            // Si es necesario, transferimos la configuración que es
+            // dependiente de la escena. Esto permitirá al SettingsManager
+            // real mantener su estado interno pero acceder a los elementos
+            // de la escena particulares o bien olvidar los de la escena
+            // previa de la que venimos para que sean efectivamente liberados.
+            Debug.Log("Ya existe una instancia de SettingsManager. Destruyendo esta instancia.");
+
+            // Y ahora nos destruímos del todo. DestroyImmediate y no Destroy para evitar
+            // que se inicialicen el resto de componentes del GameObject para luego ser
+            // destruídos. Esto es importante dependiendo de si hay o no más managers
+            // en el GameObject.
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            // Somos el primer SettingsManager.
+            // Queremos sobrevivir a cambios de escena.
+            Debug.Log("Inicializando SettingsManager.");
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } // if-else somos instancia nueva o no.
+    }
+
+    /// <summary>
+    /// Método llamado cuando se destruye el componente.
+    /// </summary>
+    protected void OnDestroy()
+    {
+        if (this == _instance)
+        {
+            // Éramos la instancia de verdad, no un clon.
+            _instance = null;
+        } // if somos la instancia principal
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----

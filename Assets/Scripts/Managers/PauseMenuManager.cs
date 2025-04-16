@@ -144,6 +144,10 @@ public class PauseMenuManager : MonoBehaviour
             {
                 ToggleControlPanel(); // Si los controles están activos, los desactiva.
             }
+            else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
+            {
+                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
+            }
             else
             {
                 InputManager.Instance.EnableActionMap("Player");
@@ -152,10 +156,6 @@ public class PauseMenuManager : MonoBehaviour
                 _paused = false;
 
                 EventSystem.current.SetSelectedGameObject(null);
-            }
-            if (GameManager.Instance.gameObject.transform.GetChild(0).gameObject.GetComponent<SettingsManager>().IsCanvasOpen())
-            {
-                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
             }
         }
     }
@@ -175,7 +175,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ToggleSettingsPanel()
     {
-        GameManager.Instance.gameObject.transform.GetChild(0).gameObject.GetComponent<SettingsManager>().TogglePanel();
+        SettingsManager.Instance.TogglePanel();
     }
     #endregion
 

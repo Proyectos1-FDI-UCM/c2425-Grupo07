@@ -122,6 +122,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &20041655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -266.58734
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.834994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00342213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871413087865119875, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815886914948320955, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: m_Name
+      value: SettingsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500711967603977697, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+      propertyPath: ScreenUI
+      value: 
+      objectReference: {fileID: 1451212663}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
 --- !u!1 &52284178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,10 +1523,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1112181101}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1592671369}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: TogglePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1918,11 +1979,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1112181101 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6339821015887235782, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-  m_PrefabInstance: {fileID: 814909962}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1200708021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,6 +2294,22 @@ MonoBehaviour:
   ParallaxEffect: 1
   Limit: -1000
   CameraSpeed: 2
+--- !u!1 &1451212663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5018692396496632428, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+  m_PrefabInstance: {fileID: 20041655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592671369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4500711967603977697, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
+  m_PrefabInstance: {fileID: 20041655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d468ffefb6a94458cef1e62c34e68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640410525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,4 +2899,5 @@ SceneRoots:
   - {fileID: 52284182}
   - {fileID: 1296065368}
   - {fileID: 814909962}
+  - {fileID: 20041655}
   - {fileID: 516229146}
