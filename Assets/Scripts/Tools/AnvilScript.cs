@@ -190,9 +190,8 @@ public class AnvilScript : MonoBehaviour
             Material material = item.GetComponent<Material>();
             if(material.MaterialTypeReturn() == MaterialType.MetalMineral)
             {
-                item.GetComponentInParent<PlayerVision>().Drop(true);
+                item.GetComponentInParent<PlayerVision>().Drop(); // llamo a drop con onToolPlaced en false para que el material se vea encima del yunque y no flote
                 _materialSource = material;
-                _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 CompletionBarReference = _materialSource.ReturnProgressBar();
                 _progress = _materialSource.ReturnProgress();
                 CurrentClicks = (int)(_progress * MaxClicks);
@@ -210,7 +209,6 @@ public class AnvilScript : MonoBehaviour
         if (_hasFinished)
         {
             _hasFinished = false;
-            _materialSource.GetComponent<SpriteRenderer>().sortingOrder = -1;
             _materialSource = null;
             hasMetal = false;
         }
