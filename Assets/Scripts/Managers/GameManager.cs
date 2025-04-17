@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Comprueba si se han actualizado las stats de MenuLevelSelection
     /// </summary>
-    [SerializeField] private bool _statsUpdated = false;
+    [SerializeField] private bool _statsUpdated;
 
     #endregion
 
@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
         {
             UpdateStats();
             _statsUpdated = true;
+
         }
 
         /*if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuLevelSelection" && !_statsUpdated)

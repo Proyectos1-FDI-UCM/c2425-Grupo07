@@ -37,8 +37,8 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private ScrollRect scrollRect; // Contiene la información para deslizar
-    private float scrollPosition = 1; // la posición que se seleccionará al principio
+    private ScrollRect _scrollRect; // Contiene la información para deslizar
+    private float _scrollPosition = 1; // la posición que se seleccionará al principio
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -47,7 +47,6 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -57,8 +56,10 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     /// </summary>
     void Start()
     {
-        scrollRect = GetComponentInParent<ScrollRect>(true); // Accedemos al scrollRect si existe
-        int childCount = scrollRect.content.transform.childCount - 1; // Accedemos a cuántos items hay para movernos
+        _scrollRect = GetComponentInParent<ScrollRect>(true); // Accedemos al scrollRect si existe
+        _scrollRect.verticalScrollbar.value = 0;
+        int childCount = _scrollRect.content.transform.childCount - 1; // Accedemos a cuántos items hay para movernos,
+                                                                      // menos el item vacío
         int childIndex = transform.GetSiblingIndex(); // El item en el que estamos
 
         if (childIndex < ((float)childCount / 2f))
@@ -66,7 +67,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
         {
             childIndex -= 1;
         }
-        scrollPosition = 1 - ((float)childIndex / childCount); // La posición de deslizamiento será entre 1 (el final) a 0 (el principio)
+        _scrollPosition = 1-((float)childIndex / childCount); // La posición de deslizamiento será entre 1 (el final) a 0 (el principio)
     }
     #endregion
 
@@ -85,14 +86,13 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     /// <param name="eventData"></param>
     public void OnSelect(BaseEventData eventData)
     {
-        if (scrollRect != null)
+        if (_scrollRect != null)
         {
-            scrollRect.verticalScrollbar.value = scrollPosition; 
+            _scrollRect.verticalScrollbar.value = _scrollPosition;
         }
-
     }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -100,7 +100,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class ScrollWithController 
 // namespace

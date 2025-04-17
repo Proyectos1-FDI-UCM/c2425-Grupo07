@@ -80,7 +80,7 @@ public class SettingsManager : MonoBehaviour
         ResolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
 
-        int _currentResolutionIndex=0;
+        int _currentResolutionIndex = 0;
         for (int i = 0; i < _resolutionsList.Length; i++)
         {
             string option = _resolutionsList[i].width + " x " + _resolutionsList[i].height + " " + _resolutionsList[i].refreshRateRatio + "hz";
@@ -153,7 +153,6 @@ public class SettingsManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         } // if-else somos instancia nueva o no.
     }
-
     /// <summary>
     /// Método llamado cuando se destruye el componente.
     /// </summary>
