@@ -328,6 +328,12 @@ public class LevelManager : MonoBehaviour
         _continue = true;
     }
 
+    // GetCurrentSecondsLeft() devuelve el valor de _currentSecondsLeft
+    public float GetCurrentSecondsLeft()
+    {
+        return _currentSecondsLeft;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

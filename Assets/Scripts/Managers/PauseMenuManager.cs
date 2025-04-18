@@ -46,11 +46,25 @@ public class PauseMenuManager : MonoBehaviour
 
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
 
+    private LevelManager _levelManager; // Referencia al script LevelManager
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        if (FindAnyObjectByType<LevelManager>() != null)
+        {
+            _levelManager = FindAnyObjectByType<LevelManager>();
+        }
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -128,34 +142,37 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void HandleInput()
     {
-        if (!_paused)
+        if (_levelManager.GetCurrentSecondsLeft() > 0)
         {
-            InputManager.Instance.EnableActionMap("UI");
-            PauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-
-            _paused = true;
-
-            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
-        }
-        else
-        {
-            if (_controlPannelActive)
+            if (!_paused)
             {
-                ToggleControlPanel(); // Si los controles están activos, los desactiva.
-            }
-            else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
-            {
-                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
+                InputManager.Instance.EnableActionMap("UI");
+                PauseMenuUI.SetActive(true);
+                Time.timeScale = 0f;
+
+                _paused = true;
+
+                EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
             }
             else
             {
-                InputManager.Instance.EnableActionMap("Player");
-                PauseMenuUI.SetActive(false);
-                Time.timeScale = 1f;
-                _paused = false;
+                if (_controlPannelActive)
+                {
+                    ToggleControlPanel(); // Si los controles están activos, los desactiva.
+                }
+                else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
+                {
+                    ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
+                }
+                else
+                {
+                    InputManager.Instance.EnableActionMap("Player");
+                    PauseMenuUI.SetActive(false);
+                    Time.timeScale = 1f;
+                    _paused = false;
 
-                EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
             }
         }
     }
