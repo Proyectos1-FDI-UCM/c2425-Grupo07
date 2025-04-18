@@ -400,7 +400,9 @@ public class PlayerVision : MonoBehaviour
                 bool materialAdded = craftingScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
                 if (materialAdded)
                 {
-                    _heldObject.SetActive(false);
+                    // _heldObject.SetActive(false);
+                    
+                    Destroy(_heldObject);
                     _heldObject = null; // El material ha sido introducido, por lo que ya no está en la mano.
                     _isBeingPicked = false;
                 }
