@@ -67,49 +67,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] private bool _isRack = false;
     
-    #region BORRAR
-
-    /// <summary>
-    /// Texto que muestra el dinero recopilado en el nivel prinicpal
-    /// </summary>
-    [SerializeField] private Text _moneyTextPrincipal;
-
-    /// <summary>
-    /// Texto que muestra el dinero recopilado en el nivel infinito
-    /// </summary>
-    [SerializeField] private Text _moneyTextInfinito;
-
-
-    /// <summary>
-    /// Imagen que indica el mejor rango obtenido en el nivel prinicpal
-    /// </summary>
-    [SerializeField] private Image _rankImagePrincipal;
-
-    /// <summary>
-    /// Imagen que indica el mejor rango obtenido en el nivel inifito
-    /// </summary>
-    [SerializeField] private Image _rankImageInfinito;
-    /// <summary>
-    /// Mejor rango obtenido del nivel principal
-    /// </summary>
-    private LevelManager.Range _levelRangePrincipal;
-
-    /// <summary>
-    /// Mejor rango obtenido del nivel infinito
-    /// </summary>
-    private LevelManager.Range _levelRangeInfinito;
-
-    /// <summary>
-    /// Entero que indica el dinero recopilado en el nivel principal
-    /// </summary>
-    [SerializeField] private int _moneyNumberPrincipal = 0;
-
-    /// <summary>
-    /// Entero que indica el dinero recopilado en el nivel infinito
-    /// </summary>
-    [SerializeField] private int _moneyNumberInfinito = 0;
-    #endregion
-
     /// <summary>
     /// Texto que muestra el dinero recopilado en el nivel prinicpal
     /// </summary>
@@ -130,7 +87,7 @@ public class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// Tiempo del nivel infinito
+    /// Tiempo del nivel infinito aguantado
     /// </summary>
     [SerializeField] private Text _timeTextInfinito;
 
@@ -212,23 +169,6 @@ public class GameManager : MonoBehaviour
 
     protected void Update()
     {
-        /*if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuLevelSelection" &&
-            FindAnyObjectByType<Level>() == null && _rankImage1 == null && _rankImage2 == null && _moneyText1 == null && _moneyText2 == null)
-        {
-            _levels[0] = FindObjectsOfType<Level>()[0];
-            _levels[1] = FindObjectsOfType<Level>()[1];
-
-            _rankImage1 = _levels[0].GetRank();
-            _rankImage2 = _levels[1].GetRank();
-
-            _moneyText1 = _levels[0].GetMoney();
-            _moneyText2 = _levels[1].GetMoney();
-        }
-        else
-        {
-            Debug.Log("No se han podido cargar las referencias");
-        }*/
-
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MenuLevelSelection")
         {
             _statsUpdated = false;
@@ -238,16 +178,6 @@ public class GameManager : MonoBehaviour
             UpdateStats();
             _statsUpdated = true;
         }
-
-        /*if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuLevelSelection" && !_statsUpdated)
-        {
-            UpdateStats();
-            _statsUpdated = true;
-        }
-        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MenuLevelSelection")
-        {
-            _statsUpdated = false;
-        }*/
     }
 
     #endregion
@@ -287,14 +217,14 @@ public class GameManager : MonoBehaviour
     /// false: activa el componente PlayerVision del jugador.
     /// </summary>
 
-    public void DeactivatePlayer(bool state)
+    public void DeactivatePlayer(bool _stateToDeactivate)
     {
         if (_player != null)
         {
             PlayerVision playerVision = _player.GetComponent<PlayerVision>();
             if (playerVision != null)
             {
-                playerVision.enabled = !state;
+                playerVision.enabled = !_stateToDeactivate;
             }
             else
             {
@@ -328,8 +258,10 @@ public class GameManager : MonoBehaviour
     } // ChangeScene
 
     /// <summary>
-    /// Obtiene los datos del nivel al ser llamado, de aquí se obtiene: el nivel nombre del nivel y con ello la
-    /// refencia de los datos de ese nivel que más tarde será sustituidos por los nuevos al ser completados
+    /// Obtiene los datos del nivel al ser llamado, de aquí se obtiene: 
+    /// el nivel nombre del nivel y con ello la
+    /// refencia de los datos de ese nivel que más tarde será sustituidos 
+    /// por los nuevos al ser completados
     /// </summary>
     public void GetData()
     {
@@ -346,9 +278,9 @@ public class GameManager : MonoBehaviour
         _levelName = _level.GetLevelName();
     }
 
-    public void SetLevelData(Level level)
+    public void SetLevelData(Level _levelToAssign)
     {
-        _level = level;
+        _level = _levelToAssign;
         _levelName = _level.GetLevelName();
     }
 
@@ -375,9 +307,9 @@ public class GameManager : MonoBehaviour
         return _isRack;
     }
 
-    public void SetPlayer(GameObject player)
+    public void SetPlayer(GameObject _playerToSet)
     {
-        _player = player;
+        _player = _playerToSet;
     }
 
     /// <summary>
@@ -409,74 +341,42 @@ public class GameManager : MonoBehaviour
     /// SetRange modifica _levelRange según el rango que ha obtenido en la partida
     /// </summary>
     /// <param name="_range">Rango obtenido en la partida</param>
-    public void SetRange(LevelManager.Range _range, int level)
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
+    public void SetRange(LevelManager.Range _range, int _levelToAssign)
     {
-        _levelsRange[level] = _range;
-        PlayerPrefs.SetString("RangeLevel: " + level, _range.ToString());
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
-        //{
-        //    _levelRangePrincipal = _range;
-        //}
-        //else
-        //{
-        //    _levelRangeInfinito = _range;
-        //}
+        _levelsRange[_levelToAssign] = _range;
+        PlayerPrefs.SetString("RangeLevel: " + _levelToAssign, _range.ToString());
     }
 
     /// <summary>
     /// GetRange devuelve el rango del nivel
     /// </summary>
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     /// <returns></returns>
-    public LevelManager.Range GetRange(int level)
+    public LevelManager.Range GetRange(int _levelToAssign)
     {
-        return _levelsRange[level];
-
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
-        //{
-        //    return _levelRangePrincipal;
-        //}
-        //else
-        //{
-        //    return _levelRangeInfinito;
-        //}
+        return _levelsRange[_levelToAssign];
     }
 
     /// <summary>
     /// SetMoney modifica _money según el dinero obtenido en la partida
     /// </summary>
     /// <param name="_money">Cantidad de dinero obtenido en la partida</param>
-    public void SetMoney(int _money, int level)
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
+    public void SetMoney(int _money, int _levelToAssign)
     {
-        _moneyNumberlevel[level] = _money;
-        PlayerPrefs.SetString("MoneyLevel: " + level, _money.ToString());
-
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
-        //{
-        //    _moneyNumberPrincipal = _money;
-        //    PlayerPrefs.SetString("MoneyLevel: 0", _money.ToString());
-        //}
-        //else
-        //{
-        //    _moneyNumberInfinito = _money;
-        //}
+        _moneyNumberlevel[_levelToAssign] = _money;
+        PlayerPrefs.SetString("MoneyLevel: " + _levelToAssign, _money.ToString());
     }
 
     /// <summary>
     /// GetMoney devuelve la cantidad de dinero obtenida en el nivel
     /// </summary>
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     /// <returns></returns>
-    public int GetMoney(int level)
+    public int GetMoney(int _levelToAssign)
     {
-        return _moneyNumberlevel[level];
-
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
-        //{
-        //    return _moneyNumberPrincipal;
-        //}
-        //else
-        //{
-        //    return _moneyNumberInfinito;
-        //}
+        return _moneyNumberlevel[_levelToAssign];
     }
 
     #endregion
@@ -486,10 +386,11 @@ public class GameManager : MonoBehaviour
     #region Métodos Privados
 
     /// <summary>
-    /// Método privado que crea una array de componentes con el script de _level (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
+    /// Método privado que crea una array de componentes con el script de _level 
+    /// (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
     /// </summary>
-    /// <param name="levelName"></param>
-    private void FindLevelByName(string levelName)
+    /// <param name="_levelName"></param>
+    private void FindLevelByName(string _levelName)
     {
         Level[] allLevels = FindObjectsOfType<Level>();
         _levels = allLevels;
@@ -498,7 +399,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No hay nivel en escena, está en juego");
             return;
         }
-        else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == levelName);
+        else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == _levelName);
     }
 
     private void TransferSceneState()
@@ -522,104 +423,7 @@ public class GameManager : MonoBehaviour
                 _moneyTextLevel[i] = _levels[i].GetMoney();
             }
         }
-        /*
-        _rankImagePrincipal = _levels[1].GetRank();
-        _rankImageInfinito = _levels[0].GetRank();
-
-        _moneyTextPrincipal = _levels[1].GetMoney();
-        _moneyTextInfinito = _levels[0].GetMoney();
-
-        if (_rankImagePrincipal != null && _levelName == "NivelPrincipal")
-        {
-            if (_levelRangePrincipal == LevelManager.Range.S)
-            {
-                _rankImagePrincipal.color = Color.green;
-            }
-            else if (_levelRangePrincipal == LevelManager.Range.A)
-            {
-                _rankImagePrincipal.color = Color.cyan;
-            }
-            else if (_levelRangePrincipal == LevelManager.Range.B)
-            {
-                _rankImagePrincipal.color = Color.yellow;
-            }
-            else if (_levelRangePrincipal == LevelManager.Range.C)
-            {
-                _rankImagePrincipal.color = Color.yellow;
-            }
-            else if (_levelRangePrincipal == LevelManager.Range.D)
-            {
-                _rankImagePrincipal.color = Color.yellow;
-            }
-            else if (_levelRangePrincipal == LevelManager.Range.E)
-            {
-                _rankImagePrincipal.color = Color.yellow;
-            }
-            else
-            {
-                _rankImagePrincipal.color = Color.red;
-            }
-        }
-
-        else if (_rankImageInfinito != null && _levelName == "NivelInfinito")
-        {
-            if (_levelRangeInfinito == LevelManager.Range.S)
-            {
-                _rankImageInfinito.color = Color.green;
-            }
-            else if (_levelRangeInfinito == LevelManager.Range.A)
-            {
-                _rankImageInfinito.color = Color.cyan;
-            }
-            else if (_levelRangeInfinito == LevelManager.Range.B)
-            {
-                _rankImageInfinito.color = Color.yellow;
-            }
-            else if (_levelRangeInfinito == LevelManager.Range.F)
-            {
-                _rankImageInfinito.color = Color.red;
-            }
-        }
-
-        if (_moneyTextPrincipal != null && _levelName == "NivelPrincipal")
-        {
-            _moneyTextPrincipal.text = _moneyNumberPrincipal.ToString();
-        }
-
-        else if (_moneyTextInfinito != null && _levelName == "NivelInfinito")
-        {
-            _moneyTextInfinito.text = _moneyNumberInfinito.ToString();
-        }*/
     }
-    //public Color AssignRank(LevelManager.Range LevelRange)
-    //{
-    //    Color colorToAssign = Color.gray;
-    //    if (LevelRange == LevelManager.Range.S)
-    //    {
-    //        colorToAssign = Color.green;
-    //    }
-    //    else if (LevelRange == LevelManager.Range.A)
-    //    {
-    //        colorToAssign = Color.cyan;
-    //    }
-    //    else if (LevelRange == LevelManager.Range.B)
-    //    {
-    //        colorToAssign = Color.yellow;
-    //    }
-    //    else if (LevelRange == LevelManager.Range.C)
-    //    {
-    //        colorToAssign = Color.red;
-    //    }
-    //    else if (LevelRange == LevelManager.Range.D)
-    //    {
-    //        colorToAssign = Color.magenta;
-    //    }
-    //    else
-    //    {
-    //        colorToAssign = Color.white;
-    //    }
-    //    return colorToAssign;
-    //}
 
     public void ResetProgress()
     {

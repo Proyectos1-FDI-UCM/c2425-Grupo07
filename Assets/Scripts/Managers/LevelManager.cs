@@ -233,7 +233,11 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// Cuando se pueda continuar disminuye el timer
+    /// Cuando termina el timer calcula el rango a partir del dinero y lo 
+    /// manda al gameManager
+    /// </summary>
     private void Update()
     {
         if (_continue)

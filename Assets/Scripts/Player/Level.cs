@@ -64,6 +64,8 @@ public class Level : MonoBehaviour
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
+    /// Asigna MoneyPref y RankPref según lo que se ha guardado en el GameManager,
+    /// Por defecto no hay dinero y el Rango es "F".
     /// </summary>
     void Start()
     {
@@ -146,6 +148,11 @@ public class Level : MonoBehaviour
         return Money;
     }
 
+    /// <summary>
+    /// Creado por Guillermo
+    /// Asigna un color de la imagen por cada rango obtenido
+    /// </summary>
+    /// <param name="rankObtained"></param>
     public void CalculateRank(string rankObtained)
     {
         _rankLetter = rankObtained;
@@ -175,18 +182,31 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void SetMoney(string MoneyToSet)
+    /// <summary>
+    /// Creado por Guillermo
+    /// Asigna el dinero del nivel y guarda el valor en el playerPref
+    /// MoneyToSet es el dinero a asignar
+    /// (Lo usa el GameManager para cambiar el dinero de la partida)
+    /// </summary>
+    /// <param name="_moneyToSet"></param>
+    public void SetMoney(string _moneyToSet)
     {
         string PlayerPref = "MoneyLevel: " + LevelNum;
-        PlayerPrefs.SetString(PlayerPref, MoneyToSet);
-        Money.text = MoneyToSet;
+        PlayerPrefs.SetString(PlayerPref, _moneyToSet);
+        Money.text = _moneyToSet;
     }
-
-    public void SetRank(string rankToSet)
+    /// <summary>
+    /// Creado por Guillermo
+    /// Asigna un rango específico al nivel
+    /// rankToSet es el rango a asignar
+    /// (Lo usa el GameManager para reiniciar el rango)
+    /// </summary>
+    /// <param name="_rankToSet"></param>
+    public void SetRank(string _rankToSet)
     {
         string PlayerPref = "RangeLevel: " + LevelNum;
-        PlayerPrefs.SetString(PlayerPref, rankToSet);
-        CalculateRank(rankToSet);
+        PlayerPrefs.SetString(PlayerPref, _rankToSet);
+        CalculateRank(_rankToSet);
     }
 
     public int GetLevelNum()
