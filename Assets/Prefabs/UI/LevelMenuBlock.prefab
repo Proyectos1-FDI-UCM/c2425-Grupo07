@@ -410,6 +410,7 @@ MonoBehaviour:
   CanvasInfo: {fileID: 1868145721706707110}
   Rank: {fileID: 1107574255492705784}
   Money: {fileID: 259124798876969267}
+  LevelNum: 0
   TimeText: {fileID: 2847744418707342921}
   LevelName: NivelInfinito
   SelectionPlayer: {fileID: 0}
@@ -447,8 +448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -138.89502, y: -75}
-  m_SizeDelta: {x: 48.3672, y: 40.196}
+  m_AnchoredPosition: {x: -80.618, y: -74}
+  m_SizeDelta: {x: 148.62, y: 40.196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7647543438458597360
 CanvasRenderer:

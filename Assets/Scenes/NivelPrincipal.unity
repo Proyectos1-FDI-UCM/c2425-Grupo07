@@ -6564,11 +6564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: Money
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _maxTime
-      value: 10
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6452284759195406458, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight

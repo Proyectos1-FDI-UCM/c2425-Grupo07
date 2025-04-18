@@ -7470,14 +7470,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 365
       objectReference: {fileID: 0}
-    - target: {fileID: 7577839480903422384, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -135
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577839480903422384, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -74
-      objectReference: {fileID: 0}
     - target: {fileID: 8523301808607570615, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_text
       value: 'Level 1-1                        Rank
