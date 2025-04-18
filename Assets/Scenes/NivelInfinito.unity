@@ -3632,6 +3632,14 @@ PrefabInstance:
       value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: Money
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: _maxTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _levelNum
       value: 1
       objectReference: {fileID: 0}

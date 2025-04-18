@@ -42,6 +42,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] Button BackButton; // Botón que se seleccionará al abrir el panel
     [SerializeField] GameObject SettingsCanvas; // El panel de la interfaz (UI) de los ajustes
     [SerializeField] GameObject ScreenUI; // El UI de la pantalla
+    //Elementos del UI para configurarlos con PlayerPrefs
+    [SerializeField] Slider MusicSlider; // El slider de la música
+    [SerializeField] Slider SFXSlider; // El slider de los efectos de sonido
+    [SerializeField] Toggle ToggleButton; // El cuadrado que indica si está en pantalla completa o no
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -91,16 +95,38 @@ public class SettingsManager : MonoBehaviour
             }
         }
         ResolutionDropdown.AddOptions(options);
-        ResolutionDropdown.value = _currentResolutionIndex;
-        ResolutionDropdown.RefreshShownValue();
+        //ResolutionDropdown.value = _currentResolutionIndex;
+        //ResolutionDropdown.RefreshShownValue();
 
         //1920 / 3 = 640, 1080 / 3 = 360
         Application.targetFrameRate = 60;
+
         //_cam.orthographicSize = ((_currentResolutionHeight) / (_currentResolutionWidth / 640 * 37)) * 0.5f;// 32 pixeles por unidad
-        _isOnFullscreen = true;
-        _currentResolutionWidth = Screen.currentResolution.width;
-        _currentResolutionHeight = Screen.currentResolution.height;
-        Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
+        //_isOnFullscreen = true;
+        //_currentResolutionWidth = Screen.currentResolution.width;
+        //_currentResolutionHeight = Screen.currentResolution.height;
+        //Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
+
+        //Inicializar con las preferencias
+        MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", -30);
+        SFXSlider.value = PlayerPrefs.GetFloat("effectsVolume", -30);
+        if (PlayerPrefs.GetInt("IsFullScreen", 0) == 0)
+        {
+            //_isOnFullscreen = false;
+            ToggleButton.isOn = true;
+        }
+        else
+        {
+            //_isOnFullscreen = true;
+            ToggleButton.isOn = false;
+        }
+        ToggleFullScreen();
+        Debug.Log(_currentResolutionIndex);
+        _currentResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _currentResolutionIndex);
+        SetResolution(_currentResolutionIndex);
+        Debug.Log(_currentResolutionIndex);
+        ResolutionDropdown.value = _currentResolutionIndex;
+        ResolutionDropdown.RefreshShownValue();
 
         if (Application.isMobilePlatform)
         {
@@ -197,6 +223,7 @@ public class SettingsManager : MonoBehaviour
     public void AjustaMus(float Mvol)
     {
         AudioMix.SetFloat("Music", Mvol);
+        PlayerPrefs.SetFloat("musicVolume", Mvol);
     }
     /// <summary>
     /// Ajusta el volumen de los efectos de sonido entre un valor de -80 y 0 
@@ -206,6 +233,7 @@ public class SettingsManager : MonoBehaviour
     public void AjustaSf(float Svol)
     {
         AudioMix.SetFloat("SFX", Svol);
+        PlayerPrefs.SetFloat("effectsVolume", Svol);
     }
     /// <summary>
     /// Intercambia entre pantalla completa y ventana
@@ -217,21 +245,23 @@ public class SettingsManager : MonoBehaviour
         {
             Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
             _isOnFullscreen=true;
+            PlayerPrefs.SetInt("IsFullScreen", 0); // 0 true
         }
         else
         {
             Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.Windowed, Screen.currentResolution.refreshRateRatio);
             _isOnFullscreen = false;
+            PlayerPrefs.SetInt("IsFullScreen", 1); // 1 false
         }
     }
     /// <summary>
     /// Ajusta la resolución de la pantalla dependiendo si está en pantalla completa o no,
     /// Escoge el elemento de la lista de resoluciones con la deseada en el menú desplegable
     /// </summary>
-    /// <param name="resolutionIndex"></param>
-    public void SetResolution(int resolutionIndex)
+    /// <param name="setResolutionIndex"></param>
+    public void SetResolution(int setResolutionIndex)
     {
-        Resolution resolution = _resolutionsList[resolutionIndex];
+        Resolution resolution = _resolutionsList[setResolutionIndex];
         _currentResolutionHeight = resolution.height;
         _currentResolutionWidth = resolution.width;
         if (!_isOnFullscreen)
@@ -242,6 +272,7 @@ public class SettingsManager : MonoBehaviour
         {
             Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
         }
+        PlayerPrefs.SetInt("ResolutionIndex", setResolutionIndex); 
     }
     /// <summary>
     /// Intercambia entre abrir y cerrar el panel
@@ -270,6 +301,7 @@ public class SettingsManager : MonoBehaviour
     {
         return _canvasOpen;
     }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

@@ -16,8 +16,8 @@ using UnityEngine.EventSystems;
 /// para hacer una operación que se asignará a la barra de deslizamiento, 
 /// cambiando su selección con el mando o teclas
 /// </summary>
-public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la UI que cada vez que se seleccione un item 
-                                                                    // Del dropdown se ejecuta el código
+public class ScrollWithController : MonoBehaviour, ISelectHandler, IPointerEnterHandler, IPointerExitHandler //Clase de la UI que cada vez que se seleccione un item 
+                                                                                                             // Del dropdown se ejecuta el código
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -39,6 +39,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // Ejemplo: _maxHealthPoints
     private ScrollRect _scrollRect; // Contiene la información para deslizar
     private float _scrollPosition = 1; // la posición que se seleccionará al principio
+    bool mouseOver = false;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -86,7 +87,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     /// <param name="eventData"></param>
     public void OnSelect(BaseEventData eventData)
     {
-        if (_scrollRect != null)
+        if (_scrollRect != null && !mouseOver)
         {
             _scrollRect.verticalScrollbar.value = _scrollPosition;
         }
@@ -99,6 +100,17 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler //Clase de la 
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        mouseOver = true;
+        Debug.Log("Mouse enter");
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        mouseOver = false;
+        Debug.Log("Mouse exit");
+    }
 
     #endregion
 

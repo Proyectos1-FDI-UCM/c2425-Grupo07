@@ -254,11 +254,11 @@ public class LevelManager : MonoBehaviour
             if (_gameManager.GetMoney(_levelNum) < Money)
             {
                 _gameManager.SetMoney(Money, _levelNum);
+                _gameManager.SetRange(_levelRange, _levelNum);
             }
             TimeIsOverText();
             Panel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(RestartButton); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
-            InputManager.Instance.EnableActionMap("UI");
             Time.timeScale = 0;
         }
         ShowTime();

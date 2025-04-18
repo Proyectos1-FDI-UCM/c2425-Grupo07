@@ -174,10 +174,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4500711967603977697, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
-      propertyPath: ScreenUI
-      value: 
-      objectReference: {fileID: 1451212663}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2173,7 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
+  m_SendPointerHoverToParent: 0
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -2294,11 +2290,6 @@ MonoBehaviour:
   ParallaxEffect: 1
   Limit: -1000
   CameraSpeed: 2
---- !u!1 &1451212663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5018692396496632428, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
-  m_PrefabInstance: {fileID: 20041655}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1592671369 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4500711967603977697, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
@@ -2600,7 +2591,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1804041579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 516229145}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1804041579
 MonoBehaviour:
   m_ObjectHideFlags: 0

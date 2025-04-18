@@ -78,7 +78,7 @@ public class Level : MonoBehaviour
                                                       // el playerPrefs lo detecte
         Money.text = PlayerPrefs.GetString(MoneyPref, "--");
         _rankLetter = PlayerPrefs.GetString(RankPref, "F");
-        CalculateRank("F");
+        CalculateRank(_rankLetter);
     }
 
 
@@ -163,11 +163,11 @@ public class Level : MonoBehaviour
         }
         else if (rankObtained == "C")
         {
-            Rank.color = Color.red;
+            Rank.color = new Color(1.0f, 0.64f, 0.0f); // Naranja
         }
         else if (rankObtained == "D")
         {
-            Rank.color = Color.magenta;
+            Rank.color = Color.red;
         }
         else
         {
@@ -184,9 +184,9 @@ public class Level : MonoBehaviour
 
     public void SetRank(string rankToSet)
     {
-        Rank.color = Color.gray;
         string PlayerPref = "RangeLevel: " + LevelNum;
         PlayerPrefs.SetString(PlayerPref, rankToSet);
+        CalculateRank(rankToSet);
     }
 
     public int GetLevelNum()

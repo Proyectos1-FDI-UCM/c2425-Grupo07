@@ -205,7 +205,6 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ResetProgress()
     {
-        PlayerPrefs.DeleteAll();
         GameManager.Instance.ResetProgress();
     }
     #endregion

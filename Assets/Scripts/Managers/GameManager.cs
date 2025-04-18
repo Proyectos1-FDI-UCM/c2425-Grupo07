@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Mejor rango obtenido del nivel
     /// </summary>
-    private LevelManager.Range[] _levelRange;
+    private LevelManager.Range[] _levelsRange;
 
     /// <summary>
     /// Entero que indica el dinero recopilado en el nivel
@@ -411,7 +411,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_range">Rango obtenido en la partida</param>
     public void SetRange(LevelManager.Range _range, int level)
     {
-        _levelRange[level] = _range;
+        _levelsRange[level] = _range;
         PlayerPrefs.SetString("RangeLevel: " + level, _range.ToString());
         //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         //{
@@ -429,7 +429,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public LevelManager.Range GetRange(int level)
     {
-        return _levelRange[level];
+        return _levelsRange[level];
 
         //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
         //{
@@ -513,18 +513,12 @@ public class GameManager : MonoBehaviour
         _rankImageLevel = new Image[_levels.Length];
         _moneyTextLevel = new Text[_levels.Length];
         _moneyNumberlevel = new int[_levels.Length];
-        _levelRange = new LevelManager.Range[_levels.Length];
+        _levelsRange = new LevelManager.Range[_levels.Length];
         if (_levels != null)
         {
             for (int i = 0; i < _levels.Length;i++)
             {
-                //_levels[i] = FindObjectsOfType<Level>()[i];
                 _rankImageLevel[i] = _levels[i].GetRank();
-                /*if (_rankImageLevel[i] != null)
-                {
-                    //_rankImageLevel[i].color = AssignRank(_levelRange[i]);
-                }*/
-                _levels[i].CalculateRank(_levelRange[i].ToString());
                 _moneyTextLevel[i] = _levels[i].GetMoney();
             }
         }
@@ -597,40 +591,42 @@ public class GameManager : MonoBehaviour
             _moneyTextInfinito.text = _moneyNumberInfinito.ToString();
         }*/
     }
-    public Color AssignRank(LevelManager.Range LevelRange)
-    {
-        Color colorToAssign = Color.gray;
-        if (LevelRange == LevelManager.Range.S)
-        {
-            colorToAssign = Color.green;
-        }
-        else if (LevelRange == LevelManager.Range.A)
-        {
-            colorToAssign = Color.cyan;
-        }
-        else if (LevelRange == LevelManager.Range.B)
-        {
-            colorToAssign = Color.yellow;
-        }
-        else if (LevelRange == LevelManager.Range.C)
-        {
-            colorToAssign = Color.red;
-        }
-        else if (LevelRange == LevelManager.Range.D)
-        {
-            colorToAssign = Color.magenta;
-        }
-        else
-        {
-            colorToAssign = Color.white;
-        }
-        return colorToAssign;
-    }
+    //public Color AssignRank(LevelManager.Range LevelRange)
+    //{
+    //    Color colorToAssign = Color.gray;
+    //    if (LevelRange == LevelManager.Range.S)
+    //    {
+    //        colorToAssign = Color.green;
+    //    }
+    //    else if (LevelRange == LevelManager.Range.A)
+    //    {
+    //        colorToAssign = Color.cyan;
+    //    }
+    //    else if (LevelRange == LevelManager.Range.B)
+    //    {
+    //        colorToAssign = Color.yellow;
+    //    }
+    //    else if (LevelRange == LevelManager.Range.C)
+    //    {
+    //        colorToAssign = Color.red;
+    //    }
+    //    else if (LevelRange == LevelManager.Range.D)
+    //    {
+    //        colorToAssign = Color.magenta;
+    //    }
+    //    else
+    //    {
+    //        colorToAssign = Color.white;
+    //    }
+    //    return colorToAssign;
+    //}
 
     public void ResetProgress()
     {
         for (int i = 0; i < _levels.Length; i++)
         {
+            PlayerPrefs.DeleteKey("RangeLevel: "+ i);
+            PlayerPrefs.DeleteKey("MoneyLevel: " + i);
             _levels[i].SetMoney("--");
             _levels[i].SetRank("F");
         }
