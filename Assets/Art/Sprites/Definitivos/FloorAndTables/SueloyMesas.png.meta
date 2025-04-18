@@ -760,6 +760,195 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopLeftInf
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 922
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7bfaea88e9e79646a1f88cf54d6c56a
+      internalID: 1822312282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopInf
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 922
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ad63fa13bd0c748bac195fbf13b3d7
+      internalID: 236962141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightInf
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 922
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c825952e76668a4419fb1b7817f64237
+      internalID: -1461532633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftInf
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 905
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d3f2178852ed5418ce26bf738527a8
+      internalID: 1638242713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiddleInf
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 905
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d65642c1585e314aa1bac763354a10a
+      internalID: 980373905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightInf
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 905
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d879102e84c18c548bb15594ac6b2750
+      internalID: 800178971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownLeftInf
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 887
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d840fac3df30f024890a644add36104e
+      internalID: -571996175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownInf
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 887
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2eff5ed8f2cf34eae603e108fc91c9
+      internalID: 1968398866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownRightInf
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 887
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dd078674f6916409d9e691dadc341d
+      internalID: -1191358995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -788,19 +977,28 @@ TextureImporter:
       Borde: 962532417
       Borde izq: -722332380
       Down: 303035580
+      DownInf: 1968398866
       DownLeft: 612026515
+      DownLeftInf: -571996175
       DownLeftSerpent: 504018328
       DownRight: -1151394955
+      DownRightInf: -1191358995
       DownRightSerpent: 1730487659
       Esquina: -766542572
       Left: -132513781
+      LeftInf: 1638242713
       Medio: -224074097
       Middle: -1950339802
+      MiddleInf: 980373905
       Right: 648085532
+      RightInf: 800178971
       Top: 1429885346
+      TopInf: 236962141
       TopLeft: -772704169
+      TopLeftInf: 1822312282
       TopLeftSerpent: -1315066233
       TopRight: -1658047033
+      TopRightInf: -1461532633
       TopRightSerpent: 360853442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
