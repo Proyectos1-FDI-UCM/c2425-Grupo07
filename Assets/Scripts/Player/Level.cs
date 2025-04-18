@@ -30,6 +30,7 @@ public class Level : MonoBehaviour
     [SerializeField] Canvas CanvasInfo; //Canvas con la información del nivel
     [SerializeField] Image Rank; //Imagen del rango del CanvasInfo
     [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
+    [SerializeField] int LevelNum; //Numero del nivel
     [SerializeField] Text TimeText; //Texto que muestra el tiempo
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
@@ -48,6 +49,7 @@ public class Level : MonoBehaviour
 
     private GameManager _gameManager; //instancia del game manager
     private PlayerLevel _player; //script del PlayerLevel
+    string _rankLetter;
     private Level _thisLevel; //Obtención de la información de este nivel
 
     #endregion
@@ -70,6 +72,13 @@ public class Level : MonoBehaviour
             _gameManager = GameManager.Instance;
         }
         _thisLevel = gameObject.GetComponent<Level>();
+        string MoneyPref = "MoneyLevel: " + LevelNum; // Tengo que crear el string para que
+                                                      // el playerPrefs lo detecte
+        string RankPref = "RangeLevel: " + LevelNum; // Tengo que crear el string para que
+                                                      // el playerPrefs lo detecte
+        Money.text = PlayerPrefs.GetString(MoneyPref, "--");
+        _rankLetter = PlayerPrefs.GetString(RankPref, "F");
+        CalculateRank("F");
     }
 
 
@@ -137,7 +146,53 @@ public class Level : MonoBehaviour
         return Money;
     }
 
+    public void CalculateRank(string rankObtained)
+    {
+        _rankLetter = rankObtained;
+        if (rankObtained == "S")
+        {
+            Rank.color = Color.green;
+        }
+        else if (rankObtained == "A")
+        {
+            Rank.color = Color.cyan;
+        }
+        else if (rankObtained == "B")
+        {
+            Rank.color = Color.yellow;
+        }
+        else if (rankObtained == "C")
+        {
+            Rank.color = Color.red;
+        }
+        else if (rankObtained == "D")
+        {
+            Rank.color = Color.magenta;
+        }
+        else
+        {
+            Rank.color = Color.gray;
+        }
+    }
 
+    public void SetMoney(string MoneyToSet)
+    {
+        string PlayerPref = "MoneyLevel: " + LevelNum;
+        PlayerPrefs.SetString(PlayerPref, MoneyToSet);
+        Money.text = MoneyToSet;
+    }
+
+    public void SetRank(string rankToSet)
+    {
+        Rank.color = Color.gray;
+        string PlayerPref = "RangeLevel: " + LevelNum;
+        PlayerPrefs.SetString(PlayerPref, rankToSet);
+    }
+
+    public int GetLevelNum()
+    {
+        return LevelNum;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
