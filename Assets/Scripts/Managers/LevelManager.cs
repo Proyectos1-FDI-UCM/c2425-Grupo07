@@ -86,6 +86,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelNameText;
 
     /// <summary>
+    /// _levelNameText es un texto que indica el número del nivel
+    /// </summary>
+    [SerializeField] private int _levelNum;
+
+    /// <summary>
     /// _moneyText es un texto que indica la cantidad de dinero obtenida en la partida
     /// </summary>
     [SerializeField] private TextMeshProUGUI _moneyEndText;
@@ -240,19 +245,20 @@ public class LevelManager : MonoBehaviour
             StopTimer();
             _currentSecondsLeft = 0;
             _levelRange = CalculateRange(Money);
-            if ((_gameManager.GetRange() == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
-                (_gameManager.GetRange() == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
-                (_gameManager.GetRange() == Range.A && _levelRange == Range.S))
+            if ((_gameManager.GetRange(_levelNum) == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
+                (_gameManager.GetRange(_levelNum) == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
+                (_gameManager.GetRange(_levelNum) == Range.A && _levelRange == Range.S))
             {
-                _gameManager.SetRange(_levelRange);
+                _gameManager.SetRange(_levelRange, _levelNum);
             }
-            if (_gameManager.GetMoney() < Money)
+            if (_gameManager.GetMoney(_levelNum) < Money)
             {
-                _gameManager.SetMoney(Money);
+                _gameManager.SetMoney(Money, _levelNum);
             }
             TimeIsOverText();
             Panel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(RestartButton); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
+            InputManager.Instance.EnableActionMap("UI");
             Time.timeScale = 0;
         }
         ShowTime();
@@ -372,14 +378,7 @@ public class LevelManager : MonoBehaviour
 
     private void TimeIsOverText()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal")
-        {
-            _levelNameText.text = "Nivel principal";
-        }
-        else
-        {
-            _levelNameText.text = "Nivel infinito";
-        }
+        _levelNameText.text = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
         _moneyEndText.text = "Dinero recopilado: " + Money.ToString();
 
@@ -468,6 +467,7 @@ public class LevelManager : MonoBehaviour
         }
     }
     /// <summary>
+    /// Hecho por Guillermo
     /// Resetea la posición del dinero para que incremente o disminuya la cantidad MoneyToSum, sumando o restando el dinero con un efecto que suma o resta de uno en uno
     /// Si el dinero a sumar es mayor que 0 realiza la animación del dinero, si no, convierte el texto a rojo y hace un efecto que no puede bajar más.
     /// Si el dinero a sumar es mayor que 0, incrementa el tamaño de cada billete por orden de la jerarquía del padre

@@ -1954,16 +1954,8 @@ PrefabInstance:
       value: 10.434195
       objectReference: {fileID: 0}
     - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Size.y
-      value: 6.0607243
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: m_Offset.x
       value: 1.324748
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.6739297
       objectReference: {fileID: 0}
     - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -1972,22 +1964,6 @@ PrefabInstance:
     - target: {fileID: 3196785923358403945, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 7.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Size.x
-      value: 7.772607
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Size.y
-      value: 6.072123
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.01027298
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.6796291
       objectReference: {fileID: 0}
     - target: {fileID: 5151176405640283576, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -3468,14 +3444,6 @@ PrefabInstance:
     - target: {fileID: 3249073642124791493, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_Name
       value: Oven
-      objectReference: {fileID: 0}
-    - target: {fileID: 3818553696410533295, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
-      propertyPath: m_Size.x
-      value: 7.7793717
-      objectReference: {fileID: 0}
-    - target: {fileID: 3818553696410533295, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.009411097
       objectReference: {fileID: 0}
     - target: {fileID: 3818553696410533295, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

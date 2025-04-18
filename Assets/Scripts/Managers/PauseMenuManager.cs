@@ -28,7 +28,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenuUI; // para colocar el Objecto de Menu de Pausa desde el editor para su correcto funcionamiento.
     [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
     [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
-
+    [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
 
     #endregion
 
@@ -73,7 +73,8 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance.PauseWasPressedThisFrame())
+        if (InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame() && _levelManager == null || 
+            (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
         {
             HandleInput();
         }
@@ -142,38 +143,40 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void HandleInput()
     {
-        if (_levelManager.GetCurrentSecondsLeft() > 0)
+        if (!_paused)
         {
-            if (!_paused)
+            InputManager.Instance.EnableActionMap("UI");
+            PauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+
+            _paused = true;
+
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+        }
+        else
+        {
+            if (_controlPannelActive)
             {
-                InputManager.Instance.EnableActionMap("UI");
-                PauseMenuUI.SetActive(true);
-                Time.timeScale = 0f;
-
-                _paused = true;
-
-                EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+                ToggleControlPanel(); // Si los controles están activos, los desactiva.
+            }
+            else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
+            {
+                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
             }
             else
             {
-                if (_controlPannelActive)
-                {
-                    ToggleControlPanel(); // Si los controles están activos, los desactiva.
-                }
-                else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
-                {
-                    ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
-                }
-                else
-                {
-                    InputManager.Instance.EnableActionMap("Player");
-                    PauseMenuUI.SetActive(false);
-                    Time.timeScale = 1f;
-                    _paused = false;
+                InputManager.Instance.EnableActionMap("Player");
+                PauseMenuUI.SetActive(false);
+                Time.timeScale = 1f;
+                _paused = false;
 
-                    EventSystem.current.SetSelectedGameObject(null);
-                }
+                EventSystem.current.SetSelectedGameObject(null);
             }
+        }
+
+        if (ResetPanel != null)
+        {
+            ResetPanel.SetActive(false);
         }
     }
 
@@ -187,12 +190,23 @@ public class PauseMenuManager : MonoBehaviour
         return _paused;
     }
     /// <summary>
+    /// Hecho por Guillermo
     /// Intercambia entre abrir y cerrar el panel de ajustes
     /// Accede al SettingsManager para abrirlo
     /// </summary>
     public void ToggleSettingsPanel()
     {
         SettingsManager.Instance.TogglePanel();
+    }
+    /// <summary>
+    /// Hecho por Guillermo
+    /// Intercambia entre abrir y cerrar el panel de ajustes
+    /// Accede al SettingsManager para abrirlo
+    /// </summary>
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteAll();
+        GameManager.Instance.ResetProgress();
     }
     #endregion
 
