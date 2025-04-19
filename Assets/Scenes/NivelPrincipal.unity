@@ -6092,6 +6092,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -287.68
       objectReference: {fileID: 0}
+    - target: {fileID: 4479284106172586869, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000013025713
+      objectReference: {fileID: 0}
     - target: {fileID: 5666627026560301934, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6115,6 +6119,14 @@ PrefabInstance:
     - target: {fileID: 6452284759195406458, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MenuLevelSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163399422472041321, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163399422472041321, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7722602145844596671, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_IsActive
@@ -6539,6 +6551,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1221302228}
     - target: {fileID: 848125232128277039, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.b
+      value: 0.4937579
+      objectReference: {fileID: 0}
+    - target: {fileID: 848125232128277039, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.g
+      value: 0.45719284
+      objectReference: {fileID: 0}
+    - target: {fileID: 848125232128277039, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.r
+      value: 0.90928745
+      objectReference: {fileID: 0}
+    - target: {fileID: 848125232128277039, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[15].m_Data
       value: 
       objectReference: {fileID: 1219432158}
@@ -6566,6 +6590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 4230540756951136127, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: AnvilSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 883a5fc6a017cc94ca9a73875bf65bd2, type: 3}
     - target: {fileID: 4323637807410355314, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -207,6 +207,22 @@ public class SettingsManager : MonoBehaviour
     {
         SfxSource.PlayOneShot(clip);
     }
+
+    public void AudioSliderTest()
+    {
+        if (!SfxSource.isPlaying){
+             SfxSource.Play();
+        }
+       
+    }
+
+    public void AnvilSFX(AudioClip clip)
+    {
+        AudioClip prev_clip = SfxSource.clip;
+        SfxSource.clip = clip;
+        SfxSource.Play();
+        SfxSource.clip = prev_clip;
+    }
     /// <summary>
     /// Se encarga de reproducir música
     /// </summary>
@@ -215,6 +231,16 @@ public class SettingsManager : MonoBehaviour
     {
         MusicSource.PlayOneShot(clip);
     }
+
+    /// <summary>
+    /// Se encarga de parar toda la musica y sonidos que estén reproduciéndose
+    /// </summary>
+    public void StopAllSounds()
+    {
+        MusicSource.Stop();
+    }
+
+
     /// <summary>
     /// Ajusta el volumen de la música entre un valor de -80 y 0 
     /// (decibelios mínimos y máximos)
@@ -222,8 +248,10 @@ public class SettingsManager : MonoBehaviour
     /// <param name="Mvol"></param>
     public void AjustaMus(float Mvol)
     {
+
         AudioMix.SetFloat("Music", Mvol);
         PlayerPrefs.SetFloat("musicVolume", Mvol);
+
     }
     /// <summary>
     /// Ajusta el volumen de los efectos de sonido entre un valor de -80 y 0 

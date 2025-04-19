@@ -123,7 +123,7 @@ BoxCollider2D:
   m_Offset: {x: 0.006924838, y: -0.006949961}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.56300914, y: 0.6260183}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_Offset: {x: 0.0013864636, y: -0.012227654}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.56300914, y: 0.6260183}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -195,6 +195,7 @@ MonoBehaviour:
   _materialSource: {fileID: 0}
   MaxClicks: 6
   CurrentClicks: 0
+  AnvilSFX: {fileID: 8300000, guid: 883a5fc6a017cc94ca9a73875bf65bd2, type: 3}
 --- !u!114 &4430715627000207075
 MonoBehaviour:
   m_ObjectHideFlags: 0
