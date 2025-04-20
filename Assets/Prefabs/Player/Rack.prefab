@@ -86,7 +86,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1280534379
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1954902719, guid: 953ccad47489a6f4baa385dbf3678c62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -271,6 +271,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 313c360b-30f9-46ba-97f8-98e738a4c8ca
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 30e3774e-9c6e-4856-b155-b5a645d24842
+    m_ActionName: UI/ClosePauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -318,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashSpeed: 35
+  dashSmokePrefab: {fileID: 244803990297631557, guid: 6d89374f3b0fbfa469849a6bdeb9bf21, type: 3}
   DashDuration: 0.45
 --- !u!114 &2181786244054239903
 MonoBehaviour:

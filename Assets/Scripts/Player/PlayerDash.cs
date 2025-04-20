@@ -30,6 +30,11 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] float DashSpeed;
 
     /// <summary>
+    /// Prefab del efecto visual de humo que aparece al hacer dash
+    /// </summary>
+    [SerializeField] private GameObject dashSmokePrefab;
+
+    /// <summary>
     /// Duración en segundos del dash
     /// </summary>
     [SerializeField] float DashDuration;
@@ -117,7 +122,21 @@ public class PlayerDash : MonoBehaviour
         {
             Debug.Log("DASH ACTIVADO");
             _isDashing = true;
-            
+
+            // Instanciar el efecto de humo
+            if (dashSmokePrefab != null)
+            {
+                // Obtener la dirección del dash (última dirección de movimiento)
+                Vector2 dashDirection = InputManager.Instance.LastMovementVector;
+
+                // Instanciar el prefab en la posición actual
+                GameObject smoke = Instantiate(dashSmokePrefab, transform.position, Quaternion.identity);
+
+                // Si quieres que rote en dirección al dash:
+                float angle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
+                smoke.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            }
+
         }
     }
 
