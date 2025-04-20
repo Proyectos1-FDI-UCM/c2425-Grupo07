@@ -132,9 +132,7 @@ public class PlayerDash : MonoBehaviour
                 // Instanciar el prefab en la posición actual
                 GameObject smoke = Instantiate(dashSmokePrefab, transform.position, Quaternion.identity);
 
-                // Si quieres que rote en dirección al dash:
-                float angle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
-                smoke.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+             
             }
 
         }
