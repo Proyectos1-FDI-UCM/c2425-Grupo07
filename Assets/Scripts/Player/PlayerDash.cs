@@ -29,15 +29,20 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     [SerializeField] float DashSpeed;
 
-    /// <summary>
-    /// Prefab del efecto visual de humo que aparece al hacer dash
-    /// </summary>
-    [SerializeField] private GameObject dashSmokePrefab;
+    // /// <summary>
+    // /// Prefab del efecto visual de humo que aparece al hacer dash
+    // /// </summary>
+    // [SerializeField] private GameObject dashSmokePrefab;
 
     /// <summary>
     /// Duración en segundos del dash
     /// </summary>
     [SerializeField] float DashDuration;
+
+    /// <summary>
+    /// Las partículas que genera el jugador al realizar un dash
+    /// </summary>
+    [SerializeField] private ParticleSystem dashParticles;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -60,6 +65,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         timecounter = 0f;
+        dashParticles = GetComponentInChildren<ParticleSystem>();
     }
     /// <summary>
     /// Este update se encarga de activar el dash y de establecer la velocidad del mismo.
@@ -124,7 +130,7 @@ public class PlayerDash : MonoBehaviour
             _isDashing = true;
 
             // Instanciar el efecto de humo
-            if (dashSmokePrefab != null)
+            if (dashParticles != null)
             {
                 // Obtener la dirección del dash
                 Vector2 dashDir = InputManager.Instance.LastMovementVector;
@@ -142,10 +148,11 @@ public class PlayerDash : MonoBehaviour
                     Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
                     // Instanciar en posición del jugador, con rotación
-                    GameObject smoke = Instantiate(dashSmokePrefab, transform.position, rotation);
 
-                    // Destruir después de 2 segundos
-                    Destroy(smoke, 2f);
+                    dashParticles.transform.rotation = rotation;
+                    dashParticles.Play();
+                    
+
                 }
             }
         }
