@@ -126,17 +126,31 @@ public class PlayerDash : MonoBehaviour
             // Instanciar el efecto de humo
             if (dashSmokePrefab != null)
             {
-                // Obtener la dirección del dash (última dirección de movimiento)
-                Vector2 dashDirection = InputManager.Instance.LastMovementVector;
+                // Obtener la dirección del dash
+                Vector2 dashDir = InputManager.Instance.LastMovementVector;
 
-                // Instanciar el prefab en la posición actual
-                GameObject smoke = Instantiate(dashSmokePrefab, transform.position, Quaternion.identity);
+                // Si no hay movimiento, no hacemos nada
+                if (dashDir != Vector2.zero)
+                {
+                    // Calcular dirección opuesta
+                    Vector2 oppositeDir = -dashDir.normalized;
 
-             
+                    // Obtener ángulo en grados
+                    float angle = Mathf.Atan2(oppositeDir.y, oppositeDir.x) * Mathf.Rad2Deg;
+
+                    // Rotar el sistema de partículas hacia la dirección opuesta al dash
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+                    // Instanciar en posición del jugador, con rotación
+                    GameObject smoke = Instantiate(dashSmokePrefab, transform.position, rotation);
+
+                    // Destruir después de 2 segundos
+                    Destroy(smoke, 2f);
+                }
             }
-
         }
     }
+
 
 
     #endregion
