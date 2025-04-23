@@ -42,6 +42,16 @@ public class Material : MonoBehaviour
     [SerializeField] private Image CompletionBar; //La barra de progreso del material
     [SerializeField] private Sprite[] MatState; //Sprite Procesado, 0 procesado, 1 quemado, 2 procesado final (para el metal)
     //[SerializeField] private Sprite BurntSprite; //Sprite Quemado
+
+    /// <summary>
+    /// Sonido que se reproducirá cuando un material se procese de la manera intencionada (no se quema)
+    /// </summary>
+    [SerializeField] private AudioClip goodCompletionSound;
+
+    /// <summary>
+    /// Sonido que se reproducirá cuando un material se queme
+    /// </summary>
+    [SerializeField] private AudioClip badCompletionSound;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -129,6 +139,7 @@ public class Material : MonoBehaviour
     public void ProcessTheMaterial()
     {
         GetComponent<SpriteRenderer>().sprite = MatState[0];
+        GetComponent<AudioSource>().PlayOneShot(goodCompletionSound);
         switch (matType)
         {
             case MaterialType.Arena:
@@ -153,6 +164,7 @@ public class Material : MonoBehaviour
     public void BurnTheMaterial()
     {
         GetComponent<SpriteRenderer>().sprite= MatState[1];
+        GetComponent<AudioSource>().PlayOneShot(badCompletionSound);
         switch (matType)
         {
             case MaterialType.Arena:

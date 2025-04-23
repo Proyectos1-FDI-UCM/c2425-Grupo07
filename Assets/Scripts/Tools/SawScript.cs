@@ -43,6 +43,13 @@ public class SawScript : MonoBehaviour
     // Animator es el animator que controla la animación de la sierra
     [SerializeField] private Animator Animator;
 
+    /// <summary>
+    /// Componente de audio responsable del sonido de la sierra cuando esta está en funcionamiento
+    /// </summary>
+    [SerializeField] private AudioSource SawSFX;
+
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -80,6 +87,7 @@ public class SawScript : MonoBehaviour
         _progress = 0;
         _isWorking = false;
         _materialSource = null;
+        SawSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -155,6 +163,9 @@ public class SawScript : MonoBehaviour
         _materialSource.GetComponent<SpriteRenderer>().sortingOrder = -1;
         _materialSource = null;
         HasWood = false;
+        _isWorking = false;
+        Animator.SetBool("working", false);
+        if (SawSFX != null) SawSFX.Stop();
     }
 
     public void TurnOnSaw()
@@ -163,6 +174,7 @@ public class SawScript : MonoBehaviour
         {
            _isWorking = true;
            Animator.SetBool("working", true);
+           if (SawSFX.clip != null) SawSFX.Play();
         }
     }
     public void TurnOffSaw()
@@ -171,6 +183,7 @@ public class SawScript : MonoBehaviour
         {
             _isWorking = false;
             Animator.SetBool("working", false);
+            if (SawSFX != null) SawSFX.Stop();
         }
     }
 
@@ -189,9 +202,11 @@ public class SawScript : MonoBehaviour
     private void ProcessWood()
     {
         _materialSource.ProcessTheMaterial();
-       Animator.SetBool("working", false);
        _isWorking = false;
        HasWood = false;
+       Animator.SetBool("working", false);
+       if (SawSFX != null) SawSFX.Stop();
+
     }
 
     #endregion   

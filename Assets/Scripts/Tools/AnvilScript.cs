@@ -40,7 +40,10 @@ public class AnvilScript : MonoBehaviour
     // CurrentClicks es el número de clicks necesario para completar el proceso de refinamiento
     [SerializeField] private float CurrentClicks = 0f;
 
-    [SerializeField] private AudioClip AnvilSFX;
+    /// <summary>
+    /// Componente encargado de reproducir el sonido del yunque cuando este es usado
+    /// </summary>
+    [SerializeField] private AudioSource AnvilSFX;
 
     #endregion
 
@@ -132,7 +135,10 @@ public class AnvilScript : MonoBehaviour
             if (CompletionBarReference != null && _progress < 1) // Es 1 ya que el progreso va de 0 a 1 (No es un magic number... creo...)
             {
                 CurrentClicks++;
-                SettingsManager.Instance.AnvilSFX(AnvilSFX);
+                if (AnvilSFX != null)
+                {
+                    AnvilSFX.Play();
+                }
                 _progress = CurrentClicks / MaxClicks;
                 _materialSource.UpdateProgress(_progress);
                 UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);

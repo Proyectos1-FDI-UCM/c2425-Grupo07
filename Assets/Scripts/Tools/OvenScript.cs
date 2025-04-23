@@ -47,6 +47,11 @@ public class OvenScript : MonoBehaviour
 
     //_animator es el animator que controla la animación del horno
     [SerializeField] private Animator _animator;
+
+    /// <summary>
+    /// Componente encargado de reproducir el sonido del horno mientras que está procesando.
+    /// </summary>
+    [SerializeField] private AudioSource FurnaceSFX;
     
     #endregion
 
@@ -82,6 +87,10 @@ public class OvenScript : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    void Start()
+    {
+     FurnaceSFX = GetComponent<AudioSource>();   
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -127,6 +136,9 @@ public class OvenScript : MonoBehaviour
                 _progress = _matScr.ReturnProgress();
                 _isProcessing = true;
                 _animator.SetBool("working", true);
+                if (FurnaceSFX != null) {
+                FurnaceSFX.Play();
+                }
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
@@ -138,6 +150,9 @@ public class OvenScript : MonoBehaviour
     public void Pick()
     {
         _matScr.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        if (FurnaceSFX != null) {
+        FurnaceSFX.Stop();
+        }
         if (_hasFinished)
         {
             _matScr.ProcessHasEnded();
@@ -226,6 +241,7 @@ public class OvenScript : MonoBehaviour
         _matScr.ProcessTheMaterial();
         _hasFinished = true;
         FlashImage.SetActive(false);
+
     }
     /// <summary>
     /// Si el objeto procesado se mantiene demasiado tiempo en el horno,
@@ -242,6 +258,10 @@ public class OvenScript : MonoBehaviour
         //Se cambia el material a ceniza
         _matScr.BurnTheMaterial();
         _animator.SetBool("working", false);
+        if (FurnaceSFX != null)
+        {
+            FurnaceSFX.Stop();
+        }
     }
 
     /// <summary>

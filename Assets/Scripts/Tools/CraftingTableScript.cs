@@ -24,6 +24,10 @@ public class CraftingTableScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    /// <summary>
+    /// Componente que se encarga de reproducir un sonido cuando se introduzca un material en un objeto.
+    /// </summary>
+    [SerializeField] private AudioSource CraftingTableSFX;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -38,6 +42,7 @@ public class CraftingTableScript : MonoBehaviour
     private Objects _scriptObject; //_scriptObject es para tener referencia al script de los objetos de aquí obtener los datos necesarios
     private MaterialType[] _materials; //Se almacena la array de los materiales del objeto
 
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -46,6 +51,11 @@ public class CraftingTableScript : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    void Start()
+    {
+        
+    }
 
     #endregion
 
@@ -81,6 +91,10 @@ public class CraftingTableScript : MonoBehaviour
                         agregado = true;
                         ReturnMaterials(_materials);
                         _scriptObject.ChangeSkin();
+                        if (CraftingTableSFX != null)
+                        {
+                            CraftingTableSFX.Play();
+                        }
                     }
                     else { i++; }
                 }

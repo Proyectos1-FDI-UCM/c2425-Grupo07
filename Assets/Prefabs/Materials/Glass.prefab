@@ -359,7 +359,8 @@ MonoBehaviour:
   MatState:
   - {fileID: -1417738725, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   - {fileID: 288120203, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
-  _materialProgress: 0
+  goodCompletionSound: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
+  badCompletionSound: {fileID: 0}
 --- !u!58 &4303538933006017438
 CircleCollider2D:
   m_ObjectHideFlags: 0
