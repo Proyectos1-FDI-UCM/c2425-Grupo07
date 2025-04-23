@@ -66,7 +66,7 @@ public class PlayerAnvil : MonoBehaviour
     void Update()
     {
         if (InputManager.Instance.InteractWasPressedThisFrame() && _playerVision.GetActualMesa() != null
-            && _playerVision.GetActualMesa().GetComponent<AnvilScript>() != null && transform.childCount ==0)
+            && _playerVision.GetActualMesa().GetComponent<AnvilScript>() != null)
         {
             OnClickPerformed();
         }
