@@ -52,7 +52,7 @@ public class Material : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    public float _materialProgress; // El progreso de procesado del material
+    private float _materialProgress; // El progreso de procesado del material
 
     //_UsedOnce sirve para determinar si el objeto tiene 0 de progreso para determinar si la barra debe ser visible o no en escena
     private bool _UsedOnce = false;

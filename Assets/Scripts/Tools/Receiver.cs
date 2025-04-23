@@ -9,6 +9,7 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 /// <summary>
@@ -131,7 +132,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        TaskPosition = GameObject.Find("Pedidos").transform; // Lo siento no se de que otra manera hacerlo, sé que esto es stringtyping.
+        TaskPosition = GameObject.FindObjectOfType<HorizontalLayoutGroup>().transform; //Utilizo el transform para utilizar el componente HorizontalLayoutGroup
         if (TaskPosition == null) Debug.Log("No se ha encontrado la posición de los pedidos, actualiza el prefab del UI");
         _correctAlert.SetActive(false);
         _wrongAlert.SetActive(false);
