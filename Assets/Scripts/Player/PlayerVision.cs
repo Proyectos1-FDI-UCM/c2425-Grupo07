@@ -40,6 +40,16 @@ public class PlayerVision : MonoBehaviour
 
     [SerializeField] private Vector2 MaterialPositionOffset = new Vector2(0, 0);
     // Se usa para que el material se coloque en la posición correcta al soltarlo en una herramienta
+
+    /// <summary>
+    /// sonido que se reproduce cuando el jugador coge un item
+    /// </summary>
+    [SerializeField] private AudioClip PickSFX;
+
+    /// <summary>
+    /// sonido que se reproduce cuando el jugador suelta un item
+    /// </summary>
+    [SerializeField] private AudioClip DropSFX; 
     
 
     #endregion
@@ -58,7 +68,11 @@ public class PlayerVision : MonoBehaviour
     //private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
     private GameObject _heldObject;  // El item que está en las manos del jugador.
     private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
-    private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.                            
+    private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.   
+
+    private AudioSource _playerAudioSource;
+
+                        
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -73,8 +87,11 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     private void Start()
     {
+
+        _playerAudioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<PlayerMovement>();
         Receiver temp = FindAnyObjectByType<Receiver>(); // para el buen funcionamiento del recibidor :)
+        
 
         if (temp != null)
         {
@@ -210,6 +227,10 @@ public class PlayerVision : MonoBehaviour
     {
         if (_heldObject == null)
         {
+            if (_playerAudioSource != null)
+            {
+            _playerAudioSource.PlayOneShot(PickSFX);
+            }
             _heldObject = lookedObject;
             _heldObject.transform.SetParent(gameObject.transform);
             _isBeingPicked = true;
@@ -224,6 +245,10 @@ public class PlayerVision : MonoBehaviour
     /// </summary>
     public void Drop(bool onToolPlaced = false)
     {
+        if (_playerAudioSource != null)
+        {
+        _playerAudioSource.PlayOneShot(DropSFX);
+        }
         _isBeingPicked = false;
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
