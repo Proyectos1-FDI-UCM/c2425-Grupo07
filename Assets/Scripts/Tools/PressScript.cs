@@ -31,6 +31,11 @@ public class PressScript : MonoBehaviour
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
     [SerializeField] private Canvas BarCanvasGroup;// Referencia al Canvas de la barra de progreso
     [SerializeField] private Animator _animator; // Referencia al Animator de la prensa
+
+    /// <summary>
+    /// Sonido que se reproduce cuando se termina de reiniciar un objeto.
+    /// </summary>
+    [SerializeField] private AudioClip ResetSFX;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,6 +49,11 @@ public class PressScript : MonoBehaviour
 
 
     private bool _isPressing = false; // Indica si la prensa está activa.
+    
+    /// <summary>
+    /// Componente que reproduce el sonido de la prensa mientras se está reiniciando un objeto
+    /// </summary>
+    private AudioSource _pressAudioSource;
 
     #endregion
 
@@ -53,6 +63,11 @@ public class PressScript : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    void Start()
+    {
+        _pressAudioSource = GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -88,7 +103,10 @@ public class PressScript : MonoBehaviour
             Objects objects = item.GetComponent<Objects>();
             if (!objects.ThereIsMaterial())
             {
-
+                if (_pressAudioSource != null)
+                {
+                    _pressAudioSource.Play();
+                }
                 item.GetComponentInParent<PlayerVision>().Drop(true);
                 CurrentObject = objects;
                 CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -105,6 +123,10 @@ public class PressScript : MonoBehaviour
     /// </summary>
     public void Pick()
     {
+        if (_pressAudioSource != null)
+        {
+            _pressAudioSource.Stop();
+        }
         CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
         BarCanvasGroup.gameObject.SetActive(false);
         PressingTime = 0f;
@@ -128,6 +150,7 @@ public class PressScript : MonoBehaviour
     {
         if (_isPressing)
         {
+            
             PressingTime += (Time.deltaTime / 100) * VelCompletion;
             
             if (ProgressBarFill != null)
@@ -137,6 +160,10 @@ public class PressScript : MonoBehaviour
             
             if (PressingTime >= 1)
             {
+                if (_pressAudioSource != null)
+                {
+                    _pressAudioSource.Stop();
+                }
                 ResetObject();
                 _isPressing = false;
             }
@@ -152,6 +179,10 @@ public class PressScript : MonoBehaviour
         {
             CurrentObject.GetComponent<Objects>().ResetObject();
             _animator.SetBool("working", false);
+        }
+        if (_pressAudioSource != null)
+        {
+            _pressAudioSource.PlayOneShot(ResetSFX);
         }
     }
 

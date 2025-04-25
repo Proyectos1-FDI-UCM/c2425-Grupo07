@@ -28,10 +28,23 @@ public class FireExtinguisher : MonoBehaviour
 
     private bool _isUsing = false; // Indica si el extintor está en uso
 
+    /// <summary>
+    /// Componente encargado de reproducir el sonido de la espuma del extintor.
+    /// </summary>
+    private AudioSource _feAudioSource;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
+
+    /// <summary>
+    /// Consigue el componente "AudioSource" del gameobject
+    /// </summary>
+    private void Start()
+    {
+        _feAudioSource = GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// Se ejecuta en cada frame. Controla la activación de las partículas del extintor.
@@ -41,10 +54,18 @@ public class FireExtinguisher : MonoBehaviour
         if (_isUsing && !extinguisherParticles.isPlaying)
         {
             extinguisherParticles.Play(); // Inicia las partículas del extintor
+            if (_feAudioSource != null)
+            {
+            _feAudioSource.Play();
+            }
         }
         else if (!_isUsing && extinguisherParticles.isPlaying)
         {
             extinguisherParticles.Stop(); // Detiene las partículas del extintor
+            if (_feAudioSource != null)
+            {
+            _feAudioSource.Stop();
+            }
         }
     }
 
