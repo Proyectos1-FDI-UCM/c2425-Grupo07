@@ -72,6 +72,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     [SerializeField] private GameObject _wrongAlert;
 
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -118,6 +119,11 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private int _failedDeliveriesNumber = 0;
 
+    /// <summary>
+    /// Componente encargado de reproducir el sonido de entrega del recibidor
+    /// </summary>
+    private AudioSource _recieverAudioSource;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -139,6 +145,7 @@ public class Receiver : MonoBehaviour
         InstatiateObjectUI(false);
         _state = receiverState.Idle;
         _levelManager = FindAnyObjectByType<LevelManager>();
+        _recieverAudioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -365,6 +372,11 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void Deliver()
     {
+        if (_recieverAudioSource != null)
+        {
+            _recieverAudioSource.Play();
+        }
+
         _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true); // termina la tarea satisfactoriamente.
         _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
