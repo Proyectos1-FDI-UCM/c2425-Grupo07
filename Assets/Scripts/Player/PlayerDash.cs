@@ -43,6 +43,10 @@ public class PlayerDash : MonoBehaviour
     /// Las partículas que genera el jugador al realizar un dash
     /// </summary>
     [SerializeField] private ParticleSystem dashParticles;
+
+
+    [SerializeField] private AudioSource DashSFX;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -128,6 +132,12 @@ public class PlayerDash : MonoBehaviour
         {
             Debug.Log("DASH ACTIVADO");
             _isDashing = true;
+
+            // Reproducir el sonido del dash si está asignado
+            if (DashSFX != null)
+            {
+                DashSFX.Play();
+            }
 
             // Instanciar el efecto de humo
             if (dashParticles != null)

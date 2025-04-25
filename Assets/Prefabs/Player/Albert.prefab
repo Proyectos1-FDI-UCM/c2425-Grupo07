@@ -373,6 +373,7 @@ MonoBehaviour:
   DashSpeed: 17
   DashDuration: 0.45
   dashParticles: {fileID: 0}
+  DashSFX: {fileID: 8378516457295623066}
 --- !u!114 &2627855421152048094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6527533263956082210, guid: c6ee16bd9509d644bb686ad53223726c, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 380501be6407de34093ea4bc486b48af, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
