@@ -28,10 +28,10 @@ public class Level : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField] Canvas CanvasInfo; //Canvas con la información del nivel
-    [SerializeField] Image Rank; //Imagen del rango del CanvasInfo
     [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
     [SerializeField] int LevelNum; //Numero del nivel
     [SerializeField] Text TimeText; //Texto que muestra el tiempo
+    [SerializeField] Text RankText; //Texto que muestra el rango
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
@@ -137,15 +137,20 @@ public class Level : MonoBehaviour
     /// </summary>
     /// <returns>Retorna un string al ser llamado</returns>
     public string GetLevelName() { return LevelName; }
-    
-    public Image GetRank()
-    {
-        return Rank;
-    }
 
     public Text GetMoney()
     {
         return Money;
+    }
+
+    public Text GetRankText()
+    {
+        return RankText;
+    }
+
+    public string GetRankLetter()
+    {
+        return RankText.text;
     }
 
     /// <summary>
@@ -158,28 +163,30 @@ public class Level : MonoBehaviour
         _rankLetter = rankObtained;
         if (rankObtained == "S")
         {
-            Rank.color = Color.green;
+            RankText.color = Color.green;
+            RankText.fontSize = 150;
         }
         else if (rankObtained == "A")
         {
-            Rank.color = Color.cyan;
+            RankText.color = Color.cyan;
         }
         else if (rankObtained == "B")
         {
-            Rank.color = Color.yellow;
+            RankText.color = Color.yellow;
         }
         else if (rankObtained == "C")
         {
-            Rank.color = new Color(1.0f, 0.64f, 0.0f); // Naranja
+            RankText.color = new Color(1.0f, 0.64f, 0.0f);
         }
         else if (rankObtained == "D")
         {
-            Rank.color = Color.red;
+            RankText.color = Color.red;
         }
         else
         {
-            Rank.color = Color.gray;
+            RankText.color = Color.gray;
         }
+        RankText.text = _rankLetter;
     }
 
     /// <summary>

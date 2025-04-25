@@ -71,10 +71,12 @@ public class GameManager : MonoBehaviour
     /// Texto que muestra el dinero recopilado en el nivel prinicpal
     /// </summary>
     [SerializeField] private Text[] _moneyTextLevel;
+
     /// <summary>
-    /// Imagen que indica el mejor rango obtenido en el nivel
+    /// Texto que indica el mejor rango obtenido en el nivel
     /// </summary>
-    [SerializeField] private Image[] _rankImageLevel;
+    [SerializeField] private Text[] _rankTextLevel;
+
     /// <summary>
     /// Mejor rango obtenido del nivel
     /// </summary>
@@ -411,16 +413,17 @@ public class GameManager : MonoBehaviour
     public void UpdateStats()
     {
         _levels = FindObjectsOfType<Level>();
-        _rankImageLevel = new Image[_levels.Length];
         _moneyTextLevel = new Text[_levels.Length];
         _moneyNumberlevel = new int[_levels.Length];
+        _rankTextLevel = new Text[_levels.Length];
         _levelsRange = new LevelManager.Range[_levels.Length];
         if (_levels != null)
         {
             for (int i = 0; i < _levels.Length;i++)
             {
-                _rankImageLevel[i] = _levels[i].GetRank();
                 _moneyTextLevel[i] = _levels[i].GetMoney();
+                _rankTextLevel[i] = _levels[i].GetRankText();
+                _rankTextLevel[i].text = _levels[i].GetRankLetter();
             }
         }
     }
