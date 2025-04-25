@@ -2381,6 +2381,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 7086150569153657121}
   ControlsUI: {fileID: 4883053202189711404}
   PauseMenuFirstButton: {fileID: 3216842997811734874}
+  ResetPanel: {fileID: 0}
 --- !u!1 &2778172070644378493
 GameObject:
   m_ObjectHideFlags: 0
@@ -7664,10 +7665,6 @@ PrefabInstance:
       value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
       value: 0.39215687
       objectReference: {fileID: 0}
@@ -7696,10 +7693,6 @@ PrefabInstance:
       value: 0.5019608
       objectReference: {fileID: 0}
     - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.a
       value: 0.78431374
       objectReference: {fileID: 0}
@@ -7719,6 +7712,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 649886911657838024}
+    - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2202682736274496944, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume

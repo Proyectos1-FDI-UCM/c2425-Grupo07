@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
@@ -40,7 +41,8 @@ public class IndicatorChange : MonoBehaviour
     private int _num = 0;
     private Image _page;
     private bool _first = false;
-    
+    [SerializeField] private GameObject Skip;
+    [SerializeField] private GameObject Resume;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -103,7 +105,9 @@ public class IndicatorChange : MonoBehaviour
     {
         gameObject.SetActive(true);
         Tutorial.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(Skip);
     }
+
     public void Off()
     {
         gameObject.SetActive(false);
@@ -111,6 +115,7 @@ public class IndicatorChange : MonoBehaviour
         _first = true;
         _page.sprite = Page[0];
         _num = 0;
+        EventSystem.current.SetSelectedGameObject(Resume);
     }
     #endregion
 
