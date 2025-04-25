@@ -103,41 +103,28 @@ public class Objects : MonoBehaviour
     /// <returns>True si los materiales están en el orden correcto, False en caso contrario.</returns>
     public bool IsCompleted()
     {
+        bool complete = false;
         if (_canBeSent) // Si el objeto puede ser enviado
         {
             int n = 0;
 
-        // Recorre cada objeto requerido en el pedido
-        foreach (MaterialType required in OrdenPedidos)
-        {
-
-            // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
-            if (!IsSameMaterialType(Materials[n], required))
+            // Recorre cada objeto requerido en el pedido
+            foreach (MaterialType required in OrdenPedidos)
             {
-                Debug.Log("FALSE Material no coincide con el pedido o está incompleto");
-                return false;
+                // Si no hay más materiales o el tipo de material no coincide con el requerido, retorna false
+                if (!IsSameMaterialType(Materials[n], required))
+                {
+                    Debug.Log("FALSE Material no coincide con el pedido");
+                }
+                else n++; // Avanza al siguiente material
             }
-            n++; // Avanza al siguiente material
-        }
 
-        // Verifica si hay materiales adicionales que no están en el pedido
-        while (n < Materials.Length)
-        {
-            if (Materials[n] != MaterialType.Otro)
-            {
-                Debug.Log("FALSE Hay materiales adicionales que no están en el orden de pedidos.");
-                return false;
-            }
-            n++;
-        }
-
-            Debug.Log("TRUE COMPLETADO");
-            return true;
+            return complete = n == OrdenPedidos.Length;
         }
         else
         {
             Debug.Log("No se puede enviar, se acabó el tiempo del pedido");
-            return false;
+            return complete;
         }
     }
     /// <summary>

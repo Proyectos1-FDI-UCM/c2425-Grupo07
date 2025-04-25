@@ -77,11 +77,11 @@ public class CraftingTableScript : MonoBehaviour
     /// <returns>Retorna falso si no fue aglegado el material, verdadero si se a insertado el material a la array</returns>
     public bool AddMaterial(MaterialType material)
     {
+        bool agregado = false;
         if (_scriptObject.GetComponent<Objects>() != null)
         {
             if (_scriptObject.GetCanBeSent()) // Si el objeto puede ser enviado
             {
-                bool agregado = false;
                 int i = 0;
                 while (!agregado && i < _materials.Length)
                 {
@@ -103,10 +103,10 @@ public class CraftingTableScript : MonoBehaviour
             else
             {
                 Debug.Log(" No se puede añadir material, se acabó el tiempo del pedido");
-                return false;
+                return agregado;
             }
         }
-        else return false;
+        else return agregado;
     }
 
     //Asigna la array actualizada al array del objeto
