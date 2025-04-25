@@ -49,9 +49,11 @@ public class OvenScript : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     /// <summary>
-    /// Componente encargado de reproducir el sonido del horno mientras que está procesando.
+    /// Componente encargado de repoducir el sonido de alerta, se una uno independiente para tener el control y conocimiento del sonido de alerta
     /// </summary>
-    [SerializeField] private AudioSource FurnaceSFX;
+    [SerializeField] private AudioSource AlertAudioSource;
+
+    
     
     #endregion
 
@@ -77,6 +79,11 @@ public class OvenScript : MonoBehaviour
     //Recoge el script de material para acceder a su progreso
     private Material _matScr;
 
+    /// <summary>
+    /// Componente encargado de reproducir el sonido del horno mientras que está procesando.
+    /// </summary>
+    private AudioSource _furnaceAudioSource;
+
 
     #endregion
 
@@ -89,7 +96,7 @@ public class OvenScript : MonoBehaviour
     // - Hay que borrar los que no se usen 
     void Start()
     {
-     FurnaceSFX = GetComponent<AudioSource>();   
+     _furnaceAudioSource = GetComponent<AudioSource>(); 
     }
 
     /// <summary>
@@ -136,8 +143,8 @@ public class OvenScript : MonoBehaviour
                 _progress = _matScr.ReturnProgress();
                 _isProcessing = true;
                 _animator.SetBool("working", true);
-                if (FurnaceSFX != null) {
-                FurnaceSFX.Play();
+                if (_furnaceAudioSource != null) {
+                _furnaceAudioSource.Play();
                 }
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
@@ -150,8 +157,8 @@ public class OvenScript : MonoBehaviour
     public void Pick()
     {
         _matScr.GetComponent<SpriteRenderer>().sortingOrder = -1;
-        if (FurnaceSFX != null) {
-        FurnaceSFX.Stop();
+        if (_furnaceAudioSource != null) {
+        _furnaceAudioSource.Stop();
         }
         if (_hasFinished)
         {
@@ -219,6 +226,11 @@ public class OvenScript : MonoBehaviour
             else if (_timerFlash < 1f / _timerBurn)
             {
                 FlashImage.SetActive(true);
+                if (AlertAudioSource != null && !AlertAudioSource.isPlaying) // reproduzco el sonido solo si ha terminado de sonar el anterior para evitar metralleta de sonidos.
+                {
+                    AlertAudioSource.Play();
+                }
+
             }
             else
             {
@@ -258,9 +270,9 @@ public class OvenScript : MonoBehaviour
         //Se cambia el material a ceniza
         _matScr.BurnTheMaterial();
         _animator.SetBool("working", false);
-        if (FurnaceSFX != null)
+        if (_furnaceAudioSource != null)
         {
-            FurnaceSFX.Stop();
+            _furnaceAudioSource.Stop();
         }
     }
 

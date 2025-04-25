@@ -360,7 +360,7 @@ MonoBehaviour:
   MatState:
   - {fileID: -533892489, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   goodCompletionSound: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
-  badCompletionSound: {fileID: 0}
+  badCompletionSound: {fileID: 8300000, guid: 971303f4a234daf49b5310e1e09aec5f, type: 3}
 --- !u!58 &7015354541423950742
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -448,10 +448,10 @@ AudioSource:
   m_GameObject: {fileID: 6046970825805907103}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6527533263956082210, guid: c6ee16bd9509d644bb686ad53223726c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
