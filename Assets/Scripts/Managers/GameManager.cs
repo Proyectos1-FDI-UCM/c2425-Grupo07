@@ -12,6 +12,7 @@ using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using TMPro;
 
 
 /// <summary>
@@ -70,12 +71,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Texto que muestra el dinero recopilado en el nivel prinicpal
     /// </summary>
-    [SerializeField] private Text[] _moneyTextLevel;
+    [SerializeField] private TextMeshProUGUI[] _moneyTextLevel;
 
     /// <summary>
     /// Texto que indica el mejor rango obtenido en el nivel
     /// </summary>
-    [SerializeField] private Text[] _rankTextLevel;
+    [SerializeField] private TextMeshProUGUI[] _rankTextLevel;
 
     /// <summary>
     /// Mejor rango obtenido del nivel
@@ -413,9 +414,9 @@ public class GameManager : MonoBehaviour
     public void UpdateStats()
     {
         _levels = FindObjectsOfType<Level>();
-        _moneyTextLevel = new Text[_levels.Length];
+        _moneyTextLevel = new TextMeshProUGUI[_levels.Length];
         _moneyNumberlevel = new int[_levels.Length];
-        _rankTextLevel = new Text[_levels.Length];
+        _rankTextLevel = new TextMeshProUGUI[_levels.Length];
         _levelsRange = new LevelManager.Range[_levels.Length];
         if (_levels != null)
         {

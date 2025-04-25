@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
+using TMPro;
 
 
 /// <summary>
@@ -28,10 +29,10 @@ public class Level : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField] Canvas CanvasInfo; //Canvas con la información del nivel
-    [SerializeField] Text Money; //Texto que muestra la cantidad de dinero
+    [SerializeField] TextMeshProUGUI Money; //Texto que muestra la cantidad de dinero
     [SerializeField] int LevelNum; //Numero del nivel
-    [SerializeField] Text TimeText; //Texto que muestra el tiempo
-    [SerializeField] Text RankText; //Texto que muestra el rango
+    [SerializeField] TextMeshProUGUI TimeText; //Texto que muestra el tiempo
+    [SerializeField] TextMeshProUGUI RankText; //Texto que muestra el rango
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
@@ -123,7 +124,7 @@ public class Level : MonoBehaviour
     {
         SelectionPlayer.gameObject.SetActive(true);
         InputManager.Instance.EnableActionMap("UI");
-        Text text = SelectionPlayer.GetComponentInChildren<Text>();
+        TextMeshProUGUI text = SelectionPlayer.GetComponentInChildren<TextMeshProUGUI>();
         string[] s = Regex.Split(LevelName, @"(?<!^)(?=[A-Z])");
         text.text = string.Join(" ", s);
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
@@ -138,12 +139,12 @@ public class Level : MonoBehaviour
     /// <returns>Retorna un string al ser llamado</returns>
     public string GetLevelName() { return LevelName; }
 
-    public Text GetMoney()
+    public TextMeshProUGUI GetMoney()
     {
         return Money;
     }
 
-    public Text GetRankText()
+    public TextMeshProUGUI GetRankText()
     {
         return RankText;
     }
@@ -164,7 +165,7 @@ public class Level : MonoBehaviour
         if (rankObtained == "S")
         {
             RankText.color = Color.green;
-            RankText.fontSize = 150;
+            RankText.fontSize = 200;
         }
         else if (rankObtained == "A")
         {
