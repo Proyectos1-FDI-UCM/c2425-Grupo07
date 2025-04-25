@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 
@@ -24,6 +25,7 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField] private Sprite[] Page;
+    [SerializeField] private Canvas Tutorial;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,8 +38,9 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private int _num = 0;
-    private SpriteRenderer _page;
-    private bool _on = false;
+    private Image _page;
+    private bool _first = false;
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -53,7 +56,7 @@ public class IndicatorChange : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _page = gameObject.GetComponent<SpriteRenderer>();
+        _page = gameObject.GetComponent<Image>();
     }
 
     #endregion
@@ -67,10 +70,18 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void Pass() //flecha para avanzar
     {
-        if (_num < Page.Length)
+        if (!_first && _num < Page.Length - 1)
         {
             _num++;
             ChangePage();
+        }
+        else 
+        {
+            if (_num < Page.Length - 2)
+            {
+                _num++;
+                ChangePage();
+            }
         }
     }
 
@@ -88,20 +99,19 @@ public class IndicatorChange : MonoBehaviour
         _page.sprite = Page[_num];
     }
 
-    public void HideShowImage()
+    public void On()
     {
-        if (_on)
-        {
-            _on = false;
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            _on = true;
-            gameObject.SetActive(true);
-        }
+        gameObject.SetActive(true);
+        Tutorial.gameObject.SetActive(true);
     }
-
+    public void Off()
+    {
+        gameObject.SetActive(false);
+        Tutorial.gameObject.SetActive(false);
+        _first = true;
+        _page.sprite = Page[0];
+        _num = 0;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
