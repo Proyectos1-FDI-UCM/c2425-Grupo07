@@ -170,6 +170,12 @@ public class LevelManager : MonoBehaviour
     private float _currentSecondsLeft;
 
     /// <summary>
+    /// Variable que almacena cuanto tiempo lleva el jugador en el nivel Infinito desde el inicio
+    /// </summary>
+    private float elapsedTime;
+    
+
+    /// <summary>
     /// _minutesShow son los minutos para mostrar en el timer del juego
     /// </summary>
     private int _minutesShow;
@@ -210,6 +216,7 @@ public class LevelManager : MonoBehaviour
         isRack = _gameManager.ReturnBool();
         StartTimer();
         Money = 0;
+        elapsedTime = 0;
 
         // Establecer el modo de juego en pausado
         //Time.timeScale = 0;
@@ -243,6 +250,7 @@ public class LevelManager : MonoBehaviour
         if (_continue)
         {
             _currentSecondsLeft -= Time.deltaTime;
+            elapsedTime += Time.deltaTime;
         }
         if (_currentSecondsLeft < 0)
         {
@@ -308,6 +316,38 @@ public class LevelManager : MonoBehaviour
             _moneyGaining.text = "" + amount;
         }
         StartCoroutine(SumaDinero(amount));
+    }
+
+    /// <summary>
+    /// Método que añadirá tiempo al nivel infinito cuando se entregue un pedido
+    /// La suma del tiempo varía dependiendo de cuando tiempo lleve el jugador en el nivel infinito
+    /// para ir aumentando la dificultado
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SumTime(float ammount)
+    {
+        float timeFactor;
+        if (elapsedTime < 4f)
+        {
+            timeFactor = 1f;
+        }
+        else if (elapsedTime < 8f)
+        {
+            timeFactor = 0.8f;
+        }
+        else if (elapsedTime < 15f)
+        {
+            timeFactor = 0.7f;
+        }
+        else if (elapsedTime < 25f)
+        {
+            timeFactor = 0.5f;
+        }
+        else // A partir de los 25 minutos el juego es extremo, casi injugable
+        {
+            timeFactor = 0.35f;
+        }
+        _currentSecondsLeft += ammount * timeFactor;
     }
 
     /// <summary>

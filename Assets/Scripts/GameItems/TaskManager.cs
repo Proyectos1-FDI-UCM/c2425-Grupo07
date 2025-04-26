@@ -138,25 +138,36 @@ public class TaskManager : MonoBehaviour
         /// Se llama cuando el objeto es entregado o destruido.
         /// Además impide que se pueda entregar el pedido o que se puedan añadir materiales si ya se ha acabado el tiempo.
         /// </summary>
-    public void EndTask(bool delivered=false)
+    public void EndTask(bool delivered=false, bool infiniteMode=false)
     {
         if (delivered && !IsTaskEnded()) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
         {
-            if (_progressBar.color == color1)
+
+            if (!infiniteMode)
             {
-                Debug.Log("Entregado Correctamente, 100%");
-                _receiver.AddMoney(BasePayment, color1);
+                if (_progressBar.color == color1)
+                {
+                    Debug.Log("Entregado Correctamente, 100%");
+                    _receiver.AddMoney(BasePayment, color1);                
+                }
+                else if (_progressBar.color == color2)
+                {
+                    Debug.Log("Entregado Correctamente, 75%");
+                    _receiver.AddMoney((int)(BasePayment * 0.75f), color2);
+                }
+                else if (_progressBar.color == color3)
+                {
+                    Debug.Log("Entregado Correctamente, 25%");
+                    _receiver.AddMoney((int)(BasePayment * 0.25f), color3);
+                    
+                }
             }
-            else if (_progressBar.color == color2)
+            else
             {
-                Debug.Log("Entregado Correctamente, 75%");
-                _receiver.AddMoney((int)(BasePayment * 0.75f), color2);
+                float gainedTime = ConvertPaymentToTime(BasePayment);
+                _receiver.AddTime(gainedTime);
             }
-            else if (_progressBar.color == color3)
-            {
-                Debug.Log("Entregado Correctamente, 25%");
-                _receiver.AddMoney((int)(BasePayment * 0.25f), color3);
-            }
+            
         }
         else if (!IsTaskEnded()) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
         {
@@ -176,6 +187,19 @@ public class TaskManager : MonoBehaviour
     public bool IsTaskEnded()
     {
         return _actualPanel == null;
+    }
+
+    /// <summary>
+    /// Metodo encargado de convertir una cántidad de dinero a tiempo
+    /// de forma subjetiva y completamente arbitraria.
+    /// No se tiene el cuenta el porcentaje del tiempo para la obtención de tiempo
+    /// </summary>
+    /// <param name="payAmount"></param>
+    /// <returns></returns>
+    private float ConvertPaymentToTime(float payAmount)
+    {
+        const float factorDeConversion = 0.1f;
+        return payAmount * factorDeConversion;
     }
 
 /// <summary>
