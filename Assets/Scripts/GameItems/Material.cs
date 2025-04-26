@@ -170,7 +170,7 @@ public class Material : MonoBehaviour
             case MaterialType.Arena:
                 matType = MaterialType.Otro;
                 break;
-            case MaterialType.MetalRoca:
+            case MaterialType.MetalMineral:
                 matType = MaterialType.Otro;
                 break;
         }
