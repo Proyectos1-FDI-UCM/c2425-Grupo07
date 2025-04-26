@@ -48,7 +48,7 @@ MonoBehaviour:
   Money: 0
   ShowText: {fileID: 4671676518844151611}
   Panel: {fileID: 13391520127112498}
-  _maxTime: 20
+  _maxTime: 40
   _minS: 900
   _minA: 650
   _minB: 400
@@ -60,7 +60,7 @@ MonoBehaviour:
   _moneyEndText: {fileID: 3196351615654132168}
   _moneyInPlay: {fileID: 5464006782225879947}
   _moneyGaining: {fileID: 5127722239654142459}
-  _levelRangeText: {fileID: 3041398671752845039}
+  _levelRangeText: {fileID: 0}
   _deliveredObjectsText: {fileID: 1840396722528718271}
   _failedDeliveriesText: {fileID: 1912220565355931693}
   _initialPos:
@@ -75,6 +75,7 @@ MonoBehaviour:
   RestartButton: {fileID: 8748784456899609295}
   PileOfCash: {fileID: 5964739855495673840}
   DineroVel: 6000
+  InfiniteMode: 1
 --- !u!1 &4346327930881641929
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,22 +369,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2778172070644378493, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Name
-      value: Level Canvas UI
+      value: Level_Canvas_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2966179343840933401, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2987863188875327086, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Name
       value: ExitSelectionMenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3328505752293985028, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5832230888723392228, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MenuLevelSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587049577876091641, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086150569153657121, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7538451385623461786, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359988375807942650, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2024746120361119927, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+    - {fileID: 1384155690362453417, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
@@ -419,17 +442,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 621332150888265718, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
   m_PrefabInstance: {fileID: 2956173220015809323}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3041398671752845039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 230624882331547076, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
-  m_PrefabInstance: {fileID: 2956173220015809323}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3196351615654132168 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 386701802531183331, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}

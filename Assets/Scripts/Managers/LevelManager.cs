@@ -9,8 +9,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -145,6 +145,19 @@ public class LevelManager : MonoBehaviour
     /// Recoge el padre de los objetos de la pila de dinero que irá apareciendo de una en una hasta llegar al contador de dinero
     /// </summary>
     [SerializeField] private int DineroVel = 3000;
+
+    /// <summary>
+    /// Texto de avisos para el nivel infinito, el texto avisa del tiempo que alcanza el jugador
+    /// y de la reducción de tiempo que se aplica al tiempo ganado con los pedidos
+    /// </summary>
+    [SerializeField] private TMP_Text AlertsText;
+
+    [SerializeField] private bool InfiniteMode;
+
+    [SerializeField] private int InfModeFirstWave = 4;
+    [SerializeField] private int InfModeSecondWave = 8;
+    [SerializeField] private int InfModeThirdWave = 15;
+    [SerializeField] private int InfModeRemainingWave = 25;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -194,6 +207,12 @@ public class LevelManager : MonoBehaviour
     /// Referencia al script Receiver
     /// </summary>
     private Receiver _receiver;
+
+    //Estas boleanas permiten que los metodos de alerta no se llamen cada frame en el que el "if" se cumple
+    private bool hasShownFirstWaveAlert = false;
+    private bool hasShownSecondWaveAlert = false;
+    private bool hasShownThirdWaveAlert = false;
+    private bool hasShownRemainingWaveAlert = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -202,8 +221,8 @@ public class LevelManager : MonoBehaviour
 
 
     private void Start()
-
     {
+
         if (FindAnyObjectByType<Receiver>() != null)
         {
             _receiver = FindAnyObjectByType<Receiver>();
@@ -251,6 +270,57 @@ public class LevelManager : MonoBehaviour
         {
             _currentSecondsLeft -= Time.deltaTime;
             elapsedTime += Time.deltaTime;
+            #region 
+            float minutes = elapsedTime/60;
+            /*
+            if (InfiniteMode)
+            {
+               
+            if (minutes < InfModeFirstWave)
+            {
+                if (!hasShownFirstWaveAlert)
+                {
+                    ShowAlerts(@$"{InfModeFirstWave} MINUTES!
+                            20% LESS TIME ON DELIVERS
+                            ");
+                    hasShownFirstWaveAlert = true;
+                }
+            }
+            else if (minutes < InfModeSecondWave)
+            {
+                if (!hasShownSecondWaveAlert)
+                {
+                    ShowAlerts(@$"{InfModeSecondWave} MINUTES!
+                            30% LESS TIME ON DELIVERS
+                            ");
+                    hasShownSecondWaveAlert = true;
+                }
+            }
+            else if (minutes < InfModeThirdWave)
+            {
+                if (!hasShownThirdWaveAlert)
+                {
+                    ShowAlerts(@$"{InfModeThirdWave} MINUTES!
+                            50% LESS TIME ON DELIVERS
+                            ");
+                    hasShownThirdWaveAlert = true;
+                }
+            }
+            else if (minutes < InfModeRemainingWave)
+            {
+                if (!hasShownRemainingWaveAlert)
+                {
+                    ShowAlerts(@$"{InfModeRemainingWave} MINUTES!
+                            75% LESS TIME ON DELIVERS
+                            ");
+                    hasShownRemainingWaveAlert = true;
+                }
+            }
+            }
+            */
+            #endregion
+            
+            
         }
         if (_currentSecondsLeft < 0)
         {
@@ -326,24 +396,25 @@ public class LevelManager : MonoBehaviour
     /// <param name="ammount"></param>
     public void SumTime(float ammount)
     {
+        float minutes = elapsedTime/60;
         float timeFactor;
-        if (elapsedTime < 4f)
+        if (minutes < InfModeFirstWave)
         {
             timeFactor = 1f;
         }
-        else if (elapsedTime < 8f)
+        else if (minutes < InfModeSecondWave)
         {
             timeFactor = 0.8f;
         }
-        else if (elapsedTime < 15f)
+        else if (minutes < InfModeThirdWave)
         {
             timeFactor = 0.7f;
         }
-        else if (elapsedTime < 25f)
+        else if (minutes < InfModeRemainingWave)
         {
             timeFactor = 0.5f;
         }
-        else // A partir de los 25 minutos el juego es extremo, casi injugable
+        else // A partir de estos minutos, el juego es extremo, casi injugable
         {
             timeFactor = 0.35f;
         }
@@ -422,43 +493,64 @@ public class LevelManager : MonoBehaviour
 
     private void TimeIsOverText()
     {
-        _levelNameText.text = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        // Cambiar los nombres de las escenas conllevaba a varios conflictos, la mejor solucion que tuvimos
+        // para ajustar el texto de la escena a ingles es de esta manera.
+        switch (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+        {
+            case "NivelPrincipal":
+            _levelNameText.text = "Main Level";
+            break;
 
-        _moneyEndText.text = "Dinero recopilado: " + Money.ToString();
+            case "NivelInfinito":
+            _levelNameText.text = "Infinite Level";
+            break;
+        }
 
-        if (_levelRange == Range.S)
+
+        if (!InfiniteMode)
         {
-            _levelRangeText.text = "S";
+            _moneyEndText.text = "Gained money: " + Money.ToString();
+             if (_levelRange == Range.S)
+            {
+                _levelRangeText.text = "S";
+            }
+            else if (_levelRange == Range.A)
+            {
+                _levelRangeText.text = "A";
+            }
+            else if (_levelRange == Range.B)
+            {
+                _levelRangeText.text = "B";
+            }
+            else if (_levelRange == Range.C)
+            {
+                _levelRangeText.text = "C";
+            }
+            else if (_levelRange == Range.D)
+            {
+                _levelRangeText.text = "D";
+            }
+            else if (_levelRange == Range.E)
+            {
+                _levelRangeText.text = "E";
+            }
+            else
+            {
+                _levelRangeText.text = "F";
+            }
         }
-        else if (_levelRange == Range.A)
-        {
-            _levelRangeText.text = "A";
+        else 
+        {     
+            _moneyEndText.text = "Elapsed time: " + (int)elapsedTime;
+
         }
-        else if (_levelRange == Range.B)
-        {
-            _levelRangeText.text = "B";
-        }
-        else if (_levelRange == Range.C)
-        {
-            _levelRangeText.text = "C";
-        }
-        else if (_levelRange == Range.D)
-        {
-            _levelRangeText.text = "D";
-        }
-        else if (_levelRange == Range.E)
-        {
-            _levelRangeText.text = "E";
-        }
-        else
-        {
-            _levelRangeText.text = "F";
-        }
+
+       
 
         if (_receiver != null)
         {
-            _deliveredObjectsText.text = "Pedidos entregados: " + _receiver.GetDeliveredObjectsNumber().ToString();
-            _failedDeliveriesText.text = "Pedidos fallidos: " + _receiver.GetFailedDeliveriesNumber().ToString();
+            _deliveredObjectsText.text = "Deliveries sent: " + _receiver.GetDeliveredObjectsNumber().ToString();
+            _failedDeliveriesText.text = "Failed tasks: " + _receiver.GetFailedDeliveriesNumber().ToString();
         }
     }
 
@@ -595,7 +687,36 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void ShowAlerts(string text)
+    {
+        
+        AlertsText.text = text;
+        AlertsText.alpha = 1;
+        StartCoroutine(AlertFadeOut(3));
+        
+    }
 
+    private IEnumerator AlertFadeOut(float fadeDuration)
+    {
+        yield return new WaitForSeconds(2f);
+
+        float elapsedTime = 0f;
+        
+        while (elapsedTime < fadeDuration)
+        {
+
+            float newAlpha = Mathf.Lerp(1, 0f, elapsedTime / fadeDuration);
+
+            AlertsText.color = new Color(AlertsText.color.r, AlertsText.color.g, AlertsText.color.b, newAlpha);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+        
+        AlertsText.alpha = 0;    
+    }
+    
 
     #endregion
 } // class LevelManager 
