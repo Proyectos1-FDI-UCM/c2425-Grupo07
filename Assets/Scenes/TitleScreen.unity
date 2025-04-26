@@ -1752,9 +1752,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1592671369}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: TogglePanel
+      - m_Target: {fileID: 516229145}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: ToggleSettingsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2547,17 +2547,6 @@ MonoBehaviour:
   ParallaxEffect: 1
   Limit: -1000
   CameraSpeed: 2
---- !u!114 &1592671369 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4500711967603977697, guid: 42c4a1232b4d5d24ab438a0d7e9b620a, type: 3}
-  m_PrefabInstance: {fileID: 20041655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d468ffefb6a94458cef1e62c34e68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1640410525
 GameObject:
   m_ObjectHideFlags: 0

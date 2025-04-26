@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Este Script es responsable de gestionar las escenas que se van a cargar y los paneles que se abrirán en la pantalla de inicio ("TitleScreen")
+// Guillermo Isaac Ramos Medina
+// Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
@@ -25,7 +25,7 @@ public class SceneLoader : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,21 +34,14 @@ public class SceneLoader : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -58,15 +51,25 @@ public class SceneLoader : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    /// <summary>
+    /// Cambia a la escena especificada
+    /// </summary>
+    /// <param name="nameScene">Nombre de la escena a la que se quiere ir</param>
     public void WarpScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);
     }
-
+    //Cierra el juego
     public void QuitGame()
     { Application.Quit(); }
+
+    //Abre el panel de Ajustes
+    public void ToggleSettingsPanel()
+    {
+        SettingsManager.Instance.TogglePanel();
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -74,7 +77,7 @@ public class SceneLoader : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class SceneLoader 
 // namespace
