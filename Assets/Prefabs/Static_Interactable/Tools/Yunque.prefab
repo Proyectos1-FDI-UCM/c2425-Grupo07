@@ -196,7 +196,8 @@ MonoBehaviour:
   _materialSource: {fileID: 0}
   MaxClicks: 6
   CurrentClicks: 0
-  AnvilSFX: {fileID: 5212488841904494628}
+  AnvilSFX: {fileID: 0}
+  Particle: {fileID: 2665669132884392292, guid: 8c614999ff2b7284f879fbb5abac26ea, type: 3}
 --- !u!114 &4430715627000207075
 MonoBehaviour:
   m_ObjectHideFlags: 0

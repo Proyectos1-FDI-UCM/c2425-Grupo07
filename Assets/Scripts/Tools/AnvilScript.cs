@@ -8,6 +8,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -45,6 +46,8 @@ public class AnvilScript : MonoBehaviour
     /// </summary>
     [SerializeField] private AudioSource AnvilSFX;
 
+
+    [SerializeField] private ParticleSystem Particle;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -138,6 +141,10 @@ public class AnvilScript : MonoBehaviour
                 if (AnvilSFX != null)
                 {
                     AnvilSFX.Play();
+                }
+                if(Particle != null)
+                {
+                    Instantiate(Particle, transform.position, Quaternion.identity);
                 }
                 _progress = CurrentClicks / MaxClicks;
                 _materialSource.UpdateProgress(_progress);
