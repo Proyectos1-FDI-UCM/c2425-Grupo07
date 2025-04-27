@@ -114,7 +114,10 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-
+    [SerializeField]private bool _firstTime = false;
+    private PauseMenuManager _pauseMenu;
+    private IndicatorChange _indicatorChange;
+    private Button _tutorial;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -180,6 +183,36 @@ public class GameManager : MonoBehaviour
         {
             UpdateStats();
             _statsUpdated = true;
+        }
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && !_firstTime)
+        {
+            if (FindAnyObjectByType<PauseMenuManager>() != null)
+            {
+                _pauseMenu = FindAnyObjectByType<PauseMenuManager>();
+                _pauseMenu.HandleInput();
+            }
+            if (FindAnyObjectByType<IndicatorChange>() != null)
+            {
+                _indicatorChange = FindAnyObjectByType<IndicatorChange>();
+
+                _indicatorChange.SetFirst(_firstTime);
+                _tutorial = _indicatorChange.GetComponent<Button>();
+                _tutorial.interactable = true;
+                _tutorial.onClick.Invoke();
+                _firstTime = true;
+            }
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_firstTime && _tutorial == null)
+        {
+            if (FindAnyObjectByType<IndicatorChange>() != null)
+            {
+                _indicatorChange = FindAnyObjectByType<IndicatorChange>();
+
+                _tutorial = _indicatorChange.GetComponent<Button>();
+                _tutorial.interactable = false;
+                _tutorial.image.enabled = false;
+            }
         }
     }
 
@@ -438,6 +471,11 @@ public class GameManager : MonoBehaviour
             _levels[i].SetMoney("--");
             _levels[i].SetRank("F");
         }
+    }
+
+    public bool ReturnFirst()
+    {
+        return _firstTime;
     }
     #endregion
 } // class GameManager 

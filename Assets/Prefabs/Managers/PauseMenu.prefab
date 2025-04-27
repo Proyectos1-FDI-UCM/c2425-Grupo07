@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8519037110589454917}
+      - m_Target: {fileID: 5195072211625331680}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Pass
         m_Mode: 1
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8519037110589454917}
+      - m_Target: {fileID: 5195072211625331680}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Off
         m_Mode: 1
@@ -558,9 +558,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5518191890435149837}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 814356021962712770}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1518,6 +1518,7 @@ GameObject:
   - component: {fileID: 3525313630700524665}
   - component: {fileID: 814356021962712770}
   - component: {fileID: 1334969896988526265}
+  - component: {fileID: 5195072211625331680}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -1626,7 +1627,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8519037110589454917}
+      - m_Target: {fileID: 5195072211625331680}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: On
         m_Mode: 1
@@ -1638,9 +1639,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5518191890435149837}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 814356021962712770}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1650,6 +1651,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5195072211625331680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518191890435149837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c74e14f0cdaa4940937f2703f226c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Page:
+  - {fileID: -619902682, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 157716116, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 1326312019, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 68316368, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: -781588031, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 606525236, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 896115137, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: -1148255183, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  Tutorial: {fileID: 8430328166125779450}
+  Skip: {fileID: 1644658805605646576}
+  Resume: {fileID: 3897032001011695904}
+  _pauseMenu: {fileID: 0}
+  TutorialObject: {fileID: 5876559829627385951}
 --- !u!1 &5876559829627385951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1686,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8475613767259407299}
-  - component: {fileID: 8519037110589454917}
   - component: {fileID: 5436687911423334959}
   - component: {fileID: 8653306082067987101}
   m_Layer: 5
@@ -1688,30 +1714,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.43, y: -9.2}
   m_SizeDelta: {x: 1222, y: 807.4}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8519037110589454917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5876559829627385951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c74e14f0cdaa4940937f2703f226c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Page:
-  - {fileID: -619902682, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 157716116, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 1326312019, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 68316368, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: -781588031, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 606525236, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 896115137, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: -1148255183, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  Tutorial: {fileID: 8430328166125779450}
-  Skip: {fileID: 1644658805605646576}
-  Resume: {fileID: 3897032001011695904}
 --- !u!222 &5436687911423334959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1937,7 +1939,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8519037110589454917}
+      - m_Target: {fileID: 5195072211625331680}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Return
         m_Mode: 1

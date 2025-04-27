@@ -27,6 +27,12 @@ public class IndicatorChange : MonoBehaviour
 
     [SerializeField] private Sprite[] Page;
     [SerializeField] private Canvas Tutorial;
+    [SerializeField] private GameObject Skip;
+    [SerializeField] private GameObject Resume;
+    [SerializeField] private PauseMenuManager _pauseMenu;
+    [SerializeField] private GameObject TutorialObject;
+    private Image _page;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,10 +45,8 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private int _num = 0;
-    private Image _page;
-    private bool _first = false;
-    [SerializeField] private GameObject Skip;
-    [SerializeField] private GameObject Resume;
+    [SerializeField]private bool _first;
+    private GameManager _gameManager;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -58,8 +62,25 @@ public class IndicatorChange : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _page = gameObject.GetComponent<Image>();
+        _page = TutorialObject.GetComponent<Image>();
+        if (FindAnyObjectByType<PauseMenuManager>() != null)
+        {
+            _pauseMenu = FindAnyObjectByType<PauseMenuManager>();
+        }
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+        }
     }
+
+    private void Update()
+    {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_first) 
+        {
+            _first = _gameManager.ReturnFirst();
+        }
+    }
+
 
     #endregion
 
@@ -103,19 +124,35 @@ public class IndicatorChange : MonoBehaviour
 
     public void On()
     {
-        gameObject.SetActive(true);
+        TutorialObject.gameObject.SetActive(true);
         Tutorial.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(Skip);
     }
 
     public void Off()
     {
-        gameObject.SetActive(false);
-        Tutorial.gameObject.SetActive(false);
-        _first = true;
-        _page.sprite = Page[0];
-        _num = 0;
-        EventSystem.current.SetSelectedGameObject(Resume);
+        if (!_first)
+        {
+            _first = true;
+            TutorialObject.gameObject.SetActive(false);
+            Tutorial.gameObject.SetActive(false);
+            _page.sprite = Page[0];
+            _num = 0;
+            _pauseMenu.HandleInput();
+        }
+        else
+        {
+            TutorialObject.gameObject.SetActive(false);
+            Tutorial.gameObject.SetActive(false);
+            _page.sprite = Page[0];
+            _num = 0;
+            EventSystem.current.SetSelectedGameObject(Resume);
+        }
+    }
+
+    public void SetFirst(bool game)
+    {
+        _first = game;
     }
     #endregion
 
