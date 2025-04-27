@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cafe12b2365df814898525a40a95caf2
+guid: fb053bfc1ade3f54192af5bfb4e78a45
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_0
+      name: sci_fi_buttons (2)_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 136
-        width: 64
-        height: 38
+        x: 0
+        y: 0
+        width: 13
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01ea698a4b68d3749baac394a98ca2aa
-      internalID: -1322022445
+      spriteID: 78d2e08e663809749bf29299396d796d
+      internalID: -528278733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_1
+      name: sci_fi_buttons (2)_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 488
-        width: 64
-        height: 48
+        x: 38
+        y: 0
+        width: 13
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,92 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c3c2c435d395ab4bb2aa189fbf608cf
-      internalID: 1144769996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_2
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 206
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3520264645ef024ab19e46fec191d21
-      internalID: 1378558300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_3
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 176
-        width: 28
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7472f4db3336e2041b8a2c62d240cd0a
-      internalID: 1987699400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_4
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 176
-        width: 28
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68e131c3ba78b384288b5ee4285ffeab
-      internalID: -889984571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CraftingTable_Y_Recibidor 1_5
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 134
-        width: 36
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f361ff925a0b60e4890536eaf47b4ffd
-      internalID: 19003265
+      spriteID: 00a63e47539bca8498ad1ea459b5e9fb
+      internalID: 81303501
       vertices: []
       indices: 
       edges: []
@@ -259,12 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CraftingTable_Y_Recibidor 1_0: -1322022445
-      CraftingTable_Y_Recibidor 1_1: 1144769996
-      CraftingTable_Y_Recibidor 1_2: 1378558300
-      CraftingTable_Y_Recibidor 1_3: 1987699400
-      CraftingTable_Y_Recibidor 1_4: -889984571
-      CraftingTable_Y_Recibidor 1_5: 19003265
+      sci_fi_buttons (2)_0: -528278733
+      sci_fi_buttons (2)_1: 81303501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
