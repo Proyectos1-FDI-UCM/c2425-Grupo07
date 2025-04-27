@@ -2941,6 +2941,7 @@ MonoBehaviour:
   ControlsUI: {fileID: 4883053202189711404}
   PauseMenuFirstButton: {fileID: 3216842997811734874}
   ResetPanel: {fileID: 7683197970287720100}
+  CloseTutorial: {fileID: 5111822089673670821}
 --- !u!1 &2778172070644378493
 GameObject:
   m_ObjectHideFlags: 0
@@ -9145,6 +9146,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3897032001011695904, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
   m_PrefabInstance: {fileID: 1923472845118417018}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5111822089673670821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6647694889596889311, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}
+  m_PrefabInstance: {fileID: 1923472845118417018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5832230888723392228 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5350754968440639134, guid: 55a4b75d5be3f674daefd6b5f2cf904b, type: 3}

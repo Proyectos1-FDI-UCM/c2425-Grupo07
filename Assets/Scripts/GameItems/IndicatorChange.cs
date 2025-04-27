@@ -45,7 +45,8 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private int _num = 0;
-    [SerializeField]private bool _first;
+    private bool _first;
+    private bool _active;
     private GameManager _gameManager;
     #endregion
 
@@ -126,6 +127,7 @@ public class IndicatorChange : MonoBehaviour
     {
         TutorialObject.gameObject.SetActive(true);
         Tutorial.gameObject.SetActive(true);
+        _active = true;
         EventSystem.current.SetSelectedGameObject(Skip);
     }
 
@@ -134,6 +136,7 @@ public class IndicatorChange : MonoBehaviour
         if (!_first)
         {
             _first = true;
+            _active = false;
             TutorialObject.gameObject.SetActive(false);
             Tutorial.gameObject.SetActive(false);
             _page.sprite = Page[0];
@@ -146,6 +149,7 @@ public class IndicatorChange : MonoBehaviour
             Tutorial.gameObject.SetActive(false);
             _page.sprite = Page[0];
             _num = 0;
+            _active = false;
             EventSystem.current.SetSelectedGameObject(Resume);
         }
     }
@@ -154,6 +158,7 @@ public class IndicatorChange : MonoBehaviour
     {
         _first = game;
     }
+    public bool ReturnActive() { return _active; }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

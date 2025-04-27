@@ -29,7 +29,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
     [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
     [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
-
+    [SerializeField] private Button CloseTutorial; //Boton de cerrar el tutorial
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,9 +43,9 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool _paused = false;  //Indica si el juego esta pausado o no.
     private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
-
+    private bool _tutorial = false; //Indica si el tutorial esta activado
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
-
+    private IndicatorChange _indicatorChange;
     private LevelManager _levelManager; // Referencia al script LevelManager
 
     #endregion
@@ -77,6 +77,12 @@ public class PauseMenuManager : MonoBehaviour
             (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
         {
             HandleInput();
+        }
+
+        if(FindAnyObjectByType<IndicatorChange>() != null)
+        {
+            _indicatorChange = FindAnyObjectByType<IndicatorChange>();
+            _tutorial = _indicatorChange.ReturnActive();
         }
     }
 
@@ -162,6 +168,10 @@ public class PauseMenuManager : MonoBehaviour
             else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
             {
                 ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
+            }
+            else if (_tutorial)
+            {
+                CloseTutorial.onClick.Invoke();
             }
             else
             {
