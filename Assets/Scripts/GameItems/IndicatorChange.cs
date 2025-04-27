@@ -31,6 +31,7 @@ public class IndicatorChange : MonoBehaviour
     [SerializeField] private GameObject Resume;
     [SerializeField] private PauseMenuManager _pauseMenu;
     [SerializeField] private GameObject TutorialObject;
+    [SerializeField] private Button TutorialButton;
     private Image _page;
 
     #endregion
@@ -45,8 +46,8 @@ public class IndicatorChange : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private int _num = 0;
-    private bool _first;
-    private bool _active;
+    [SerializeField] private bool _first;
+    [SerializeField] private bool _active;
     private GameManager _gameManager;
     #endregion
 
@@ -76,9 +77,13 @@ public class IndicatorChange : MonoBehaviour
 
     private void Update()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_first) 
+        if (!_first) 
         {
             _first = _gameManager.ReturnFirst();
+        }
+        if (_first && !_active)
+        {
+            TutorialButton.image.enabled = true;
         }
     }
 

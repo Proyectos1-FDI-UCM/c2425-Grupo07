@@ -12567,13 +12567,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1296086853512662712, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2778172070644378493, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Name
       value: Level Canvas UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207369951484885111, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7948579090217374080, guid: b9d38b1c8804cb04cb427847ab4bee14, type: 3}
       propertyPath: m_Camera

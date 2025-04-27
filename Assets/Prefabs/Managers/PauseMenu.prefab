@@ -1677,6 +1677,7 @@ MonoBehaviour:
   Resume: {fileID: 3897032001011695904}
   _pauseMenu: {fileID: 0}
   TutorialObject: {fileID: 5876559829627385951}
+  TutorialButton: {fileID: 1334969896988526265}
 --- !u!1 &5876559829627385951
 GameObject:
   m_ObjectHideFlags: 0
