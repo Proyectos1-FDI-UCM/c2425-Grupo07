@@ -6345,6 +6345,10 @@ PrefabInstance:
       propertyPath: m_text
       value: U're not supposed to be seeing this
       objectReference: {fileID: 0}
+    - target: {fileID: 2490257416407586455, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3196351615654132168, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
       value: U're not supposed to be seeing this
