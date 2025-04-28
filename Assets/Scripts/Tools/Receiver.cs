@@ -377,7 +377,15 @@ public class Receiver : MonoBehaviour
             _recieverAudioSource.Play();
         }
 
-        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true); // termina la tarea satisfactoriamente.
+        if (!InfiniteMode)
+        {
+        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true);  // termina la tarea satisfactoriamente.
+        }
+        else
+        {
+        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true,true);
+        }
+        
         _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
         _deliveredObjectsNumber++;
@@ -396,6 +404,20 @@ public class Receiver : MonoBehaviour
     }
 
     /// <summary>
+    /// Método encargado se sumar el tiempo cuando se entrega un pedido en el nivel Infinito
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <param name="doneColor"></param>
+    public void AddTime(float amount)
+    {
+        if (_levelManager != null)
+        {
+
+            _levelManager.SumTime(amount);
+        }
+        else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
+    }
+    /// <summary>
     /// Establece el modo inactivo del receptor.
     /// Oculta todas las UI y alertas.
     /// </summary>
@@ -410,15 +432,12 @@ public class Receiver : MonoBehaviour
     /// <summary>
     /// Gestiona la UI de los objetos que se pueden recibir.
     /// </summary>
-    /// <param name="visible">Determina si la UI debe ser visible</param>
-    private void InstatiateObjectUI(bool visible)
+    /// <param name="state">Determina si la UI debe ser visible</param>
+    private void InstatiateObjectUI(bool state)
     {
-        if (!InfiniteMode) // Más adelante implementamos el modo infinito :) 
-        {
             if (_actualDeliveryUI != null) Destroy(_actualDeliveryUI); // quita el cartel anterior
             _actualDeliveryUI = Instantiate(ObjectsUI[_indexer], transform); // Instancia el popUp visual del siguiente Objeto a reparar
-            _actualDeliveryUI.SetActive(visible);
-        }
+            _actualDeliveryUI.SetActive(state);
     }
     #endregion   
 } // class Receiver 
