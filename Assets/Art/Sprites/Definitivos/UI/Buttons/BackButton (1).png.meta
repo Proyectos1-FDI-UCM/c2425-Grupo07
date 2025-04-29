@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc2b5b68153ab25488b433409b60af42
+guid: fe61c7036803c544e81e46dd981833dc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackButton_0
+      name: BackButton (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,17 +137,38 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62490fba99bd4a8438f391e5d47d751d
-      internalID: 1930620197
+      spriteID: a39a339ec6ff7784c89a89056a647550
+      internalID: -1089875036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BackButton_1
+      name: BackButton (1)_1
       rect:
         serializedVersion: 2
         x: 58
+        y: 0
+        width: 55
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f785d264b7e011742ade1bfd562b5797
+      internalID: 884170151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackButton (1)_2
+      rect:
+        serializedVersion: 2
+        x: 116
         y: 0
         width: 55
         height: 28
@@ -158,17 +179,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c18d88acd6c7caa45a227bc9b3d88590
-      internalID: 1658892595
+      spriteID: 14e9a3dca7507174b9997117182179f9
+      internalID: 550659473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BackButton_2
+      name: BackButton (1)_3
       rect:
         serializedVersion: 2
-        x: 116
+        x: 174
         y: 0
         width: 55
         height: 26
@@ -179,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d673e3ff4ef8705439af4c8bcf02e548
-      internalID: -164705106
+      spriteID: 267fec12f3ca51a43bda19efbf2019a1
+      internalID: 1950289265
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BackButton_0: 1930620197
-      BackButton_1: 1658892595
-      BackButton_2: -164705106
+      BackButton (1)_0: -1089875036
+      BackButton (1)_1: 884170151
+      BackButton (1)_2: 550659473
+      BackButton (1)_3: 1950289265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
