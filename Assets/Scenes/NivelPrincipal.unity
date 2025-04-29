@@ -5912,6 +5912,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 36025952515650390, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: ButtonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
     - target: {fileID: 136317000016200040, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0

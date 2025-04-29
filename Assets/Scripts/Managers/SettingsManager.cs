@@ -208,6 +208,14 @@ public class SettingsManager : MonoBehaviour
         SfxSource.PlayOneShot(clip);
     }
 
+    /// <summary>
+    /// Reproduce el clip actual del audiosource
+    /// </summary>
+    public void PlayActualClip()
+    {
+        SfxSource.Play();
+    }
+
     public void AudioSliderTest()
     {
         if (!SfxSource.isPlaying){

@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
@@ -24,6 +25,8 @@ public class SceneLoader : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    // hace posible el sonido de los botones
+    [SerializeField] private AudioClip ButtonSound;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -57,7 +60,9 @@ public class SceneLoader : MonoBehaviour
     /// <param name="nameScene">Nombre de la escena a la que se quiere ir</param>
     public void WarpScene(string nameScene)
     {
-        SceneManager.LoadScene(nameScene);
+        SettingsManager.Instance.PlaySFX(ButtonSound);
+        StartCoroutine(DelayOnSceneChange(nameScene));
+        
     }
     //Cierra el juego
     public void QuitGame()
@@ -68,6 +73,13 @@ public class SceneLoader : MonoBehaviour
     {
         SettingsManager.Instance.TogglePanel();
     }
+
+    public void RestartLevel()
+    {
+        string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        SettingsManager.Instance.PlaySFX(ButtonSound);
+        StartCoroutine(DelayOnSceneChange(actualSceneName, true));
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -76,6 +88,21 @@ public class SceneLoader : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+
+    /// <summary>
+    /// Changes the scene after a delay. (DEFAULT : = 0.5 seconds)
+    /// It can also unpause the time when the game was paused.
+    /// </summary>
+    /// <param name="nameScene"></param>
+    /// <param name="Unpause"></param>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay = 0.5f)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        if (Unpause) { Time.timeScale = 1f; }
+        SceneManager.LoadScene(nameScene);
+    }
 
     #endregion
 

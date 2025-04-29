@@ -6345,6 +6345,10 @@ PrefabInstance:
       propertyPath: m_text
       value: U're not supposed to be seeing this
       objectReference: {fileID: 0}
+    - target: {fileID: 2306603125548132067, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: ButtonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
     - target: {fileID: 2490257416407586455, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_IsActive
       value: 1

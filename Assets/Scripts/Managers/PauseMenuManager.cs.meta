@@ -3,7 +3,13 @@ guid: 5949ef3d472546142a75ad0b2ed2489b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PauseMenuUI: {instanceID: 0}
+  - ControlsUI: {instanceID: 0}
+  - PauseMenuFirstButton: {instanceID: 0}
+  - ResetPanel: {instanceID: 0}
+  - CloseTutorial: {instanceID: 0}
+  - ButtonSound: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

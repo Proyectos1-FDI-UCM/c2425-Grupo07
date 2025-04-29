@@ -5,9 +5,11 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -30,6 +32,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
     [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
     [SerializeField] private Button CloseTutorial; //Boton de cerrar el tutorial
+    [SerializeField] private AudioClip ButtonSound; //Sonido de los botones
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -99,6 +102,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void Resume()
     {
+        SettingsManager.Instance.PlaySFX(ButtonSound);
         HandleInput();
         ControlsUI.SetActive(false);
     }
@@ -108,7 +112,9 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        SettingsManager.Instance.PlaySFX(ButtonSound);
+        StartCoroutine(DelayOnSceneChange(actualSceneName, true));
     }
 
     /// <summary>
@@ -117,8 +123,8 @@ public class PauseMenuManager : MonoBehaviour
     /// <param name="nameScene"></param>
     public void ChangeScenesButtons(string nameScene)
     {
-        Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
+        SettingsManager.Instance.PlaySFX(ButtonSound);
+        StartCoroutine(DelayOnSceneChange(nameScene,true));
     }
 
     /// <summary>
@@ -126,6 +132,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ToggleControlPanel()
     {
+        SettingsManager.Instance.PlaySFX(ButtonSound);
         if (!_controlPannelActive)
         {
             ControlsUI.SetActive(true);
@@ -206,6 +213,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ToggleSettingsPanel()
     {
+        SettingsManager.Instance.PlaySFX(ButtonSound);
         SettingsManager.Instance.TogglePanel();
     }
     /// <summary>
@@ -226,6 +234,35 @@ public class PauseMenuManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Changes the scene after a delay
+    /// </summary>
+    /// <param name="nameScene"></param>
+    /// <param name="Unpause"></param>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+
+    private IEnumerator DelayOnSceneChange(int sceneIndex, bool Unpause = true, float delay = 0.5f)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        if (Unpause) { Time.timeScale = 1f; }
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    /// <summary>
+    /// Changes the scene after a delay. (DEFAULT : = 0.5 seconds)
+    /// It can also unpause the time when the game was paused.
+    /// </summary>
+    /// <param name="nameScene"></param>
+    /// <param name="Unpause"></param>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay = 0.5f)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        if (Unpause) { Time.timeScale = 1f; }
+        SceneManager.LoadScene(nameScene);
+    }
 
 
     #endregion
