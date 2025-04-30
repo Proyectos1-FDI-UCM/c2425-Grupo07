@@ -313,6 +313,15 @@ public class GameManager : MonoBehaviour
         _levelName = _level.GetLevelName();
     }
 
+    /// <summary>
+    /// Comprueba si el nivel es el infinito, en caso de serlo devuelve true
+    /// </summary>
+    /// <returns></returns>
+    public bool isInfiniteMode()
+    {
+        return _levelName == "NivelInfinito";
+    }
+
     public void SetLevelData(Level _levelToAssign)
     {
         _level = _levelToAssign;
@@ -496,7 +505,14 @@ public class GameManager : MonoBehaviour
             
             if (_moneyNumberlevel[i] > 0)
             {
-                _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
+                if (_levels[i].GetLevelName() == "NivelInfinito")
+                {
+                    _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
+                }
+                else
+                {
+                    _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
+                }
             }
         }
     }

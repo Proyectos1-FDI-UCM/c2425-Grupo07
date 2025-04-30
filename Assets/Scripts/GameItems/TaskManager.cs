@@ -77,6 +77,8 @@ public class TaskManager : MonoBehaviour
     /// </summary>
     private Receiver _receiver;
 
+    private static bool _isInfiniteMode = false; // Variable estática para saber si el modo es infinito o no, se usa para penalizar al jugador por no entregar el pedido a tiempo o tirarlo a la basura.
+
 
     private void Start()
     {
@@ -84,6 +86,12 @@ public class TaskManager : MonoBehaviour
         color1.a = 1f;
         color2.a = 1f;
         color3.a = 1f;
+
+        // Se actualiza _isInfiniteMode para saber si el modo es infinito o no, se usa para penalizar al jugador por no entregar el pedido a tiempo o tirarlo a la basura.
+        if (GameManager.Instance != null)
+        {
+            _isInfiniteMode = GameManager.Instance.isInfiniteMode();
+        }
     }
     #endregion
     
@@ -138,12 +146,12 @@ public class TaskManager : MonoBehaviour
         /// Se llama cuando el objeto es entregado o destruido.
         /// Además impide que se pueda entregar el pedido o que se puedan añadir materiales si ya se ha acabado el tiempo.
         /// </summary>
-    public void EndTask(bool delivered=false, bool infiniteMode=false)
+    public void EndTask(bool delivered=false)
     {
         if (delivered && !IsTaskEnded()) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
         {
 
-            if (!infiniteMode)
+            if (!_isInfiniteMode)
             {
                 if (_progressBar.color == color1)
                 {
@@ -171,10 +179,10 @@ public class TaskManager : MonoBehaviour
         }
         else if (!IsTaskEnded()) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
         {
-            if (infiniteMode)
+            if (_isInfiniteMode)
             {
                 Debug.Log("No entregado, penalización de 20 segundos");
-                _receiver.AddTime(-ConvertPaymentToTime(100));
+                _receiver.AddTime(-ConvertPaymentToTime(100f));
             }
             else
             {
@@ -215,7 +223,7 @@ public class TaskManager : MonoBehaviour
 /// </summary>
 /// <param name="Tasktime">Tiempo que tardará el pedido en acabarse.</param>
 /// <returns></returns>
-    private IEnumerator ProgressBar(int Tasktime)
+    private IEnumerator ProgressBar(int Tasktime, bool infiniteMode = false)
     {
         float time = 0f;
         float cuarto = Tasktime / 4;
@@ -251,7 +259,10 @@ public class TaskManager : MonoBehaviour
             yield return null;
         }
         
-        EndTask(false);
+
+        EndTask(false);// Penaliza al jugador por no entregar el pedido a tiempo, le resta 50 de dinero o 20 segundos si es el modo infinito
+        // la primera boleana es para saber si se ha entregado el pedido o no, la segunda es para saber si es el modo infinito o no.
+        
     }
 
     /// <summary>

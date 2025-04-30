@@ -376,15 +376,7 @@ public class Receiver : MonoBehaviour
         {
             _recieverAudioSource.Play();
         }
-
-        if (!InfiniteMode)
-        {
         _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true);  // termina la tarea satisfactoriamente.
-        }
-        else
-        {
-        _deliveredObject.gameObject.GetComponent<TaskManager>().EndTask(true,true);
-        }
         
         _playerVision.SetIsBeingPicked(false); // para que el jugador pueda soltar el objeto y no salten errores de nullreference :)
         Destroy(_deliveredObject.gameObject);
@@ -412,7 +404,6 @@ public class Receiver : MonoBehaviour
     {
         if (_levelManager != null)
         {
-
             _levelManager.SumTime(amount);
         }
         else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
