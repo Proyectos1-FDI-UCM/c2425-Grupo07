@@ -77,11 +77,21 @@ public class TaskManager : MonoBehaviour
     /// </summary>
     private Receiver _receiver;
 
-    private static bool _isInfiniteMode = false; // Variable estática para saber si el modo es infinito o no, se usa para penalizar al jugador por no entregar el pedido a tiempo o tirarlo a la basura.
+    /// <summary>
+    /// Variable estática para saber si el modo es infinito o no, se usa para penalizar al jugador por no entregar el pedido a tiempo o tirarlo a la basura.
+    /// </summary>
+    private static bool _isInfiniteMode = false;
+
+    /// <summary>
+    /// Referencia al script Objects
+    /// </summary>
+    private Objects _object;
 
 
     private void Start()
     {
+        _object = gameObject.GetComponent<Objects>();
+
         // Por lo que sea los colores que se introducen por serializefield se ponen con alfa en 0,  con esto se evita ese problema.
         color1.a = 1f;
         color2.a = 1f;
@@ -118,6 +128,18 @@ public class TaskManager : MonoBehaviour
         if (other.GetComponent<BinScript>() != null && !IsTaskEnded())
         {
             _binAlert.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (IsTaskEnded())
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(0.83f, 0.24f, 0.24f, 1);
+            _object.ChangeIndicatorsColor();
         }
     }
     #endregion

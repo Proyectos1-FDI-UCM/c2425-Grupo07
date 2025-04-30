@@ -175,6 +175,17 @@ public class Objects : MonoBehaviour
         if(_n<OrdenPedidos.Length) _n++;
         _skin.sprite = ObjectImage[_nGood];
     }
+
+    /// <summary>
+    /// Cambia el color de los indicadores de capacidad a rojo (este método es llamado por TaskManager cuando se acaba el tiempo de un pedido)
+    /// </summary>
+    public void ChangeIndicatorsColor()
+    {
+        for (int i = 0; i < Materials.Length; i++)
+        {
+            CapacityAmount[i].material.color = Color.red; // Cambia a color de erróneo.
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
