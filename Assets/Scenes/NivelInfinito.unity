@@ -6314,12 +6314,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 519978535709009967, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 776.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 519978535709009967, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 13
+      value: 33.371
       objectReference: {fileID: 0}
     - target: {fileID: 1094904449568796574, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: _maxTime
-      value: 25
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1094904449568796574, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: InfiniteMode
@@ -6356,6 +6360,10 @@ PrefabInstance:
     - target: {fileID: 3196351615654132168, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
       value: U're not supposed to be seeing this
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196351615654132168, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_margin.x
+      value: 2.845337
       objectReference: {fileID: 0}
     - target: {fileID: 3418355932251125872, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
@@ -6408,8 +6416,12 @@ PrefabInstance:
       value: Managers_Infinite_Level
       objectReference: {fileID: 0}
     - target: {fileID: 4727542081914117297, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 776.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727542081914117297, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11.5
+      value: 33.372
       objectReference: {fileID: 0}
     - target: {fileID: 4882040143382032969, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
@@ -6420,8 +6432,20 @@ PrefabInstance:
       value: Back to Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6702142138307443921, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 776.1382
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702142138307443921, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 17
+      value: 33.3741
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539580839244465326, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539580839244465326, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8245960425580024274, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_IsActive

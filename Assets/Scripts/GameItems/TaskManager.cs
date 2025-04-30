@@ -171,8 +171,16 @@ public class TaskManager : MonoBehaviour
         }
         else if (!IsTaskEnded()) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
         {
-            Debug.Log("No entregado, penalización de 50€");
-            _receiver.AddMoney(-50, Color.red);
+            if (infiniteMode)
+            {
+                Debug.Log("No entregado, penalización de 20 segundos");
+                _receiver.AddTime(-ConvertPaymentToTime(100));
+            }
+            else
+            {
+                Debug.Log("No entregado, penalización de 50€");
+                _receiver.AddMoney(-50, Color.red);
+            }
             _receiver.IncreaseFailedDeliveriesNumber();
         }
         GetComponent<Objects>().SetCanBeSent(false);
@@ -198,7 +206,7 @@ public class TaskManager : MonoBehaviour
     /// <returns></returns>
     private float ConvertPaymentToTime(float payAmount)
     {
-        const float factorDeConversion = 0.1f;
+        const float factorDeConversion = 0.2f;
         return payAmount * factorDeConversion;
     }
 

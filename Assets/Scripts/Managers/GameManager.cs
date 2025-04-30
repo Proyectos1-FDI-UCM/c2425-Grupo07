@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
             // de la escena particulares o bien olvidar los de la escena
             // previa de la que venimos para que sean efectivamente liberados.
             Debug.Log("Ya existe una instancia de GameManager. Destruyendo esta instancia.");
-            TransferSceneState();
 
             // Y ahora nos destruímos del todo. DestroyImmediate y no Destroy para evitar
             // que se inicialicen el resto de componentes del GameObject para luego ser
@@ -406,11 +405,33 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// SetMoney modifica el tiempo dinero según el tiempo obtenido en la partida
+    /// Utiliza la variable _moneyNumberlevel para almacenar el tiempo ya que no conozco
+    /// el funcionamiento de PlayerPrefs para implementar el almacenamiento de tiempo
+    /// </summary>
+    /// <param name="_money">Cantidad de dinero obtenido en la partida</param>
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
+    public void SetTime(int seconds, int _levelToAssign)
+    {
+        _moneyNumberlevel[_levelToAssign] = seconds;
+        PlayerPrefs.SetString("MoneyLevel: " + _levelToAssign, seconds.ToString());
+    }
+    /// <summary>
     /// GetMoney devuelve la cantidad de dinero obtenida en el nivel
     /// </summary>
     /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     /// <returns></returns>
     public int GetMoney(int _levelToAssign)
+    {
+        return _moneyNumberlevel[_levelToAssign];
+    }
+
+    /// <summary>
+    /// GetTime devuelve la cantidad de dinero obtenida en el nivel (en el nivel infinito es el tiempo)
+    /// </summary>
+    /// <param name="_levelToAssign">El nivel para asignar el rango</param>
+    /// <returns></returns>
+    public int GetTime(int _levelToAssign)
     {
         return _moneyNumberlevel[_levelToAssign];
     }
@@ -438,29 +459,48 @@ public class GameManager : MonoBehaviour
         else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == _levelName);
     }
 
-    private void TransferSceneState()
-    {
-        // De momento no hay que transferir ningún estado
-        // entre escenas
-    }
 
     public void UpdateStats()
+{
+    _levels = FindObjectsOfType<Level>();
+    _moneyTextLevel = new TextMeshProUGUI[_levels.Length];
+    _moneyNumberlevel = new int[_levels.Length];
+    _rankTextLevel = new TextMeshProUGUI[_levels.Length];
+    _levelsRange = new LevelManager.Range[_levels.Length];
+    
+    if (_levels != null)
     {
-        _levels = FindObjectsOfType<Level>();
-        _moneyTextLevel = new TextMeshProUGUI[_levels.Length];
-        _moneyNumberlevel = new int[_levels.Length];
-        _rankTextLevel = new TextMeshProUGUI[_levels.Length];
-        _levelsRange = new LevelManager.Range[_levels.Length];
-        if (_levels != null)
+        for (int i = 0; i < _levels.Length; i++)
         {
-            for (int i = 0; i < _levels.Length;i++)
+            if (PlayerPrefs.HasKey("MoneyLevel: " + i))
             {
-                _moneyTextLevel[i] = _levels[i].GetMoney();
-                _rankTextLevel[i] = _levels[i].GetRankText();
-                _rankTextLevel[i].text = _levels[i].GetRankLetter();
+                string savedValue = PlayerPrefs.GetString("MoneyLevel: " + i);
+                if (int.TryParse(savedValue, out int value))
+                {
+                    _moneyNumberlevel[i] = value;
+                }
+            }
+            
+            if (PlayerPrefs.HasKey("RangeLevel: " + i))
+            {
+                string savedRank = PlayerPrefs.GetString("RangeLevel: " + i);
+                if (Enum.TryParse(savedRank, out LevelManager.Range rank))
+                {
+                    _levelsRange[i] = rank;
+                }
+            }
+            
+            _moneyTextLevel[i] = _levels[i].GetMoney();
+            _rankTextLevel[i] = _levels[i].GetRankText();
+            _rankTextLevel[i].text = _levels[i].GetRankLetter();
+            
+            if (_moneyNumberlevel[i] > 0)
+            {
+                _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
             }
         }
     }
+}
 
     public void ResetProgress()
     {

@@ -6280,6 +6280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeCount
       objectReference: {fileID: 0}
+    - target: {fileID: 338193226879428477, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1667735790989213399, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -6378,6 +6382,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3997392393803813064, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997392393803813064, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4278813638652805249, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_Name
       value: MoneyCount
@@ -6393,6 +6405,14 @@ PrefabInstance:
     - target: {fileID: 4633213175519584139, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009709931683692485, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009709931683692485, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -67.88
       objectReference: {fileID: 0}
     - target: {fileID: 5843458911791375975, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_IsActive
@@ -6417,6 +6437,10 @@ PrefabInstance:
     - target: {fileID: 5939196322195667368, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -18.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171860612892960178, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6227435691425189737, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_Name
@@ -6446,13 +6470,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: RankLetter
       objectReference: {fileID: 0}
+    - target: {fileID: 7930716415039011472, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8523301808607570615, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_text
-      value: 'INfinite Level                 Rank
+      value: 'INfinite Level
 
-        Time:
-
-        Money:'
+        Best Time:'
       objectReference: {fileID: 0}
     - target: {fileID: 8523301808607570615, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_fontColor.b
@@ -6494,6 +6520,10 @@ PrefabInstance:
       propertyPath: SelectionPlayer
       value: 
       objectReference: {fileID: 1438992041}
+    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: _isThisInfiniteLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8739530581344863923, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_text
       value: '-
@@ -6848,7 +6878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3997392393803813064, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -64.5
+      value: 50.1
       objectReference: {fileID: 0}
     - target: {fileID: 3997392393803813064, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6914,7 +6944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5964882072092481332, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -81.5
+      value: 72.98
       objectReference: {fileID: 0}
     - target: {fileID: 5964882072092481332, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6964,9 +6994,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Level 1-1                        Rank
 
-        Time:
+        Level duration:
 
-        Money:'
+        Money
+        record:'
       objectReference: {fileID: 0}
     - target: {fileID: 8523301808607570615, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: m_fontSize
@@ -13111,7 +13142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2139594920671505428, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2139594920671505428, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
       propertyPath: m_LocalPosition.z

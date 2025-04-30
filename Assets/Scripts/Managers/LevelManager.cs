@@ -213,6 +213,11 @@ public class LevelManager : MonoBehaviour
     private bool hasShownSecondWaveAlert = false;
     private bool hasShownThirdWaveAlert = false;
     private bool hasShownRemainingWaveAlert = false;
+
+    /// <summary>
+    /// Un flag que indica si el jugador ha conseguido un nuevo mejor tiempo o no, se resetea a false después de cada partida.
+    /// </summary>
+    public bool newBestFlag = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -257,7 +262,7 @@ public class LevelManager : MonoBehaviour
                 _initialPos[i] = PileOfCash.transform.GetChild(i).position;
             }
         }
-
+        newBestFlag = false;
     }
     /// <summary>
     /// Cuando se pueda continuar disminuye el timer
@@ -326,18 +331,34 @@ public class LevelManager : MonoBehaviour
         {
             StopTimer();
             _currentSecondsLeft = 0;
-            _levelRange = CalculateRange(Money);
-            if ((_gameManager.GetRange(_levelNum) == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
-                (_gameManager.GetRange(_levelNum) == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
-                (_gameManager.GetRange(_levelNum) == Range.A && _levelRange == Range.S))
+            if (!InfiniteMode) // Si es el nivel normal, se calcula el rango, el dinero y se almacena en el GameManager
             {
-                _gameManager.SetRange(_levelRange, _levelNum);
+                _levelRange = CalculateRange(Money);
+                if ((_gameManager.GetRange(_levelNum) == Range.F && (_levelRange == Range.S || _levelRange == Range.A || _levelRange == Range.B)) ||
+                    (_gameManager.GetRange(_levelNum) == Range.B && (_levelRange == Range.S || _levelRange == Range.A)) ||
+                    (_gameManager.GetRange(_levelNum) == Range.A && _levelRange == Range.S))
+                {
+                    _gameManager.SetRange(_levelRange, _levelNum);
+                }
+                if (_gameManager.GetMoney(_levelNum) < Money)
+                {
+                    _gameManager.SetMoney(Money, _levelNum);
+                    _gameManager.SetRange(_levelRange, _levelNum);
+                    newBestFlag = true;
+                }
             }
-            if (_gameManager.GetMoney(_levelNum) < Money)
+            else // Si el nivel es infinito, se calcula el new best utilizando las mismas variables que con el dinero
             {
-                _gameManager.SetMoney(Money, _levelNum);
-                _gameManager.SetRange(_levelRange, _levelNum);
+                Debug.Log($"BEFORE Best Time: {_gameManager.GetTime(_levelNum)}");
+                int tiempotruncado = (int)elapsedTime;
+                if (_gameManager.GetTime(_levelNum) + 0.05f < tiempotruncado ) // Se añade un pequeño margen para evitar errores de redondeo
+                {
+                    _gameManager.SetTime(tiempotruncado, _levelNum);
+                    newBestFlag = true;
+                }
+                Debug.Log($"Current Time: {tiempotruncado}, Stored Best Time: {_gameManager.GetTime(_levelNum)}");
             }
+            
             TimeIsOverText();
             Panel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(RestartButton); // Selecciona el primer botón del canvas que encuentre para el funcionamiento del mando
@@ -509,7 +530,12 @@ public class LevelManager : MonoBehaviour
 
         if (!InfiniteMode)
         {
-            _moneyEndText.text = "Gained money: " + Money.ToString();
+            _moneyEndText.text = "Gained money: " + Money.ToString() + " $";
+            if (newBestFlag)
+                {
+                    _moneyEndText.text += " (NEW BEST!!!)";
+                    newBestFlag = false; // Reseteamos el flag para que no se muestre siempre
+                }
              if (_levelRange == Range.S)
             {
                 _levelRangeText.text = "S";
@@ -541,7 +567,12 @@ public class LevelManager : MonoBehaviour
         }
         else 
         {     
-            _moneyEndText.text = "Elapsed time: " + (int)elapsedTime;
+            _moneyEndText.text = "Elapsed time: " + secondsToMMSS(elapsedTime);
+            if (newBestFlag)
+            {
+                _moneyEndText.text += " (NEW BEST!!!)";
+                newBestFlag = false; // Reseteamos el flag para que no se muestre siempre
+            }
 
         }
 
@@ -554,6 +585,26 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Método que convierte los segundos a minutos y segundos para mostrarlo en el texto del final de la partida
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <returns></returns>
+    private string secondsToMMSS(float seconds)
+    {
+        int minutes = (int)seconds / 60;
+        int secondsLeft = (int)seconds % 60;
+        string result;
+        if (minutes > 0)
+        {
+            result = minutes + " minutes, " + secondsLeft + " seconds";
+        }
+        else
+        {
+            result = secondsLeft + " seconds";
+        }
+        return result;
+    }
     // CalculateRange(int _money) calcula el rango según la cantidad de dinero lograda durante la partida
     private Range CalculateRange(int _money)
     {

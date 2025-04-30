@@ -36,6 +36,8 @@ public class Level : MonoBehaviour
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
 
+    [SerializeField] bool _isThisInfiniteLevel; //Booleano que indica si el nivel es infinito o no;
+
 
     #endregion
 
@@ -79,9 +81,37 @@ public class Level : MonoBehaviour
                                                       // el playerPrefs lo detecte
         string RankPref = "RangeLevel: " + LevelNum; // Tengo que crear el string para que
                                                       // el playerPrefs lo detecte
-        Money.text = PlayerPrefs.GetString(MoneyPref, "--");
-        _rankLetter = PlayerPrefs.GetString(RankPref, "F");
-        CalculateRank(_rankLetter);
+        if (!_isThisInfiniteLevel) // Si el nivel es infinito, se pone "Infinity"
+        {
+        // Si no hay dinero, se pone "--"
+            Money.text = PlayerPrefs.GetString(MoneyPref, "--"); 
+            // Si no hay rango, se pone "F"
+            _rankLetter = PlayerPrefs.GetString(RankPref, "F");
+            CalculateRank(_rankLetter);
+        }
+        else 
+        {
+            string BestTimeInSeconds = PlayerPrefs.GetString(MoneyPref, "No record yet");
+            if (BestTimeInSeconds != "--") // Si hay tiempo, se pone el tiempo
+            {
+                int minutes = int.Parse(BestTimeInSeconds) / 60;
+                int seconds = int.Parse(BestTimeInSeconds) % 60;
+                if (minutes > 0)
+                {
+                    Money.text = minutes + " minutes, " + seconds + " seconds";
+                }
+                else
+                {
+                    Money.text = seconds + " seconds";
+                }
+            }
+            else
+            {
+                Money.text = BestTimeInSeconds; // Si no hay tiempo, se pone "No record yet"
+            }
+        }
+  
+        
     }
 
 
@@ -201,7 +231,24 @@ public class Level : MonoBehaviour
     {
         string PlayerPref = "MoneyLevel: " + LevelNum;
         PlayerPrefs.SetString(PlayerPref, _moneyToSet);
-        Money.text = _moneyToSet;
+        if (_isThisInfiniteLevel) Money.text = secondsToMMSS(float.Parse(_moneyToSet));
+        else Money.text = _moneyToSet; 
+    }
+
+     private string secondsToMMSS(float seconds)
+    {
+        int minutes = (int)seconds / 60;
+        int secondsLeft = (int)seconds % 60;
+        string result;
+        if (minutes > 0)
+        {
+            result = minutes + " minutes, " + secondsLeft + " seconds";
+        }
+        else
+        {
+            result = secondsLeft + " seconds";
+        }
+        return result;
     }
     /// <summary>
     /// Creado por Guillermo
