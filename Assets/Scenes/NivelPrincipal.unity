@@ -6695,10 +6695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableDisplay
       objectReference: {fileID: 0}
-    - target: {fileID: 4230540756951136127, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
-      propertyPath: AnvilSFX
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4953780980856588713, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: SawSFX
       value: 
