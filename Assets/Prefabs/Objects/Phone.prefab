@@ -258,7 +258,8 @@ MonoBehaviour:
   matType: 8
   CompletionBar: {fileID: 0}
   MatState: []
-  _materialProgress: 0
+  goodCompletionSound: {fileID: 0}
+  badCompletionSound: {fileID: 0}
 --- !u!114 &8926891954924372174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUDTaskPanelPrefab: {fileID: 8585802570284938555, guid: 0bdbe0d996a412c4b9166ef2e53d0f10, type: 3}
-  Tasktime: 40
+  Tasktime: 135
   color1: {r: 0.003921569, g: 1, b: 0.12941177, a: 1}
   color2: {r: 0.8705883, g: 0.92549026, b: 0.0627451, a: 0}
   color3: {r: 0.9607844, g: 0, b: 0, a: 0}
