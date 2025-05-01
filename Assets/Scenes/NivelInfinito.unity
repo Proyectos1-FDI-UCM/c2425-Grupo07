@@ -364,6 +364,14 @@ PrefabInstance:
       propertyPath: InfiniteMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8181690770653442898, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: TaskPosition
+      value: 
+      objectReference: {fileID: 1814629696}
+    - target: {fileID: 8181690770653442898, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: _levelManager
+      value: 
+      objectReference: {fileID: 2037981554}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3944,7 +3952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
       propertyPath: orthographic size
-      value: 5.625
+      value: 6.428571
       objectReference: {fileID: 0}
     - target: {fileID: 8342077706993765430, guid: 6bb413590a1d4984b8092df933803d10, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -6000,63 +6008,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
---- !u!1001 &1509972371
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3508149303559959704, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.458826
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.12971503
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.058967065
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639006963915896903, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7c3ccf50908234e1f9b635b00f95edce, type: 3}
+--- !u!224 &1814629696 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2536601594568949127, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+  m_PrefabInstance: {fileID: 2139470710389612262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!213 &1905773074
 Sprite:
   m_ObjectHideFlags: 0
@@ -6301,6 +6257,17 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!114 &2037981554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094904449568796574, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+  m_PrefabInstance: {fileID: 2139470710389612262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e33e01ec70e04582af05f46ca63b3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2139470710389612262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6321,6 +6288,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 33.371
       objectReference: {fileID: 0}
+    - target: {fileID: 643126809557542063, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1634396868, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
+    - target: {fileID: 698424601560918034, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 777891889, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
     - target: {fileID: 1094904449568796574, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: _maxTime
       value: 70
@@ -6341,6 +6316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_Canvas_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1614119919124636191, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1251486256, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
     - target: {fileID: 1840396722528718271, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
       value: U're not supposed to be seeing this
@@ -6370,6 +6349,10 @@ PrefabInstance:
       value: 'Name of the level
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675125990867253427, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: _levelName
+      value: NivelInfinito
       objectReference: {fileID: 0}
     - target: {fileID: 3985439255652266178, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6415,6 +6398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers_Infinite_Level
       objectReference: {fileID: 0}
+    - target: {fileID: 4432440293742945360, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4727542081914117297, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 776.14
@@ -6423,9 +6410,29 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 33.372
       objectReference: {fileID: 0}
+    - target: {fileID: 4855485678667934194, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1913490578, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
     - target: {fileID: 4882040143382032969, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
       value: Time is over!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125233856978313597, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730332153346711301, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1356952500, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
+    - target: {fileID: 5964739855495673840, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Name
+      value: TimePrefs
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964739855495673840, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6365268613909805893, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
@@ -6451,6 +6458,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8353644827917334099, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -208993620, guid: be64276826ae37e4f8b262bf13c03ab7, type: 3}
     - target: {fileID: 8396393663893280664, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_text
       value: 'Restart Level
@@ -6487,4 +6498,3 @@ SceneRoots:
   - {fileID: 2139470710389612262}
   - {fileID: 710549215}
   - {fileID: 1288386055}
-  - {fileID: 1509972371}

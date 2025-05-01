@@ -121,10 +121,10 @@ public class SettingsManager : MonoBehaviour
             ToggleButton.isOn = false;
         }
         ToggleFullScreen();
-        Debug.Log(_currentResolutionIndex);
+        //Debug.Log(_currentResolutionIndex); Resolución anterior
         _currentResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", _currentResolutionIndex);
         SetResolution(_currentResolutionIndex);
-        Debug.Log(_currentResolutionIndex);
+        //Debug.Log(_currentResolutionIndex); Resolución actual
         ResolutionDropdown.value = _currentResolutionIndex;
         ResolutionDropdown.RefreshShownValue();
 

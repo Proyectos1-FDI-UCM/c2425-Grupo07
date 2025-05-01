@@ -195,6 +195,7 @@ public class TaskManager : MonoBehaviour
             else
             {
                 float gainedTime = ConvertPaymentToTime(BasePayment);
+                Debug.Log(gainedTime);
                 _receiver.AddTime(gainedTime);
             }
             

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4787611096219286480}
   - component: {fileID: 7200483169724375469}
   - component: {fileID: -582333969144497156}
+  - component: {fileID: -1894215911564037229}
   m_Layer: 8
   m_Name: ProcessedMetal
   m_TagString: Untagged
@@ -183,3 +184,15 @@ MonoBehaviour:
   BeltVel: 2
   enCinta: 0
   BeltDistance: 0.7
+--- !u!114 &-1894215911564037229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046970825805907103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

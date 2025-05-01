@@ -111,7 +111,7 @@ public class BinScript : MonoBehaviour
         }
         if (material != null)
         {
-            StartCoroutine(DisminuyeMat(material));
+            StartCoroutine(DisminuyeMat(material.GetComponent<SizeAnimation>()));
         }
         Debug.Log("Material destruido en la basura.");
     }
@@ -120,24 +120,30 @@ public class BinScript : MonoBehaviour
     /// Inicia una secuencia que disminuye el tamaño del material hasta ser destruido
     /// rateDisminuye es velocidad que disminuye, mucho que se aumentará
     /// </summary>
-    /// <param name="material">Objeto del material a disminuir.</param>
-    IEnumerator DisminuyeMat(GameObject material)
+    /// <param name="material">Script del objeto del material a disminuir.</param>
+    IEnumerator DisminuyeMat(SizeAnimation material)
     {
-        for (int i = 0; i < VecesDisminuido; i++)
+        int i = 0;
+        while (i < VecesDisminuido)
         {
-            float rateDisminuye = (float) i / 10;
+            float rateDisminuye = (float)i / 10;
             float tiempoDisminuye = (float)i / 100;
             yield return new WaitForSeconds(tiempoDisminuye);
-            if (material != null && material.transform.localScale.x > 0.1)
+            if (material != null && material.ReturnSize() > 0.3)
             {
-                material.transform.position = Vector3.MoveTowards(material.transform.position, transform.position, _velMat * Time.deltaTime);
-                material.transform.localScale = material.transform.localScale * (1 - rateDisminuye);
-                material.transform.position = Vector2.Lerp(material.transform.position, transform.position, rateDisminuye); // Desplaza el material hacia abajo mientras disminuye su tamaño.
+                material.SetPosition(Vector2.MoveTowards(material.ReturnPosition(), transform.position, _velMat * Time.deltaTime));
+                material.MultiplySize(1 - rateDisminuye);
+                material.SetPosition(Vector2.Lerp(material.ReturnPosition(), transform.position, rateDisminuye)); // Desplaza el material hacia abajo mientras disminuye su tamaño.
             }
             else
             {
-                Destroy(material);
+                i = VecesDisminuido;
             }
+            i++;
+        }
+        if (material!= null)
+        {
+            Destroy(material.gameObject);
         }
     }
 

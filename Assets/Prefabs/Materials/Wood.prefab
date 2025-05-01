@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: -33956272849773106}
   - component: {fileID: -8104177510976610685}
   - component: {fileID: 5724795405597652481}
+  - component: {fileID: -4778269246888401033}
   m_Layer: 8
   m_Name: Wood
   m_TagString: Untagged
@@ -535,3 +536,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4778269246888401033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046970825805907103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

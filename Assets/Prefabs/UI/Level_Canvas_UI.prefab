@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 9112567754470548340}
   - component: {fileID: 2716472922109471206}
   - component: {fileID: 2357390966584642361}
+  - component: {fileID: 5233369766423294718}
   m_Layer: 0
   m_Name: Cash (2)
   m_TagString: Untagged
@@ -727,6 +728,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5233369766423294718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051290440388952680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 9112567754470548340}
 --- !u!1 &1147552948056814155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2700,7 @@ GameObject:
   - component: {fileID: 4183128550348232443}
   - component: {fileID: 7688510912245558202}
   - component: {fileID: 2443967562219095940}
+  - component: {fileID: 7554994907289844460}
   m_Layer: 0
   m_Name: Cash (3)
   m_TagString: Untagged
@@ -2750,6 +2765,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7554994907289844460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2608287275288047692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 4183128550348232443}
 --- !u!1 &2686767354001142232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5723,6 +5751,7 @@ GameObject:
   - component: {fileID: 709641351751485029}
   - component: {fileID: 5650424040071228045}
   - component: {fileID: 7666333409742883545}
+  - component: {fileID: 894908117951485196}
   m_Layer: 0
   m_Name: Cash
   m_TagString: Untagged
@@ -5787,6 +5816,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &894908117951485196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108403358333099652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 709641351751485029}
 --- !u!1 &6371069441047132282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6337,6 +6379,7 @@ GameObject:
   - component: {fileID: 1177930249461571650}
   - component: {fileID: 1591262407453097689}
   - component: {fileID: 6550613578013611384}
+  - component: {fileID: 5850487866379784505}
   m_Layer: 0
   m_Name: Cash (1)
   m_TagString: Untagged
@@ -6401,6 +6444,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5850487866379784505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749870857553199986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 1177930249461571650}
 --- !u!1 &6763386334078273581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6546,6 +6602,7 @@ GameObject:
   - component: {fileID: 7805150051046865974}
   - component: {fileID: 3371233105433237110}
   - component: {fileID: 4566912127463244084}
+  - component: {fileID: 3375391010616963345}
   m_Layer: 0
   m_Name: Cash (5)
   m_TagString: Untagged
@@ -6610,6 +6667,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3375391010616963345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061536285480962130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 7805150051046865974}
 --- !u!1 &7118597113691791259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6964,6 +7034,7 @@ GameObject:
   - component: {fileID: 75227845649661265}
   - component: {fileID: 485668260701440107}
   - component: {fileID: 7385997234135530542}
+  - component: {fileID: 6762360249522117014}
   m_Layer: 0
   m_Name: Cash (4)
   m_TagString: Untagged
@@ -7028,6 +7099,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6762360249522117014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7420571486398303405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 75227845649661265}
 --- !u!1 &7428703701354477582
 GameObject:
   m_ObjectHideFlags: 0
@@ -7988,6 +8072,7 @@ GameObject:
   - component: {fileID: 3351981578883713765}
   - component: {fileID: 8810334930872926769}
   - component: {fileID: 5287600141905657083}
+  - component: {fileID: 9081030313431573210}
   m_Layer: 0
   m_Name: MoneyText
   m_TagString: Untagged
@@ -8053,6 +8138,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9081030313431573210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413057850019751045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecTransform: {fileID: 3351981578883713765}
 --- !u!1 &8497702540218573199
 GameObject:
   m_ObjectHideFlags: 0

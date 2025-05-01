@@ -103,7 +103,7 @@ public class Material : MonoBehaviour
     {
         _UsedOnce = true;
         _materialProgress = progress;
-        Debug.Log($"Progreso actualizado: {_materialProgress}");
+        //Debug.Log($"Progreso actualizado: {_materialProgress}"); Muestra el progreso del material
         UpdateBar();
     }
 

@@ -202,17 +202,17 @@ public class GameManager : MonoBehaviour
                 _firstTime = true;
             }
         }
-        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_firstTime && _tutorial == null)
-        {
-            if (FindAnyObjectByType<IndicatorChange>() != null)
-            {
-                _indicatorChange = FindAnyObjectByType<IndicatorChange>();
+        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_firstTime && _tutorial == null)
+        //{
+        //    if (FindAnyObjectByType<IndicatorChange>() != null)
+        //    {
+        //        _indicatorChange = FindAnyObjectByType<IndicatorChange>();
 
-                _tutorial = _indicatorChange.GetComponent<Button>();
-                _tutorial.interactable = false;
-                _tutorial.image.enabled = false;
-            }
-        }
+        //        _tutorial = _indicatorChange.GetComponent<Button>();
+        //        _tutorial.interactable = false;
+        //        _tutorial.image.enabled = false;
+        //    }
+        //}
     }
 
     #endregion

@@ -259,7 +259,7 @@ public class LevelManager : MonoBehaviour
         {
             for (int i = 0; i < PileOfCash.transform.childCount; i++)
             {
-                _initialPos[i] = PileOfCash.transform.GetChild(i).position;
+                _initialPos[i] = PileOfCash.transform.GetChild(i).GetComponent<SizeAnimation>().ReturnUIPos();
             }
         }
         newBestFlag = false;
@@ -385,9 +385,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void SumMoney(int amount, Color doneColor)
+    public void SumMoney(int ammount, Color doneColor)
     {
-        Money += amount;
+        Money += ammount;
         if (Money < 0)
         {
             _moneyInPlay.color = Color.red;
@@ -398,15 +398,18 @@ public class LevelManager : MonoBehaviour
             _moneyInPlay.color = Color.green;
         }
         _moneyGaining.color = doneColor;
-        if (amount>0)
+        if (!InfiniteMode)
         {
-            _moneyGaining.text = "+" + amount;
+            if (ammount > 0)
+            {
+                _moneyGaining.text = "+" + ammount;
+            }
+            else
+            {
+                _moneyGaining.text = "" + ammount; // No tiene signo menos porque el propio número lo pone  
+            }
+            StartCoroutine(SumaCantidad(ammount));
         }
-        else
-        {
-            _moneyGaining.text = "" + amount;
-        }
-        StartCoroutine(SumaDinero(amount));
     }
 
     /// <summary>
@@ -439,7 +442,9 @@ public class LevelManager : MonoBehaviour
         {
             timeFactor = 0.35f;
         }
-        _currentSecondsLeft += ammount * timeFactor;
+        _moneyGaining.text = "+" + ammount * timeFactor;
+        StartCoroutine(SumaCantidad((int)(ammount * timeFactor)));
+        //_currentSecondsLeft += ammount * timeFactor;
     }
 
     /// <summary>
@@ -532,11 +537,11 @@ public class LevelManager : MonoBehaviour
         {
             _moneyEndText.text = "Gained money: " + Money.ToString() + " $";
             if (newBestFlag)
-                {
-                    _moneyEndText.text += " (NEW BEST!!!)";
-                    newBestFlag = false; // Reseteamos el flag para que no se muestre siempre
-                }
-             if (_levelRange == Range.S)
+            {
+                _moneyEndText.text += " (NEW BEST!!!)";
+                newBestFlag = false; // Reseteamos el flag para que no se muestre siempre
+            }
+            if (_levelRange == Range.S)
             {
                 _levelRangeText.text = "S";
             }
@@ -565,8 +570,8 @@ public class LevelManager : MonoBehaviour
                 _levelRangeText.text = "F";
             }
         }
-        else 
-        {     
+        else
+        {
             _moneyEndText.text = "Elapsed time: " + secondsToMMSS(elapsedTime);
             if (newBestFlag)
             {
@@ -648,11 +653,13 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i<PileOfCash.transform.childCount; i++)
         {
             Transform _currentChild = PileOfCash.transform.GetChild(i);
-            _currentChild.position = _initialPos[i];
-            _currentChild.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+            _currentChild.GetComponent<SizeAnimation>().PosUI(_initialPos[i]);
+            _currentChild.GetComponent<SizeAnimation>().SizeUI(0);
             _currentChild.gameObject.SetActive(false);
         }
     }
+
+
     /// <summary>
     /// Hecho por Guillermo
     /// Resetea la posición del dinero para que incremente o disminuya la cantidad MoneyToSum, sumando o restando el dinero con un efecto que suma o resta de uno en uno
@@ -662,12 +669,12 @@ public class LevelManager : MonoBehaviour
     /// Si el dinero a sumar es menor que 0, inicializa un contador que disminuye hasta MoneySum, coloreando el texto en rojo mientras decrementa
     ///     Al terminar el bucle vuelve a verde y desactiva los billetes.
     /// </summary>
-    /// <param name="MoneyToSum"></param>
+    /// <param name="AmountToSum"></param>
     /// <returns></returns>
-    IEnumerator SumaDinero(int MoneyToSum)
+    IEnumerator SumaCantidad(int AmountToSum)
     {
         ResetCashPos();
-        if (MoneyToSum > 0)
+        if (AmountToSum > 0)
         {
             PileOfCash.SetActive(true);
             float _delay = 0.02f;
@@ -677,10 +684,10 @@ public class LevelManager : MonoBehaviour
             while (_childCounter < PileOfCash.transform.childCount - 1)
             // Hace que cada objeto de dinero crezca
             {
-                _rateAumenta += 5; // Crece de 5 en 5 para que sea más rápido el proceso
+                _rateAumenta += 10; // Crece de 5 en 5 para que sea más rápido el proceso
                 yield return 0; // Espera durante un frame
-                PileOfCash.transform.GetChild(_childCounter).GetComponent<RectTransform>().sizeDelta = new Vector2(_rateAumenta, _rateAumenta);
-                if (PileOfCash.transform.GetChild(_childCounter).GetComponent<RectTransform>().sizeDelta.x >= 50)
+                PileOfCash.transform.GetChild(_childCounter).GetComponent<SizeAnimation>().SizeUI(_rateAumenta);
+                if (PileOfCash.transform.GetChild(_childCounter).GetComponent<SizeAnimation>().ReturnUISize() >= 50)
                 {
                     _childCounter++;
                     PileOfCash.transform.GetChild(_childCounter).gameObject.SetActive(true);
@@ -689,29 +696,45 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            int _moneyCounter = 0; // Inicio el contador de dinero que irá subiendo cada vez que uno llegue al final
-            while (_moneyCounter <= MoneyToSum)// Mueve los billetes y los desactiva al llegar a endPos mientras se incrementa el contador de dinero
+            int _amountCounter = 0; // Inicio el contador de dinero que irá subiendo cada vez que un billete llegue al final, si no hay billete sube más rápido
+            float _amountToRepresent = 0;
+
+            while (_amountCounter <= AmountToSum)// Mueve los billetes y los desactiva al llegar a endPos mientras se incrementa el contador de dinero
             {
                 yield return 0; // Espera durante un frame
-                float _dineroARepresentar = (Money - MoneyToSum) + _moneyCounter; //esto se hace con una cantidad de dinero ya actualizada
-                _moneyInPlay.text = "" + _dineroARepresentar;
-                if (_moneyCounter < PileOfCash.transform.childCount - 1 && PileOfCash.transform.GetChild(_moneyCounter).GetComponent<RectTransform>().anchoredPosition != _endPos)
+                if (!InfiniteMode)
+                {
+                    _amountToRepresent = (Money - AmountToSum) + _amountCounter; //esto se hace con una cantidad de dinero ya actualizada
+                    if (_amountToRepresent <= Money)
+                    {
+                        _moneyInPlay.text = "" + _amountToRepresent;
+                    }
+                }
+                if (_amountCounter < PileOfCash.transform.childCount - 1 && PileOfCash.transform.GetChild(_amountCounter).GetComponent<SizeAnimation>().ReturnUIPos() != _endPos)
                 // Mientras que moneyCounter sea menor que los billetes a mover y no hallan llegado al final
                 {
-                    PileOfCash.transform.GetChild(_moneyCounter).GetComponent<RectTransform>().anchoredPosition =
-                    Vector2.MoveTowards(PileOfCash.transform.GetChild(_moneyCounter).GetComponent<RectTransform>().anchoredPosition, _endPos, DineroVel * Time.deltaTime);
+                    PileOfCash.transform.GetChild(_amountCounter).GetComponent<SizeAnimation>().PosUI(
+                    Vector2.MoveTowards(PileOfCash.transform.GetChild(_amountCounter).GetComponent<SizeAnimation>().ReturnUIPos(), _endPos, DineroVel * Time.deltaTime));
                     yield return 0; // Espera durante un frame
                 }
-                else if (_moneyCounter < PileOfCash.transform.childCount - 1)
+                else if (_amountCounter < PileOfCash.transform.childCount - 1)
                 //Va billete a billete desactivándolos y reseteando su tamaño
                 {
-                    PileOfCash.transform.GetChild(_moneyCounter).GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
-                    PileOfCash.transform.GetChild(_moneyCounter).gameObject.SetActive(false);
-                    _moneyCounter++;
+                    PileOfCash.transform.GetChild(_amountCounter).GetComponent<SizeAnimation>().PosUI(new Vector2(0, 0));
+                    PileOfCash.transform.GetChild(_amountCounter).gameObject.SetActive(false);
+                    _amountCounter++;
+                    if (InfiniteMode)
+                    {
+                        _currentSecondsLeft++;
+                    }
                 }
                 else
                 {
-                    _moneyCounter++;
+                    _amountCounter++;
+                    if (InfiniteMode)
+                    {
+                        _currentSecondsLeft++;      
+                    }
                 }
             }
             PileOfCash.SetActive(false);
@@ -720,19 +743,19 @@ public class LevelManager : MonoBehaviour
         {
             int _moneyCounter = 0;
             PileOfCash.transform.GetChild(0).gameObject.SetActive(true);
-            while (Money >= 0 && _moneyCounter >= MoneyToSum)
+            while (Money >= 0 && _moneyCounter >= AmountToSum)
             {
                 yield return 0; // Espera durante un frame
-                float _dineroARepresentar = (Money - MoneyToSum) + _moneyCounter; //esto se hace con una cantidad de dinero ya actualizada
+                float _dineroARepresentar = (Money - AmountToSum) + _moneyCounter; //esto se hace con una cantidad de dinero ya actualizada
                 _moneyInPlay.text = "" + _dineroARepresentar;
                 _moneyInPlay.color = Color.red;
                 //Solamente mueve el contador de dinero a su posición
-                PileOfCash.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition =
-                Vector2.MoveTowards(PileOfCash.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition, _endPos, DineroVel * Time.deltaTime);
+                PileOfCash.transform.GetChild(0).GetComponent<SizeAnimation>().PosUI(
+                Vector2.MoveTowards(PileOfCash.transform.GetChild(0).GetComponent<SizeAnimation>().ReturnUIPos(), _endPos, DineroVel * Time.deltaTime));
                 _moneyCounter--;
             }
             _moneyInPlay.color = Color.green;
-            PileOfCash.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+            PileOfCash.transform.GetChild(0).GetComponent<SizeAnimation>().SizeUI(0);
             PileOfCash.transform.GetChild(0).gameObject.SetActive(false);
             _moneyInPlay.text = "" + Money;
         }

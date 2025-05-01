@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: -6578448476733511908}
   - component: {fileID: 8979648686560191653}
   - component: {fileID: -3239848673262794401}
+  - component: {fileID: -4633791991187775622}
   m_Layer: 8
   m_Name: Blender
   m_TagString: Untagged
@@ -324,6 +325,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-4633791991187775622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993284467259624052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6545007979347399363
 GameObject:
   m_ObjectHideFlags: 0

@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 8333093449011649546}
   - component: {fileID: -7307473720866624258}
   - component: {fileID: 8060589720310559247}
+  - component: {fileID: -3906860792568094471}
   m_Layer: 8
   m_Name: MetalBlob
   m_TagString: Untagged
@@ -434,6 +435,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3906860792568094471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046970825805907103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0
