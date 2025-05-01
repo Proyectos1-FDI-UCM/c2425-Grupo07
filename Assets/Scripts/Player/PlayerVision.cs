@@ -202,6 +202,8 @@ public class PlayerVision : MonoBehaviour
                 _actualMesa.GetComponent<Receiver>().SetIdleMode();
             }
             _actualMesa = null;
+            _visionCollider.enabled = false;
+            _visionCollider.enabled = true;
         }
     }
 
