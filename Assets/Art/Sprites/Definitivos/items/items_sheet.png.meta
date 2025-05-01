@@ -319,6 +319,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: items_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 97
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb346feffde053047b70b68bf6ff4284
+      internalID: -1845022176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -339,6 +360,7 @@ TextureImporter:
       MetalBlob: -625002849
       MetalFallido: -1872800837
       MetalOre: 1508383589
+      items_sheet_0: -1845022176
       items_sheet_1: 370377286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
