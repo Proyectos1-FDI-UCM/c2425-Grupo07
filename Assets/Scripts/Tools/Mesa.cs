@@ -80,7 +80,7 @@ public class Mesa : MonoBehaviour
     public void TintObject(GameObject collision)
     {
         _lookedObject = collision.gameObject;
-        if (_lookedObject != null)
+        if (_lookedObject != null && _lookedObject.GetComponent<SpriteRenderer>() != null)
         {
             _lookedObject.GetComponent<SpriteRenderer>().color = ItemTint;
         }
@@ -90,7 +90,7 @@ public class Mesa : MonoBehaviour
     /// </summary>
     public void UnTintObject()
     {
-        if (_lookedObject != null)
+        if (_lookedObject != null && _lookedObject.GetComponent<SpriteRenderer>() != null)
         {
             _lookedObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
