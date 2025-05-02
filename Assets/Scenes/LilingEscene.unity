@@ -4045,10 +4045,6 @@ PrefabInstance:
       propertyPath: m_TileSpriteArray.Array.data[15].m_Data
       value: 
       objectReference: {fileID: 398081868}
-    - target: {fileID: 1542695953726403537, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
-      propertyPath: VelCompletion
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 1798408311166725774, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
       propertyPath: m_Size.y
       value: 1.1797619
