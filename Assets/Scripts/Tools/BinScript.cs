@@ -23,6 +23,7 @@ public class BinScript : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] private Animator BinAnimator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
     [SerializeField] int VecesDisminuido = 10;
+    [SerializeField] ParticleSystem Smoke;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -65,6 +66,10 @@ public class BinScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         BinAnimator.SetBool("Opened",false);
+        if (Smoke != null )
+        {
+            Instantiate(Smoke, transform.position, Quaternion.identity);
+        }
     }
 
     // ---- MÉTODOS PÚBLICOS ----

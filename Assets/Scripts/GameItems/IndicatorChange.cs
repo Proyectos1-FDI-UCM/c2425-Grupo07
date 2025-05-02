@@ -25,14 +25,14 @@ public class IndicatorChange : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private Sprite[] Page;
-    [SerializeField] private Canvas Tutorial;
-    [SerializeField] private GameObject Skip;
-    [SerializeField] private GameObject Resume;
-    [SerializeField] private PauseMenuManager _pauseMenu;
-    [SerializeField] private GameObject TutorialObject;
-    [SerializeField] private Button TutorialButton;
-    private Image _page;
+    [SerializeField] private Sprite[] Page; //Array de las páginas de indicaciones
+    [SerializeField] private Canvas Tutorial; //Canvas que lleva los botones
+    [SerializeField] private GameObject Skip; //Botón de cerrar la pestaña
+    [SerializeField] private GameObject Resume; //Botton del resume del menu de pausa
+    [SerializeField] private PauseMenuManager _pauseMenu; //Script del menu de pausa
+    [SerializeField] private GameObject TutorialObject; //Game object del que tendrá los cambios de las´páginas
+    [SerializeField] private Button TutorialButton; //Botón del turorial para activar la pestaña
+    
 
     #endregion
 
@@ -45,10 +45,11 @@ public class IndicatorChange : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private int _num = 0;
-    [SerializeField] private bool _first;
-    [SerializeField] private bool _active;
-    private GameManager _gameManager;
+    private int _num = 0; //Contador del número de página en el que está el jugador
+    private Image _page;//Imagen del Game Object a cambiar
+    private bool _first;// si es la primera vez en jugar
+    private bool _active;//Si está activo o no las indicaciones
+    private GameManager _gameManager; //Instancia del Game Manager
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -128,7 +129,7 @@ public class IndicatorChange : MonoBehaviour
         _page.sprite = Page[_num];
     }
 
-    public void On()
+    public void On() //Para activar la indicación junto con sus componentes
     {
         TutorialObject.gameObject.SetActive(true);
         Tutorial.gameObject.SetActive(true);
@@ -136,7 +137,7 @@ public class IndicatorChange : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(Skip);
     }
 
-    public void Off()
+    public void Off() //Para activar desactivar la indicación junto con sus componentes y dependiendo si es la primera vez o no, se cierra junto con el menu de pausa
     {
         if (!_first)
         {
@@ -159,11 +160,12 @@ public class IndicatorChange : MonoBehaviour
         }
     }
 
-    public void SetFirst(bool game)
+    public void SetFirst(bool game) //Obtiene la booleana First del game manager
     {
         _first = game;
     }
-    public bool ReturnActive() { return _active; }
+
+    public bool ReturnActive() { return _active; } 
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

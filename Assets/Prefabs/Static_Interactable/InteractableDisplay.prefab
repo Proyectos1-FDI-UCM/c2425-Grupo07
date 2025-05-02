@@ -2249,10 +2249,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6910251898988984021}
     m_Modifications:
-    - target: {fileID: 2614240796166921127, guid: 02593fce222338341ae676c3c667150e, type: 3}
-      propertyPath: VelCompletion
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 2713733055040555268, guid: 02593fce222338341ae676c3c667150e, type: 3}
       propertyPath: m_Name
       value: Prensa

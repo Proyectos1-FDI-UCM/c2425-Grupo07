@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BinAnimator: {fileID: 7107569446947358004}
   VecesDisminuido: 10
+  Smoke: {fileID: 0}
 --- !u!114 &4110455378652950317
 MonoBehaviour:
   m_ObjectHideFlags: 0

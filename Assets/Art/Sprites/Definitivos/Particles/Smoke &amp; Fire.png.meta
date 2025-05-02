@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a8e28f1dac616e942aa7082670f445b0
+guid: b55320f9433b5c04da6cdba237e0f61f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sparks-Sheet_0
+      name: Smoke &amp; Fire_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 96
-        height: 96
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba0340442da65c74faf59ee84adaf87f
-      internalID: -267308838
+      spriteID: 12f533ebe9ce7f740af18d1d60675b0f
+      internalID: -1470436531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sparks-Sheet_1
+      name: Smoke &amp; Fire_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e52400e6652c8a14197fdd8214cf31b9
-      internalID: -609702388
+      spriteID: 4ac7db13c2481b44b8088b0957aec4ac
+      internalID: 644888962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sparks-Sheet_2
+      name: Smoke &amp; Fire_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
+        x: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a203a9ff9398206489b4a0e7f025f6bf
-      internalID: 1655792148
+      spriteID: 1f79be513cfb0d941ba751a4c4a55aa9
+      internalID: 908219175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sparks-Sheet_3
+      name: Smoke &amp; Fire_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 96
-        height: 96
+        x: 48
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,62 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd229ed41484f854a986b7fe9a4121c3
-      internalID: 1174357939
+      spriteID: 443d32186463fe542888330334400a7b
+      internalID: 359110443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sparks-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5caca8cd9d9ffdb45b886dc6dc5e104e
-      internalID: -1055739356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sparks-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d9bfd9d9e4a28e479e696ef5ac72b71
-      internalID: -970754676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sparks-Sheet_6
+      name: Smoke &amp; Fire_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 96
-        height: 96
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +195,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 439f8560f54ed9b4a905e05e288a82c1
-      internalID: -1519574685
+      spriteID: 29eb399a222f05742b106758fdc79391
+      internalID: -1002425203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke &amp; Fire_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd163fdcf1c64a24f9db3d0c6862032f
+      internalID: -333206418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke &amp; Fire_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d9843f4c2ba45b488b622523f1d200d
+      internalID: 1551783549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke &amp; Fire_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6a38814be8b4f4cafe74d7ba0def93
+      internalID: -1465100666
       vertices: []
       indices: 
       edges: []
@@ -254,13 +275,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sparks-Sheet_0: -267308838
-      Sparks-Sheet_1: -609702388
-      Sparks-Sheet_2: 1655792148
-      Sparks-Sheet_3: 1174357939
-      Sparks-Sheet_4: -1055739356
-      Sparks-Sheet_5: -970754676
-      Sparks-Sheet_6: -1519574685
+      Smoke &amp; Fire_0: -1470436531
+      Smoke &amp; Fire_1: 644888962
+      Smoke &amp; Fire_10: 265306864
+      Smoke &amp; Fire_11: -1962062076
+      Smoke &amp; Fire_12: -2141058682
+      Smoke &amp; Fire_13: -1029987759
+      Smoke &amp; Fire_14: 87210862
+      Smoke &amp; Fire_15: -1177927477
+      Smoke &amp; Fire_2: 908219175
+      Smoke &amp; Fire_3: 359110443
+      Smoke &amp; Fire_4: -1002425203
+      Smoke &amp; Fire_5: -333206418
+      Smoke &amp; Fire_6: 1551783549
+      Smoke &amp; Fire_7: -1465100666
+      Smoke &amp; Fire_8: 1663289832
+      Smoke &amp; Fire_9: 814025156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

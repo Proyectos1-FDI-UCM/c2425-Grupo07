@@ -483,7 +483,8 @@ MonoBehaviour:
   VelCompletion: 30
   ProgressBarFill: {fileID: 5731390066909951490}
   BarCanvasGroup: {fileID: 1738537655760811564}
-  _animator: {fileID: 8653330697242258784}
+  PressAnimator: {fileID: 8653330697242258784}
+  Smoke: {fileID: 1507347503692865976, guid: eb23d98317a1ff241b7c80186ba3c16c, type: 3}
   ResetSFX: {fileID: 0}
 --- !u!114 &360731875773519600
 MonoBehaviour:

@@ -30,7 +30,8 @@ public class PressScript : MonoBehaviour
     [SerializeField] private float VelCompletion; //Unidad de progreso que se añade al material por segundo
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
     [SerializeField] private Canvas BarCanvasGroup;// Referencia al Canvas de la barra de progreso
-    [SerializeField] private Animator _animator; // Referencia al Animator de la prensa
+    [SerializeField] private Animator PressAnimator; // Referencia al Animator de la prensa
+    [SerializeField] private ParticleSystem Smoke;
 
     /// <summary>
     /// Sonido que se reproduce cuando se termina de reiniciar un objeto.
@@ -111,7 +112,8 @@ public class PressScript : MonoBehaviour
                 CurrentObject = objects;
                 CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _isPressing = true;
-                _animator.SetBool("working", true);
+                PressAnimator.SetBool("working", true);
+                
                 BarCanvasGroup.gameObject.SetActive(true);
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
@@ -130,7 +132,8 @@ public class PressScript : MonoBehaviour
         CurrentObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
         BarCanvasGroup.gameObject.SetActive(false);
         PressingTime = 0f;
-        _animator.SetBool("working", false);
+        PressAnimator.SetBool("working", false);
+        
         ResetPress();
     } 
     #endregion
@@ -156,6 +159,7 @@ public class PressScript : MonoBehaviour
             if (ProgressBarFill != null)
             {
                 ProgressBarFill.fillAmount = PressingTime;
+                
             }
             
             if (PressingTime >= 1)
@@ -164,6 +168,7 @@ public class PressScript : MonoBehaviour
                 {
                     _pressAudioSource.Stop();
                 }
+                if (Smoke != null) Instantiate(Smoke, transform.position, Quaternion.identity);
                 ResetObject();
                 _isPressing = false;
             }
@@ -178,7 +183,7 @@ public class PressScript : MonoBehaviour
         if (CurrentObject != null)
         {
             CurrentObject.GetComponent<Objects>().ResetObject();
-            _animator.SetBool("working", false);
+            PressAnimator.SetBool("working", false);
         }
         if (_pressAudioSource != null)
         {

@@ -48,7 +48,11 @@ public class SawScript : MonoBehaviour
     /// </summary>
     [SerializeField] private AudioSource SawSFX;
 
+    // Particulas de destello
+    [SerializeField] private GameObject Sparks;
 
+    //particulas de migas de madera
+    [SerializeField] private ParticleSystem WoodPiece;
 
     #endregion
 
@@ -172,9 +176,11 @@ public class SawScript : MonoBehaviour
     {
         if (HasWood)
         {
-           _isWorking = true;
-           Animator.SetBool("working", true);
-           if (SawSFX.clip != null) SawSFX.Play();
+            _isWorking = true;
+            Sparks.gameObject.SetActive(true);
+            WoodPiece.gameObject.SetActive(true);
+            Animator.SetBool("working", true);
+            if (SawSFX.clip != null) SawSFX.Play();
         }
     }
     public void TurnOffSaw()
@@ -182,6 +188,8 @@ public class SawScript : MonoBehaviour
         if (HasWood)
         {
             _isWorking = false;
+            Sparks.gameObject.SetActive(false);
+            WoodPiece.gameObject.SetActive(false);
             Animator.SetBool("working", false);
             if (SawSFX != null) SawSFX.Stop();
         }
@@ -202,11 +210,12 @@ public class SawScript : MonoBehaviour
     private void ProcessWood()
     {
         _materialSource.ProcessTheMaterial();
-       _isWorking = false;
+        Sparks.gameObject.SetActive(false);
+        WoodPiece.gameObject.SetActive(false);
+        _isWorking = false;
        HasWood = false;
        Animator.SetBool("working", false);
        if (SawSFX != null) SawSFX.Stop();
-
     }
 
     #endregion   

@@ -45,7 +45,7 @@ public class OvenScript : MonoBehaviour
     // IsBurnt es el booleano que comprueba si el objeto se ha quemado para reiniciar el proceso
     [SerializeField] public bool IsBurnt = false;
 
-    //_animator es el animator que controla la animación del horno
+    //PressAnimator es el animator que controla la animación del horno
     [SerializeField] private Animator _animator;
 
     /// <summary>
@@ -53,7 +53,11 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     [SerializeField] private AudioSource AlertAudioSource;
 
-    
+    //Particulas del horno en función
+    [SerializeField] private GameObject Smoke;
+
+    //Particulas del horno cuando se esta quemando el objeto
+    [SerializeField] private ParticleSystem SmokeBurn;
     
     #endregion
 
@@ -166,6 +170,8 @@ public class OvenScript : MonoBehaviour
         }
         _isProcessing = false;
         _hasFinished = false;
+        Smoke.gameObject.SetActive(false);
+        SmokeBurn.gameObject.SetActive(false);
         FlashImage.SetActive(false);
         _matScr = null;
         _animator.SetBool("working", false);
@@ -186,6 +192,7 @@ public class OvenScript : MonoBehaviour
         {
             IsBurnt = false;
             FireIco.SetActive(false);
+            SmokeBurn.gameObject.SetActive(false);
             _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
         }
@@ -205,6 +212,7 @@ public class OvenScript : MonoBehaviour
         {
             _progress += (Time.deltaTime / 100) * VelCompletion;
             _matScr.UpdateProgress(_progress);
+            Smoke.gameObject.SetActive(true);
             if (_progress >= 1)
             {
                 ProcessedMaterial();
@@ -218,6 +226,8 @@ public class OvenScript : MonoBehaviour
             _timerBurn += Time.deltaTime;
             _progress = (_timerBurn / 100) * VelCompletion / 1.5f;
             _timerFlash += Time.deltaTime;
+
+            SmokeBurn.gameObject.SetActive(true);
 
             if (_timerFlash < 0.5f / _timerBurn)
             {
@@ -264,6 +274,7 @@ public class OvenScript : MonoBehaviour
     {
         IsBurnt = true;
         FireIco.SetActive(true);
+        Smoke.gameObject.SetActive(false);
         FlashImage.SetActive(false);
         _progress = 0;
         _isProcessing = false;
