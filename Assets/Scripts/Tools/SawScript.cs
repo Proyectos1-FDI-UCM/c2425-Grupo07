@@ -54,6 +54,29 @@ public class SawScript : MonoBehaviour
     //particulas de migas de madera
     [SerializeField] private ParticleSystem WoodPiece;
 
+    /// <summary>
+    /// GameObject que contiene el canvas con todas las indicaciones de la sierra
+    /// </summary>
+    [SerializeField] private GameObject IndicationsCanvas;
+
+    /// <summary>
+    /// GameObject con la indicación del material que procesa la sierra
+    /// </summary>
+    [SerializeField] private GameObject MaterialIndication;
+    /// <summary>
+    /// GameObject con la indicación del las teclas que se deben pulsar para utilizar la sierra
+    /// </summary>
+    [SerializeField] private GameObject ButtonsIndication;
+
+    /// <summary>
+    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// </summary>
+    [SerializeField] private bool ShowIndications;
+
+    /// <summary>
+    /// Bolenana para activar las indicaciones dinamicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el proposito de estas. 
+    ///</summary>
+    [SerializeField] private bool DynamicIndications;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -77,6 +100,14 @@ public class SawScript : MonoBehaviour
     // _completionDelta es la constante por la cual se multiplica el tiempo transcurrido para el incremento del progreso
     private float _completionDelta;
 
+   /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador ha coloca un objeto en la sierra
+    /// </summary>
+    private bool _firstDrop = true;
+     /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador interactua con la sierra
+    /// </summary>
+    private bool _firstInteraction = true;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -92,6 +123,13 @@ public class SawScript : MonoBehaviour
         _isWorking = false;
         _materialSource = null;
         SawSFX = GetComponent<AudioSource>();
+          if (!ShowIndications)
+        {
+            IndicationsCanvas.SetActive(false); // Esconde las indicaciones de la herramienta
+            _firstInteraction=false;
+            _firstDrop = false; 
+            // Si no se van a ver las indicaciones, no son necesarias las boleanas para desativarlos. 
+        }
     }
 
     void Update()
@@ -153,6 +191,11 @@ public class SawScript : MonoBehaviour
                 _materialSource.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 _progress = _materialSource.ReturnProgress();
                 HasWood = true;
+                if (_firstDrop && DynamicIndications)
+                {
+                    MaterialIndication.SetActive(false);
+                    _firstDrop = false;
+                }
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
         }
@@ -181,6 +224,11 @@ public class SawScript : MonoBehaviour
             WoodPiece.gameObject.SetActive(true);
             Animator.SetBool("working", true);
             if (SawSFX.clip != null) SawSFX.Play();
+            if (_firstInteraction && DynamicIndications)
+                {
+                    ButtonsIndication.SetActive(false);
+                    _firstInteraction = false;
+                }
         }
     }
     public void TurnOffSaw()

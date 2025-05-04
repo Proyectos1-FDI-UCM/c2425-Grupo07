@@ -48,6 +48,30 @@ public class AnvilScript : MonoBehaviour
 
 
     [SerializeField] private ParticleSystem Particle;
+
+    /// <summary>
+    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// </summary>
+    [SerializeField] private bool ShowIndications;
+
+    /// <summary>
+    /// Bolenana para activar las indicaciones dinamicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el proposito de estas. 
+    ///</summary>
+    [SerializeField] private bool DynamicIndications;
+
+    /// <summary>
+    /// GameObject que contiene el canvas con todas las indicaciones del yunque
+    /// </summary>
+    [SerializeField] private GameObject IndicationsCanvas;
+
+    /// <summary>
+    /// GameObject con la indicación del material que procesa el yunque
+    /// </summary>
+    [SerializeField] private GameObject MaterialIndication;
+    /// <summary>
+    /// GameObject con la indicación del las teclas que se deben pulsar para utilizar el yunque
+    /// </summary>
+    [SerializeField] private GameObject ButtonsIndication;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -66,9 +90,24 @@ public class AnvilScript : MonoBehaviour
 
     private bool _hasFinished;
 
+    /// <summary>
+    /// Para la animación de la barra progresiva
+    /// </summary>
     private float _pastClicks;
 
+    /// <summary>
+    /// almacena el progreso del material cuando este se introduce en el yunque
+    /// </summary>
     private float _progress;
+
+    /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador ha coloca un objeto en el yunque
+    /// </summary>
+    private bool _firstDrop = true;
+     /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador interactua con en el yunque
+    /// </summary>
+    private bool _firstInteraction = true;
 
 
     #endregion
@@ -89,6 +128,14 @@ public class AnvilScript : MonoBehaviour
     {
         CurrentClicks = 0;
         _progress = 0;
+        if (!ShowIndications)
+        {
+            IndicationsCanvas.SetActive(false); // Esconde las indicaciones de la herramienta
+            _firstInteraction=false;
+            _firstDrop = false; 
+            // Si no se van a ver las indicaciones, no son necesarias las boleanas para desativarlos. 
+        }
+        
     }
 
     #endregion
@@ -150,6 +197,11 @@ public class AnvilScript : MonoBehaviour
                 _materialSource.UpdateProgress(_progress);
                 UpdateCompletionBar(MaxClicks, CurrentClicks, _pastClicks);
                 _pastClicks = CurrentClicks;
+                if (_firstInteraction && DynamicIndications)
+                {
+                    ButtonsIndication.SetActive(false);
+                    _firstInteraction = false;
+                }
             }
             else if (CompletionBarReference != null)
             {
@@ -213,6 +265,12 @@ public class AnvilScript : MonoBehaviour
                 CurrentClicks = (int)(_progress * MaxClicks);
                 _pastClicks = CurrentClicks;
                 hasMetal = true;
+                if (_firstDrop && DynamicIndications)
+                {
+                    MaterialIndication.SetActive(false);
+                    _firstDrop = false;
+                }
+
             }
             else Debug.Log($"No se puede introducir {material.MaterialTypeReturn()} en esta estacion de trabajo por que solo acepta Metal Mineral");
         }

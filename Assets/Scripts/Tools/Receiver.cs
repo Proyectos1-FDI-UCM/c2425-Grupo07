@@ -72,6 +72,23 @@ public class Receiver : MonoBehaviour
     /// </summary>
     [SerializeField] private GameObject _wrongAlert;
 
+    /// <summary>
+    /// GameObject de la flecha que indica al jugador a ir al recibidor hasta que recoja su primer objeto a reparar
+    /// </summary>
+    [SerializeField] private GameObject ArrowIndication;
+
+    /// <summary>
+    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// </summary>
+    [SerializeField] private bool ShowIndications;
+
+    /// <summary>
+    /// Bolenana para activar las indicaciones dinamicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el proposito de estas. 
+    ///</summary>
+    [SerializeField] private bool DynamicIndications;
+
+
+
 
     #endregion
 
@@ -124,6 +141,12 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private AudioSource _recieverAudioSource;
 
+    /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador interactua con en el yunque
+    /// </summary>
+    private bool _firstInteraction = true;
+
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -146,6 +169,11 @@ public class Receiver : MonoBehaviour
         _state = receiverState.Idle;
         _levelManager = FindAnyObjectByType<LevelManager>();
         _recieverAudioSource = GetComponent<AudioSource>();
+        if (!ShowIndications)
+        {
+            _firstInteraction = false;
+            ArrowIndication.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -362,6 +390,10 @@ public class Receiver : MonoBehaviour
             else Debug.LogError("No se ha encontrado la posición de los pedidos, actualiza el prefab del UI");
             
             SetDeliveryMode();
+            if (_firstInteraction && DynamicIndications)
+            {
+                ArrowIndication.SetActive(false);
+            }
         }
         else Debug.Log("No puedes recibir más pedidos a la vez");
     }

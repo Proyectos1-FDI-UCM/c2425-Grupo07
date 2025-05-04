@@ -58,6 +58,26 @@ public class OvenScript : MonoBehaviour
 
     //Particulas del horno cuando se esta quemando el objeto
     [SerializeField] private ParticleSystem SmokeBurn;
+
+       /// <summary>
+    /// GameObject que contiene el canvas con todas las indicaciones de la sierra
+    /// </summary>
+    [SerializeField] private GameObject IndicationsCanvas;
+
+    /// <summary>
+    /// GameObject con la indicación del material que procesa la sierra
+    /// </summary>
+    [SerializeField] private GameObject MaterialIndication;
+
+    /// <summary>
+    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// </summary>
+    [SerializeField] private bool ShowIndications;
+
+    /// <summary>
+    /// Bolenana para activar las indicaciones dinamicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el proposito de estas. 
+    ///</summary>
+    [SerializeField] private bool DynamicIndications;
     
     #endregion
 
@@ -88,6 +108,11 @@ public class OvenScript : MonoBehaviour
     /// </summary>
     private AudioSource _furnaceAudioSource;
 
+    /// <summary>
+    /// Boleana que determina si es la primera vez que el jugador ha coloca un objeto en el yunque
+    /// </summary>
+    private bool _firstDrop = true;
+
 
     #endregion
 
@@ -101,6 +126,12 @@ public class OvenScript : MonoBehaviour
     void Start()
     {
      _furnaceAudioSource = GetComponent<AudioSource>(); 
+      if (!ShowIndications)
+        {
+            IndicationsCanvas.SetActive(false); // Esconde las indicaciones de la herramienta
+            _firstDrop=false;
+            // Si no se van a ver las indicaciones, no son necesarias las boleanas para desativarlos. 
+        }
     }
 
     /// <summary>
@@ -149,6 +180,11 @@ public class OvenScript : MonoBehaviour
                 _animator.SetBool("working", true);
                 if (_furnaceAudioSource != null) {
                 _furnaceAudioSource.Play();
+                }
+                if (_firstDrop && DynamicIndications)
+                {
+                    MaterialIndication.SetActive(false);
+                    _firstDrop = false;
                 }
             }
             else Debug.Log("No se puede introducir este material en esta estacion de trabajo");
@@ -217,6 +253,7 @@ public class OvenScript : MonoBehaviour
             {
                 ProcessedMaterial();
             }
+
         }
         else if (_hasFinished && !IsBurnt && transform.childCount == 1 && _matScr != null && (_matScr.MaterialTypeReturn() == MaterialType.Cristal ||
             _matScr.MaterialTypeReturn() == MaterialType.MetalMineral))
