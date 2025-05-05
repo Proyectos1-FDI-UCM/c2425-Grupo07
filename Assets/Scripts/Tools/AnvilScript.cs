@@ -280,11 +280,13 @@ public class AnvilScript : MonoBehaviour
     /// /// </summary>
     public void Pick()
     {
+        _materialSource = null;
+            hasMetal = false;
         if (_hasFinished)
         {
+            
             _hasFinished = false;
-            _materialSource = null;
-            hasMetal = false;
+            
         }
     }
 

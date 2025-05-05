@@ -63,7 +63,7 @@ public class PlayerVision : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
+    public GameObject _actualMesa; // La mesa que está siendo mirada/seleccionada por el jugador, esta mesa se verá tintada de un color, pudiendo ser diferenciada del resto de mesas.
     private GameObject _objectInTable; // El item que se encuentre en la mesa al momento de realizar la mecánica de PickDrop, si es null no hay objecto alguno.
     //private GameObject _lookedObject; // El item que esté mirando el jugador se tintará de un color específico
     private GameObject _heldObject;  // El item que está en las manos del jugador.
