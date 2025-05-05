@@ -266,7 +266,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void OnApplicationPause()
     {
-        if (!_paused)
+        if (!_paused && InputManager.Instance != null)
         {
             HandleInput();
         }
