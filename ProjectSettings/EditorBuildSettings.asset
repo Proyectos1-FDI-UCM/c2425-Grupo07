@@ -30,11 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/NivelInfinito.unity
     guid: 1efe92992ed1ca34fbbfa563c2cb0334
   - enabled: 1
-<<<<<<< Updated upstream
     path: Assets/Scenes/NivelPrincipal.unity
     guid: 8a404a2d49dfcb640a8651b6c2ee61bc
-=======
-    path: Assets/Scenes/Credits.unity
-    guid: d1107fb6b04ca8a4fb2d95bd4a0ca63c
->>>>>>> Stashed changes
   m_configObjects: {}
