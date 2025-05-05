@@ -264,7 +264,13 @@ public class PauseMenuManager : MonoBehaviour
         SceneManager.LoadScene(nameScene);
     }
 
-
+    void OnApplicationPause()
+    {
+        if (!_paused)
+        {
+            HandleInput();
+        }
+    }
     #endregion
 }// class PauseMenuManager 
 // namespace

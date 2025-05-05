@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: f358fa1dce3720d4da6cfd2307313901
   - enabled: 0
     path: Assets/Scenes/GuillermoEscena.unity
-    guid: e78cedf7806259443a4e3dcd4e7239cd
+    guid: 35f6184143bf6784b926c098918f462a
   - enabled: 0
     path: Assets/Scenes/LilingEscene.unity
     guid: 432bf19693c30954fa39ab36b0485879
@@ -23,10 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuLevelSelection.unity
     guid: 61ca1da475bbfbe4493bf1f2ec6783d6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IndicacionesOliver.unity
     guid: 530f3fc3ac071474e9ea8b33fcbca9cd
   - enabled: 1
     path: Assets/Scenes/NivelInfinito.unity
     guid: 1efe92992ed1ca34fbbfa563c2cb0334
+  - enabled: 1
+    path: Assets/Scenes/NivelPrincipal.unity
+    guid: 8a404a2d49dfcb640a8651b6c2ee61bc
   m_configObjects: {}
