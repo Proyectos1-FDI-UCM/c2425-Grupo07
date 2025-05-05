@@ -65,7 +65,7 @@ public class PlayerLevel : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_level!=null && InputManager.Instance.EnterWasPressedThisFrame())
+        if (_level != null && InputManager.Instance.EnterWasPressedThisFrame() && (_level.GetLevelName() == "NivelPrincipal" || (_level.GetLevelName() == "NivelInfinito" && _gameManager.GetMainLevelRank() != "F")))
         {
             OnEnterLevel();
         }

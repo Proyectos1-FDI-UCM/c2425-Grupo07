@@ -533,6 +533,29 @@ public class GameManager : MonoBehaviour
     {
         return _firstTime;
     }
+
+    /// <summary>
+    /// Devuelve la letra correspondiente al rango del nivel principal
+    /// </summary>
+    /// <returns>La letra correspondiente al rango del nivel principal</returns>
+    public string GetMainLevelRank()
+    {
+        int i = 0;
+        string _mainLevelRank = "";
+        if (_levels != null)
+        {
+            while (i < _levels.Length && _levels[i].GetLevelName() != "NivelPrincipal")
+            {
+                i++;
+            }
+
+            if (_levels[i].GetLevelName() == "NivelPrincipal")
+            {
+                _mainLevelRank = _levels[i].GetRankLetter();
+            }
+        }
+        return _mainLevelRank;
+    }
     #endregion
 } // class GameManager 
   // namespace

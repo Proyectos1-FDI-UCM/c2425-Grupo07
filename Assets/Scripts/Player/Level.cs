@@ -38,6 +38,8 @@ public class Level : MonoBehaviour
 
     [SerializeField] bool _isThisInfiniteLevel; //Booleano que indica si el nivel es infinito o no;
 
+    [SerializeField] Sprite _unlocked; //Sprite del nivel infinito desbloqueado
+
 
     #endregion
 
@@ -108,6 +110,11 @@ public class Level : MonoBehaviour
             else
             {
                 Money.text = BestTimeInSeconds; // Si no hay tiempo, se pone "No record yet"
+            }
+
+            if (_gameManager.GetMainLevelRank() != "F")
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = _unlocked;
             }
         }
   

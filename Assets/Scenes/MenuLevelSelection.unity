@@ -6670,6 +6670,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1167808971}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: _unlocked
+      value: 
+      objectReference: {fileID: 1003121847, guid: 167bb8dda1336b34ea80c9974e56fb41, type: 3}
+    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: SelectionPlayer
       value: 
       objectReference: {fileID: 1438992041}
@@ -7220,6 +7224,10 @@ PrefabInstance:
       propertyPath: LevelName
       value: NivelPrincipal
       objectReference: {fileID: 0}
+    - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
+      propertyPath: _unlocked
+      value: 
+      objectReference: {fileID: 1003121847, guid: 167bb8dda1336b34ea80c9974e56fb41, type: 3}
     - target: {fileID: 8640340769277870207, guid: 8661ea96b60f6df4996455655fffd0c3, type: 3}
       propertyPath: SelectionPlayer
       value: 
