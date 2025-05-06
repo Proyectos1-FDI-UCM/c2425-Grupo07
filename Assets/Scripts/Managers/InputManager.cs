@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour
     /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa. 
     /// Si hubieran más botones tendremos que crear más
     /// </summary>
-    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _togglePauseMenu;
+    private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _togglePauseMenu, _devMode;
 
 
     #endregion
@@ -215,6 +215,18 @@ public class InputManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Método para saber si se pueden acceder a las ventajas de desarrollador
+    /// durante este frame
+    /// <returns>Devuelve true, si se pulsaron las veces necesarias
+    /// y false, en otro caso.
+    /// </returns>
+    /// </summary>
+    public bool DevModeIsPressed()
+    {
+        return _devMode.IsPressed();
+    }
+
+    /// <summary>
     /// Método para cambiar entre el action map que quiere asignar
     /// Si TypeActionMap es Player se desactiva la UI y se asigna y viceversa con el UI.
     /// Porque el ESC abre y cierra el menú de pausa, como es el mismo input he creado dos acciones 
@@ -278,6 +290,10 @@ public class InputManager : MonoBehaviour
         // El estado lo consultaremos a través de los métodos públicos que 
         // tenemos (PauseWasPressedThisFrame)
         _togglePauseMenu = _theController.Player.OpenPauseMenu;
+        // Para el DevMode nos permitirá ir a una velocidad consideráblemente mayor.
+        // El estado lo consultaremos a través de los métodos públicos que 
+        // tenemos (PauseWasPressedThisFrame)
+        _devMode = _theController.Player.DevMode;
     }
 
     /// <summary>

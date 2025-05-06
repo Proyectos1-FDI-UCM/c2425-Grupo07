@@ -219,7 +219,10 @@ public class PlayerVision : MonoBehaviour
     // Devuelve actualMesa
     public GameObject GetActualMesa()
     {
-        ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
+        if (!InputManager.Instance.InteractIsPressed())
+        {
+            ChangeVelocity(); // Cuando un jugador mira la herramienta cambia la velocidad de esta
+        }
         return _actualMesa;
     }
     /// <summary>
@@ -388,6 +391,7 @@ public class PlayerVision : MonoBehaviour
     /// Change Velocity se encarga de asignar la velocidad de las herramientas acorde a qué personaje se acerque a estas
     /// En el horno solo funciona cuando se coloca el material
     /// En la sierra y la soldadora cuando se interactue
+    /// Si hubiera más de una sierra o yunque se cambiaría la herramienta actual por la mirada actualmente
     /// Hecho por Guillermo Ramos
     /// </summary>
 
@@ -396,15 +400,22 @@ public class PlayerVision : MonoBehaviour
         gameObject.GetComponent<PlayerManager>().SetVel(this.gameObject.GetComponent<PlayerManager>().PlayerNum());
         if (_actualMesa != null && _actualMesa.GetComponent<OvenScript>() != null && !_actualMesa.GetComponent<OvenScript>().ReturnInProgress())
         {
+            GetComponent<PlayerFireExtinguisher>().ChangeActualOven(_actualMesa.GetComponent<OvenScript>());
             _actualMesa.GetComponent<OvenScript>().ChangeVelocity(gameObject.GetComponent<PlayerManager>().ReturnOven());
         }
         else if (_actualMesa != null && _actualMesa.GetComponent<AnvilScript>() != null)
         {
             _actualMesa.GetComponent<AnvilScript>().ChangeMaxClicks(gameObject.GetComponent<PlayerManager>().ReturnAnvil());
+            GetComponent<PlayerAnvil>().ChangeActualAnvil(_actualMesa.GetComponent<AnvilScript>());
         }
         else if (_actualMesa != null && _actualMesa.GetComponent<SawScript>() != null)
         {
             _actualMesa.GetComponent<SawScript>().ChangeMaxTime(gameObject.GetComponent<PlayerManager>().ReturnSaw());
+            GetComponent<PlayerSaw>().ChangeActualSierra(_actualMesa.GetComponent<SawScript>());
+        }
+        else if (_actualMesa != null && _actualMesa.transform.childCount>0&&_actualMesa.transform.GetChild(0).GetComponent<FireExtinguisher>() != null)
+        {
+            GetComponent<PlayerFireExtinguisher>().ChangeActualFireExtinguisher(_actualMesa.transform.GetChild(0).GetComponent<FireExtinguisher>());
         }
     }
 
@@ -424,7 +435,11 @@ public class PlayerVision : MonoBehaviour
             if (_actualMesa != null && _actualMesa.GetComponent<CraftingTableScript>() != null)
             {
                 CraftingTableScript craftingScript = _actualMesa.GetComponent<CraftingTableScript>();
-                bool materialAdded = craftingScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
+                bool materialAdded = false;
+                if (_heldObject.GetComponent<Material>()!= null)
+                {
+                    materialAdded = craftingScript.AddMaterial(_heldObject.GetComponent<Material>().MaterialTypeReturn());
+                }
                 if (materialAdded)
                 {
                     // _heldObject.SetActive(false);

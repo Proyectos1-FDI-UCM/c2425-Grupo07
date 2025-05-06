@@ -93,18 +93,44 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Square_Normal
+      name: Square_Button
       rect:
         serializedVersion: 2
         x: 48
         y: 544
         width: 16
         height: 16
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -125,7 +151,7 @@ TextureImporter:
         y: 544
         width: 16
         height: 16
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -139,14 +165,14 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XCROSS_Normal
+      name: XButton
       rect:
         serializedVersion: 2
         x: 48
         y: 560
         width: 16
         height: 16
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -167,7 +193,7 @@ TextureImporter:
         y: 560
         width: 16
         height: 16
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -176,6 +202,90 @@ TextureImporter:
       bones: []
       spriteID: 187f846074835dc45aa21592c423a45f
       internalID: 1614568695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JoyStick
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 312
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67c7ebec493fa6428f40f0c6151da91
+      internalID: -403314362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamepadButtonsAnimated_1
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 480
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbc533dbe61d4e468530b2619990921
+      internalID: -2081734712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cross-head
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 107
+        width: 28
+        height: 30
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd055cd65abe1246971c071f110ce9b
+      internalID: -1697423016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CircleButton
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 576
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18720efac69297f4690fc386d2106035
+      internalID: -1035473902
       vertices: []
       indices: 
       edges: []
@@ -191,9 +301,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Square_Normal: 1263714093
+      CircleButton: -1035473902
+      Cross-head: -1697423016
+      GamepadButtonsAnimated_1: -2081734712
+      JoyStick: -403314362
+      Square_Button: 1263714093
       Square_Pressed: 718475760
-      XCROSS_Normal: 700608862
+      XButton: 700608862
       XCROSS_Pressed: 1614568695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -329,7 +329,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1010206414, guid: b09098131c555a84fa06954608f64045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -452,6 +452,7 @@ MonoBehaviour:
   AlertAudioSource: {fileID: 0}
   Smoke: {fileID: 6934040569857479441}
   SmokeBurn: {fileID: 7867512748726362024}
+  NextTutorialText: {fileID: 0}
   IndicationsCanvas: {fileID: 6893758092355366857}
   MaterialIndication: {fileID: 3865838907058614430}
   ShowIndications: 1

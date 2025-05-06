@@ -34,6 +34,7 @@ public class SpawnMaterials : MonoBehaviour
 
     // _spawnInterval es el tiempo en segundos que pasa entre cada spawn
     [SerializeField] private float _spawnInterval = 1.5f;
+    [SerializeField] bool EnTutorial;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -51,8 +52,6 @@ public class SpawnMaterials : MonoBehaviour
     // _currentObjectIndex es el índice actual que está recorriendo el array Materials
     private int _currentObjectIndex = 0;
 
-    
-
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -69,8 +68,10 @@ public class SpawnMaterials : MonoBehaviour
     void Start()
     {
         _spawnPoint = GetComponent<Transform>();
-
-        StartCoroutine(SpawnObjects());
+        if (!EnTutorial)
+        {
+            StartCoroutine(SpawnObjects());
+        }
     }
 
     /// <summary>
@@ -78,7 +79,10 @@ public class SpawnMaterials : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        if (EnTutorial)
+        {
+            StartCoroutine(SpawnObjects());
+        }
     }
     #endregion
 
@@ -91,7 +95,7 @@ public class SpawnMaterials : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -103,7 +107,7 @@ public class SpawnMaterials : MonoBehaviour
     // cada spawn. Spawnea el material en la posición del spawner y lo asigna como su hijo
     private IEnumerator SpawnObjects()
     {
-        while (true)
+        while (CintaInicial.transform.childCount == 0 && EnTutorial || !EnTutorial)
         {
             if (_currentObjectIndex % Materials.Length == 0)
             {

@@ -242,7 +242,7 @@ public class Level : MonoBehaviour
         else Money.text = _moneyToSet; 
     }
 
-     private string secondsToMMSS(float seconds)
+    private string secondsToMMSS(float seconds)
     {
         int minutes = (int)seconds / 60;
         int secondsLeft = (int)seconds % 60;
@@ -269,6 +269,11 @@ public class Level : MonoBehaviour
         string PlayerPref = "RangeLevel: " + LevelNum;
         PlayerPrefs.SetString(PlayerPref, _rankToSet);
         CalculateRank(_rankToSet);
+    }
+
+    public bool ReturnInfinite()
+    {
+        return _isThisInfiniteLevel;
     }
 
     public int GetLevelNum()

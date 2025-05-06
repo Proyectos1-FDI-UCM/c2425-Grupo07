@@ -44,7 +44,7 @@ public class Objects : MonoBehaviour
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
     [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
     private SpriteRenderer _skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
-    private int _n; //numero de objetos insertados
+    private int _nInsertados; //numero de objetos insertados
     private bool _isFull;
 
     #endregion
@@ -70,7 +70,7 @@ public class Objects : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_n < Materials.Length)
+        if (_nInsertados < Materials.Length)
         {
             CapacityIndicator();
         }
@@ -137,7 +137,7 @@ public class Objects : MonoBehaviour
             Materials[i] = MaterialType.Otro;
         }
         _nGood = 0;
-        _n = 0;
+        _nInsertados = 0;
     }
     /// <summary>
     /// Establece si el objeto puede ser enviado o no para evitar que el jugador intente añadir materiales o que intente enviar el objeto después de que se acabó el tiempo del pedido.
@@ -168,11 +168,11 @@ public class Objects : MonoBehaviour
     /// </summary>
     public void ChangeSkin()
     {
-        if (IsSameMaterialType(Materials[_n], OrdenPedidos[_n]))
+        if (IsSameMaterialType(Materials[_nInsertados], OrdenPedidos[_nInsertados]))
         {
             _nGood++;
         }
-        if(_n<OrdenPedidos.Length) _n++;
+        if(_nInsertados<OrdenPedidos.Length) _nInsertados++;
         _skin.sprite = ObjectImage[_nGood];
     }
 

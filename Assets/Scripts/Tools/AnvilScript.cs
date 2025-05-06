@@ -251,12 +251,12 @@ public class AnvilScript : MonoBehaviour
     /// Este método es el encarga analizar el objeto que se le pasa como parámetro y colocar el material si es apto, además se encarga de establecer todas las variables necesarias de la mesa de trabajo correspondiente.
     /// </summary>
     /// <param name="item"></param>
-      public void Drop(GameObject item)
+    public void Drop(GameObject item)
     {
         if (item.GetComponent<Material>() != null)
         {
             Material material = item.GetComponent<Material>();
-            if(material.MaterialTypeReturn() == MaterialType.MetalMineral)
+            if (material.MaterialTypeReturn() == MaterialType.MetalMineral)
             {
                 item.GetComponentInParent<PlayerVision>().Drop(); // llamo a drop con onToolPlaced en false para que el material se vea encima del yunque y no flote
                 _materialSource = material;
