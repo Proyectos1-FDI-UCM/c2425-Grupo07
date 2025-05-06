@@ -33,6 +33,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
     [SerializeField] private Button CloseTutorial; //Boton de cerrar el tutorial
     [SerializeField] private AudioClip ButtonSound; //Sonido de los botones
+    [SerializeField] private bool _paused = false;  //Indica si el juego esta pausado o no.
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,7 +45,6 @@ public class PauseMenuManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private bool _paused = false;  //Indica si el juego esta pausado o no.
     private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
     private bool _tutorial = false; //Indica si el tutorial esta activado
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
