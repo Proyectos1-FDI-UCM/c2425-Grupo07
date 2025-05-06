@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0576e62d9c8b60047b9335b8a72e6a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 543204492}
+  DoorToOpen: {fileID: 727524998}
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
@@ -6499,6 +6499,11 @@ AudioSource:
 --- !u!4 &281446907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4654510593846946066, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
+  m_PrefabInstance: {fileID: 1460438072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &281446909 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2449650465115768714, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
   m_PrefabInstance: {fileID: 1460438072}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &297106351
@@ -15507,11 +15512,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 271874080825723453, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
   m_PrefabInstance: {fileID: 698324450}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &631630352 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3797574855057081381, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
-  m_PrefabInstance: {fileID: 1717105062}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &632734164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15730,6 +15730,7 @@ PrefabInstance:
       propertyPath: NextTutorialText
       value: Now drop the material in the saw and process it by <color="red">holding<color="white">
         the J key <sprite name="Jkey"> or square button <sprite name="Square_Button">.
+        Then place it below.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17870,7 +17871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0576e62d9c8b60047b9335b8a72e6a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 1034084862}
+  DoorToOpen: {fileID: 543204492}
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
@@ -18148,7 +18149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0576e62d9c8b60047b9335b8a72e6a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 727524998}
+  DoorToOpen: {fileID: 281446909}
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
@@ -18844,6 +18845,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3797574855057081381, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
   m_PrefabInstance: {fileID: 1720824960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1087330482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3797574855057081381, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
+  m_PrefabInstance: {fileID: 983236676}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1092375070 stripped
 Transform:
@@ -19835,7 +19841,7 @@ PrefabInstance:
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
       value: Now pick the <color="red">metal blob<color="white">, put it on the anvil,
-        tap  <color="red">repeatedly<color="white"> the interact button to process
+        tap <color="red">repeatedly<color="white"> the interact button to process
         it and drop it on the table.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
@@ -20574,8 +20580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0576e62d9c8b60047b9335b8a72e6a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 140576405}
-  AllowNextScene: {fileID: 631630352}
+  DoorToOpen: {fileID: 1034084862}
+  AllowNextScene: {fileID: 1087330482}
   GameObjectReceived: 8
   IsFirstDoor: 0
 --- !u!1001 &1448360435
@@ -21883,9 +21889,9 @@ PrefabInstance:
       objectReference: {fileID: 330881599}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
-      value: Fix object on <color="red">crafting table<color="white">, then send
-        to <color="red">receiver table<color="white">, use correct materials in order.
-        Use <color="red">press<color="white"> below if mistake.
+      value: Fix object on <color="lightblue">crafting table<color="white">, then
+        send to <color="red">receiver table<color="white">, use correct materials
+        in order. Use <color="lightblue">press<color="white"> below if mistake.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: IsFirstDoor
@@ -22837,7 +22843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: MoveDistance
-      value: 6.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: MoveScenario
@@ -22850,7 +22856,8 @@ PrefabInstance:
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
       value: Pick objects from the <color="red">receiver table<color="white">, place
-        on tables above; pick, repair and send up to 5 for rewards in the levels.
+        on tables above; <color="lightred">pick, repair and send<color="white"> up
+        to 5 for rewards in the levels.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: IsFirstDoor

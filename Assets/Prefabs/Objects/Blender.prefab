@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb236c2710ac12942bbc9783d6307578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 7
+  matType: 8
   CompletionBar: {fileID: 0}
   MatState: []
   goodCompletionSound: {fileID: 0}
@@ -282,6 +282,7 @@ MonoBehaviour:
   color2: {r: 0.8705883, g: 0.92549026, b: 0.0627451, a: 0}
   color3: {r: 0.9607843, g: 0.029417088, b: 0, a: 0}
   BasePayment: 250
+  onTutorial: 0
 --- !u!114 &8979648686560191653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecTransform: {fileID: 0}
 --- !u!1 &6545007979347399363
 GameObject:
   m_ObjectHideFlags: 0
