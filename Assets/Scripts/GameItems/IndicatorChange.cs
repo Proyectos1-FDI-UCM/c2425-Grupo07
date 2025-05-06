@@ -98,7 +98,11 @@ public class IndicatorChange : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void Pass() //flecha para avanzar
+
+    /// <summary>
+    /// Flecha para avanzar
+    /// </summary>
+    public void Pass() 
     {
         if (!_first && _num < Page.Length - 1)
         {
@@ -115,7 +119,10 @@ public class IndicatorChange : MonoBehaviour
         }
     }
 
-    public void Return() //flecha para retroceder
+    /// <summary>
+    /// Flecha para retroceder
+    /// </summary>
+    public void Return() 
     {
         if (_num > 0)
         {
@@ -124,12 +131,18 @@ public class IndicatorChange : MonoBehaviour
         }
     }
 
-    public void ChangePage() //Cambia la imagen del Game Object al del siguiente o anterior de la array
+    /// <summary>
+    /// Cambia la imagen del Game Object al del siguiente o anterior de la array
+    /// </summary>
+    public void ChangePage() 
     {
         _page.sprite = Page[_num];
     }
 
-    public void On() //Para activar la indicación junto con sus componentes
+    /// <summary>
+    /// Para activar la indicación junto con sus componentes
+    /// </summary>
+    public void On() 
     {
         TutorialObject.gameObject.SetActive(true);
         Tutorial.gameObject.SetActive(true);
@@ -137,7 +150,10 @@ public class IndicatorChange : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(Skip);
     }
 
-    public void Off() //Para activar desactivar la indicación junto con sus componentes y dependiendo si es la primera vez o no, se cierra junto con el menu de pausa
+    /// <summary>
+    /// Para activar desactivar la indicación junto con sus componentes y dependiendo si es la primera vez o no, se cierra junto con el menu de pausa
+    /// </summary>
+    public void Off() 
     {
         if (!_first)
         {
@@ -160,7 +176,8 @@ public class IndicatorChange : MonoBehaviour
         }
     }
 
-    public void SetFirst(bool game) //Obtiene la booleana First del game manager
+    //Obtiene la booleana First del game manager
+    public void SetFirst(bool game) 
     {
         _first = game;
     }

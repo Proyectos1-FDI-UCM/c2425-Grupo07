@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// BackgroundMenu se encarga de realizar el efecto de Parallax en el Fondo del Menu
-// Alicia Sarahi
+// BackgroundMenu se encarga de realizar el efecto de Parallax en el Fondo del Menu (TEST)
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -10,7 +10,7 @@ using UnityEngine.U2D;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-public class BackgroundMenu : MonoBehaviour
+public class TestBackgroundLili : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,7 +23,7 @@ public class BackgroundMenu : MonoBehaviour
     [SerializeField] GameObject Camera; //Obtiene el objecto de la camara
     [SerializeField] private float ParallaxEffect; //Recoge el numero para distanciar las distintas capas
     [SerializeField] private float ResetThreshold = 1000f; //Distancia a la que llega la camara para volver
-    [SerializeField] private float CameraSpeed = 1f;//La velocidad de la camara, y por tanto el background
+    [SerializeField] private float CameraSpeed;//La velocidad de la camara, y por tanto el background
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -76,19 +76,19 @@ public class BackgroundMenu : MonoBehaviour
         _camTransform.Translate(Vector3.left * frameMovement);
         _totalCameraDistance += frameMovement;
 
-        // Resetea las posiciones tanto de la cámara como de los objetos cuando la distancia de la cámara supera el esperado en ResetThreshold
+        // Reset de posiciones para mantener precisión
         if (Mathf.Abs(_totalCameraDistance) > ResetThreshold)
         {
             ResetWorldPositions();
         }
 
-        // Calcula el parallax
+        // Cálculo de parallax
         Vector2 cameraOffset = _pixelPerfect.RoundToPixel(_camTransform.position);
         float parallaxOffset = cameraOffset.x * ParallaxEffect;
         transform.position = _pixelPerfect.RoundToPixel(
             new Vector2(_startPos.x + parallaxOffset, transform.position.y));
 
-        // Repite el fondo
+        // Repetición del fondo
         float relativeCamPos = cameraOffset.x * (1 - ParallaxEffect);
         if (relativeCamPos > _startPos.x + _length)
         {
@@ -117,10 +117,6 @@ public class BackgroundMenu : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    /// <summary>
-    /// Resetea la posición de la cámara y de las posiciones de los objetos del parallax
-    /// </summary>
     private void ResetWorldPositions()
     {
         float resetAmount = _totalCameraDistance;
@@ -128,7 +124,7 @@ public class BackgroundMenu : MonoBehaviour
         _startPos.x -= resetAmount * ParallaxEffect;
         _totalCameraDistance = 0f;
     }
-    #endregion   
+    #endregion
 
 } // class Background 
 // namespace
