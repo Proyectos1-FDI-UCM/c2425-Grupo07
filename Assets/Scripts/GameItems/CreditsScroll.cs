@@ -25,8 +25,8 @@ public class CreditsScroll : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    [SerializeField] private GameObject CreditsGroup;
-    [SerializeField] private Animator Animator;
+    [SerializeField] private GameObject CreditsGroup; //Game Object que contiene todos los creditos
+    [SerializeField] private Animator Animator;//Animator del Game Object
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -38,10 +38,10 @@ public class CreditsScroll : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private float _normalSpeed = 1f;
-    private float _fastSpeed = 3f;
-    private bool _isActive = false;
-    [SerializeField]private InputManager _inputManager;
+    private float _normalSpeed = 1f; //Velocidad de la animación normal
+    private float _fastSpeed = 3f; //Velocidad de la animación cuando se acerera
+    private bool _isActive = false; //Si esta activado o no el fast scroll
+    private InputManager _inputManager; //Referencia al input manager
 
     #endregion
     
@@ -86,6 +86,10 @@ public class CreditsScroll : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Dependiendo del input, si es enter, se va a la escena de título, si es la barra de espacio se aumenta 
+    /// la velocidad, si se le pulsa otra vez se podrá volver a la velocidad normal
+    /// </summary>
     private void HandleInput()
     {
         if (_inputManager.PickDropWasPressedThisFrame())
@@ -98,22 +102,27 @@ public class CreditsScroll : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Llamado desde el HandleInput, activa y desactiva la velocidad de la animación
+    /// </summary>
     private void ScrollQuick()
     {
         _isActive = !_isActive;
         SetSpeed(_isActive ? _fastSpeed : _normalSpeed);
     }
 
+    /// <summary>
+    /// Determina la velocidad de la animación
+    /// </summary>
+    /// <param name="speed"></param>
     public void SetSpeed(float speed)
     {
         Animator.SetFloat("ScrollSpeed", speed);
     }
 
-    private void OnCreditsFinished()
-    {
-        ReturnToTitle();
-    }
-
+    /// <summary>
+    /// Carga la escena de título
+    /// </summary>
     private void ReturnToTitle()
     {
         SceneManager.LoadScene("TitleScreen");
