@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             UpdateStats();
             _statsUpdated = true;
         }
-        if (InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !IsDev)
+        if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !IsDev)
         {
             Time.timeScale = 2.0f;
             Debug.Log("DEVMODE");
