@@ -82,6 +82,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DevMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b55b73c-68cd-43fd-b6bb-15d2bb43d60c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -335,6 +344,17 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""OpenPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ab5eb26-dc2b-42e8-a749-ee613e584c86"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DevMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -959,6 +979,7 @@ namespace UnityEngine.InputSystem
             m_Player_PickOrDrop = m_Player.FindAction("PickOrDrop", throwIfNotFound: true);
             m_Player_EnterLevel = m_Player.FindAction("EnterLevel", throwIfNotFound: true);
             m_Player_OpenPauseMenu = m_Player.FindAction("OpenPauseMenu", throwIfNotFound: true);
+            m_Player_DevMode = m_Player.FindAction("DevMode", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1039,6 +1060,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Player_PickOrDrop;
         private readonly InputAction m_Player_EnterLevel;
         private readonly InputAction m_Player_OpenPauseMenu;
+        private readonly InputAction m_Player_DevMode;
         public struct PlayerActions
         {
             private @InputActionSettings m_Wrapper;
@@ -1049,6 +1071,7 @@ namespace UnityEngine.InputSystem
             public InputAction @PickOrDrop => m_Wrapper.m_Player_PickOrDrop;
             public InputAction @EnterLevel => m_Wrapper.m_Player_EnterLevel;
             public InputAction @OpenPauseMenu => m_Wrapper.m_Player_OpenPauseMenu;
+            public InputAction @DevMode => m_Wrapper.m_Player_DevMode;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1076,6 +1099,9 @@ namespace UnityEngine.InputSystem
                 @OpenPauseMenu.started += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
+                @DevMode.started += instance.OnDevMode;
+                @DevMode.performed += instance.OnDevMode;
+                @DevMode.canceled += instance.OnDevMode;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1098,6 +1124,9 @@ namespace UnityEngine.InputSystem
                 @OpenPauseMenu.started -= instance.OnOpenPauseMenu;
                 @OpenPauseMenu.performed -= instance.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled -= instance.OnOpenPauseMenu;
+                @DevMode.started -= instance.OnDevMode;
+                @DevMode.performed -= instance.OnDevMode;
+                @DevMode.canceled -= instance.OnDevMode;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1294,6 +1323,7 @@ namespace UnityEngine.InputSystem
             void OnPickOrDrop(InputAction.CallbackContext context);
             void OnEnterLevel(InputAction.CallbackContext context);
             void OnOpenPauseMenu(InputAction.CallbackContext context);
+            void OnDevMode(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

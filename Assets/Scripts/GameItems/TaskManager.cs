@@ -53,8 +53,13 @@ public class TaskManager : MonoBehaviour
     /// Base de pago del pedido
     /// </summary>
     [SerializeField] int BasePayment;
+
+    /// <summary>
+    /// Si se encuentra en el tutorial
+    /// </summary>
+    [SerializeField] bool onTutorial;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     /// <summary>
@@ -170,7 +175,7 @@ public class TaskManager : MonoBehaviour
         /// </summary>
     public void EndTask(bool delivered=false)
     {
-        if (delivered && !IsTaskEnded()) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
+        if (delivered && !IsTaskEnded() && !onTutorial) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
         {
 
             if (!_isInfiniteMode)
@@ -200,7 +205,7 @@ public class TaskManager : MonoBehaviour
             }
             
         }
-        else if (!IsTaskEnded()) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
+        else if (!IsTaskEnded() && !onTutorial) //penalización no conseguir entregar el pedido a tiempo o tirarlo a la basura
         {
             if (_isInfiniteMode)
             {

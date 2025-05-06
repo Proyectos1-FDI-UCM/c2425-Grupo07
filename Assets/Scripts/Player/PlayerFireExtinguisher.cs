@@ -27,6 +27,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
     private FireExtinguisher extinguisher; // Referencia al extintor
     private PlayerVision _playerVision; // Referencia al script de visión del jugador
     private PlayerMovement _playerMovement; // Referencia al script de movimiento del jugador
+    private OvenScript _actualOven; // Hecho por Guillermo, Referencia el script del horno
 
     #endregion
 
@@ -102,5 +103,31 @@ public class PlayerFireExtinguisher : MonoBehaviour
     }
 
     #endregion
+
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
+    /// <summary>
+    /// Crea un nuevo panel de tarea en la UI y lo vincula con este objeto.
+    /// Incrementa el contador de tareas activas en el receptor.
+    /// </summary>
+    public void ChangeActualFireExtinguisher(FireExtinguisher newExtinguisher)
+    {
+        extinguisher = newExtinguisher;
+        extinguisher.ChangeOven(_actualOven);
+    }
+    #endregion
+    /// <summary>
+    /// Crea un nuevo panel de tarea en la UI y lo vincula con este objeto.
+    /// Incrementa el contador de tareas activas en el receptor.
+    /// </summary>
+    public void ChangeActualOven(OvenScript newOven)
+    {
+        _actualOven = newOven;
+        if (extinguisher != null)
+        {
+            extinguisher.ChangeOven(newOven);
+        }
+    }
+
 } // class PlayerFireExtinguisher
 

@@ -11,6 +11,7 @@
 
 using UnityEngine;
 using System.Collections;
+using TMPro;
 // Añadir aquí el resto de directivas using
 
 
@@ -59,18 +60,21 @@ public class OvenScript : MonoBehaviour
     //Particulas del horno cuando se esta quemando el objeto
     [SerializeField] private ParticleSystem SmokeBurn;
 
-       /// <summary>
-    /// GameObject que contiene el canvas con todas las indicaciones de la sierra
+    //Enseña un mensaje si se quema el material
+    [SerializeField] TextMeshProUGUI NextTutorialText;
+
+    /// <summary>
+    /// GameObject que contiene el canvas con todas las indicaciones del horno
     /// </summary>
     [SerializeField] private GameObject IndicationsCanvas;
 
     /// <summary>
-    /// GameObject con la indicación del material que procesa la sierra
+    /// GameObject con la indicación del material que procesa el horno
     /// </summary>
     [SerializeField] private GameObject MaterialIndication;
 
     /// <summary>
-    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// Bolenana para hacer visible las indicaciones visuales del horno
     /// </summary>
     [SerializeField] private bool ShowIndications;
 
@@ -231,6 +235,10 @@ public class OvenScript : MonoBehaviour
             SmokeBurn.gameObject.SetActive(false);
             _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
+            if (NextTutorialText != null)
+            {
+                NextTutorialText.text = "Nice! Now pick that material and throw it in the <color=\"green\">green bin<color=\"white\">, then go back to processing!";
+            }
         }
     }
 
@@ -321,6 +329,10 @@ public class OvenScript : MonoBehaviour
         if (_furnaceAudioSource != null)
         {
             _furnaceAudioSource.Stop();
+        }
+        if (NextTutorialText != null)
+        {
+            NextTutorialText.text = "Oh well... the oven is on fire, pick the Fire Extinguisher and interact near the oven with J key <sprite name=\"Jkey\"> or square button <sprite name=\"Square_Button\">.";
         }
     }
 

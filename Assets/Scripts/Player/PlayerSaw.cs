@@ -98,7 +98,17 @@ public class PlayerSaw : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-
+    /// <summary>
+    /// Hecho por Guillermo, Cambia el script de la sierra actual por la que esté mirando ahora
+    /// </summary>
+    /// <param name="sierra">El nuevo script de la sierra </param>
+    public void ChangeActualSierra(SawScript sierra)
+    {
+        if (SierraClick != sierra)
+        {
+            SierraClick = sierra;
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

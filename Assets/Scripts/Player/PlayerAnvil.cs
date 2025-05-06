@@ -80,7 +80,14 @@ public class PlayerAnvil : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    /// <summary>
+    /// Hecho por Guillermo, Cambia el script del yunque actual por la que esté mirando ahora
+    /// </summary>
+    /// <param name="anvil">El nuevo script de la sierra </param>
+    public void ChangeActualAnvil(AnvilScript anvil)
+    {
+        AnvilScript = anvil;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

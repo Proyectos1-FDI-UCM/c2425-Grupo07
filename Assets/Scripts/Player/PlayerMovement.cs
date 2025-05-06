@@ -87,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
     {
         OnMove();
        _playerAnimation.Animate();
-
     }
     #endregion
 

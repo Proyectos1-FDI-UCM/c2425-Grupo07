@@ -23,10 +23,11 @@ public class CheckScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] Animator DoorToOpen;
-    [SerializeField] GameObject GameObjectReceived;
-
+    [SerializeField] GameObject AllowNextScene;
+    [SerializeField] MaterialType GameObjectReceived;
+    [SerializeField] bool IsFirstDoor;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -37,21 +38,28 @@ public class CheckScript : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        
+        if (IsFirstDoor)
+        {
+            DoorToOpen.SetTrigger("Open");
+            if (AllowNextScene != null)
+            {
+                AllowNextScene.SetActive(true);
+            }
+        }
     }
 
     /// <summary>
@@ -81,9 +89,17 @@ public class CheckScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
     private void OnTransformChildrenChanged()
     {
-        if (transform.childCount > 0 && transform.GetChild(0) == GameObjectReceived)
+        if (transform.childCount > 0 && (transform.GetChild(0).GetComponent<Material>()!=null &&
+            transform.GetChild(0).GetComponent<Material>().MaterialTypeReturn() == GameObjectReceived ||
+            transform.GetChild(0).GetComponent<Objects>()!=null && transform.GetChild(0).GetComponent<Objects>().IsCompleted())
+            
+            )
         {
             DoorToOpen.SetTrigger("Open");
+            if (AllowNextScene != null)
+            {
+                AllowNextScene.SetActive(true);
+            }
         }
     }
     #endregion

@@ -58,11 +58,11 @@ TagManager:
   - name: Floor
     uniqueID: 3159893843
     locked: 0
-  - name: Walls
-    uniqueID: 1394175883
-    locked: 0
   - name: Tools
     uniqueID: 4035227905
+    locked: 0
+  - name: Walls
+    uniqueID: 1394175883
     locked: 0
   - name: ObjectsOrMaterials
     uniqueID: 3379730203

@@ -862,7 +862,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 351
+        y: 352
         width: 16
         height: 16
       alignment: 0
@@ -929,7 +929,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -937,6 +937,132 @@ TextureImporter:
       bones: []
       spriteID: 74231b1eca3e46d48b88fc214c5520bc
       internalID: 146155923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_36
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06181a839bb35d41a344eb4a260ceca
+      internalID: 310409552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62612c320a8eefe46b3d472768240839
+      internalID: -1527439162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_38
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efbae323c8061b84f827232ddff8b85d
+      internalID: -746386828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_39
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40dfef15b34b1af4b9babd0d05d93197
+      internalID: -1720153432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 314
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6298f44bf8228f459641327ca5db719
+      internalID: 1953176896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_Builder_free_16x16_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 314
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce83d2b75df535d47b23ce17144c1564
+      internalID: -2100084741
       vertices: []
       indices: 
       edges: []
@@ -985,7 +1111,13 @@ TextureImporter:
       Room_Builder_free_16x16_33: -576686930
       Room_Builder_free_16x16_34: 2098925256
       Room_Builder_free_16x16_35: 146155923
+      Room_Builder_free_16x16_36: 310409552
+      Room_Builder_free_16x16_37: -1527439162
+      Room_Builder_free_16x16_38: -746386828
+      Room_Builder_free_16x16_39: -1720153432
       Room_Builder_free_16x16_4: -827694093
+      Room_Builder_free_16x16_40: 1953176896
+      Room_Builder_free_16x16_41: -2100084741
       Room_Builder_free_16x16_5: 822566038
       Room_Builder_free_16x16_6: -198996620
       Room_Builder_free_16x16_7: 1626408729

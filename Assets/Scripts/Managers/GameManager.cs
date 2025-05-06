@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
     private PauseMenuManager _pauseMenu;
     private IndicatorChange _indicatorChange;
     private Button _tutorial;
+    private bool IsDev = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -183,7 +184,16 @@ public class GameManager : MonoBehaviour
             UpdateStats();
             _statsUpdated = true;
         }
-
+        if (InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !IsDev)
+        {
+            Time.timeScale = 2.0f;
+            Debug.Log("DEVMODE");
+        }
+        else if (InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed())
+        {
+            Time.timeScale = 1.0f;
+            Debug.Log("NO DEVMODE");
+        }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && !_firstTime)
         {
             if (FindAnyObjectByType<PauseMenuManager>() != null)
@@ -522,10 +532,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < _levels.Length; i++)
         {
-            PlayerPrefs.DeleteKey("RangeLevel: "+ i);
-            PlayerPrefs.DeleteKey("MoneyLevel: " + i);
-            _levels[i].SetMoney("--");
-            _levels[i].SetRank("F");
+            if (!_levels[i].ReturnInfinite())
+            {
+                PlayerPrefs.DeleteKey("RangeLevel: " + i);
+                PlayerPrefs.DeleteKey("MoneyLevel: " + i);
+                _levels[i].SetMoney("--");
+                _levels[i].SetRank("F");
+            }
         }
     }
 

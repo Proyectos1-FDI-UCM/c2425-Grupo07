@@ -33,6 +33,8 @@ public class FireExtinguisher : MonoBehaviour
     /// </summary>
     private AudioSource _feAudioSource;
 
+    private OvenScript horno;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -76,13 +78,12 @@ public class FireExtinguisher : MonoBehaviour
     /// <param name="other">Collider del objeto en contacto con el extintor.</param>
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (_isUsing && other.CompareTag("Fire"))
+        if (_isUsing && other.CompareTag("Fire") && horno != null)
         {
             Debug.Log("¡Extinguiendo fuego!");
             other.gameObject.SetActive(false); // Apaga el fuego
 
             // Busca un horno en la escena y ejecuta su método de apagado
-            OvenScript horno = FindObjectOfType<OvenScript>();
             if (horno != null)
             {
                 Debug.Log("Horno encontrado, llamando a OnExtinguish()");
@@ -107,6 +108,11 @@ public class FireExtinguisher : MonoBehaviour
     public void OnUseExtinguisher(bool isPressed)
     {
         _isUsing = isPressed;
+    }
+
+    public void ChangeOven(OvenScript newOven)
+    {
+        horno = newOven;
     }
 
     /// <summary>
