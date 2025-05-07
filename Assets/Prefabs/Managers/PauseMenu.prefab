@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5195072211625331680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Pass
         m_Mode: 1
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5195072211625331680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Off
         m_Mode: 1
@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 839872975051236480}
     m_SelectOnDown: {fileID: 8043349769086154869}
@@ -1246,7 +1246,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 839872975051236480}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 1334969896988526265}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0.5019608}
@@ -1274,7 +1274,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
-        m_MethodName: HandleInput
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1831,7 +1831,6 @@ GameObject:
   - component: {fileID: 3525313630700524665}
   - component: {fileID: 814356021962712770}
   - component: {fileID: 1334969896988526265}
-  - component: {fileID: 5195072211625331680}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -1919,7 +1918,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+    m_NormalColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0.5019608}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1942,7 +1941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5195072211625331680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: On
         m_Mode: 1
@@ -1954,35 +1953,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5195072211625331680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5518191890435149837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c74e14f0cdaa4940937f2703f226c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Page:
-  - {fileID: -619902682, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 157716116, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 1326312019, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 68316368, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: -781588031, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 606525236, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: 896115137, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  - {fileID: -1148255183, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
-  Tutorial: {fileID: 8430328166125779450}
-  Skip: {fileID: 1644658805605646576}
-  Resume: {fileID: 3897032001011695904}
-  _pauseMenu: {fileID: 0}
-  TutorialObject: {fileID: 5876559829627385951}
-  TutorialButton: {fileID: 1334969896988526265}
-  _first: 0
-  _active: 0
 --- !u!1 &5876559829627385951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2216,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5195072211625331680}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndicatorChange, Assembly-CSharp
         m_MethodName: Return
         m_Mode: 1

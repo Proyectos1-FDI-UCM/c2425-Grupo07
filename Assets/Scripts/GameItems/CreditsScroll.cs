@@ -58,7 +58,8 @@ public class CreditsScroll : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if(Animator == null)
+        InputManager.Instance.EnableActionMap("UI");
+        if (Animator == null)
         {
             Animator = GetComponent<Animator>();
         }
@@ -125,6 +126,7 @@ public class CreditsScroll : MonoBehaviour
     /// </summary>
     private void ReturnToTitle()
     {
+        InputManager.Instance.EnableActionMap("Player");
         SceneManager.LoadScene("TitleScreen");
     }
     #endregion

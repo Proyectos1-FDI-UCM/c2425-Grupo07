@@ -120,7 +120,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private static GameManager _instance;
     [SerializeField]private bool _firstTime = false;
-    private PauseMenuManager _pauseMenu;
     private IndicatorChange _indicatorChange;
     private Button _tutorial;
     private bool _isDev = false;
@@ -201,33 +200,14 @@ public class GameManager : MonoBehaviour
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && !_firstTime)
         {
-            if (FindAnyObjectByType<PauseMenuManager>() != null)
-            {
-                _pauseMenu = FindAnyObjectByType<PauseMenuManager>();
-                _pauseMenu.HandleInput();
-            }
             if (FindAnyObjectByType<IndicatorChange>() != null)
             {
                 _indicatorChange = FindAnyObjectByType<IndicatorChange>();
-
-                _indicatorChange.SetFirst(_firstTime);
-                _tutorial = _indicatorChange.GetComponent<Button>();
-                _tutorial.interactable = true;
-                _tutorial.onClick.Invoke();
+                _indicatorChange.On();
                 _firstTime = true;
+                _indicatorChange.SetFirst(false);
             }
         }
-        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "NivelPrincipal" && !_firstTime && _tutorial == null)
-        //{
-        //    if (FindAnyObjectByType<IndicatorChange>() != null)
-        //    {
-        //        _indicatorChange = FindAnyObjectByType<IndicatorChange>();
-
-        //        _tutorial = _indicatorChange.GetComponent<Button>();
-        //        _tutorial.interactable = false;
-        //        _tutorial.image.enabled = false;
-        //    }
-        //}
     }
 
     #endregion

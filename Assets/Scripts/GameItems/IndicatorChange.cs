@@ -29,7 +29,6 @@ public class IndicatorChange : MonoBehaviour
     [SerializeField] private Canvas Tutorial; //Canvas que lleva los botones
     [SerializeField] private GameObject Skip; //Botón de cerrar la pestaña
     [SerializeField] private GameObject Resume; //Botton del resume del menu de pausa
-    [SerializeField] private PauseMenuManager _pauseMenu; //Script del menu de pausa
     [SerializeField] private GameObject TutorialObject; //Game object del que tendrá los cambios de las´páginas
     [SerializeField] private Button TutorialButton; //Botón del turorial para activar la pestaña
     
@@ -47,9 +46,10 @@ public class IndicatorChange : MonoBehaviour
 
     private int _num = 0; //Contador del número de página en el que está el jugador
     private Image _page;//Imagen del Game Object a cambiar
-    private bool _first;// si es la primera vez en jugar
+    private bool _first;// si es la primera vez en jugar  (primero falso y después true)
     private bool _active;//Si está activo o no las indicaciones
     private GameManager _gameManager; //Instancia del Game Manager
+    private PauseMenuManager _pauseMenu;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -65,11 +65,13 @@ public class IndicatorChange : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _page = TutorialObject.GetComponent<Image>();
         if (FindAnyObjectByType<PauseMenuManager>() != null)
         {
             _pauseMenu = FindAnyObjectByType<PauseMenuManager>();
         }
+
+        _page = TutorialObject.GetComponent<Image>();
+        
         if (_gameManager == null)
         {
             _gameManager = GameManager.Instance;
@@ -78,10 +80,6 @@ public class IndicatorChange : MonoBehaviour
 
     private void Update()
     {
-        if (!_first) 
-        {
-            _first = _gameManager.ReturnFirst();
-        }
         if (_first && !_active)
         {
             TutorialButton.image.enabled = true;
@@ -144,10 +142,25 @@ public class IndicatorChange : MonoBehaviour
     /// </summary>
     public void On() 
     {
-        TutorialObject.gameObject.SetActive(true);
-        Tutorial.gameObject.SetActive(true);
-        _active = true;
-        EventSystem.current.SetSelectedGameObject(Skip);
+        if (!_first)
+        {
+            Time.timeScale = 0f;
+            TutorialObject.gameObject.SetActive(true);
+            Tutorial.gameObject.SetActive(true);
+            _active = true;
+            _first = true;
+            EventSystem.current.SetSelectedGameObject(Skip);
+        }
+        else
+        {
+            TutorialObject.gameObject.SetActive(true);
+            Tutorial.gameObject.SetActive(true);
+            _active = true;
+            _first = true;
+            
+            EventSystem.current.SetSelectedGameObject(Skip);
+        }
+        
     }
 
     /// <summary>
@@ -163,7 +176,8 @@ public class IndicatorChange : MonoBehaviour
             Tutorial.gameObject.SetActive(false);
             _page.sprite = Page[0];
             _num = 0;
-            _pauseMenu.HandleInput();
+            Time.timeScale = 1f;
+            InputManager.Instance.EnableActionMap("Player");
         }
         else
         {
@@ -172,7 +186,9 @@ public class IndicatorChange : MonoBehaviour
             _page.sprite = Page[0];
             _num = 0;
             _active = false;
+            _pauseMenu.HandleInput();
             EventSystem.current.SetSelectedGameObject(Resume);
+
         }
     }
 
