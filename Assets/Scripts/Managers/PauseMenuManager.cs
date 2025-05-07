@@ -7,64 +7,57 @@
 
 using System.Collections;
 using UnityEngine;
-// Añadir aquí el resto de directivas using
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// Esta clase de PauseMenuManager se encarga de pausar el juego, abrir y cerrar el menu de pausa, que contiene botones para la funcion 
-/// de reanudar el juego, cambiar a la escena de seleccion de niveles, a la escena de menu principal, mostrar los controles y poder navegar
-/// en el menu con teclado y mando.
+/// La clase PauseMenuManager se encarga de gestionar el menú de pausa del juego.
+/// Permite pausar el juego, reanudarlo, cambiar entre escenas, mostrar los controles,
+/// y navegar en el menú utilizando teclado o mando.
 /// </summary>
 public class PauseMenuManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
+    // Los atributos del Inspector permiten arrastrar los objetos necesarios desde el editor.
 
-    [SerializeField] private GameObject PauseMenuUI; // para colocar el Objecto de Menu de Pausa desde el editor para su correcto funcionamiento.
-    [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
-    [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
-    [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
-    [SerializeField] private GameObject GoToTutorial; //Solo se usa en la escena de menuLevelSelect para activar el panel si quiere ir al tutorial
-    [SerializeField] private Button CloseTutorial; //Boton de cerrar el tutorial
-    [SerializeField] private AudioClip ButtonSound; //Sonido de los botones
-    [SerializeField] private bool _paused = false;  //Indica si el juego esta pausado o no.
+    [SerializeField] private GameObject PauseMenuUI; // Referencia al objeto del menú de pausa.
+    [SerializeField] private GameObject ControlsUI; // Imagen de los controles que se muestra en el menú.
+    [SerializeField] private GameObject PauseMenuFirstButton; // El primer botón que será seleccionado por defecto al abrir el menú de pausa.
+    [SerializeField] private GameObject ResetPanel; // Solo se usa en la escena de selección de niveles, desactiva el panel cuando se presiona ESC.
+    [SerializeField] private GameObject GoToTutorial; // Solo se usa en la escena de selección de niveles, activa el panel para ir al tutorial.
+    [SerializeField] private Button CloseTutorial; // Botón para cerrar el tutorial.
+    [SerializeField] private AudioClip ButtonSound; // Sonido que se reproduce al presionar botones.
+    [SerializeField] private bool _paused = false; // Indica si el juego está pausado o no.
+    [SerializeField] private GameObject selectionPlayerPanel; // Se usa en la selección de jugadores, referencia al panel de selección de jugador.
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+    // Atributos privados que se usan internamente en el script.
 
-    private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
-    private bool goesToTutorial = false;
-    private bool _recipeTutorial = false; //Indica si el tutorial esta activado
-    private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
-    private IndicatorChange _indicatorChange;
-    private LevelManager _levelManager; // Referencia al script LevelManager
+    private bool _controlPannelActive = false; // Indica si el panel de controles está activo.
+    private bool goesToTutorial = false; // Indica si se está yendo al tutorial.
+    private bool _isTutorialActive = false; // Indica si el tutorial está activo.
+    private bool _recipeTutorial = false; // Indica si el tutorial de recetas está activo.
+    private PlayerDash _playerDash; // Referencia para controlar si el jugador puede realizar un "dash" (velocidad extra).
+    private IndicatorChange _indicatorChange; // Referencia a un script que controla los indicadores de la UI.
+    private LevelManager _levelManager; // Referencia al script LevelManager para controlar el estado del nivel.
 
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// Se llama al inicio, justo antes de que cualquier método Update sea llamado.
+    /// Inicializa las referencias necesarias.
     /// </summary>
     void Start()
     {
+        // Busca una referencia al LevelManager si existe.
         if (FindAnyObjectByType<LevelManager>() != null)
         {
             _levelManager = FindAnyObjectByType<LevelManager>();
@@ -72,22 +65,35 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// Comprueba si el jugador ha pulsado el botón de pausar para 
-    /// realizar la acción
+    /// Se llama cada frame si el MonoBehaviour está habilitado.
+    /// Se encarga de comprobar las entradas del jugador para pausar el juego o navegar en el menú.
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance != null && !goesToTutorial && InputManager.Instance.PauseWasPressedThisFrame() && _levelManager == null || 
-            (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
+        if (InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame())
         {
-            HandleInput();
-        }
+            if (selectionPlayerPanel != null && selectionPlayerPanel.activeSelf)
+            {
+                // Salir del Selection Player
+                PlayerBool playerBool = selectionPlayerPanel.GetComponent<PlayerBool>();
+                if (playerBool != null)
+                {
+                    playerBool.ExitCanva(); 
+                }
+                else
+                {
+                    // Fallback por si no encuentra el componente
+                    selectionPlayerPanel.SetActive(false);
+                }
 
-        if(FindAnyObjectByType<IndicatorChange>() != null)
-        {
-            _indicatorChange = FindAnyObjectByType<IndicatorChange>();
-            _recipeTutorial = _indicatorChange.ReturnActive();
+                // Llamar a Resume para liberar el control y reactivar el mapa de acciones "Player"
+                Resume();
+            }
+            else if (_levelManager == null || (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0))
+            {
+                // Si no estamos en el selectionPlayerPanel, manejar el input normalmente
+                HandleInput();
+            }
         }
     }
 
@@ -95,107 +101,107 @@ public class PauseMenuManager : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
-
+    /// <summary>
+    /// Reanuda el juego desactivando el menú de pausa, reactivando el mapa de acciones del jugador y reanudando el tiempo.
+    /// </summary>
     public void Resume()
     {
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        HandleInput();
-        ControlsUI.SetActive(false);
+        SettingsManager.Instance.PlaySFX(ButtonSound); // Efecto de sonido
+        InputManager.Instance.EnableActionMap("Player"); // Activar el mapa de acción de Player
+        PauseMenuUI.SetActive(false); // Desactivar el menú de pausa
+        Time.timeScale = 1f; // Asegurarse de que el juego no esté pausado
+        _paused = false; // Actualizar el estado de pausa
+
+        EventSystem.current.SetSelectedGameObject(null); // Desactivar la selección del botón
     }
 
     /// <summary>
-    /// Reincia la escena del nivel
+    /// Reinicia el nivel actual.
     /// </summary>
     public void RestartLevel()
     {
         string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        StartCoroutine(DelayOnSceneChange(actualSceneName, true));
+        SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
+        StartCoroutine(DelayOnSceneChange(actualSceneName, true)); // Cambia de escena con un pequeño retraso.
     }
 
     /// <summary>
-    /// Cambia a la escena que este escrita en el editor, sirve para cualquier boton que cambie a una escena.
+    /// Cambia a la escena indicada.
     /// </summary>
-    /// <param name="nameScene"></param>
+    /// <param name="nameScene">Nombre de la escena a la que se cambiará.</param>
     public void ChangeScenesButtons(string nameScene)
     {
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        StartCoroutine(DelayOnSceneChange(nameScene,true));
+        SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
+        StartCoroutine(DelayOnSceneChange(nameScene, true)); // Cambia de escena con un pequeño retraso.
     }
 
     /// <summary>
-    /// Muestra la imagen de los controles y acrtiva su booleana correspondiente.
+    /// Muestra u oculta el panel de controles.
     /// </summary>
     public void ToggleControlPanel()
     {
-        SettingsManager.Instance.PlaySFX(ButtonSound);
+        SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
         if (!_controlPannelActive)
         {
-            ControlsUI.SetActive(true);
-            _controlPannelActive = true;
-            EventSystem.current.SetSelectedGameObject(ControlsUI.GetComponentInChildren<Button>().gameObject); // Selecciona el primer boton de la UI de controles.
+            ControlsUI.SetActive(true); // Muestra la UI de controles.
+            _controlPannelActive = true; // Cambia el estado a activo.
+            EventSystem.current.SetSelectedGameObject(ControlsUI.GetComponentInChildren<Button>().gameObject); // Selecciona el primer botón de la UI de controles.
         }
         else
         {
-            ControlsUI.SetActive(false);
-            _controlPannelActive = false;
-            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton); // Selecciona el primer boton del menu de pausa.
+            ControlsUI.SetActive(false); // Oculta la UI de controles.
+            _controlPannelActive = false; // Cambia el estado a inactivo.
+            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton); // Selecciona el primer botón del menú de pausa.
         }
     }
 
     /// <summary>
-    ///  Controla la activacion y d esactivacion del menu de pausa. Si el menu no esta activo y se da el input correspondiente
-    ///  el menu de pausa se activa y se pausa el juego. Si no esta activo, ve si los controles estan activos, si no lo estan cierra
-    ///  el menu de pausa. Si lo estan, los desactiva para que la siguiente vez que se pulse el input correspondiente se cierre el menu de pausa
-    ///  asi primero se cierran los controles y luego se cierra el menu.
-    ///  Activa el Input de Player del jugador si está en el menú de pausa, activando el Input del UI (Esta línea fue hecha por Guillermo)
+    /// Maneja la entrada para pausar o reanudar el juego, dependiendo del estado actual.
     /// </summary>
     public void HandleInput()
     {
         if (!_paused)
         {
-            if (InputManager.Instance != null)
+            // Si el panel de selección de jugador está activo, se desactiva al presionar ESC
+            if (selectionPlayerPanel.activeSelf)
             {
-                InputManager.Instance.EnableActionMap("UI");
-            }
-            PauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-
-            _paused = true;
-
-            EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
-        }
-        else
-        {
-            if (_controlPannelActive)
-            {
-                ToggleControlPanel(); // Si los controles están activos, los desactiva.
-            }
-            else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
-            {
-                ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
-            }
-            else if (_recipeTutorial)
-            {
-                CloseTutorial.onClick.Invoke();
+                selectionPlayerPanel.SetActive(false); // Desactivar el panel de selección de jugador
+                InputManager.Instance.EnableActionMap("Player"); // Habilitar el mapa de acciones de jugador
             }
             else
             {
+                // Si el panel de selección de jugador no está activo, mostramos el menú de pausa
+                InputManager.Instance.EnableActionMap("UI");
+                PauseMenuUI.SetActive(true); // Activar el menú de pausa
+                Time.timeScale = 0f; // Pausar el juego
+                _paused = true;
+                EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton); // Seleccionar el primer botón
+            }
+        }
+        else
+        {
+            // Si el menú está activo y no está el panel de selección de jugador activo
+            if (_controlPannelActive)
+            {
+                ToggleControlPanel(); // Desactivar los controles
+            }
+            else if (SettingsManager.Instance != null && SettingsManager.Instance.IsCanvasOpen())
+            {
+                ToggleSettingsPanel(); // Desactivar los ajustes si están abiertos
+            }
+            else
+            {
+                // Si no está activo nada más, desactivar el menú de pausa
                 InputManager.Instance.EnableActionMap("Player");
-                PauseMenuUI.SetActive(false);
-                Time.timeScale = 1f;
+                PauseMenuUI.SetActive(false); // Cerrar el menú de pausa
+                Time.timeScale = 1f; // Reanudar el juego
                 _paused = false;
-
-                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(null); // Desactivar la selección del botón
             }
         }
 
+        // Aseguramos que el ResetPanel se desactive
         if (ResetPanel != null)
         {
             ResetPanel.SetActive(false);
@@ -204,103 +210,91 @@ public class PauseMenuManager : MonoBehaviour
 
 
     /// <summary>
-    /// Para que la booleana de _pause pueda ser accedida por otros scrpits 
+    /// Devuelve el estado de pausa para poder accederlo desde otros scripts.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>True si el juego está pausado, false si no lo está.</returns>
     public bool PauseActive()
     {
         return _paused;
     }
+
     /// <summary>
-    /// Hecho por Guillermo
-    /// Intercambia entre abrir y cerrar el panel de ajustes
-    /// Accede al SettingsManager para abrirlo
+    /// Abre o cierra el panel de ajustes.
     /// </summary>
     public void ToggleSettingsPanel()
     {
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        SettingsManager.Instance.TogglePanel();
+        SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
+        SettingsManager.Instance.TogglePanel(); // Activa o desactiva el panel de ajustes.
     }
+
     /// <summary>
-    /// Hecho por Guillermo
-    /// Intercambia entre abrir y cerrar el panel de ajustes
-    /// Accede al SettingsManager para abrirlo
+    /// Abre o cierra el panel de tutorial.
     /// </summary>
     public void ToggleGoToTutorial()
     {
         if (!goesToTutorial)
         {
             goesToTutorial = true;
-            Time.timeScale = 0f;
-            GoToTutorial.SetActive(true);
-            InputManager.Instance.EnableActionMap("UI");
-            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+            Time.timeScale = 0f; // Pausa el juego.
+            GoToTutorial.SetActive(true); // Activa el panel de tutorial.
+            InputManager.Instance.EnableActionMap("UI"); // Habilita las acciones del UI.
+            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del tutorial.
         }
         else
         {
             goesToTutorial = false;
-            Time.timeScale = 1f;
-            InputManager.Instance.EnableActionMap("Player");
-            GoToTutorial.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(null);
+            Time.timeScale = 1f; // Reanuda el tiempo del juego.
+            InputManager.Instance.EnableActionMap("Player"); // Habilita las acciones del jugador.
+            GoToTutorial.SetActive(true); // Activa el panel de tutorial.
+            EventSystem.current.SetSelectedGameObject(null); // Desactiva la selección del botón.
         }
     }
+
     /// <summary>
-    /// Hecho por Guillermo
-    /// Intercambia entre abrir y cerrar el panel de ajustes
-    /// Accede al SettingsManager para abrirlo
+    /// Reinicia el progreso del juego, borrando cualquier dato guardado.
     /// </summary>
     public void ResetProgress()
     {
-        GameManager.Instance.ResetProgress();
+        GameManager.Instance.ResetProgress(); // Llama a la función de reinicio del progreso en el GameManager.
     }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Changes the scene after a delay
+    /// Cambia la escena después de un retraso.
     /// </summary>
-    /// <param name="nameScene"></param>
-    /// <param name="Unpause"></param>
-    /// <param name="delay"></param>
-    /// <returns></returns>
-
-    private IEnumerator DelayOnSceneChange(int sceneIndex, bool Unpause = true, float delay = 0.5f)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        if (Unpause) { Time.timeScale = 1f; }
-        SceneManager.LoadScene(sceneIndex);
-    }
-
-    /// <summary>
-    /// Changes the scene after a delay. (DEFAULT : = 0.5 seconds)
-    /// It can also unpause the time when the game was paused.
-    /// </summary>
-    /// <param name="nameScene"></param>
-    /// <param name="Unpause"></param>
-    /// <param name="delay"></param>
-    /// <returns></returns>
+    /// <param name="nameScene">Nombre de la escena a cambiar.</param>
+    /// <param name="Unpause">Indica si debe despausar el juego.</param>
+    /// <param name="delay">Retraso en segundos antes de cambiar de escena.</param>
+    /// <returns>IEnumerator para la Coroutine.</returns>
     private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay = 0.5f)
     {
         yield return new WaitForSecondsRealtime(delay);
-        if (Unpause) { Time.timeScale = 1f; }
-        SceneManager.LoadScene(nameScene);
+        if (Unpause) { Time.timeScale = 1f; } // Despausa el juego si es necesario.
+        SceneManager.LoadScene(nameScene); // Carga la nueva escena.
     }
 
+    #endregion
+
+    // ---- MÉTODO DE EVENTO ----
+    #region Métodos de Evento
+
+    /// <summary>
+    /// Se llama cuando la aplicación es pausada, maneja la entrada para pausar el juego.
+    /// </summary>
     void OnApplicationPause()
     {
-        if (!_paused && InputManager.Instance!=null && !goesToTutorial||
+        if (!_paused && InputManager.Instance != null && !goesToTutorial ||
             _levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame())
         {
-            HandleInput();
+            HandleInput(); // Maneja la entrada si es necesario.
         }
     }
+
     #endregion
-}// class PauseMenuManager 
+}
+// class PauseMenuManager 
 // namespace

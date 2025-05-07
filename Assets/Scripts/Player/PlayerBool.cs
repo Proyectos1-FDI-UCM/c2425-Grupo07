@@ -5,7 +5,11 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 // Añadir aquí el resto de directivas using
 using UnityEngine.UI;
 
@@ -37,7 +41,8 @@ public class PlayerBool : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private bool _isRack; // true si el jugador eligió a Rack, false si eligió a Albert
     private GameManager _gameManager; //Referencia para el GameManager
-     
+    private bool _isSelectionActive; // Indica si el SelectionPlayer está activo
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -97,10 +102,34 @@ public class PlayerBool : MonoBehaviour
     //Esconde el canvas para la seleccion del personaje en caso de querer cambiar de mapa 
     public void ExitCanva()
     {
-        Time.timeScale = 1f;
-        Canvas.gameObject.SetActive(false);
+        // Esto asegurará que se vuelva al mapa de acción del jugador
         InputManager.Instance.EnableActionMap("Player");
+        Canvas.gameObject.SetActive(false); // Desactiva el panel de selección de jugador
+        Time.timeScale = 1f; // Reanuda el tiempo si es necesario
     }
+
+    public void ShowSelectionPlayer(string levelName)
+    {
+        Canvas.gameObject.SetActive(true);  // Activamos el canvas de selección
+        Time.timeScale = 0f;  // Pausamos el juego
+        InputManager.Instance.EnableActionMap("UI");  // Cambiamos a ActionMap de UI
+
+        // Configurar el texto para mostrar el nombre del nivel de manera bonita
+        TextMeshProUGUI text = Canvas.GetComponentInChildren<TextMeshProUGUI>();
+        string[] s = Regex.Split(levelName, @"(?<!^)(?=[A-Z])");
+        text.text = string.Join(" ", s);
+
+        // Seleccionamos el primer botón para el uso de un control de mando
+        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+    }
+
+    public void HideSelectionPlayer()
+    {
+        Canvas.gameObject.SetActive(false);  // Ocultamos el canvas de selección
+        Time.timeScale = 1f;  // Reanudamos el juego
+        InputManager.Instance.EnableActionMap("Player");  // Volvemos a cambiar el ActionMap a Player
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
