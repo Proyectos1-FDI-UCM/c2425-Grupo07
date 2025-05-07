@@ -387,9 +387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 186897796}
-  ParallaxEffect: 0.85
+  ParallaxEffect: 0.8
   ResetThreshold: 1000
-  CameraSpeed: 1
+  CameraSpeed: 0.5
 --- !u!1 &173703076
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
   Camera: {fileID: 186897796}
   ParallaxEffect: 0.2
   ResetThreshold: 1000
-  CameraSpeed: 1
+  CameraSpeed: 0.5
 --- !u!1 &186897796
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.79215693, g: 0.5882353, b: 0.6117647, a: 0}
+  m_BackGroundColor: {r: 0.20545568, g: 0.47272772, b: 0.5377358, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   Camera: {fileID: 186897796}
   ParallaxEffect: 0.45
   ResetThreshold: 1000
-  CameraSpeed: 1
+  CameraSpeed: 0.5
 --- !u!1001 &814909962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1384298258
 Transform:
   m_ObjectHideFlags: 0
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   Camera: {fileID: 186897796}
   ParallaxEffect: 1
   ResetThreshold: 1000
-  CameraSpeed: 1
+  CameraSpeed: 0.5
 --- !u!1 &1546944074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2524,7 @@ MonoBehaviour:
   Camera: {fileID: 186897796}
   ParallaxEffect: 0.1
   ResetThreshold: 1000
-  CameraSpeed: 1
+  CameraSpeed: 0.5
 --- !u!1 &1757980724
 GameObject:
   m_ObjectHideFlags: 0
