@@ -413,6 +413,25 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Este metodo suma dinero para los cheats, no utiliza los colores y está más simplificado que el método original
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SumMoneyCheats(int ammount)
+    {
+        Money += ammount;
+        if (Money < 0)
+        {
+            _moneyInPlay.color = Color.red;
+            Money = 0;
+        }
+        else
+        {
+            _moneyInPlay.color = Color.green;
+        }
+            StartCoroutine(SumaCantidad(ammount));
+    }
+
+    /// <summary>
     /// Método que añadirá tiempo al nivel infinito cuando se entregue un pedido
     /// La suma del tiempo varía dependiendo de cuando tiempo lleve el jugador en el nivel infinito
     /// para ir aumentando la dificultado
@@ -447,6 +466,15 @@ public class LevelManager : MonoBehaviour
         //_currentSecondsLeft += ammount * timeFactor;
     }
 
+    /// <summary>
+    /// Método simple que se encarga de variar la cantidad de tiempo restante en el nivel
+    /// Se usa para los cheats y no tiene ninguna animación.
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SumTimeCheats(float ammount)
+    {
+        _currentSecondsLeft += ammount;
+    }
     /// <summary>
     /// Devuelve cierto si la instancia del singleton está creada y
     /// falso en otro caso.
