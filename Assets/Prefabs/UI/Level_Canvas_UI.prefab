@@ -10312,6 +10312,9 @@ MonoBehaviour:
   - {fileID: 606525236, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
   - {fileID: 896115137, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
   - {fileID: -1148255183, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 925378186, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 936568744, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
+  - {fileID: 1568294504, guid: e8c46549d671dd54a944d15f01d54170, type: 3}
   Tutorial: {fileID: 7157912294172480979}
   Skip: {fileID: 2420221990038424495}
   Resume: {fileID: 3216842997811734874}

@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 114
+        y: 240
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: PagCOmplete_1
       rect:
         serializedVersion: 2
-        x: 162
-        y: 114
+        x: 0
+        y: 127
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: PagCOmplete_2
       rect:
         serializedVersion: 2
-        x: 324
-        y: 114
+        x: 162
+        y: 240
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: PagCOmplete_3
       rect:
         serializedVersion: 2
-        x: 486
-        y: 114
+        x: 324
+        y: 2
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: PagCOmplete_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 486
+        y: 240
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: PagCOmplete_5
       rect:
         serializedVersion: 2
-        x: 162
-        y: 0
+        x: 324
+        y: 240
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,11 +227,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 324
-        y: 0
+        y: 127
         width: 158
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -248,7 +248,28 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 486
-        y: 0
+        y: 127
+        width: 158
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa65108a0280f0445bb6f9d4b1207b73
+      internalID: -1148255183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PagCOmplete_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
         width: 158
         height: 110
       alignment: 0
@@ -258,8 +279,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa65108a0280f0445bb6f9d4b1207b73
-      internalID: -1148255183
+      spriteID: 24e272b88feff0540b96b0f2884c45b9
+      internalID: 925378186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PagCOmplete_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 2
+        width: 158
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1df130e024b314eb813733e19c4dac
+      internalID: 936568744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PagCOmplete_10
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 2
+        width: 158
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ba38f9658ed5c429790284c415bcfd
+      internalID: 1568294504
       vertices: []
       indices: 
       edges: []
@@ -277,12 +340,15 @@ TextureImporter:
     nameFileIdTable:
       PagCOmplete_0: -619902682
       PagCOmplete_1: 157716116
+      PagCOmplete_10: 1568294504
       PagCOmplete_2: 1326312019
       PagCOmplete_3: 68316368
       PagCOmplete_4: -781588031
       PagCOmplete_5: 606525236
       PagCOmplete_6: 896115137
       PagCOmplete_7: -1148255183
+      PagCOmplete_8: 925378186
+      PagCOmplete_9: 936568744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
