@@ -26,7 +26,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject ControlsUI; // Imagen de los controles que se muestra en el menú.
     [SerializeField] private GameObject PauseMenuFirstButton; // El primer botón que será seleccionado por defecto al abrir el menú de pausa.
     [SerializeField] private GameObject ResetPanel; // Solo se usa en la escena de selección de niveles, desactiva el panel cuando se presiona ESC.
-    [SerializeField] private GameObject GoToTutorial; // Solo se usa en la escena de selección de niveles, activa el panel para ir al tutorial.
+    [SerializeField] private GameObject GoToTutorialPanel; // Solo se usa en la escena de selección de niveles, activa el panel para ir al tutorial.
     [SerializeField] private Button CloseTutorial; // Botón para cerrar el tutorial.
     [SerializeField] private AudioClip ButtonSound; // Sonido que se reproduce al presionar botones.
     [SerializeField] private bool _paused = false; // Indica si el juego está pausado o no.
@@ -164,7 +164,7 @@ public class PauseMenuManager : MonoBehaviour
         if (!_paused)
         {
             // Si el panel de selección de jugador está activo, se desactiva al presionar ESC
-            if (selectionPlayerPanel.activeSelf)
+            if (selectionPlayerPanel!= null&& selectionPlayerPanel.activeSelf)
             {
                 selectionPlayerPanel.SetActive(false); // Desactivar el panel de selección de jugador
                 InputManager.Instance.EnableActionMap("Player"); // Habilitar el mapa de acciones de jugador
@@ -230,13 +230,13 @@ public class PauseMenuManager : MonoBehaviour
     /// <summary>
     /// Abre o cierra el panel de tutorial.
     /// </summary>
-    public void ToggleGoToTutorial()
+    public void ToggleToTutorial()
     {
         if (!goesToTutorial)
         {
             goesToTutorial = true;
             Time.timeScale = 0f; // Pausa el juego.
-            GoToTutorial.SetActive(true); // Activa el panel de tutorial.
+            GoToTutorialPanel.SetActive(true); // Activa el panel de tutorial.
             InputManager.Instance.EnableActionMap("UI"); // Habilita las acciones del UI.
             EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject); // Selecciona el primer botón del tutorial.
         }
@@ -245,7 +245,7 @@ public class PauseMenuManager : MonoBehaviour
             goesToTutorial = false;
             Time.timeScale = 1f; // Reanuda el tiempo del juego.
             InputManager.Instance.EnableActionMap("Player"); // Habilita las acciones del jugador.
-            GoToTutorial.SetActive(true); // Activa el panel de tutorial.
+            GoToTutorialPanel.SetActive(false); // Activa el panel de tutorial.
             EventSystem.current.SetSelectedGameObject(null); // Desactiva la selección del botón.
         }
     }

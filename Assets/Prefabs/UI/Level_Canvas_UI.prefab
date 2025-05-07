@@ -268,6 +268,18 @@ MonoBehaviour:
           m_StringArgument: TitleScreen
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 649886911657838024}
+        m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
+        m_MethodName: ToggleToTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &467672454096742935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,10 +3545,11 @@ MonoBehaviour:
   ControlsUI: {fileID: 4883053202189711404}
   PauseMenuFirstButton: {fileID: 3216842997811734874}
   ResetPanel: {fileID: 7683197970287720100}
-  GoToTutorial: {fileID: 2823667296448642971}
+  GoToTutorialPanel: {fileID: 2823667296448642971}
   CloseTutorial: {fileID: 47083852345673225}
   ButtonSound: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
   _paused: 0
+  selectionPlayerPanel: {fileID: 0}
 --- !u!1 &2778172070644378493
 GameObject:
   m_ObjectHideFlags: 0

@@ -538,11 +538,10 @@ public class GameManager : MonoBehaviour
     }*/
     public string GetLevelRank(int level)
     {
-        int i = 0;
         string _levelRank = "";
-        if (Levels != null && i < Levels.Length && Levels[i].GetLevelNum() == level)
+        if (Levels != null && level < Levels.Length && Levels[level].GetLevelNum() == level)
         {
-            _levelRank = Levels[i].GetRankLetter();    
+            _levelRank = Levels[level].GetRankLetter();    
         }
         return _levelRank;
 
