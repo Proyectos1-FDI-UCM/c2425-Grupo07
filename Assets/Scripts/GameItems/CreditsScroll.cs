@@ -27,6 +27,8 @@ public class CreditsScroll : MonoBehaviour
 
     [SerializeField] private GameObject CreditsGroup; //Game Object que contiene todos los creditos
     [SerializeField] private Animator Animator;//Animator del Game Object
+    [SerializeField] private float FastSpeed = 3f; //Velocidad de la animación cuando se acerera
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,7 +41,6 @@ public class CreditsScroll : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private float _normalSpeed = 1f; //Velocidad de la animación normal
-    private float _fastSpeed = 3f; //Velocidad de la animación cuando se acerera
     private bool _isActive = false; //Si esta activado o no el fast scroll
     private InputManager _inputManager; //Referencia al input manager
 
@@ -58,7 +59,6 @@ public class CreditsScroll : MonoBehaviour
     /// </summary>
     void Start()
     {
-        InputManager.Instance.EnableActionMap("UI");
         if (Animator == null)
         {
             Animator = GetComponent<Animator>();
@@ -109,7 +109,7 @@ public class CreditsScroll : MonoBehaviour
     private void ScrollQuick()
     {
         _isActive = !_isActive;
-        SetSpeed(_isActive ? _fastSpeed : _normalSpeed);
+        SetSpeed(_isActive ? FastSpeed : _normalSpeed);
     }
 
     /// <summary>
@@ -126,7 +126,6 @@ public class CreditsScroll : MonoBehaviour
     /// </summary>
     private void ReturnToTitle()
     {
-        InputManager.Instance.EnableActionMap("Player");
         SceneManager.LoadScene("TitleScreen");
     }
     #endregion

@@ -83,7 +83,7 @@ public class ChangePreview : MonoBehaviour
     public void SetImagePreview(Level level)
     {
         int i = 0;
-        while (_allLevelNames[i] != level.GetLevelName())
+        while (_allLevelNames[i] != level.GetLevelName() && i < _allLevelNames.Length)
         {
             i++;
         }

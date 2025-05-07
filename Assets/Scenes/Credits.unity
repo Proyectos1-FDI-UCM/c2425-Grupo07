@@ -1513,16 +1513,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "A game by\r\n\r\n\r\n\r\n\r\n\r\nGame programers\r\n\r\nOliver Garcia
     Aguado\r\nGuillermo Isaac Ramos Medina\r\nAlicia Sarahi Sanchez Varela\r\nLiling
-    Chen\r\nFerran Escriba Cufi\r\nCheng Xiang Ye Xu\r\n\r\nExternal art\r\nCaio
-    Carlos of the Clockwork Raven - \r\n\r\nAdditional Art Assets\r\nIndustrial Zone
-    - CRAFTPIX.NET\r\nItems pack (x16) -  Glionox\r\nAutomation tileset - sierrassets\r\nPixel
-    Crawler - Anokolisa\r\nCats || Pixel Asset Pack -\r\nPop Shop Packs\r\nLifebar
-    pixelart - Unreached Lands\r\n\r\nEnviroment art\r\nBackbround - CRAFTPIX.NET\r\nModern
-    interiors - LimeZu\r\nCity Prop Tileset - shidky\r\nSprout Lands - Cup Nooble\r\nLiling
-    Chen\r\n\r\nCharacter art\r\nLiling Chen\r\n\r\nAnimation\r\nAlicia Sarahi Sanchez
-    Varela\r\nOliver Garcia Aguado\r\nLiling Chen\r\n\r\nLevel designer\r\nCheng
-    Xiang Ye Xu\r\nGuillermo Isaac Ramos Medina\r\nOliver Garcia Aguado\r\n\r\nExternal
-    music (found in pixabay)\r\nAudioPapkin\r\nBFCMUSIC\r\nfreesound_community\r\nDJARTMUSIC\r\nUniversfield\r\nMIGHTUSER\r\nSoundReality\r\nOpen-Music-for-Videos\r\n\r\nVFX
+    Chen\r\nFerran Escriba Cufi\r\nCheng Xiang Ye Xu\r\n\r\nExternal art\r\nClockwork
+    Raven -\nAdditional Art Assets\r\nIndustrial Zone - CRAFTPIX.NET\r\nItems pack
+    (x16) -  Glionox\r\nAutomation tileset - sierrassets\r\nPixel Crawler - Anokolisa\r\nCats
+    || Pixel Asset Pack -\r\nPop Shop Packs\r\nLifebar pixelart - Unreached Lands\r\n\r\nEnviroment
+    art\r\nBackbround - CRAFTPIX.NET\r\nModern interiors - LimeZu\r\nCity Prop Tileset
+    - shidky\r\nSprout Lands - Cup Nooble\r\nLiling Chen\r\n\r\nCharacter art\r\nLiling
+    Chen\r\n\r\nAnimation\r\nAlicia Sarahi Sanchez Varela\r\nOliver Garcia Aguado\r\nLiling
+    Chen\r\n\r\nLevel designer\r\nCheng Xiang Ye Xu\r\nGuillermo Isaac Ramos Medina\r\nOliver
+    Garcia Aguado\r\n\r\nExternal music (found in pixabay)\r\nAudioPapkin\r\nBFCMUSIC\r\nfreesound_community\r\nDJARTMUSIC\r\nUniversfield\r\nMIGHTUSER\r\nSoundReality\r\nOpen-Music-for-Videos\r\n\r\nVFX
     art \r\nBullet Impact Explosion - \r\nBDragon1727\r\nSmoke & Fire Animated Partible
     - \r\nKnoblePersona\r\nParticle Fx - RagnaPixel\r\n@CodeManuPro\r\n\r\nUI art\r\nm6x11plus
     Regular - Daniel Linssen \r\nSCI-FI BUTTONS+ - @catter.pxl. \r\nSimple Keys -
@@ -1595,7 +1594,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -4471.782}
+  m_margin: {x: 0, y: 0, z: 0, w: -4382.2754}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1686,6 +1685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CreditsGroup: {fileID: 614867711}
   Animator: {fileID: 614867713}
+  FastSpeed: 5
 --- !u!1 &867525001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,7 +1929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3338.64}
+  m_AnchoredPosition: {x: 0, y: -3326}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080941007
@@ -2185,7 +2185,7 @@ GameObject:
   - component: {fileID: 1832140140}
   - component: {fileID: 1832140139}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
