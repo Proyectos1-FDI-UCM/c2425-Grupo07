@@ -44,21 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55695a01267fa4264b28ed5ffab61a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _playerLevel: {fileID: 0}
-  _level: {fileID: 0}
-  _levelName: 
-  _playerBool: {fileID: 0}
-  _isRack: 0
-  _moneyTextPrincipal: {fileID: 0}
-  _moneyTextInfinito: {fileID: 0}
-  _rankImagePrincipal: {fileID: 0}
-  _rankImageInfinito: {fileID: 0}
-  _moneyNumberPrincipal: 0
-  _moneyNumberInfinito: 0
-  _timeTextPrincipal: {fileID: 0}
-  _timeTextInfinito: {fileID: 0}
-  _levels:
-  - {fileID: 0}
-  - {fileID: 0}
-  _statsUpdated: 0
+  Player: {fileID: 0}
+  PlayerLevel: {fileID: 0}
+  Level: {fileID: 0}
+  LevelName: 
+  PlayerBool: {fileID: 0}
+  IsRack: 0
+  MoneyTextLevel: []
+  RankTextLevel: []
+  MoneyNumberlevel: 
+  TimeTextInfinito: {fileID: 0}
+  Levels: []
+  StatsUpdated: 0
+  Locked: {fileID: 21300000, guid: c152dfc74ca2b144b9d12c13687363c2, type: 3}
+  _firstTime: 0

@@ -502,6 +502,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                PlayerPrefs.DeleteKey("MoneyLevel: " + i);
+                Levels[i].SetMoney("--");
                 Levels[i].GetComponent<SpriteRenderer>().sprite = Locked;
             }
         }
@@ -516,13 +518,13 @@ public class GameManager : MonoBehaviour
     /// Devuelve la letra correspondiente al rango del nivel principal
     /// </summary>
     /// <returns>La letra correspondiente al rango del nivel principal</returns>
-    public string GetMainLevelRank()
+    /*public string GetMainLevelRank()
     {
         int i = 0;
         string _mainLevelRank = "";
         if (Levels != null)
         {
-            while (i < Levels.Length && Levels[i].GetLevelName() != "NivelPrincipal")
+            while (i < Levels.Length-1 && Levels[i].GetLevelName() != "NivelPrincipal")
             {
                 i++;
             }
@@ -533,6 +535,17 @@ public class GameManager : MonoBehaviour
             }
         }
         return _mainLevelRank;
+    }*/
+    public string GetLevelRank(int level)
+    {
+        int i = 0;
+        string _levelRank = "";
+        if (Levels != null && i < Levels.Length && Levels[i].GetLevelNum() == level)
+        {
+            _levelRank = Levels[i].GetRankLetter();    
+        }
+        return _levelRank;
+
     }
 
     #endregion

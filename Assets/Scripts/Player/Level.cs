@@ -86,14 +86,17 @@ public class Level : MonoBehaviour
         _thisLevel = gameObject.GetComponent<Level>();
         string MoneyPref = "MoneyLevel: " + LevelNum; // Tengo que crear el string para que
                                                       // el playerPrefs lo detecte
-        string RankPref = "RangeLevel: " + LevelNum; // Tengo que crear el string para que
-                                                      // el playerPrefs lo detecte
+        
         if (!_isThisInfiniteLevel) // Si el nivel es infinito, se pone "Infinity"
         {
-        // Si no hay dinero, se pone "--"
+            string RankPref = "RangeLevel: " + LevelNum; // Tengo que crear el string para que
+                                                         // el playerPrefs lo detecte
+
+                                                         // Si no hay dinero, se pone "--"
             Money.text = PlayerPrefs.GetString(MoneyPref, "--"); 
             // Si no hay rango, se pone "F"
             _rankLetter = PlayerPrefs.GetString(RankPref, "F");
+
             CalculateRank(_rankLetter);
         }
         else 
@@ -117,7 +120,7 @@ public class Level : MonoBehaviour
                 Money.text = BestTimeInSeconds; // Si no hay tiempo, se pone "No record yet"
             }
 
-            if (_gameManager.GetMainLevelRank() != "F")
+            if (_gameManager.GetLevelRank(0) != "F")
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = _unlocked;
             }
@@ -244,8 +247,14 @@ public class Level : MonoBehaviour
     {
         string PlayerPref = "MoneyLevel: " + LevelNum;
         PlayerPrefs.SetString(PlayerPref, _moneyToSet);
-        if (_isThisInfiniteLevel) Money.text = secondsToMMSS(float.Parse(_moneyToSet));
-        else Money.text = _moneyToSet; 
+        if (_isThisInfiniteLevel && _moneyToSet!="--")
+        {
+            Money.text = secondsToMMSS(float.Parse(_moneyToSet));
+        }
+        else
+        {
+            Money.text = _moneyToSet;
+        }
     }
 
     private string secondsToMMSS(float seconds)

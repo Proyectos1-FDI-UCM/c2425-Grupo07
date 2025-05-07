@@ -165,6 +165,7 @@ public class PauseMenuManager : MonoBehaviour
             _paused = true;
 
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
+
         }
         else
         {
@@ -266,7 +267,8 @@ public class PauseMenuManager : MonoBehaviour
 
     void OnApplicationPause()
     {
-        if (!_paused && InputManager.Instance != null)
+        if (!_paused && InputManager.Instance != null ||
+            (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
         {
             HandleInput();
         }
