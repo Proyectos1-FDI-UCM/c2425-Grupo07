@@ -56,6 +56,7 @@ public class Level : MonoBehaviour
     private PlayerLevel _player; //script del PlayerLevel
     string _rankLetter;
     private Level _thisLevel; //Obtención de la información de este nivel
+    [SerializeField] private ChangePreview _changePreview; //referencia a ChangePreview
 
     #endregion
 
@@ -77,6 +78,10 @@ public class Level : MonoBehaviour
         if(_gameManager == null)
         {
             _gameManager = GameManager.Instance;
+        }
+        if(_changePreview == null)
+        {
+            _changePreview = FindObjectOfType<ChangePreview>();
         }
         _thisLevel = gameObject.GetComponent<Level>();
         string MoneyPref = "MoneyLevel: " + LevelNum; // Tengo que crear el string para que
@@ -160,6 +165,7 @@ public class Level : MonoBehaviour
     public void OnEnterLevel()
     {
         SelectionPlayer.gameObject.SetActive(true);
+        _changePreview.SetImagePreview(_thisLevel);
         InputManager.Instance.EnableActionMap("UI");
         TextMeshProUGUI text = SelectionPlayer.GetComponentInChildren<TextMeshProUGUI>();
         string[] s = Regex.Split(LevelName, @"(?<!^)(?=[A-Z])");

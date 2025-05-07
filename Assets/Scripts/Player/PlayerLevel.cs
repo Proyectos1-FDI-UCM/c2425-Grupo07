@@ -23,6 +23,8 @@ public class PlayerLevel : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -34,11 +36,13 @@ public class PlayerLevel : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    [SerializeField] private Level _level; //Script del nivel al que va a entrar
+    private Level _level; //Script del nivel al que va a entrar
     private PauseMenuManager _menuManager; //Script del menu de pausa
     private bool _enabledPause = false; //Si está activado o no el menu de pausa
     private GameManager _gameManager; //instancia del game manager
     private GameObject _player; //prefab del jugador
+
+    
 
     #endregion
 
@@ -55,6 +59,7 @@ public class PlayerLevel : MonoBehaviour
         {
             _gameManager = GameManager.Instance;
         }
+        
         
     }
 
