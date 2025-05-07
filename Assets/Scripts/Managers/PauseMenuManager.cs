@@ -31,6 +31,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject ControlsUI; // Necesitamos utilizar la imagen de los controles para poder mostarlos en el Menu.
     [SerializeField] private GameObject PauseMenuFirstButton; //El primer boton que aparece en el estado de "hovering" para oder navegar con teclas o Gamepad.
     [SerializeField] private GameObject ResetPanel; //Solo se usa en la escena de menuLevelSelect para desactivar el panel cuando se pulsa ESC
+    [SerializeField] private GameObject GoToTutorial; //Solo se usa en la escena de menuLevelSelect para activar el panel si quiere ir al tutorial
     [SerializeField] private Button CloseTutorial; //Boton de cerrar el tutorial
     [SerializeField] private AudioClip ButtonSound; //Sonido de los botones
     [SerializeField] private bool _paused = false;  //Indica si el juego esta pausado o no.
@@ -46,7 +47,8 @@ public class PauseMenuManager : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private bool _controlPannelActive = false; //indica si la imagen de los controles esta activa o no.
-    private bool _tutorial = false; //Indica si el tutorial esta activado
+    private bool goesToTutorial = false;
+    private bool _recipeTutorial = false; //Indica si el tutorial esta activado
     private PlayerDash _playerDash; // Para bloquear al jugador de activar un dash si está en el menú de pausa.
     private IndicatorChange _indicatorChange;
     private LevelManager _levelManager; // Referencia al script LevelManager
@@ -76,7 +78,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame() && _levelManager == null || 
+        if (InputManager.Instance != null && !goesToTutorial && InputManager.Instance.PauseWasPressedThisFrame() && _levelManager == null || 
             (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
         {
             HandleInput();
@@ -85,7 +87,7 @@ public class PauseMenuManager : MonoBehaviour
         if(FindAnyObjectByType<IndicatorChange>() != null)
         {
             _indicatorChange = FindAnyObjectByType<IndicatorChange>();
-            _tutorial = _indicatorChange.ReturnActive();
+            _recipeTutorial = _indicatorChange.ReturnActive();
         }
     }
 
@@ -168,7 +170,6 @@ public class PauseMenuManager : MonoBehaviour
             _paused = true;
 
             EventSystem.current.SetSelectedGameObject(PauseMenuFirstButton);
-
         }
         else
         {
@@ -180,7 +181,7 @@ public class PauseMenuManager : MonoBehaviour
             {
                 ToggleSettingsPanel(); // Si los ajustes están activos, los desactiva.
             }
-            else if (_tutorial)
+            else if (_recipeTutorial)
             {
                 CloseTutorial.onClick.Invoke();
             }
@@ -219,6 +220,30 @@ public class PauseMenuManager : MonoBehaviour
     {
         SettingsManager.Instance.PlaySFX(ButtonSound);
         SettingsManager.Instance.TogglePanel();
+    }
+    /// <summary>
+    /// Hecho por Guillermo
+    /// Intercambia entre abrir y cerrar el panel de ajustes
+    /// Accede al SettingsManager para abrirlo
+    /// </summary>
+    public void ToggleGoToTutorial()
+    {
+        if (!goesToTutorial)
+        {
+            goesToTutorial = true;
+            Time.timeScale = 0f;
+            GoToTutorial.SetActive(true);
+            InputManager.Instance.EnableActionMap("UI");
+            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+        }
+        else
+        {
+            goesToTutorial = false;
+            Time.timeScale = 1f;
+            InputManager.Instance.EnableActionMap("Player");
+            GoToTutorial.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
     /// <summary>
     /// Hecho por Guillermo
@@ -270,7 +295,8 @@ public class PauseMenuManager : MonoBehaviour
 
     void OnApplicationPause()
     {
-        if (Time.timeScale != 0)
+        if (!_paused && InputManager.Instance!=null && !goesToTutorial||
+            _levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame())
         {
             HandleInput();
         }

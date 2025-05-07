@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class CheckScript : MonoBehaviour
+public class OpenGoToTutorial : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,10 +22,7 @@ public class CheckScript : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] Animator DoorToOpen;
-    [SerializeField] GameObject AllowNextScene;
-    [SerializeField] MaterialType GameObjectReceived;
-    [SerializeField] bool IsFirstDoor;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,30 +33,23 @@ public class CheckScript : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
+    private PauseMenuManager _pauseMenu;
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        if (IsFirstDoor)
-        {
-            DoorToOpen.SetTrigger("Open");
-            if (AllowNextScene != null)
-            {
-                AllowNextScene.SetActive(true);
-            }
-        }
+        _pauseMenu = FindObjectOfType<PauseMenuManager>().gameObject.GetComponent<PauseMenuManager>();
     }
 
     /// <summary>
@@ -87,29 +77,14 @@ public class CheckScript : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    private void OnTransformChildrenChanged()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (transform.childCount > 0 && (transform.GetChild(0).GetComponent<Material>() != null &&
-            transform.GetChild(0).GetComponent<Material>().MaterialTypeReturn() == GameObjectReceived ||
-            transform.GetChild(0).GetComponent<Objects>() != null && transform.GetChild(0).GetComponent<Objects>().IsCompleted()))
+        if (other.GetComponent<PlayerManager>() != null)
         {
-            DoorToOpen.SetTrigger("Open");
-            if (AllowNextScene != null)
-            {
-                AllowNextScene.SetActive(true);
-            }
-        }
-        if (GameObjectReceived == MaterialType.Otro && transform.childCount == 0)
-        {
-            DoorToOpen.SetTrigger("Close");
-            if (AllowNextScene != null)
-            {
-                AllowNextScene.SetActive(false);
-            }
+            _pauseMenu.ToggleGoToTutorial();
         }
     }
-    #endregion
+        #endregion
 
-
-    } // class CheckScript 
+} // class OnPlayerCollision 
 // namespace

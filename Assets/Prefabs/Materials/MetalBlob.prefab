@@ -259,6 +259,7 @@ MonoBehaviour:
   MatState:
   - {fileID: 979421830, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   - {fileID: -1872800837, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
+  - {fileID: 979421830, guid: 070a964a94e0ea84799c9abcca68ab1e, type: 3}
   goodCompletionSound: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
   badCompletionSound: {fileID: 0}
 --- !u!58 &6475533781192141353
@@ -447,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecTransform: {fileID: 0}
 --- !u!1 &8178194999067490553
 GameObject:
   m_ObjectHideFlags: 0
