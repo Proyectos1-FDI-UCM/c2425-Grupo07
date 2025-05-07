@@ -104,6 +104,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] private bool _statsUpdated;
 
+    /// <summary>
+    /// Sprite del nivel infinito bloqueado
+    /// </summary>
+    [SerializeField] private Sprite _locked;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -538,6 +543,10 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.DeleteKey("MoneyLevel: " + i);
                 _levels[i].SetMoney("--");
                 _levels[i].SetRank("F");
+            }
+            else
+            {
+                _levels[i].GetComponent<SpriteRenderer>().sprite = _locked;
             }
         }
     }
