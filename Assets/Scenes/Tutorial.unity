@@ -15974,7 +15974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorToOpen: {fileID: 1777588901}
   AllowNextScene: {fileID: 1777391912}
-  GameObjectReceived: 8
+  GameObjectReceived: 7
   IsFirstDoor: 0
 --- !u!1 &815736298 stripped
 GameObject:
@@ -22856,8 +22856,8 @@ PrefabInstance:
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
       value: Pick objects from the <color="red">receiver table<color="white">, place
-        on tables above; <color="lightred">pick, repair and send<color="white"> up
-        to 5 for rewards in the levels.
+        on tables above; <color="red">pick, repair and send<color="white"> up to
+        5 for rewards in the levels.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: IsFirstDoor
