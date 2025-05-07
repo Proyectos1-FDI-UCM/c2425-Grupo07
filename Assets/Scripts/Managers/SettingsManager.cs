@@ -101,12 +101,6 @@ public class SettingsManager : MonoBehaviour
         //1920 / 3 = 640, 1080 / 3 = 360
         Application.targetFrameRate = 60;
 
-        //_cam.orthographicSize = ((_currentResolutionHeight) / (_currentResolutionWidth / 640 * 37)) * 0.5f;// 32 pixeles por unidad
-        //_isOnFullscreen = true;
-        //_currentResolutionWidth = Screen.currentResolution.width;
-        //_currentResolutionHeight = Screen.currentResolution.height;
-        //Screen.SetResolution(_currentResolutionWidth, _currentResolutionHeight, FullScreenMode.MaximizedWindow, Screen.currentResolution.refreshRateRatio);
-
         //Inicializar con las preferencias
         MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", -30);
         SFXSlider.value = PlayerPrefs.GetFloat("effectsVolume", -30);

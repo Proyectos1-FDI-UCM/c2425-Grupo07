@@ -330,6 +330,7 @@ public class LevelManager : MonoBehaviour
         if (_currentSecondsLeft < 0)
         {
             StopTimer();
+            PlayerPrefs.SetInt("IsFirstTime", 1); // 1 false
             _currentSecondsLeft = 0;
             if (!InfiniteMode) // Si es el nivel normal, se calcula el rango, el dinero y se almacena en el GameManager
             {

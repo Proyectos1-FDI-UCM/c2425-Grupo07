@@ -62,8 +62,19 @@ public class SceneLoader : MonoBehaviour
     {
         SettingsManager.Instance.PlaySFX(ButtonSound);
         StartCoroutine(DelayOnSceneChange(nameScene));
-        
     }
+
+    public void WarpTutorialOrSelection()
+    {
+        string nameScene = "MenuLevelSelection";
+        if (PlayerPrefs.GetInt("IsFirstTime", 0) == 0)
+        {
+            nameScene = "Tutorial";
+        }
+        SettingsManager.Instance.PlaySFX(ButtonSound);
+        StartCoroutine(DelayOnSceneChange(nameScene));
+    }
+
     //Cierra el juego
     public void QuitGame()
     { Application.Quit(); }

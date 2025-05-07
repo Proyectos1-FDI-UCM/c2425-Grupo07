@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             Debug.Log("NO DEVMODE");
         }
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && !_firstTime)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && PlayerPrefs.GetInt("IsFirstTime", 1) == 1)
         {
             if (FindAnyObjectByType<IndicatorChange>() != null)
             {
@@ -491,6 +491,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetProgress()
     {
+        PlayerPrefs.DeleteKey("IsFirstTime");
         for (int i = 0; i < Levels.Length; i++)
         {
             if (!Levels[i].ReturnInfinite())
@@ -518,24 +519,7 @@ public class GameManager : MonoBehaviour
     /// Devuelve la letra correspondiente al rango del nivel principal
     /// </summary>
     /// <returns>La letra correspondiente al rango del nivel principal</returns>
-    /*public string GetMainLevelRank()
-    {
-        int i = 0;
-        string _mainLevelRank = "";
-        if (Levels != null)
-        {
-            while (i < Levels.Length-1 && Levels[i].GetLevelName() != "NivelPrincipal")
-            {
-                i++;
-            }
 
-            if (Levels[i].GetLevelName() == "NivelPrincipal")
-            {
-                _mainLevelRank = Levels[i].GetRankLetter();
-            }
-        }
-        return _mainLevelRank;
-    }*/
     public string GetLevelRank(int level)
     {
         string _levelRank = "";
