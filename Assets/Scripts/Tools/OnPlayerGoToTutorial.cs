@@ -34,6 +34,7 @@ public class OpenGoToTutorial : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private PauseMenuManager _pauseMenu;
+    private bool _openPanel = true;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -79,12 +80,27 @@ public class OpenGoToTutorial : MonoBehaviour
     // mayúscula, incluida la primera letra)
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerManager>() != null)
+        if (other.GetComponent<PlayerManager>() != null && _openPanel)
         {
-            _pauseMenu.ToggleGoToTutorial();
+            _pauseMenu.ToggleToTutorial();
+            _openPanel = false;
         }
     }
-        #endregion
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.GetComponent<PlayerManager>() != null)
+        {
+            _openPanel = false;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<PlayerManager>() != null)
+        {
+            _openPanel = true;
+        }
+    }
+    #endregion
 
 } // class OnPlayerCollision 
 // namespace
