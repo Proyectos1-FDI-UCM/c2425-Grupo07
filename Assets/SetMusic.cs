@@ -25,6 +25,10 @@ public class SetMusic : MonoBehaviour
 
     [SerializeField] private AudioClip[] MusicClip; //todos los audios musicales para el juego
     [SerializeField] private AudioSource MusicSource; //el audio a cambiar
+    [SerializeField] private float PitchOne = 1.1f;
+    [SerializeField] private float PitchTwo = 1.4f;
+
+    [SerializeField] private float SecondsLeft;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,7 +40,7 @@ public class SetMusic : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    [SerializeField] private string[] _sceneNames; //Nombre de todas las escenas de la built
+    private string[] _sceneNames; //Nombre de todas las escenas de la built
     private string _actualScene;
 
     #endregion
@@ -61,7 +65,13 @@ public class SetMusic : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        if (SceneManager.GetActiveScene().name == "NivelPrincipal")
+        {
+            LevelManager levelManager = FindObjectOfType<LevelManager>();
+            SecondsLeft = levelManager.GetCurrentSecondsLeft();
+            ChangePitch(SecondsLeft);
+        }
+        else { MusicSource.pitch = 1f; }
     }
 
     private void OnEnable()
@@ -82,6 +92,11 @@ public class SetMusic : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    public void SetPitchOnReset()
+    {
+        MusicSource.pitch = 1f;
+    }
 
     #endregion
 
@@ -136,6 +151,13 @@ public class SetMusic : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SearchForPlayer();
+    }
+
+    private void ChangePitch(float seconds)
+    {
+        if (seconds > 60f) { MusicSource.pitch = 1f; }
+        if (seconds < 60f && seconds > 10f) MusicSource.pitch = PitchOne;
+        else if(seconds < 10f) MusicSource.pitch = PitchTwo;
     }
     #endregion
 
