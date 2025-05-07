@@ -235,18 +235,20 @@ public class InputManager : MonoBehaviour
     /// <param name="TypeActionMap"></param>
     public void EnableActionMap(string TypeActionMap)
     {
-        if (TypeActionMap == "Player")
-        {
-            _theController.Player.Enable();
-            _theController.UI.Disable();
-            _togglePauseMenu = _theController.Player.OpenPauseMenu;
-        }
-        else
-        {
-            _theController.Player.Disable();
-            _theController.UI.Enable();
-            _togglePauseMenu = _theController.UI.ClosePauseMenu;
-        }
+        Debug.Log("Cambiando Action Map a: " + TypeActionMap);
+
+    if (TypeActionMap == "Player")
+    {
+        _theController.Player.Enable();
+        _theController.UI.Disable();
+        _togglePauseMenu = _theController.Player.OpenPauseMenu;
+    }
+    else
+    {
+        _theController.Player.Disable();
+        _theController.UI.Enable();
+        _togglePauseMenu = _theController.UI.ClosePauseMenu;
+    }
     }
     #endregion
 
