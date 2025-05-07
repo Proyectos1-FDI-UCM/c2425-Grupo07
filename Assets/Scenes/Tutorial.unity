@@ -212,6 +212,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1001 &67570793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10485,6 +10488,7 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 7
   IsFirstDoor: 0
+  DoorSounds: []
 --- !u!1001 &318527339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15805,7 +15809,7 @@ PrefabInstance:
       objectReference: {fileID: 330881599}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
-      value: Now drop the material in the saw and process it by <color="red">holding<color="white">
+      value: Now drop the material on the saw and process it by <color="red">holding<color="white">
         the J key <sprite name="Jkey"> or square button <sprite name="Square_Button">.
         Then place it below.
       objectReference: {fileID: 0}
@@ -16027,6 +16031,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 1636323585}
   GameObjectReceived: 6
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1 &809302749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2338494283670101056, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
@@ -16053,6 +16060,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 1777391912}
   GameObjectReceived: 7
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!4 &815399590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: fa4ef3d7f8f8032419872981da19ded3, type: 3}
@@ -16084,6 +16094,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 878081108}
   GameObjectReceived: 7
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1 &820273354
 GameObject:
   m_ObjectHideFlags: 0
@@ -17839,6 +17852,7 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 7
   IsFirstDoor: 0
+  DoorSounds: []
 --- !u!1 &862567927
 GameObject:
   m_ObjectHideFlags: 0
@@ -17899,6 +17913,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1 &867725797
 GameObject:
   m_ObjectHideFlags: 0
@@ -17957,6 +17974,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1 &875815086
 GameObject:
   m_ObjectHideFlags: 0
@@ -18235,6 +18255,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 8
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!4 &966645730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1200185607637273506, guid: d240384680fe7704b891879005847be1, type: 3}
@@ -18330,6 +18353,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 218463944}
   GameObjectReceived: 3
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1001 &983236676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20705,6 +20731,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 1087330482}
   GameObjectReceived: 8
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1001 &1448360435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21557,6 +21586,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 800337095}
   GameObjectReceived: 1
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1001 &1672112230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22508,8 +22540,9 @@ PrefabInstance:
       objectReference: {fileID: 624756938}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
-      value: Here you'll have to place two materials in the oven <color="red">one
-        at a time<color="white">, when one is processed drop it on the tables below.
+      value: Here you'll have to place <color="red">two materials<color="white">
+        in the oven <color="red">one at a time<color="white">, when one is processed
+        drop it on the tables below.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: IsFirstDoor
@@ -23040,6 +23073,9 @@ MonoBehaviour:
   AllowNextScene: {fileID: 1087084309}
   GameObjectReceived: 4
   IsFirstDoor: 0
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
 --- !u!1 &2052235041
 GameObject:
   m_ObjectHideFlags: 0
@@ -23484,6 +23520,8 @@ MonoBehaviour:
   AllowNextScene: {fileID: 0}
   GameObjectReceived: 0
   IsFirstDoor: 1
+  DoorSounds:
+  - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
 --- !u!1001 &2802675549065437706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23496,6 +23534,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 614443060}
+    - target: {fileID: 1894731764770760620, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3797574855057081381, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: m_IsActive
       value: 1

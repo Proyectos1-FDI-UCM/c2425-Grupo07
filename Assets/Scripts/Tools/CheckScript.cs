@@ -26,6 +26,7 @@ public class CheckScript : MonoBehaviour
     [SerializeField] GameObject AllowNextScene;
     [SerializeField] MaterialType GameObjectReceived;
     [SerializeField] bool IsFirstDoor;
+    [SerializeField] AudioClip[] DoorSounds; // 0 abre 1 cierra
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -36,7 +37,7 @@ public class CheckScript : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
+    AudioSource _doorSource;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -52,6 +53,7 @@ public class CheckScript : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _doorSource = DoorToOpen.gameObject.GetComponent<AudioSource>();
         if (IsFirstDoor)
         {
             DoorToOpen.SetTrigger("Open");
@@ -59,6 +61,7 @@ public class CheckScript : MonoBehaviour
             {
                 AllowNextScene.SetActive(true);
             }
+            _doorSource.PlayOneShot(DoorSounds[0]);
         }
     }
 
@@ -94,6 +97,7 @@ public class CheckScript : MonoBehaviour
             transform.GetChild(0).GetComponent<Objects>() != null && transform.GetChild(0).GetComponent<Objects>().IsCompleted()))
         {
             DoorToOpen.SetTrigger("Open");
+            _doorSource.PlayOneShot(DoorSounds[0]);
             if (AllowNextScene != null)
             {
                 AllowNextScene.SetActive(true);
@@ -102,6 +106,7 @@ public class CheckScript : MonoBehaviour
         if (GameObjectReceived == MaterialType.Otro && transform.childCount == 0)
         {
             DoorToOpen.SetTrigger("Close");
+            _doorSource.PlayOneShot(DoorSounds[1]);
             if (AllowNextScene != null)
             {
                 AllowNextScene.SetActive(false);
