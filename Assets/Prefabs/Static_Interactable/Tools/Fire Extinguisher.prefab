@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -259739391
-  m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingLayerID: 1280534379
+  m_SortingLayer: 5
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1904949585, guid: 80f83ba32f18eca48b9870e06a9a2705, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1627,20 +1627,20 @@ ParticleSystem:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1726,11 +1726,14 @@ ParticleSystem:
     tilesY: 1
     animationType: 0
     rowIndex: 0
-    cycles: 1
+    cycles: 5
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 343eca5c78e814149bd46bea1c6acf30, type: 3}
+    - sprite: {fileID: -1470436531, guid: b55320f9433b5c04da6cdba237e0f61f, type: 3}
+    - sprite: {fileID: 644888962, guid: b55320f9433b5c04da6cdba237e0f61f, type: 3}
+    - sprite: {fileID: 908219175, guid: b55320f9433b5c04da6cdba237e0f61f, type: 3}
+    - sprite: {fileID: 644888962, guid: b55320f9433b5c04da6cdba237e0f61f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
