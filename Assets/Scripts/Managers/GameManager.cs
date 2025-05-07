@@ -41,73 +41,73 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// GameObject del jugador en la escena
     /// </summary>
-    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject Player;
 
     /// <summary>
     /// Script que contiene los datos del nivel al que va a entrar el jugador
     /// </summary>
-    [SerializeField] private PlayerLevel _playerLevel;
+    [SerializeField] private PlayerLevel PlayerLevel;
 
     /// <summary>
     /// Para almacenar el nivel entrado
     /// </summary>
-    [SerializeField] private Level _level;
+    [SerializeField] private Level Level;
 
     /// <summary>
     /// Para almacenar el nombre del nivel
     /// </summary>
-    [SerializeField] private string _levelName;
+    [SerializeField] private string LevelName;
 
     /// <summary>
     /// Para almacenar el script del personaje elegido
     /// </summary>
-    [SerializeField] private PlayerBool _playerBool;
+    [SerializeField] private PlayerBool PlayerBool;
 
     /// <summary>
     /// Booleana del personaje, true si es Rack, false si es Albert
     /// </summary>
-    [SerializeField] private bool _isRack = false;
+    [SerializeField] private bool IsRack = false;
     
     /// <summary>
     /// Texto que muestra el dinero recopilado en el nivel prinicpal
     /// </summary>
-    [SerializeField] private TextMeshProUGUI[] _moneyTextLevel;
+    [SerializeField] private TextMeshProUGUI[] MoneyTextLevel;
 
     /// <summary>
     /// Texto que indica el mejor rango obtenido en el nivel
     /// </summary>
-    [SerializeField] private TextMeshProUGUI[] _rankTextLevel;
+    [SerializeField] private TextMeshProUGUI[] RankTextLevel;
 
     /// <summary>
     /// Mejor rango obtenido del nivel
     /// </summary>
-    private LevelManager.Range[] _levelsRange;
+    private LevelManager.Range[] LevelsRange;
 
     /// <summary>
     /// Entero que indica el dinero recopilado en el nivel
     /// </summary>
-    [SerializeField] private int[] _moneyNumberlevel;
+    [SerializeField] private int[] MoneyNumberlevel;
 
 
     /// <summary>
     /// Tiempo del nivel infinito aguantado
     /// </summary>
-    [SerializeField] private Text _timeTextInfinito;
+    [SerializeField] private Text TimeTextInfinito;
 
     /// <summary>
     /// Array de referencias a Level
     /// </summary>
-    [SerializeField] private Level[] _levels;
+    [SerializeField] private Level[] Levels;
 
     /// <summary>
     /// Comprueba si se han actualizado las stats de MenuLevelSelection
     /// </summary>
-    [SerializeField] private bool _statsUpdated;
+    [SerializeField] private bool StatsUpdated;
 
     /// <summary>
     /// Sprite del nivel infinito bloqueado
     /// </summary>
-    [SerializeField] private Sprite _locked;
+    [SerializeField] private Sprite Locked;
 
     #endregion
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     private PauseMenuManager _pauseMenu;
     private IndicatorChange _indicatorChange;
     private Button _tutorial;
-    private bool IsDev = false;
+    private bool _isDev = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -182,14 +182,14 @@ public class GameManager : MonoBehaviour
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MenuLevelSelection")
         {
-            _statsUpdated = false;
+            StatsUpdated = false;
         }
-        else if (!_statsUpdated)
+        else if (!StatsUpdated)
         {
             UpdateStats();
-            _statsUpdated = true;
+            StatsUpdated = true;
         }
-        if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !IsDev)
+        if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !_isDev)
         {
             Time.timeScale = 2.0f;
             Debug.Log("DEVMODE");
@@ -269,9 +269,9 @@ public class GameManager : MonoBehaviour
 
     public void DeactivatePlayer(bool _stateToDeactivate)
     {
-        if (_player != null)
+        if (Player != null)
         {
-            PlayerVision playerVision = _player.GetComponent<PlayerVision>();
+            PlayerVision playerVision = Player.GetComponent<PlayerVision>();
             if (playerVision != null)
             {
                 playerVision.enabled = !_stateToDeactivate;
@@ -315,17 +315,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetData()
     {
-        _playerLevel = _player.GetComponent<PlayerLevel>();
-        if (_playerLevel == null)
+        PlayerLevel = Player.GetComponent<PlayerLevel>();
+        if (PlayerLevel == null)
         {
             Debug.LogError("PlayerLevel no encontrado en el jugador.");
             return;
         }
         Debug.Log("Player Level obtenido");
 
-        _level = _playerLevel.GetLevel();
+        Level = PlayerLevel.GetLevel();
 
-        _levelName = _level.GetLevelName();
+        LevelName = Level.GetLevelName();
     }
 
     /// <summary>
@@ -334,13 +334,13 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public bool isInfiniteMode()
     {
-        return _levelName == "NivelInfinito";
+        return LevelName == "NivelInfinito";
     }
 
     public void SetLevelData(Level _levelToAssign)
     {
-        _level = _levelToAssign;
-        _levelName = _level.GetLevelName();
+        Level = _levelToAssign;
+        LevelName = Level.GetLevelName();
     }
 
     /// <summary>
@@ -348,27 +348,27 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetPlayer()
     {
-        if (_playerBool != null)
+        if (PlayerBool != null)
         {
-            _isRack = _playerBool.PlayerSelection();
+            IsRack = PlayerBool.PlayerSelection();
         }
     }
 
     //Carga la escena dependiendo de _levelName
     public void ChangeToLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_levelName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(LevelName);
     }
 
     //Devuelve la booleana _isRack al ser llamado
     public bool ReturnBool()
     {
-        return _isRack;
+        return IsRack;
     }
 
     public void SetPlayer(GameObject _playerToSet)
     {
-        _player = _playerToSet;
+        Player = _playerToSet;
     }
 
     /// <summary>
@@ -380,18 +380,18 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void FirstFindPlayerComponents()
     {
-        if (_player == null)
+        if (Player == null)
         {
             Debug.Log("Player no encontrado");
             return;
         }
-        _playerLevel = _player.GetComponent<PlayerLevel>();
+        PlayerLevel = Player.GetComponent<PlayerLevel>();
 
-        _playerBool = FindObjectOfType<PlayerBool>();
+        PlayerBool = FindObjectOfType<PlayerBool>();
 
-        if (_levelName != null)
+        if (LevelName != null)
         {
-            FindLevelByName(_levelName);
+            FindLevelByName(LevelName);
         }
         else Debug.Log("No hay nivel asignado");
     }
@@ -403,7 +403,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     public void SetRange(LevelManager.Range _range, int _levelToAssign)
     {
-        _levelsRange[_levelToAssign] = _range;
+        LevelsRange[_levelToAssign] = _range;
         PlayerPrefs.SetString("RangeLevel: " + _levelToAssign, _range.ToString());
     }
 
@@ -414,7 +414,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public LevelManager.Range GetRange(int _levelToAssign)
     {
-        return _levelsRange[_levelToAssign];
+        return LevelsRange[_levelToAssign];
     }
 
     /// <summary>
@@ -424,7 +424,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     public void SetMoney(int _money, int _levelToAssign)
     {
-        _moneyNumberlevel[_levelToAssign] = _money;
+        MoneyNumberlevel[_levelToAssign] = _money;
         PlayerPrefs.SetString("MoneyLevel: " + _levelToAssign, _money.ToString());
     }
 
@@ -437,7 +437,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_levelToAssign">El nivel para asignar el rango</param>
     public void SetTime(int seconds, int _levelToAssign)
     {
-        _moneyNumberlevel[_levelToAssign] = seconds;
+        MoneyNumberlevel[_levelToAssign] = seconds;
         PlayerPrefs.SetString("MoneyLevel: " + _levelToAssign, seconds.ToString());
     }
     /// <summary>
@@ -447,7 +447,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public int GetMoney(int _levelToAssign)
     {
-        return _moneyNumberlevel[_levelToAssign];
+        return MoneyNumberlevel[_levelToAssign];
     }
 
     /// <summary>
@@ -457,96 +457,72 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public int GetTime(int _levelToAssign)
     {
-        return _moneyNumberlevel[_levelToAssign];
+        return MoneyNumberlevel[_levelToAssign];
     }
-
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-
-    #region Métodos Privados
-
-    /// <summary>
-    /// Método privado que crea una array de componentes con el script de _level 
-    /// (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
-    /// </summary>
-    /// <param name="_levelName"></param>
-    private void FindLevelByName(string _levelName)
-    {
-        Level[] allLevels = FindObjectsOfType<Level>();
-        _levels = allLevels;
-        if (allLevels.Length == 0)
-        {
-            Debug.Log("No hay nivel en escena, está en juego");
-            return;
-        }
-        else _level = allLevels.FirstOrDefault(level => level.GetLevelName() == _levelName);
-    }
-
 
     public void UpdateStats()
-{
-    _levels = FindObjectsOfType<Level>();
-    _moneyTextLevel = new TextMeshProUGUI[_levels.Length];
-    _moneyNumberlevel = new int[_levels.Length];
-    _rankTextLevel = new TextMeshProUGUI[_levels.Length];
-    _levelsRange = new LevelManager.Range[_levels.Length];
-    
-    if (_levels != null)
     {
-        for (int i = 0; i < _levels.Length; i++)
+        Levels = FindObjectsOfType<Level>();
+        MoneyTextLevel = new TextMeshProUGUI[Levels.Length];
+        MoneyNumberlevel = new int[Levels.Length];
+        RankTextLevel = new TextMeshProUGUI[Levels.Length];
+        LevelsRange = new LevelManager.Range[Levels.Length];
+
+        if (Levels != null)
         {
-            if (PlayerPrefs.HasKey("MoneyLevel: " + i))
+            for (int i = 0; i < Levels.Length; i++)
             {
-                string savedValue = PlayerPrefs.GetString("MoneyLevel: " + i);
-                if (int.TryParse(savedValue, out int value))
+                if (PlayerPrefs.HasKey("MoneyLevel: " + i))
                 {
-                    _moneyNumberlevel[i] = value;
+                    string savedValue = PlayerPrefs.GetString("MoneyLevel: " + i);
+                    if (int.TryParse(savedValue, out int value))
+                    {
+                        MoneyNumberlevel[i] = value;
+                    }
                 }
-            }
-            
-            if (PlayerPrefs.HasKey("RangeLevel: " + i))
-            {
-                string savedRank = PlayerPrefs.GetString("RangeLevel: " + i);
-                if (Enum.TryParse(savedRank, out LevelManager.Range rank))
+
+                if (PlayerPrefs.HasKey("RangeLevel: " + i))
                 {
-                    _levelsRange[i] = rank;
+                    string savedRank = PlayerPrefs.GetString("RangeLevel: " + i);
+                    if (Enum.TryParse(savedRank, out LevelManager.Range rank))
+                    {
+                        LevelsRange[i] = rank;
+                    }
                 }
-            }
-            
-            _moneyTextLevel[i] = _levels[i].GetMoney();
-            _rankTextLevel[i] = _levels[i].GetRankText();
-            _rankTextLevel[i].text = _levels[i].GetRankLetter();
-            
-            if (_moneyNumberlevel[i] > 0)
-            {
-                if (_levels[i].GetLevelName() == "NivelInfinito")
+
+                MoneyTextLevel[i] = Levels[i].GetMoney();
+                RankTextLevel[i] = Levels[i].GetRankText();
+                RankTextLevel[i].text = Levels[i].GetRankLetter();
+
+                if (MoneyNumberlevel[i] > 0)
                 {
-                    _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
-                }
-                else
-                {
-                    _levels[i].SetMoney(_moneyNumberlevel[i].ToString());
+                    if (Levels[i].GetLevelName() == "NivelInfinito")
+                    {
+                        Levels[i].SetMoney(MoneyNumberlevel[i].ToString());
+                    }
+                    else
+                    {
+                        Levels[i].SetMoney(MoneyNumberlevel[i].ToString());
+                    }
                 }
             }
         }
     }
-}
 
     public void ResetProgress()
     {
-        for (int i = 0; i < _levels.Length; i++)
+        for (int i = 0; i < Levels.Length; i++)
         {
-            if (!_levels[i].ReturnInfinite())
+            if (!Levels[i].ReturnInfinite())
             {
                 PlayerPrefs.DeleteKey("RangeLevel: " + i);
                 PlayerPrefs.DeleteKey("MoneyLevel: " + i);
-                _levels[i].SetMoney("--");
-                _levels[i].SetRank("F");
+                Levels[i].SetMoney("--");
+                Levels[i].SetRank("F");
             }
             else
             {
-                _levels[i].GetComponent<SpriteRenderer>().sprite = _locked;
+                Levels[i].GetComponent<SpriteRenderer>().sprite = Locked;
             }
         }
     }
@@ -564,20 +540,44 @@ public class GameManager : MonoBehaviour
     {
         int i = 0;
         string _mainLevelRank = "";
-        if (_levels != null)
+        if (Levels != null)
         {
-            while (i < _levels.Length && _levels[i].GetLevelName() != "NivelPrincipal")
+            while (i < Levels.Length && Levels[i].GetLevelName() != "NivelPrincipal")
             {
                 i++;
             }
 
-            if (_levels[i].GetLevelName() == "NivelPrincipal")
+            if (Levels[i].GetLevelName() == "NivelPrincipal")
             {
-                _mainLevelRank = _levels[i].GetRankLetter();
+                _mainLevelRank = Levels[i].GetRankLetter();
             }
         }
         return _mainLevelRank;
     }
+
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+
+    #region Métodos Privados
+
+    /// <summary>
+    /// Método privado que crea una array de componentes con el script de _level 
+    /// (allLevels) y busca en él el dato del nombre de nivel para asignarlo a _level
+    /// </summary>
+    /// <param name="_levelName"></param>
+    private void FindLevelByName(string _levelName)
+    {
+        Level[] allLevels = FindObjectsOfType<Level>();
+        Levels = allLevels;
+        if (allLevels.Length == 0)
+        {
+            Debug.Log("No hay nivel en escena, está en juego");
+            return;
+        }
+        else Level = allLevels.FirstOrDefault(level => level.GetLevelName() == _levelName);
+    }
+
     #endregion
 } // class GameManager 
   // namespace
