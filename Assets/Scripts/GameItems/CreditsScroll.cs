@@ -97,7 +97,7 @@ public class CreditsScroll : MonoBehaviour
         {
             ScrollQuick();
         }
-        else if (_inputManager.EnterWasPressedThisFrame())
+        else if (_inputManager.PauseWasPressedThisFrame())
         {
             ReturnToTitle();
         }
