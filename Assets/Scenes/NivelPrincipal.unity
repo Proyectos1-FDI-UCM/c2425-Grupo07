@@ -2247,6 +2247,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8181690770653442898, guid: 232853ad7fd2e5748b8afad970535562, type: 3}
+      propertyPath: InfiniteMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7723,11 +7727,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2139594920671505428, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 2139594920671505428, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.55
       objectReference: {fileID: 0}
     - target: {fileID: 2139594920671505428, guid: 56ab20b2f971e78478f2d915e5522215, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8052,7 +8056,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1394175883
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
