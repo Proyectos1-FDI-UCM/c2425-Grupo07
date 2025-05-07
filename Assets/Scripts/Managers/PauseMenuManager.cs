@@ -158,7 +158,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (!_paused)
         {
-            InputManager.Instance.EnableActionMap("UI");
+            if (InputManager.Instance != null)
+            {
+                InputManager.Instance.EnableActionMap("UI");
+            }
             PauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
 
@@ -267,8 +270,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void OnApplicationPause()
     {
-        if (!_paused && InputManager.Instance != null ||
-            (_levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && InputManager.Instance.PauseWasPressedThisFrame()))
+        if (Time.timeScale != 0)
         {
             HandleInput();
         }
