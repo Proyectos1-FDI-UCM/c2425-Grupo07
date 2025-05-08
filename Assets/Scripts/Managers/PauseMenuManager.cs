@@ -298,8 +298,8 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     void OnApplicationPause()
     {
-        if (!_paused && InputManager.Instance != null && !goesToTutorial ||
-            _levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && InputManager.Instance != null && !_paused)
+        if (!_paused && InputManager.Instance != null && !goesToTutorial && _levelManager==null ||
+            _levelManager != null && _levelManager.GetCurrentSecondsLeft() > 0 && !_paused && InputManager.Instance != null)
         {
             HandleInput(); // Maneja la entrada si es necesario.
         }
