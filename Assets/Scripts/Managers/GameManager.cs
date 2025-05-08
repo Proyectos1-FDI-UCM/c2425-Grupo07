@@ -198,7 +198,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             Debug.Log("NO DEVMODE");
         }
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && PlayerPrefs.GetInt("IsFirstTime", 1) == 1)
+        // Comentario de Oliver: No sería mas util tener un script encargado de hacer esto en un start en vez del GameManager?
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && PlayerPrefs.GetInt("IsFirstTime", 1) == 1) 
         {
             if (FindAnyObjectByType<IndicatorChange>() != null && !_firstTime)
             {

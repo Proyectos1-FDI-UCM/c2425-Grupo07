@@ -29,6 +29,8 @@ public class IndicatorChange : MonoBehaviour
     [SerializeField] private Canvas Tutorial; //Canvas que lleva los botones
     [SerializeField] private GameObject Skip; //Botón de cerrar la pestaña
     [SerializeField] private GameObject Resume; //Botton del resume del menu de pausa
+
+    [SerializeField] private GameObject PassButton; //Botton para avanzar del tutorial
     [SerializeField] private GameObject TutorialObject; //Game object del que tendrá los cambios de las´páginas
     [SerializeField] private Button TutorialButton; //Botón del turorial para activar la pestaña
     
@@ -76,6 +78,7 @@ public class IndicatorChange : MonoBehaviour
         {
             _gameManager = GameManager.Instance;
         }
+        EventSystem.current.SetSelectedGameObject(PassButton);
     }
 
     private void Update()
@@ -150,6 +153,7 @@ public class IndicatorChange : MonoBehaviour
             _active = true;
             _first = true;
             EventSystem.current.SetSelectedGameObject(Skip);
+            PlayerPrefs.SetInt("IsFirstTime", 0); // Era imposible de cerrar el panel del inicio por esto, no se estaba almacenando esta variable y el update de GameManager estaba llamando a este método cada
         }
         else
         {
