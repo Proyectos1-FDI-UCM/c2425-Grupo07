@@ -165,7 +165,9 @@ public class Material : MonoBehaviour
     public void BurnTheMaterial()
     {
         GetComponent<SpriteRenderer>().sprite= MatState[1];
+        GetComponent<AudioSource>().volume = 0.7f;
         GetComponent<AudioSource>().PlayOneShot(badCompletionSound);
+
         switch (matType)
         {
             case MaterialType.Arena:
