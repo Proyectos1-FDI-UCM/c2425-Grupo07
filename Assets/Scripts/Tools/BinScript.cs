@@ -90,7 +90,8 @@ public class BinScript : MonoBehaviour
         }
         else if (item.GetComponent<Object>() != null)
         {
-            GameManager.Instance.SetTutorialString("Throwing objects in the <color=\"green\">bin<color=\"white\">, cancels the order, having a loss depending of the total amount of active orders");
+            GameManager.Instance.SetTutorialString("Throwing objects in the <color=\"green\">bin<color=\"white\"> cancels the order, having a loss depending of the total amount of active orders," +
+                "in the tutorial you can't do that");
         }
         else
         {

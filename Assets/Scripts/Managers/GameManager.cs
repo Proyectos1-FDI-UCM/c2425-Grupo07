@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
     private IndicatorChange _indicatorChange;
     private Button _tutorial;
     private bool _isDev = false;
+    private int _playerDoneTutorial;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -493,6 +494,7 @@ public class GameManager : MonoBehaviour
     public void ResetProgress()
     {
         PlayerPrefs.DeleteKey("IsFirstTime");
+        PlayerPrefs.DeleteKey("DidTutorial");
         for (int i = 0; i < Levels.Length; i++)
         {
             if (!Levels[i].ReturnInfinite())
@@ -509,6 +511,15 @@ public class GameManager : MonoBehaviour
                 Levels[i].GetComponent<SpriteRenderer>().sprite = Locked;
             }
         }
+    }
+    public void PlayerDidTutorial()
+    {
+        PlayerPrefs.SetInt("DidTutorial", 1);
+        _playerDoneTutorial = PlayerPrefs.GetInt("DidTutorial", 1);
+    }
+    public int ReturnPlayerTutorial()
+    {
+        return _playerDoneTutorial;
     }
 
     public bool ReturnFirst()
@@ -533,7 +544,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Hecho por Guillermo
     /// </summary>
     /// <param name="TutorialString"></param>
     public void SetTutorialString(string TutorialString)
