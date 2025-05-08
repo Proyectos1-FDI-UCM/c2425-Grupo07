@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     // Hacer que los métodos puedan acceder al tipo de jugador 
-    [SerializeField]private PlayerType pType;
+    [SerializeField]private PlayerType pType; 
 
     #endregion
 
@@ -58,7 +58,10 @@ public class PlayerManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    // Define la velocidad en ciertas herramientas
+    /// <summary>
+    /// Define la velocidad en ciertas herramientas
+    /// </summary>
+    /// <param name="pType">Dependiendo del tipo de jugador tendrán sus velocidades en las herramientas</param>
     public void SetVel(PlayerType pType)
     {
         this.pType = pType;
@@ -77,7 +80,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Mueve la posición del jugador
+    /// Mueve la posición del jugador al vector indicado
     /// </summary>
     /// <param name="pos">La posición donde se moverá</param>
     public void SetPosition(Vector2 pos)
@@ -91,7 +94,10 @@ public class PlayerManager : MonoBehaviour
     { return _clicksAnvil; }
     public int ReturnSaw() // La Soldadora
     { return _velSaw; }
-
+    /// <summary>
+    /// Devuelve el tipo de jugador por su pasiva
+    /// </summary>
+    /// <returns></returns>
     public PlayerType PlayerNum()
     {
         return pType;

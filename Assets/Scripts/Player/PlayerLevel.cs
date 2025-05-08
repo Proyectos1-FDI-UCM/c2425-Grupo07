@@ -111,7 +111,10 @@ public class PlayerLevel : MonoBehaviour
     {
         return _level;
     }
-
+    /// <summary>
+    /// Asigna el nivel que se le ha indicado
+    /// </summary>
+    /// <param name="level">El script del nivel indicado</param>
     public void SetLevelScript( Level level)
     {
         if(level != null) _level = level;

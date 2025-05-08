@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Indicador que se activa por fases en una de las salas del tutorial
 // Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -12,6 +12,10 @@ using UnityEngine;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// Siempre que un objeto tenga este script significará que está en el
+/// tutorial o en una zona para enseñar una mecánica. En el ArrowIndicator
+/// se almacenarán las flechas que se quieran activar o desactivar
+/// y se podrá acceder desde otro componente para activar/desactivar flechas
 /// </summary>
 public class ArrowTutorial : MonoBehaviour
 {
@@ -41,23 +45,7 @@ public class ArrowTutorial : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
+   
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -67,10 +55,18 @@ public class ArrowTutorial : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    /// <summary>
+    /// Activa una determinada flecha
+    /// </summary>
+    /// <param name="arrowPlace">la flecha deseada por activar</param>
     public void ActiveArrow(int arrowPlace)
     {
         ArrowIndicator[arrowPlace].SetActive(true);
     }
+    /// <summary>
+    /// Desactiva una determinada flecha
+    /// </summary>
+    /// <param name="arrowPlace">la flecha deseada por desactivar</param>
     public void DeactivateArrow(int arrowPlace)
     {
         ArrowIndicator[arrowPlace].SetActive(false);

@@ -81,9 +81,12 @@ public class ConveyorItems : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // Detecta si el item está en una cinta fuera de las manos del jugador para que empieze el movimiento
-    // Inicia un timer al tocar la basura para que si llega a un tiempo concreto se borra el item
-    // Si no hay un objeto al final se mueve directamente a la siguiente cinta
+    /// <summary> 
+    /// Detecta si el item está en una cinta fuera de las manos del jugador para que empieze el movimiento
+    /// Inicia un timer al tocar la basura para que si llega a un tiempo concreto se borra el item
+    /// Si no hay un objeto al final se mueve directamente a la siguiente cinta
+    /// </summary>
+    /// <param name="other">El objeto con el que colisiona</param>
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<Mesa>() != null && 

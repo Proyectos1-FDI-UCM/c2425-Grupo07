@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Este script permite navegar el menú desplegable con el mando
-// Guillermo Ramos
+// Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -39,7 +39,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler, IPointerEnter
     // Ejemplo: _maxHealthPoints
     private ScrollRect _scrollRect; // Contiene la información para deslizar
     private float _scrollPosition = 1; // la posición que se seleccionará al principio
-    bool mouseOver = false;
+    bool mouseOver = false; // comprueba si el mouse está por encima
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -58,7 +58,7 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler, IPointerEnter
     void Start()
     {
         _scrollRect = GetComponentInParent<ScrollRect>(true); // Accedemos al scrollRect si existe
-        _scrollRect.verticalScrollbar.value = 0;
+        _scrollRect.verticalScrollbar.value = 0; // Empieza en 0 la posición del scrollbar
         int childCount = _scrollRect.content.transform.childCount - 1; // Accedemos a cuántos items hay para movernos,
                                                                       // menos el item vacío
         int childIndex = transform.GetSiblingIndex(); // El item en el que estamos
@@ -101,11 +101,19 @@ public class ScrollWithController : MonoBehaviour, ISelectHandler, IPointerEnter
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Comprueba si el mouse está por encima del DropBox, escribiendo un mensaje si es cierto
+    /// </summary>
+    /// <param name="eventData">De los eventos de unity</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseOver = true;
         Debug.Log("Mouse enter");
     }
+    /// <summary>
+    /// Comprueba si el mouse no está por encima del DropBox, escribiendo un mensaje si es falso
+    /// </summary>
+    /// <param name="eventData">De los eventos de unity</param>
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseOver = false;

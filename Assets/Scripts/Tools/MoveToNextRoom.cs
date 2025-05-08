@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Se encarga de mover al escenario
+// Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -12,6 +12,8 @@ using UnityEngine;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// Para dar un efecto de cambio entre salas se mueve al escenario del tutorial
+/// acorde a la distancia acordada.
 /// </summary>
 public class MoveToNextRoom : MonoBehaviour
 {
@@ -42,23 +44,7 @@ public class MoveToNextRoom : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -68,6 +54,10 @@ public class MoveToNextRoom : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    /// <summary>
+    /// Se desplaza al escenario en el Vecto2(x,y);
+    /// </summary>
+    /// <param name="move">Distancia en el eje x desplazada</param>
     public void Move(float move)
     {
         transform.position = new Vector2(transform.position.x-move, transform.position.y);

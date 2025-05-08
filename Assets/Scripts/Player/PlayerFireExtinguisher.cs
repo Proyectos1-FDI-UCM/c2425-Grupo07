@@ -107,6 +107,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     /// <summary>
+    /// Creado por Guillermo Isaac Ramos Medina
     /// Crea un nuevo panel de tarea en la UI y lo vincula con este objeto.
     /// Incrementa el contador de tareas activas en el receptor.
     /// </summary>
@@ -117,6 +118,7 @@ public class PlayerFireExtinguisher : MonoBehaviour
     }
     #endregion
     /// <summary>
+    /// Creado por Guillermo Isaac Ramos Medina
     /// Crea un nuevo panel de tarea en la UI y lo vincula con este objeto.
     /// Incrementa el contador de tareas activas en el receptor.
     /// </summary>

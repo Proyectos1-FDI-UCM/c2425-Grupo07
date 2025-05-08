@@ -3,7 +3,7 @@
 // Movimiento Continuo Libre
 // Rotación dependiendo de la dirección
 // El input correspondiente es el acordado
-// Guillermo
+// Guillermo Isaac Ramos Medina
 // Clank&Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     /// <summary>
     /// Start asigna la velocidad actual con la máxima
+    /// Asigna los componentes del PlayerAnimation, rigidbody2D y playerDash
     /// </summary>
     void Start()
     {
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// FixedUpdate se encarga de mover siempre al personaje teniendo en cuenta antes las colisiones
+    /// FixedUpdate se encarga de mover siempre al personaje teniendo en cuenta antes las colisiones y sus animaciones
     /// </summary>
     private void FixedUpdate()
     {
@@ -114,8 +115,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidBody.velocity = _translateMovement + _playerDash.GetDashVelocity();
         }
-        //_rigidBody.AddForce(_translateMovement, ForceMode2D.Force); // Muevo al personaje en el espacio del mundo
-        //transform.Translate(_translateMovement, Space.World); Anteriormente
     }
 
     #endregion

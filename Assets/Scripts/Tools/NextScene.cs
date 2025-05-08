@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Se encarga de gestionar las acciones de salas del tutorial
 // Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -14,6 +14,10 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// 
+/// Comprueba que si ha colisionado con el jugador este ha completado una sala
+/// Las salas pueden reproducir un texto, desplazar la cámara(en realidad es el escenario y el jugador para 
+/// dar un efecto de desplazamiento) o cambiar de escena, a veces se pueden mezclar varias acciones.
 /// </summary>
 public class NextScene : MonoBehaviour
 {
@@ -24,13 +28,13 @@ public class NextScene : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] bool ChangesCam;
-    [SerializeField] bool ChangesScene;
-    [SerializeField] MoveToNextRoom MoveScenario;
-    [SerializeField] TextMeshProUGUI TutorialText;
-    [SerializeField] string NextTutorialText;
-    [SerializeField] float MoveDistance;
-    [SerializeField] Vector3 NextPosition;
+    [SerializeField] bool ChangesCam; // Si cambia la cámara del nivel
+    [SerializeField] bool ChangesScene; // Si cambia la escena del nivel
+    [SerializeField] MoveToNextRoom MoveScenario; // Mueve al escenario accediendo a su script público
+    [SerializeField] TextMeshProUGUI TutorialText; // Texto mostrado en el canvas
+    [SerializeField] string NextTutorialText; // String mostrado en la sala
+    [SerializeField] float MoveDistance; // Distancia que se moverá el escenario en el eje x
+    [SerializeField] Vector2 NextPosition; // Posición que se moverá el jugador
 
     #endregion
 
@@ -50,22 +54,9 @@ public class NextScene : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
     void Start()
     {
-        
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
+        GameManager.Instance.SetTutorialUIText(TutorialText);
     }
     #endregion
 
@@ -76,6 +67,10 @@ public class NextScene : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    /// <summary>
+    /// Si se han completado las salas o se ha salido por el menú de pausa se dará por
+    /// completado al tutorial
+    /// </summary>
     public void DoneTutorial()
     {
         SceneManager.LoadScene("MenuLevelSelection");
@@ -89,11 +84,18 @@ public class NextScene : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    /// <summary>
+    /// Encargado de detectar la posición del jugador al llegar a la siguiente sala
+    /// Si cambia la cámara se desplaza al jugador y al escenario
+    /// Si cambia la escena da el tutorial por completado
+    /// Si se cambia el texto del canvas se reproduce un nuevo string
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<PlayerManager>() != null && ChangesCam)
         {
-            other.gameObject.transform.position = NextPosition;
+            other.GetComponent<PlayerManager>().SetPosition(NextPosition);
             MoveScenario.Move(MoveDistance);
         }
         if (other.GetComponent<PlayerManager>() != null && ChangesScene)

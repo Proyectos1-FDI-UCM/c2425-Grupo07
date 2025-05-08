@@ -106,12 +106,10 @@ public class SettingsManager : MonoBehaviour
         SFXSlider.value = PlayerPrefs.GetFloat("effectsVolume", -30);
         if (PlayerPrefs.GetInt("IsFullScreen", 0) == 0)
         {
-            //_isOnFullscreen = false;
             ToggleButton.isOn = true;
         }
         else
         {
-            //_isOnFullscreen = true;
             ToggleButton.isOn = false;
         }
         ToggleFullScreen();

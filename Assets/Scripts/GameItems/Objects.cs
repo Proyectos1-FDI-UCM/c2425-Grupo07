@@ -232,7 +232,10 @@ public class Objects : MonoBehaviour
             if (complete)
             {
                 CapacityAmount[i].material.color = Color.green; // Cambia a color de completo.
-                GameManager.Instance.SetTutorialString("That's it! now send it on the <color=\"red\">receiver<color=\"white\"> where you picked the object");
+                if (_changeText)
+                {
+                    GameManager.Instance.SetTutorialString("That's it! now send it on the <color=\"red\">receiver<color=\"white\"> where you picked the object");
+                }
                 if (GetComponent<ArrowTutorial>() != null)
                 {
                     GetComponent<ArrowTutorial>().ActiveArrow(0); // acierta

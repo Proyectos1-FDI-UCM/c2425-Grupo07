@@ -61,7 +61,8 @@ public class InputManager : MonoBehaviour
     private InputActionSettings _theController;
     
     /// <summary>
-    /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa. 
+    /// Acción para Dash, Interactuarm Recoger/Dejar, entrar a un nivel y abrir el menú de pasa 
+    /// y el modo desarrollador (velocidad X2). 
     /// Si hubieran más botones tendremos que crear más
     /// </summary>
     private InputAction _dash, _interact, _pickOrDrop, _enterLevel, _togglePauseMenu, _devMode;
@@ -216,9 +217,8 @@ public class InputManager : MonoBehaviour
 
     /// <summary>
     /// Método para saber si se pueden acceder a las ventajas de desarrollador
-    /// durante este frame
-    /// <returns>Devuelve true, si se pulsaron las veces necesarias
-    /// y false, en otro caso.
+    /// Devolverá true en todos los frames en los que se mantenga pulsado
+    /// <returns>True, si el botón está pulsado</returns>
     /// </returns>
     /// </summary>
     public bool DevModeIsPressed()
@@ -294,7 +294,7 @@ public class InputManager : MonoBehaviour
         _togglePauseMenu = _theController.Player.OpenPauseMenu;
         // Para el DevMode nos permitirá ir a una velocidad consideráblemente mayor.
         // El estado lo consultaremos a través de los métodos públicos que 
-        // tenemos (PauseWasPressedThisFrame)
+        // tenemos (DevModeIsPressed)
         _devMode = _theController.Player.DevMode;
     }
 

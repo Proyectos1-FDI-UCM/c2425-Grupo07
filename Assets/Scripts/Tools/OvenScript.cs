@@ -4,7 +4,7 @@
 // Contador de procesamiento de la arena que inicia si se coloca el material concreto
 // Contador de quemado que empieza cuando se procesa un material
 // Método que actualiza el progreso del material
-// Guillermo 
+// Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -18,11 +18,11 @@ using System.Collections;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// 
-/// Este script es el que procesa únicamente la arena y la convierte en cristal. 
-/// Se tiene que inserta un objeto de arena soltándolo sobre el horno para que inicie el contador de progreso del material
-/// Después de “_n” segundos, se tendrá preparado un material procesado de “cristal”. 
+/// Este script es el que procesa la arena, la convierte en cristal y la roca de metal(Rmetal) lo convierte en un metal refinado(metalR). 
+/// Se tiene que inserta un objeto de arena/Rmetal soltándolo sobre el horno para que inicie el contador de progreso del material
+/// Después de “_n” segundos, se tendrá preparado un material procesado de “cristal” / "metalR". 
 /// Si el objeto procesado se queda un tiempo en el horno, se incendia esta estación de trabajo, 
-/// Y el material se convierte en “Cristal roto”, el cual no tendrá ninguna utilidad y podrá ser descartado en la basura 
+/// Y el material se convierte en “Cristal roto”/"metal quemado", el cual no tendrá ninguna utilidad y podrá ser descartado en la basura 
 /// (después de quitar el fuego).
 /// </summary>
 public class OvenScript : MonoBehaviour
@@ -330,33 +330,6 @@ public class OvenScript : MonoBehaviour
         }
         GameManager.Instance.SetTutorialString("Oh well... the oven is on fire, pick the Fire Extinguisher and interact near the oven with J key <sprite name=\"Jkey\"> or square button <sprite name=\"Square_Button\">.");
     }
-
-    /// <summary>
-    /// Detecta si se ha colocado un material en el horno y puede iniciar o pausar el proceso
-    /// </summary>
-    /*void OnTriggerEnter2D(Collider2D other)
-    {
-        //Se tiene que especificar en "Material" que es la arena
-        if (other.gameObject.GetComponent<Material>() != null && other.gameObject.GetComponent<Material>().MaterialTypeReturn() == MaterialType.Arena && transform.childCount == 0)
-        {
-            Debug.Log("Hay un material puesto");
-            _matScr = other.gameObject.GetComponent<Material>();
-            _progress = _matScr.ReturnProgress();
-            _isProcessing = true;
-        }
-    }
-    //Si se saca antes de tiempo pausa el proceso
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Material>() != null && (other.gameObject.GetComponent<Material>().MaterialTypeReturn() == MaterialType.Cristal 
-                                                                || other.gameObject.GetComponent<Material>().MaterialTypeReturn() == MaterialType.Arena) && transform.childCount == 0)
-        {
-            Debug.Log("No hay un material puesto");
-            FlashImage.SetActive(false);
-            _matScr = null;
-            _isProcessing = false;
-        }
-    }*/
     #endregion
 
 } // class Horno 

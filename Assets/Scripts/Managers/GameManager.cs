@@ -119,11 +119,11 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    [SerializeField]private bool _firstTime = false;
+    private bool _firstTime = false;
     private IndicatorChange _indicatorChange;
-    private Button _tutorial;
-    private bool _isDev = false;
-    private int _playerDoneTutorial;
+    private bool _isDev = false; // Comprueba si el modo X2 se ha activado
+    private int _playerDoneTutorial; //Booleano que comprueba si el jugador se pasó el tutorial o no
+    private TextMeshProUGUI NextTutorialText;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
             UpdateStats();
             StatsUpdated = true;
         }
+        //Hecho por Guillermo, Activa y desactiva el modo desarrollador al pulsar "1" y "-"
         if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !_isDev)
         {
             Time.timeScale = 2.0f;
@@ -441,7 +442,9 @@ public class GameManager : MonoBehaviour
     {
         return MoneyNumberlevel[_levelToAssign];
     }
-
+    /// <summary>
+    /// Inicializa el array de los niveles y asigna el dinero y rango (si tiene) de cada nivel
+    /// </summary>
     public void UpdateStats()
     {
         Levels = FindObjectsOfType<Level>();
@@ -490,7 +493,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Resetea el progreso de los niveles y el tutorial
+    /// Si se encuentra con un nivel infinito solo resetea el dinero y 
+    /// vuelve a bloquear el nivel infinito
+    /// </summary>
     public void ResetProgress()
     {
         PlayerPrefs.DeleteKey("IsFirstTime");
@@ -512,16 +519,27 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Confirma que el jugador ha completado el tutorial y lo asigna al booleano
+    /// _playerDoneTutorial
+    /// </summary>
     public void PlayerDidTutorial()
     {
         PlayerPrefs.SetInt("DidTutorial", 1);
         _playerDoneTutorial = PlayerPrefs.GetInt("DidTutorial", 1);
     }
+    /// <summary>
+    /// Devuelve si el jugador ha completado el tutorial
+    /// </summary>
+    /// <returns></returns>
     public int ReturnPlayerTutorial()
     {
         return _playerDoneTutorial;
     }
-
+    /// <summary>
+    /// Devuelve si es la primera vez jugando el primer nivel
+    /// </summary>
+    /// <returns></returns>
     public bool ReturnFirst()
     {
         return _firstTime;
@@ -549,12 +567,15 @@ public class GameManager : MonoBehaviour
     /// <param name="TutorialString"></param>
     public void SetTutorialString(string TutorialString)
     {
-        TextMeshProUGUI NextTutorialText;
-        NextTutorialText = FindObjectOfType<TextMeshProUGUI>();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Tutorial")
         {
             NextTutorialText.text = TutorialString;
         }
+    }
+
+    public void SetTutorialUIText(TextMeshProUGUI newText)
+    {
+        NextTutorialText = newText;
     }
 
     #endregion

@@ -51,7 +51,7 @@ public class SplashTextLogic : MonoBehaviour
     {
         string splashText = "";
         System.Random random = new System.Random();
-        int resultado = random.Next(3);
+        int resultado = random.Next(0,3);
         switch (resultado)
         {
             case 0:

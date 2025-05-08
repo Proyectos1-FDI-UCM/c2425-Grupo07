@@ -370,7 +370,7 @@ MonoBehaviour:
   MusicSource: {fileID: 6218612492688045301}
   PitchOne: 1.1
   PitchTwo: 1.3
-  secondsLeft: 0
+  SecondsLeft: 0
 --- !u!1 &968287876715071815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7790472259211737001}
   m_HandleRect: {fileID: 2363491922377449526}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

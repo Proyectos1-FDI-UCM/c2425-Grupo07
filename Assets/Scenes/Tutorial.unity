@@ -215,6 +215,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1001 &67570793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10510,6 +10511,7 @@ MonoBehaviour:
   GameObjectReceived: 7
   IsFirstDoor: 0
   DoorSounds: []
+  EsObjetoAReparar: 0
 --- !u!1001 &318527339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10848,7 +10850,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 136317000016200040, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080086173}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
 --- !u!1 &325110176
@@ -16510,6 +16515,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1 &807909673
 GameObject:
   m_ObjectHideFlags: 0
@@ -16571,6 +16577,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 1
 --- !u!4 &815399590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: fa4ef3d7f8f8032419872981da19ded3, type: 3}
@@ -16605,6 +16612,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1 &820273354
 GameObject:
   m_ObjectHideFlags: 0
@@ -18329,38 +18337,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9102832338467195711, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1707191103}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2338494283670101056, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 830037804}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
 --- !u!4 &830037802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9102832338467195711, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
   m_PrefabInstance: {fileID: 830037801}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &830037803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2338494283670101056, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
-  m_PrefabInstance: {fileID: 830037801}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &830037804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830037803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0576e62d9c8b60047b9335b8a72e6a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 1214098548}
-  AllowNextScene: {fileID: 0}
-  GameObjectReceived: 7
-  IsFirstDoor: 0
-  DoorSounds: []
 --- !u!1 &862567927
 GameObject:
   m_ObjectHideFlags: 0
@@ -18424,6 +18407,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1 &867725797
 GameObject:
   m_ObjectHideFlags: 0
@@ -18485,6 +18469,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1 &875815086
 GameObject:
   m_ObjectHideFlags: 0
@@ -18798,6 +18783,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!4 &966645730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1200185607637273506, guid: d240384680fe7704b891879005847be1, type: 3}
@@ -18896,6 +18882,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1001 &983236676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19066,7 +19053,6 @@ Transform:
   - {fileID: 820273355}
   - {fileID: 1112771092}
   - {fileID: 1773273133}
-  - {fileID: 2080086173}
   - {fileID: 330010934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19199,7 +19185,7 @@ MonoBehaviour:
   NextTutorialText: Press the shift key <sprite name="Shiftkey"> or the circle button
     <sprite name="CircleButton"> to have a quick burst of speed to the door.
   MoveDistance: 0
-  NextPosition: {x: 0, y: 0, z: 0}
+  NextPosition: {x: 0, y: 0}
 --- !u!1001 &1028190687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21254,51 +21240,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 809302751}
   m_SourcePrefab: {fileID: 100100000, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
---- !u!1 &1357773469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1357773471}
-  - component: {fileID: 1357773470}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1357773470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357773469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfecd487b9d09084d8911e1c5d06c584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ButtonSound: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
---- !u!4 &1357773471
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357773469}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2628922, y: 0.75571775, z: 0.06894185}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1370766073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5993632124219362014, guid: a9cc514f2e08fa44e9fbc04bf19b8279, type: 3}
@@ -21418,6 +21359,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1001 &1448360435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22331,6 +22273,7 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!1001 &1672112230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23098,6 +23041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1941867575}
     m_Modifications:
+    - target: {fileID: -857453342574984047, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
+      propertyPath: OnTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -857453342574984047, guid: bc9e43d6b3afd7145b588df59f83a08f, type: 3}
       propertyPath: _isOnTutorial
       value: 1
@@ -23929,6 +23876,12 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
+--- !u!224 &2039828181 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 136317000016200040, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+  m_PrefabInstance: {fileID: 318527339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052235041
 GameObject:
   m_ObjectHideFlags: 0
@@ -24136,19 +24089,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080086172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1601959689}
-  m_Father: {fileID: 991572069}
+  m_Father: {fileID: 2039828181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080086174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24472,6 +24425,8 @@ MonoBehaviour:
   IsFirstDoor: 1
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
+  - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
+  EsObjetoAReparar: 0
 --- !u!4 &1216634302681709552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134770807801930426, guid: f4ce40fcc6ac13e49afce25069f653b7, type: 3}
@@ -24665,6 +24620,5 @@ SceneRoots:
   - {fileID: 614443059}
   - {fileID: 991572069}
   - {fileID: 1808456459}
-  - {fileID: 1357773471}
   - {fileID: 1028190687}
   - {fileID: 318527339}
