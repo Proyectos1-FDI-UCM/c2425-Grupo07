@@ -226,6 +226,17 @@
                 },
                 {
                     "name": "",
+                    "id": "57bd544a-8bae-4803-9e2d-c895e0173af0",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d5bd8d39-57c0-4ec9-8230-ac4d44628f57",
                     "path": "<Keyboard>/j",
                     "interactions": "Press",
