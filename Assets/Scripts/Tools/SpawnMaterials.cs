@@ -79,7 +79,7 @@ public class SpawnMaterials : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (EnTutorial)
+        if (EnTutorial && (Materials[0].GetComponent<Material>().MaterialTypeReturn() != MaterialType.Otro || FindAnyObjectByType<Object>() != null))
         {
             StartCoroutine(SpawnObjects());
         }

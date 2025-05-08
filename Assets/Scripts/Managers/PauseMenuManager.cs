@@ -40,7 +40,6 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool _controlPannelActive = false; // Indica si el panel de controles está activo.
     private bool goesToTutorial = false; // Indica si se está yendo al tutorial.
-    private bool _isTutorialActive = false; // Indica si el tutorial está activo.
     private bool _recipeTutorial = false; // Indica si el tutorial de recetas está activo.
     private PlayerDash _playerDash; // Referencia para controlar si el jugador puede realizar un "dash" (velocidad extra).
     private IndicatorChange _indicatorChange; // Referencia a un script que controla los indicadores de la UI.
@@ -169,7 +168,7 @@ public class PauseMenuManager : MonoBehaviour
                 selectionPlayerPanel.SetActive(false); // Desactivar el panel de selección de jugador
                 InputManager.Instance.EnableActionMap("Player"); // Habilitar el mapa de acciones de jugador
             }
-            else
+            else if (!goesToTutorial)
             {
                 // Si el panel de selección de jugador no está activo, mostramos el menú de pausa
                 InputManager.Instance.EnableActionMap("UI");

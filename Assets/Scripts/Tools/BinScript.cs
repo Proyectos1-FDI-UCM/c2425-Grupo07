@@ -25,7 +25,6 @@ public class BinScript : MonoBehaviour
     [SerializeField] private Animator BinAnimator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
     [SerializeField] int VecesDisminuido = 10;
     [SerializeField] ParticleSystem Smoke;
-    [SerializeField] private bool _isOnTutorial;
     [SerializeField] TextMeshProUGUI NextTutorialText;
     #endregion
 
@@ -85,15 +84,15 @@ public class BinScript : MonoBehaviour
     /// <param name="item">El objeto a desechar.</param>
     public void Drop(GameObject item)
     {
-        if (item.GetComponent<FireExtinguisher>() == null && !_isOnTutorial || (item.GetComponent<FireExtinguisher>() == null && item.GetComponent<Object>() == null && _isOnTutorial))
+        if (item.GetComponent<FireExtinguisher>() == null)
         {
             item.GetComponentInParent<PlayerVision>().Drop(false);
             item.transform.SetParent(gameObject.transform);
             item.transform.localPosition = Vector3.zero; // Coloca el objeto en la posición del contenedor
-        }
-        else if (_isOnTutorial && item.GetComponent<Object>() != null && NextTutorialText!=null)
-        {
-            NextTutorialText.text = "Here you can't throw objects in the <color=\"green\">bin<color=\"white\">, but in game you can throw away the object, skipping the order";
+            if (item.GetComponent<Object>() != null && NextTutorialText != null)
+            {
+                NextTutorialText.text = "Throwing objects in the <color=\"green\">bin<color=\"white\">, cancels the order, having a loss depending of the total amount of active orders";
+            }
         }
         else
         {

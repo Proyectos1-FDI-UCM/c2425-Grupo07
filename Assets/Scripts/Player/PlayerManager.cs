@@ -76,6 +76,14 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// Mueve la posición del jugador
+    /// </summary>
+    /// <param name="pos">La posición donde se moverá</param>
+    public void SetPosition(Vector2 pos)
+    {
+        transform.position = pos;
+    }
     // Devuelve la velocidad acorde al jugador de:
     public int ReturnOven() // El Horno
     { return _velOven; }
