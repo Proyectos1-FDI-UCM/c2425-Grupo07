@@ -32,7 +32,6 @@ public class CheckScript : MonoBehaviour
     [SerializeField] MaterialType GameObjectReceived; //Tipo de objeto que abrirá la puerta
     [SerializeField] bool IsFirstDoor; // Si es la primera puerta esta se abre sola
     [SerializeField] AudioClip[] DoorSounds; // 0 abre 1 cierra
-    [SerializeField] bool EsObjetoAReparar; // Si es un objeto a reparar necesita dos condiciones
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
