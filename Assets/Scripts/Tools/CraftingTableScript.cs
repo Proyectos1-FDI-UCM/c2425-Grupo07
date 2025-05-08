@@ -151,14 +151,20 @@ public class CraftingTableScript : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    /// <summary>
+    /// Cuando se coloca la batidora en el tutorial se indicará que se le tiene que colocar unos materiales
+    /// </summary>
     private void OnTransformChildrenChanged()
     {
-        if (GetComponent<ArrowTutorial>()!=null)
+        if (GetComponent<ArrowTutorial>() != null)
         {
-            GetComponent<ArrowTutorial>().ArrowToggle();
+            GetComponent<ArrowTutorial>().DeactivateArrow(1); // desactiva el anterior
+            GetComponent<ArrowTutorial>().ActiveArrow(0);
+            GameManager.Instance.SetTutorialString("OK, now process the materials and place them <color=\"red\" >in order<color=\"white\" > on top of the object to repair <color=\"lightblue\" >" +
+                "on the table<color=\"white\" >.");
         }
     }
-#endregion
+    #endregion
 
 } // class CraftingTableScript 
 // namespace

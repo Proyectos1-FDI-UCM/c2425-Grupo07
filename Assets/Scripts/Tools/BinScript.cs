@@ -25,6 +25,7 @@ public class BinScript : MonoBehaviour
     [SerializeField] int VecesDisminuido = 10;
     [SerializeField] ParticleSystem Smoke;
     [SerializeField] AudioSource AudioTrashClose;
+    [SerializeField] private bool OnTutorial;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -87,16 +88,15 @@ public class BinScript : MonoBehaviour
     /// <param name="item">El objeto a desechar.</param>
     public void Drop(GameObject item)
     {
-        if (item.GetComponent<FireExtinguisher>() == null && item.GetComponent<Object>() == null)
+        if (item.GetComponent<FireExtinguisher>() == null && !OnTutorial || (item.GetComponent<FireExtinguisher>() == null && item.GetComponent<TaskManager>() == null && OnTutorial))
         {
             item.GetComponentInParent<PlayerVision>().Drop(false);
             item.transform.SetParent(gameObject.transform);
             item.transform.localPosition = Vector3.zero; // Coloca el objeto en la posición del contenedor
         }
-        else if (item.GetComponent<Object>() != null)
+        else if (item.GetComponent<Object>() != null && OnTutorial)
         {
-            GameManager.Instance.SetTutorialString("Throwing objects in the <color=\"green\">bin<color=\"white\"> cancels the order, having a loss depending of the total amount of active orders," +
-                "in the tutorial you can't do that");
+            GameManager.Instance.SetTutorialString("Throwing objects in the <color=\"green\">bin<color=\"white\"> cancels the order in the levels, having a loss depending on the amount of active orders.");
         }
         else
         {

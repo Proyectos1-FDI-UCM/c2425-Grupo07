@@ -167,9 +167,12 @@ public class PressScript : MonoBehaviour
             
             if (PressingTime >= 1)
             {
-                if (OnTutorial)
+                if (GetComponent<ArrowTutorial>() != null)
                 {
                     ArrowIndicator.SetActive(true);
+                    GetComponent<ArrowTutorial>().ActiveArrow(0); // acierta
+                    GetComponent<ArrowTutorial>().DeactivateArrow(1); // desactiva el anterior
+                    GetComponent<ArrowTutorial>().DeactivateArrow(2); // desactiva el anterior
                 }
                 if (_pressAudioSource != null)
                 {

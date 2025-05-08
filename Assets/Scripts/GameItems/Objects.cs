@@ -46,6 +46,7 @@ public class Objects : MonoBehaviour
     private SpriteRenderer _skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
     private int _nInsertados; //numero de objetos insertados
     private bool _isFull; //booleana que indica si se han almacenado todos sus huecos
+    private bool _changeText=true; //booleana que indica si puede cambiar el texto en el tutorial
 
     #endregion
 
@@ -222,15 +223,32 @@ public class Objects : MonoBehaviour
     private void FinalColor()
     {
         bool complete = IsCompleted();
+        if (GetComponent<ArrowTutorial>() != null)
+        {
+            GetComponent<ArrowTutorial>().DeactivateArrow(2); // desactiva el anterior
+        }
         for (int i = 0; i < Materials.Length; i++)
         {
             if (complete)
             {
                 CapacityAmount[i].material.color = Color.green; // Cambia a color de completo.
+                GameManager.Instance.SetTutorialString("That's it! now send it on the <color=\"red\">receiver<color=\"white\"> where you picked the object");
+                if (GetComponent<ArrowTutorial>() != null)
+                {
+                    GetComponent<ArrowTutorial>().ActiveArrow(0); // acierta
+                }
+                _changeText = false;
             }
             else
             {
                 CapacityAmount[i].material.color = Color.red; // Cambia a color de erroneo.
+                GameManager.Instance.SetTutorialString("Oh you messed up, no problem! " +
+                    "just put the object in the <color=\"lightblue\" > press below<color=\"white\"> and reset its progress. Then <color=\"red\">redo<color=\"white\"> the process.");
+                if (GetComponent<ArrowTutorial>() != null)
+                {
+                    GetComponent<ArrowTutorial>().ActiveArrow(1); // se equivoca
+                }
+                _changeText = true;
             }
         }
     }

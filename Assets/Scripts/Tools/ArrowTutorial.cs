@@ -22,7 +22,7 @@ public class ArrowTutorial : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject ArrowIndicator;
+    [SerializeField] GameObject[] ArrowIndicator;//Se puede poner más de una flecha
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,7 +33,6 @@ public class ArrowTutorial : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    bool _arrowActive;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -68,17 +67,13 @@ public class ArrowTutorial : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void ArrowToggle()
+    public void ActiveArrow(int arrowPlace)
     {
-        if (_arrowActive)
-        {
-            _arrowActive = false;
-        }
-        else
-        {
-            _arrowActive = true;
-        }
-        ArrowIndicator.SetActive(_arrowActive);
+        ArrowIndicator[arrowPlace].SetActive(true);
+    }
+    public void DeactivateArrow(int arrowPlace)
+    {
+        ArrowIndicator[arrowPlace].SetActive(false);
     }
     #endregion
 
@@ -89,7 +84,7 @@ public class ArrowTutorial : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class ArrowTutorial 
 // namespace

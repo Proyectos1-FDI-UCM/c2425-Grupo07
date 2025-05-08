@@ -10462,6 +10462,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9102832338467195711, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
   m_PrefabInstance: {fileID: 1513295023}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &317229449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6201882549307868478, guid: 02593fce222338341ae676c3c667150e, type: 3}
+  m_PrefabInstance: {fileID: 1304785108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317229458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317229449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e927ca7d7b93b4ebdbef0cf07e0d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowIndicator:
+  - {fileID: 467572172}
+  - {fileID: 374573085}
+  - {fileID: 1292071562}
 --- !u!1 &317795539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2338494283670101056, guid: d37eda43274654c45a1238ed89c4bfb1, type: 3}
@@ -10938,8 +10959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20.25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -3}
+  m_SizeDelta: {x: 200, y: 127.2853}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330881599
 MonoBehaviour:
@@ -10990,8 +11011,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11422,6 +11443,42 @@ Transform:
   - {fileID: 1092375070}
   m_Father: {fileID: 1941867575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &452755835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452755836}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &452755836
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452755835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -21897.809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 467572173}
+  m_Father: {fileID: 1062616844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1146.545, y: 359}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &453508045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15382,16 +15439,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467572172}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1.79}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.001953125}
+  m_LocalScale: {x: 2, y: 2, z: 1.7899998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1062616844}
+  m_Father: {fileID: 452755836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1154, y: 385}
+  m_AnchoredPosition: {x: -0.00024414062, y: -0.000061035156}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &467572174
@@ -19406,7 +19463,7 @@ RectTransform:
   - {fileID: 2054415123}
   - {fileID: 1292071563}
   - {fileID: 374573086}
-  - {fileID: 467572173}
+  - {fileID: 452755836}
   m_Father: {fileID: 894389149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
@@ -19474,8 +19531,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -531992791
-  m_SortingOrder: 0
+  m_SortingLayerID: -1135073453
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!4 &1083278505 stripped
 Transform:
@@ -20981,7 +21038,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6201882549307868478, guid: 02593fce222338341ae676c3c667150e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 317229458}
   m_SourcePrefab: {fileID: 100100000, guid: 02593fce222338341ae676c3c667150e, type: 3}
 --- !u!4 &1309619898 stripped
 Transform:
@@ -21949,8 +22009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 106}
-  m_SizeDelta: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 100.59714}
+  m_SizeDelta: {x: 0, y: 181.9904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601959690
 MonoBehaviour:
@@ -22408,7 +22468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e927ca7d7b93b4ebdbef0cf07e0d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowIndicator: {fileID: 1292071562}
+  ArrowIndicator:
+  - {fileID: 1292071562}
+  - {fileID: 2054415122}
 --- !u!1001 &1707191102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22754,9 +22816,9 @@ PrefabInstance:
       objectReference: {fileID: 330881599}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
-      value: Fix object on <color="lightblue">crafting table<color="white">, then
-        send to <color="red">receiver table<color="white">, use correct materials
-        in order. Use <color="lightblue">press<color="white"> below if mistake.
+      value: 'Now you''ll fix an object by yourself! First pick it from the brown
+        <color="red">receiver table<color="white"> and place it on the <color="lightblue">crafting
+        table<color="white"> on top. '
       objectReference: {fileID: 0}
     - target: {fileID: 8045690844634897808, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23812,9 +23874,10 @@ PrefabInstance:
       objectReference: {fileID: 330881599}
     - target: {fileID: 6239871826086387591, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: NextTutorialText
-      value: Pick objects from the <color="red">receiver table<color="white">, place
-        on tables above; <color="red">pick, repair and send<color="white"> up to
-        5 for rewards in the levels.
+      value: Here pick objects from the <color="red">receiver<color="white">, then
+        place on tables above; <color="red">pick, repair and send<color="white">
+        up to 5 at a time for big rewards in the levels. But if the task is canceled
+        the punishment is greater.
       objectReference: {fileID: 0}
     - target: {fileID: 8295829021749225240, guid: f6085e2b5df42db44a46f3ee32f2a641, type: 3}
       propertyPath: IsFirstDoor
@@ -24491,7 +24554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e927ca7d7b93b4ebdbef0cf07e0d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowIndicator: {fileID: 374573085}
+  ArrowIndicator:
+  - {fileID: 374573085}
+  - {fileID: 467572172}
+  - {fileID: 1292071562}
 --- !u!1001 &2802675549065437706
 PrefabInstance:
   m_ObjectHideFlags: 0
