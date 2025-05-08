@@ -10598,6 +10598,34 @@ PrefabInstance:
       propertyPath: _paused
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 318527340}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActiveIndicationsAdjusments
+      objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 93565736049088605, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 212344106368123682, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10899,6 +10927,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+--- !u!114 &318527340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 36025952515650390, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
+  m_PrefabInstance: {fileID: 318527339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5949ef3d472546142a75ad0b2ed2489b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &325110176
 GameObject:
   m_ObjectHideFlags: 0

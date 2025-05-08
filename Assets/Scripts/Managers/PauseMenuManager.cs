@@ -32,6 +32,8 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private bool _paused = false; // Indica si el juego está pausado o no.
     [SerializeField] private GameObject selectionPlayerPanel; // Se usa en la selección de jugadores, referencia al panel de selección de jugador.
 
+    [SerializeField] private IndicatorChange tutorialPannelScript;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -61,6 +63,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             _levelManager = FindAnyObjectByType<LevelManager>();
         }
+        tutorialPannelScript = GetComponentInChildren<IndicatorChange>();
     }
 
     /// <summary>
@@ -168,7 +171,7 @@ public class PauseMenuManager : MonoBehaviour
                 selectionPlayerPanel.SetActive(false); // Desactivar el panel de selección de jugador
                 InputManager.Instance.EnableActionMap("Player"); // Habilitar el mapa de acciones de jugador
             }
-            else if (!goesToTutorial)
+            else if (!goesToTutorial && tutorialPannelScript!=null && !tutorialPannelScript.ReturnActive()) 
             {
                 // Si el panel de selección de jugador no está activo, mostramos el menú de pausa
                 InputManager.Instance.EnableActionMap("UI");
@@ -215,6 +218,16 @@ public class PauseMenuManager : MonoBehaviour
     public bool PauseActive()
     {
         return _paused;
+    }
+
+    /// <summary>
+    /// Método que fuerza al menu de pausa para que se cierre cuando el jugador pulsa el botón de recetas/indicaciones.
+    /// Hasta a mi me da pena tener que hacer codigo tan horrible.
+    /// </summary>
+    public void ActiveIndicationsAdjusments()
+    {
+        PauseMenuUI.SetActive(false);
+        _paused = false;
     }
 
     /// <summary>

@@ -12045,6 +12045,34 @@ PrefabInstance:
       propertyPath: ButtonSound
       value: 
       objectReference: {fileID: 8300000, guid: 468a0378e9a7e2440ad727cbf6d2d2bf, type: 3}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2139470710389612265}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActiveIndicationsAdjusments
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391736519785401832, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2490257416407586455, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -12478,6 +12506,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e33e01ec70e04582af05f46ca63b3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2139470710389612265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2306603125548132067, guid: f4b7510b581bf5f4a8ae5bd59f9749a7, type: 3}
+  m_PrefabInstance: {fileID: 2139470710389612262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5949ef3d472546142a75ad0b2ed2489b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
