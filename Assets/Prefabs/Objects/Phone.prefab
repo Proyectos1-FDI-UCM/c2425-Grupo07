@@ -278,7 +278,8 @@ MonoBehaviour:
   color1: {r: 0.003921569, g: 1, b: 0.12941177, a: 1}
   color2: {r: 0.8705883, g: 0.92549026, b: 0.0627451, a: 0}
   color3: {r: 0.9607844, g: 0, b: 0, a: 0}
-  BasePayment: 200
+  BasePayment: 150
+  onTutorial: 0
 --- !u!114 &-4076785967151593552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecTransform: {fileID: 0}
 --- !u!1 &8311068497155314879
 GameObject:
   m_ObjectHideFlags: 0

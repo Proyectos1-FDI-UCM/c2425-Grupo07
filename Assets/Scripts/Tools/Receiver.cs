@@ -424,15 +424,7 @@ public class Receiver : MonoBehaviour
     {
         if (_levelManager != null)
         {
-            // Solo se multiplica el dinero si es para sumar, no para restar
-            if (amount > 0)
-            {
-                _levelManager.SumMoney(amount * _activeTasks, doneColor);
-            }
-            else
-            {
-                _levelManager.SumMoney(amount, doneColor);
-            }
+            _levelManager.SumMoney(amount * _activeTasks, doneColor);
         }
         else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
     }
@@ -446,7 +438,7 @@ public class Receiver : MonoBehaviour
     {
         if (_levelManager != null)
         {
-            _levelManager.SumTime(amount);
+            _levelManager.SumTime(amount * _activeTasks);
         }
         else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
     }
@@ -478,7 +470,10 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void UpdateMultiplierText()
     {
-        MultiplierText.text = "Multiplier: x" + _activeTasks.ToString();
+        if (MultiplierText != null)
+        {
+            MultiplierText.text = "Multiplier: x" + _activeTasks.ToString();
+        }
     }
     #endregion   
 } // class Receiver 
