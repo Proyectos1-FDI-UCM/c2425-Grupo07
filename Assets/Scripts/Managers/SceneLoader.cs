@@ -67,7 +67,7 @@ public class SceneLoader : MonoBehaviour
     public void WarpTutorialOrSelection()
     {
         string nameScene = "MenuLevelSelection";
-        if (PlayerPrefs.GetInt("IsFirstTime", 0) == 0)
+        if (GameManager.Instance.ReturnPlayerTutorial() == 0)
         {
             nameScene = "Tutorial";
         }

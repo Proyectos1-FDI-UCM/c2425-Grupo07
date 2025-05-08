@@ -6,8 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
 
 
@@ -15,7 +13,7 @@ using UnityEngine.SceneManagement;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class NextScene : MonoBehaviour
+public class ArrowTutorial : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,33 +22,27 @@ public class NextScene : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] bool ChangesCam;
-    [SerializeField] bool ChangesScene;
-    [SerializeField] MoveToNextRoom MoveScenario;
-    [SerializeField] TextMeshProUGUI TutorialText;
-    [SerializeField] string NextTutorialText;
-    [SerializeField] float MoveDistance;
-    [SerializeField] Vector3 NextPosition;
-
+    [SerializeField] GameObject ArrowIndicator;
     #endregion
 
-     // ---- ATRIBUTOS PRIVADOS ----
+    // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-     // Documentar cada atributo que aparece aquí.
-     // El convenio de nombres de Unity recomienda que los atributos
-     // privados se nombren en formato _camelCase (comienza con _, 
-     // primera palabra en minúsculas y el resto con la 
-     // primera letra en mayúsculas)
-     // Ejemplo: _maxHealthPoints
+    // Documentar cada atributo que aparece aquí.
+    // El convenio de nombres de Unity recomienda que los atributos
+    // privados se nombren en formato _camelCase (comienza con _, 
+    // primera palabra en minúsculas y el resto con la 
+    // primera letra en mayúsculas)
+    // Ejemplo: _maxHealthPoints
+    bool _arrowActive;
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -65,7 +57,7 @@ public class NextScene : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        
     }
     #endregion
 
@@ -76,10 +68,17 @@ public class NextScene : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void DoneTutorial()
+    public void ArrowToggle()
     {
-        SceneManager.LoadScene("MenuLevelSelection");
-        GameManager.Instance.PlayerDidTutorial();
+        if (_arrowActive)
+        {
+            _arrowActive = false;
+        }
+        else
+        {
+            _arrowActive = true;
+        }
+        ArrowIndicator.SetActive(_arrowActive);
     }
     #endregion
 
@@ -89,23 +88,8 @@ public class NextScene : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.GetComponent<PlayerManager>() != null && ChangesCam)
-        {
-            other.gameObject.transform.position = NextPosition;
-            MoveScenario.Move(MoveDistance);
-        }
-        if (other.GetComponent<PlayerManager>() != null && ChangesScene)
-        {
-            DoneTutorial();
-        }
-        if (TutorialText != null)
-        {
-            TutorialText.text = NextTutorialText;
-        }
-    }
+
     #endregion   
 
-} // class NextScene 
+} // class ArrowTutorial 
 // namespace
