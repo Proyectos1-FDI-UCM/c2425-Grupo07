@@ -31,7 +31,6 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private AudioClip ButtonSound; // Sonido que se reproduce al presionar botones.
     [SerializeField] private bool _paused = false; // Indica si el juego está pausado o no.
     [SerializeField] private GameObject selectionPlayerPanel; // Se usa en la selección de jugadores, referencia al panel de selección de jugador.
-
     [SerializeField] private IndicatorChange tutorialPannelScript;
 
     #endregion
@@ -44,7 +43,6 @@ public class PauseMenuManager : MonoBehaviour
     private bool goesToTutorial = false; // Indica si se está yendo al tutorial.
     private bool _recipeTutorial = false; // Indica si el tutorial de recetas está activo.
     private PlayerDash _playerDash; // Referencia para controlar si el jugador puede realizar un "dash" (velocidad extra).
-    private IndicatorChange _indicatorChange; // Referencia a un script que controla los indicadores de la UI.
     private LevelManager _levelManager; // Referencia al script LevelManager para controlar el estado del nivel.
 
     #endregion
