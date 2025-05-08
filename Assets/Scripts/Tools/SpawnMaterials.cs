@@ -68,6 +68,7 @@ public class SpawnMaterials : MonoBehaviour
     /// </summary>
     private int _currentObjectIndex = 0;
 
+    private Object ahh;
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -97,7 +98,7 @@ public class SpawnMaterials : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (EnTutorial && (Materials[0].GetComponent<Material>().MaterialTypeReturn() != MaterialType.Otro || FindAnyObjectByType<Object>() != null))
+        if (EnTutorial)
         {
             StartCoroutine(SpawnObjects());
         }

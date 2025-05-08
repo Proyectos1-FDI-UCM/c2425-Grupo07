@@ -11,7 +11,6 @@
 
 using UnityEngine;
 using System.Collections;
-using TMPro;
 // Añadir aquí el resto de directivas using
 
 
@@ -59,9 +58,6 @@ public class OvenScript : MonoBehaviour
 
     //Particulas del horno cuando se esta quemando el objeto
     [SerializeField] private ParticleSystem SmokeBurn;
-
-    //Enseña un mensaje si se quema el material
-    [SerializeField] TextMeshProUGUI NextTutorialText;
 
     /// <summary>
     /// GameObject que contiene el canvas con todas las indicaciones del horno
@@ -225,7 +221,10 @@ public class OvenScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // Este método se ejecutará cuando el extintor lo active
+    /// <summary>
+    ///Este método se ejecutará cuando el extintor lo active
+    ///Enviará el mensaje indicado al gameManager y comprobará si está en el tutorial para ponerlos
+    /// </summary>
     public void OnExtinguish()
     {
         if (IsBurnt)
@@ -235,10 +234,8 @@ public class OvenScript : MonoBehaviour
             SmokeBurn.gameObject.SetActive(false);
             _hasFinished = false;  // Permite reiniciar el proceso
             Debug.Log("¡Horno apagado y listo para usar de nuevo!");
-            if (NextTutorialText != null)
-            {
-                NextTutorialText.text = "Nice! Now pick that material and throw it in the <color=\"green\">green bin<color=\"white\">, then go back to processing!";
-            }
+
+            GameManager.Instance.SetTutorialString("Nice! Now pick that material and throw it in the <color=\"green\">green bin<color=\"white\">, then go back to processing!");
         }
     }
 
@@ -314,6 +311,7 @@ public class OvenScript : MonoBehaviour
     /// Si el objeto procesado se mantiene demasiado tiempo en el horno,
     /// se incendia esta estación de trabajo y el material se convierte en "ceniza",
     /// el cual no tendrá ninguna utilidad y podrá ser descartado en la basura.
+    /// Y enviará el mensaje indicado al gameManager y comprobará si está en el tutorial para ponerlos
     /// </summary>
     void BurntMaterial()
     {
@@ -330,10 +328,7 @@ public class OvenScript : MonoBehaviour
         {
             _furnaceAudioSource.Stop();
         }
-        if (NextTutorialText != null)
-        {
-            NextTutorialText.text = "Oh well... the oven is on fire, pick the Fire Extinguisher and interact near the oven with J key <sprite name=\"Jkey\"> or square button <sprite name=\"Square_Button\">.";
-        }
+        GameManager.Instance.SetTutorialString("Oh well... the oven is on fire, pick the Fire Extinguisher and interact near the oven with J key <sprite name=\"Jkey\"> or square button <sprite name=\"Square_Button\">.");
     }
 
     /// <summary>

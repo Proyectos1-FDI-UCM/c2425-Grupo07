@@ -532,6 +532,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="TutorialString"></param>
+    public void SetTutorialString(string TutorialString)
+    {
+        TextMeshProUGUI NextTutorialText;
+        NextTutorialText = FindObjectOfType<TextMeshProUGUI>();
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            NextTutorialText.text = TutorialString;
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
