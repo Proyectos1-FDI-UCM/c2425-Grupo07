@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
+using TMPro;
 
 /// <summary>
 /// Estados posibles del receptor:
@@ -87,8 +88,10 @@ public class Receiver : MonoBehaviour
     ///</summary>
     [SerializeField] private bool DynamicIndications;
 
-
-
+    /// <summary>
+    /// Texto que indica por cuánto se están multiplicando los pedidos
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI MultiplierText;
 
     #endregion
 
@@ -119,12 +122,10 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private GameObject _actualDeliveryUI;
 
-
-
     /// <summary>
     /// Contador de tareas activas actualmente
     /// </summary>
-    private int activeTasks = 0;
+    private int _activeTasks = 0;
 
     /// <summary>
     /// Contador de pedidos entregados
@@ -288,7 +289,8 @@ public class Receiver : MonoBehaviour
     /// <param name="amount">Cantidad a añadir (puede ser negativa)</param>
     public void AddSubTaskCount(int amount)
     {
-        activeTasks += amount;
+        _activeTasks += amount;
+        UpdateMultiplierText();
     }
     #endregion
 
@@ -376,7 +378,7 @@ public class Receiver : MonoBehaviour
     /// </summary>
     private void Receive()
     {
-        if (activeTasks < 5)
+        if (_activeTasks < 5)
         {
             GameObject broken_object = Instantiate(ReceivingObjects[_indexer], transform.position, Quaternion.identity);
             broken_object.GetComponent<TaskManager>().GetReceiver(this);
@@ -422,7 +424,15 @@ public class Receiver : MonoBehaviour
     {
         if (_levelManager != null)
         {
-            _levelManager.SumMoney(amount, doneColor);
+            // Solo se multiplica el dinero si es para sumar, no para restar
+            if (amount > 0)
+            {
+                _levelManager.SumMoney(amount * _activeTasks, doneColor);
+            }
+            else
+            {
+                _levelManager.SumMoney(amount, doneColor);
+            }
         }
         else Debug.Log("No se ha encontrado el manager de nivel, recuerda asignarlo en el inspector");
     }
@@ -461,6 +471,14 @@ public class Receiver : MonoBehaviour
             if (_actualDeliveryUI != null) Destroy(_actualDeliveryUI); // quita el cartel anterior
             _actualDeliveryUI = Instantiate(ObjectsUI[_indexer], transform); // Instancia el popUp visual del siguiente Objeto a reparar
             _actualDeliveryUI.SetActive(state);
+    }
+
+    /// <summary>
+    /// Actualiza el texto del multiplicador de dinero. Es llamado cada vez que se activa o desactiva un pedido
+    /// </summary>
+    private void UpdateMultiplierText()
+    {
+        MultiplierText.text = "Multiplier: x" + _activeTasks.ToString();
     }
     #endregion   
 } // class Receiver 

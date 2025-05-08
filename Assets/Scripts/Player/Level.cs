@@ -229,6 +229,10 @@ public class Level : MonoBehaviour
         {
             RankText.color = Color.red;
         }
+        else if (rankObtained == "E")
+        {
+            RankText.color = new Color(0.5f, 0, 0);
+        }
         else
         {
             RankText.color = Color.gray;
