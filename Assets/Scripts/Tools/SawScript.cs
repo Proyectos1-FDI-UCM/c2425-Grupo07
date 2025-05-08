@@ -15,8 +15,7 @@ using UnityEngine.UI;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// 
-/// Esta clase se encarga de convertir el material de madera en madera procesada.
-/// También hace que la barra de compleción tenga animación cada vez que se incrementa el progreso.
+/// Esta clase se encarga de convertir el material de madera en madera procesada (procesar la madera).
 /// </summary>
 public class SawScript : MonoBehaviour
 {
@@ -28,30 +27,44 @@ public class SawScript : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Madera es el GameObject correspondiente a la madera
+    /// <summary>
+    /// Madera es el GameObject correspondiente a la madera
+    /// </summary>
     [SerializeField] private GameObject Madera;
 
-    // MaderaProcesada es el GameObject correspondiente a la madera procesada
+    /// <summary>
+    /// MaderaProcesada es el GameObject correspondiente a la madera procesada
+    /// </summary>
     [SerializeField] private GameObject MaderaProcesada;
 
-    // HasWood determina si hay madera en la sierra (true) o no (false)
+    /// <summary>
+    /// HasWood determina si hay madera en la sierra (true) o no (false)
+    /// </summary>
     [SerializeField] private bool HasWood = false;
 
-    // CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    /// <summary>
+    /// CompletionTime son las unidades de tiempo necesario para que el material se procese (segundos)
+    /// </summary>
     [SerializeField] private int CompletionTime = 6;
 
-    // Animator es el animator que controla la animación de la sierra
+    /// <summary>
+    /// Animator es el animator que controla la animación de la sierra
+    /// </summary>
     [SerializeField] private Animator Animator;
 
     /// <summary>
-    /// Componente de audio responsable del sonido de la sierra cuando esta está en funcionamiento
+    /// SawSFX es el componente de audio responsable del sonido de la sierra cuando está en funcionamiento
     /// </summary>
     [SerializeField] private AudioSource SawSFX;
 
-    // Particulas de destello
+    /// <summary>
+    /// Partículas de destello
+    /// </summary>
     [SerializeField] private GameObject Sparks;
 
-    //particulas de migas de madera
+    /// <summary>
+    /// Partículas de migas de madera
+    /// </summary>
     [SerializeField] private ParticleSystem WoodPiece;
 
     /// <summary>
@@ -63,19 +76,20 @@ public class SawScript : MonoBehaviour
     /// GameObject con la indicación del material que procesa la sierra
     /// </summary>
     [SerializeField] private GameObject MaterialIndication;
+
     /// <summary>
     /// GameObject con la indicación del las teclas que se deben pulsar para utilizar la sierra
     /// </summary>
     [SerializeField] private GameObject ButtonsIndication;
 
     /// <summary>
-    /// Bolenana para hacer visible las indicaciones visuales del yunque
+    /// Booleana para hacer visible las indicaciones visuales de la sierra
     /// </summary>
     [SerializeField] private bool ShowIndications;
 
     /// <summary>
-    /// Bolenana para activar las indicaciones dinamicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el proposito de estas. 
-    ///</summary>
+    /// Booleana para activar las indicaciones dinámicas, estas hacen que las indicaciones desaparezcan una vez el jugador cumpla el propósito de estas. 
+    /// </summary>
     [SerializeField] private bool DynamicIndications;
     #endregion
 
@@ -88,24 +102,33 @@ public class SawScript : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    // _progress es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
+    /// <summary>
+    /// _progress es la unidad que indica el progreso de la acción, cuanto lleva soldado un objeto
+    /// </summary>
     private float _progress;
 
-    // _materialSource es el material que hay en la sierra
+    /// <summary>
+    /// _materialSource es el material que hay en la sierra
+    /// </summary>
     private Material _materialSource;
 
-    //isWorking: es la booleana que indica si la soldadora está trabajando o no;
+    /// <summary>
+    /// _isWorking es la booleana que indica si la sierra está trabajando o no
+    /// </summary>
     private bool _isWorking;
 
-    // _completionDelta es la constante por la cual se multiplica el tiempo transcurrido para el incremento del progreso
+    /// <summary>
+    /// _completionDelta es la constante por la cual se multiplica el tiempo transcurrido para el incremento del progreso
+    /// </summary>
     private float _completionDelta;
 
-   /// <summary>
-    /// Boleana que determina si es la primera vez que el jugador ha coloca un objeto en la sierra
+    /// <summary>
+    /// _firstDrop determina si es la primera vez que el jugador ha colocado un objeto en la sierra
     /// </summary>
     private bool _firstDrop = true;
-     /// <summary>
-    /// Boleana que determina si es la primera vez que el jugador interactua con la sierra
+
+    /// <summary>
+    /// _firstInteraction determina si es la primera vez que el jugador interactúa con la sierra
     /// </summary>
     private bool _firstInteraction = true;
     #endregion
@@ -117,21 +140,31 @@ public class SawScript : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods are called the first time.
+    /// Pone el progreso a 0, _isWorking a false, _materialSource a null, asigna la referencia a SawSFX,
+    /// y muestra las indicaciones si corresponde.
+    /// </summary>
     void Start()
     {
         _progress = 0;
         _isWorking = false;
         _materialSource = null;
         SawSFX = GetComponent<AudioSource>();
-          if (!ShowIndications)
+        if (!ShowIndications)
         {
             IndicationsCanvas.SetActive(false); // Esconde las indicaciones de la herramienta
             _firstInteraction=false;
             _firstDrop = false; 
-            // Si no se van a ver las indicaciones, no son necesarias las boleanas para desativarlos. 
+            // Si no se van a ver las indicaciones, no son necesarias las booleanas para desativarlas.
         }
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Procesa la madera si _isWorking es true
+    /// </summary>
     void Update()
     {
       if (_isWorking)
@@ -176,7 +209,8 @@ public class SawScript : MonoBehaviour
     }
   
     /// <summary>
-    /// Este método es el encarga analizar el objeto que se le pasa como parámetro y colocar el material si es apto, además se encarga de establecer todas las variables necesarias de la mesa de trabajo correspondiente.
+    /// Este método es el encarga analizar el objeto que se le pasa como parámetro y colocar el material si es apto,
+    /// además se encarga de establecer todas las variables necesarias de la mesa de trabajo correspondiente.
     /// </summary>
     /// <param name="item"></param>
     public void Drop(GameObject item)
@@ -203,8 +237,8 @@ public class SawScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Se encarga de actualizar las variables de la mesa de trabajo para cuando el jugador recoge el material procesado
-    /// /// </summary>
+    /// Se encarga de actualizar las variables de la sierra para cuando el jugador recoge el material de la sierra
+    /// </summary>
     public void Pick()
     {
         _materialSource.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -215,6 +249,9 @@ public class SawScript : MonoBehaviour
         if (SawSFX != null) SawSFX.Stop();
     }
 
+    /// <summary>
+    /// Procesa la madera (poniendo _isWorking a true), activa los efectos visuales y sonoros, y desactiva las indicaciones si están activas
+    /// </summary>
     public void TurnOnSaw()
     {
         if (HasWood)
@@ -223,14 +260,21 @@ public class SawScript : MonoBehaviour
             Sparks.gameObject.SetActive(true);
             WoodPiece.gameObject.SetActive(true);
             Animator.SetBool("working", true);
-            if (SawSFX.clip != null) SawSFX.Play();
+            if (SawSFX.clip != null)
+            {
+                SawSFX.Play();
+            }
             if (_firstInteraction && DynamicIndications)
-                {
-                    ButtonsIndication.SetActive(false);
-                    _firstInteraction = false;
-                }
+            {
+                ButtonsIndication.SetActive(false);
+                _firstInteraction = false;
+            }
         }
     }
+
+    /// <summary>
+    /// Deja de procesar la madera (poniendo _isWorking a false) y desactiva los efectos visuales y sonoros
+    /// </summary>
     public void TurnOffSaw()
     {
         if (HasWood)
@@ -253,7 +297,8 @@ public class SawScript : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Procesa la madera destruyendo el material de madera e instanciando el material de madera procesada poniéndolo como hijo de la sierra
+    /// Cuando se haya procesado por completo la madera, cambia su sprite al de madera procesada y cambia su enum al de madera procesada.
+    /// También detiene los efectos visuales y sonoros.
     /// </summary>
     private void ProcessWood()
     {

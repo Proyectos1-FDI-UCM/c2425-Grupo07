@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Este script se encarga de spawnear los materiales para la cinta mecánica en orden aleatorio y de manera cíclica
+// Este script se encarga de spawnear los materiales para la cinta mecánica en orden aleatorio
 // Ferran Escribá Cufí
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
@@ -28,12 +28,24 @@ public class SpawnMaterials : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Materials es un array que contiene todos los GameObjects de los materiales
+    /// <summary>
+    /// Materials es un array que contiene todos los GameObjects de los materiales
+    /// </summary>
     [SerializeField] GameObject[] Materials = new GameObject[4];
+
+    /// <summary>
+    /// Transform de la primera cinta que va a recorrer el material spawneado
+    /// </summary>
     [SerializeField] Transform CintaInicial;
 
-    // _spawnInterval es el tiempo en segundos que pasa entre cada spawn
-    [SerializeField] private float _spawnInterval = 1.5f;
+    /// <summary>
+    /// _spawnInterval es el tiempo en segundos que pasa entre cada spawn
+    /// </summary>
+    [SerializeField] private float SpawnInterval = 1.5f;
+
+    /// <summary>
+    /// EnTutorial determina si está en el tutorial (true) o no (false)
+    /// </summary>
     [SerializeField] bool EnTutorial;
     #endregion
 
@@ -46,10 +58,14 @@ public class SpawnMaterials : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    // _spawnPoint es el lugar en el que tienen que spawnear los materiales
+    /// <summary>
+    /// _spawnPoint es el lugar en el que tienen que spawnear los materiales
+    /// </summary>
     private Transform _spawnPoint;
 
-    // _currentObjectIndex es el índice actual que está recorriendo el array Materials
+    /// <summary>
+    /// _currentObjectIndex es el índice actual que está recorriendo el array Materials
+    /// </summary>
     private int _currentObjectIndex = 0;
 
     #endregion
@@ -64,6 +80,7 @@ public class SpawnMaterials : MonoBehaviour
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
+    /// Asigna la referencia a _spawnPoint y empieza a spawnear materiales si no está en el tutorial
     /// </summary>
     void Start()
     {
@@ -76,6 +93,7 @@ public class SpawnMaterials : MonoBehaviour
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Si está en el tutorial empieza a spawnear materiales
     /// </summary>
     void Update()
     {
@@ -103,8 +121,11 @@ public class SpawnMaterials : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    // SpawnObjects spawnea el material que corresponda respetando el intervalo de tiempo entre
-    // cada spawn. Spawnea el material en la posición del spawner y lo asigna como su hijo
+    /// <summary>
+    /// SpawnObjects spawnea el material que corresponda respetando el intervalo de tiempo entre
+    /// cada spawn. Spawnea el material en la posición del spawner y lo asigna como su hijo
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnObjects()
     {
         while (CintaInicial.transform.childCount == 0 && EnTutorial || !EnTutorial)
@@ -118,11 +139,14 @@ public class SpawnMaterials : MonoBehaviour
 
             _currentObjectIndex = (_currentObjectIndex + 1) % Materials.Length;
 
-            yield return new WaitForSeconds(_spawnInterval);
+            yield return new WaitForSeconds(SpawnInterval);
         }
     }
 
-    // SuffleArray desordena el array Materials para que spawneen en un orden más aleatorio
+    /// <summary>
+    /// SuffleArray desordena el array Materials para que spawneen en un orden más aleatorio
+    /// </summary>
+    /// <param name="_materials">Array de materiales que se deben spawnear</param>
     private void ShuffleArray(GameObject[] _materials)
     {
         for (int i = _materials.Length - 1; i > 0; i--)

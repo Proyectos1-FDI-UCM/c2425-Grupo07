@@ -122,7 +122,7 @@ public class Level : MonoBehaviour
 
             if (_gameManager.GetLevelRank(0) != "F")
             {
-                gameObject.GetComponent<SpriteRenderer>().sprite = _unlocked;
+                GetComponent<SpriteRenderer>().sprite = _unlocked;
             }
         }
   
