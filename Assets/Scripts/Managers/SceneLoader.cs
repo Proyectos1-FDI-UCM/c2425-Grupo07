@@ -85,6 +85,9 @@ public class SceneLoader : MonoBehaviour
         SettingsManager.Instance.TogglePanel();
     }
 
+    /// <summary>
+    /// Reinicia la escena actual
+    /// </summary>
     public void RestartLevel()
     {
         string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -101,8 +104,8 @@ public class SceneLoader : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Changes the scene after a delay. (DEFAULT : = 0.5 seconds)
-    /// It can also unpause the time when the game was paused.
+    /// Cambia a la escena dada por la string después de un delay. (default: = 0.5 segundos)
+    /// También puede reanudar el tiempo cuando el juego estaba pausado
     /// </summary>
     /// <param name="nameScene"></param>
     /// <param name="Unpause"></param>
