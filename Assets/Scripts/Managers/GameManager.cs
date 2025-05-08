@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "NivelPrincipal" && PlayerPrefs.GetInt("IsFirstTime", 1) == 1)
         {
-            if (FindAnyObjectByType<IndicatorChange>() != null)
+            if (FindAnyObjectByType<IndicatorChange>() != null && !_firstTime)
             {
                 _indicatorChange = FindAnyObjectByType<IndicatorChange>();
                 _indicatorChange.On();
