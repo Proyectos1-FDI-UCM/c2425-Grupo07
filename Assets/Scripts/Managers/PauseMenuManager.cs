@@ -44,7 +44,7 @@ public class PauseMenuManager : MonoBehaviour
     private bool _recipeTutorial = false; // Indica si el tutorial de recetas está activo.
     private PlayerDash _playerDash; // Referencia para controlar si el jugador puede realizar un "dash" (velocidad extra).
     private LevelManager _levelManager; // Referencia al script LevelManager para controlar el estado del nivel.
-
+    private SceneLoader _loaderScene; // Encargado de cargar las escenas del juego
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -61,6 +61,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             _levelManager = FindAnyObjectByType<LevelManager>();
         }
+        _loaderScene = FindObjectOfType<SceneLoader>().GetComponent<SceneLoader>();
         tutorialPannelScript = GetComponentInChildren<IndicatorChange>();
     }
 
@@ -123,7 +124,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
-        StartCoroutine(DelayOnSceneChange(actualSceneName, true)); // Cambia de escena con un pequeño retraso.
+        _loaderScene.StartCoroutine(DelayOnSceneChange(actualSceneName, true));
     }
 
     /// <summary>
@@ -133,7 +134,7 @@ public class PauseMenuManager : MonoBehaviour
     public void ChangeScenesButtons(string nameScene)
     {
         SettingsManager.Instance.PlaySFX(ButtonSound); // Reproduce el sonido del botón.
-        StartCoroutine(DelayOnSceneChange(nameScene, true)); // Cambia de escena con un pequeño retraso.
+        _loaderScene.StartCoroutine(DelayOnSceneChange(nameScene, true));
     }
 
     /// <summary>

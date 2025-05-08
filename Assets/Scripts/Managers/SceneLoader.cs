@@ -14,6 +14,9 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
+/// Este script se encuentra en la pantalla de Título y sirve para abrir diversas escenas
+/// (tutorial, créditos, menuLevelSelection)
+/// Además puede cerrar el juego y abrir el panel de ajustes
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
@@ -27,6 +30,7 @@ public class SceneLoader : MonoBehaviour
 
     // hace posible el sonido de los botones
     [SerializeField] private AudioClip ButtonSound;
+    [SerializeField] Animator transition;// Hecho por Guillermo, el animator que se reproduce entre escenas
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,6 +49,9 @@ public class SceneLoader : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    void Start()
+    {
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -111,10 +118,11 @@ public class SceneLoader : MonoBehaviour
     /// <param name="Unpause"></param>
     /// <param name="delay"></param>
     /// <returns></returns>
-    private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay = 0.5f)
+    private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay =1f)
     {
+        transition.SetTrigger("FadeIn");
         yield return new WaitForSecondsRealtime(delay);
-        if (Unpause) { Time.timeScale = 1f; }
+        //if (Unpause) { Time.timeScale = 1f; }
         SceneManager.LoadScene(nameScene);
     }
 
