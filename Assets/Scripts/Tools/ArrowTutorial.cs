@@ -1,13 +1,11 @@
 //---------------------------------------------------------
-// Este Script es responsable de gestionar las escenas que se van a cargar y los paneles que se abrirán en la pantalla de inicio ("TitleScreen")
+// Breve descripción del contenido del archivo
 // Guillermo Isaac Ramos Medina
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 // Añadir aquí el resto de directivas using
 
 
@@ -15,7 +13,7 @@ using UnityEngine.SceneManagement;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class SceneLoader : MonoBehaviour
+public class ArrowTutorial : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,9 +22,7 @@ public class SceneLoader : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-    // hace posible el sonido de los botones
-    [SerializeField] private AudioClip ButtonSound;
+    [SerializeField] GameObject ArrowIndicator;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -37,14 +33,32 @@ public class SceneLoader : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    bool _arrowActive;
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -54,45 +68,17 @@ public class SceneLoader : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    /// <summary>
-    /// Cambia a la escena especificada
-    /// </summary>
-    /// <param name="nameScene">Nombre de la escena a la que se quiere ir</param>
-    public void WarpScene(string nameScene)
+    public void ArrowToggle()
     {
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        StartCoroutine(DelayOnSceneChange(nameScene));
-    }
-
-    public void WarpTutorialOrSelection()
-    {
-        string nameScene = "MenuLevelSelection";
-        if (GameManager.Instance.ReturnPlayerTutorial() == 0)
+        if (_arrowActive)
         {
-            nameScene = "Tutorial";
+            _arrowActive = false;
         }
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        StartCoroutine(DelayOnSceneChange(nameScene));
-    }
-
-    //Cierra el juego
-    public void QuitGame()
-    { Application.Quit(); }
-
-    //Abre el panel de Ajustes
-    public void ToggleSettingsPanel()
-    {
-        SettingsManager.Instance.TogglePanel();
-    }
-
-    /// <summary>
-    /// Reinicia la escena actual
-    /// </summary>
-    public void RestartLevel()
-    {
-        string actualSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        SettingsManager.Instance.PlaySFX(ButtonSound);
-        StartCoroutine(DelayOnSceneChange(actualSceneName, true));
+        else
+        {
+            _arrowActive = true;
+        }
+        ArrowIndicator.SetActive(_arrowActive);
     }
     #endregion
 
@@ -103,22 +89,7 @@ public class SceneLoader : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    /// <summary>
-    /// Cambia a la escena dada por la string después de un delay. (default: = 0.5 segundos)
-    /// También puede reanudar el tiempo cuando el juego estaba pausado
-    /// </summary>
-    /// <param name="nameScene"></param>
-    /// <param name="Unpause"></param>
-    /// <param name="delay"></param>
-    /// <returns></returns>
-    private IEnumerator DelayOnSceneChange(string nameScene, bool Unpause = true, float delay = 0.5f)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        if (Unpause) { Time.timeScale = 1f; }
-        SceneManager.LoadScene(nameScene);
-    }
+    #endregion   
 
-    #endregion
-
-} // class SceneLoader 
+} // class ArrowTutorial 
 // namespace

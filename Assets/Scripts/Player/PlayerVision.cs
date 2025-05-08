@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Este script es el responsable de la mecánica PickDrop y de la visión del jugador
+// Este script es el responsable de la mecánica PickDrop, de la visión del jugador y de la reproducción de los sonidos del jugador.
 // Este script almacena la informacìón de la mesa que el jugador está mirando para que otros scripts puedan aprovecharlo
 // Óliver García Aguado
 // Clank & Clutch
@@ -70,7 +70,7 @@ public class PlayerVision : MonoBehaviour
     private bool _isBeingPicked = false; // determina cuando un objeto está siendo sujetado
     private PlayerMovement _playerMovement; //Referencia al playerMovement para calcular la posicion de los objetos en la mano del jugador.   
 
-    private AudioSource _playerAudioSource;
+    private AudioSource _playerAudioSource; // COmponente de audio del jugador.
 
                         
     #endregion

@@ -76,6 +76,11 @@ public class NextScene : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void DoneTutorial()
+    {
+        SceneManager.LoadScene("MenuLevelSelection");
+        GameManager.Instance.PlayerDidTutorial();
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -93,7 +98,7 @@ public class NextScene : MonoBehaviour
         }
         if (other.GetComponent<PlayerManager>() != null && ChangesScene)
         {
-            SceneManager.LoadScene("MenuLevelSelection");
+            DoneTutorial();
         }
         if (TutorialText != null)
         {

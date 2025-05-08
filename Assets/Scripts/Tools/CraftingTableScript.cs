@@ -28,6 +28,7 @@ public class CraftingTableScript : MonoBehaviour
     /// Componente que se encarga de reproducir un sonido cuando se introduzca un material en un objeto.
     /// </summary>
     [SerializeField] private AudioSource CraftingTableSFX;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -150,8 +151,14 @@ public class CraftingTableScript : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    #endregion
+    private void OnTransformChildrenChanged()
+    {
+        if (GetComponent<ArrowTutorial>()!=null)
+        {
+            GetComponent<ArrowTutorial>().ArrowToggle();
+        }
+    }
+#endregion
 
 } // class CraftingTableScript 
 // namespace

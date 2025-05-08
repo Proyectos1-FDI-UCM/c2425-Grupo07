@@ -33,6 +33,9 @@ public class PressScript : MonoBehaviour
     [SerializeField] private Animator PressAnimator; // Referencia al Animator de la prensa
     [SerializeField] private ParticleSystem Smoke; //Referencia a la partícula después de terminar el proceso de la prensa
 
+    //Hecho por Guillermo
+    [SerializeField] private bool OnTutorial; // Comprueba si está en el tutorial para activar una flecha
+    [SerializeField] private GameObject ArrowIndicator; //Objecto que se activará al terminar de procesar el objeto
     /// <summary>
     /// Sonido que se reproduce cuando se termina de reiniciar un objeto.
     /// </summary>
@@ -164,6 +167,10 @@ public class PressScript : MonoBehaviour
             
             if (PressingTime >= 1)
             {
+                if (OnTutorial)
+                {
+                    ArrowIndicator.SetActive(true);
+                }
                 if (_pressAudioSource != null)
                 {
                     _pressAudioSource.Stop();

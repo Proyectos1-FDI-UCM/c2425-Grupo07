@@ -178,8 +178,9 @@ public class TaskManager : MonoBehaviour
         if (delivered && !IsTaskEnded() && !onTutorial) // le da el dinero correspondiente al estado con el que lo haya enviado (dependiendo del color de la barra) si está en verde el 100%, amarillo el 75%, el naranja el 50% y el rojo el 25%
         {
 
-            if (!_isInfiniteMode)
+            if (!_isInfiniteMode) // Si se juega el nivel principal
             {
+                //Los colores representan como de avanzado está el pedido (cuanto le queda)
                 if (_progressBar.color == color1)
                 {
                     Debug.Log("Entregado Correctamente, 100%");
@@ -199,9 +200,9 @@ public class TaskManager : MonoBehaviour
             }
             else
             {
-                float gainedTime = ConvertPaymentToTime(BasePayment);
+                float gainedTime = ConvertPaymentToTime(BasePayment); // Si se juega el nivel infinito, se convierte el dinero base a tiempo (no le afecta el color de la barra)
                 Debug.Log(gainedTime);
-                _receiver.AddTime(gainedTime);
+                _receiver.AddTime(gainedTime); //Se añade el tiempo al juego
             }
             
         }
