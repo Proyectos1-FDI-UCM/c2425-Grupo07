@@ -82,7 +82,7 @@ public class Material : MonoBehaviour
     /// </summary>
     void Start()
     {
-        UpdateBar();
+        UpdateBar(); // Para hacer desaparecer la barra de progreso cuando se spawnea cada material
     }
 
     #endregion
@@ -96,7 +96,8 @@ public class Material : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     /// <summary>
-    /// Actualiza el progreso de procesado del material, se almacenan y recogen valores entre 0 y 1 siendo 0 el objeto intacto y 1 el objeto ya procesado 
+    /// Actualiza el progreso de procesado del material, se almacenan y recogen valores entre 0 y 1 siendo 0 el objeto intacto y 1 el objeto ya procesado
+    /// Después actualiza la barra acorde al nuevo progreso del material 
     /// </summary>
     /// <param name="progress"></param>
     public void UpdateProgress(float progress)
