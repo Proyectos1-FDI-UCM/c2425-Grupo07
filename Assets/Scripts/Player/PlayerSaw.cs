@@ -15,7 +15,7 @@ using UnityEngine;
 /// usando todas las líneas que sean necesarias.
 /// 
 /// Esta clase se encarga de que el jugador pueda interactuar con la sierra de manera adecuada.
-/// Solo puede interactuar si está mirando a la sierra llevando madera y habiendo hecho menos clicks de los necesarios para procesar la madera.
+/// Solo puede interactuar si está pulsando la tecla para interactuar, la mesa a la que está mirando es la sierra y la sierra tiene madera no procesada.
 /// </summary>
 public class PlayerSaw : MonoBehaviour
 {
@@ -27,10 +27,14 @@ public class PlayerSaw : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-    // Referencia al script SawScript
+    /// <summary>
+    /// Referencia al script SawScript
+    /// </summary>
     [SerializeField] private SawScript SierraClick;
 
-    // Referencia al script PlayerVision
+    /// <summary>
+    /// Referencia al script PlayerVision
+    /// </summary>
     [SerializeField] private PlayerVision Player;
 
     #endregion
@@ -44,7 +48,9 @@ public class PlayerSaw : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    // _playerVision sirve para llamar luego al script de PlayerVision
+    /// <summary>
+    /// _playerVision sirve para llamar luego al script de PlayerVision
+    /// </summary>
     private PlayerVision _playerVision;
     #endregion
 
@@ -60,6 +66,7 @@ public class PlayerSaw : MonoBehaviour
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
+    /// Se asignan las referencias a SawScript y PlayerVision
     /// </summary>
     void Start()
     {
@@ -118,14 +125,18 @@ public class PlayerSaw : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Llama al método TurnOnSaw() de SawScipt
+    /// </summary>
     private void TurnOn()
     {
-        // if (_playerVision.GetActualMesa() != null && _playerVision.GetComponent<SawScript>() != null)
-        // {
-            Debug.Log("TurnOn");
-            SierraClick.TurnOnSaw();
-        // }
+        Debug.Log("TurnOn");
+        SierraClick.TurnOnSaw();
     }
+
+    /// <summary>
+    /// Llama al método TurnOffSaw() de SawScript
+    /// </summary>
     private void TurnOff()
     {
         Debug.Log("TurnOff");
