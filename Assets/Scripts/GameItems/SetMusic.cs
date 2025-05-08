@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
 
+using System;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 using UnityEngine.SceneManagement;
@@ -42,6 +43,7 @@ public class SetMusic : MonoBehaviour
 
     private string[] _sceneNames; //Nombre de todas las escenas de la built
     private string _actualScene;
+    [SerializeField]private PauseMenuManager _menuManager;
 
     #endregion
     
@@ -65,7 +67,7 @@ public class SetMusic : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "NivelPrincipal")
+        if (SceneManager.GetActiveScene().name == "NivelPrincipal" || SceneManager.GetActiveScene().name == "NivelInfinito")
         {
             LevelManager levelManager = FindObjectOfType<LevelManager>();
             SecondsLeft = levelManager.GetCurrentSecondsLeft();
@@ -93,11 +95,6 @@ public class SetMusic : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void SetPitchOnReset()
-    {
-        MusicSource.pitch = 1f;
-    }
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -107,6 +104,9 @@ public class SetMusic : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Obtiene los nombres de las escenas en un array privado
+    /// </summary>
     private void ObtainAllScenes()
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
@@ -119,6 +119,9 @@ public class SetMusic : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Busca la escena activa para cambiar la música
+    /// </summary>
     private void SearchForPlayer()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -135,6 +138,7 @@ public class SetMusic : MonoBehaviour
     }
 
 
+    //Cambia la música
     private void SetNewMusic(int i)
     {
         if(MusicClip[i] != null)
@@ -148,13 +152,23 @@ public class SetMusic : MonoBehaviour
         }
     }
 
+    //Cada vez que se carga la escena se llama a este método
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SearchForPlayer();
+
+        if(scene.name != "TitleScreen" && scene.name != "Credits" && _menuManager == null)
+        {
+            _menuManager = FindObjectOfType<PauseMenuManager>();
+        }
     }
 
+    //Cambia el pitch para los niveles cuando es menos de 60 segundos y 10 segundos
     private void ChangePitch(float seconds)
     {
+        
+
+
         if (seconds > 60f) { MusicSource.pitch = 1f; }
         if (seconds < 60f && seconds > 10f) MusicSource.pitch = PitchOne;
         else if(seconds < 10f) MusicSource.pitch = PitchTwo;
