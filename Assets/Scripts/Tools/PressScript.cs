@@ -31,7 +31,7 @@ public class PressScript : MonoBehaviour
     [SerializeField] private Image ProgressBarFill; // Referencia a la barra de progreso
     [SerializeField] private Canvas BarCanvasGroup;// Referencia al Canvas de la barra de progreso
     [SerializeField] private Animator PressAnimator; // Referencia al Animator de la prensa
-    [SerializeField] private ParticleSystem Smoke;
+    [SerializeField] private ParticleSystem Smoke; //Referencia a la partícula después de terminar el proceso de la prensa
 
     /// <summary>
     /// Sonido que se reproduce cuando se termina de reiniciar un objeto.

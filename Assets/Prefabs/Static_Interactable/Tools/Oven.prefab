@@ -449,10 +449,9 @@ MonoBehaviour:
   FireIco: {fileID: 7683220941088754040}
   IsBurnt: 0
   _animator: {fileID: 1649011753587039896}
-  AlertAudioSource: {fileID: 0}
+  AlertAudioSource: {fileID: 1357370723288520861}
   Smoke: {fileID: 6934040569857479441}
   SmokeBurn: {fileID: 7867512748726362024}
-  NextTutorialText: {fileID: 0}
   IndicationsCanvas: {fileID: 6893758092355366857}
   MaterialIndication: {fileID: 3865838907058614430}
   ShowIndications: 1
@@ -599,7 +598,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6527533263956082210, guid: c6ee16bd9509d644bb686ad53223726c, type: 2}
   m_audioClip: {fileID: 8300000, guid: c6d8274a4d805dc42b1601f6f98a178e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -42,10 +42,10 @@ public class Objects : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private bool _canBeSent = true; //Booleana que representa si se puede enviar o no un objeto
-    [SerializeField] private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
+    private int _nGood = 0; //numero de veces que se a hecho bien el jugador al colocar el objeto
     private SpriteRenderer _skin; //Referencia al sprite renderer del objecto para cambiarlo más tarde
     private int _nInsertados; //numero de objetos insertados
-    private bool _isFull;
+    private bool _isFull; //booleana que indica si se han almacenado todos sus huecos
 
     #endregion
 

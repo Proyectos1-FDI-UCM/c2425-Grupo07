@@ -54,7 +54,7 @@ public class Level : MonoBehaviour
 
     private GameManager _gameManager; //instancia del game manager
     private PlayerLevel _player; //script del PlayerLevel
-    string _rankLetter;
+    string _rankLetter; //letra que se ha sacado el jugador, en un inicio es un F
     private Level _thisLevel; //Obtención de la información de este nivel
     [SerializeField] private ChangePreview _changePreview; //referencia a ChangePreview
 

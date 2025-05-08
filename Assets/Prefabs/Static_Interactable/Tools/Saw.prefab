@@ -5244,7 +5244,7 @@ MonoBehaviour:
   HasWood: 0
   CompletionTime: 6
   Animator: {fileID: 17094492241830544}
-  SawSFX: {fileID: 0}
+  SawSFX: {fileID: 1013393944905022676}
   Sparks: {fileID: 7015531118227436477}
   WoodPiece: {fileID: 1301624752365180151}
   IndicationsCanvas: {fileID: 6794878112548956550}
@@ -5291,7 +5291,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2105982674, guid: b09098131c555a84fa06954608f64045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

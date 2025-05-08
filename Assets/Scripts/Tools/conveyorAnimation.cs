@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Controla la dirección de la animacion de la cinta mecánica
+// Controla la dirección de la animación de la cinta mecánica
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25

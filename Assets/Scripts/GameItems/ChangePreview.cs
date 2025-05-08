@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Cambia la preview de los paneles de los niveles dependiendo de qué nivel se trate
+// Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
 //---------------------------------------------------------
@@ -61,6 +61,10 @@ public class ChangePreview : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    /// <summary>
+    /// Obtiene todos los niveles y se guarda su string en una array
+    /// </summary>
     public void SearchNames()
     {
         Level[] allLevels = FindObjectsOfType<Level>();
@@ -72,6 +76,10 @@ public class ChangePreview : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Se busca la imagen correspondiente del nivel y lo cambia en el panel, es llamado desde el script de Level
+    /// </summary>
+    /// <param name="level"></param>
     public void SetImagePreview(Level level)
     {
         int i = 0;
@@ -81,7 +89,7 @@ public class ChangePreview : MonoBehaviour
         }
 
         Preview.sprite = ImagePreview[i];
-    } //llamdo desde el level
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

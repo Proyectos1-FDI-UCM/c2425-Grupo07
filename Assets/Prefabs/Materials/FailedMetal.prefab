@@ -105,7 +105,7 @@ MonoBehaviour:
   CompletionBar: {fileID: 0}
   MatState: []
   goodCompletionSound: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
-  badCompletionSound: {fileID: 0}
+  badCompletionSound: {fileID: 8300000, guid: d5975a1925d036743a2c668c183f8a3b, type: 3}
 --- !u!58 &4303538933006017438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -196,3 +196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354f6c9153f07dc4182c45040b631273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecTransform: {fileID: 0}

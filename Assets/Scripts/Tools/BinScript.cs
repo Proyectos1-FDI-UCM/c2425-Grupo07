@@ -24,6 +24,7 @@ public class BinScript : MonoBehaviour
     [SerializeField] private Animator BinAnimator; // Referencia al componente Animator para controlar la animación del contenedor de basura.
     [SerializeField] int VecesDisminuido = 10;
     [SerializeField] ParticleSystem Smoke;
+    [SerializeField] AudioSource AudioTrashClose;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -69,6 +70,10 @@ public class BinScript : MonoBehaviour
         if (Smoke != null )
         {
             Instantiate(Smoke, transform.position, Quaternion.identity);
+        }
+        if(AudioTrashClose != null)
+        {
+            AudioTrashClose.Play();
         }
     }
 

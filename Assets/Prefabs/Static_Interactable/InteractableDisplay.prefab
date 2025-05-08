@@ -802,10 +802,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.090467036
       objectReference: {fileID: 0}
-    - target: {fileID: 8163756225512812788, guid: d240384680fe7704b891879005847be1, type: 3}
-      propertyPath: CraftingTableSFX
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3113,10 +3109,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
-      propertyPath: AlertAudioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797813616673262525, guid: 2d432d31e4a8bd440905e4834081e43d, type: 3}
       propertyPath: IndicationsCanvas
       value: 
       objectReference: {fileID: 1088572380908060850}
@@ -3699,10 +3691,6 @@ PrefabInstance:
     - target: {fileID: 271874080825723453, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
       propertyPath: m_Name
       value: Saw
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047328990291088811, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
-      propertyPath: SawSFX
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3047328990291088811, guid: 57d1f2fbb32998645ae5dd4bd70f5efb, type: 3}
       propertyPath: ShowIndications

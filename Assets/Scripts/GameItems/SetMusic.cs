@@ -26,10 +26,10 @@ public class SetMusic : MonoBehaviour
 
     [SerializeField] private AudioClip[] MusicClip; //todos los audios musicales para el juego
     [SerializeField] private AudioSource MusicSource; //el audio a cambiar
-    [SerializeField] private float PitchOne = 1.1f;
-    [SerializeField] private float PitchTwo = 1.4f;
+    [SerializeField] private float PitchOne = 1.1f; //Valor para el primer cambio de Pitch
+    [SerializeField] private float PitchTwo = 1.4f; //Segundo valor para el segundo cambio de Pitch
 
-    [SerializeField] private float SecondsLeft;
+    [SerializeField] private float SecondsLeft; // Segundos que quedan del nivel por acabarse
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -42,8 +42,7 @@ public class SetMusic : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private string[] _sceneNames; //Nombre de todas las escenas de la built
-    private string _actualScene;
-    [SerializeField]private PauseMenuManager _menuManager;
+    private string _actualScene; //Nombre de la escena actual
 
     #endregion
     
@@ -138,7 +137,10 @@ public class SetMusic : MonoBehaviour
     }
 
 
-    //Cambia la música
+    /// <summary>
+    /// Cambia la música de la escena y es sustituida por la que está en la array de MusicClip con el parametro entrante i
+    /// </summary>
+    /// <param name="i"></param>
     private void SetNewMusic(int i)
     {
         if(MusicClip[i] != null)
@@ -152,23 +154,22 @@ public class SetMusic : MonoBehaviour
         }
     }
 
-    //Cada vez que se carga la escena se llama a este método
+    /// <summary>
+    /// Cada vez que se carga la escena se llama a este método
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SearchForPlayer();
-
-        if(scene.name != "TitleScreen" && scene.name != "Credits" && _menuManager == null)
-        {
-            _menuManager = FindObjectOfType<PauseMenuManager>();
-        }
     }
 
-    //Cambia el pitch para los niveles cuando es menos de 60 segundos y 10 segundos
+    /// <summary>
+    /// Cambia el pitch para los niveles cuando es menos de 60 segundos y 10 segundos
+    /// </summary>
+    /// <param name="seconds"></param>
     private void ChangePitch(float seconds)
     {
-        
-
-
         if (seconds > 60f) { MusicSource.pitch = 1f; }
         if (seconds < 60f && seconds > 10f) MusicSource.pitch = PitchOne;
         else if(seconds < 10f) MusicSource.pitch = PitchTwo;

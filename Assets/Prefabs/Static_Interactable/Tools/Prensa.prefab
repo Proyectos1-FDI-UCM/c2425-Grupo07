@@ -363,7 +363,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -259739391
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 248621282, guid: b09098131c555a84fa06954608f64045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -485,7 +485,7 @@ MonoBehaviour:
   BarCanvasGroup: {fileID: 1738537655760811564}
   PressAnimator: {fileID: 8653330697242258784}
   Smoke: {fileID: 1507347503692865976, guid: eb23d98317a1ff241b7c80186ba3c16c, type: 3}
-  ResetSFX: {fileID: 0}
+  ResetSFX: {fileID: 8300000, guid: 6fde98af237e3474aa4a9583a6d9a8c6, type: 3}
 --- !u!114 &360731875773519600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,9 +532,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6527533263956082210, guid: c6ee16bd9509d644bb686ad53223726c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9c927f2e3d9ffe54bb2acff8541af4da, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

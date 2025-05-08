@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Se programa el funcionamiento del spawner
+// Se programa el funcionamiento del spawner del jugador
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25

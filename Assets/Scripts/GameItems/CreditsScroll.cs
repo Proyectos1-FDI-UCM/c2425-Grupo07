@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Se programa el desplazamiento de los créditos
+// Se programa el aumento de la velocidad de desplazamiento de los créditos y también la posibilidad de omitirlos
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25

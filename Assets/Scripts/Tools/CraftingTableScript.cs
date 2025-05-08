@@ -52,11 +52,6 @@ public class CraftingTableScript : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    void Start()
-    {
-        
-    }
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -94,6 +89,7 @@ public class CraftingTableScript : MonoBehaviour
                         if (CraftingTableSFX != null)
                         {
                             CraftingTableSFX.Play();
+                            Debug.Log("SuenaMESACRAFTEO");
                         }
                     }
                     else { i++; }

@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Se programa el paso de imagenas para las instrucciones del juego
+// Se programa el paso de imágenes para las instrucciones del juego
 // Liling Chen
 // Clank & Clutch
 // Proyectos 1 - Curso 2024-25
