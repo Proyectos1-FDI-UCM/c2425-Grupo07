@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 322545677
-  m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingLayerID: 1280534379
+  m_SortingLayer: 5
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 9eca56da3c11fa2429873456dc0a17cd, type: 3}
   m_Color: {r: 0.5711812, g: 0.7056604, b: 0.5099395, a: 1}
   m_FlipX: 0
@@ -103,4 +103,5 @@ MonoBehaviour:
   - {fileID: 6046970825805907103, guid: 6c2fca0b794fed54c9510d8c2dd5f8ec, type: 3}
   - {fileID: 6046970825805907103, guid: 8009af3c12dd38c4a9aaf4cb83ba68d2, type: 3}
   CintaInicial: {fileID: 0}
-  _spawnInterval: 1.5
+  SpawnInterval: 1.5
+  EnTutorial: 0
