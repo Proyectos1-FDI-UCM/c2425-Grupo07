@@ -215,7 +215,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1001 &67570793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10511,7 +10510,6 @@ MonoBehaviour:
   GameObjectReceived: 7
   IsFirstDoor: 0
   DoorSounds: []
-  EsObjetoAReparar: 0
 --- !u!1001 &318527339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10852,7 +10850,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 136317000016200040, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 2080086173}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
@@ -16515,7 +16513,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1 &807909673
 GameObject:
   m_ObjectHideFlags: 0
@@ -16577,7 +16574,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 1
 --- !u!4 &815399590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465621805917360665, guid: fa4ef3d7f8f8032419872981da19ded3, type: 3}
@@ -16612,7 +16608,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1 &820273354
 GameObject:
   m_ObjectHideFlags: 0
@@ -18407,7 +18402,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1 &867725797
 GameObject:
   m_ObjectHideFlags: 0
@@ -18469,7 +18463,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1 &875815086
 GameObject:
   m_ObjectHideFlags: 0
@@ -18783,7 +18776,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!4 &966645730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1200185607637273506, guid: d240384680fe7704b891879005847be1, type: 3}
@@ -18882,7 +18874,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1001 &983236676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21359,7 +21350,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1001 &1448360435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22273,7 +22263,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!1001 &1672112230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23876,7 +23865,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!224 &2039828181 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 136317000016200040, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
@@ -24426,7 +24414,6 @@ MonoBehaviour:
   DoorSounds:
   - {fileID: 8300000, guid: b36a717e3d808ff4cbb40a850f6d1913, type: 3}
   - {fileID: 8300000, guid: 0c75c04d60ba0bc458e381452845af61, type: 3}
-  EsObjetoAReparar: 0
 --- !u!4 &1216634302681709552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6134770807801930426, guid: f4ce40fcc6ac13e49afce25069f653b7, type: 3}
