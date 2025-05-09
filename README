@@ -1,7 +1,7 @@
-Clank And Clutch
+# Clank And Clutch
 [Documento con imágenes](https://docs.google.com/document/d/1n6Q9dvPOtfPn8iLUYavHOzKFrShSifvtgWn5igAOEO8/edit?tab=t.0)
 Integrantes: Liling Chen, Guillermo Isaac Ramos Medina, Ferrán Escribá Cufí, Óliver García, Aguado, Cheng Xiang Ye Xu y Alicia Sarahi Sanchez Varela.
-Objetivos
+# # Objetivos
 
 En este juego de simulación tendrás que manejar tu tiempo y recursos para conseguir la mayor cantidad de dinero posible.
 Para ello, tienes que recoger un pedido de una mesa recibidor con una caja registradora y dejarlo en la mesa de crafteo azul (es una mesa con unas herramientas por encima y el cuadrado del centro azul oscuro)
@@ -23,7 +23,7 @@ Arena: Se procesa en el horno.
 Colocando estos materiales en orden encima del objeto ya puesto en la mesa de crafteo dentro del tiempo establecido te indicará por unos cuadrados encima del objeto si es posible repararse o no 
 
 
-¿Cómo se juega?
+# # ¿Cómo se juega?
 
 Movement: Sirve para mover al personaje y también moverte entre los distintos botones de las interfaz.
 Pause: Para abrir el menú de pausa en las escenas de selección de nivel y en el nivel en sí, se accede a los controles, a la salida a la escena de selección de nivel, continuar con la escena o reiniciarla.
