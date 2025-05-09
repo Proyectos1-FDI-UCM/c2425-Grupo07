@@ -61,7 +61,10 @@ public class PauseMenuManager : MonoBehaviour
         {
             _levelManager = FindAnyObjectByType<LevelManager>();
         }
-        _loaderScene = FindObjectOfType<SceneLoader>().GetComponent<SceneLoader>();
+        if(FindObjectOfType<SceneLoader>() != null)
+        {
+            _loaderScene = FindObjectOfType<SceneLoader>().GetComponent<SceneLoader>();
+        }
         tutorialPannelScript = GetComponentInChildren<IndicatorChange>();
     }
 
