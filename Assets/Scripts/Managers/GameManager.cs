@@ -192,11 +192,13 @@ public class GameManager : MonoBehaviour
         //Hecho por Guillermo, Activa y desactiva el modo desarrollador al pulsar "1" y "-"
         if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed() && !_isDev)
         {
+            _isDev= true;
             Time.timeScale = 2.0f;
             Debug.Log("DEVMODE");
         }
         else if (InputManager.Instance != null && InputManager.Instance.DevModeIsPressed() && InputManager.Instance.InteractIsPressed())
         {
+            _isDev = false;
             Time.timeScale = 1.0f;
             Debug.Log("NO DEVMODE");
         }
