@@ -246,7 +246,7 @@ public class Objects : MonoBehaviour
             {
                 CapacityAmount[i].material.color = Color.red; // Cambia a color de erroneo.
                 GameManager.Instance.SetTutorialString("Oh you messed up, no problem! " +
-                    "just put the object in the <color=\"lightblue\" > press below<color=\"white\"> and reset its progress. Then <color=\"red\">redo<color=\"white\"> the process.");
+                    "just put the object in the <color=\"lightblue\">press below<color=\"white\"> and reset its progress. Then <color=\"red\">redo<color=\"white\"> the process.");
                 if (GetComponent<ArrowTutorial>() != null)
                 {
                     GetComponent<ArrowTutorial>().ActiveArrow(1); // se equivoca
@@ -271,7 +271,13 @@ public class Objects : MonoBehaviour
         return material == required;
     }
 
-    
+    void OnTransformParentChanged()
+    {
+        if (GetComponent<ArrowTutorial>() != null)
+        {
+            GetComponent<ArrowTutorial>().DeactivateArrow(3);
+        }
+    }
 
     #endregion   
 

@@ -8757,11 +8757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _minD
-      value: 1000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _minE
-      value: 750
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6277272266096241728, guid: 47a03ac86f64f3045befddf585e824b8, type: 3}
       propertyPath: _minS

@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
         } // if-else somos instancia nueva o no.
+        _playerDoneTutorial = PlayerPrefs.GetInt("DidTutorial");
     }
 
     /// <summary>

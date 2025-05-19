@@ -35,6 +35,7 @@ public class Level : MonoBehaviour
     [SerializeField] TextMeshProUGUI RankText; //Texto que muestra el rango
     [SerializeField] string LevelName; //Nombre del nivel al que se carga en SceneLoader
     [SerializeField] Canvas SelectionPlayer; //Canvas con la seleccion de jugador
+    [SerializeField] GameObject RanksDeco; //Canvas con la seleccion de jugador
 
     [SerializeField] bool _isThisInfiniteLevel; //Booleano que indica si el nivel es infinito o no;
 
@@ -138,6 +139,14 @@ public class Level : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CanvasInfo.gameObject.SetActive(true);
+        if (!_isThisInfiniteLevel)
+        {
+            RanksDeco.gameObject.SetActive(true);
+        }
+        else
+        {
+            RanksDeco.gameObject.SetActive(false);
+        }
         _player = collision.GetComponent<PlayerLevel>();
         _player.SetLevelScript(_thisLevel);
     }

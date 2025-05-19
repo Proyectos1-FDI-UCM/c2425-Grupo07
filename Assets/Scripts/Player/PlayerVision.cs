@@ -237,6 +237,7 @@ public class PlayerVision : MonoBehaviour
             _playerAudioSource.PlayOneShot(PickSFX);
             }
             _heldObject = lookedObject;
+            _heldObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
             _heldObject.transform.SetParent(gameObject.transform);
             _isBeingPicked = true;
             _objectInTable = null;
@@ -257,6 +258,7 @@ public class PlayerVision : MonoBehaviour
         _isBeingPicked = false;
         _heldObject.transform.position = _actualMesa.transform.position;
         _heldObject.transform.rotation = Quaternion.identity;
+        _heldObject.GetComponent<SpriteRenderer>().sortingOrder=-2;
         _heldObject.transform.SetParent(_actualMesa.transform);
         if (onToolPlaced)
         {

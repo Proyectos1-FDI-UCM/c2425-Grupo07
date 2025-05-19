@@ -106,6 +106,7 @@ public class NextScene : MonoBehaviour
         {
             TutorialText.text = NextTutorialText;
         }
+        gameObject.SetActive(false);
     }
     #endregion   
 
